@@ -1,0 +1,2 @@
+
+jQuery(document).ready(function(){jQuery('#sq_settings .customize').bind('click',function(){jQuery(this).parent('fieldset').find("div:first").toggle();jQuery(this).parent('fieldset').find(".automaticaly").toggle();jQuery(this).parent('fieldset').find(".customize").toggle();jQuery(this).parent('fieldset').find("._customize").toggle();});jQuery('#sq_settings ._customize').bind('click',function(){jQuery(this).parent('fieldset').find(".customize").trigger('click');});});

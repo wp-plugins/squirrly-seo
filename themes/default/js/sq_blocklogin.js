@@ -1,0 +1,6 @@
+
+jQuery('#sq_login').live('click',function(){jQuery('#sq_login').addClass('sq_minloading');jQuery('#sq_login').attr("disabled","disabled");jQuery('#sq_login').val('');jQuery.getJSON(sqQuery.ajaxurl,{action:'sq_login',user:jQuery('#sq_user').val(),password:jQuery('#sq_password').val(),nonce:sqQuery.nonce}).success(function(responce){jQuery('#sq_login').removeAttr("disabled");jQuery('#sq_login').val('Login');jQuery('#sq_login').removeClass('sq_minloading');if(typeof responce.token!='undefined'){__token=responce.token;jQuery('#sq_blocklogin').remove();window.sq_main.load();}else
+if(typeof responce.error!='undefined')
+jQuery('#sq_blocklogin').find('sq_error').html(responce.error);}).error(function(){jQuery('#sq_login').removeAttr("disabled");jQuery('#sq_login').val('Login');jQuery('#sq_login').removeClass('sq_minloading');jQuery('#sq_blocklogin').find('sq_error').html('An error occured while login!');});});jQuery('#sq_user').live('keypress',function(event){if(event.keyCode==13)
+jQuery('#sq_login').trigger('click');return event.keyCode!=13;});jQuery('#sq_password').live('keypress',function(event){if(event.keyCode==13)
+jQuery('#sq_login').trigger('click');return event.keyCode!=13;});
