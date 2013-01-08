@@ -46,6 +46,11 @@ Check our screenshots.
 
 == Changelog ==
 
+= 1.0.3 =
+* Added Support and link to dashboard in Happiness bar
+* Changed the keyword suggestion design
+* Automatically add tag with the used keyword 
+
 = 1.0.2 =
 * Fixed PHP5 version check
 * Fixed Squirrly Login for PHP 5.0 version
