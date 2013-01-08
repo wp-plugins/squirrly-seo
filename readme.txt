@@ -46,6 +46,9 @@ Check our screenshots.
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed the register URL and Login messages
+
 = 1.0.3 =
 * Added Support and link to dashboard in Happiness bar
 * Changed the keyword suggestion design
