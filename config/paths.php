@@ -4,9 +4,8 @@ $currentDir = dirname(__FILE__);
 define('_SQ_NAME_',             'squirrly');
 define('_PLUGIN_NAME_',             'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
 define('_THEME_NAME_',             'default'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
-define('_SQ_DASH_URL_', 'http://squirrly.cifnet.ro/');
+define('_SQ_DASH_URL_', 'http://my.squirrly.co/');
 define('_SQ_API_URL_', 'http://api.squirrly.co/');
-define('_SQ_DASHBOARD_URL_', 'http://my.squirrly.co/user/');
 define('_SQ_STATIC_API_URL_', 'http://static.api.squirrly.co/');
 define('_SQ_SUPPORT_URL_', 'https://www.facebook.com/Squirrly.co');
 

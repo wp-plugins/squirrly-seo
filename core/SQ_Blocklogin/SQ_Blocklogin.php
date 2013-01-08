@@ -36,6 +36,9 @@ class SQ_Blocklogin extends SQ_BlockController {
                     case 'badlogin':
                         $return->error = __('Wrong username or password!',_PLUGIN_NAME_);
                         break;
+                    case 'multisite':
+                        $return->error = __('You can use this account only for the URL you registered first!',_PLUGIN_NAME_);
+                        break;
                 }
             }else
                 $return->error = __('An error occured.',_PLUGIN_NAME_);
