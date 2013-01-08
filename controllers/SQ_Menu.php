@@ -9,24 +9,24 @@ class SQ_Menu extends SQ_FrontController {
         public function hookMenu(){
             SQ_Tools::checkErrorSettings(true);
             /* add the plugin menu in admin */
-            $this->model->addMenu(array(	ucfirst(_PLUGIN_NAME_),
-                                            ucfirst(_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
+            $this->model->addMenu(array(	ucfirst(_SQ_NAME_),
+                                            ucfirst(_SQ_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                                             'edit_posts',
-                                            preg_replace ('/\s/','_',_PLUGIN_NAME_) ,
+                                            preg_replace ('/\s/','_',_SQ_NAME_) ,
                                             array($this,'showMenu')
                                       ));
 
 
 
-            $this->model->addMeta(array(	'post'._PLUGIN_NAME_,
-                                            ucfirst(_PLUGIN_NAME_),
+            $this->model->addMeta(array(	'post'._SQ_NAME_,
+                                            ucfirst(_SQ_NAME_),
                                             array(SQ_ObjController::getController('SQ_Post'), 'init'),
                                             'post', 
                                             'side', 
                                             'high'
                                     ));
-            $this->model->addMeta(array(	'post'._PLUGIN_NAME_,
-                                            ucfirst(_PLUGIN_NAME_),
+            $this->model->addMeta(array(	'post'._SQ_NAME_,
+                                            ucfirst(_SQ_NAME_),
                                             array(SQ_ObjController::getController('SQ_Post'), 'init'),
                                             'page', 
                                             'side', 
