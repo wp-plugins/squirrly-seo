@@ -20,7 +20,7 @@ class SQ_Blocklogin extends SQ_BlockController {
     
     function squirrlyRegister(){
         global $current_user;
-       
+        
         $args['name'] = $current_user->display_name;
         
         if (SQ_Tools::getValue('email') <> ''){
@@ -40,7 +40,7 @@ class SQ_Blocklogin extends SQ_BlockController {
                 
             }elseif(!empty($return->error)){
                 switch ($return->error){
-                    case 'alreadylogin':
+                    case 'alreadyregistered':
                         $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly ID. If you forgot your password click %shere%s',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=lostpassword" target="_blank">','</a>');
                         break;
                 }

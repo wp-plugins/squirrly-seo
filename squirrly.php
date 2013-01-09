@@ -7,11 +7,11 @@ Plugin Name: Squirrly SEO Plugin
 Plugin URI: http://my.squirrly.co
 Description: Squirrly SEO Plugin helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time. <BR> <a href="http://my.squirrly.co/user"><strong>Check your profile</strong></a> 
 Author: Squirrly Limited UK
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://www.squirrly.co
 */
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
-define('SQ_VERSION', '1.0.4');
+define('SQ_VERSION', '1.0.5');
 
 /* Call config files*/
 require(dirname(__FILE__).'/config/config.php');

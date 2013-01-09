@@ -28,17 +28,17 @@ require_once(dirname(__FILE__).'/paths.php');
 if (!defined('PHP_VERSION_ID'))
 {
 	$version = explode('.', PHP_VERSION);
-	define('PHP_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 ));
+	define('PHP_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 + ((isset($version[2])) ? ((int)$version[2] * 10)  : 0)));
 }
 if (!defined('WP_VERSION_ID'))
 {
 	$version = explode('.', $wp_version);
-	define('WP_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 ));
+	define('WP_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 + ((isset($version[2])) ? ((int)$version[2] * 10)  : 0) ));
 }
 if (!defined('SQ_VERSION_ID'))
 {
 	$version = explode('.', SQ_VERSION);
-	define('SQ_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] + (int)@$version[2] * 100 ));
+	define('SQ_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 + ((isset($version[2])) ? ((int)$version[2] * 10)  : 0) ));
 }
               
 /* Define the record name in the Option and UserMeta tables */

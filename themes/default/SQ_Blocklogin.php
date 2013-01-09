@@ -24,6 +24,10 @@
       <script type="text/javascript">
           autoLogin();
           //Call the autologin 
+          var __invalid_email = '<?php _e('The email address is invalid!',_PLUGIN_NAME_); ?>';
+          var __try_again = '<?php _e('Click on image and try again ...',_PLUGIN_NAME_); ?>';
+          var __error_login = '<?php _e('An error occured while login!',_PLUGIN_NAME_); ?>';
+          var __connecting = '<?php _e('Connecting ...',_PLUGIN_NAME_); ?>';
           jQuery('#sq_loginimage').live('click', function(){
               autoLogin();
           });

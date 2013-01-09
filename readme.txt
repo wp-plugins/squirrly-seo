@@ -1,8 +1,8 @@
 === Plugin Name ===
 Contributors: Squirrly Limited UK
 Tags:  wordpress seo, wordpress seo plugin, search engine optimization, keyword research, live assistant
-Requires at least: 3
-Tested up to: 3.4
+Requires at least: 3.0
+Tested up to: 3.5
 Stable tag: trunk
 
 Squirrly SEO helps you write perfect SEO articles for your Wordpress and do keyword researches in less then 2 minutes.
@@ -45,6 +45,10 @@ Check our screenshots.
 
 
 == Changelog ==
+
+= 1.0.5 =
+* Automatically register to squirrly
+* Fixed the fopen for remote request
 
 = 1.0.4 =
 * Fixed the register URL and Login messages
