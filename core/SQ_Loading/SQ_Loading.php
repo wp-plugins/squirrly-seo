@@ -56,7 +56,7 @@ class SQ_Loading extends SQ_BlockController {
               </script>';
 
             SQ_ObjController::getController('SQ_DisplayController', false)
-                  ->loadMedia(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js');
+                  ->loadMedia(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js?ver='.SQ_VERSION_ID);
         }
        
        if (file_exists(_SQ_ROOT_DIR_. '/smt2/core/js/smt-aux.min.js')){
