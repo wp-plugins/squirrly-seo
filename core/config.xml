@@ -48,6 +48,8 @@
 		</controllers>
                 <actions>
                     <action>sq_login</action>
+                    <action>sq_register</action>
+                    
                 </actions>
 		<active>1</active>
 		<path>core</path>

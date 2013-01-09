@@ -2,8 +2,8 @@
     <ul>
         <li id="sq_options_feedback">
                     
-            <span class="sq_icon <?php if(isset($_COOKIE['sq_feedback_face']) && (int)$_COOKIE['sq_feedback_face'] > 0) {echo 'sq_label_feedback_' . ((int)$_COOKIE['sq_feedback_face'] - 1); } ?>" <?php if(!isset($_COOKIE['sq_feedback_face'])) { echo 'title="'.__('Happy?',_PLUGIN_NAME_).'"';  } ?>></span>
-            <?php if(!isset($_COOKIE['sq_feedback_face'])) { ?>
+            <span class="sq_icon <?php if(isset($_COOKIE['sq_feedback_face']) && (int)$_COOKIE['sq_feedback_face'] > 0) {echo 'sq_label_feedback_' . ((int)$_COOKIE['sq_feedback_face'] - 1); } ?>" <?php if(!isset($_COOKIE['sq_feedback_face'])) { echo 'title="'.__('How was your Squirrly experience today?',_PLUGIN_NAME_).'"';  } ?>></span>
+            <?php if(!isset($_COOKIE['sq_feedback_face']) || (isset($_COOKIE['sq_feedback_face']) && (int)$_COOKIE['sq_feedback_face'] < 3)) { ?>
             <ul class="sq_options_feedback_popup" style="display: none;">
               <div id="sq_options_feedback_close" >x</div>
                   <li><?php echo __('How was Squirrly today?',_PLUGIN_NAME_) ?></li>
@@ -27,6 +27,11 @@
                       
                   </li>
                   <li><?php _e('Go to:',_PLUGIN_NAME_) ?> <a href="<?php echo _SQ_SUPPORT_URL_?>" title="<?php _e('support page',_PLUGIN_NAME_) ?>" target="_blank"><?php _e('support page',_PLUGIN_NAME_) ?></a></li>
+            </ul>
+            <?php }else{?>
+            <ul class="sq_options_feedback_popup" style="display: none;">
+              <div id="sq_options_feedback_close" >x</div>
+              <li><?php echo __('Thank you! You can send us a happy face tomorow too.',_PLUGIN_NAME_) ?></li>
             </ul>
             <?php }?>
         </li>

@@ -14,7 +14,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     function setStart(){
-        return "\n\n<!-- Squirrly SEO for Wordpress-->\n";
+        return "\n\n<!-- Squirrly Wordpress SEO Plugin -->\n";
     }
     
     /**
@@ -22,7 +22,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     function setEnd(){
-        return "<!-- /Squirrly SEO -->\n\n";
+        return "<!-- /Squirrly Wordpress SEO Plugin -->\n\n";
     }
     
     /**
@@ -260,8 +260,10 @@ class Model_SQ_Frontend {
         $str = '';
         $rnd = '';
         
-        if (isset(SQ_Tools::$options['favicon_tmp']))
-            $rnd = '?'.base64_encode(SQ_Tools::$options['favicon_tmp']);
+        if(function_exists('base64_encode')){
+            if (isset(SQ_Tools::$options['favicon_tmp']))
+                $rnd = '?ver='.base64_encode(SQ_Tools::$options['favicon_tmp']);
+        }        
         
         $favicon = get_bloginfo('siteurl') . '/favicon.ico'.$rnd;
         

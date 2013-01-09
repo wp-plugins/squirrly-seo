@@ -331,11 +331,12 @@ class SQ_Sitemap extends SQ_FrontController {
                 }
             }
             
-            if ($fp = fopen($this->file, 'w+')){
-                fwrite($fp, $data);
-                fclose($fp);
-                return true;
-            }
+            if(function_exists('fopen'))
+                if ($fp = @fopen($this->file, 'w+')){
+                    fwrite($fp, $data);
+                    fclose($fp);
+                    return true;
+                }
             
        return false;
     } # end function	

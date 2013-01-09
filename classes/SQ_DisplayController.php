@@ -29,16 +29,12 @@ class SQ_DisplayController {
        
        /*if is a custom css file*/
        if (strpos($uri,'/') === false){
-
-           if (file_exists(_SQ_THEME_DIR_.'css/'.strtolower($uri). '.css')){
-               $css_uri = _SQ_THEME_URL_.'css/'.strtolower($uri). '.css?'.SQ_VERSION_ID;
-           }
-           if (file_exists(_SQ_THEME_DIR_.'js/'.strtolower($uri). '.js')){
-               $js_uri = _SQ_THEME_URL_.'js/'.strtolower($uri). '.js?'.SQ_VERSION_ID;
-           }
-
-       }elseif(!fopen($uri, "r")){
-           return;
+            if (file_exists(_SQ_THEME_DIR_.'css/'.strtolower($uri). '.css')){
+                $css_uri = _SQ_THEME_URL_.'css/'.strtolower($uri). '.css?ver='.SQ_VERSION_ID;
+            }
+            if (file_exists(_SQ_THEME_DIR_.'js/'.strtolower($uri). '.js')){
+                $js_uri = _SQ_THEME_URL_.'js/'.strtolower($uri). '.js?ver='.SQ_VERSION_ID;
+            }
        }else{
 
            if(strpos($uri, '.css') !== FALSE)

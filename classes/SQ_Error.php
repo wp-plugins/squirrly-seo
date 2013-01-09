@@ -14,7 +14,10 @@ class SQ_Error extends SQ_FrontController{
         
         /* Verify dependences */
         if (!function_exists('get_class')) {
-            self::setError(__('Function get_class does not exists!', _PLUGIN_NAME_), 'fatal');
+            self::setError(__('Function get_class does not exists! Is required for Squirrly to work properly.', _PLUGIN_NAME_));
+        }
+        if (!function_exists('file_exists')) {
+            self::setError(__('Function file_exists does not exists! Is required for Squirrly to work properly.', _PLUGIN_NAME_));
         }
         
         if(!defined('ABSPATH'))

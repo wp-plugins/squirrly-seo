@@ -594,10 +594,11 @@ class Model_SQ_Icon{
           }
         }
 
-
-        $f=fopen($newfile,"w");
-        fwrite($f,$ret);
-        fclose($f);
+        if(function_exists('fopen')){
+            $f=@fopen($newfile,"w");
+            @fwrite($f,$ret);
+            @fclose($f);
+        }
     
     }  
     
