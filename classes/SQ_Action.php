@@ -135,7 +135,7 @@ class SQ_Action extends SQ_FrontController{
            if ($value <> '')
            $parameters .= ($parameters == "" ? "" : "&") . $key."=".$value;
        
-       if($module <> 'sq/login' || $module <> 'sq/register')
+       if($module == 'sq/login' || $module == 'sq/register')
         if(function_exists('base64_encode'))
            $parameters = 'q='.base64_encode($parameters);
        //echo _SQ_API_URL_;
