@@ -46,7 +46,7 @@ Check our screenshots.
 
 == Changelog ==
 
-= 1.0.5 =
+= 1.0.6 =
 * Automatically register to squirrly
 * Fixed the fopen for remote request
 
