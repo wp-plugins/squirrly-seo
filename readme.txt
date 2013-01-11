@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: cifi, calinvingan, florinmuresan
+Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
 Tags:  wordpress seo, wordpress seo plugin, search engine optimization, keyword research, live assistant
 Requires at least: 3.0
 Tested up to: 3.5
