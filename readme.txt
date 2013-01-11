@@ -46,6 +46,9 @@ Check our screenshots.
 
 == Changelog ==
 
+= 1.0.7 =
+* Fixed jQuery bugs 
+
 = 1.0.6 =
 * Automatically register to squirrly
 * Fixed the fopen for remote request

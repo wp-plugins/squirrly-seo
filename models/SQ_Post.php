@@ -146,7 +146,7 @@ class Model_SQ_Post {
     * Get the upload url 
     */
     public function getImgUrl() {
-        return get_bloginfo('url'). '/wp-content/uploads/';
+        return get_bloginfo('wpurl'). '/wp-content/uploads/';
     }
 }
 

@@ -3,14 +3,18 @@
 $currentDir = dirname(__FILE__);
 
 define('_SQ_NAME_',             'squirrly');
-define('_PLUGIN_NAME_',             'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
-define('_THEME_NAME_',             'default'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
-if (!defined(_SQ_API_URL_)){
-    define('_SQ_DASH_URL_', 'http://my.squirrly.co/');
-    define('_SQ_API_URL_', 'http://api.squirrly.co/');
-    define('_SQ_STATIC_API_URL_', 'http://static.api.squirrly.co/');
-    define('_SQ_SUPPORT_URL_', 'https://www.facebook.com/Squirrly.co');
-}
+define('_PLUGIN_NAME_',         'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
+define('_THEME_NAME_',          'default'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
+
+define('_SQ_DASH_URL_',         'http://my.squirrly.co/');
+define('_SQ_API_URL_',          'http://api.squirrly.co/');
+define('_SQ_STATIC_API_URL_',   'http://static.api.squirrly.co/');
+define('_SQ_SUPPORT_URL_',      'https://www.facebook.com/Squirrly.co');
+
+if(WP_VERSION_ID >= 3000) 
+    define('SQ_URI', 'wp350');
+else
+    define('SQ_URI', 'wp2');
 
 /* Directories */
 define('_SQ_ROOT_DIR_',             realpath($currentDir.'/..'));

@@ -36,29 +36,25 @@ class SQ_Action extends SQ_FrontController{
         $this->getActions(((isset($_GET['action']) ? $_GET['action'] : (isset($_POST['action']) ? $_POST['action'] : '')))); 
     }
     
-    
     /**
-    * The hookScripts is loaded as admin hook in hookController class for script load
+    * The hookHead is loaded as admin hook in hookController class for script load
      * Is needed for security check as nonce
     * 
     * @return void
     */
-    function hookScripts(){
-         // embed the javascript file that makes the AJAX request
-        //wp_deregister_script(array('jquery'));
-        //wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-latest.min.js');
-        //wp_enqueue_script( 'jquery', _SQ_THEME_URL_ . 'js/jquery-1.8.3.js');
-        wp_enqueue_script('sq_jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',array('jquery'));
-    
-        wp_localize_script( 'sq_jquery', 'sqQuery', array(
-            // URL to wp-admin/admin-ajax.php to process the request
-            'ajaxurl'          => admin_url( 'admin-ajax.php' ),
-
-            // generate a nonce with a unique ID 
-            'nonce' => wp_create_nonce( _SQ_NONCE_ID_ ),
-            )
-        );
+    function hookHead(){
+        echo '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+              <script type="text/javascript">
+                  var sqQuery = {    
+                    "ajaxurl": "'.admin_url( 'admin-ajax.php' ).'",
+                    "nonce": "'.wp_create_nonce( _SQ_NONCE_ID_ ).'"
+                  }
+                  
+                  if(parseInt(jQuery.fn.jquery.replace(/\./g,"")) < 162)
+                    google.load("jquery", "1.6.2");
+              </script>';
     }
+    
     
    /**
     * Get all actions from config.xml in core directory and add them in the WP
@@ -135,6 +131,7 @@ class SQ_Action extends SQ_FrontController{
            if ($value <> '')
            $parameters .= ($parameters == "" ? "" : "&") . $key."=".$value;
        
+       /* If the call is for login on register then use base64 is exists */
        if($module == 'sq/login' || $module == 'sq/register')
         if(function_exists('base64_encode'))
            $parameters = 'q='.base64_encode($parameters);

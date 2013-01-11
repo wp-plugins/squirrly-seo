@@ -2,6 +2,8 @@
 class SQ_Post extends SQ_FrontController {
     
     function hookInit(){
+        if (SQ_Tools::$options['sq_api'] == '') return;
+            
         if ( get_user_option('rich_editing') == 'true') {
             add_filter( 'tiny_mce_before_init', array(&$this->model,'setCallback') );
             
@@ -169,15 +171,21 @@ class SQ_Post extends SQ_FrontController {
        case 'sq_support':
            global $current_user;
             $return = array();
+            $versions = '';
             
+            $versions .= 'Squirrly version: ' . SQ_VERSION_ID . "\n";
+            $versions .= 'Wordpress version: ' . WP_VERSION_ID . "\n";
+            $versions .= 'PHP version: ' . PHP_VERSION_ID . "\n";
+
             $line = "\n"."________________________________________"."\n";
             $from = $current_user->user_email;
             $subject = __('Plugin Support',_SQD_PLUGIN_NAME_);
             $message = SQ_Tools::getValue('message');
 
             if ($message <> ''){
-                $message = $message . $line;
-
+                $message .= $line;
+                $message .= $versions ;
+                
                 $headers[] = 'From: '.$current_user->display_name.' <'.$from.'>';    
 
                 //$this->error='buuum';

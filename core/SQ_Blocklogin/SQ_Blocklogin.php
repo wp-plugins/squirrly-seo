@@ -1,11 +1,16 @@
 <?php
 class SQ_Blocklogin extends SQ_BlockController {
+    
     function init() {
+        /* If logged in then return */
         if (SQ_Tools::$options['sq_api'] <> '') return;
         parent::init();
     }
     
-    //called for sq_login
+    /**
+     * Called for sq_login
+     * Login or register a user
+     */
     function action(){
         parent::action();
         switch (SQ_Tools::getValue('action')){
@@ -18,6 +23,10 @@ class SQ_Blocklogin extends SQ_BlockController {
         }
     }
     
+    /**
+     * Register a new user to Squirrly and get the token
+     * @global string $current_user
+     */
     function squirrlyRegister(){
         global $current_user;
         
@@ -26,14 +35,16 @@ class SQ_Blocklogin extends SQ_BlockController {
         if (SQ_Tools::getValue('email') <> ''){
             $args['user'] = SQ_Tools::getValue('email');
             $args['email'] = SQ_Tools::getValue('email');
-            
         }else{
             $args['user'] = $current_user->user_email;
             $args['email'] = $current_user->user_email;
         }
+        
         if($args['email'] <> ''){   
-            $return = SQ_Action::apiCall('sq/register',$args);
-            $return = json_decode($return);
+            
+            $responce = SQ_Action::apiCall('sq/register',$args);
+            $return = json_decode($responce);
+            $return->msg = $responce;
             
             if (isset($return->token)){
                 SQ_Tools::saveOptions('sq_api', $return->token);
@@ -44,8 +55,10 @@ class SQ_Blocklogin extends SQ_BlockController {
                         $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly ID. If you forgot your password click %shere%s',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=lostpassword" target="_blank">','</a>');
                         break;
                 }
-            }else
+            }else{
                 $return->error = __('An error occured.',_PLUGIN_NAME_);
+                
+            }
         }else
             $return->error = sprintf(__('Could not send your informations to squirrly. Please register %smanually%s.',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=register" target="_blank">','</a>');
         
@@ -54,6 +67,9 @@ class SQ_Blocklogin extends SQ_BlockController {
         exit();
     }
     
+    /**
+     * Login a user to Squirrly and get the token
+     */
     function squirrlyLogin(){
 
         $args['user'] = SQ_Tools::getValue('user');
@@ -64,8 +80,9 @@ class SQ_Blocklogin extends SQ_BlockController {
             }else {
                 $args['encrypted'] = '0';
             }
-            $return = SQ_Action::apiCall('sq/login',$args);
-            $return = json_decode($return);
+            $responce = SQ_Action::apiCall('sq/login',$args);
+            $return = json_decode($responce);
+            $return->msg = $responce;
             
             if (isset($return->token)){
                 SQ_Tools::saveOptions('sq_api', $return->token);
@@ -89,6 +106,13 @@ class SQ_Blocklogin extends SQ_BlockController {
         exit();
     }
     
+    /**
+     * Scrypt the password
+     * 
+     * @param string $user
+     * @param string $password
+     * @return string
+     */
     private function sq_crypt($user, $password){
         
         $iv = mcrypt_create_iv(

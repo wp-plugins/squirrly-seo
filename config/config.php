@@ -21,8 +21,7 @@ $sq_showNote = array();
 
 define('_SQ_NONCE_ID_', 'sq_none');
 
-/* No path file? error ...*/
-require_once(dirname(__FILE__).'/paths.php');
+
 
 
 if (!defined('PHP_VERSION_ID'))
@@ -40,13 +39,13 @@ if (!defined('SQ_VERSION_ID'))
 	$version = explode('.', SQ_VERSION);
 	define('SQ_VERSION_ID', ((int)@$version[0] * 1000 + (int)@$version[1] * 100 + ((isset($version[2])) ? ((int)$version[2] * 10)  : 0) ));
 }
-              
+
+/* No path file? error ...*/
+require_once(dirname(__FILE__).'/paths.php');
+
 /* Define the record name in the Option and UserMeta tables */
 define('SQ_OPTION', 'sq_options');
 define('SQ_META', 'sq_plugin_flash');
 
-if(WP_VERSION_ID >= 3000)
-    define('SQ_URI', 'wp350');
-else
-    define('SQ_URI', 'wp2');
+
 ?>

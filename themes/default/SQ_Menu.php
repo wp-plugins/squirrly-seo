@@ -1,6 +1,18 @@
 <div id="sq_settings" >
     <form name="settings" action="" method="post" enctype="multipart/form-data">
-    <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <a href="post-new.php"><?php echo __('See', _PLUGIN_NAME_) . " " . ucfirst(_PLUGIN_NAME_) ." " .  __( 'in action', _PLUGIN_NAME_); ?></a> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
+    <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
+    <?php if(!isset($view->options['sq_api']) || !isset($view->options['sq_howto'])) {?>
+    <div id="sq_settings_howto">
+        <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Perfect SEO on each article you write.', _PLUGIN_NAME_); ?></div>
+        <div id="sq_settings_howto_body">
+            <p><span><?php _e('SEO Software', _PLUGIN_NAME_); ?></span><?php _e('delivered as a plugin for Wordpress. <br /><br />We connect your wordpress with Squirrly, so that we can find the best SEO opportunities, give you reports and analyse your competitors.', _PLUGIN_NAME_); ?></p>
+            <p><object width="420" height="315"><param name="movie" value="http://www.youtube.com/v/ymh8DBKrfhw?version=3&amp;hl=ro_RO"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ymh8DBKrfhw?version=3&amp;hl=ro_RO" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p> 
+            <a id="sq_settings_button" href="post-new.php"><?php echo  __( 'Write a new post with Squirrly', _PLUGIN_NAME_); ?></a> 
+            <div id="sq_settings_howto_close" class="sq_close" >x</div>
+        </div>
+    </div>
+    <?php }?>
+        
     <div id="sq_settings_body">
       
       

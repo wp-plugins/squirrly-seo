@@ -28,6 +28,7 @@
 		<description>The Setting page</description>
 		<actions>
                     <action>sq_update</action>
+                    <action>sq_howto</action>
                     
                     <action>sq_fixautoseo</action>
                     <action>sq_fixpermalink</action>

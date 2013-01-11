@@ -265,7 +265,7 @@ class Model_SQ_Frontend {
                 $rnd = '?ver='.base64_encode(SQ_Tools::$options['favicon_tmp']);
         }        
         
-        $favicon = get_bloginfo('siteurl') . '/favicon.ico'.$rnd;
+        $favicon = get_bloginfo('wpurl') . '/favicon.ico'.$rnd;
         
         if (($this->checkHomePosts() || $this->checkFrontPage()) &&  file_exists(ABSPATH.'/favicon.ico')){
             $str .= sprintf("<link rel=\"shortcut icon\" type=\"image/png\"  href=\"%s\" />" . "\n", $favicon);
