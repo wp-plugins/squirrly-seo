@@ -5,11 +5,11 @@ Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
 
-Squirrly SEO helps you write perfect SEO articles for your Wordpress and do keyword researches in less then 2 minutes.
+Squirrly - Wordpress SEO Plugin - helps you write perfect SEO articles for your Wordpress and do keyword researches in less then 2 minutes.
 
 == Description ==
 
-Squirrly SEO helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
+Squirrly - Wordpress SEO Plugin - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
 
 * Keyword research: find the perfect keywords for your articles
 * Inspiration box: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
@@ -91,5 +91,8 @@ Squirrly has a Free Trial period of 14 Days, after which you may choose to buy a
 
 == Frequently Asked Questions ==
 
-= How to install Squirrly Seo Plugin in my wordpress blog =
+= How to install Squirrly Seo in my wordpress blog =
 Please watch the following video http://www.youtube.com/watch?v=WJbAfkt0NUk
+
+= How does Squirrly Wordpress Seo Plugin works? =
+Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
