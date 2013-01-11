@@ -1,6 +1,5 @@
 <div id="sq_settings" >
     <form name="settings" action="" method="post" enctype="multipart/form-data">
-    <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
     <?php if(!isset($view->options['sq_api']) || !isset($view->options['sq_howto'])) {?>
     <div id="sq_settings_howto">
         <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Perfect SEO on each article you write.', _PLUGIN_NAME_); ?></div>
@@ -13,6 +12,7 @@
     </div>
     <?php }?>
         
+    <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
     <div id="sq_settings_body">
       
       
