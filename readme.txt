@@ -17,7 +17,10 @@ Squirrly SEO Plugin - helps you find the right keywords to rank by, in less then
 of your reading time and start writing your next great article.
 * SEO Live Assistant: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
 
-Check our screenshots.
+
+<a href="http://wordpress.org/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
+<a href="http://www.squirrly.co" title="Squirrly SEO">Go to our official site</a>
+
 
 == Installation ==
 

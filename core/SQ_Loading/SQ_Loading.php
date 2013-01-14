@@ -10,13 +10,11 @@ class SQ_Loading extends SQ_BlockController {
        parent::hookHead();
        $exists = false;
        $browser = false;
-       
-        
 
-        /* Check the squirrly.js file if exists */
-        $exists = wp_remote_head(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js');
-        $browser = SQ_Tools::getBrowserInfo();
-        if((isset($exists) && is_array($exists) && $exists['headers']['content-type'] <> 'application/javascript') || (isset($browser) && $browser != false && is_array($browser) && $browser['name'] == 'IE' && (int)$browser['version'] < 9 && (int)$browser['version'] > 0) ) {
+       /* Check the squirrly.js file if exists */
+       $exists = wp_remote_head(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js');
+       $browser = SQ_Tools::getBrowserInfo();
+       if((isset($exists) && is_array($exists) && $exists['headers']['content-type'] <> 'application/javascript') || (isset($browser) && $browser != false && is_array($browser) && $browser['name'] == 'IE' && (int)$browser['version'] < 9 && (int)$browser['version'] > 0) ) {
             echo '<script type="text/javascript">
                     jQuery("#sq_preloading").removeClass("sq_loading");
                     jQuery("#sq_preloading").addClass("sq_error")
@@ -38,14 +36,6 @@ class SQ_Loading extends SQ_BlockController {
                   ->loadMedia(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js?ver='.SQ_VERSION_ID);
         }
        
-       if (file_exists(_SQ_ROOT_DIR_. '/smt2/core/js/smt-aux.min.js')){
-        
-        echo '<script type="text/javascript" src="'.str_replace(get_bloginfo('wpurl'),"",_SQ_URL_).'/smt2/core/js/smt-aux.min.js"></script>
-              <script type="text/javascript" src="'.str_replace(get_bloginfo('wpurl'),"",_SQ_URL_).'/smt2/core/js/smt-record.min.js"></script> '; 
-         echo '<script type="text/javascript">
-                 try { smt2.record({ recTime: Number.MAX_VALUE, trackingServer: "'.str_replace(get_bloginfo('wpurl'),"",_SQ_URL_).'/smt2/", storageServer: "http://squirrly.sqtrack.squirrly.co/smt2/core/", disabled: false, warn: false });} catch(err) {console.log(err);}
-               </script> ';
-       }
     }
     
     
