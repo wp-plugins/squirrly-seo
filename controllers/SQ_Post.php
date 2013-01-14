@@ -24,6 +24,7 @@ class SQ_Post extends SQ_FrontController {
         remove_action('save_post', array($this, 'hookSavePost'), 10);
         
         if(wp_is_post_revision($post_id) == '' && wp_is_post_autosave($post_id) == '' && get_post_status($post_id) != 'auto-draft' && SQ_Tools::getValue('autosave') == ''){
+            
             $this->checkSeo($post_id);
             $this->checkImage($post_id);
         }
