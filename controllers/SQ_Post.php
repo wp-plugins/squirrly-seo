@@ -45,16 +45,23 @@ class SQ_Post extends SQ_FrontController {
         $tmpcontent = trim($content, "\n");
         $urls = array();
         
-       @preg_match_all('/<img[^>]+src="([^"]+)"[^>]+>/i', $tmpcontent, $out);
-        if(count($out[1]) == 0)
-            return;
-        
-        foreach ($out[1] as $row){
-            if(!in_array($row, $urls)){
-                $urls[] = $row;
+        if (function_exists('preg_match_all')){
+            @preg_match_all('/<img[^>]+src="([^"]+)"[^>]+>/i', $tmpcontent, $out);
+            if (is_array($out)){
+              if(!is_array($out[1]) || count($out[1]) == 0)
+                 return;
+
+              foreach ($out[1] as $row){
+                 if(!in_array($row, $urls)){
+                     $urls[] = $row;
+                 }
+              }
             }
         }
-            
+        
+        if (!is_array($urls))  
+           return;
+        
         if(count($urls) == 0)
            return;
 
@@ -118,6 +125,8 @@ class SQ_Post extends SQ_FrontController {
        case 'sq_feedback':
             global $current_user;
             $return = array();
+            
+            SQ_Tools::saveOptions('sq_feedback', 1);
             
             $line = "\n"."________________________________________"."\n";
             $from = $current_user->user_email;
