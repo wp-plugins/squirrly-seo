@@ -3,7 +3,10 @@
     <div class="sq_header" ><?php _e('Squirrly search', _PLUGIN_NAME_); ?></div>
     <div id="sq_blocksearch">
       <div class="sq_keyword">
-          <input type="text" id="sq_keyword" name="sq_keyword" value="<?php echo ((isset($_COOKIE['sq_keyword_'.$post_ID]) && $_COOKIE['sq_keyword_'.$post_ID] <> '') ? $_COOKIE['sq_keyword_'.$post_ID] : '') ?>"  autocomplete="off"/>
+          <?php if(!isset($_COOKIE['sq_keyword_'.$post_ID]) || $_COOKIE['sq_keyword_'.$post_ID] == '') { ?>
+            <div id="sq_keyword_help" style="display:none" ><span></span><?php _e('Enter a keyword', _PLUGIN_NAME_); ?><p><?php _e('for Squirrly Live SEO optimization', _PLUGIN_NAME_); ?></p></div>
+          <?php }?>
+          <input type="text" id="sq_keyword" name="sq_keyword" value="<?php echo ((isset($_COOKIE['sq_keyword_'.$post_ID]) && $_COOKIE['sq_keyword_'.$post_ID] <> '') ? $_COOKIE['sq_keyword_'.$post_ID] : '') ?>" autocomplete="off" />
           
           <input type="button" id="sq_keyword_check" value=">" />
           <div id="sq_suggestion" style="display:none">
@@ -35,6 +38,6 @@
       </div>
       <div style="position: relative;"><div id="sq_search_close" style="display:none">x</div></div>
       <div class="sq_search"></div>
-
+      <div id="sq_search_img_filter" style="display:none" ><label id="sq_search_img_nolicence_label" <?php if(isset(SQ_Tools::$options['sq_img_licence']) && (int)SQ_Tools::$options['sq_img_licence'] == 1) echo 'class="checked"'; ?> for="sq_search_img_nolicence"><span></span><?php _e('Show only Copyright Free images', _PLUGIN_NAME_)?></label><input id="sq_search_img_nolicence" type="checkbox" value="1" style="display:none" <?php if(isset(SQ_Tools::$options['sq_img_licence']) && (int)SQ_Tools::$options['sq_img_licence'] == 1) echo 'checked="checked"'; ?> /></div>
     </div>
 </div>

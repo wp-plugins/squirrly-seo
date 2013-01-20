@@ -20,6 +20,14 @@ class SQ_Blocklogin extends SQ_BlockController {
             case 'sq_register':
                 $this->squirrlyRegister();
                 break;
+            case 'sq_reset':
+                SQ_Tools::saveOptions('sq_api', '');
+                $return = array();
+                $return['reset'] = 'success';
+                header('Content-Type: application/json');
+                echo json_encode($return);
+                exit();
+                break;
         }
     }
     

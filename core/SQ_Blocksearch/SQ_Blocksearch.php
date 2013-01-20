@@ -12,6 +12,10 @@ class SQ_Blocksearch extends SQ_BlockController {
       
       parent::action();
       switch (SQ_Tools::getValue('action')){
+            case 'sq_type_click':
+                SQ_Tools::saveOptions('sq_img_licence', SQ_Tools::getValue('licence'));
+                exit();
+                break;
             case 'sq_search_img':
                 
                 $get = array('q' => SQ_Tools::getValue('q'),

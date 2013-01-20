@@ -71,7 +71,6 @@ class SQ_Menu extends SQ_FrontController {
             case 'sq_update':
                 
                 SQ_Tools::saveOptions('sq_use', SQ_Tools::getValue('sq_use'));
-                //SQ_Tools::saveOptions('sq_api', SQ_Tools::getValue('sq_api'));
 
                 SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));
                 SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));

@@ -4,6 +4,9 @@
                     
             <span class="sq_icon <?php if(isset($_COOKIE['sq_feedback_face']) && (int)$_COOKIE['sq_feedback_face'] > 0) {echo 'sq_label_feedback_' . ((int)$_COOKIE['sq_feedback_face'] - 1); } ?>" <?php if(!isset($_COOKIE['sq_feedback_face'])) { echo 'title="'.__('How was your Squirrly experience today?',_PLUGIN_NAME_).'"';  } ?>></span>
             <?php if(!isset($_COOKIE['sq_feedback_face']) || (isset($_COOKIE['sq_feedback_face']) && (int)$_COOKIE['sq_feedback_face'] < 3)) { ?>
+            <?php if(!isset(SQ_Tools::$options['sq_feedback'])) {?>
+                <span class="sq_push">1</span>
+            <?php }?>
             <ul class="sq_options_feedback_popup" style="display: none;">
               <div id="sq_options_feedback_close" >x</div>
                   <li><?php echo __('How was Squirrly today?',_PLUGIN_NAME_) ?></li>

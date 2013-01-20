@@ -20,7 +20,8 @@ class SQ_Loading extends SQ_BlockController {
                     jQuery("#sq_preloading").addClass("sq_error")
                     '.
                     (($browser['name'] == 'IE' && (int)$browser['version'] < 9 && (int)$browser['version'] > 0) 
-                    ? 'jQuery("#sq_preloading").html("'.__('For Squirrly to work properly you have to use a higher version of Internet Explorer. <br /> We recommend you to use Chrome or Mozilla.', _PLUGIN_NAME_).'");'
+                    ? 'jQuery("#sq_preloading").html("'.__('For Squirrly to work properly you have to use a higher version of Internet Explorer. <br /> We recommend you to use Chrome or Mozilla.', _PLUGIN_NAME_).'");
+                       jQuery("#sq_options").hide(); '
                     : 'jQuery("#sq_preloading").html("'.__('The system is acting Squirrly. I can not find the link to the server.', _PLUGIN_NAME_).'");')
                     .'
                     (function() {this.sq_tinymce = { callback: function () {},setup: function(ed){}}})(window);

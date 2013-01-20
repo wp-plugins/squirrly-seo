@@ -14,11 +14,11 @@ class Model_SQ_Blocksearch{
                   'tag_mode' => 'any', 
                   'per_page' => $get['nrb'], 
                   'page' => $get['page'], 
-                 // 'sort' => 'interestingness-desc', 
-                   'sort' => 'relevance', 
+                  'sort' => 'interestingness-desc', 
+                 // 'sort' => 'relevance', 
                   'tags' => $get['q'], 
                 //  'privacy_filter' => '1,2,3,4', 
-                  'license' => '1,2,3,4,5,6,7,8'
+                  'license' => '1,2,3,5,6,7'
                  );
 
               

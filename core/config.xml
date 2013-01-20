@@ -50,6 +50,7 @@
                 <actions>
                     <action>sq_login</action>
                     <action>sq_register</action>
+                    <action>sq_reset</action>
                     
                 </actions>
 		<active>1</active>
@@ -64,6 +65,7 @@
                 <actions>
                     <action>sq_search_img</action>
                     <action>sq_search_blog</action>
+                    <action>sq_type_click</action>
                 </actions>
 		<active>1</active>
 		<path>core</path>
