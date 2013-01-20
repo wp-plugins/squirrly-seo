@@ -56,7 +56,20 @@
               <input type="radio" name="ignore_warn" id="sq_ignore_warn"  value="1" <?php echo ((isset($view->options['ignore_warn']) && $view->options['ignore_warn'] == 1) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
              </p>
             </div>
-       </fieldset>  
+       </fieldset> 
+             
+       <fieldset>
+            <legend><?php _e('Squirrly Options', _PLUGIN_NAME_); ?></legend>
+            <div>
+             <p>
+               <?php _e('Show bubble <strong>"Enter a keyword"</strong> when posting a new article.', _PLUGIN_NAME_); ?>
+             </p>
+             <p>
+              <input type="radio" name="sq_keyword_help" value="1" <?php echo ((!isset($view->options['sq_keyword_help']) ||  $view->options['sq_keyword_help'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
+              <input type="radio" name="sq_keyword_help"  value="0" <?php echo ((isset($view->options['sq_keyword_help']) && $view->options['sq_keyword_help'] == 0) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
+             </p>
+            </div>
+       </fieldset> 
                   
         <fieldset>
             <legend><?php _e('First page optimization (Title, Description, Keywords)', _PLUGIN_NAME_); ?></legend>
