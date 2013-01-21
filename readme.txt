@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags:  wordpress seo, wordpress seo plugin, search engine optimization, keyword research, live assistant
+Tags:  wordpress seo, wordpress seo plugin, seo plugin, search engine optimization, keyword research, live assistant
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -8,7 +8,6 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-
 Squirrly SEO Plugin - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
 
 * Keyword research: find the perfect keywords for your articles
@@ -19,13 +18,11 @@ of your reading time and start writing your next great article.
 
 You can see all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>. 
 
-
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
  | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a>
 
 
 == Installation ==
-
 1. Log In as an Admin on your Wordpress blog.
 2. In the menu displayed to the left, there is a "Plugins" tab. Click it.
 3. Now click "Add New".
@@ -45,11 +42,10 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 5. Easy to read blogs
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live Assistant
-8. You will know when your SEO is good
+8. You will know when your Wordpress SEO is good
 
 
 == Changelog ==
-
 = 1.0.8 =
 * Added the notification bar for Squirrly Live SEO Assistant
 * Added how many words to write for keyword density in Squirrly Live SEO Assistant
@@ -84,7 +80,6 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 * WordPress 3.4 compatibility
 
 == Credits ==
-
 Florin Muresan CEO at Squirrly
 
 Calin Vingan CTO at Squirrly
@@ -100,13 +95,11 @@ Many Thanks.
 
 
 == License ==
-
 Squirrly has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
 
 
 == Frequently Asked Questions ==
-
-= How do I install Squirrly SEO Plugin in my wordpress blog? =
+= How do I install Squirrly Wordpress SEO Plugin in my wordpress blog? =
 Please watch the following video http://www.youtube.com/watch?v=WJbAfkt0NUk
 
 = How does Squirrly Wordpress SEO Plugin work? =
@@ -117,11 +110,11 @@ Yes, you can use the tweets and the paragraphs in your articles. They contain a 
 articles add only some paragraphs, not the whole article. As for the images, you can use the Copyright-Free images that we offer, to make sure you will
 not have any legal problems.
 
-= Do I get support for your SEO Plugin? =
+= Do I get support for your Wordpress SEO Plugin? =
 Yes, we are focused on Delivering Happiness and this comes along with a good support package. We have a track record of replying in under 5 hours to
 any request, no matter the time of day. And we also fix any problems which you may encounter very fast, so Squirrly is trust-worthy.
 
-= What Features does Squirrly SEO Plugin offer? =
+= What Features does Squirrly Wordpress SEO Plugin offer? =
 All of the features that we offer have been built having the customer's best interests in mind. We brought 90% of our clients to the first page of Google
 and we've proven time and again that we are a great team that knows all there is about good SEO automation. We had a community of 20,000 blogs that all
 used our SEO techniques and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
