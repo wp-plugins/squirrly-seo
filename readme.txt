@@ -35,14 +35,14 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 10. Done. Type a keyword to the right of the screen and start using Squirrly :) Enjoy!
 
 == Screenshots ==
-1. Enter a keyword
+1. Enter a keyword for Squirrly Live SEO Assistant
 2. Find out if it's worth to use it
 3. Add an image in your article
-4. Find tweets, wiki, blogs, news or other articles
-5. Easy to read blogs
+4. Find images, tweets, wiki, blogs, news or other articles
+5. Easy to read external blogs
 6. Easy to insert paragraphs from the articles that you are reading
-7. Optimize your article with Squirrly Live Assistant
-8. You will know when your Wordpress SEO is good
+7. Optimize your article with Squirrly Live SEO Assistant
+8. You will know when your SEO is good
 
 
 == Changelog ==
