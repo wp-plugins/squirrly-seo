@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrly_seo\n"
-"POT-Creation-Date: 2013-01-21 09:35+0200\n"
-"PO-Revision-Date: 2013-01-21 09:59+0200\n"
+"POT-Creation-Date: 2013-01-21 10:57+0200\n"
+"PO-Revision-Date: 2013-01-21 10:57+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: Squirrly UK <contact@squirrly.co>\n"
 "MIME-Version: 1.0\n"
@@ -226,6 +226,14 @@ msgstr ""
 #: core/SQ_Loading/SQ_Loading.php:25
 msgid "The system is acting Squirrly. I can not find the link to the server."
 msgstr "Sistemul functioneaza ciudat. Nu gasesc calea spre server."
+
+#: core/SQ_Loading/SQ_Loading.php:33
+msgid ""
+"You haven`t used Squirrly SEO to optimize your article. Do you want to "
+"optimize for a keyword before publishing?"
+msgstr ""
+"Nu ai folosit Squirrly SEO pentru a optimiza articolul. Vrei sa il "
+"optimizezi inainte de publicare?"
 
 #: models/SQ_Menu.php:108
 msgid "The code for Google Webmaster Tool is incorrect."
