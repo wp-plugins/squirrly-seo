@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: squirrly_seo\n"
 "POT-Creation-Date: 2013-01-21 09:35+0200\n"
-"PO-Revision-Date: 2013-01-21 09:54+0200\n"
+"PO-Revision-Date: 2013-01-21 09:59+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: Squirrly UK <contact@squirrly.co>\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "Cautare Squirrly"
 
 #: themes/default/SQ_Blocksearch.php:8
 msgid "Enter a keyword"
-msgstr "Adauga un keyword!"
+msgstr "Adauga cuvant"
 
 #: themes/default/SQ_Blocksearch.php:8
 msgid "for Squirrly Live SEO optimization"
