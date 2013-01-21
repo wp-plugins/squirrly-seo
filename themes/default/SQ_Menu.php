@@ -62,7 +62,7 @@
             <legend><?php _e('Squirrly Options', _PLUGIN_NAME_); ?></legend>
             <div>
              <p>
-               <?php _e('Show bubble <strong>"Enter a keyword"</strong> when posting a new article.', _PLUGIN_NAME_); ?>
+               <?php _e('Show <strong>"Enter a keyword"</strong> bubble when posting a new article.', _PLUGIN_NAME_); ?>
              </p>
              <p>
               <input type="radio" name="sq_keyword_help" value="1" <?php echo ((!isset($view->options['sq_keyword_help']) ||  $view->options['sq_keyword_help'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
