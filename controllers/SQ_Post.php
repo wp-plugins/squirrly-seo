@@ -62,7 +62,7 @@ class SQ_Post extends SQ_FrontController {
         if (!is_array($urls))  
            return;
         
-        if(count($urls) == 0)
+        if(is_array($seo) && count($urls) == 0)
            return;
 
         
@@ -104,7 +104,7 @@ class SQ_Post extends SQ_FrontController {
     function checkSeo($post_id){
         $seo = SQ_Tools::getValue('sq_seo');
         
-        if(count($seo)>0)
+        if(is_array($seo) && count($seo)>0)
            $args['seo'] = implode (',', $seo);
         
         $args['keyword'] = SQ_Tools::getValue('sq_keyword');
