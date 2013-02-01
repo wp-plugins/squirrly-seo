@@ -51,6 +51,8 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 * Added the Keyword Research bar
 * Fixed article post error
 * Fixed issues for support and profile login
+* Added the German language (de_DE)
+* Added the Romanian language (ro_RO)
 
 = 1.0.8 =
 * Added the notification bar for Squirrly Live SEO Assistant
