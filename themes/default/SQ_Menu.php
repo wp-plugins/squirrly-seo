@@ -69,6 +69,15 @@
               <input type="radio" name="sq_keyword_help"  value="0" <?php echo ((isset($view->options['sq_keyword_help']) && $view->options['sq_keyword_help'] == 0) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
              </p>
             </div>
+            <div>
+             <p>
+               <?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?>
+             </p>
+             <p>
+              <input type="radio" name="sq_keyword_information" value="1" <?php echo ((isset($view->options['sq_keyword_information']) && $view->options['sq_keyword_information'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
+              <input type="radio" name="sq_keyword_information"  value="0" <?php echo ((!isset($view->options['sq_keyword_information']) || $view->options['sq_keyword_information'] == 0) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
+             </p>
+            </div>
        </fieldset> 
                   
         <fieldset>

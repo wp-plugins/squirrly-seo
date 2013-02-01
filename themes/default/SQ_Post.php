@@ -45,8 +45,8 @@
               <div id="sq_options_close" >x</div>
                   <li><?php echo __('Need Help with Squirrly SEO?',_PLUGIN_NAME_) ?></li>
                   <li>
-                          <div id="sq_options_support_error"></div>
                           <p id="sq_support_msg"><textarea class="sq_small_input" name="sq_support_message" cols="30" rows="5"></textarea></p>
+                          <div id="sq_options_support_error"></div>
                           <p><input id="sq_support_submit" type="button" value="<?php _e('Send Question',_PLUGIN_NAME_) ?>"></p>
                       
                   </li>

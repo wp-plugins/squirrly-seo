@@ -46,6 +46,12 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 
 == Changelog ==
+= 1.0.9 =
+* Keyword Information has been made optional
+* Added the Keyword Research bar
+* Fixed article post error
+* Fixed issues for support and profile login
+
 = 1.0.8 =
 * Added the notification bar for Squirrly Live SEO Assistant
 * Added how many words to write for keyword density in Squirrly Live SEO Assistant
@@ -54,7 +60,6 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 * Added notification if no keyword is used 
 * CSS changed for mobile (tested on Android and IOS)
 * Fixed issues for javascript 
-
 
 = 1.0.7 =
 * Fixed jQuery bugs 

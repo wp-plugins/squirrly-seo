@@ -81,11 +81,11 @@ class SQ_ObjController {
 		$className = $prefix.$className;
 		//echo $className . '<br />';
 		if(class_exists($className)){
-                    self::$instances[$className] = new $className;
-                    return self::$instances[$className];
+                    self::$instances[$prefix.$className] = new $className;
+                    return self::$instances[$prefix.$className];
                 }
             }else
-		return self::$instances[$className];
+		return self::$instances[$prefix.$className];
 			
             return;
 	}

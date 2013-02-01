@@ -85,6 +85,8 @@ class SQ_Menu extends SQ_FrontController {
                 
                 SQ_Tools::saveOptions('ignore_warn', SQ_Tools::getValue('ignore_warn'));
                 SQ_Tools::saveOptions('sq_keyword_help', SQ_Tools::getValue('sq_keyword_help'));
+                SQ_Tools::saveOptions('sq_keyword_information', SQ_Tools::getValue('sq_keyword_information'));
+                
                 
                 
                 /* if there is an icon to upload*/
