@@ -1,6 +1,6 @@
 <div id="sq_preloading" class="sq_loading"></div>
 <div class="sq_box" style="display: none">
-    <div class="sq_header" ><?php _e('Squirrly search', _PLUGIN_NAME_); ?></div>
+    <div class="sq_header" ><?php _e('Optimize for Keyword', _PLUGIN_NAME_); ?></div>
     <div id="sq_blocksearch">
       <div class="sq_keyword">
           <?php if(!isset($_COOKIE['sq_keyword_'.$post_ID]) || $_COOKIE['sq_keyword_'.$post_ID] == '') { 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: squirrly_seo\n"
-"POT-Creation-Date: 2013-02-01 11:43+0200\n"
-"PO-Revision-Date: 2013-02-01 11:43+0200\n"
+"POT-Creation-Date: 2013-02-03 19:11+0200\n"
+"PO-Revision-Date: 2013-02-03 19:11+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: Squirrly UK <contact@squirrly.co>\n"
 "MIME-Version: 1.0\n"
@@ -348,7 +348,7 @@ msgid "An error occured while login!"
 msgstr "A aparut o eroare la logare."
 
 #: themes/default/SQ_Blockresearch.php:2
-msgid "Squirrly research"
+msgid "Squirrly Keyword Research"
 msgstr " Cercetare cuvinte cheie"
 
 #: themes/default/SQ_Blockresearch.php:3
@@ -380,8 +380,8 @@ msgid "Let some keywords for the next time as well!"
 msgstr "Mai lasa cuvinte si pentru viitor!"
 
 #: themes/default/SQ_Blocksearch.php:3
-msgid "Squirrly search"
-msgstr "Cautare Squirrly"
+msgid "Optimize for Keyword"
+msgstr "Optimizare dupa cuvint cheie"
 
 #: themes/default/SQ_Blocksearch.php:8
 msgid "Enter a keyword"
@@ -696,6 +696,9 @@ msgstr "Profilul tau din Squirrly"
 #: themes/default/SQ_Post.php:57
 msgid "Profile"
 msgstr "Profil"
+
+#~ msgid "Squirrly search"
+#~ msgstr "Cautare Squirrly"
 
 #~ msgid ""
 #~ "Your Squirrly account has expired. Please Upgrade your plan and use "

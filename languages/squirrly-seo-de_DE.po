@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Squirrly SEO Plugin v1.0.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-01 11:51+0200\n"
-"PO-Revision-Date: 2013-02-01 14:05+0200\n"
+"POT-Creation-Date: 2013-02-03 19:12+0200\n"
+"PO-Revision-Date: 2013-02-03 19:12+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -430,7 +430,7 @@ msgstr "Während anmelden, ist ein Fehler aufgetreten!"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blockresearch.php:2
-msgid "Squirrly research"
+msgid "Squirrly Keyword Research"
 msgstr "Neue Squirrly Suche"
 
 # @ squirrly-seo
@@ -468,10 +468,9 @@ msgstr "Geben Sie noch mehrere Schlüsselwörter ein."
 msgid "Let some keywords for the next time as well!"
 msgstr "Lassen Sie ein paar Schlüsselwörter auch für das nächste Mal!"
 
-# @ squirrly-seo
 #: themes/default/SQ_Blocksearch.php:3
-msgid "Squirrly search"
-msgstr "Squirrly Suche"
+msgid "Optimize for Keyword"
+msgstr ""
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocksearch.php:8
