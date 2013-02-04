@@ -46,6 +46,9 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 
 == Changelog ==
+= 1.1.0 =
+* Stable version (as we just finished with the beta)
+
 = 1.0.9 =
 * Keyword Information has been made optional
 * Added the Keyword Research bar

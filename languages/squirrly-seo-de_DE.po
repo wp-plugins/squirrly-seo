@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Squirrly SEO Plugin v1.0.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-03 19:12+0200\n"
-"PO-Revision-Date: 2013-02-03 19:12+0200\n"
+"POT-Creation-Date: 2013-02-04 12:02+0200\n"
+"PO-Revision-Date: 2013-02-04 12:02+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -100,55 +100,55 @@ msgid "For Squirrly to work, you have to have tinymce installed!"
 msgstr "Damit Squirrly arbeiten kann, müssen Sie tinymce installiert haben!"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:133
+#: controllers/SQ_Post.php:135
 msgid "Plugin Feedback"
 msgstr "Plugin Feedback"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:169
+#: controllers/SQ_Post.php:171
 msgid "Thank you for your feedback"
 msgstr "Vielen Dank für Ihre Feedback"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:171 controllers/SQ_Post.php:205
+#: controllers/SQ_Post.php:173 controllers/SQ_Post.php:207
 msgid "Could not send the email..."
 msgstr "Konnte E-Mail nicht senden ..."
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:174 controllers/SQ_Post.php:208
+#: controllers/SQ_Post.php:176 controllers/SQ_Post.php:210
 msgid "No message."
 msgstr "Keine Nachricht."
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:192
+#: controllers/SQ_Post.php:194
 msgid "Plugin Support"
 msgstr "Plugin Support"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:203
+#: controllers/SQ_Post.php:205
 msgid "Message sent..."
 msgstr "Nachricht gesendet ..."
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:63
-#, php-format
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:59
+#, fuzzy, php-format
 msgid ""
 "We found your email, so it means you already have a Squirrly.co account. "
-"Please login with your Squirrly ID. If you forgot your password click %shere"
-"%s"
+"Please login with your Squirrly Email. If you forgot your password click "
+"%shere%s"
 msgstr ""
 "Ihre E-Mail Adresse ist bereits bei Squirrly.co registriert. Bitte loggen "
 "Sie sich mit Ihrer Squirrly-ID ein. Falls Sie Ihr Passwort vergessen haben, "
 "klicken Sie %shier%s"
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:67
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:108
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:63
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:104
 msgid "An error occured."
 msgstr "Ein Fehler ist aufgetreten."
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:71
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:67
 #, php-format
 msgid ""
 "Could not send your informations to squirrly. Please register %smanually%s."
@@ -157,19 +157,20 @@ msgstr ""
 "%smanually%s."
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:101
-msgid "Wrong username or password!"
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:97
+#, fuzzy
+msgid "Wrong email or password!"
 msgstr "Benutzername oder Passwort falsch!"
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:104
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:100
 msgid "You can use this account only for the URL you registered first!"
 msgstr ""
 "Dieses Konto können Sie nur für die URL benutzen, die Sie zuerst registriert "
 "haben!"
 
 # @ squirrly-seo
-#: core/SQ_Blocklogin/SQ_Blocklogin.php:110
+#: core/SQ_Blocklogin/SQ_Blocklogin.php:106
 msgid "Both fields are required."
 msgstr "Beide Felder sind Pflichtfelder."
 
@@ -357,15 +358,10 @@ msgid "Squirrly.co Login"
 msgstr "Squirrly.co Login"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:5
-#, php-format
-msgid "You are not connected with %sSquirrly.co%s."
-msgstr "Sie sind nicht mit %sSquirrly.co%s verbunden."
-
-# @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:9
-msgid "Squirrly ID:"
-msgstr "Squirrly ID:"
+#, fuzzy
+msgid "Email:"
+msgstr "Ihre E-Mail Adresse:"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:10
@@ -398,35 +394,44 @@ msgid "Lost password"
 msgstr "Passwort vergessen"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:17 themes/default/SQ_Blocklogin.php:30
-msgid "Connecting ..."
-msgstr "Verbinden ..."
+#: themes/default/SQ_Blocklogin.php:17
+#, fuzzy
+msgid "Enter your email"
+msgstr "In Artikel einfügen"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:18
 msgid "Your E-mail:"
 msgstr "Ihre E-Mail Adresse:"
 
-# @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:20
-msgid "Having trouble logging in? Please click the Support button above."
+#: themes/default/SQ_Blocklogin.php:19
+msgid "Sign Up"
 msgstr ""
-"Probleme beim Anmelden? Bitte klicken Sie oben auf die Schaltfläche Support."
+
+#: themes/default/SQ_Blocklogin.php:20
+msgid "This email connects you to Squirrly.co"
+msgstr ""
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:27
+#: themes/default/SQ_Blocklogin.php:29
 msgid "The email address is invalid!"
 msgstr "Die E-Mail-Adresse ist ungültig!"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:28
-msgid "Click on image and try again ..."
+#: themes/default/SQ_Blocklogin.php:30
+#, fuzzy
+msgid "Click on Sign Up button and try again ..."
 msgstr "Klicken Sie auf das Bild und versuchen Sie es erneut ..."
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocklogin.php:29
+#: themes/default/SQ_Blocklogin.php:31
 msgid "An error occured while login!"
 msgstr "Während anmelden, ist ein Fehler aufgetreten!"
+
+# @ squirrly-seo
+#: themes/default/SQ_Blocklogin.php:32
+msgid "Connecting ..."
+msgstr "Verbinden ..."
 
 # @ squirrly-seo
 #: themes/default/SQ_Blockresearch.php:2
@@ -568,53 +573,53 @@ msgid "Write a new post with Squirrly"
 msgstr "Schreiben Sie einen neuen Beitrag mit Squirrly"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:15
+#: themes/default/SQ_Menu.php:23
 msgid "Squirrly settings"
 msgstr "Squirrly Einstellungen"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:15 themes/default/SQ_Menu.php:162
+#: themes/default/SQ_Menu.php:23 themes/default/SQ_Menu.php:170
 msgid "Save settings"
 msgstr "Einstellungen speichern"
 
-#: themes/default/SQ_Menu.php:21
+#: themes/default/SQ_Menu.php:29
 msgid " API"
 msgstr ""
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:24
+#: themes/default/SQ_Menu.php:32
 msgid "API Key:"
 msgstr "API Key:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:30
+#: themes/default/SQ_Menu.php:38
 msgid "Let Squirrly automatically optimize my blog"
 msgstr "Lassen Sie Squirrly automatisch Ihren Blog optimieren"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:33 themes/default/SQ_Menu.php:55
-#: themes/default/SQ_Menu.php:68 themes/default/SQ_Menu.php:77
+#: themes/default/SQ_Menu.php:41 themes/default/SQ_Menu.php:63
+#: themes/default/SQ_Menu.php:76 themes/default/SQ_Menu.php:85
 msgid "Yes"
 msgstr "Ja"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:34 themes/default/SQ_Menu.php:56
-#: themes/default/SQ_Menu.php:69 themes/default/SQ_Menu.php:78
+#: themes/default/SQ_Menu.php:42 themes/default/SQ_Menu.php:64
+#: themes/default/SQ_Menu.php:77 themes/default/SQ_Menu.php:86
 msgid "No"
 msgstr "Nein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:38
+#: themes/default/SQ_Menu.php:46
 msgid "What does Squirrly automatically do for SEO?"
 msgstr "Was tut Squirrly automatisch für SEO?"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:39
+#: themes/default/SQ_Menu.php:47
 msgid "adds the correct <strong>title</strong> in the home page"
 msgstr "fügt den richtigen <strong>Titel</strong> in die Startseite ein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:40
+#: themes/default/SQ_Menu.php:48
 msgid ""
 "adds the correct <strong>description</strong> and <strong>keywords</strong> "
 "in all pages"
@@ -623,17 +628,17 @@ msgstr ""
 "strong> auf allen Seiten ein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:41
+#: themes/default/SQ_Menu.php:49
 msgid "adds <strong>canonical</strong> link in home page"
 msgstr "fügt den richtigen <strong>canonical</strong> in die Startseite ein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:42
+#: themes/default/SQ_Menu.php:50
 msgid "adds the <strong>XML Sitemap</strong> for search engines"
 msgstr "fügt die <strong>XML Sitemap</strong> für Suchmaschinen ein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:43
+#: themes/default/SQ_Menu.php:51
 msgid ""
 "adds the required METAs for home page (<strong>icon, author, language, dc "
 "publisher</strong>, etc.)"
@@ -642,7 +647,7 @@ msgstr ""
 "Sprache, dc Verlag </strong>, etc.) ein"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:44
+#: themes/default/SQ_Menu.php:52
 msgid ""
 "adds the <strong>favicon</strong> and the <strong>icon for Apple devices</"
 "strong>."
@@ -651,106 +656,106 @@ msgstr ""
 "strong> ein."
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:52
+#: themes/default/SQ_Menu.php:60
 msgid "Let Squirrly warn me if there are errors related to SEO settings"
 msgstr ""
 "Squirrly warnen lassen, wenn es Fehler im Zusammenhang mit den SEO-"
 "Einstellungen gibt"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:62
+#: themes/default/SQ_Menu.php:70
 msgid "Squirrly Options"
 msgstr "Squirrly Optionen"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:65
+#: themes/default/SQ_Menu.php:73
 msgid ""
 "Show <strong>\"Enter a keyword\"</strong> bubble when posting a new article."
 msgstr ""
 "Zeige <strong>\"Enter a keyword\"</ strong> Bubble, bei einem neuen Artikel."
 
-#: themes/default/SQ_Menu.php:74
+#: themes/default/SQ_Menu.php:82
 msgid ""
 "Always show <strong>Keyword Informations</strong> about the selected keyword."
 msgstr ""
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:84
+#: themes/default/SQ_Menu.php:92
 msgid "First page optimization (Title, Description, Keywords)"
 msgstr "Erste Seite Optimierung (Titel, Beschreibung, Schlüsselwörter)"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:85
+#: themes/default/SQ_Menu.php:93
 msgid "Status:"
 msgstr "Status:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:85
+#: themes/default/SQ_Menu.php:93
 msgid "automatically"
 msgstr "automatisch"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:86
+#: themes/default/SQ_Menu.php:94
 msgid "Change it >>"
 msgstr "Ändern >>"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:89
+#: themes/default/SQ_Menu.php:97
 msgid "Title:"
 msgstr "Titel:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:90
+#: themes/default/SQ_Menu.php:98
 msgid "Tips: Length 10-70 chars"
 msgstr "Tipp: Länge 10-70 Charaktere"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:93
+#: themes/default/SQ_Menu.php:101
 msgid "Description:"
 msgstr "Beschreibung:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:94
+#: themes/default/SQ_Menu.php:102
 msgid "Tips: Length 70-255 chars"
 msgstr "Tipp: Länge 70-255 Charaktere"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:97
+#: themes/default/SQ_Menu.php:105
 msgid "Keywords:"
 msgstr "Schlüsselwörter:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:98
+#: themes/default/SQ_Menu.php:106
 msgid "Tips: 2-4 keywords"
 msgstr "Tipp: Länge 2-4 Schlüsselwörter"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:102
+#: themes/default/SQ_Menu.php:110
 msgid "<< Leave it automatically"
 msgstr "<< Lass es automatisch"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:114
+#: themes/default/SQ_Menu.php:122
 msgid "Change the Website Icon"
 msgstr "Ändern Sie das Website-Symbol"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:117
+#: themes/default/SQ_Menu.php:125
 msgid "File types: JPG, JPEG, GIF and PNG."
 msgstr "Dateitypen: JPG, JPEG, GIF und PNG."
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:120
+#: themes/default/SQ_Menu.php:128
 msgid "Upload file:"
 msgstr "Datei hochladen:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:125
+#: themes/default/SQ_Menu.php:133
 msgid "Upload"
 msgstr "Hochladen"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:129
+#: themes/default/SQ_Menu.php:137
 msgid ""
 "If you don't see the new icon in your browser, empty the browser cache and "
 "refresh the page."
@@ -759,35 +764,35 @@ msgstr ""
 "Cache und aktualisieren Sie die Seite."
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:133
+#: themes/default/SQ_Menu.php:141
 msgid "Tool for Search Engines"
 msgstr "Tool für Suchmaschinen"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:137
+#: themes/default/SQ_Menu.php:145
 msgid "Google Plus URL:"
 msgstr "Google Plus URL:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:141
+#: themes/default/SQ_Menu.php:149
 #, php-format
 msgid "Google META verification code for %sWebmaster Tool%s`:"
 msgstr "Google META Bestätigungs-Code für %sWebmaster Tool%s`:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:145
+#: themes/default/SQ_Menu.php:153
 #, php-format
 msgid "Google  %sAnalytics ID%s`:"
 msgstr "Google  %sAnalytics ID%s`:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:149
+#: themes/default/SQ_Menu.php:157
 #, php-format
 msgid "Facebook META code (for %sInsights%s )`:"
 msgstr "Facebook META Code (für %sInsights%s )`:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Menu.php:153
+#: themes/default/SQ_Menu.php:161
 #, php-format
 msgid "Bing META code (for %sWebmaster Tool%s )`:"
 msgstr "Bing META Code (für %sWebmaster Tool%s )`:"

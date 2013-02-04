@@ -38,17 +38,13 @@ class SQ_Blocklogin extends SQ_BlockController {
     function squirrlyRegister(){
         global $current_user;
         
-        $args['name'] = $current_user->display_name;
-        
         if (SQ_Tools::getValue('email') <> ''){
+            $args['name'] = '';
             $args['user'] = SQ_Tools::getValue('email');
             $args['email'] = SQ_Tools::getValue('email');
-        }else{
-            $args['user'] = $current_user->user_email;
-            $args['email'] = $current_user->user_email;
         }
         
-        if($args['email'] <> ''){   
+        if($args['email'] <> '' ){   
             
             $responce = SQ_Action::apiCall('sq/register',$args);
             $return = json_decode($responce);
@@ -60,7 +56,7 @@ class SQ_Blocklogin extends SQ_BlockController {
             }elseif(!empty($return->error)){
                 switch ($return->error){
                     case 'alreadyregistered':
-                        $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly ID. If you forgot your password click %shere%s',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=lostpassword" target="_blank">','</a>');
+                        $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly Email. If you forgot your password click %shere%s',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=lostpassword" target="_blank">','</a>');
                         break;
                 }
             }else{
@@ -98,7 +94,7 @@ class SQ_Blocklogin extends SQ_BlockController {
             }elseif(!empty($return->error)){
                 switch ($return->error){
                     case 'badlogin':
-                        $return->error = __('Wrong username or password!',_PLUGIN_NAME_);
+                        $return->error = __('Wrong email or password!',_PLUGIN_NAME_);
                         break;
                     case 'multisite':
                         $return->error = __('You can use this account only for the URL you registered first!',_PLUGIN_NAME_);

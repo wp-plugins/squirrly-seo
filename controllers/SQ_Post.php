@@ -52,8 +52,10 @@ class SQ_Post extends SQ_FrontController {
                  return;
 
               foreach ($out[1] as $row){
-                 if(!in_array($row, $urls)){
-                     $urls[] = $row;
+                 if (strpos($row,basename($_SERVER['HTTP_HOST'])) !== false){
+                    if(!in_array($row, $urls)){
+                        $urls[] = $row;
+                    }
                  }
               }
             }

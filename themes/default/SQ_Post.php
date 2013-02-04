@@ -57,4 +57,5 @@
             <span class="sq_text" ><a href="<?php echo _SQ_DASH_URL_?>user/" title="<?php _e('Go to Profile',_PLUGIN_NAME_) ?>" target="_blank" ><span><?php _e('Profile',_PLUGIN_NAME_) ?></span></a></span><a href="<?php echo _SQ_DASH_URL_?>user/" title="<?php _e('Profile',_PLUGIN_NAME_) ?>" target="_blank" ><span class="sq_icon"></span></a>
         </li>
     </ul>
+
 </div>

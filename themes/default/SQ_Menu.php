@@ -11,6 +11,14 @@
         </div>
     </div>
     <?php }?>
+    <?php if(isset($view->options['sq_api'])) {?>
+        <div id="sq_userinfo"></div>
+        <script type="text/javascript">
+           jQuery(document).ready(function() {  
+                sq_getUserInfo('<?php echo _SQ_API_URL_ ?>', '<?php echo SQ_Tools::$options['sq_api']?>');
+           });
+        </script>
+    <?php }?>
         
     <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
     <div id="sq_settings_body">
@@ -165,4 +173,5 @@
 
     </div>
     </form>
+    
 </div>
