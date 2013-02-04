@@ -49,6 +49,16 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 = 1.1.0 =
 * Stable version (as we just finished with the beta)
 
+Also:
+
+* Fixed the most recent bugs
+* Works nice on iOS and Android in the WP apps.
+* Works in the browsers of iOS and Android devices
+* On-boarding made much better
+* From now on we ping your posts to search engines, to get better indexing
+* Seamless connection and integration between Squirrly.co and WP.
+* Added stats in the dashboard.
+
 = 1.0.9 =
 * Keyword Information has been made optional
 * Added the Keyword Research bar
