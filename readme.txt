@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags:  seo, wordpress seo, wordpress seo plugin, seo plugin, search engine optimization, keyword research, live assistant
+Tags:  seo, wordpress seo, seo plugin
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
