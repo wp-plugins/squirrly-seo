@@ -1,14 +1,14 @@
 === Plugin Name ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags:  wordpress seo, wordpress seo plugin, seo plugin, search engine optimization, keyword research, live assistant
+Tags:  seo, wordpress seo, wordpress seo plugin, seo plugin, search engine optimization, keyword research, live assistant
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
 
-Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
+SEO Plugin by Squirrly helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-Squirrly SEO Plugin - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
+SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
 
 * Keyword research: find the perfect keywords for your articles
 * Inspiration box: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
