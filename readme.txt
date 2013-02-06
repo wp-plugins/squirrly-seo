@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
 
-SEO Plugin by Squirrly helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
+Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
 SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.
@@ -115,7 +115,7 @@ Many Thanks.
 
 
 == License ==
-Squirrly has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
+Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
 
 
 == Frequently Asked Questions ==
