@@ -30,7 +30,7 @@
           var __try_again = '<?php _e('Click on Sign Up button and try again ...',_PLUGIN_NAME_); ?>';
           var __error_login = '<?php _e('An error occured while login!',_PLUGIN_NAME_); ?>';
           var __connecting = '<?php _e('Connecting ...',_PLUGIN_NAME_); ?>';
-          jQuery('#sq_loginimage').live('click', function(){
+          jQuery('#sq_loginimage').bind('click', function(){
               sq_autoLogin();
           });
       </script>
