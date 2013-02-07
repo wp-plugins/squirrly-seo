@@ -16,9 +16,9 @@ SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less t
 of your reading time and start writing your next great article.
 * SEO Live Assistant: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
 
-You can see all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>. 
-
 License - Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
+
+You can see all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>. 
 
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
  | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a>
