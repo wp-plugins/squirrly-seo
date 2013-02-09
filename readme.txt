@@ -1,6 +1,6 @@
 === SEO Plugin by Squirrly ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel
+Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo,seo,seo,seo,seo,seo,seo,seo
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -8,7 +8,7 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page *SEO* in real time.<br /></h3>
+<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page *SEO* in real time.</h3>
 
  * <strong>Keyword research</strong>: finds the perfect keywords for your articles and analyses them for you.
 
@@ -55,8 +55,8 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 6. After the upload is finished, click Activate Plugin.
 7. In the menu on the left, there is the "Squirrly" tab now. Click it.
 8. In the center, there is a note. Click "Fix it for me". (this will start the Squirrly automated SEO for your blog)
-9. Then click "Write a New Post with Squirrly".
-10. Done. Type a keyword to the right of the screen and start using Squirrly :) Enjoy!
+9. Then click "Write a New Post with Squirrly Seo".
+10. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
 1. Enter a keyword for *Squirrly Live SEO* Assistant
@@ -76,7 +76,7 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 Also:
 
-* Fixed the most recent bugs
+* Fixed the most recent seo bugs
 * Works nice on iOS and Android in the WP apps.
 * Works in the browsers of iOS and Android devices
 * On-boarding made much better
@@ -99,10 +99,10 @@ Also:
 * Added the google suggestion in search box
 * Added notification if no keyword is used 
 * CSS changed for mobile (tested on Android and IOS)
-* Fixed issues for javascript 
+* Fixed Seo issues for javascript 
 
 = 1.0.7 =
-* Fixed jQuery bugs 
+* Fixed jQuery seo bugs 
 
 = 1.0.6 =
 * Automatically register to squirrly
@@ -114,7 +114,7 @@ Also:
 = 1.0.3 =
 * Added Support and link to dashboard in Happiness bar
 * Changed the keyword suggestion design
-* Automatically add tag with the used keyword 
+* Automatically add tag with the used seo keyword 
 
 = 1.0.2 =
 * Fixed PHP5 version check
@@ -144,7 +144,7 @@ Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to b
 
 
 == Frequently Asked Questions ==
-= How does Squirrly Wordpress seo Plugin work? =
+= How does Squirrly Wordpress Seo Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
 
 = Can I use squirrly on mobile? =
@@ -169,8 +169,8 @@ used our SEO techniques and they have gotten lots of hits from search engines du
 - Google+ URL
 - Bing META Code support
 - Facebook META Code support
-- Automatically adds the correct title in the home page
-- Automatically adds the correct description and keywords in all pages
+- Automatically adds the correct seo title in the home page
+- Automatically adds the correct seo description and seo keywords in all pages
 - Automatically adds canonical link in home page
 - Automatically adds the XML Sitemap for search engines: http://igamify.co/sitemap.xml
 - Automatically adds the required METAs for home page (icon, author, language, dc publisher, etc.)
