@@ -1,4 +1,4 @@
-=== SEO Plugin by Squirrly ===
+=== SEO Plugin by SQUIRRLY ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo gamification,automatic seo,seo correction,seo title,seo meta
 Requires at least: 3.0
