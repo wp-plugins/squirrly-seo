@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags:  seo, wordpress seo, seo plugin
+Tags:  seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,squirrel
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -145,6 +145,9 @@ Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to b
 == Frequently Asked Questions ==
 = How does Squirrly Wordpress SEO Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
+
+= Can I use squirrly on mobile? =
+Yes, on IOS and ANDROID, works both through the browser and wordpress app
 
 = Can I use the images, tweets and articles given by the Inspiration Box? Are there any legal concerns? =
 Yes, you can use the tweets and the paragraphs in your articles. They contain a link to the source and are perfectly legal to use. Of course, for the
