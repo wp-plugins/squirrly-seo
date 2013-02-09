@@ -1,6 +1,6 @@
 === SEO Plugin by Squirrly ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags:  seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel
+Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -8,7 +8,7 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.</h3>
+<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page **SEO** in real time.</h3>
 
 
  * <strong>Keyword research</strong>: finds the perfect keywords for your articles and analyses them for you.
@@ -143,7 +143,7 @@ Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to b
 
 
 == Frequently Asked Questions ==
-= How does Squirrly Wordpress SEO Plugin work? =
+= How does Squirrly Wordpress seo Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
 
 = Can I use squirrly on mobile? =
@@ -154,11 +154,11 @@ Yes, you can use the tweets and the paragraphs in your articles. They contain a 
 articles add only some paragraphs, not the whole article. As for the images, you can use the Copyright-Free images that we offer, to make sure you will
 not have any legal problems.
 
-= Do I get support for your Wordpress SEO Plugin? =
+= Do I get support for your wordpress seo plugin? =
 Yes, we are focused on Delivering Happiness and this comes along with a good support package. We have a track record of replying in under 5 hours to
 any request, no matter the time of day. And we also fix any problems which you may encounter very fast, so Squirrly is trust-worthy.
 
-= What Features does Squirrly Wordpress SEO Plugin offer? =
+= What Features does squirrly seo plugin offer? =
 All of the features that we offer have been built having the customer's best interests in mind. We brought 90% of our clients to the first page of Google
 and we've proven time and again that we are a great team that knows all there is about good SEO automation. We had a community of 20,000 blogs that all
 used our SEO techniques and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
@@ -190,7 +190,7 @@ used our SEO techniques and they have gotten lots of hits from search engines du
 
 And the best ones that we have (and the others don't):
 
-- Keyword research: find the perfect keywords for your articles
-- Inspiration box: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
-- Read industry-related blogs, straight from your wordpress. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
-- SEO Live Assistant: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
+ - *Keyword research*: find the perfect keywords for your articles
+ - *Inspiration box*: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
+ - *Read industry-related blogs*, straight from your wordpress. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
+ - *SEO Live Assistant*: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
