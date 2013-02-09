@@ -8,7 +8,7 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-<h3><span style="color:green">SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page **SEO** in real time.</span><br /></h3>
+<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page *SEO* in real time.<br /></h3>
 
  * <strong>Keyword research</strong>: finds the perfect keywords for your articles and analyses them for you.
 
@@ -122,6 +122,8 @@ Also:
 
 = 1.0.1 =
 * WordPress 3.4 compatibility
+
+seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo
 
 == Credits ==
 Florin Muresan CEO at Squirrly
