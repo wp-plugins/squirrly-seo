@@ -1,6 +1,6 @@
 === SEO Plugin by Squirrly ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo,seo,seo,seo,seo,seo,seo,seo
+Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo gamification,automatic seo,seo correction,seo title,seo meta
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -67,7 +67,7 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with *Squirrly Live SEO* Assistant
 8. You will know when your seo is good
-9. Squirrly settings tab with extra seo optimization features
+9. Squirrly Seo settings tab with extra Seo optimization features
 
 
 == Changelog ==
