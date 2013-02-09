@@ -68,7 +68,7 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live SEO Assistant
 8. You will know when your SEO is good
-
+9. Squirrly settings tab with extra SEO features
 
 == Changelog ==
 = 1.1.0 =
