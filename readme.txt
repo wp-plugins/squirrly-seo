@@ -99,13 +99,13 @@ Also:
 * Added the google suggestion in search box
 * Added notification if no keyword is used 
 * CSS changed for mobile (tested on Android and IOS)
-* Fixed Seo issues for javascript 
+* Fixed issues for javascript 
 
 = 1.0.7 =
-* Fixed jQuery seo bugs 
+* Fixed Seo Live Assistant bugs 
 
 = 1.0.6 =
-* Automatically register to squirrly
+* Automatically register to squirrly with email address
 * Fixed the fopen for remote request
 
 = 1.0.4 =
