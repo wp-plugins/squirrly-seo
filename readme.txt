@@ -69,6 +69,8 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 8. You will know when your SEO is good
 9. Squirrly settings tab with extra SEO features
 
+*seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo seo*
+
 == Changelog ==
 = 1.1.0 =
 * Stable version (as we just finished with the beta)
