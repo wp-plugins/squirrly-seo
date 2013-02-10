@@ -8,15 +8,15 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-<h3>SEO Plugin by Squirrly - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page *SEO* in real time.</h3>
+<h3>SEO Plugin by SQUIRRLY - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.</h3>
 
  * <strong>Keyword research</strong>: finds the perfect keywords for your articles and analyses them for you.
+
+ * <strong>SEO Live Assistant</strong>: Checks your SEO on each article or page in real time. Before you click the Post button, you know if your article is  optimized 100% or not.
 
  * <strong>Inspiration box</strong>: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
 
  * <strong>Read industry-related blogs, straight from your wordpress</strong>. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
-
- * <strong>SEO Live Assistant</strong>: Checks your SEO on each article or page in real time. Before you click the Post button, you know if your article is  optimized 100% or not.
 
 
  * Besides excellence in SEO delivered to your Wordpress through our software, <strong>we strive to offer excellence in Customer Service</strong>. We were featured on the <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringhappiness.com/everyday-happiness-florin-squirrly-and-how-theyre-making-happy-work/" target="_blank">Delivering Happiness Blog</a> for this.
@@ -59,13 +59,13 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 10. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
-1. Enter a keyword for *Squirrly Live SEO* Assistant
+1. Enter a keyword for Squirrly Live SEO Assistant
 2. Find out if it's worth to use it
 3. Add an image in your article
 4. Find images, tweets, wiki, blogs, news or other articles
 5. Easy to read external blogs
 6. Easy to insert paragraphs from the articles that you are reading
-7. Optimize your article with *Squirrly Live SEO* Assistant
+7. Optimize your article with Squirrly Live SEO Assistant
 8. You will know when your seo is good
 9. Squirrly Seo settings tab with extra Seo optimization features
 
