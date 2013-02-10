@@ -62,7 +62,7 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 1. Enter a keyword for Squirrly Live SEO Assistant
 2. Find out if it's worth to use it
 3. Add an image in your article
-4. Find images, tweets, wiki, blogs, news or other articles
+4. Find images, tweets, wiki, blogs, news or other articles from your blog
 5. Easy to read external blogs
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live SEO Assistant
