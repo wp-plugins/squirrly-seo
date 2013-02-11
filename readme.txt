@@ -131,7 +131,7 @@ Calin Vingan CTO at Squirrly
 
 And 4 Great collaborators:
 
-Lucian - core programmer
+Lucian - core php programmer
 Andreea - creative marketing intern
 Bogdan - stylish designer
 Cristina  - Squirrly mascot designer
