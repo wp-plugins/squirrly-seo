@@ -31,7 +31,7 @@ Also, our wish is to provide you with the best customer service and while our so
 
 If Squirrly makes you happy and if this makes sense for you, then please upgrade to PRO.
 
-Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
+Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles / month.
 
 We're glad to have you,
 
@@ -140,7 +140,7 @@ Many Thanks.
 
 
 == License ==
-Squirrly Seo has a Free Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99
+Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles / month.
 
 
 == Frequently Asked Questions ==
