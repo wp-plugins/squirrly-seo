@@ -51,7 +51,7 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 2. In the menu displayed to the left, there is a "Plugins" tab. Click it.
 3. Now click "Add New".
 4. There, you have the buttons: "Search | Upload | Featured | Popular | Newest". Click "Upload".
-5. Upload the Zip file.
+5. Upload the squirrly-seo.zip file.
 6. After the upload is finished, click Activate Plugin.
 7. In the menu on the left, there is the "Squirrly" tab now. Click it.
 8. In the center, there is a note. Click "Fix it for me". (this will start the Squirrly automated SEO for your blog)
