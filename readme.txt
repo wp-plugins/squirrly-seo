@@ -80,7 +80,7 @@ Also:
 * Works nice on iOS and Android in the WP apps.
 * Works in the browsers of iOS and Android devices
 * On-boarding made much better
-* From now on we ping your posts to search engines, to get better indexing
+* From now on we ping your posts to search engines, to get fast and better indexing
 * Seamless connection and integration between Squirrly.co and WP.
 * Added stats in the dashboard.
 
