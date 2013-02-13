@@ -203,7 +203,7 @@ class Model_SQ_Frontend {
         }
         
         /* Check if is a predefined Keyword */
-        if(is_home() && SQ_Frontend::$options['sq_fp_keywords'] <> ''){
+        if((is_home() && SQ_Frontend::$options['sq_fp_keywords'] <> '') || $keywords == ''){
             $keywords = strip_tags( SQ_Frontend::$options['sq_fp_keywords'] );
         }
         
