@@ -171,7 +171,7 @@ class Model_SQ_Frontend {
             $description = apply_filters('sq_description_override', $description);
 
             //Save it and use it later
-            $this->description = $description;
+            $this->description = (($description <> '') ? $description : $this->title);
             
             $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
             return sprintf("<meta name=\"description\" content=\"%s\" />" , $description) . "\n" ; 
