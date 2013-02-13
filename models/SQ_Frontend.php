@@ -173,8 +173,12 @@ class Model_SQ_Frontend {
             //Save it and use it later
             $this->description = (($description <> '') ? $description : $this->title);
             
-            $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
-            return sprintf("<meta name=\"description\" content=\"%s\" />" , $description) . "\n" ; 
+            if ($this->description <> ''){
+                $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
+                return sprintf("<meta name=\"description\" content=\"%s\" />" , $description) . "\n" ; 
+            }else{
+                return false;
+            }
         }
         return false;
     }
