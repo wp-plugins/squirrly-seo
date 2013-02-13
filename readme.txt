@@ -195,3 +195,6 @@ And the best ones that we have (and the others don't):
  - *Inspiration box*: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
  - *Read industry-related blogs*, straight from your wordpress. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
  - *SEO Live Assistant*: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
+
+= Where can I enter the title and page description? =
+If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and click Change it. You can enter custom Title, Description and Keywords. 
