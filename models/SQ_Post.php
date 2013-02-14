@@ -11,6 +11,7 @@ class Model_SQ_Post {
      * @return string
      */
     public function setCallback( $init ) {
+        
             if ( wp_default_editor() == 'tinymce' ){
                     $init['setup'] = 'window.sq_tinymce.setup';
                     $init['onchange_callback'] = 'window.sq_tinymce.callback';

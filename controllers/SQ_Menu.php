@@ -1,5 +1,6 @@
 <?php
 class SQ_Menu extends SQ_FrontController {
+        private $post_type;
 	// 
         function init(){}
 	
@@ -8,6 +9,8 @@ class SQ_Menu extends SQ_FrontController {
          */
         public function hookMenu(){
             SQ_Tools::checkErrorSettings(true);
+            $this->post_type = array('post','page','product','shopp_page_shopp-products');
+            
             /* add the plugin menu in admin */
             $this->model->addMenu(array(    ucfirst(_SQ_NAME_),
                                             ucfirst(_SQ_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
@@ -17,23 +20,15 @@ class SQ_Menu extends SQ_FrontController {
                                       ));
 
 
-
-            $this->model->addMeta(array(    'post'._SQ_NAME_,
+            foreach($this->post_type as $type)
+                $this->model->addMeta(array(    'post'._SQ_NAME_,
                                             ucfirst(_SQ_NAME_),
                                             array(SQ_ObjController::getController('SQ_Post'), 'init'),
-                                            'post', 
+                                            $type, 
                                             'side', 
                                             'high'
                                     ));
-            $this->model->addMeta(array(    'post'._SQ_NAME_,
-                                            ucfirst(_SQ_NAME_),
-                                            array(SQ_ObjController::getController('SQ_Post'), 'init'),
-                                            'page', 
-                                            'side', 
-                                            'high'
-                                    ));
-		
-		
+           
 	}
         
         /**

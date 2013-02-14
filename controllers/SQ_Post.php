@@ -16,7 +16,10 @@ class SQ_Post extends SQ_FrontController {
 
     }
     
-    
+    function hookHead() {
+        parent::hookHead();
+        echo '<script type="text/javascript">(function() {this.sq_tinymce = { callback: function () {}, setup: function(ed){} } })(window);</script>';
+    }
     
     function hookSavePost($post_id){       
         $file_name = false;
