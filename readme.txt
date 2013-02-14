@@ -71,6 +71,9 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 
 == Changelog ==
+= 1.1.2 =
+* Now works with Ecommerce plugins WooCommerce, MarketPress, Ready!, Shopp
+
 = 1.1.0 =
 * Stable version of Squirrly SEO (as we just finished with the beta)
 

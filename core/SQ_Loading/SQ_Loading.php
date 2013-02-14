@@ -24,7 +24,7 @@ class SQ_Loading extends SQ_BlockController {
                        jQuery("#sq_options").hide(); '
                     : 'jQuery("#sq_preloading").html("'.__('The system is acting Squirrly. I can not find the link to the server.', _PLUGIN_NAME_).'");')
                     .'
-                    (function() {this.sq_tinymce = { callback: function () {},setup: function(ed){}}})(window);
+                  
                     jQuery("#sq_blocklogin").hide();
                   </script>';
         }else {
