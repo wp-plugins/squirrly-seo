@@ -42,6 +42,7 @@ Squirrly Limited UK
 
 You can see all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>. 
 
+
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
  | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a>
 
