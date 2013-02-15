@@ -16,6 +16,10 @@ class SQ_Tools extends SQ_FrontController {
         parent::__construct();
         
         self::$options = $this->getOptions();
+        
+        /* active squirrly by default */
+        if(!isset(self::$options['sq_use']))
+            self::$options['sq_use'] = 1;
     }
     
     /**
