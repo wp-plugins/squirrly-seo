@@ -2,6 +2,8 @@
 class SQ_Post extends SQ_FrontController {
     
     function hookInit(){
+        global $post_ID;
+        
         if (SQ_Tools::$options['sq_api'] == '') return;
             
         if ( get_user_option('rich_editing') == 'true') {
@@ -13,7 +15,17 @@ class SQ_Post extends SQ_FrontController {
             SQ_Error::setError(__('For Squirrly to work, you have to have tinymce installed!', _PLUGIN_NAME_));
         }
         add_action('save_post', array($this, 'hookSavePost'), 10);
-
+        
+        //For Shopp plugin - product
+        add_action('shopp_product_saved',array($this,'hookShopp'),10);
+        /**
+        * If there is a custom plugin post or Shopp product
+        */
+        if ((int)$post_ID == 0){
+           if (SQ_Tools::getIsset('id')) $GLOBALS['sq_postID'] = (int)SQ_Tools::getValue('id');
+        }else{
+           $GLOBALS['sq_postID'] = $post_ID;
+        }
     }
     
     function hookHead() {
@@ -21,6 +33,17 @@ class SQ_Post extends SQ_FrontController {
         echo '<script type="text/javascript">(function() {this.sq_tinymce = { callback: function () {}, setup: function(ed){} } })(window);</script>';
     }
     
+    /**
+     * Hook the Shopp plugin save product
+     */
+    function hookShopp($Product){
+        $this->checkSeo($Product->id); 
+    }
+    
+    /** 
+     * Hook the post save/update
+     * @param type $post_id
+     */
     function hookSavePost($post_id){       
         $file_name = false;
          // unhook this function so it doesn't loop infinitely
@@ -37,7 +60,6 @@ class SQ_Post extends SQ_FrontController {
     
     function checkImage($post_id){
        
-
         $img_dir = $this->model->getImgDir();
         $img_url = $this->model->getImgUrl();
 

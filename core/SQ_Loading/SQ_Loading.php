@@ -6,7 +6,9 @@
 class SQ_Loading extends SQ_BlockController {
 
     function hookHead() {
-       global $post_ID;
+       global $sq_postID;
+       
+       
        parent::hookHead();
        $exists = false;
        $browser = false;
@@ -29,7 +31,7 @@ class SQ_Loading extends SQ_BlockController {
                   </script>';
         }else {
             echo '<script type="text/javascript">
-                    var sq_uri = "'.SQ_URI.'"; var sq_language = "'.get_bloginfo('language').'"; var sq_version = "'.SQ_VERSION_ID.'"; var sq_wpversion = "'.WP_VERSION_ID.'"; var sq_phpversion = "'.PHP_VERSION_ID.'"; var __postID = "'.$post_ID.'"; var __token = "'.SQ_Tools::$options['sq_api'].'";
+                    var sq_uri = "'.SQ_URI.'"; var sq_language = "'.get_bloginfo('language').'"; var sq_version = "'.SQ_VERSION_ID.'"; var sq_wpversion = "'.WP_VERSION_ID.'"; var sq_phpversion = "'.PHP_VERSION_ID.'"; var __postID = "'.$sq_postID.'"; var __token = "'.SQ_Tools::$options['sq_api'].'";
                     var sq_keyword_information = "'.SQ_Tools::$options['sq_keyword_information'].'"; var __noopt = "'.__('You haven`t used Squirrly SEO to optimize your article. Do you want to optimize for a keyword before publishing?',_PLUGIN_NAME_).'";
                         
                   </script>';
