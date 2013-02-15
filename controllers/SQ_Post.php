@@ -2,7 +2,7 @@
 class SQ_Post extends SQ_FrontController {
     
     function hookInit(){
-        global $post_ID;
+        
         
         if (SQ_Tools::$options['sq_api'] == '') return;
             
@@ -18,7 +18,16 @@ class SQ_Post extends SQ_FrontController {
         
         //For Shopp plugin - product
         add_action('shopp_product_saved',array($this,'hookShopp'),10);
+        
+    }
+    
+    function hookHead() {
+        global $post_ID;
+        
+        parent::hookHead();
+        
         /**
+         * Add the post ID in database
         * If there is a custom plugin post or Shopp product
         */
         if ((int)$post_ID == 0){
@@ -26,10 +35,8 @@ class SQ_Post extends SQ_FrontController {
         }else{
            $GLOBALS['sq_postID'] = $post_ID;
         }
-    }
-    
-    function hookHead() {
-        parent::hookHead();
+        /*********************************/
+        
         echo '<script type="text/javascript">(function() {this.sq_tinymce = { callback: function () {}, setup: function(ed){} } })(window);</script>';
     }
     
