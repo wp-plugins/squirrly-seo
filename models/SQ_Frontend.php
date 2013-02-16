@@ -127,7 +127,7 @@ class Model_SQ_Frontend {
             $this->title = $title;
             $this->header = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $title),$this->header, 1, $count);
             if ($count == 0)
-               return sprintf("<title>%s</title>" , $this->title) . "\n" ; 
+               return sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))) . "\n" ; 
         }
         
         return false;
@@ -174,7 +174,7 @@ class Model_SQ_Frontend {
             $this->description = (($description <> '') ? $description : $this->title);
             if ($this->description <> ''){
                 $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
-                return sprintf("<meta name=\"description\" content=\"%s\" />" , $this->description ) . "\n" ; 
+                return sprintf("<meta name=\"description\" content=\"%s\" />" , strip_tags(html_entity_decode($this->description)) ) . "\n" ; 
             }else{
                 return false; 
             }
