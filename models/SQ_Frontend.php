@@ -8,7 +8,7 @@ class Model_SQ_Frontend {
     private $max_title_length = 75;
     private $max_description_length = 160;
     private $min_description_length = 70;
-    
+    private $max_keywrods = 5;
     /**
      * Write the signature
      * @return string
@@ -246,8 +246,8 @@ class Model_SQ_Frontend {
         elseif(strpos($author,'plus.google.com') === false && is_numeric($author))
              $author = 'https://plus.google.com/'.$author.'/posts';
             
-        if ( is_singular() && $author )
-            return '<link rel="author" href="' . $author . '" />' . "\n" ;
+        if ( (is_singular() || is_home()) && $author )
+            return '<link rel="author me" href="' . $author . '" />' . "\n" ;
         elseif ($author) 
             return '<link rel="publisher" href="' . $author . '" />' . "\n";
         
@@ -450,6 +450,7 @@ class Model_SQ_Frontend {
      */
     private function grabKeywordsFromPost($id = null){
         global $wp_query;
+        
         $keywords = array();
         
         
@@ -462,6 +463,7 @@ class Model_SQ_Frontend {
             foreach (wp_get_post_tags($id) as $keyword){
                 $keywords[] = SQ_Tools::i18n($keyword->name);
             }
+            
         }else{
             if (is_404()) {
                 return null;
@@ -473,47 +475,54 @@ class Model_SQ_Frontend {
             
             if (is_home()){
                 foreach ($wp_query->posts as $post){
+                    foreach (wp_get_post_tags($post->ID) as $keyword){
+                        $keywords[] = SQ_Tools::i18n($keyword->name);
+                    }
+                }
+                if (!is_array($keywords) || count($keywords) <= $this->max_keywrods )
+                  foreach ($wp_query->posts as $post){
                     $more_keywords = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
                     
                     if (is_array($more_keywords))
                         $keywords = @array_merge($keywords, $more_keywords);
                     
-                }
-                $keywords = @array_slice($keywords,0,5);
+                  }
+                  
+                $keywords = @array_slice($keywords,0,$this->max_keywrods);
             }
-        
-            foreach ($wp_query->posts as $post){
-                $id = (is_attachment())?($post->post_parent):($post->ID); 
-                
-                foreach (wp_get_post_tags($id) as $keyword){
-                    $keywords[] = SQ_Tools::i18n($keyword->name);
-                }
-                
-                // Ultimate Tag Warrior integration
-                global $utw;
-                if ($utw) {
-                    $tags = @$utw->GetTagsForPost($post);
-                    if (is_array($tags)) {
-                        foreach ($tags as $tag) {
-                            $tag = $tag->tag;
-                            $tag = str_replace('_',' ', $tag);
-                            $tag = str_replace('-',' ',$tag);
-                            $tag = stripcslashes($tag);
-                            $keywords[] = SQ_Tools::i18n($tag);
+            if (!is_array($keywords) || count($keywords) <= $this->max_keywrods )
+                foreach ($wp_query->posts as $post){
+                    $id = (is_attachment())?($post->post_parent):($post->ID); 
+
+                    foreach (wp_get_post_tags($id) as $keyword){
+                        $keywords[] = SQ_Tools::i18n($keyword->name);
+                    }
+
+                    // Ultimate Tag Warrior integration
+                    global $utw;
+                    if ($utw) {
+                        $tags = @$utw->GetTagsForPost($post);
+                        if (is_array($tags)) {
+                            foreach ($tags as $tag) {
+                                $tag = $tag->tag;
+                                $tag = str_replace('_',' ', $tag);
+                                $tag = str_replace('-',' ',$tag);
+                                $tag = stripcslashes($tag);
+                                $keywords[] = SQ_Tools::i18n($tag);
+                            }
+                        }
+                    }
+
+                    // autometa
+                    $autometa = stripcslashes(get_post_meta($id, 'autometa', true));
+                    //$autometa = stripcslashes(get_post_meta($post->ID, "autometa", true));
+                    if (isset($autometa) && !empty($autometa)) {
+                        $autometa_array = explode(' ', $autometa);
+                        foreach ($autometa_array as $e) {
+                                $keywords[] = $e;
                         }
                     }
                 }
-
-                // autometa
-                $autometa = stripcslashes(get_post_meta($id, 'autometa', true));
-                //$autometa = stripcslashes(get_post_meta($post->ID, "autometa", true));
-                if (isset($autometa) && !empty($autometa)) {
-                    $autometa_array = explode(' ', $autometa);
-                    foreach ($autometa_array as $e) {
-                            $keywords[] = $e;
-                    }
-                }
-            }
         }
         
         
@@ -823,6 +832,7 @@ class Model_SQ_Frontend {
                     $all[] = $this->strtolower($word);
         }
         $all = array_unique($all);
+        $all = @array_slice($all,0,5);
         return implode(',', $all);
     }
     
