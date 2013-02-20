@@ -72,6 +72,9 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 
 == Changelog ==
+= 1.1.3 =
+* Added multi-language support in SEO Live Assistant
+* Improved compatibility with other plugins and themes
 
 = 1.1.2 =
 * Now works with Ecommerce plugins WooCommerce, MarketPress, Ready!, Shopp

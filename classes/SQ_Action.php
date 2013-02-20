@@ -8,14 +8,12 @@ class SQ_Action extends SQ_FrontController{
     /** @var array from core config */
     private static $config;
 
-    
     /**
     * The hookAjax is loaded as custom hook in hookController class
     * 
     * @return void
     */
     function hookInit(){
-        
         /* Only if ajax */
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $this->actions = array();

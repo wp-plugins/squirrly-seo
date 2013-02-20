@@ -125,9 +125,11 @@ class Model_SQ_Frontend {
             $title = $this->truncate($title, $this->min_title_length, $this->max_title_length);
             //Save it and use it later
             $this->title = $title;
-            $this->header = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $title),$this->header, 1, $count);
-            if ($count == 0)
-               return sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))) . "\n" ; 
+            if ($this->title <> ''){
+                $this->header = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))),$this->header, 1, $count);
+                if ($count == 0)
+                   return sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))) . "\n" ; 
+            }
         }
         
         return false;

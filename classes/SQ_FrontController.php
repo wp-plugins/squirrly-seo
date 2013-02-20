@@ -118,7 +118,8 @@ class SQ_FrontController{
 	 *@return void
 	 */
 	public function hookHead(){
-            SQ_ObjController::getController('SQ_DisplayController', false)->init();
+            if(is_admin())
+                SQ_ObjController::getController('SQ_DisplayController', false)->init();
             
             SQ_ObjController::getController('SQ_DisplayController', false)
                     ->loadMedia($this->name);
