@@ -8,7 +8,7 @@ class Model_SQ_Frontend {
     private $max_title_length = 75;
     private $max_description_length = 160;
     private $min_description_length = 70;
-    private $max_keywrods = 5;
+    private $max_keywrods = 4;
     /**
      * Write the signature
      * @return string
@@ -459,12 +459,21 @@ class Model_SQ_Frontend {
         if (isset($id)){
             $density = array();
             $post = get_post($id);
-            $density = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
             
-            $keywords = $density;
             foreach (wp_get_post_tags($id) as $keyword){
                 $keywords[] = SQ_Tools::i18n($keyword->name);
             }
+            
+            if (!is_array($keywords) || count($keywords) <= $this->max_keywrods ){
+            $density = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
+            if (is_array($density))
+                if (is_array($keywords))
+                    $keywords = @array_merge($keywords, $density);
+                else
+                    $keywords = $density;
+            }
+            
+            $keywords = @array_slice($keywords,0,$this->max_keywrods);
             
         }else{
             if (is_404()) {
