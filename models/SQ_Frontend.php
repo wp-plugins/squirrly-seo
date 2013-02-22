@@ -464,7 +464,7 @@ class Model_SQ_Frontend {
                 $keywords[] = SQ_Tools::i18n($keyword->name);
             }
             
-            if (!is_array($keywords) || count($keywords) <= $this->max_keywrods ){
+            if (count($keywords) <= $this->max_keywrods ){
             $density = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
             if (is_array($density))
                 if (is_array($keywords))
@@ -490,7 +490,7 @@ class Model_SQ_Frontend {
                         $keywords[] = SQ_Tools::i18n($keyword->name);
                     }
                 }
-                if (!is_array($keywords) || count($keywords) <= $this->max_keywrods )
+                if (count($keywords) <= $this->max_keywrods )
                   foreach ($wp_query->posts as $post){
                     $more_keywords = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
                     
@@ -501,7 +501,7 @@ class Model_SQ_Frontend {
                   
                 $keywords = @array_slice($keywords,0,$this->max_keywrods);
             }
-            if (!is_array($keywords) || count($keywords) <= $this->max_keywrods )
+            if (count($keywords) <= $this->max_keywrods )
                 foreach ($wp_query->posts as $post){
                     $id = (is_attachment())?($post->post_parent):($post->ID); 
 
