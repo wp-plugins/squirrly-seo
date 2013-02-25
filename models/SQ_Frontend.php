@@ -70,7 +70,7 @@ class Model_SQ_Frontend {
         $ret .= $this->getPublisher();
         $ret .= $this->getLanguage();
         $ret .= $this->getDCPublisher();
-        
+        $ret .= $this->getTheDate();
         /* SEO optimizer tool*/
         $ret .= $this->getGoogleWT();
         $ret .= $this->getGoogleAnalytics();
@@ -98,7 +98,34 @@ class Model_SQ_Frontend {
         
         return '';
     }
-
+    /**
+     * Get the post date issued
+     * 
+     * @return string
+     */
+    private function getTheDate(){
+        global $wp_query;
+        $date = null;
+        
+        if (is_home()){
+            $args = array('numberposts' => 1);
+            $posts = wp_get_recent_posts( $args );
+            foreach ($posts as $post){
+                $date = date('Y-m-d', strtotime($post['post_date']));
+            }
+            
+        }elseif(is_single()){
+            $post = $wp_query->get_queried_object();
+            $date = date('Y-m-d', strtotime($post->post_date));
+        }
+        
+        if ($date) {
+            $this->header = @preg_replace('/<.*((meta)(.*)("|\')(DC.date.issued)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
+            return sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />" , $date ) . "\n" ; 
+        }
+        
+        return '';
+    }
     /**
      * Get the correct title of the article
      * 
