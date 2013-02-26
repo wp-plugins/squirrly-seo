@@ -41,6 +41,7 @@ class SQ_Action extends SQ_FrontController{
     * @return void
     */
     function hookHead(){
+     
         echo '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
               <script type="text/javascript">
                   var sqQuery = {    

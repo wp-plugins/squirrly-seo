@@ -465,7 +465,6 @@ class Model_SQ_Frontend {
             if (!$description) {
                     $description = $this->truncate(SQ_Tools::i18n($post->post_content), $this->min_description_length, $this->max_description_length);
             }
-        
         // "internal whitespace trim"
         $description = @preg_replace("/\s\s+/u", " ", $description);
 
@@ -835,6 +834,9 @@ class Model_SQ_Frontend {
     
     
     function truncate($text, $min, $max) {
+        if (function_exists('strip_tags'))
+            $text = strip_tags($text);
+        
         $text = str_replace(']]>', ']]&gt;', $text);
         $text = @preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $text );
         $text = strip_tags($text);
@@ -849,6 +851,9 @@ class Model_SQ_Frontend {
     }
     
     function _truncate($text) {
+        if (function_exists('strip_tags'))
+            $text = strip_tags($text);
+        
         $text = str_replace(']]>', ']]&gt;', $text);
         $text = @preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $text );
         $text = strip_tags($text);

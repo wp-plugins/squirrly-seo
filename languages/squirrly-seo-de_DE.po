@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Squirrly SEO Plugin v1.0.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-04 12:02+0200\n"
-"PO-Revision-Date: 2013-02-04 12:02+0200\n"
+"POT-Creation-Date: 2013-02-26 10:30+0200\n"
+"PO-Revision-Date: 2013-02-26 10:59+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -71,22 +71,22 @@ msgid "Note: "
 msgstr "Notiz: "
 
 # @ squirrly-seo
-#: classes/SQ_Tools.php:194
+#: classes/SQ_Tools.php:198
 msgid "Fix it for me!"
 msgstr "Beheben Sie es für mich!"
 
 # @ squirrly-seo
-#: classes/SQ_Tools.php:200
+#: classes/SQ_Tools.php:204
 msgid "Let Squirrly optimize your SEO automatically (recommended)"
 msgstr "Lassen Sie Squirrly Ihr SEO automatisch optimieren (empfohlen)"
 
 # @ squirrly-seo
-#: classes/SQ_Tools.php:207
+#: classes/SQ_Tools.php:211
 msgid "You're blocking google from indexing your site!"
 msgstr "Sie blockieren Google zum Indizieren Ihrer Website!"
 
 # @ squirrly-seo
-#: classes/SQ_Tools.php:213
+#: classes/SQ_Tools.php:217
 msgid ""
 "It is highly recommended that you include the %postname% variable in the "
 "permalink structure."
@@ -95,37 +95,37 @@ msgstr ""
 "Struktur einschließen."
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:13
+#: controllers/SQ_Post.php:15
 msgid "For Squirrly to work, you have to have tinymce installed!"
 msgstr "Damit Squirrly arbeiten kann, müssen Sie tinymce installiert haben!"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:135
+#: controllers/SQ_Post.php:178
 msgid "Plugin Feedback"
 msgstr "Plugin Feedback"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:171
+#: controllers/SQ_Post.php:214
 msgid "Thank you for your feedback"
 msgstr "Vielen Dank für Ihre Feedback"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:173 controllers/SQ_Post.php:207
+#: controllers/SQ_Post.php:216 controllers/SQ_Post.php:250
 msgid "Could not send the email..."
 msgstr "Konnte E-Mail nicht senden ..."
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:176 controllers/SQ_Post.php:210
+#: controllers/SQ_Post.php:219 controllers/SQ_Post.php:253
 msgid "No message."
 msgstr "Keine Nachricht."
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:194
+#: controllers/SQ_Post.php:237
 msgid "Plugin Support"
 msgstr "Plugin Support"
 
 # @ squirrly-seo
-#: controllers/SQ_Post.php:205
+#: controllers/SQ_Post.php:248
 msgid "Message sent..."
 msgstr "Nachricht gesendet ..."
 
@@ -174,10 +174,9 @@ msgstr ""
 msgid "Both fields are required."
 msgstr "Beide Felder sind Pflichtfelder."
 
-# @ squirrly-seo
 #: core/SQ_Blockresearch/SQ_Blockresearch.php:12
-msgid "Talk about it:"
-msgstr "Darüber reden:"
+msgid "Recent discussions:"
+msgstr ""
 
 # @ squirrly-seo
 #: core/SQ_Blockresearch/SQ_Blockresearch.php:12
@@ -270,7 +269,7 @@ msgid "Do more research!"
 msgstr "Erweiterte Suche!"
 
 # @ squirrly-seo
-#: core/SQ_Loading/SQ_Loading.php:23
+#: core/SQ_Loading/SQ_Loading.php:25
 msgid ""
 "For Squirrly to work properly you have to use a higher version of Internet "
 "Explorer. <br /> We recommend you to use Chrome or Mozilla."
@@ -279,11 +278,11 @@ msgstr ""
 "von Internet Explorer verwenden. <br /> Wir empfehlen, Chrome oder Mozilla."
 
 # @ squirrly-seo
-#: core/SQ_Loading/SQ_Loading.php:25
+#: core/SQ_Loading/SQ_Loading.php:27
 msgid "The system is acting Squirrly. I can not find the link to the server."
 msgstr "Kann den Link auf den Server nicht finden."
 
-#: core/SQ_Loading/SQ_Loading.php:33
+#: core/SQ_Loading/SQ_Loading.php:35
 msgid ""
 "You haven`t used Squirrly SEO to optimize your article. Do you want to "
 "optimize for a keyword before publishing?"
@@ -348,7 +347,7 @@ msgid "The favicon has been updated."
 msgstr "Das Favicon wurde aktualisiert."
 
 # @ default
-#: models/SQ_Post.php:70
+#: models/SQ_Post.php:71
 msgid "Squirrly could not find any results for: "
 msgstr "Squirly hat keine Suchergebnisse gefunden für:"
 
@@ -425,7 +424,8 @@ msgstr "Klicken Sie auf das Bild und versuchen Sie es erneut ..."
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:31
-msgid "An error occured while login!"
+#, fuzzy
+msgid "An error occured while logging in!"
 msgstr "Während anmelden, ist ein Fehler aufgetreten!"
 
 # @ squirrly-seo
@@ -449,7 +449,7 @@ msgid "Keyword:"
 msgstr "Schlüsselwort:"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blockresearch.php:11 themes/default/SQ_Blocksearch.php:21
+#: themes/default/SQ_Blockresearch.php:11 themes/default/SQ_Blocksearch.php:23
 msgid "Use this keyword"
 msgstr "Dieses Schlüsselwort verwenden"
 
@@ -478,62 +478,62 @@ msgid "Optimize for Keyword"
 msgstr ""
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:8
+#: themes/default/SQ_Blocksearch.php:10
 msgid "Enter a keyword"
 msgstr "Ein Schlüsselwort eingeben"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:8
+#: themes/default/SQ_Blocksearch.php:10
 msgid "for Squirrly Live SEO optimization"
 msgstr "Live-SEO-Optimierung für Squirrly"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:20
+#: themes/default/SQ_Blocksearch.php:22
 msgid "Do a research"
 msgstr "Recherchieren"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:25
+#: themes/default/SQ_Blocksearch.php:27
 msgid "Enter a keyword above!"
 msgstr "Geben Sie oben ein Schlüsselwort ein!"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:26
+#: themes/default/SQ_Blocksearch.php:28
 msgid "I have more then one keyword!"
 msgstr "Ich habe mehr als ein Schlüsselwort!"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:32
+#: themes/default/SQ_Blocksearch.php:34
 msgid "Images"
 msgstr "Bilder"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:33
+#: themes/default/SQ_Blocksearch.php:35
 msgid "Twitter"
 msgstr "Twitter"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:34
+#: themes/default/SQ_Blocksearch.php:36
 msgid "Wiki"
 msgstr "Wiki"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:35
+#: themes/default/SQ_Blocksearch.php:37
 msgid "News"
 msgstr "News"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:36
+#: themes/default/SQ_Blocksearch.php:38
 msgid "Blogs"
 msgstr "Blogs"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:37
+#: themes/default/SQ_Blocksearch.php:39
 msgid "My articles"
 msgstr "Meine Artikel"
 
 # @ squirrly-seo
-#: themes/default/SQ_Blocksearch.php:42
+#: themes/default/SQ_Blocksearch.php:44
 msgid "Show only Copyright Free images"
 msgstr "Nur Urheberrecht freie Bilder zeigen"
 
@@ -848,11 +848,11 @@ msgid "Send Question"
 msgstr "Senden Sie Ihre Frage"
 
 # @ squirrly-seo
-#: themes/default/SQ_Post.php:57
+#: themes/default/SQ_Post.php:58
 msgid "Go to Profile"
 msgstr "Zum Profil"
 
 # @ squirrly-seo
-#: themes/default/SQ_Post.php:57
+#: themes/default/SQ_Post.php:58
 msgid "Profile"
 msgstr "Profil"
