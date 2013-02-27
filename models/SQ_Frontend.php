@@ -1,7 +1,7 @@
 <?php
 
 class Model_SQ_Frontend {
-    private $header;
+    private $header = '';
     private $title;
     private $description;
     private $min_title_length = 10;
@@ -9,6 +9,7 @@ class Model_SQ_Frontend {
     private $max_description_length = 160;
     private $min_description_length = 70;
     private $max_keywrods = 4;
+    
     /**
      * Write the signature
      * @return string
@@ -31,10 +32,23 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function grabHeader(){
-        $this->header = ob_get_contents();
-        
-        /* stop the recording started in constructor */
-        ob_end_clean();
+        if ( function_exists('ob_get_contents')){
+            $this->header = ob_get_contents();
+        }
+    }
+    
+    /**
+     * Flush the header from wordpress 
+     * 
+     * @return string
+     */
+    public function flushHeader(){
+        if ( function_exists('ob_get_level') && function_exists('ob_end_flush')){
+            while (ob_get_level() > 0) {
+                ob_end_flush();
+            }
+            
+        }
     }
     
     /**
@@ -42,11 +56,12 @@ class Model_SQ_Frontend {
      * 
      * @return string
      */
-    function setHeader($options){
+    function setHeader(){
         global $wp_query;
         
         //print_r($wp_query);
         $ret = '';
+        
         $this->grabHeader();
         
         if (!function_exists('preg_replace')) return $this->header;
@@ -54,8 +69,6 @@ class Model_SQ_Frontend {
         $ret .= $this->setStart();
         
         /* Meta setting*/
-        
-        
         $ret .= $this->setCustomTitle();
         $ret .= $this->setCustomDescription();
         $ret .= $this->setCustomKeyword();
@@ -138,6 +151,7 @@ class Model_SQ_Frontend {
         
         if ($this->checkHomePosts() || $this->checkFrontPage()){
             $title = strip_tags( $this->grabTitleFromPost() );
+            $title .= ' - ' .get_bloginfo( 'name' );
         }elseif(is_single()){
             $post = $wp_query->get_queried_object();
             $title = strip_tags( $this->grabTitleFromPost($post->ID) );
@@ -432,11 +446,11 @@ class Model_SQ_Frontend {
         if (isset($id)) 
             $post = get_post($id);
         
-        if ($post) return $post->post_title;
+        if ($post) return $post->post_title ;
         
         foreach ($wp_query->posts as $post){
             if ($post->post_title <> '')
-                return $post->post_title;
+                return $post->post_title ;
         }
         
         
@@ -872,11 +886,17 @@ class Model_SQ_Frontend {
                 if (function_exists('mb_strtolower'))			
                     $all[] = mb_strtolower($word, get_bloginfo('charset'));
                 else 
-                    $all[] = $this->strtolower($word);
+                    $all[] = strtolower($word);
         }
-        $all = array_unique($all);
-        $all = @array_slice($all,0,5);
-        return implode(',', $all);
+        
+        if(is_array($all) && count($all)>0){
+            $all = array_unique($all);
+            $all = @array_slice($all,0,5);
+        
+            return implode(',', $all);
+        }
+        
+        return $all;
     }
     
 }

@@ -79,11 +79,12 @@ class SQ_Blocklogin extends SQ_BlockController {
         $args['user'] = SQ_Tools::getValue('user');
         $args['password'] = SQ_Tools::getValue('password');
         if($args['user'] <> '' && $args['password'] <> ''){    
-            if(function_exists('mcrypt_create_iv') && function_exists('mcrypt_encrypt') && function_exists('hash')){
+            /*if(function_exists('mcrypt_create_iv') && function_exists('mcrypt_encrypt') && function_exists('hash')){
                 $args['password'] = $this->sq_crypt($args['user'], $args['password']);
             }else {
                 $args['encrypted'] = '0';
-            }
+            }*/
+            $args['encrypted'] = '0';
             $responce = SQ_Action::apiCall('sq/login',$args);
             $return = json_decode($responce);
             $return->msg = $responce;
