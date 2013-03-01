@@ -59,40 +59,42 @@ class Model_SQ_Frontend {
     function setHeader(){
         global $wp_query;
         
-        //print_r($wp_query);
-        $ret = '';
-        
-        $this->grabHeader();
-        
-        if (!function_exists('preg_replace')) return $this->header;
-        
-        $ret .= $this->setStart();
-        
-        /* Meta setting*/
-        $ret .= $this->setCustomTitle();
-        $ret .= $this->setCustomDescription();
-        $ret .= $this->setCustomKeyword();
-       
-        $ret .= $this->setCanonical();
-        $ret .= $this->getXMLSitemap();
-        /* Auto setting*/
-        
-        
-        $ret .= $this->getFavicon();
-        $ret .= $this->getCopyright();
-        $ret .= $this->getPublisher();
-        $ret .= $this->getLanguage();
-        $ret .= $this->getDCPublisher();
-        $ret .= $this->getTheDate();
-        /* SEO optimizer tool*/
-        $ret .= $this->getGoogleWT();
-        $ret .= $this->getGoogleAnalytics();
-        $ret .= $this->getFacebookIns();
-        $ret .= $this->getBingWT();
-        
-        $ret .= $this->setEnd();
-        
-        return $this->header . $ret;
+        if (is_home() || is_single() ||  is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search() || is_404()){
+            $ret = '';
+
+            $this->grabHeader();
+
+            if (!function_exists('preg_replace')) return $this->header;
+
+            $ret .= $this->setStart();
+
+            /* Meta setting*/
+            $ret .= $this->setCustomTitle();
+            $ret .= $this->setCustomDescription();
+            $ret .= $this->setCustomKeyword();
+
+            $ret .= $this->setCanonical();
+            $ret .= $this->getXMLSitemap();
+            /* Auto setting*/
+
+
+            $ret .= $this->getFavicon();
+            $ret .= $this->getCopyright();
+            $ret .= $this->getPublisher();
+            $ret .= $this->getLanguage();
+            $ret .= $this->getDCPublisher();
+            $ret .= $this->getTheDate();
+            /* SEO optimizer tool*/
+            $ret .= $this->getGoogleWT();
+            $ret .= $this->getGoogleAnalytics();
+            $ret .= $this->getFacebookIns();
+            $ret .= $this->getBingWT();
+
+            $ret .= $this->setEnd();
+
+            return $this->header . $ret;
+        }
+        return '';
     }
     
     /**
@@ -186,17 +188,15 @@ class Model_SQ_Frontend {
         global $wp_query;
         
         if(is_home() || is_single() || is_page() || $this->checkPostsPage()) {
-           // if ($this->checkFrontPage()) {
-            //    $description = trim(stripcslashes(SQ_Tools::i18n('description...')));
-            //} else {
-            /* Check if is a predefined Keyword */
-                if(is_home() && SQ_Frontend::$options['sq_fp_description'] <> '')
-                    $description = strip_tags( SQ_Frontend::$options['sq_fp_description'] );
-                else
-                    $description = $this->grabDescriptionFromPost();
-            //}
+            if(is_home() && SQ_Frontend::$options['sq_fp_description'] <> '')
+                $description = strip_tags( SQ_Frontend::$options['sq_fp_description'] );
+            else
+                $description = $this->grabDescriptionFromPost();
         }elseif(is_category()) {
+            
             $description = SQ_Tools::i18n(category_description());
+            if($description == '')
+                $description = $this->grabDescriptionFromPost();
         }
         
         if (isset($description) && !(is_home() && is_paged())) {
@@ -463,8 +463,9 @@ class Model_SQ_Frontend {
      */
     function grabDescriptionFromPost($id = null) {
         global $wp_query;
+        
         $post = $wp_query->get_queried_object();
-
+        
         if (isset($id)) $post = get_post($id);
         
         if (!$post)
