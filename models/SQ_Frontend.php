@@ -896,7 +896,7 @@ class Model_SQ_Frontend {
             return implode(',', $all);
         }
         
-        return $all;
+        return '';
     }
     
 }
