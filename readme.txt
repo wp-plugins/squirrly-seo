@@ -1,6 +1,6 @@
 === SEO Plugin by SQUIRRLY ===
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
-Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo gamification,automatic seo,seo correction,seo title,seo meta
+Tags: seo,seo optimization,seo content,seo plugin,squirrley,squirrely,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo gamification,automatic seo,seo correction,seo title,seo meta
 Requires at least: 3.0
 Tested up to: 3.5
 Stable tag: trunk
@@ -31,7 +31,7 @@ Also, our wish is to provide you with the best customer service and while our so
 
 If Squirrly makes you happy and if this makes sense for you, then please upgrade to PRO.
 
-Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription or keep using Squirrly for Free and be able to optimize 2 articles / month. (<a href="http://www.florin-muresan.cif2.net/3_reasons_why_a_subscription_based_payment_keeps_you_safe_and_happy-pag397-article_id62026.html" title="Squirrly SEO" target="_blank">Why a subscription based payment</a>)
+Squirrely Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription or keep using Squirrly for Free and be able to optimize 2 articles / month. (<a href="http://www.florin-muresan.cif2.net/3_reasons_why_a_subscription_based_payment_keeps_you_safe_and_happy-pag397-article_id62026.html" title="Squirrly SEO" target="_blank">Why a subscription based payment</a>)
 
 We're glad to have you,
 

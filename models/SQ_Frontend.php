@@ -215,7 +215,7 @@ class Model_SQ_Frontend {
 
             //Save it and use it later
             $this->description = (($description <> '') ? $description : $this->title);
-            if ($this->description <> ''){
+            if ($this->description <> '' && strlen($this->description) > 10){ //prevent blank description
                 $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
                 return sprintf("<meta name=\"description\" content=\"%s\" />" , strip_tags(html_entity_decode($this->description)) ) . "\n" ; 
             }else{
