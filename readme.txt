@@ -72,8 +72,8 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 == Changelog ==
 = 1.1.4 =
-* Fixed Frontend META and Frontend ob_gzhandler
-* Added new feature for SEO Live Assistant
+* Fixed Frontend META and Frontend ob_gzhandler (for login problems)
+* Added new feature for SEO Live Assistant (minimum words in article for google news)
 
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
