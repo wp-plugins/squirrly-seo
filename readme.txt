@@ -72,7 +72,8 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 == Changelog ==
 = 1.1.4 =
-* Fixed frontend META and gzip 
+* Fixed Frontend META and Frontend ob_gzhandler
+* Added new feature for SEO Live Assistant
 
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
@@ -157,6 +158,9 @@ Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a 
 == Frequently Asked Questions ==
 = How does Squirrly Wordpress Seo Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
+
+= How does the META Description work in Squirrly SEO Optimization? =
+Based on your article, Squirrly will find the most relevant text and add it in META Description.
 
 = Can I use squirrly on mobile? =
 Yes, on IOS and ANDROID, works both through the browser and wordpress app
