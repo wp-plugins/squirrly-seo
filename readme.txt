@@ -71,6 +71,9 @@ You can see all the Features of our product on the <a href="/extend/plugins/squi
 
 
 == Changelog ==
+= 1.1.4 =
+* Fixed frontend META and gzip 
+
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
 * Improved compatibility with other plugins and themes

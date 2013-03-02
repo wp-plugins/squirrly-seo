@@ -58,13 +58,13 @@ class Model_SQ_Frontend {
      */
     function setHeader(){
         global $wp_query;
+        $ret = '';
+
+        $this->grabHeader();
+
+        if (!function_exists('preg_replace')) return $this->header;
         
         if (is_home() || is_single() ||  is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search() || is_404()){
-            $ret = '';
-
-            $this->grabHeader();
-
-            if (!function_exists('preg_replace')) return $this->header;
 
             $ret .= $this->setStart();
 
@@ -91,10 +91,8 @@ class Model_SQ_Frontend {
             $ret .= $this->getBingWT();
 
             $ret .= $this->setEnd();
-
-            return $this->header . $ret;
         }
-        return '';
+        return $this->header . $ret;
     }
     
     /**
