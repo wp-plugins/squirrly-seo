@@ -139,7 +139,7 @@ class SQ_Action extends SQ_FrontController{
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
        //echo $url;
-       $responce = wp_remote_get($url, array('timeout'=>10));
+       $responce = wp_remote_get($url, array('timeout'=>30));
        return self::cleanResponce(wp_remote_retrieve_body($responce));
      
    }
