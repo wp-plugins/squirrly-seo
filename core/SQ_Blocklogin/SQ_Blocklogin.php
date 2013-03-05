@@ -60,7 +60,7 @@ class SQ_Blocklogin extends SQ_BlockController {
                         break;
                 }
             }else{
-                $return->error = __('An error occured.',_PLUGIN_NAME_);
+                $return->error = __('An error occured. Mabe a network error :(',_PLUGIN_NAME_);
                 
             }
         }else
