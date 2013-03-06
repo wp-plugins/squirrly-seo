@@ -5,6 +5,8 @@
  * Constants and ini_sets
  */
 /* debug section */
+
+
 define('_SQ_DEBUG_LOG_', false);
 define('_SQ_DEBUG_SQL_', false);
 /** current plugin version */

@@ -37,7 +37,7 @@ class SQ_Blocklogin extends SQ_BlockController {
      */
     function squirrlyRegister(){
         global $current_user;
-        
+
         if (SQ_Tools::getValue('email') <> ''){
             $args['name'] = '';
             $args['user'] = SQ_Tools::getValue('email');
@@ -48,6 +48,10 @@ class SQ_Blocklogin extends SQ_BlockController {
             
             $responce = SQ_Action::apiCall('sq/register',$args);
             $return = json_decode($responce);
+            
+            if (!is_object($return))
+               $return = (object) NULL;
+                
             $return->msg = $responce;
             
             if (isset($return->token)){

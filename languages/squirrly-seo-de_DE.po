@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Squirrly SEO Plugin v1.0.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-26 10:30+0200\n"
-"PO-Revision-Date: 2013-02-26 10:59+0200\n"
+"PO-Revision-Date: 2013-03-06 14:54+0200\n"
 "Last-Translator: Squirrly <contact@squirrly.co>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -131,7 +131,7 @@ msgstr "Nachricht gesendet ..."
 
 # @ squirrly-seo
 #: core/SQ_Blocklogin/SQ_Blocklogin.php:59
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "We found your email, so it means you already have a Squirrly.co account. "
 "Please login with your Squirrly Email. If you forgot your password click "
@@ -158,7 +158,6 @@ msgstr ""
 
 # @ squirrly-seo
 #: core/SQ_Blocklogin/SQ_Blocklogin.php:97
-#, fuzzy
 msgid "Wrong email or password!"
 msgstr "Benutzername oder Passwort falsch!"
 
@@ -176,7 +175,7 @@ msgstr "Beide Felder sind Pflichtfelder."
 
 #: core/SQ_Blockresearch/SQ_Blockresearch.php:12
 msgid "Recent discussions:"
-msgstr ""
+msgstr "Bisherige Diskussionen:"
 
 # @ squirrly-seo
 #: core/SQ_Blockresearch/SQ_Blockresearch.php:12
@@ -261,7 +260,7 @@ msgstr "Dauert zu lange, um dieses Schlüsselwort zu überprüfen ..."
 # @ squirrly-seo
 #: core/SQ_Blocksearch/SQ_Blocksearch.php:50
 msgid "Do a research!"
-msgstr "Neue Suche!"
+msgstr "Erweiterte Suche!"
 
 # @ squirrly-seo
 #: core/SQ_Blocksearch/SQ_Blocksearch.php:50
@@ -287,6 +286,8 @@ msgid ""
 "You haven`t used Squirrly SEO to optimize your article. Do you want to "
 "optimize for a keyword before publishing?"
 msgstr ""
+"You haven`t used Squirrly SEO to optimize your article. Do you want to "
+"optimize for a keyword before publishing?"
 
 # @ squirrly-seo
 #: models/SQ_Menu.php:108
@@ -358,7 +359,6 @@ msgstr "Squirrly.co Login"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:9
-#, fuzzy
 msgid "Email:"
 msgstr "Ihre E-Mail Adresse:"
 
@@ -394,7 +394,6 @@ msgstr "Passwort vergessen"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:17
-#, fuzzy
 msgid "Enter your email"
 msgstr "In Artikel einfügen"
 
@@ -405,11 +404,11 @@ msgstr "Ihre E-Mail Adresse:"
 
 #: themes/default/SQ_Blocklogin.php:19
 msgid "Sign Up"
-msgstr ""
+msgstr "Anmelden"
 
 #: themes/default/SQ_Blocklogin.php:20
 msgid "This email connects you to Squirrly.co"
-msgstr ""
+msgstr "This email connects you to Squirrly.co"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:29
@@ -418,15 +417,13 @@ msgstr "Die E-Mail-Adresse ist ungültig!"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:30
-#, fuzzy
 msgid "Click on Sign Up button and try again ..."
 msgstr "Klicken Sie auf das Bild und versuchen Sie es erneut ..."
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:31
-#, fuzzy
 msgid "An error occured while logging in!"
-msgstr "Während anmelden, ist ein Fehler aufgetreten!"
+msgstr "Bei der Anmeldung ist ein Fehler aufgetreten!"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocklogin.php:32
@@ -436,7 +433,7 @@ msgstr "Verbinden ..."
 # @ squirrly-seo
 #: themes/default/SQ_Blockresearch.php:2
 msgid "Squirrly Keyword Research"
-msgstr "Neue Squirrly Suche"
+msgstr "Squirrly Erweiterte Suche!"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blockresearch.php:3
@@ -475,7 +472,7 @@ msgstr "Lassen Sie ein paar Schlüsselwörter auch für das nächste Mal!"
 
 #: themes/default/SQ_Blocksearch.php:3
 msgid "Optimize for Keyword"
-msgstr ""
+msgstr "Schlüsselwort optimieren"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blocksearch.php:10
@@ -535,7 +532,7 @@ msgstr "Meine Artikel"
 # @ squirrly-seo
 #: themes/default/SQ_Blocksearch.php:44
 msgid "Show only Copyright Free images"
-msgstr "Nur Urheberrecht freie Bilder zeigen"
+msgstr "Nur urheberrechtfreie Bilder zeigen"
 
 # @ squirrly-seo
 #: themes/default/SQ_Blockseo.php:3
@@ -548,8 +545,8 @@ msgid ""
 "With Squirrly SEO, your Wordpress will get Perfect SEO on each article you "
 "write."
 msgstr ""
-"Mit Squirrly SEO, deine Wordpress wird an jeder Artikel die du schreibst, "
-"ein Perfektes SEO erhalten."
+"Mit Squirrly SEO wird jeder Ihrer Wordpress Artikel eine perfekte "
+"Suchmaschinenoptimierung erhalten. "
 
 # @ squirrly-seo
 #: themes/default/SQ_Menu.php:7
@@ -565,7 +562,7 @@ msgid ""
 msgstr ""
 "geliefert als Plugin für Wordpress. <br /> <br /> Wir verbinden Ihr "
 "Wordpress mit Squirrly, so dass wir die besten SEO-Möglichkeiten finden, "
-"geben Ihnen Bericht und analysieren Ihre Konkurrenz."
+"erstatten Ihnen Bericht und analysieren Ihre Konkurrenz."
 
 # @ squirrly-seo
 #: themes/default/SQ_Menu.php:9
@@ -584,7 +581,7 @@ msgstr "Einstellungen speichern"
 
 #: themes/default/SQ_Menu.php:29
 msgid " API"
-msgstr ""
+msgstr " API"
 
 # @ squirrly-seo
 #: themes/default/SQ_Menu.php:32
@@ -678,11 +675,12 @@ msgstr ""
 msgid ""
 "Always show <strong>Keyword Informations</strong> about the selected keyword."
 msgstr ""
+"Always show <strong>Keyword Informations</strong> about the selected keyword."
 
 # @ squirrly-seo
 #: themes/default/SQ_Menu.php:92
 msgid "First page optimization (Title, Description, Keywords)"
-msgstr "Erste Seite Optimierung (Titel, Beschreibung, Schlüsselwörter)"
+msgstr " Optimierung der ersten Seite (Titel, Beschreibung, Schlüsselwörter)"
 
 # @ squirrly-seo
 #: themes/default/SQ_Menu.php:93
@@ -830,7 +828,7 @@ msgstr "Support Page"
 # @ squirrly-seo
 #: themes/default/SQ_Post.php:37
 msgid "Thank you! You can send us a happy face tomorow too."
-msgstr "Danke! Sie können uns ein fröhliches Gesicht auch morgen senden."
+msgstr "Danke! Sie können uns auch morgen ein fröhliches Gesicht senden."
 
 # @ squirrly-seo
 #: themes/default/SQ_Post.php:43
