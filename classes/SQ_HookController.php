@@ -27,6 +27,9 @@ class SQ_HookController {
                                             'shutdown'=>'shutdown',
                     
                                             'fronthead' => 'wp_head',
+                                            'fronttitle' => 'wp_title',
+                                            'fronttitletheme' => 'thematic_doctitle',
+                    
                                             'frontfooter' => 'wp_footer',
                                             'frontinit'=> 'init'
                                            );
@@ -49,7 +52,7 @@ class SQ_HookController {
 				//echo $value . '<br>';
 				//print_r(array($instance, 'hook'.ucfirst($hook)));
 				//call the WP add_action function
-			 	add_action($value, array($instance, 'hook'.ucfirst($hook)),1);
+			 	add_action($value, array($instance, 'hook'.ucfirst($hook)),5);
 			}
 		}
                 

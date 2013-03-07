@@ -134,13 +134,11 @@ class SQ_Action extends SQ_FrontController{
        if($module == 'sq/login' || $module == 'sq/register')
         if(function_exists('base64_encode'))
            $parameters = 'q='.base64_encode($parameters);
-       //echo _SQ_API_URL_;
        
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
-       //echo $url;
-       $responce = wp_remote_get($url, array('timeout'=>30));
-       return self::cleanResponce(wp_remote_retrieve_body($responce));
+       // echo $url;
+       return SQ_Tools::sq_remote_get($url);
      
    }
    
@@ -148,10 +146,4 @@ class SQ_Action extends SQ_FrontController{
        return str_replace(array(' '), array('+'), $url);
    }
    
-   private static function cleanResponce($responce){
-       if (strpos($responce,'(') !== false)
-          $responce = substr ($responce, strpos($responce,'(') + 1,strpos($responce,')')-1);
-               
-       return $responce;
-   }
 }

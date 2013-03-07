@@ -27,31 +27,6 @@ class Model_SQ_Frontend {
     }
     
     /**
-     * Get the header from wordpress 
-     * 
-     * @return string
-     */
-    private function grabHeader(){
-        if ( function_exists('ob_get_contents')){
-            $this->header = ob_get_contents();
-        }
-    }
-    
-    /**
-     * Flush the header from wordpress 
-     * 
-     * @return string
-     */
-    public function flushHeader(){
-        if ( function_exists('ob_get_level') && function_exists('ob_end_flush')){
-            while (ob_get_level() > 0) {
-                ob_end_flush();
-            }
-            
-        }
-    }
-    
-    /**
      * Overwrite the header with the correct parameters
      * 
      * @return string
@@ -59,17 +34,17 @@ class Model_SQ_Frontend {
     function setHeader(){
         global $wp_query;
         $ret = '';
-
-        $this->grabHeader();
-
-        if (!function_exists('preg_replace')) return $this->header;
+        
+        if (!function_exists('preg_replace')) return $ret;
         
         if (is_home() || is_single() ||  is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search() || is_404()){
 
             $ret .= $this->setStart();
 
             /* Meta setting*/
-            $ret .= $this->setCustomTitle();
+            $this->title = strip_tags(html_entity_decode($this->getCustomTitle())); 
+            
+            
             $ret .= $this->setCustomDescription();
             $ret .= $this->setCustomKeyword();
 
@@ -92,7 +67,7 @@ class Model_SQ_Frontend {
 
             $ret .= $this->setEnd();
         }
-        return $this->header . $ret;
+        return  $ret;
     }
     
     /**
@@ -105,7 +80,7 @@ class Model_SQ_Frontend {
         $url = null;
         $url = $this->getCanonicalUrl();
         if ($url) {
-            $this->header = preg_replace('/<.*((link)(.*)("|\')(canonical)*(href\=)*("|\').*)\b[^>]*>/i','',$this->header);
+            remove_action( 'wp_head', 'rel_canonical' );
             return sprintf("<link rel=\"canonical\" href=\"%s\" />" , $url) . "\n" ;
         }
         
@@ -133,7 +108,6 @@ class Model_SQ_Frontend {
         }
         
         if ($date) {
-            $this->header = @preg_replace('/<.*((meta)(.*)("|\')(DC.date.issued)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
             return sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />" , $date ) . "\n" ; 
         }
         
@@ -144,10 +118,12 @@ class Model_SQ_Frontend {
      * 
      * @return string
      */
-    private function setCustomTitle( ) {
+    public function getCustomTitle($title = '') {
         global $wp_query;
         $count  = 0;
         $title = '';
+        
+        if (is_feed()) return $title;
         
         if ($this->checkHomePosts() || $this->checkFrontPage()){
             $title = strip_tags( $this->grabTitleFromPost() );
@@ -163,19 +139,14 @@ class Model_SQ_Frontend {
         }
         
         if (isset ($title) && !empty($title)){
-            $title = $this->truncate($title, $this->min_title_length, $this->max_title_length);
-            //Save it and use it later
-            $this->title = $title;
-            if ($this->title <> ''){
-                $this->header = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))),$this->header, 1, $count);
-                if ($count == 0)
-                   return sprintf("<title>%s</title>" , strip_tags(html_entity_decode($this->title))) . "\n" ; 
-            }
+            $title = esc_html($title);
+            return $this->truncate($title, $this->min_title_length, $this->max_title_length);
         }
         
-        return false;
+        return '';
     }
- 
+    
+    
     
     /**
      * Get the description from last/current article
@@ -214,7 +185,6 @@ class Model_SQ_Frontend {
             //Save it and use it later
             $this->description = (($description <> '') ? $description : $this->title);
             if ($this->description <> '' && strlen($this->description) > 10){ //prevent blank description
-                $this->header =  @preg_replace('/<.*((meta)(.*)("|\')(description)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
                 return sprintf("<meta name=\"description\" content=\"%s\" />" , strip_tags(html_entity_decode($this->description)) ) . "\n" ; 
             }else{
                 return false; 
@@ -251,7 +221,6 @@ class Model_SQ_Frontend {
         if (isset ($keywords) && !empty($keywords) && !(is_home() && is_paged())) {
             $keywords = str_replace('"','',$keywords);
                    
-            $this->header = @preg_replace('/<.*((meta)(.*)("|\')(keywords)*(content\=)*("|\').*)\b[^>]*>/i','',$this->header);
             return sprintf("<meta name=\"keywords\" content=\"%s\" />" , $keywords) . "\n" ; 
         }
         

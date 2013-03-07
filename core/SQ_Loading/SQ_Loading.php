@@ -14,8 +14,9 @@ class SQ_Loading extends SQ_BlockController {
        $browser = false;
 
        /* Check the squirrly.js file if exists */
-       $exists = wp_remote_head(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js');
+       $exists = SQ_Tools::sq_remote_head(_SQ_STATIC_API_URL_.SQ_URI.'/js/squirrly.js');
        $browser = SQ_Tools::getBrowserInfo();
+
        if((isset($exists) && is_array($exists) && $exists['headers']['content-type'] <> 'application/javascript') || (isset($browser) && $browser != false && is_array($browser) && $browser['name'] == 'IE' && (int)$browser['version'] < 9 && (int)$browser['version'] > 0) ) {
             echo '<script type="text/javascript">
                     jQuery("#sq_preloading").removeClass("sq_loading");
@@ -24,7 +25,7 @@ class SQ_Loading extends SQ_BlockController {
                     (($browser['name'] == 'IE' && (int)$browser['version'] < 9 && (int)$browser['version'] > 0) 
                     ? 'jQuery("#sq_preloading").html("'.__('For Squirrly to work properly you have to use a higher version of Internet Explorer. <br /> We recommend you to use Chrome or Mozilla.', _PLUGIN_NAME_).'");
                        jQuery("#sq_options").hide(); '
-                    : 'jQuery("#sq_preloading").html("'.__('The system is acting Squirrly. I can not find the link to the server.', _PLUGIN_NAME_).'");')
+                    : 'jQuery("#sq_preloading").html("'.__('Can not connect to Squirrly. Error: ' . $exists['response']['code'] . ' Message: ' . $exists['response']['message'], _PLUGIN_NAME_).'");')
                     .'
                   
                     jQuery("#sq_blocklogin").hide();

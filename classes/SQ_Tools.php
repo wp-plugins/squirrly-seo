@@ -156,6 +156,68 @@ class SQ_Tools extends SQ_FrontController {
     }
     
     /**
+     * Connect remote with CURL if exists
+     */
+    public static function sq_remote_get($url, $param = array()){
+        if (isset($param['timeout']))
+            $timeout = $param['timeout'];
+        else
+            $timeout = 30;
+        
+        if (function_exists('curl_init')){
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+
+            $responce = curl_exec($ch);   
+            $responce = self::cleanResponce($responce);
+            curl_close($ch);
+
+            return $responce;
+        }else{
+            $responce = wp_remote_get($url, array('timeout'=>$timeout)); 
+            $responce = self::cleanResponce(wp_remote_retrieve_body($responce));
+        }
+    }
+    
+    /**
+     * Connect remote with CURL if exists
+     */
+    public static function sq_remote_head($url){
+        $response = array();
+        
+        if (isset($param['timeout']))
+            $timeout = $param['timeout'];
+        else
+            $timeout = 30;
+        
+        if (function_exists('curl_init')){
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_NOBODY, true);
+            curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+            curl_exec($ch);   
+            
+            $response['headers']['content-type'] = curl_getinfo($ch, CURLINFO_CONTENT_TYPE );
+            $response['response']['code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            return $response;
+        }else{
+            return wp_remote_head($url, array('timeout'=>$timeout)); 
+        }
+        
+        return false;
+    }
+    
+    private static function cleanResponce($response){
+       if (strpos($response,'(') !== false)
+          $response = substr ($response, strpos($response,'(') + 1,strpos($response,')')-1);
+               
+       return $response;
+   }
+    
+    /**
     * checkPluginUpdated
     *
     * Checks whether plugin update happened and triggers update notice
