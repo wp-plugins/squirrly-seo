@@ -203,7 +203,7 @@ class Model_SQ_Frontend {
     }
     
     private function clearTitle($title){
-         return esc_html(strip_tags($title));
+         return esc_html(strip_tags(html_entity_decode($title)));
     }
     
     
