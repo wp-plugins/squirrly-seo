@@ -27,7 +27,7 @@ class SQ_HookController {
                                             'shutdown'=>'shutdown',
                     
                                             'fronthead' => 'wp_head',
-                                            'fronttitle' => 'wp_title',
+                                            'loaded' => 'plugins_loaded',
                                             'fronttitletheme' => 'thematic_doctitle',
                     
                                             'frontfooter' => 'wp_footer',

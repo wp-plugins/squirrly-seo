@@ -26,6 +26,66 @@ class Model_SQ_Frontend {
         return "<!-- /Squirrly Wordpress SEO Plugin -->\n\n";
     }
     
+    /*******USE BUFFER*******/
+    /**
+     * Start the buffer record
+     * @return type
+     */
+    function startBuffer(){
+        
+        if (is_feed()) return;
+        ob_start(array($this,'getBuffer'));
+    }
+    
+    /**
+     * Get the loaded buffer and change it
+     * 
+     * @param buffer $buffer
+     * @return buffer
+     */
+    function getBuffer($buffer){
+        $buffer = $this->setTitleInBuffer($buffer);
+        return $buffer;
+    }
+    
+    /**
+     * Flush the header from wordpress
+     * 
+     * @return string
+      * 
+     */
+    public function flushHeader(){
+        $buffers = array();
+        if (function_exists('ob_list_handlers')) 
+            $buffers = ob_list_handlers();
+                
+        if (sizeof($buffers) > 0 && strtolower($buffers[sizeof($buffers) - 1]) == strtolower('Model_SQ_Frontend::getBuffer')) {
+            ob_end_flush();
+        }
+    }
+    /**
+     * Change the title in site
+     * 
+     * @return string
+     */
+    private function setTitleInBuffer($buffer) {
+        global $wp_query;
+        $title = $this->getCustomTitle();
+        
+        if (isset ($title) && !empty($title)){
+            if ($title <> ''){
+                $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $this->clearTitle($title)),$buffer, 1, $count);
+                if ($count == 0)
+                   $buffer .= sprintf("<title>%s</title>" , $this->clearTitle($title)) . "\n" ; 
+            }
+        }
+        return $buffer;
+    }
+    
+    /*************************/
+    
+    
+    
     /**
      * Overwrite the header with the correct parameters
      * 
@@ -42,8 +102,7 @@ class Model_SQ_Frontend {
             $ret .= $this->setStart();
 
             /* Meta setting*/
-            $this->title = strip_tags(html_entity_decode($this->getCustomTitle())); 
-            
+            $this->title = $this->clearTitle($this->getCustomTitle()); 
             
             $ret .= $this->setCustomDescription();
             $ret .= $this->setCustomKeyword();
@@ -118,34 +177,34 @@ class Model_SQ_Frontend {
      * 
      * @return string
      */
-    public function getCustomTitle($title = '') {
+    public function getCustomTitle() {
         global $wp_query;
         $count  = 0;
         $title = '';
         
-        if (is_feed()) return $title;
-        
         if ($this->checkHomePosts() || $this->checkFrontPage()){
-            $title = strip_tags( $this->grabTitleFromPost() );
-            $title .= ' - ' .get_bloginfo( 'name' );
+            $title = $this->clearTitle( $this->grabTitleFromPost() );
         }elseif(is_single()){
             $post = $wp_query->get_queried_object();
-            $title = strip_tags( $this->grabTitleFromPost($post->ID) );
+            $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
         }
         
         /* Check if is a predefined Title */
         if(is_home() && SQ_Frontend::$options['sq_fp_title'] <> ''){
-            $title = strip_tags( SQ_Frontend::$options['sq_fp_title'] );
+            $title = $this->clearTitle( SQ_Frontend::$options['sq_fp_title'] );
         }
         
         if (isset ($title) && !empty($title)){
-            $title = esc_html($title);
+            $title = $this->clearTitle($title);
             return $this->truncate($title, $this->min_title_length, $this->max_title_length);
         }
         
-        return '';
+        return $title;
     }
     
+    private function clearTitle($title){
+         return esc_html(strip_tags($title));
+    }
     
     
     /**
