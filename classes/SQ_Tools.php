@@ -177,7 +177,7 @@ class SQ_Tools extends SQ_FrontController {
             return $responce;
         }else{
             $responce = wp_remote_get($url, array('timeout'=>$timeout)); 
-            $responce = self::cleanResponce(wp_remote_retrieve_body($responce));
+            return self::cleanResponce(wp_remote_retrieve_body($responce));
         }
     }
     
