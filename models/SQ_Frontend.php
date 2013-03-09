@@ -181,9 +181,12 @@ class Model_SQ_Frontend {
         global $wp_query;
         $count  = 0;
         $title = '';
+        $sep = '-';
         
         if ($this->checkHomePosts() || $this->checkFrontPage()){
             $title = $this->clearTitle( $this->grabTitleFromPost() );
+            if (get_bloginfo('name') <> '')
+                $title .= " ".$sep." " . get_bloginfo('name');
         }elseif(is_single()){
             $post = $wp_query->get_queried_object();
             $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
