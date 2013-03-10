@@ -37,11 +37,18 @@
         <fieldset>
             <legend><?php _e('Let Squirrly automatically optimize my blog', _PLUGIN_NAME_); ?></legend>
             <div>
-             <p>
-              <input type="radio" name="sq_use" id="sq_use_on"  value="1" <?php echo ((isset($view->options['sq_use']) && $view->options['sq_use'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
-              <input type="radio" name="sq_use" value="0" <?php echo ((!isset($view->options['sq_use']) ||  !$view->options['sq_use']) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
-             </p>
-             <p>     
+
+                <div class="sq_option_content">
+                   <div class="sq_switch">
+                     <input id="sq_use_on" type="radio" class="sq_switch-input" name="sq_use"  value="1" <?php echo ((isset($view->options['sq_use']) && $view->options['sq_use'] == 1) ? "checked" : '')?> />
+                     <label for="sq_use_on" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                     <input id="sq_use_off" type="radio" class="sq_switch-input" name="sq_use" value="0" <?php echo ((!isset($view->options['sq_use']) ||  !$view->options['sq_use']) ? "checked" : '')?> />
+                     <label for="sq_use_off" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                     <span class="sq_switch-selection"></span>
+                   </div>
+               </div>
+             
+                 
                   <ul class="sq_settings_info">
                       <span ><?php _e('What does Squirrly automatically do for SEO?', _PLUGIN_NAME_); ?></span>
                       <li><?php _e('adds the correct <strong>title</strong> in the home page', _PLUGIN_NAME_); ?></li>
@@ -52,39 +59,43 @@
                       <li><?php _e('adds the <strong>favicon</strong> and the <strong>icon for Apple devices</strong>.', _PLUGIN_NAME_); ?></li>
                   </ul>
               
-             </p>
+            
             </div>
         </fieldset>  
              
         <fieldset>
-            <legend><?php _e('Let Squirrly warn me if there are errors related to SEO settings', _PLUGIN_NAME_); ?></legend>
-            <div>
-             <p>
-              <input type="radio" name="ignore_warn" value="0" <?php echo ((!isset($view->options['ignore_warn']) ||  !$view->options['ignore_warn']) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
-              <input type="radio" name="ignore_warn" id="sq_ignore_warn"  value="1" <?php echo ((isset($view->options['ignore_warn']) && $view->options['ignore_warn'] == 1) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
-             </p>
-            </div>
-       </fieldset> 
-             
-       <fieldset>
             <legend><?php _e('Squirrly Options', _PLUGIN_NAME_); ?></legend>
-            <div>
-             <p>
-               <?php _e('Show <strong>"Enter a keyword"</strong> bubble when posting a new article.', _PLUGIN_NAME_); ?>
-             </p>
-             <p>
-              <input type="radio" name="sq_keyword_help" value="1" <?php echo ((!isset($view->options['sq_keyword_help']) ||  $view->options['sq_keyword_help'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
-              <input type="radio" name="sq_keyword_help"  value="0" <?php echo ((isset($view->options['sq_keyword_help']) && $view->options['sq_keyword_help'] == 0) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
-             </p>
+            <div class="sq_option_content">
+                <div class="sq_switch">
+                  <input id="ignore_warn_yes" class="sq_switch-input" type="radio" name="ignore_warn" value="0" <?php echo ((!isset($view->options['ignore_warn']) ||  !$view->options['ignore_warn']) ? "checked" : '')?> />
+                  <label for="ignore_warn_yes" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                  <input id="sq_ignore_warn" class="sq_switch-input" type="radio" name="ignore_warn" value="1" <?php echo ((isset($view->options['ignore_warn']) && $view->options['ignore_warn'] == 1) ? "checked" : '')?> />
+                  <label for="sq_ignore_warn" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                  <span class="sq_switch-selection"></span>
+                </div>
+                <span><?php _e('Let Squirrly warn me if there are errors related to SEO settings', _PLUGIN_NAME_); ?></span>
             </div>
-            <div>
-             <p>
-               <?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?>
-             </p>
-             <p>
-              <input type="radio" name="sq_keyword_information" value="1" <?php echo ((isset($view->options['sq_keyword_information']) && $view->options['sq_keyword_information'] == 1) ? "checked" : '')?> /> <?php _e('Yes', _PLUGIN_NAME_); ?>
-              <input type="radio" name="sq_keyword_information"  value="0" <?php echo ((!isset($view->options['sq_keyword_information']) || $view->options['sq_keyword_information'] == 0) ? "checked" : '')?> /> <?php _e('No', _PLUGIN_NAME_); ?>
-             </p>
+            
+            <div class="sq_option_content">
+                <div class="sq_switch">
+                  <input id="sq_keyword_help1" type="radio" class="sq_switch-input" name="sq_keyword_help" value="1" <?php echo ((!isset($view->options['sq_keyword_help']) ||  $view->options['sq_keyword_help'] == 1) ? "checked" : '')?> />
+                  <label for="sq_keyword_help1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                  <input id="sq_keyword_help0" type="radio" class="sq_switch-input" name="sq_keyword_help"  value="0" <?php echo ((isset($view->options['sq_keyword_help']) && $view->options['sq_keyword_help'] == 0) ? "checked" : '')?> />
+                  <label for="sq_keyword_help0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                  <span class="sq_switch-selection"></span>
+                </div>
+                <span><?php _e('Show <strong>"Enter a keyword"</strong> bubble when posting a new article.', _PLUGIN_NAME_); ?></span>
+            </div>
+            
+            <div class="sq_option_content">
+                <div class="sq_switch">
+                  <input id="sq_keyword_information1" type="radio" class="sq_switch-input" name="sq_keyword_information" value="1" <?php echo ((isset($view->options['sq_keyword_information']) && $view->options['sq_keyword_information'] == 1) ? "checked" : '')?> />
+                  <label for="sq_keyword_information1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                  <input id="sq_keyword_information0" type="radio" class="sq_switch-input" name="sq_keyword_information"  value="0" <?php echo ((!isset($view->options['sq_keyword_information']) || $view->options['sq_keyword_information'] == 0) ? "checked" : '')?> />
+                  <label for="sq_keyword_information0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                  <span class="sq_switch-selection"></span>
+                </div>
+                <span><?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?></span>
             </div>
        </fieldset> 
                   
