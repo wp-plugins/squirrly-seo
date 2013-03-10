@@ -72,8 +72,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 == Changelog ==
 = 1.1.5 =
-* Added multiple countries for Keyword Research
-* Fixed front-end bugz
+* Added multiple Countries for Keyword Research
 
 = 1.1.4 =
 * Fixed Frontend META and Frontend ob_gzhandler (for login problems)

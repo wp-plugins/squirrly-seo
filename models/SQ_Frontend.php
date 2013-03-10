@@ -192,14 +192,14 @@ class Model_SQ_Frontend {
             $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
         }
         
+        if (isset ($title) && !empty($title)){
+            $title = $this->clearTitle($title);
+            $title = $this->truncate($title, $this->min_title_length, $this->max_title_length);
+        }
+        
         /* Check if is a predefined Title */
         if(is_home() && SQ_Frontend::$options['sq_fp_title'] <> ''){
             $title = $this->clearTitle( SQ_Frontend::$options['sq_fp_title'] );
-        }
-        
-        if (isset ($title) && !empty($title)){
-            $title = $this->clearTitle($title);
-            return $this->truncate($title, $this->min_title_length, $this->max_title_length);
         }
         
         return $title;
