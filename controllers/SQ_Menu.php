@@ -16,7 +16,8 @@ class SQ_Menu extends SQ_FrontController {
                                             ucfirst(_SQ_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                                             'edit_posts',
                                             preg_replace ('/\s/','_',_SQ_NAME_) ,
-                                            array($this,'showMenu')
+                                            array($this,'showMenu'),
+                                            _SQ_THEME_URL_ . 'img/menu_icon_16.png'
                                       ));
 
 
@@ -64,9 +65,19 @@ class SQ_Menu extends SQ_FrontController {
                 exit();
                 break;
             case 'sq_update':
+                if(isset($_GET['params'])) {
+                    parse_str($_GET['params'],$_GET);
+                }
+                SQ_Tools::saveOptions('sq_use', (int)SQ_Tools::getValue('sq_use'));
+                SQ_Tools::saveOptions('sq_auto_title', (int)SQ_Tools::getValue('sq_auto_title'));
+                SQ_Tools::saveOptions('sq_auto_description', (int)SQ_Tools::getValue('sq_auto_description'));
+                SQ_Tools::saveOptions('sq_auto_canonical', (int)SQ_Tools::getValue('sq_auto_canonical'));
+                SQ_Tools::saveOptions('sq_auto_sitemap', (int)SQ_Tools::getValue('sq_auto_sitemap'));
+                SQ_Tools::saveOptions('sq_auto_meta', (int)SQ_Tools::getValue('sq_auto_meta'));
+                SQ_Tools::saveOptions('sq_auto_favicon', (int)SQ_Tools::getValue('sq_auto_favicon'));
                 
-                SQ_Tools::saveOptions('sq_use', SQ_Tools::getValue('sq_use'));
-
+                
+                SQ_Tools::saveOptions('sq_auto_seo', (int)SQ_Tools::getValue('sq_auto_seo'));
                 SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));
                 SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));
                 SQ_Tools::saveOptions('sq_fp_keywords', SQ_Tools::getValue('sq_fp_keywords'));
@@ -78,11 +89,12 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_facebook_insights', $this->model->checkFavebookInsightsCode(SQ_Tools::getValue('sq_facebook_insights')));
                 SQ_Tools::saveOptions('sq_bing_wt', $this->model->checkBingWTCode(SQ_Tools::getValue('sq_bing_wt')));
                 
-                SQ_Tools::saveOptions('ignore_warn', SQ_Tools::getValue('ignore_warn'));
-                SQ_Tools::saveOptions('sq_keyword_help', SQ_Tools::getValue('sq_keyword_help'));
-                SQ_Tools::saveOptions('sq_keyword_information', SQ_Tools::getValue('sq_keyword_information'));
+                SQ_Tools::saveOptions('ignore_warn', (int)SQ_Tools::getValue('ignore_warn'));
+                SQ_Tools::saveOptions('sq_keyword_help', (int)SQ_Tools::getValue('sq_keyword_help'));
+                SQ_Tools::saveOptions('sq_keyword_information', (int)SQ_Tools::getValue('sq_keyword_information'));
                 
                 
+                update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
                 
                 /* if there is an icon to upload*/
                 if (!empty($_FILES['favicon'])) {
@@ -107,6 +119,7 @@ class SQ_Menu extends SQ_FrontController {
             case 'sq_fixprivate':
                 update_option('blog_public', 1);
                 break;
+            
             case 'sq_fixcomments':
                 update_option('comments_notify', 1);
                 break;

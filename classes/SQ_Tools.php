@@ -263,14 +263,14 @@ class SQ_Tools extends SQ_FrontController {
         if ( self::getAutoSeoSquirrly() ){
             if ($count_only)
                 self::$errors_count ++;
-            else SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_use_on').attr('checked', true);", "sq_fixautoseo") . " | ", 'settings');
+            else SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_use_on').attr('checked', true); jQuery('#sq_use_on').trigger('click');", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
         }
         
         /* IF SEO INDEX IS OFF*/
         if ( self::getPrivateBlog() ){
             if ($count_only)
                 self::$errors_count ++;
-            else SQ_Error::setError(__('You\'re blocking google from indexing your site!', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "", "sq_fixprivate") . " | ", 'settings');
+            else SQ_Error::setError(__('You\'re blocking google from indexing your site!', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "", "sq_fixprivate") . " | ", 'settings','sq_fix_private');
         }
         
         if ( self::getBadLinkStructure() ){
@@ -301,7 +301,7 @@ class SQ_Tools extends SQ_FrontController {
      * Check if the blog is in private mode
      * @return bool
      */
-    private static function getPrivateBlog() {
+    public static function getPrivateBlog() { 
         return ((int)get_option( 'blog_public' ) == 0 );
     }
     

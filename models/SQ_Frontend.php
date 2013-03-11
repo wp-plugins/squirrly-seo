@@ -91,7 +91,7 @@ class Model_SQ_Frontend {
      * 
      * @return string
      */
-    function setHeader(){
+    function setHeader($options = array()){
         global $wp_query;
         $ret = '';
         
@@ -104,20 +104,29 @@ class Model_SQ_Frontend {
             /* Meta setting*/
             $this->title = $this->clearTitle($this->getCustomTitle()); 
             
-            $ret .= $this->setCustomDescription();
-            $ret .= $this->setCustomKeyword();
-
-            $ret .= $this->setCanonical();
-            $ret .= $this->getXMLSitemap();
+            if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
+                $ret .= $this->setCustomDescription();
+                $ret .= $this->setCustomKeyword();   
+            }
+            
+            if((!isset($options['sq_auto_canonical']) || (isset($options['sq_auto_canonical']) && $options['sq_auto_canonical'] == 1)))
+               $ret .= $this->setCanonical();
+            
+            if((!isset($options['sq_auto_sitemap']) || (isset($options['sq_auto_sitemap']) && $options['sq_auto_sitemap'] == 1)))
+                $ret .= $this->getXMLSitemap();
             /* Auto setting*/
 
-
-            $ret .= $this->getFavicon();
-            $ret .= $this->getCopyright();
-            $ret .= $this->getPublisher();
-            $ret .= $this->getLanguage();
-            $ret .= $this->getDCPublisher();
-            $ret .= $this->getTheDate();
+            if((!isset($options['sq_auto_favicon']) || (isset($options['sq_auto_favicon']) && $options['sq_auto_favicon'] == 1)))
+                $ret .= $this->getFavicon();
+            
+            if((!isset($options['sq_auto_meta']) || (isset($options['sq_auto_meta']) && $options['sq_auto_meta'] == 1))){
+                $ret .= $this->getCopyright();
+                $ret .= $this->getPublisher();
+                $ret .= $this->getLanguage();
+                $ret .= $this->getDCPublisher();
+                $ret .= $this->getTheDate();
+            }
+            
             /* SEO optimizer tool*/
             $ret .= $this->getGoogleWT();
             $ret .= $this->getGoogleAnalytics();
@@ -192,13 +201,13 @@ class Model_SQ_Frontend {
             $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
         }
         
-        if (isset ($title) && !empty($title)){
+        if ($title <> ''){
             $title = $this->clearTitle($title);
             $title = $this->truncate($title, $this->min_title_length, $this->max_title_length);
         }
         
         /* Check if is a predefined Title */
-        if(is_home() && SQ_Frontend::$options['sq_fp_title'] <> ''){
+        if(is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_title'] <> ''){
             $title = $this->clearTitle( SQ_Frontend::$options['sq_fp_title'] );
         }
         
@@ -206,7 +215,7 @@ class Model_SQ_Frontend {
     }
     
     private function clearTitle($title){
-         return esc_html(strip_tags(html_entity_decode($title)));
+         return trim(esc_html(strip_tags(html_entity_decode($title))));
     }
     
     
@@ -217,45 +226,46 @@ class Model_SQ_Frontend {
      */
     private function setCustomDescription() {
         global $wp_query;
-        
+        $description_min_lng = 10;
+        $description = '';
+       
         if(is_home() || is_single() || is_page() || $this->checkPostsPage()) {
-            if(is_home() && SQ_Frontend::$options['sq_fp_description'] <> '')
+            if(is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_description'] <> ''){
                 $description = strip_tags( SQ_Frontend::$options['sq_fp_description'] );
-            else
+            }else{
                 $description = $this->grabDescriptionFromPost();
+                if ($description <> '' && strlen($description) < $description_min_lng) $description = '';
+            }
         }elseif(is_category()) {
-            
             $description = SQ_Tools::i18n(category_description());
             if($description == '')
                 $description = $this->grabDescriptionFromPost();
+            
+            if ($description <> '' && strlen($description) < $description_min_lng) $description = '';
         }
         
-        if (isset($description) && !(is_home() && is_paged())) {
-           
-            $description = trim(strip_tags($description));
-            $description = str_replace('"', '', $description);
+        $description = (($description <> '') ? $description : $this->title);
+        if ($description <> '') {
+            $this->description = $this->clearDescription($description);
 
-            // replace newlines on mac / windows?
-            $description = str_replace("\r\n", ' ', $description);
-
-            // maybe linux uses this alone
-            $description = str_replace("\n", ' ', $description);
-
-
-            $description = apply_filters('sq_description_override', $description);
-
-            //Save it and use it later
-            $this->description = (($description <> '') ? $description : $this->title);
-            if ($this->description <> '' && strlen($this->description) > 10){ //prevent blank description
+            if ($this->description <> ''){ //prevent blank description
                 return sprintf("<meta name=\"description\" content=\"%s\" />" , strip_tags(html_entity_decode($this->description)) ) . "\n" ; 
             }else{
-                return false; 
+                return ''; 
             }
         }
-        return false;
+        return '';
     }
     
-   
+    private function clearDescription($description){
+        $description = trim(esc_html(strip_tags(html_entity_decode($description))));
+        $description = str_replace('"', '', $description);
+        $description = str_replace("\r\n", ' ', $description);
+        $description = str_replace("\n", ' ', $description);
+        
+        return $description;
+    }
+    
     /**
      * Get the keywords from articles
      * 
@@ -276,7 +286,7 @@ class Model_SQ_Frontend {
         }
         
         /* Check if is a predefined Keyword */
-        if((is_home() && SQ_Frontend::$options['sq_fp_keywords'] <> '') || $keywords == ''){
+        if((is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_keywords'] <> '') || $keywords == ''){
             $keywords = strip_tags( SQ_Frontend::$options['sq_fp_keywords'] );
         }
         

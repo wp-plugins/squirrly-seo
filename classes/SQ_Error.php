@@ -39,8 +39,9 @@ class SQ_Error extends SQ_FrontController{
      * 
      * @return void;
      */
-    public static function setError($error = '', $type = 'notice'){
-        self::$errors[] = array('type' => $type,
+    public static function setError($error = '', $type = 'notice', $id = ''){
+        self::$errors[] = array('id' => $id,
+                                'type' => $type,
                                 'text' => $error);
         
     } 
@@ -54,7 +55,7 @@ class SQ_Error extends SQ_FrontController{
             
             switch ($error['type']){
                 case 'fatal':
-                    self::showError(ucfirst(_PLUGIN_NAME_ . " " . $error['type']) . ': ' . $error['text']);
+                    self::showError(ucfirst(_PLUGIN_NAME_ . " " . $error['type']) . ': ' . $error['text'], $error['id']);
                     die();
                     break;
                 case 'settings':
@@ -63,11 +64,11 @@ class SQ_Error extends SQ_FrontController{
                     
                     /* switch off option for notifications */
                     self::$switch_off = "<a href=\"javascript:jQuery.post( ajaxurl, {action: 'sq_warnings_off', nonce: '".wp_create_nonce( 'sq_none' )."'}, function(data) { if (data) { jQuery('.sq_message').hide(); jQuery('#sq_ignore_warn').attr('checked', true); jQuery('#toplevel_page_squirrly .awaiting-mod').fadeOut('slow'); } });\" >" . __( "Turn off warnings!", _PLUGIN_NAME_ ) . "</a>";
-                    self::showError(ucfirst(_PLUGIN_NAME_) . " " . __('Notice: ',_PLUGIN_NAME_) . $error['text'] . " " .self::$switch_off);
+                    self::showError(ucfirst(_PLUGIN_NAME_) . " " . __('Notice: ',_PLUGIN_NAME_) . $error['text'] . " " .self::$switch_off, $error['id']);
                     break;
                 default:
 
-                    self::showError(ucfirst(_PLUGIN_NAME_) . " " . __('Note: ',_PLUGIN_NAME_) . $error['text']);
+                    self::showError(ucfirst(_PLUGIN_NAME_) . " " . __('Note: ',_PLUGIN_NAME_) . $error['text'], $error['id']);
                     
             }
           }
@@ -79,7 +80,7 @@ class SQ_Error extends SQ_FrontController{
     *
     * @return void
     */
-    public static function showError($message){
+    public static function showError($message,$id=''){
         $type = 'sq_error';
         
         if (file_exists(_SQ_THEME_DIR_.'SQ_notices.php')){

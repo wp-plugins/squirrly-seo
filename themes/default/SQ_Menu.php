@@ -1,5 +1,5 @@
 <div id="sq_settings" >
-    <form name="settings" action="" method="post" enctype="multipart/form-data">
+    <form id="sq_settings_form" name="settings" action="" method="post" enctype="multipart/form-data">
     <?php if(!isset($view->options['sq_api']) || !isset($view->options['sq_howto'])) {?>
     <div id="sq_settings_howto">
         <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Perfect SEO on each article you write.', _PLUGIN_NAME_); ?></div>
@@ -47,22 +47,155 @@
                      <span class="sq_switch-selection"></span>
                    </div>
                </div>
-             
-                 
-                  <ul class="sq_settings_info">
+                
+                  <ul id="sq_settings_sq_use" class="sq_settings_info">
                       <span ><?php _e('What does Squirrly automatically do for SEO?', _PLUGIN_NAME_); ?></span>
-                      <li><?php _e('adds the correct <strong>title</strong> in the home page', _PLUGIN_NAME_); ?></li>
-                      <li><?php _e('adds the correct <strong>description</strong> and <strong>keywords</strong> in all pages', _PLUGIN_NAME_); ?></li>
-                      <li><?php _e('adds <strong>canonical</strong> link in home page', _PLUGIN_NAME_); ?></li>
-                      <li><?php _e('adds the <strong>XML Sitemap</strong> for search engines', _PLUGIN_NAME_); ?>: <strong><?php echo get_bloginfo('siteurl') . '/sitemap.xml' ?></strong></li>
-                      <li><?php _e('adds the required METAs for home page (<strong>icon, author, language, dc publisher</strong>, etc.)', _PLUGIN_NAME_); ?></li>
-                      <li><?php _e('adds the <strong>favicon</strong> and the <strong>icon for Apple devices</strong>.', _PLUGIN_NAME_); ?></li>
+                       
+                      <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_canonical']) || (isset($view->options['sq_auto_canonical']) && $view->options['sq_auto_canonical'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_canonical1" type="radio" class="sq_switch-input" name="sq_auto_canonical"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_canonical1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_canonical0" type="radio" class="sq_switch-input" name="sq_auto_canonical" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_canonical0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php _e('Add <strong>canonical</strong> link in home page', _PLUGIN_NAME_); ?></span>
+                          </div>
+                      </li>
+                      <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_sitemap']) || (isset($view->options['sq_auto_sitemap']) && $view->options['sq_auto_sitemap'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_sitemap1" type="radio" class="sq_switch-input" name="sq_auto_sitemap"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_sitemap1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_sitemap0" type="radio" class="sq_switch-input" name="sq_auto_sitemap" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_sitemap0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php _e('Add the <strong>XML Sitemap</strong> for search engines', _PLUGIN_NAME_); ?>: <strong><?php echo get_bloginfo('siteurl') . '/sitemap.xml' ?></strong></span>
+                          </div>
+                      </li>
+                      <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_meta']) || (isset($view->options['sq_auto_meta']) && $view->options['sq_auto_meta'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_meta1" type="radio" class="sq_switch-input" name="sq_auto_meta"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_meta1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_meta0" type="radio" class="sq_switch-input" name="sq_auto_meta" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_meta0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php _e('Add the required METAs for home page (<strong>icon, author, language, dc publisher</strong>, etc.)', _PLUGIN_NAME_); ?></span>
+                          </div>
+                      </li>
+                      <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_favicon']) || (isset($view->options['sq_auto_favicon']) && $view->options['sq_auto_favicon'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_favicon1" type="radio" class="sq_switch-input" name="sq_auto_favicon"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_favicon1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_favicon0" type="radio" class="sq_switch-input" name="sq_auto_favicon" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_favicon0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php _e('Add the <strong>favicon</strong> and the <strong>icon for Apple devices</strong>.', _PLUGIN_NAME_); ?></span>
+                          </div>
+                     </li>
                   </ul>
               
             
             </div>
         </fieldset>  
-             
+
+        <fieldset id="sq_title_description_keywords" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+            <legend><?php _e('First page optimization (Title, Description, Keywords)', _PLUGIN_NAME_); ?></legend>
+            <ul id="sq_settings_sq_use" class="sq_settings_info">
+                <li>
+                    <?php 
+                        $auto_option = false;
+                        if((!isset($view->options['sq_auto_title']) || (isset($view->options['sq_auto_title']) && $view->options['sq_auto_title'] == 1)))
+                            $auto_option = true;
+                    ?>
+                    <div class="sq_option_content sq_option_content_small">
+                      <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                        <input id="sq_auto_title1" type="radio" class="sq_switch-input" name="sq_auto_title"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                        <label for="sq_auto_title1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                        <input id="sq_auto_title0" type="radio" class="sq_switch-input" name="sq_auto_title" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                        <label for="sq_auto_title0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                        <span class="sq_switch-selection"></span>
+                      </div>
+                      <span><?php _e('Add the correct <strong>title</strong> in the home page', _PLUGIN_NAME_); ?></span>
+                    </div>
+                </li>
+                <li>
+                    <?php 
+                        $auto_option = false;
+                        if((!isset($view->options['sq_auto_description']) || (isset($view->options['sq_auto_description']) && $view->options['sq_auto_description'] == 1)))
+                            $auto_option = true;
+                    ?>
+                    <div class="sq_option_content sq_option_content_small">
+                      <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                        <input id="sq_auto_description1" type="radio" class="sq_switch-input" name="sq_auto_description"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                        <label for="sq_auto_description1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                        <input id="sq_auto_description0" type="radio" class="sq_switch-input" name="sq_auto_description" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                        <label for="sq_auto_description0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                        <span class="sq_switch-selection"></span>
+                      </div>
+                      <span><?php _e('Add the correct <strong>description</strong> and <strong>keywords</strong> in all pages', _PLUGIN_NAME_); ?></span>
+                    </div>
+                </li>   
+            </ul>
+            <?php 
+                
+                $auto_option = false;
+                if((!isset($view->options['sq_fp_title']) || $view->options['sq_fp_title'] == '') || (isset($view->options['sq_auto_seo']) && $view->options['sq_auto_seo'] == 1))
+                 $auto_option = true;   
+            ?>
+            <div class="sq_option_content">
+                <div class="sq_switch">
+                  <input id="sq_automatically" type="radio" class="sq_switch-input" name="sq_auto_seo" value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                  <label for="sq_automatically" class="sq_switch-label sq_switch-label-off"><?php _e('Auto', _PLUGIN_NAME_); ?></label>
+                  <input id="sq_customize" type="radio" class="sq_switch-input" name="sq_auto_seo"  value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                  <label for="sq_customize" class="sq_switch-label sq_switch-label-on"><?php _e('Custom', _PLUGIN_NAME_); ?></label>
+                  <span class="sq_switch-selection"></span>
+                </div>
+            </div>
+            
+           <div id="sq_customize_settings" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>>
+
+             <p class="withborder">
+              <?php _e('Title:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '')?>" size="75" /> 
+              <span class="sq_settings_info"><?php _e('Tips: Length 10-70 chars', _PLUGIN_NAME_); ?></span>
+             </p>
+             <p class="withborder">
+              <?php _e('Description:', _PLUGIN_NAME_); ?><textarea name="sq_fp_description" cols="70" rows="3" ><?php echo ((isset($view->options['sq_fp_description']) && $view->options['sq_fp_description'] <> '') ? $view->options['sq_fp_description'] : '')?></textarea>
+              <span class="sq_settings_info"><?php _e('Tips: Length 70-255 chars', _PLUGIN_NAME_); ?></span>
+             </p>
+             <p class="withborder">
+              <?php _e('Keywords:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_keywords" value="<?php echo ((isset($view->options['sq_fp_keywords']) && $view->options['sq_fp_keywords'] <> '') ? $view->options['sq_fp_keywords'] : '')?>" size="70" /> 
+              <span class="sq_settings_info"><?php _e('Tips: 2-4 keywords', _PLUGIN_NAME_); ?></span>
+             </p>
+           </div>  
+        </fieldset>
+                     
         <fieldset>
             <legend><?php _e('Squirrly Options', _PLUGIN_NAME_); ?></legend>
             <div class="sq_option_content">
@@ -74,6 +207,17 @@
                   <span class="sq_switch-selection"></span>
                 </div>
                 <span><?php _e('Let Squirrly warn me if there are errors related to SEO settings', _PLUGIN_NAME_); ?></span>
+            </div>
+            
+            <div class="sq_option_content">
+                <div class="sq_switch"> 
+                  <input id="sq_google_index1" type="radio" class="sq_switch-input" name="sq_google_index" value="1" <?php echo (!SQ_Tools::getPrivateBlog() ? "checked" : '')?> />
+                  <label for="sq_google_index1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                  <input id="sq_google_index0" type="radio" class="sq_switch-input" name="sq_google_index"  value="0" <?php echo (SQ_Tools::getPrivateBlog() ? "checked" : '')?> />
+                  <label for="sq_google_index0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                  <span class="sq_switch-selection"></span> 
+                </div>
+                <span><?php _e('Let Search Engines index my site', _PLUGIN_NAME_); ?></span>
             </div>
             
             <div class="sq_option_content">
@@ -99,29 +243,7 @@
             </div>
        </fieldset> 
                   
-        <fieldset>
-            <legend><?php _e('First page optimization (Title, Description, Keywords)', _PLUGIN_NAME_); ?></legend>
-            <p class="automaticaly" <?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? 'style="display: none;"' : '')?>><?php _e('Status:', _PLUGIN_NAME_); ?> <span style="color:green; font-weight: bold;"><?php _e('automatically', _PLUGIN_NAME_); ?></span> </p>
-            <p class="customize" <?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? 'style="display: none;"' : '')?>><?php _e('Change it >>', _PLUGIN_NAME_); ?></p>
-            <div <?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? '' : 'style="display: none;"')?>>
-             <p class="withborder">
-              <?php _e('Title:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '')?>" size="75" /> 
-              <span class="sq_settings_info"><?php _e('Tips: Length 10-70 chars', _PLUGIN_NAME_); ?></span>
-             </p>
-             <p class="withborder">
-              <?php _e('Description:', _PLUGIN_NAME_); ?><textarea name="sq_fp_description" cols="70" rows="3" ><?php echo ((isset($view->options['sq_fp_description']) && $view->options['sq_fp_description'] <> '') ? $view->options['sq_fp_description'] : '')?></textarea>
-              <span class="sq_settings_info"><?php _e('Tips: Length 70-255 chars', _PLUGIN_NAME_); ?></span>
-             </p>
-             <p class="withborder">
-              <?php _e('Keywords:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_keywords" value="<?php echo ((isset($view->options['sq_fp_keywords']) && $view->options['sq_fp_keywords'] <> '') ? $view->options['sq_fp_keywords'] : '')?>" size="70" /> 
-              <span class="sq_settings_info"><?php _e('Tips: 2-4 keywords', _PLUGIN_NAME_); ?></span>
-             </p>
-            </div>
-            <?php if(!isset($view->options['sq_fp_title']) || $view->options['sq_fp_title'] == '') {?>
-            <p class="_customize" style="display: none;"><?php _e('<< Leave it automatically', _PLUGIN_NAME_); ?></p>
-            <?php }?>
-        </fieldset>
-        
+
         
 
         </div>

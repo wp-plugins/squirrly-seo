@@ -5,7 +5,7 @@
     <span class='sq_count pending-count'><?php echo $message; ?></span>
 </span>
 <?php }else{ ?>
-<div class="<?php echo $type; ?> sq_message">
+<div id="<?php echo $id ?>" class="<?php echo $type; ?> sq_message">
   
   <p>
     <strong><?php echo $message; ?></strong>

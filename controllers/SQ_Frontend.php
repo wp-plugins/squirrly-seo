@@ -12,7 +12,9 @@ class SQ_Frontend extends SQ_FrontController {
 
         function hookLoaded(){
             if ( isset(self::$options['sq_use']) && (int)self::$options['sq_use'] == 1 ){
-               $this->model->startBuffer(); 
+               //Use buffer only for meta Title
+               if((!isset(self::$options['sq_auto_title']) || (isset(self::$options['sq_auto_title']) && self::$options['sq_auto_title'] == 1)))
+                $this->model->startBuffer(); 
             }
         }
         function action(){}
@@ -24,15 +26,20 @@ class SQ_Frontend extends SQ_FrontController {
             parent::hookHead();
             
             if ( isset(self::$options['sq_use']) && (int)self::$options['sq_use'] == 1 ){
-                echo $this->model->setHeader();
-                $this->model->flushHeader();
+                echo $this->model->setHeader(self::$options);
+
+                //Use buffer only for meta Title
+                if((!isset(self::$options['sq_auto_title']) || (isset(self::$options['sq_auto_title']) && self::$options['sq_auto_title'] == 1)))
+                    $this->model->flushHeader();
             }
             
 	}
         
         function hookFrontfooter(){
             if ( isset(self::$options['sq_use']) && (int)self::$options['sq_use'] == 1 ){
-                $this->model->flushHeader();
+                //Use buffer only for meta Title
+                if((!isset(self::$options['sq_auto_title']) || (isset(self::$options['sq_auto_title']) && self::$options['sq_auto_title'] == 1)))
+                    $this->model->flushHeader();
             }
         }
 }
