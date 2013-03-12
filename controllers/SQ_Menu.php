@@ -61,7 +61,7 @@ class SQ_Menu extends SQ_FrontController {
                 
           switch (SQ_Tools::getValue('action')){
             case 'sq_howto':
-                SQ_Tools::saveOptions('sq_howto', SQ_Tools::getValue('sq_howto'));
+                SQ_Tools::saveOptions('sq_howto', (int)SQ_Tools::getValue('sq_howto'));
                 exit();
                 break;
             case 'sq_update':
