@@ -235,10 +235,13 @@ class SQ_Sitemap extends SQ_FrontController {
         
         /***********************************************************************/
         if($this->IsTaxonomySupported()) {
+            $count = 0;
             $tags = get_terms("post_tag",array("hide_empty"=>true,"hierarchical"=>false));
             if($tags && is_array($tags) && count($tags)>0) {
                 foreach($tags AS $tag) {
+                    if ($count > 3000) break; //not to have a memory break
                     $this->addLine(get_tag_link($tag->term_id),0,$this->opt['tag'][1],$this->opt['tag'][0]);
+                    $count++;
                 }
             }
         }    
@@ -271,21 +274,28 @@ class SQ_Sitemap extends SQ_FrontController {
      */
     private function render(){
         $content = '';
-        $content .= '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $content .= '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-            xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
-            xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        try{
+            @ini_set( 'memory_limit', apply_filters( 'admin_memory_limit', WP_MAX_MEMORY_LIMIT ) );
+            
+            $content .= '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+            $content .= '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+                xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+
+            if (is_array($this->data) && count($this->data) > 0)
+                foreach ($this->data as $data){
+                        $content .= "\t" . '<url>' . "\n";
+                        $content .= "\t\t" . '<loc>'.$data['loc'].'</loc>' . "\n";
+                        $content .= "\t\t" . '<lastmod>'.$data['lastmod'].'</lastmod>' . "\n";
+                        $content .= "\t\t" . '<changefreq>'.$data['changefreq'].'</changefreq>' . "\n";
+                        $content .= "\t\t" . '<priority>'.$data['priority'].'</priority>' . "\n";
+                        $content .= "\t" . '</url>' . "\n";
+                } # end foreach
+            $content .= '</urlset>';
         
-        foreach ($this->data as $data){
-                $content .= "\t" . '<url>' . "\n";
-                $content .= "\t\t" . '<loc>'.$data['loc'].'</loc>' . "\n";
-                $content .= "\t\t" . '<lastmod>'.$data['lastmod'].'</lastmod>' . "\n";
-                $content .= "\t\t" . '<changefreq>'.$data['changefreq'].'</changefreq>' . "\n";
-                $content .= "\t\t" . '<priority>'.$data['priority'].'</priority>' . "\n";
-                $content .= "\t" . '</url>' . "\n";
-        } # end foreach
-        $content .= '</urlset>';
+        }catch(Exception $e){}
         
         $this->saveSitemap($content);
         
