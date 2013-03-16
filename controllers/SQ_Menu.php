@@ -12,14 +12,16 @@ class SQ_Menu extends SQ_FrontController {
             $this->post_type = array('post','page','product','shopp_page_shopp-products');
             
             /* add the plugin menu in admin */
-            $this->model->addMenu(array(    ucfirst(_SQ_NAME_),
+            if (current_user_can('administrator')){
+                $this->model->addMenu(array(    ucfirst(_SQ_NAME_),
                                             ucfirst(_SQ_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                                             'edit_posts',
                                             preg_replace ('/\s/','_',_SQ_NAME_) ,
                                             array($this,'showMenu'),
                                             _SQ_THEME_URL_ . 'img/menu_icon_16.png'
                                       ));
-
+            }
+            
 
             foreach($this->post_type as $type)
                 $this->model->addMeta(array(    'post'._SQ_NAME_,
