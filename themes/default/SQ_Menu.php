@@ -208,18 +208,7 @@
                 </div>
                 <span><?php _e('Let Squirrly warn me if there are errors related to SEO settings', _PLUGIN_NAME_); ?></span>
             </div>
-            
-            <div class="sq_option_content">
-                <div class="sq_switch"> 
-                  <input id="sq_google_index1" type="radio" class="sq_switch-input" name="sq_google_index" value="1" <?php echo (!SQ_Tools::getPrivateBlog() ? "checked" : '')?> />
-                  <label for="sq_google_index1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
-                  <input id="sq_google_index0" type="radio" class="sq_switch-input" name="sq_google_index"  value="0" <?php echo (SQ_Tools::getPrivateBlog() ? "checked" : '')?> />
-                  <label for="sq_google_index0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
-                  <span class="sq_switch-selection"></span> 
-                </div>
-                <span><?php _e('Let Search Engines index my site', _PLUGIN_NAME_); ?></span>
-            </div>
-            
+
             <div class="sq_option_content">
                 <div class="sq_switch">
                   <input id="sq_keyword_help1" type="radio" class="sq_switch-input" name="sq_keyword_help" value="1" <?php echo ((!isset($view->options['sq_keyword_help']) ||  $view->options['sq_keyword_help'] == 1) ? "checked" : '')?> />
@@ -298,7 +287,7 @@
        </div>
           
        <div id="sq_settings_submit">   
-        <input type="hidden" name="action" value="sq_update" /> 
+        <input type="hidden" name="action" value="sq_settings_update" /> 
         <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
         <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> 
       </div>

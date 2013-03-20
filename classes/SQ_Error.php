@@ -63,7 +63,7 @@ class SQ_Error extends SQ_FrontController{
                         break;
                     
                     /* switch off option for notifications */
-                    self::$switch_off = "<a href=\"javascript:jQuery.post( ajaxurl, {action: 'sq_warnings_off', nonce: '".wp_create_nonce( 'sq_none' )."'}, function(data) { if (data) { jQuery('.sq_message').hide(); jQuery('#sq_ignore_warn').attr('checked', true); jQuery('#toplevel_page_squirrly .awaiting-mod').fadeOut('slow'); } });\" >" . __( "Turn off warnings!", _PLUGIN_NAME_ ) . "</a>";
+                    self::$switch_off = "<a href=\"javascript:void(0);\" onclick=\"jQuery.post( ajaxurl, {action: 'sq_warnings_off', nonce: '".wp_create_nonce( 'sq_none' )."'}, function(data) { if (data) { jQuery('#sq_ignore_warn').attr('checked', true); jQuery('.sq_message').hide(); jQuery('#toplevel_page_squirrly .awaiting-mod').fadeOut('slow'); } });\" >" . __( "Turn off warnings!", _PLUGIN_NAME_ ) . "</a>";
                     self::showError(ucfirst(_PLUGIN_NAME_) . " " . __('Notice: ',_PLUGIN_NAME_) . $error['text'] . " " .self::$switch_off, $error['id']);
                     break;
                 default:

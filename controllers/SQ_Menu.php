@@ -3,7 +3,7 @@ class SQ_Menu extends SQ_FrontController {
         private $post_type;
 	// 
         function init(){}
-	
+
         /*
          * Creates the Setting menu in Wordpress
          */
@@ -31,6 +31,9 @@ class SQ_Menu extends SQ_FrontController {
                                             'side', 
                                             'high'
                                     ));
+            
+            //Add the Rank in the Posts list
+            //SQ_ObjController::getController('SQ_PostsList')->init();
            
 	}
         
@@ -66,7 +69,8 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_howto', (int)SQ_Tools::getValue('sq_howto'));
                 exit();
                 break;
-            case 'sq_update':
+            case 'sq_settings_update':
+                
                 if(isset($_GET['params'])) {
                     parse_str($_GET['params'],$_GET);
                 }
@@ -96,7 +100,7 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_keyword_information', (int)SQ_Tools::getValue('sq_keyword_information'));
                 
                 
-                update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
+                //update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
                 
                 /* if there is an icon to upload*/
                 if (!empty($_FILES['favicon'])) {

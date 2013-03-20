@@ -27,7 +27,7 @@
 		<name>SQ_Menu</name>
 		<description>The Setting page</description>
 		<actions>
-                    <action>sq_update</action>
+                    <action>sq_settings_update</action>
                     <action>sq_howto</action>
                     
                     <action>sq_fixautoseo</action>
