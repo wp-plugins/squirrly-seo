@@ -70,6 +70,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 1.1.6 =
+* Fixed settings bugs
+
 = 1.1.5 =
 * Added multiple Countries for Keyword Research 
 * Changed the Squirrly SEO Settings Look
