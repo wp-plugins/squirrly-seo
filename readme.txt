@@ -16,7 +16,7 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 
  * <strong>Inspiration box:</strong> pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
 
- * <strong>Read industry-related blogs, straight from your wordpress</strong>. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
+ * <strong>Read industry - related blogs, straight from your wordpress</strong>. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
 
 
  * Besides excellence in SEO delivered to your Wordpress through our software, <strong>we strive to offer excellence in Customer Service</strong>. We were featured on the <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringhappiness.com/everyday-happiness-florin-squirrly-and-how-theyre-making-happy-work/" target="_blank">Delivering Happiness Blog</a> for this.
