@@ -2,18 +2,19 @@
 class SQ_Post extends SQ_FrontController {
     
     function hookInit(){
-        
-        
-        if (SQ_Tools::$options['sq_api'] == '') return;
-            
-        if ( get_user_option('rich_editing') == 'true') {
+        //if ( get_user_option('rich_editing') == 'true') {
             add_filter( 'tiny_mce_before_init', array(&$this->model,'setCallback') );
             
             add_filter('mce_external_plugins',  array(&$this->model,'addHeadingButton') );
             add_filter('mce_buttons', array(&$this->model,'registerButton'));
-        }else{
-            SQ_Error::setError(__('For Squirrly to work, you have to have tinymce installed!', _PLUGIN_NAME_));
-        }
+        //}else{
+        //    SQ_Error::setError(__('For Squirrly to work, you have to have tinymce installed!', _PLUGIN_NAME_));
+        //}
+       
+        //
+        if (SQ_Tools::$options['sq_api'] == '') return;
+        
+       // echo "<pre>".print_R($_POST,true)."<pre>";
         add_action('save_post', array($this, 'hookSavePost'), 10);
         
         //For Shopp plugin - product
@@ -23,18 +24,19 @@ class SQ_Post extends SQ_FrontController {
     
     function hookHead() {
         global $post_ID;
-        
         parent::hookHead();
         
         /**
-         * Add the post ID in database
-        * If there is a custom plugin post or Shopp product
+         * Add the post ID in variable
+         * If there is a custom plugin post or Shopp product
+         * 
+         * Set the global variable $sq_postID for cookie and keyword record
         */
         if ((int)$post_ID == 0){
            if (SQ_Tools::getIsset('id')) $GLOBALS['sq_postID'] = (int)SQ_Tools::getValue('id');
         }else{
            $GLOBALS['sq_postID'] = $post_ID;
-        }
+        } 
         /*********************************/
         
         echo '<script type="text/javascript">(function() {this.sq_tinymce = { callback: function () {}, setup: function(ed){} } })(window);</script>';
@@ -55,10 +57,13 @@ class SQ_Post extends SQ_FrontController {
         $file_name = false;
          // unhook this function so it doesn't loop infinitely
         remove_action('save_post', array($this, 'hookSavePost'), 10);
-        
-        if(wp_is_post_revision($post_id) == '' && wp_is_post_autosave($post_id) == '' && get_post_status($post_id) != 'auto-draft' && SQ_Tools::getValue('autosave') == ''){
-            
-            $this->checkSeo($post_id);
+        if( (SQ_Tools::getValue('action')) == 'editpost' && 
+             wp_is_post_revision($post_id) == '' && 
+             wp_is_post_autosave($post_id) == '' && 
+             get_post_status($post_id) != 'auto-draft' && 
+             SQ_Tools::getValue('autosave') == ''){
+     
+            $this->checkSeo($post_id, get_post_status($post_id));
             $this->checkImage($post_id);
         }
         add_action('save_post', array($this, 'hookSavePost'), 10);
@@ -135,17 +140,35 @@ class SQ_Post extends SQ_FrontController {
             );
         }
     }
-    function checkSeo($post_id){
+    function checkSeo($post_id, $status =''){
         $seo = SQ_Tools::getValue('sq_seo');
         
         if(is_array($seo) && count($seo)>0)
            $args['seo'] = implode (',', $seo);
         
         $args['keyword'] = SQ_Tools::getValue('sq_keyword');
+        
+        $args['status'] = $status;
+        $args['permalink'] = get_permalink($post_id);
+        $args['permalink'] = $this->getPaged($args['permalink']);
+        $args['permalink'] = urlencode($args['permalink']);
         $args['post_id'] = $post_id;
         
         SQ_Action::apiCall('sq/seo/post',$args);
     }
+    
+    function getPaged($link) {
+        $page = get_query_var('paged');
+        if ($page && $page > 1) {
+            $link = trailingslashit($link) ."page/". "$page";
+            if ($has_ut) {
+                $link = user_trailingslashit($link, 'paged');
+            } else {
+                $link .= '/';
+            }
+        }
+        return $link;
+    }   
     
     /**
     * Called when Post action is triggered
@@ -158,7 +181,7 @@ class SQ_Post extends SQ_FrontController {
       switch (SQ_Tools::getValue('action')){
        case 'sq_feedback':
             global $current_user;
-            $return = array();
+            $return = array(); 
             
             SQ_Tools::saveOptions('sq_feedback', 1);
             
@@ -190,8 +213,8 @@ class SQ_Post extends SQ_FrontController {
                     $message = $message . $line;
                 
                 if($face <> '') {
-                    $message .= 'User url:' . get_bloginfo('wpurl') . "\n";
-                    $message .= 'User face:' .$face ;
+                    $message .= 'Url:' . get_bloginfo('wpurl') . "\n";
+                    $message .= 'Face:' .$face ;
                 }
                 
                 
@@ -217,6 +240,7 @@ class SQ_Post extends SQ_FrontController {
             $return = array();
             $versions = '';
             
+            $versions .= 'Url:' . get_bloginfo('wpurl') . "\n";
             $versions .= 'Squirrly version: ' . SQ_VERSION_ID . "\n";
             $versions .= 'Wordpress version: ' . WP_VERSION_ID . "\n";
             $versions .= 'PHP version: ' . PHP_VERSION_ID . "\n";
