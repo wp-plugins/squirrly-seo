@@ -10,6 +10,8 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 == Description ==
 <h3>SEO Plugin by SQUIRRLY - helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time.</h3>
 
+[youtube http://www.youtube.com/watch?v=ymh8DBKrfhw]
+
  * <strong>Keyword research:</strong> finds the perfect keywords for your articles and analyses them for you.
 
  * <strong>SEO Live Assistant:</strong> Checks your SEO on each article or page in real time. Before you click the Post button, you know if your article is  optimized 100% or not.

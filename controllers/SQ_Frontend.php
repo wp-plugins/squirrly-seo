@@ -8,6 +8,11 @@ class SQ_Frontend extends SQ_FrontController {
             SQ_ObjController::getController('SQ_Tools', false);
             self::$options = SQ_Tools::getOptions();
             
+            if (SQ_Tools::getValue('sq_use') == 'on')
+                self::$options['sq_use'] = 1;
+            elseif (SQ_Tools::getValue('sq_use') == 'off')
+                self::$options['sq_use'] = 0;
+            
         }
 
         function hookLoaded(){
