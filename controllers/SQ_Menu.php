@@ -1,6 +1,9 @@
 <?php
 class SQ_Menu extends SQ_FrontController {
+        /** @var array snippet */    
         private $post_type;
+        /** @var array snippet */
+        var $options = array();
 	// 
         function init(){}
 
@@ -33,7 +36,7 @@ class SQ_Menu extends SQ_FrontController {
                                     ));
             
             //Add the Rank in the Posts list
-            //SQ_ObjController::getController('SQ_PostsList')->init();
+           // SQ_ObjController::getController('SQ_PostsList')->init();
            
 	}
         
@@ -141,12 +144,24 @@ class SQ_Menu extends SQ_FrontController {
             case 'sq_warnings_off':
                 SQ_Tools::saveOptions('ignore_warn', 1);
                 break;
-            
+            case 'sq_get_snippet':
+                if (SQ_Tools::getValue('url') <> '')
+                    $url = SQ_Tools::getValue('url');
+                else
+                    $url = get_bloginfo('wpurl');
+                
+                $snippet = SQ_Tools::getSnippet($url);
+                /*if((int)SQ_Tools::getValue('post_id') > 0)
+                    $snippet['url'] = get_permalink((int)SQ_Tools::getValue('post_id'));
+                */  
+                echo json_encode($snippet);
+                exit();
             
           }
             
             
         }
+        
 }
 
 

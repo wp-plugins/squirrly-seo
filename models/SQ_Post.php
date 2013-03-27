@@ -149,6 +149,8 @@ class Model_SQ_Post {
     public function getImgUrl() {
         return get_bloginfo('wpurl'). '/wp-content/uploads/';
     }
+    
+    
 }
 
 ?>

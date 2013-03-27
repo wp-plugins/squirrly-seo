@@ -163,12 +163,25 @@
                     </div>
                 </li>   
             </ul>
+            
             <?php 
                 
                 $auto_option = false;
                 if((!isset($view->options['sq_fp_title']) || $view->options['sq_fp_title'] == '') || (isset($view->options['sq_auto_seo']) && $view->options['sq_auto_seo'] == 1))
                  $auto_option = true;   
             ?>
+            <div id="sq_snippet">
+                <div id="sq_snippet_name"><?php _e('Squirrly Snippet',_PLUGIN_NAME_)?></div>
+                <ul id="sq_snippet_ul">
+                    <li id="sq_snippet_title"></li>
+                    <li id="sq_snippet_url"></li>
+                    <li id="sq_snippet_description"></li>
+                    
+                </ul>
+                <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin effects Squirrly SEO',_PLUGIN_NAME_)?></div>
+            </div>
+            
+            
             <div class="sq_option_content">
                 <div class="sq_switch">
                   <input id="sq_automatically" type="radio" class="sq_switch-input" name="sq_auto_seo" value="1" <?php echo ($auto_option ? "checked" : '')?> />

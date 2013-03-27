@@ -18,20 +18,17 @@ class SQ_HookController {
                                             'wmenu'=> '_admin_menu',
                                             'menu'=> 'admin_menu',
                                             'submenu'=> 'add_submenu_page',
-                    
-                                           // 'savePost'=> 'save_post',
+                                            'loaded' => 'plugins_loaded',
                     
                                             'xml'=> 'admin_xml_ns',
                                             'scripts'=> 'admin_enqueue_scripts',
                                             'notices'=> 'admin_notices',
                                             'shutdown'=>'shutdown',
-                    
-                                            'fronthead' => 'wp_head',
-                                            'loaded' => 'plugins_loaded',
+                                            
                                             'fronttitletheme' => 'thematic_doctitle',
-                    
-                                            'frontfooter' => 'wp_footer',
-                                            'frontinit'=> 'init'
+                                            'frontinit'=> 'init',
+                                            'fronthead' => 'wp_head',
+                                            'frontfooter' => 'wp_footer'
                                            );
                 $this->custom_hooks = array();
 		$this->block_hooks = array('getContent'=> 'getContent');

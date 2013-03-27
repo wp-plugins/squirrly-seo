@@ -86,6 +86,8 @@ class Model_SQ_Menu {
 	
 	}	
         
+        
+        
         /**
          * Check the google code saved at settings
          * 

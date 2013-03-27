@@ -24,11 +24,22 @@
 		<path>controllers</path>
 	</block>
         <block>
+		<name>SQ_PostsList</name>
+		<description>Posts List Page</description>
+		<actions>
+                    <action>sq_posts_rank</action>
+                    <action>sq_post_rank</action>
+                </actions>
+		<active>1</active>
+		<path>controllers</path>
+	</block>
+        <block>
 		<name>SQ_Menu</name>
 		<description>The Setting page</description>
 		<actions>
                     <action>sq_settings_update</action>
                     <action>sq_howto</action>
+                    <action>sq_get_snippet</action>
                     
                     <action>sq_fixautoseo</action>
                     <action>sq_fixpermalink</action>
@@ -36,6 +47,8 @@
                     <action>sq_fixcomments</action>
                     
                     <action>sq_warnings_off</action>
+                    
+                    
                     
                 </actions>
 		<active>1</active>

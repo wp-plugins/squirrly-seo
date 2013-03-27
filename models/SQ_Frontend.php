@@ -215,7 +215,8 @@ class Model_SQ_Frontend {
     }
     
     private function clearTitle($title){
-         return trim(esc_html(strip_tags(html_entity_decode($title))));
+         $title = str_replace(array('"',"&nbsp;","  "), array('',' ',' '), $title);
+         return trim(strip_tags(html_entity_decode($title)));
     }
     
     
@@ -235,6 +236,7 @@ class Model_SQ_Frontend {
             }else{
                 $description = $this->grabDescriptionFromPost();
                 if ($description <> '' && strlen($description) < $description_min_lng) $description = '';
+                   
             }
         }elseif(is_category()) {
             $description = SQ_Tools::i18n(category_description());
@@ -249,7 +251,7 @@ class Model_SQ_Frontend {
             $this->description = $this->clearDescription($description);
 
             if ($this->description <> ''){ //prevent blank description
-                return sprintf("<meta name=\"description\" content=\"%s\" />" , strip_tags(html_entity_decode($this->description)) ) . "\n" ; 
+                return sprintf("<meta name=\"description\" content=\"%s\" />" , $this->description ) . "\n" ; 
             }else{
                 return ''; 
             }
@@ -258,10 +260,8 @@ class Model_SQ_Frontend {
     }
     
     private function clearDescription($description){
-        $description = trim(esc_html(strip_tags(html_entity_decode($description))));
-        $description = str_replace('"', '', $description);
-        $description = str_replace("\r\n", ' ', $description);
-        $description = str_replace("\n", ' ', $description);
+        $description = str_replace(array('"',"\r\n","\n","&nbsp;","  "), array('',' ',' ',' ',' '), $description);
+        $description = trim(strip_tags(html_entity_decode($description)));
         
         return $description;
     }
@@ -520,6 +520,7 @@ class Model_SQ_Frontend {
                     $description = $this->truncate(SQ_Tools::i18n($post->post_content), $this->min_description_length, $this->max_description_length);
             }
         // "internal whitespace trim"
+         
         $description = @preg_replace("/\s\s+/u", " ", $description);
 
         return $description;
@@ -532,6 +533,9 @@ class Model_SQ_Frontend {
      */
     private function grabKeywordsFromPost($id = null){
         global $wp_query;
+        
+        $this->max_keywrods = ($this->max_keywrods > 0 ? ($this->max_keywrods -1) : 0);
+        if ($this->max_keywrods == 0) return;
         
         $keywords = array();
         

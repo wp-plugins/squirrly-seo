@@ -112,7 +112,7 @@ class SQ_Action extends SQ_FrontController{
        $parameters = "";
        if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register') return false;
        
-       $extra = array('user_url' => ((get_bloginfo('wpurl') <> '') ? get_bloginfo('wpurl') :  'http://'.basename($_SERVER['HTTP_HOST'])),
+       $extra = array('user_url' => urlencode(get_bloginfo('wpurl')),
                       'versq' => SQ_VERSION_ID,
                       'verwp' => WP_VERSION_ID,
                       'verphp' => PHP_VERSION_ID,
@@ -137,7 +137,8 @@ class SQ_Action extends SQ_FrontController{
        
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
-       // echo $url;
+       // echo "url:".$url; 
+       
        return SQ_Tools::sq_remote_get($url);
      
    }

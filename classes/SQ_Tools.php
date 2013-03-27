@@ -20,6 +20,8 @@ class SQ_Tools extends SQ_FrontController {
         /* active squirrly by default */
         if(!isset(self::$options['sq_use']))
             self::$options['sq_use'] = 1;
+        
+
     }
     
     /**
@@ -159,15 +161,32 @@ class SQ_Tools extends SQ_FrontController {
      * Connect remote with CURL if exists
      */
     public static function sq_remote_get($url, $param = array()){
+        $cookie = array();
+        $local = false;
+        
+        $url_domain = parse_url($url);
+        $url_domain = $url_domain['host'];
+
+                    
         if (isset($param['timeout']))
             $timeout = $param['timeout'];
         else
             $timeout = 30;
         
+        if ($url_domain = $_SERVER['HTTP_HOST']) $local = true;
+            
+        if($local){
+            foreach( $_COOKIE as $key => $value ) {
+              $cookie[] = "{$key}={$value}";
+            };
+            $cookie = implode('; ', $cookie);
+        }
+        
         if (function_exists('curl_init')){
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            if($local) curl_setopt($ch, CURLOPT_COOKIE, $cookie);
             curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
 
             $responce = curl_exec($ch);   
@@ -211,8 +230,11 @@ class SQ_Tools extends SQ_FrontController {
     }
     
     private static function cleanResponce($response){
-       if (strpos($response,'(') !== false)
-          $response = substr ($response, strpos($response,'(') + 1,strpos($response,')')-1);
+       if (function_exists('substr_count'))
+           if (substr_count($response,'(') > 1) return $response;
+           
+       if (strpos($response,'(') !== false && strpos($response,')') !== false)
+          $response = substr ($response, (strpos($response,'(') + 1),(strpos($response,')')-1));
                
        return $response;
    }
@@ -496,6 +518,46 @@ class SQ_Tools extends SQ_FrontController {
             'platform'  => $platform,
             'pattern'    => $pattern
         );
+    }
+    /**
+     * 
+     * @param string $url
+     * @return array
+     */
+    public static function getSnippet($url){
+        if ($url == '' || !function_exists('preg_match')) return;
+        $snippet = array();
+        $length = array('title' => 66,
+                        'description' => 240,
+                        'url' => 45);
+        
+        $content = self::sq_remote_get($url);
+        
+        //echo '<pre>'.  htmlentities(print_r($content,true)).'</pre>';
+        $title_regex = "/<title[^<>]*>([^<>]*)<\/title>/si";
+        preg_match($title_regex, $content, $title);
+        if (is_array($title) && count($title) > 0){
+            $snippet['title'] = $title[1];
+            $snippet['title'] = trim(esc_html(strip_tags(html_entity_decode($snippet['title']))));
+            if (strlen($snippet['title']) > $length['title'])
+                $snippet['title'] = substr($snippet['title'], 0, ($length['title'] -1) ). '...';
+        }
+        
+        $description_regex = '/<meta[^<>]*description[^<>]*content=["|\\\']([^\'"<>]+)["|\\\'][^<>]*>/si'; 
+        preg_match($description_regex, $content, $description);
+        if (is_array($description) && count($description) > 0){
+            $snippet['description'] = trim(esc_html(strip_tags(html_entity_decode($description[1]))));
+            $snippet['description'] = str_replace(array('"',"\r\n","\n"), array('',' ',' '), $snippet['description']);
+            if (strlen($snippet['description']) > $length['description'])
+                $snippet['description'] = substr($snippet['description'], 0, ($length['description'] -1) ). '...';
+        }
+        
+        $snippet['url'] = $url;
+        if (strlen($snippet['url']) > $length['url'])
+                $snippet['url'] = substr($snippet['url'], 0, ($length['url'] -1) ) . '...';
+        
+        return $snippet;
+
     }
 }
 
