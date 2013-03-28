@@ -2,7 +2,7 @@
     <form id="sq_settings_form" name="settings" action="" method="post" enctype="multipart/form-data">
     <?php if(!isset($view->options['sq_api']) || !isset($view->options['sq_howto'])) {?>
     <div id="sq_settings_howto">
-        <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Perfect SEO on each article you write.', _PLUGIN_NAME_); ?></div>
+        <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Excellent SEO on each article you write.', _PLUGIN_NAME_); ?></div>
         <div id="sq_settings_howto_body">
             <p><span><?php _e('SEO Software', _PLUGIN_NAME_); ?></span><?php _e('delivered as a plugin for Wordpress. <br /><br />We connect your wordpress with Squirrly, so that we can find the best SEO opportunities, give you reports and analyse your competitors.', _PLUGIN_NAME_); ?></p>
             <p><object width="420" height="315"><param name="movie" value="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p> 
@@ -197,15 +197,15 @@
 
              <p class="withborder">
               <?php _e('Title:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '')?>" size="75" /> 
-              <span class="sq_settings_info"><?php _e('Tips: Length 10-75 chars', _PLUGIN_NAME_); ?></span>
+              <span id="sq_fp_title_length"></span><span class="sq_settings_info"><?php _e('Tips: Length 10-75 chars', _PLUGIN_NAME_); ?></span>
              </p>
              <p class="withborder">
               <?php _e('Description:', _PLUGIN_NAME_); ?><textarea name="sq_fp_description" cols="70" rows="3" ><?php echo ((isset($view->options['sq_fp_description']) && $view->options['sq_fp_description'] <> '') ? $view->options['sq_fp_description'] : '')?></textarea>
-              <span class="sq_settings_info"><?php _e('Tips: Length 70-165 chars', _PLUGIN_NAME_); ?></span>
+              <span id="sq_fp_description_length"></span><span class="sq_settings_info"><?php _e('Tips: Length 70-165 chars', _PLUGIN_NAME_); ?></span>
              </p>
              <p class="withborder">
               <?php _e('Keywords:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_keywords" value="<?php echo ((isset($view->options['sq_fp_keywords']) && $view->options['sq_fp_keywords'] <> '') ? $view->options['sq_fp_keywords'] : '')?>" size="70" /> 
-              <span class="sq_settings_info"><?php _e('Tips: 2-4 keywords', _PLUGIN_NAME_); ?></span>
+              <span id="sq_fp_keywords_length"></span><span class="sq_settings_info"><?php _e('Tips: 2-4 keywords', _PLUGIN_NAME_); ?></span>
              </p>
            </div>  
         </fieldset>
@@ -309,5 +309,7 @@
 
     </div>
     </form>
-    
+    <script type="text/javascript">
+       var sq_blogurl = "<?php echo get_bloginfo('wpurl') ?>"; 
+    </script>
 </div>
