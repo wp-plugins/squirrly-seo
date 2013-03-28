@@ -538,16 +538,16 @@ class SQ_Tools extends SQ_FrontController {
         preg_match($title_regex, $content, $title);
         if (is_array($title) && count($title) > 0){
             $snippet['title'] = $title[1];
-            $snippet['title'] = trim(esc_html(strip_tags(html_entity_decode($snippet['title']))));
+            $snippet['title'] = trim(strip_tags(htmlspecialchars($snippet['title'])));
             if (strlen($snippet['title']) > $length['title'])
                 $snippet['title'] = substr($snippet['title'], 0, ($length['title'] -1) ). '...';
         }
         
-        $description_regex = '/<meta[^<>]*description[^<>]*content=["|\\\']([^\'"<>]+)["|\\\'][^<>]*>/si'; 
+        $description_regex = '/<meta[^<>]*description[^<>]*content="([^"<>]+)"[^<>]*>/si'; 
         preg_match($description_regex, $content, $description);
         if (is_array($description) && count($description) > 0){
-            $snippet['description'] = trim(esc_html(strip_tags(html_entity_decode($description[1]))));
-            $snippet['description'] = str_replace(array('"',"\r\n","\n"), array('',' ',' '), $snippet['description']);
+            $snippet['description'] = trim(strip_tags(htmlspecialchars($description[1])));
+            
             if (strlen($snippet['description']) > $length['description'])
                 $snippet['description'] = substr($snippet['description'], 0, ($length['description'] -1) ). '...';
         }

@@ -174,7 +174,6 @@
                 <div id="sq_snippet_name"><?php _e('Squirrly Snippet',_PLUGIN_NAME_)?></div>
                 
                 <ul id="sq_snippet_ul">
-                    <li id="sq_snippet_update"><?php _e('Refresh',_PLUGIN_NAME_)?></li> 
                     <li id="sq_snippet_title"></li>
                     <li id="sq_snippet_url"></li>
                     <li id="sq_snippet_description"></li>

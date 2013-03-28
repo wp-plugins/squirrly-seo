@@ -73,10 +73,8 @@ class SQ_Menu extends SQ_FrontController {
                 exit();
                 break;
             case 'sq_settings_update':
+                if(SQ_Tools::getValue('sq_use') == '') return;
                 
-                if(isset($_GET['params'])) {
-                    parse_str($_GET['params'],$_GET);
-                }
                 SQ_Tools::saveOptions('sq_use', (int)SQ_Tools::getValue('sq_use'));
                 SQ_Tools::saveOptions('sq_auto_title', (int)SQ_Tools::getValue('sq_auto_title'));
                 SQ_Tools::saveOptions('sq_auto_description', (int)SQ_Tools::getValue('sq_auto_description'));
