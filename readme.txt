@@ -12,26 +12,26 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 
 [youtube http://www.youtube.com/watch?v=HYTcdLXNhhw]
 
- * <strong>Keyword research:</strong> finds the perfect keywords for your articles and analyses them for you.
+ * <strong>Keyword research:</strong> finds the perfect keywords for your articles and analyzes them for you.
 
  * <strong>SEO Live Assistant:</strong> Checks your SEO on each article or page in real time. Before you click the Post button, you know if your article is  optimized 100% or not.
 
  * <strong>Inspiration box:</strong> pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
 
- * <strong>Read industry-related blogs, straight from your wordpress</strong>. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
+ * <strong>Read industry-related blogs straight from your wordpress</strong>. The KeenSkim filter that we use will mark the relevant content so that you can reduce 60% of your reading time and start writing your next great article.
 
 
  * Besides excellence in SEO delivered to your Wordpress through our software, <strong>we strive to offer excellence in Customer Service</strong>. We were featured on the <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringhappiness.com/everyday-happiness-florin-squirrly-and-how-theyre-making-happy-work/" target="_blank">Delivering Happiness Blog</a> for this.
 
- * Our software is <strong>always up-to-date</strong> with the latest in terms of search engine optimization and we improve the product for you on a weekly basis.
+ * Our software is <strong>always up-to-date</strong> with the latest in terms of search engine optimization, and we improve the product for you on a weekly basis.
 
-You will always get the latest in terms of search engine optimization developments. We've made a monthly pricing plan, so that you will always get the latest updates related to search engines, stress-free. 
+You will always get the latest in terms of search engine optimization developments. We've made a monthly pricing plan so that you will always get the latest updates related to search engines, stress-free. 
 
 Your blogging will become 210% more effective in terms of time it takes to rank articles (by continued use) and with long-lasting effects  and your experience with SEO much easier, since a team of 5 people work full time on delivering you the best in terms of SEO and Content Marketing.
 
-Also, our wish is to provide you with the best customer service and while our software offers you excellent SEO on every single article you write, our team is here to offer you excellence in Customer Service.
+Also, our wish is to provide you with the best customer service, and while our software offers you excellent SEO on every single article you write, our team is here to offer you excellence in Customer Service.
 
-If Squirrly makes you happy and if this makes sense for you, then please upgrade to PRO.
+If Squirrly makes you happy, and if this makes sense to you, then please upgrade to PRO.
 
 Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles / month. (<a href="http://www.florin-muresan.cif2.net/3_reasons_why_a_subscription_based_payment_keeps_you_safe_and_happy-pag397-article_id62026.html" title="Squirrly SEO" target="_blank">Why a subscription based payment</a>)
 
@@ -49,7 +49,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 == Installation ==
 1. Log In as an Admin on your Wordpress blog.
-2. In the menu displayed to the left, there is a "Plugins" tab. Click it.
+2. In the menu displayed on the left, there is a "Plugins" tab. Click it.
 3. Now click "Add New".
 4. There, you have the buttons: "Search | Upload | Featured | Popular | Newest". Click "Upload".
 5. Upload the squirrly-seo.zip file.
@@ -61,7 +61,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 == Screenshots ==
 1. Enter a keyword for Squirrly Live SEO Assistant
-2. Find out if it's worth to use it
+2. Find out if it's worth it to use it
 3. Add an image in your article
 4. Find images, tweets, wiki, blogs, news or other articles from your blog
 5. Easy to read external blogs
@@ -72,9 +72,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+
 = 1.1.6 =
 * Fixed settings bugs
-
 
 = 1.1.5 =
 * Added multiple Countries for Keyword Research 
@@ -87,7 +87,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
 * Improved compatibility with other plugins and themes
-* Improved META informations 
+* Improved META information 
 
 = 1.1.2 =
 * Now works with Ecommerce plugins WooCommerce, MarketPress, Ready!, Shopp
@@ -126,7 +126,7 @@ Also:
 * Fixed Seo Live Assistant bugs 
 
 = 1.0.6 =
-* Automatically register to squirrly with email address
+* Automatically register on squirrly with email address
 * Fixed the fopen for remote request
 
 = 1.0.4 =
@@ -172,7 +172,7 @@ Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
 Based on your article, Squirrly will find the most relevant text and add it in META Description.
 
 = Can I use squirrly on mobile? =
-Yes, on IOS and ANDROID, works both through the browser and wordpress app
+Yes, on IOS and ANDROID, it works both through the browser and wordpress app
 
 = Can I use the images, tweets and articles given by the Inspiration Box? Are there any legal concerns? =
 Yes, you can use the tweets and the paragraphs in your articles. They contain a link to the source and are perfectly legal to use. Of course, for the
@@ -185,8 +185,8 @@ any request, no matter the time of day. And we also fix any problems which you m
 
 = What Features does squirrly seo plugin offer? =
 All of the features that we offer have been built having the customer's best interests in mind. We brought 90% of our clients to the first page of Google
-and we've proven time and again that we are a great team that knows all there is about good *SEO automation*. We had a community of 20,000 blogs that all
-used our SEO techniques and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
+and we've proven time and again that we are a great team that knows all there is to know about good *SEO automation*. We had a community of 20,000 blogs that all
+used our SEO techniques, and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
 
 - Google Analytics setup support
 - Google Webmaster Tools setup support
@@ -209,7 +209,7 @@ used our SEO techniques and they have gotten lots of hits from search engines du
 - Automatically optimizes content META and tags for search engines
 - Generates META tags automatically
 - Avoids the typical duplicate content found on WordPress blogs
-- For beginners, all these setting are made automatically to get the best SEO possible.
+- For beginners, all these settings are made automatically to get the best SEO possible.
 - For advanced users, you can fine-tune everything.
 - You can override any title and set any META description and any META keywords you want.
 - Compatibility with all the other plugins, like Auto Meta, Ultimate Tag Warrior and others.
