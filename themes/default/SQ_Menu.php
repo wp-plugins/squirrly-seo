@@ -180,7 +180,7 @@
                     <li id="sq_snippet_description"></li>
                     
                 </ul>
-                <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin effects Squirrly SEO',_PLUGIN_NAME_)?></div>
+                <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO',_PLUGIN_NAME_)?></div>
             </div>
             
             
