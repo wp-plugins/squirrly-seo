@@ -177,8 +177,9 @@
                     <li id="sq_snippet_title"></li>
                     <li id="sq_snippet_url"></li>
                     <li id="sq_snippet_description"></li>
-                    
+                    <li id="sq_snippet_source"><a href="http://www.google.com/webmasters/tools/richsnippets?url=<?php echo urlencode(get_bloginfo('wpurl')) ?>" target="_blank"><?php _e('Check with google ...',_PLUGIN_NAME_) ?></a></li>
                 </ul>
+                
                 <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO',_PLUGIN_NAME_)?></div>
             </div>
             
@@ -311,5 +312,6 @@
     </form>
     <script type="text/javascript">
        var sq_blogurl = "<?php echo get_bloginfo('wpurl') ?>"; 
+       
     </script>
 </div>
