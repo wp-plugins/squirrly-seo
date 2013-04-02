@@ -630,6 +630,7 @@ class Model_SQ_Frontend {
      * @return array
      */
     private function calcDensity($text, $title = '', $description = ''){   
+      $keywords = array();
       $text = $title . '. ' . $text;
       $text = @preg_replace('/[^a-zA-Z0-9-.]/', ' ', $text);
       $title = explode(" ",$title); 
@@ -659,28 +660,32 @@ class Model_SQ_Frontend {
           }
         }
       }    
-      // Do some maths and write array
-      $keywords = array_count_values($keywords);
-      arsort($keywords);
       
-      $keywords = @array_slice($keywords, 0, 10);
       $results = $results1 = $results2 = array();
-      $phraseId = 0;
-      foreach ($keywords as $key => $value){
-            $percent = 100 / $words_sum * $value;
-            if ($percent > 1 && in_array($key, $title)  ){
-                foreach ($phrases as $phrase => $count){
-                    if(strpos($phrase, $key) !== false){
-                        $results1[] = trim($key);
-                        $results2[] = $phrase;
-                    }
-                }
-            }
-            $results = array_merge($results2,$results1);
+      if (is_array($keywords) && count($keywords) > 0){
+        // Do some maths and write array
+        $keywords = array_count_values($keywords);
+        arsort($keywords);
+
+        $keywords = @array_slice($keywords, 0, 10);
+       
+        $phraseId = 0;
+        foreach ($keywords as $key => $value){
+              $percent = 100 / $words_sum * $value;
+              if ($percent > 1 && in_array($key, $title)  ){
+                  foreach ($phrases as $phrase => $count){
+                      if(strpos($phrase, $key) !== false){
+                          $results1[] = trim($key);
+                          $results2[] = $phrase;
+                      }
+                  }
+              }
+              $results = array_merge($results2,$results1);
+        }
+        $results = @array_slice($results, 0, 4);
       }
-      $results = @array_slice($results, 0, 4);
       // Return array
-      return $results; 
+      return $results;
     }
     
     function searchPhrase($text){
