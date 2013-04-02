@@ -74,6 +74,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 1.1.7 =
 * Added the real time snippet before you publish the article
+* SEO improvement for META
 
 = 1.1.6 =
 * Fixed settings bugs
@@ -88,7 +89,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
-* Improved compatibility with other plugins and themes
+* Improved compatibility with other SEO plugins and themes
 * Improved META information 
 
 = 1.1.2 =
@@ -96,10 +97,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 = 1.1.0 =
 * Stable version of Squirrly SEO (as we just finished with the beta)
+* WordPress 3.5 compatibility
 
 Also:
 
-* Fixed the most recent seo bugs
+* Fixed the most recent SEO bugs
 * Works nice on iOS and Android in the WP apps.
 * Works in the browsers of iOS and Android devices
 * On-boarding made much better
@@ -167,7 +169,7 @@ Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a 
 
 
 == Frequently Asked Questions ==
-= How does Squirrly Wordpress Seo Plugin work? =
+= How does Squirrly Wordpress SEO Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
 
 = How does the META Description work in Squirrly SEO Optimization? =
@@ -181,11 +183,11 @@ Yes, you can use the tweets and the paragraphs in your articles. They contain a 
 articles add only some paragraphs, not the whole article. As for the images, you can use the Copyright-Free images that we offer, to make sure you will
 not have any legal problems.
 
-= Do I get support for your wordpress seo plugin? =
+= Do I get support for your Wordpress SEO Plugin? =
 Yes, we are focused on Delivering Happiness and this comes along with a good support package. We have a track record of replying in under 5 hours to
 any request, no matter the time of day. And we also fix any problems which you may encounter very fast, so Squirrly is trust-worthy.
 
-= What Features does squirrly seo plugin offer? =
+= What Features does Squirrly SEO Plugin offer? =
 All of the features that we offer have been built having the customer's best interests in mind. We brought 90% of our clients to the first page of Google
 and we've proven time and again that we are a great team that knows all there is to know about good *SEO automation*. We had a community of 20,000 blogs that all
 used our SEO techniques, and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
