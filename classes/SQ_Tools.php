@@ -161,8 +161,8 @@ class SQ_Tools extends SQ_FrontController {
      * Connect remote with CURL if exists
      */
     public static function sq_remote_get($url, $param = array()){
-        $cookie = array();
-        $local = false;
+        $cookies = '';
+        $post_preview = false;
         
         $url_domain = parse_url($url);
         $url_domain = $url_domain['host'];
@@ -173,21 +173,27 @@ class SQ_Tools extends SQ_FrontController {
         else
             $timeout = 30;
         
-        if ($url_domain == $_SERVER['HTTP_HOST']) $local = true;
+        if ($url_domain == $_SERVER['HTTP_HOST'] && strpos($url,'preview=true') !== false) $post_preview = true;
             
-        if($local){
-            foreach( $_COOKIE as $key => $value ) {
-              $cookie[] = "{$key}={$value}";
-            };
-            $cookie = implode('; ', $cookie);
+        if($post_preview){
+            $cookies = array();
+            $cookie_string = '';
+            
+            foreach ( $_COOKIE as $name => $value ) {
+                
+                if (strpos($name,'wordpress')!== false){
+                    $cookies[] = new WP_Http_Cookie( array( 'name' => $name, 'value' => $value ) );
+                    $cookie_string .= "$name=$value;";
+                }
+            }
         }
         
         if (function_exists('curl_init')){
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            if($local) curl_setopt($ch, CURLOPT_COOKIE, $cookie);
             curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+            if($post_preview) curl_setopt($ch, CURLOPT_COOKIE, $cookie_string);
 
             $response = curl_exec($ch);   
             $response = self::cleanResponce($response);
@@ -195,7 +201,7 @@ class SQ_Tools extends SQ_FrontController {
 
             return $response;
         }else{
-            $response = wp_remote_get($url, array('timeout'=>$timeout)); 
+            $response = wp_remote_get($url, array('timeout'=>$timeout, 'cookies' => $cookies )); 
             return self::cleanResponce(wp_remote_retrieve_body($response));
         }
     }
@@ -532,7 +538,7 @@ class SQ_Tools extends SQ_FrontController {
                         'description' => 240,
                         'url' => 45);
         
-        $content = self::sq_remote_get($url);
+        $content = self::sq_remote_get($url,array('timeout' => 5));
         
         //echo '<pre>'.  htmlentities(print_r($content,true)).'</pre>';
         $title_regex = "/<title[^<>]*>([^<>]*)<\/title>/si";
