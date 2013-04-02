@@ -36,7 +36,7 @@ class SQ_Menu extends SQ_FrontController {
                                     ));
             
             //Add the Rank in the Posts list
-           // SQ_ObjController::getController('SQ_PostsList')->init();
+            //SQ_ObjController::getController('SQ_PostsList')->init();
            
 	}
         
