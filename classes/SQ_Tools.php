@@ -173,7 +173,7 @@ class SQ_Tools extends SQ_FrontController {
         else
             $timeout = 30;
         
-        if ($url_domain = $_SERVER['HTTP_HOST']) $local = true;
+        if ($url_domain == $_SERVER['HTTP_HOST']) $local = true;
             
         if($local){
             foreach( $_COOKIE as $key => $value ) {
@@ -189,14 +189,14 @@ class SQ_Tools extends SQ_FrontController {
             if($local) curl_setopt($ch, CURLOPT_COOKIE, $cookie);
             curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
 
-            $responce = curl_exec($ch);   
-            $responce = self::cleanResponce($responce);
+            $response = curl_exec($ch);   
+            $response = self::cleanResponce($response);
             curl_close($ch);
 
-            return $responce;
+            return $response;
         }else{
-            $responce = wp_remote_get($url, array('timeout'=>$timeout)); 
-            return self::cleanResponce(wp_remote_retrieve_body($responce));
+            $response = wp_remote_get($url, array('timeout'=>$timeout)); 
+            return self::cleanResponce(wp_remote_retrieve_body($response));
         }
     }
     
@@ -230,6 +230,7 @@ class SQ_Tools extends SQ_FrontController {
     }
     
     private static function cleanResponce($response){
+        
        if (function_exists('substr_count'))
            if (substr_count($response,'(') > 1) return $response;
            

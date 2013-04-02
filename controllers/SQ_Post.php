@@ -141,6 +141,8 @@ class SQ_Post extends SQ_FrontController {
         }
     }
     function checkSeo($post_id, $status =''){
+        $args = array();
+        
         $seo = SQ_Tools::getValue('sq_seo');
         
         if(is_array($seo) && count($seo)>0)
