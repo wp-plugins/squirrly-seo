@@ -72,9 +72,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 1.1.8 =
+* SEO improvement for META
+
 = 1.1.7 =
 * Added the real time snippet before you publish the article
-* SEO improvement for META
 
 = 1.1.6 =
 * Fixed settings bugs
