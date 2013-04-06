@@ -227,7 +227,7 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - For advanced users, you can fine-tune everything.
 - You can override any title and set any META description and any META keywords you want.
 - Real Time Snippet Preview 
-- Integrated with other Ecommerce Plugins like Woocommerce, Shopp
+- Integrated with other Ecommerce Plugins like WooCommerce, MarketPress, Ready!, Shopp
 - Compatibility with all the other plugins, like Auto Meta, Ultimate Tag Warrior and others.
 
 And the best ones that we have (and the others don't):
