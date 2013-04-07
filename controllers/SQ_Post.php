@@ -2,19 +2,12 @@
 class SQ_Post extends SQ_FrontController {
     
     function hookInit(){
-        //if ( get_user_option('rich_editing') == 'true') {
-            add_filter( 'tiny_mce_before_init', array(&$this->model,'setCallback') );
-            
-            add_filter('mce_external_plugins',  array(&$this->model,'addHeadingButton') );
-            add_filter('mce_buttons', array(&$this->model,'registerButton'));
-        //}else{
-        //    SQ_Error::setError(__('For Squirrly to work, you have to have tinymce installed!', _PLUGIN_NAME_));
-        //}
-       
-        //
+        add_filter( 'tiny_mce_before_init', array(&$this->model,'setCallback') );
+        add_filter('mce_external_plugins',  array(&$this->model,'addHeadingButton') );
+        add_filter('mce_buttons', array(&$this->model,'registerButton'));
+        
         if (SQ_Tools::$options['sq_api'] == '') return;
         
-       // echo "<pre>".print_R($_POST,true)."<pre>";
         add_action('save_post', array($this, 'hookSavePost'), 10);
         
         //For Shopp plugin - product
@@ -22,6 +15,11 @@ class SQ_Post extends SQ_FrontController {
         
     }
     
+    /**
+     * hook the Head
+     * 
+     * @global integer $post_ID
+     */
     function hookHead() {
         global $post_ID;
         parent::hookHead();
