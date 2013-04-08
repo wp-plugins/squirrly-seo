@@ -185,7 +185,7 @@ Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
 = How does the META Description work in Squirrly SEO Optimization? =
 Based on your article, Squirrly will find the most relevant text and add it in META Description.
 
-= Can I use squirrly on mobile? =
+= Can I use squirrly seo on mobile? =
 Yes, on IOS and ANDROID, it works both through the browser and wordpress app
 
 = Can I use the images, tweets and articles given by the Inspiration Box? Are there any legal concerns? =
