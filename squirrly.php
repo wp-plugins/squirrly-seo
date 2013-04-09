@@ -30,7 +30,6 @@ if (PHP_VERSION_ID >= 5100){
 }else{
     /* Main class call */
     add_action('admin_init','phpError');
-    
 }
 
 /** 
@@ -39,7 +38,9 @@ if (PHP_VERSION_ID >= 5100){
 function phpError(){
     add_action('admin_notices','showError');
 }
-
+/**
+ * Called in Notice Hook
+ */
 function showError(){
     echo '<div class="update-nag"><span style="color:red; font-weight:bold;">'.__('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _PLUGIN_NAME_).'</span></div>';
 }
