@@ -27,7 +27,7 @@
 		<name>SQ_PostsList</name>
 		<description>Posts List Page</description>
 		<actions>
-                    <action>sq_posts_rank_brief</action>
+                    <action>sq_post_rank_brief</action>
                     <action>sq_posts_rank</action>
                     <action>sq_post_rank</action>
                 </actions>

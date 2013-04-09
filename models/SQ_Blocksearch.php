@@ -1,4 +1,3 @@
-
 <?php
 /**
  * The model class for SQ_Blocksearch
