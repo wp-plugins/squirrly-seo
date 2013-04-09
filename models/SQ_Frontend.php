@@ -190,7 +190,7 @@ class Model_SQ_Frontend {
         global $wp_query;
         $count  = 0;
         $title = '';
-        $sep = '-';
+        $sep = '|';
         
         if ($this->checkHomePosts() || $this->checkFrontPage()){
             $title = $this->clearTitle( $this->grabTitleFromPost() );
