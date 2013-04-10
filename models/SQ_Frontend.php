@@ -5,7 +5,7 @@ class Model_SQ_Frontend {
     private $title;
     private $description;
     private $min_title_length = 10;
-    private $max_title_length = 75;
+    private $max_title_length = 100;
     private $max_description_length = 160;
     private $min_description_length = 70;
     private $max_keywrods = 4;

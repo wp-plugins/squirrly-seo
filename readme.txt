@@ -72,8 +72,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
-= 1.1.8 =
+= 1.1.9 =
 * SEO improvement for META
+* Fixed local saved post images bugs
+
+= 1.1.8 =
 * Fixed snipped bugs
 
 = 1.1.7 =

@@ -62,6 +62,12 @@ class SQ_Post extends SQ_FrontController {
              SQ_Tools::getValue('autosave') == ''){
      
             $this->checkSeo($post_id, get_post_status($post_id));
+        }
+        if( (SQ_Tools::getValue('action')) == 'editpost' && 
+             wp_is_post_autosave($post_id) == '' && 
+             get_post_status($post_id) != 'auto-draft' && 
+             SQ_Tools::getValue('autosave') == ''){
+            
             $this->checkImage($post_id);
         }
         add_action('save_post', array($this, 'hookSavePost'), 10);
@@ -82,12 +88,13 @@ class SQ_Post extends SQ_FrontController {
         
         if (function_exists('preg_match_all')){
             @preg_match_all('/<img[^>]+src="([^"]+)"[^>]+>/i', $tmpcontent, $out);
+            
             if (is_array($out)){
               if(!is_array($out[1]) || count($out[1]) == 0)
                  return;
 
               foreach ($out[1] as $row){
-                 if (strpos($row,basename($_SERVER['HTTP_HOST'])) !== false){
+                 if (strpos($row,basename($_SERVER['HTTP_HOST'])) === false){
                     if(!in_array($row, $urls)){
                         $urls[] = $row;
                     }
