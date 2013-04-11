@@ -181,7 +181,7 @@ class SQ_Sitemap extends SQ_FrontController {
         $query['limit'] = "";
         $query['group'] = "GROUP BY YEAR(post_date_gmt),MONTH(post_date_gmt)";
 
-        $archives= $wpdb->get_results("SELECT DISTINCT ".$query['what']." FROM ".$query['from']." WHERE ".$query['where']." ".$query['order']." ".$query['group']." ".$query['limit']."");
+        $archives= $wpdb->get_results("SELECT DISTINCT ".$query['what']." FROM ".$query['from']." WHERE ".$query['where']." ".$query['group']." ".$query['order']." ".$query['limit']."");
 
        
         if ($archives) {
