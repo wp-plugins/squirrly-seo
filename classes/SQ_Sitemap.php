@@ -11,7 +11,8 @@ class SQ_Sitemap extends SQ_FrontController {
     
      function __construct() {
         if (!isset(SQ_Tools::$options['sq_use']) || SQ_Tools::$options['sq_use'] == 0) return;
-        
+        if (isset(SQ_Tools::$options['sq_auto_sitemap']) && SQ_Tools::$options['sq_auto_sitemap'] == 0) return;
+
         $this->filename = 'sitemap.xml';
         
         $this->file = ABSPATH . $this->filename;

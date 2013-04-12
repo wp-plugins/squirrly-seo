@@ -4,7 +4,7 @@ Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,squirrely,wo
 Requires at least: 3.1
 Tested up to: 3.5
 Stable tag: trunk
-
+ 
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
