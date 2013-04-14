@@ -566,6 +566,7 @@ class SQ_Tools extends SQ_FrontController {
         return $snippet;
 
     }
+    
 }
 
 ?>

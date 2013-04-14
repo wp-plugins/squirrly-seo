@@ -25,7 +25,7 @@ class SQ_DisplayController {
        $js_uri = '';
        
        if (isset(self::$cache[$uri])) return;
-       self::$cache[$uri] = $css_uri;
+       self::$cache[$uri] = true;
        
        /*if is a custom css file*/
        if (strpos($uri,'/') === false){

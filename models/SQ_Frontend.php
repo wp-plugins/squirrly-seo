@@ -948,6 +948,15 @@ class Model_SQ_Frontend {
         return '';
     }
     
+    /**
+     * Record the traffic for this page for the analytics
+     */
+    function recordTraffic(){
+        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
+        if (is_object($traffic))
+            $traffic->saveVisit();
+    }
+    
 }
 
 ?>

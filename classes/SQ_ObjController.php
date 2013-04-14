@@ -16,11 +16,10 @@ class SQ_ObjController {
 		if (!class_exists($className, false))
 			/* if $core == true then call the class from core directory*/
 			try{
-			
-				include_once(($core ? _SQ_CONTROLLER_DIR_ : _SQ_CLASSES_DIR_). $className.'.php');
-			
+                            if (file_exists(($core ? _SQ_CONTROLLER_DIR_ : _SQ_CLASSES_DIR_). $className.'.php'))
+                                include_once(($core ? _SQ_CONTROLLER_DIR_ : _SQ_CLASSES_DIR_). $className.'.php');
 			}catch(Exception $e){
-				echo 'Controller Error: ' .$e->getMessage();
+                            echo 'Controller Error: ' .$e->getMessage();
 			}
 	}
 	

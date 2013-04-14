@@ -74,6 +74,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 1.1.9 =
 * SEO improvement for META Title
 * Fixed local saved post images bugs
+* Wordpress 3.6 compatibility
 
 = 1.1.8 =
 * Fixed snipped bugs
