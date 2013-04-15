@@ -169,7 +169,6 @@ Cristina  - Squirrly mascot designer
 
 Many Thanks.
 
-
 == License ==
 Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles/month
 
