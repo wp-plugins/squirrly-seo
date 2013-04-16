@@ -172,14 +172,6 @@ Many Thanks.
 == License ==
 Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles/month
 
-== Reviews ==
-What have Bloggers and Experts written about Squirrly SEO?:
- 
-Experts in online marketing have tested Squirrly SEO Plugin and wrote their opinion about it. This here page highlights them, so that you can see what Squirrly SEO Plugin is all about :)
-<a href="http://www.squirrly.co/reviews-pag68312.html" title="Squirrly SEO Reviews" target="_blank">Squirrly SEO Reviews</a>
-
-[youtube http://www.youtube.com/watch?v=j9QbTE7-0EA]
-
 == Frequently Asked Questions ==
 = How does Squirrly Wordpress SEO Plugin work? =
 Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
