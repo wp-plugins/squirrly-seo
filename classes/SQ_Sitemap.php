@@ -336,7 +336,10 @@ class SQ_Sitemap extends SQ_FrontController {
      */	
     private function saveSitemap($data){
             if(function_exists('gzopen') && function_exists('gzwrite') && function_exists('gzclose')){
-                if (function_exists('is_writable') && is_writable($this->file.'.gz'))
+                if (function_exists('file_exists') && file_exists($this->file.'.gz'))
+                    @unlink($this->file.'.gz');
+                
+                if (function_exists('file_exists') && !file_exists($this->file.'.gz'))
                     if ($gz = @gzopen($this->file.'.gz','wb9')){
                             @gzwrite($gz, $data);
                             @gzclose($gz);
