@@ -217,10 +217,10 @@ class SQ_Tools extends SQ_FrontController {
         else
             $timeout = 30;
         
-        if (function_exists('curl_init')){
+        if (function_exists('curl_exec')){
             $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_NOBODY, true);
-            curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
             curl_exec($ch);   
             
             $response['headers']['content-type'] = curl_getinfo($ch, CURLINFO_CONTENT_TYPE );
