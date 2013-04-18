@@ -82,7 +82,13 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_auto_sitemap', (int)SQ_Tools::getValue('sq_auto_sitemap'));
                 SQ_Tools::saveOptions('sq_auto_meta', (int)SQ_Tools::getValue('sq_auto_meta'));
                 SQ_Tools::saveOptions('sq_auto_favicon', (int)SQ_Tools::getValue('sq_auto_favicon'));
+                SQ_Tools::saveOptions('sq_auto_facebook', (int)SQ_Tools::getValue('sq_auto_facebook'));
+                SQ_Tools::saveOptions('sq_auto_twitter', (int)SQ_Tools::getValue('sq_auto_twitter'));
                 
+                $sq_twitter_account = SQ_Tools::getValue('sq_twitter_account');
+                if ($sq_twitter_account <> '')
+                    if (strpos($sq_twitter_account,'@') === false) $sq_twitter_account = '@'.$sq_twitter_account;
+                SQ_Tools::saveOptions('sq_twitter_account', $sq_twitter_account);
                 
                 SQ_Tools::saveOptions('sq_auto_seo', (int)SQ_Tools::getValue('sq_auto_seo'));
                 SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));

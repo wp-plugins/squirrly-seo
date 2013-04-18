@@ -72,6 +72,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 == Changelog ==
 = 1.1.9 =
+* Added Facebook META Object for a good looking share
+* Added Twitter Card in META
 * SEO improvement for META Title
 * Fixed local saved post images bugs
 * Fixed Sitemap file permission error

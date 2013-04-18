@@ -127,6 +127,11 @@ class Model_SQ_Frontend {
                 $ret .= $this->getTheDate();
             }
             
+            if((!isset($options['sq_auto_facebook']) || (isset($options['sq_auto_facebook']) && $options['sq_auto_facebook'] == 1)))
+                $ret .= $this->getFacebookObject($options)."\n";
+            
+            if((!isset($options['sq_auto_twitter']) || (isset($options['sq_auto_twitter']) && $options['sq_auto_twitter'] == 1)))
+                $ret .= $this->getTwitterCard($options)."\n";
             /* SEO optimizer tool*/
             $ret .= $this->getGoogleWT();
             $ret .= $this->getGoogleAnalytics();
@@ -138,6 +143,50 @@ class Model_SQ_Frontend {
         return  $ret;
     }
     
+    private function getTwitterCard($options){
+        $meta = "\n";
+        
+        //if ($options['sq_twitter_creator'] == '' && $options['sq_twitter_site'] == '') return;
+        $sq_twitter_creator = $options['sq_twitter_account'];
+        $sq_twitter_site = $options['sq_twitter_account'];
+        
+        if($this->thumb_image == '') $this->thumb = $this->getImageFromContent();
+
+        $meta .= '<meta name="twitter:card" value="summary" />' . "\n" ; 
+
+        $meta .= (($sq_twitter_creator <> '') ? sprintf('<meta name="twitter:creator" value="%s" />' , $sq_twitter_creator) . "\n" : '') ;
+        $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" value="%s" />' , $sq_twitter_site) . "\n"  : '');    
+
+        $meta .= sprintf('<meta name="twitter:title" content="%s">' , $this->title) . "\n" ; 
+        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">' , $this->description . ' | ' . get_bloginfo('name')) . "\n" : ''); 
+        $meta .= (($this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">' , $this->thumb_image) . "\n" : ''); 
+        $meta .= ((get_bloginfo('name') <> '') ? sprintf('<meta name="twitter:domain" content="%s">' , get_bloginfo('name')) . "\n" : '') ; 
+        
+        return $meta;
+    }
+    /**
+     * Get the Facebook object meta
+     * @return string
+     */
+    private function getFacebookObject($options){
+        $meta = "\n";
+        $image = '';
+        $url = '';
+        
+        $url = $this->getCanonicalUrl();
+        if($this->thumb_image == '') $this->thumb_image = $this->getImageFromContent();
+        if ($image == '' && $url == '') return;
+        //GET THE URL
+        
+        $meta .= sprintf('<meta property="og:url" content="%s" />' , $url) . "\n" ;
+        $meta .= (($this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />' , $this->thumb_image) . "\n" : '') ;
+        $meta .= sprintf('<meta property="og:title" content="%s" />' , $this->title) . "\n" ;
+        $meta .= sprintf('<meta property="og:description" content="%s" />' , $this->description) . "\n" ;
+        $meta .= ((get_bloginfo('name') <> '') ? sprintf('<meta property="og:site_name" content="%s" />' , get_bloginfo('name')) . "\n" : '');
+        $meta .= sprintf('<meta property="og:type" content="%s" />' , 'blog') . "\n" ;
+        
+        return $meta;
+    }
     /**
      * Get the canonical link for the current page
      * 
@@ -212,6 +261,32 @@ class Model_SQ_Frontend {
         }
         
         return $title;
+    }
+    
+    /**
+     * Get the image from content
+     * @global type $wp_query
+     * @return type
+     */
+    public function getImageFromContent() {
+        global $wp_query;
+        
+        $post = $wp_query->get_queried_object();
+        
+        if (!$post)
+            foreach ($wp_query->posts as $post){
+                $id = (is_attachment())?($post->post_parent):($post->ID); 
+                $post = get_post($id);
+                break;
+            }
+            
+        if ($post) 
+             @preg_match('/<img[^>]+src="([^"]+)"[^>]+>/i', $post->post_content, $match);
+         
+        if (!is_array($match) || count($match) == 0)
+             return;
+              
+        return $match[1];
     }
     
     private function clearTitle($title){

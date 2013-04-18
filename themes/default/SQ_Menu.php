@@ -119,6 +119,41 @@
                             <span><?php _e('Add the <strong>favicon</strong> and the <strong>icon for Apple devices</strong>.', _PLUGIN_NAME_); ?></span>
                           </div>
                      </li>
+                     <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_facebook']) || (isset($view->options['sq_auto_facebook']) && $view->options['sq_auto_facebook'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_facebook1" type="radio" class="sq_switch-input" name="sq_auto_facebook"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_facebook1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_facebook0" type="radio" class="sq_switch-input" name="sq_auto_facebook" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_facebook0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php echo __('Add the <strong>Facebook meta objects</strong> for a good looking share. ', _PLUGIN_NAME_) . '<a href="https://developers.facebook.com/tools/debug/og/object?q='. urlencode(get_bloginfo('wpurl')) .'" target="_blank" title="Facebook Object Validator">Check here</a>'; ?></span>
+                          </div>
+                     </li>
+                     <li>
+                          <?php 
+                              $auto_option = false;
+                              if((!isset($view->options['sq_auto_twitter']) || (isset($view->options['sq_auto_twitter']) && $view->options['sq_auto_twitter'] == 1)))
+                                  $auto_option = true;
+                          ?>
+                          <div class="sq_option_content sq_option_content_small">
+                            <div class="sq_switch" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
+                              <input id="sq_auto_twitter1" type="radio" class="sq_switch-input" name="sq_auto_twitter"  value="1" <?php echo ($auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_twitter1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                              <input id="sq_auto_twitter0" type="radio" class="sq_switch-input" name="sq_auto_twitter" value="0" <?php echo (!$auto_option ? "checked" : '')?> />
+                              <label for="sq_auto_twitter0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                              <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php echo __('Add the <strong>Twitter card</strong> in your tweets. ', _PLUGIN_NAME_) . '<a href="https://dev.twitter.com/docs/cards/validation/validator" target="_blank" title="Twitter Card Validator">Check here</a> <em>(Select Summary > Validate URLs)</em>'; ?></span>
+                            <span id="sq_twitter_account" style="float:left; font-weight: bold; color: darksalmon; <?php echo (!$auto_option ? 'display:none;' : ''); ?>" ><?php _e('Your twitter account: ', _PLUGIN_NAME_); ?><input type="text" name="sq_twitter_account" value="<?php echo ((isset($view->options['sq_twitter_account']) && $view->options['sq_twitter_account'] <> '') ? $view->options['sq_twitter_account'] : '')?>" size="30" style="width:150px;" /> </span>
+                          </div>
+                     </li>
                   </ul>
               
             
