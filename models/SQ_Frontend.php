@@ -104,6 +104,7 @@ class Model_SQ_Frontend {
             /* Meta setting*/
             $this->title = $this->clearTitle($this->getCustomTitle()); 
             
+            
             if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
                 $ret .= $this->setCustomDescription();
                 $ret .= $this->setCustomKeyword();   
@@ -146,12 +147,15 @@ class Model_SQ_Frontend {
     private function getTwitterCard($options){
         $meta = "\n";
         
+        //Title and Description is required
+        if ($this->title == '' || $this->description == '') return;
+        
         //if ($options['sq_twitter_creator'] == '' && $options['sq_twitter_site'] == '') return;
         $sq_twitter_creator = $options['sq_twitter_account'];
         $sq_twitter_site = $options['sq_twitter_account'];
         
         if($this->thumb_image == '') $this->thumb = $this->getImageFromContent();
-
+        
         $meta .= '<meta name="twitter:card" value="summary" />' . "\n" ; 
 
         $meta .= (($sq_twitter_creator <> '') ? sprintf('<meta name="twitter:creator" value="%s" />' , $sq_twitter_creator) . "\n" : '') ;
