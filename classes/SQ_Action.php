@@ -110,8 +110,9 @@ class SQ_Action extends SQ_FrontController{
      
     public static function apiCall($module, $args = array()){
        $parameters = "";
-       if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register') return false;
        
+       if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register') return false;
+      
        $extra = array('user_url' => urlencode(get_bloginfo('wpurl')),
                       'versq' => SQ_VERSION_ID,
                       'verwp' => WP_VERSION_ID,
@@ -130,6 +131,7 @@ class SQ_Action extends SQ_FrontController{
            if ($value <> '')
            $parameters .= ($parameters == "" ? "" : "&") . $key."=".$value;
        
+           
        /* If the call is for login on register then use base64 is exists */
        if($module == 'sq/login' || $module == 'sq/register')
         if(function_exists('base64_encode'))
@@ -137,7 +139,7 @@ class SQ_Action extends SQ_FrontController{
        
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
-      // echo "url:".$url; 
+       //echo "url:".$url; 
        
        return SQ_Tools::sq_remote_get($url);
      
