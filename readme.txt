@@ -80,13 +80,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Wordpress 3.6 theme compatibility
 
 = 1.1.8 =
-* Fixed snipped bugs
+* Fixed snipped security bugs
 
 = 1.1.7 =
 * Added the real time snippet before you publish the article
 
 = 1.1.6 =
-* Fixed settings bugs
+* Fixed settings bugs on saving
 
 = 1.1.5 =
 * Added multiple Countries for Keyword Research 
