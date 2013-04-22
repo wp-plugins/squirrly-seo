@@ -2,7 +2,7 @@
 Contributors: cifi, calinvingan, florinmuresan, lucianpacurar
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,squirrely,wordpress seo,plugin,search engine optimization,meta title,meta description,meta,meta,rss,german plugin,dutch,xml,sitemap,xml sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,feed,links,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,webmaster,analytics,marketing,automation,admin,squirrel,seo gamification,automatic seo,seo correction,seo title,seo meta
 Requires at least: 3.1
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: trunk
  
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
