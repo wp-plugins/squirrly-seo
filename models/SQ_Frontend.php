@@ -245,9 +245,9 @@ class Model_SQ_Frontend {
         $title = '';
         $sep = '|';
         
-        if ($this->checkHomePosts() || $this->checkFrontPage()){
+        if ($this->checkHomePosts()){
             $title = $this->clearTitle( $this->grabTitleFromPost() );
-            if (get_bloginfo('name') <> '')
+            if (get_bloginfo('name') <> '' )
                 $title .= " ".$sep." " . get_bloginfo('name');
         }elseif(is_single()){
             $post = $wp_query->get_queried_object();
