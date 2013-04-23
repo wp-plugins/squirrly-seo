@@ -94,8 +94,9 @@ class SQ_Post extends SQ_FrontController {
                  return;
 
               foreach ($out[1] as $row){
-                 if (strpos($row,basename($_SERVER['HTTP_HOST'])) === false){
+                 if (strpos($row,basename($_SERVER['HTTP_HOST'])) === false && strpos($row,'http') !== false){
                     if(!in_array($row, $urls)){
+                        //echo $row;
                         $urls[] = $row;
                     }
                  }
@@ -111,11 +112,12 @@ class SQ_Post extends SQ_FrontController {
 
         
         foreach ($urls as $url){
-            if (strpos($url, $this->model->getImgUrl()) !== false) continue;
+            //if (strpos($url, $this->model->getImgUrl()) !== false) continue;
             
             $file_name = $this->model->upload_image($url);
             if ($file_name !== false) {
                 $localurl = $img_url . $file_name;
+                //echo '$localurl: '.$localurl;
                 $localfile = $img_dir . $file_name;
                 $wp_filetype = wp_check_filetype($file_name, null);
 

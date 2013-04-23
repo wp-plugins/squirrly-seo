@@ -57,10 +57,10 @@ class Model_SQ_Frontend {
     public function flushHeader(){
         $buffers = array();
         if (function_exists('ob_list_handlers')) 
-            $buffers = ob_list_handlers();
+            $buffers = @ob_list_handlers();
                 
         if (sizeof($buffers) > 0 && strtolower($buffers[sizeof($buffers) - 1]) == strtolower('Model_SQ_Frontend::getBuffer')) {
-            ob_end_flush();
+            @ob_end_flush();
         }
     }
     /**
@@ -79,7 +79,7 @@ class Model_SQ_Frontend {
                    $buffer .= sprintf("<title>%s</title>" , $this->clearTitle($title)) . "\n" ; 
             }
         }
-        return $buffer;
+        return $buffer; 
     }
     
     /*************************/
@@ -94,7 +94,7 @@ class Model_SQ_Frontend {
     function setHeader($options = array()){
         global $wp_query;
         $ret = '';
-        
+       
         if (!function_exists('preg_replace')) return $ret;
         
         if (is_home() || is_single() ||  is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search() || is_404()){
@@ -244,11 +244,13 @@ class Model_SQ_Frontend {
         $count  = 0;
         $title = '';
         $sep = '|';
-        
+        $homepage = (is_home() || $wp_query->query_vars['name'] == '');
+                
         if ($this->checkHomePosts()){
             $title = $this->clearTitle( $this->grabTitleFromPost() );
             if (get_bloginfo('name') <> '' )
                 $title .= " ".$sep." " . get_bloginfo('name');
+            
         }elseif(is_single()){
             $post = $wp_query->get_queried_object();
             $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
@@ -260,7 +262,7 @@ class Model_SQ_Frontend {
         }
         
         /* Check if is a predefined Title */
-        if(is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_title'] <> ''){
+        if($homepage && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_title'] <> ''){
             $title = $this->clearTitle( SQ_Frontend::$options['sq_fp_title'] );
         }
         
