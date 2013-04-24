@@ -78,6 +78,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed local saved post images bugs
 * Fixed Sitemap file permission error
 * Wordpress 3.6 theme compatibility
+* Fixed Frontend custom meta for blogs with pages
 
 = 1.1.8 =
 * Fixed snipped security bugs
