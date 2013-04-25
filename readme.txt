@@ -74,7 +74,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 1.1.9 =
 * Added Facebook META Object for a good looking share
 * Added Twitter Card in META
-* SEO improvement for META Title
 * Fixed local saved post images bugs
 * Fixed Sitemap file permission error
 * Wordpress 3.6 theme compatibility
@@ -82,6 +81,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 = 1.1.8 =
 * Fixed snipped security bugs
+* SEO improvement for META Title
 
 = 1.1.7 =
 * Added the real time snippet before you publish the article
