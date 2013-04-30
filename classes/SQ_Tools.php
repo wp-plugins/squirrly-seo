@@ -24,6 +24,11 @@ class SQ_Tools extends SQ_FrontController {
 
     }
     
+    public static function getUserID(){
+        global $current_user;
+        return $current_user->ID;
+    }
+    
     /**
     * This hook will save the current version in database and load the messages from usermeta
     *
@@ -174,18 +179,20 @@ class SQ_Tools extends SQ_FrontController {
             $timeout = 30;
         
         if ($url_domain == $_SERVER['HTTP_HOST'] && strpos($url,'preview=true') !== false) $post_preview = true;
-            
+
         if($post_preview){
             $cookies = array();
             $cookie_string = '';
-            
+
             foreach ( $_COOKIE as $name => $value ) {
                 
-                if (strpos($name,'wordpress')!== false){
+                if (strpos($name,'wordpress')!== false || strpos($name,'wpta')!== false){
                     $cookies[] = new WP_Http_Cookie( array( 'name' => $name, 'value' => $value ) );
                     $cookie_string .= "$name=$value;";
                 }
             }
+            $cookies[] = new WP_Http_Cookie( array( 'name' => 'sq_snippet', 'value' => 1 ) );
+            $cookie_string .= "sq_snippet=1;";
         }
         
         if (function_exists('curl_init')){
@@ -197,6 +204,7 @@ class SQ_Tools extends SQ_FrontController {
 
             $response = curl_exec($ch);   
             $response = self::cleanResponce($response);
+
             curl_close($ch);
 
             return $response;

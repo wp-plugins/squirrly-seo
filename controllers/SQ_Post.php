@@ -161,6 +161,7 @@ class SQ_Post extends SQ_FrontController {
         $args['permalink'] = get_permalink($post_id);
         $args['permalink'] = $this->getPaged($args['permalink']);
         $args['permalink'] = urlencode($args['permalink']);
+        $args['author'] = (int)SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
         
         SQ_Action::apiCall('sq/seo/post',$args);
