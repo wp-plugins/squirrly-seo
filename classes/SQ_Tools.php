@@ -355,6 +355,13 @@ class SQ_Tools extends SQ_FrontController {
      * @return bool
      */
     private static function getBadLinkStructure() {
+        if(function_exists('apache_get_modules') ){
+            //Check if mod_rewrite is installed in apache
+            if(!in_array('mod_rewrite',apache_get_modules())) 
+                return false;    
+        }
+
+ 
         $link = get_option('permalink_structure');
         if ($link == '' || strpos($link, '%postname%') === false)
             return true;
