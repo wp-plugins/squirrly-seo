@@ -154,7 +154,8 @@ class Model_SQ_Frontend {
         $sq_twitter_creator = $options['sq_twitter_account'];
         $sq_twitter_site = $options['sq_twitter_account'];
         
-        if($this->thumb_image == '') $this->thumb = $this->getImageFromContent();
+         if(!isset($this->thumb_image) || $this->thumb_image == '') 
+             $this->thumb_image = $this->getImageFromContent();
         
         $meta .= '<meta name="twitter:card" value="summary" />' . "\n" ; 
 
@@ -163,7 +164,7 @@ class Model_SQ_Frontend {
 
         $meta .= sprintf('<meta name="twitter:title" content="%s">' , $this->title) . "\n" ; 
         $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">' , $this->description . ' | ' . get_bloginfo('name')) . "\n" : ''); 
-        $meta .= (($this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">' , $this->thumb_image) . "\n" : ''); 
+        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">' , $this->thumb_image) . "\n" : ''); 
         $meta .= ((get_bloginfo('name') <> '') ? sprintf('<meta name="twitter:domain" content="%s">' , get_bloginfo('name')) . "\n" : '') ; 
         
         return $meta;
@@ -178,12 +179,14 @@ class Model_SQ_Frontend {
         $url = '';
         
         $url = $this->getCanonicalUrl();
-        if($this->thumb_image == '') $this->thumb_image = $this->getImageFromContent();
+        if(!isset($this->thumb_image) || $this->thumb_image == '') 
+            $this->thumb_image = $this->getImageFromContent();
+        
         if ($image == '' && $url == '') return;
         //GET THE URL
         
         $meta .= sprintf('<meta property="og:url" content="%s" />' , $url) . "\n" ;
-        $meta .= (($this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />' , $this->thumb_image) . "\n" : '') ;
+        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />' , $this->thumb_image) . "\n" : '') ;
         $meta .= sprintf('<meta property="og:title" content="%s" />' , $this->title) . "\n" ;
         $meta .= sprintf('<meta property="og:description" content="%s" />' , $this->description) . "\n" ;
         $meta .= ((get_bloginfo('name') <> '') ? sprintf('<meta property="og:site_name" content="%s" />' , get_bloginfo('name')) . "\n" : '');
@@ -562,11 +565,12 @@ class Model_SQ_Frontend {
      */
     private function grabTitleFromPost($id = null){
         global $wp_query;
+        $post = null;
         
         if (isset($id)) 
             $post = get_post($id);
         
-        if ($post) return $post->post_title ;
+        if (isset($post)) return $post->post_title ;
         
         foreach ($wp_query->posts as $post){
             if ($post->post_title <> '')

@@ -32,8 +32,7 @@ class SQ_Frontend extends SQ_FrontController {
          */
         function hookFrontinit(){
             $traffic = SQ_ObjController::getController('SQ_Traffic', false);
-            if (is_object($traffic))
-                $traffic->saveCookie();
+            if (is_object($traffic)) $traffic->saveCookie();
         }
         
         /** 

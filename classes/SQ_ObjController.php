@@ -30,7 +30,7 @@ class SQ_ObjController {
 	 * @param string $className 
 	 * @param bool $core TRUE is the class is a core class or FALSE if it is from classes directory
 	 * 
-	 * @return object of the class
+	 * @return object of the class|false
 	*/
 	public static function getController($className, $core = true){
 		if (!isset(self::$instances[$className])){
@@ -45,7 +45,7 @@ class SQ_ObjController {
 		}else
 			return self::$instances[$className];
 		
-		return ;
+		return false;
 	}
 	
 	
