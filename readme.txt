@@ -26,7 +26,7 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 
 You will always get the latest in terms of search engine optimization developments. We've made a monthly pricing plan so that you will always get the latest updates related to search engines, stress-free. 
 
-Your blogging will become 210% more effective in terms of time it takes to rank articles (by continued use) and with long-lasting effects  and your experience with SEO much easier, since a team of 5 people work full time on delivering you the best in terms of SEO and Content Marketing.
+Your blogging will become 230% more effective in terms of time it takes to rank articles (by continued use) and with long-lasting effects  and your experience with SEO much easier, since a team of 5 people work full time on delivering you the best in terms of SEO and Content Marketing.
 
 Also, our wish is to provide you with the best customer service, and while our software offers you excellent SEO on every single article you write, our team is here to offer you excellence in Customer Service.
 

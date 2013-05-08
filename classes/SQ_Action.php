@@ -139,7 +139,8 @@ class SQ_Action extends SQ_FrontController{
        
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
-       //echo "url:".$url; 
+       if (SQ_Tools::getValue('sq_debug') == 'on')
+        echo "Call:".$url; 
        
        return SQ_Tools::sq_remote_get($url);
      
