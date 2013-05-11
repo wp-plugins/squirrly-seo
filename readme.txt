@@ -54,9 +54,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 5. Upload the squirrly-seo.zip file.
 6. After the upload is finished, click Activate Plugin.
 7. In the menu on the left, there is the "Squirrly" tab now. Click it.
-8. In the center, there is a note. Click "Fix it for me". (this will start the Squirrly automated SEO for your blog)
-9. Then click "Write a New Post with Squirrly Seo".
-10. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
+8. Then click "Write a New Post with Squirrly Seo".
+9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
 1. Enter a keyword for Squirrly Live SEO Assistant
