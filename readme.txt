@@ -227,7 +227,6 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - Automatically optimizes your titles for search engines
 - Automatically optimizes content META and tags for search engines
 - Generates META tags automatically
-- Avoids the typical duplicate content found on WordPress blogs
 - For beginners, all these settings are made automatically to get the best SEO possible.
 - For advanced users, you can fine-tune everything.
 - You can override any title and set any META description and any META keywords you want.
