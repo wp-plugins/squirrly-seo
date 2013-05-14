@@ -220,7 +220,6 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - Automatically adds the required METAs for home page (icon, author, language, dc publisher, etc.)
 - Automatically adds the favicon and the icon for Apple devices.
 - Automatically Support for Custom Post Types
-- Automatically Advanced Canonical URLs
 - Fine tune Page Navigational Links
 - ONLY plugin to provide SEO Integration for WP e-Commerce sites
 - Support for CMS-style WordPress installations
