@@ -224,7 +224,6 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - ONLY plugin to provide SEO Integration for WP e-Commerce sites
 - Support for CMS-style WordPress installations
 - Automatically optimizes your titles for search engines
-- Automatically optimizes content META and tags for search engines
 - Generates META tags automatically
 - For beginners, all these settings are made automatically to get the best SEO possible.
 - For advanced users, you can fine-tune everything.
