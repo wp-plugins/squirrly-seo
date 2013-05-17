@@ -32,7 +32,7 @@ Also, our wish is to provide you with the best customer service, and while our s
 
 If Squirrly makes you happy, and if this makes sense to you, then please upgrade to PRO.
 
-Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles / month. (<a href="http://www.florins.co/3_reasons_why_a_subscription_based_payment_keeps_you_safe_and_happy-pag397-article_id62026.html" title="Squirrly SEO" target="_blank">Why a subscription based payment</a>)
+Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription or keep using Squirrly for Free and be able to optimize 2 articles / month. (<a href="http://www.florins.co/3_reasons_why_a_subscription_based_payment_keeps_you_safe_and_happy-pag397-article_id62026.html" title="Squirrly SEO" target="_blank">Why a subscription based payment</a>)
 
 We're glad to have you
 
@@ -66,7 +66,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live SEO Assistant
 8. You will know when your seo is good
-9. Squirrly Rank for each post/page progress monitor
+9. Squirrly Article Rank for each post/page progress monitor
 10. Squirrly Seo settings tab with extra Seo optimization features
 
 
@@ -180,7 +180,7 @@ Cristina  - Squirrly mascot designer
 Many Thanks.
 
 == License ==
-Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription of $19.99 or keep using Squirrly for Free and be able to optimize 2 articles/month
+Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription or keep using Squirrly for Free and be able to optimize 2 articles/month
 
 == Reviews ==
 What have Bloggers and Experts written about Squirrly SEO?:
