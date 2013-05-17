@@ -58,7 +58,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
-1. Enter a keyword for Squirrly Live SEO Assistant
+1. Enter a keyword for Squirrly Live SEO Assistant optimization
 2. Find out if it's worth it to use it
 3. Add an image in your article
 4. Find images, tweets, wiki, blogs, news or other articles from your blog
@@ -66,16 +66,16 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live SEO Assistant
 8. You will know when your seo is good
-9. Squirrly Seo settings tab with extra Seo optimization features
+9. Squirrly Rank for each post/page progress monitor
+10. Squirrly Seo settings tab with extra Seo optimization features
 
 
 == Changelog ==
 = 2.0.1 =
-* Added Squirrly Rank in Post lists
-* Added Traffic monitor for each post
-* Added Social Impact monitor for each post
-* Added Inbound Links monitor for each post
-* Added Progress History
+* Added Squirrly Rank (Beta Version) in Post/Page lists
+* Added Traffic progress monitor for each post/page
+* Added Social Impact progress monitor for each post/page
+* Added Inbound Links progress monitor for each post/page
 
 = 1.1.9 =
 * Added Facebook META Object for a good looking share
