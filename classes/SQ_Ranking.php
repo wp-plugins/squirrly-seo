@@ -121,7 +121,7 @@ class SQ_Ranking extends SQ_FrontController {
        
        $sql = "SELECT analytics.`id`,analytics.`indexed`,analytics.`global_rank`,analytics.`local_rank`, analytics.`keyword`,analytics.`other_keywords`
                 FROM `".$this->analytics_table."` analytics 
-                WHERE analytics.`post_id`=".(int)$post_id." AND (analytics.`global_rank` > -1  OR analytics.`local_rank` > -1) AND analytics.`date`<'".date('Y-m-d', $this->now)."'
+                WHERE analytics.`post_id`=".(int)$post_id." AND (analytics.`global_rank` > 0  OR analytics.`local_rank` > 0) AND analytics.`date`<'".date('Y-m-d', $this->now)."'
                 ORDER BY analytics.`date` DESC LIMIT 1" ;
        $last_row = $wpdb->get_row($sql) ;
        
