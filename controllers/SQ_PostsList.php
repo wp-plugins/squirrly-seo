@@ -128,7 +128,7 @@ class SQ_PostsList extends SQ_FrontController {
                     var __sq_interval_week = "'.__('Last 7 days', _PLUGIN_NAME_).'";
                     var __sq_interval_month = "'.__('Last 30 days', _PLUGIN_NAME_).'";
                         
-                    var __sq_goto_allposts = "'.__('See it in post list', _PLUGIN_NAME_).'";
+                    var __sq_goto_allposts = "'.__('See it in \'All Posts\'', _PLUGIN_NAME_).'";
                     var __sq_rankglobal_text = "'.__('progress', _PLUGIN_NAME_).'";
                     var __sq_rankoptimized_text = "'.__('optimized', _PLUGIN_NAME_).'";
                     var __sq_rankseemore_text = "'.__('See rank', _PLUGIN_NAME_).'";
