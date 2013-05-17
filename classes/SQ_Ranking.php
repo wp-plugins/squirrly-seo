@@ -126,7 +126,7 @@ class SQ_Ranking extends SQ_FrontController {
        $last_row = $wpdb->get_row($sql) ;
        
        if ($last_row && $row && $last_row->keyword == $row->keyword){
-            $serp['change'] = array('global' => ($last_row->global_rank > 0 ? ($last_row->global_rank - $row->global_rank) : ($row->global_rank >0 ? 'new' : 0)), 'local' => ($last_row->local_rank > 0 ? ($last_row->local_rank - $row->local_rank) : ($row->local_rank > 0 ? 'new' : 0)));
+            $serp['change'] = array('global' => (($last_row->global_rank > 0 && $row->global_rank > 0) ? ($last_row->global_rank - $row->global_rank) : ($row->global_rank >0 ? 'new' : 0)), 'local' => (($last_row->local_rank > 0 && $row->local_rank > 0) ? ($last_row->local_rank - $row->local_rank) : ($row->local_rank > 0 ? 'new' : 0)));
        }else{
            $serp['change'] = array('global' => 0, 'local' => 0);
        }
