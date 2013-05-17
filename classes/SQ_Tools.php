@@ -11,6 +11,8 @@ class SQ_Tools extends SQ_FrontController {
     public $flash_data = null;
     public $showNote = array();
     static $errors_count = 0;
+    private static $debug;
+
     
     function __construct() {
         parent::__construct();
@@ -21,7 +23,20 @@ class SQ_Tools extends SQ_FrontController {
         if(!isset(self::$options['sq_use']))
             self::$options['sq_use'] = 1;
         
-
+        //if debug is called
+        if (self::getIsset('sq_debug')){
+            if(is_admin() || is_super_admin()){
+                $_GET['sq_debug'] = 'on';
+            }else{
+                if(self::getValue('sq_debug') <> self::$options['sq_api'])
+                    $_GET['sq_debug'] = 'off';
+            }
+            
+            if(self::getValue('sq_debug') === 'on')
+                if (function_exists('register_shutdown_function')){
+                    register_shutdown_function(array($this, 'showDebug'));
+                }
+        }
     }
     
     public static function getUserID(){
@@ -112,6 +127,18 @@ class SQ_Tools extends SQ_FrontController {
         update_option(SQ_OPTION, json_encode(self::$options));
     }
     
+    /**
+     * Set the header type
+     * @param type $type
+     */
+    public static function setHeader($type){
+        if (SQ_Tools::getValue('sq_debug') == 'on') return;
+        
+        switch ($type){
+            case 'json':
+                header('Content-Type: application/json');
+        }
+    }
     /**
     * Get a value from $_POST / $_GET
     * if unavailable, take a default value
@@ -582,6 +609,46 @@ class SQ_Tools extends SQ_FrontController {
 
     }
     
+    public static function dump(){
+        $callee = array('file' => '', 'line' => '');
+        if (function_exists('func_get_args')){
+            $arguments = func_get_args();
+            $total_arguments = count( $arguments );
+        }else
+            $arguments = array();
+        
+        
+                
+        if (function_exists('debug_backtrace'))
+            list( $callee ) 	= debug_backtrace();
+        
+        $output .= '<fieldset style="background: #FFFFFF; border: 1px #CCCCCC solid; padding: 5px; font-size: 9pt; margin: 0;">';
+        $output .= '<legend style="background: #EEEEEE; padding: 2px; font-size: 8pt;">' . $callee['file'] . ' @ line: ' . $callee['line'] 
+                . '</legend><pre style="margin: 0; font-size: 8pt; text-align: left;">';
+                
+        $i = 0;
+        foreach ( $arguments as $argument )
+        {
+                if ( count( $arguments ) > 1 ) $output .= "\n" . '<strong>#' . ( ++$i ) . ' of ' . $total_arguments . '</strong>: ';
+
+                // if argument is boolean, false value does not display, so ...
+                if ( is_bool( $argument ) ) $argument = ( $argument ) ? 'TRUE' : 'FALSE';
+                else 
+                   if ( is_object( $argument ) && function_exists('array_reverse') && function_exists('class_parents')) 
+                        $output .= implode( "\n" . '|' . "\n", array_reverse( class_parents( $argument ) ) ) . "\n" . '|' . "\n";
+
+                $output .= htmlspecialchars( print_r( $argument, TRUE ) )
+                .( ( is_object( $argument ) && function_exists('spl_object_hash') ) ? spl_object_hash( $argument ) : '' );
+        }
+        $output .= "</pre>";
+    	$output .= "</fieldset>";
+        
+        self::$debug[] = $output;
+    }
+    
+    public static function showDebug(){
+            echo "Debug result: <br />".@implode( '<br />', self::$debug );
+    }
 }
 
 ?>

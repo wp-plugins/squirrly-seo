@@ -36,7 +36,7 @@
 	</block>
         <block>
 		<name>SQ_Menu</name>
-		<description>The Setting page</description>
+		<description>Setting page</description>
 		<actions>
                     <action>sq_settings_update</action>
                     <action>sq_howto</action>
@@ -72,7 +72,7 @@
 	</block>	
 	<block>
 		<name>SQ_Blocksearch</name>
-		<description>Searches for images and articles</description>
+		<description>Inspiration box</description>
 		<controllers>
 			<controller>SQ_Post</controller>
 		</controllers>
@@ -87,7 +87,7 @@
 	
 	<block>
 		<name>SQ_Blockseo</name>
-		<description>SEO Live assistanr</description>
+		<description>SEO Live assistant</description>
 		<controllers>
 			<controller>SQ_Post</controller>
 		</controllers>
@@ -100,6 +100,16 @@
 		<description>Research block</description>
 		<controllers>
 			<controller>SQ_Post</controller>
+		</controllers>
+		<active>1</active>
+		<path>core</path>
+	</block>
+        
+        <block>
+		<name>SQ_Blockrank</name>
+		<description>Article Rank</description>
+		<controllers>
+			<controller>SQ_PostMiddle</controller>
 		</controllers>
 		<active>1</active>
 		<path>core</path>

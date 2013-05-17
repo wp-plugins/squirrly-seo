@@ -70,6 +70,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.0.1 =
+* Added Squirrly Rank in Post lists
+* Added Traffic monitor for each post
+* Added Social Impact monitor for each post
+* Added Inbound Links monitor for each post
+* Added Progress History
+
 = 1.1.9 =
 * Added Facebook META Object for a good looking share
 * Added Twitter Card in META

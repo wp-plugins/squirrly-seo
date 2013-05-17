@@ -72,7 +72,7 @@ class SQ_ObjController {
 	public static function getModel($className){
            /* add Model prefix */
            $prefix = 'Model_';
-           
+          
             if (!isset(self::$instances[$prefix.$className])){
 		/* if $core == true then call the class from core directory*/
 		self::includeModel($className);
@@ -80,8 +80,8 @@ class SQ_ObjController {
 		$className = $prefix.$className;
 		//echo $className . '<br />';
 		if(class_exists($className)){
-                    self::$instances[$prefix.$className] = new $className;
-                    return self::$instances[$prefix.$className];
+                    self::$instances[$className] = new $className;
+                    return self::$instances[$className];
                 }
             }else
 		return self::$instances[$prefix.$className];

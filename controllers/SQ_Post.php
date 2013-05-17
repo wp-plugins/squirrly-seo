@@ -241,7 +241,7 @@ class SQ_Post extends SQ_FrontController {
                 $return['message'] = __('No message.',_SQD_PLUGIN_NAME_);
             }
 
-            header('Content-Type: application/json');
+            SQ_Tools::setHeader('json');
             echo json_encode($return);
             break;
        

@@ -46,6 +46,8 @@ class SQ_Action extends SQ_FrontController{
               <script type="text/javascript">
                   var sqQuery = {    
                     "ajaxurl": "'.admin_url( 'admin-ajax.php' ).'",
+                    "adminposturl": "'.admin_url( 'post.php' ).'",
+                    "adminlisturl": "'.admin_url( 'edit.php' ).'",
                     "nonce": "'.wp_create_nonce( _SQ_NONCE_ID_ ).'"
                   }
                   
@@ -139,8 +141,7 @@ class SQ_Action extends SQ_FrontController{
        
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
        
-       if (SQ_Tools::getValue('sq_debug') == 'on')
-        echo "Call:".$url; 
+       SQ_Tools::dump($url);
        
        return SQ_Tools::sq_remote_get($url);
      

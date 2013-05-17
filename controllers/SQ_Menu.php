@@ -27,13 +27,22 @@ class SQ_Menu extends SQ_FrontController {
             
 
             foreach($this->post_type as $type)
-                $this->model->addMeta(array(    'post'._SQ_NAME_,
+                $this->model->addMeta(array('post'._SQ_NAME_,
                                             ucfirst(_SQ_NAME_),
                                             array(SQ_ObjController::getController('SQ_Post'), 'init'),
                                             $type, 
                                             'side', 
                                             'high'
                                     ));
+            if(SQ_ObjController::getController('SQ_PostMiddle'))
+                foreach($this->post_type as $type)
+                    $this->model->addMeta(array('postmiddle'._SQ_NAME_,
+                                                ucfirst(_SQ_NAME_),
+                                                array(SQ_ObjController::getController('SQ_PostMiddle'), 'init'),
+                                                $type, 
+                                                'normal', 
+                                                'high'
+                                        ));
             
             //Add the Rank in the Posts list
             $postlist = SQ_ObjController::getController('SQ_PostsList');

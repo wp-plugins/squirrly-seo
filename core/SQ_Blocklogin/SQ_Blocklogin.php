@@ -24,7 +24,8 @@ class SQ_Blocklogin extends SQ_BlockController {
                 SQ_Tools::saveOptions('sq_api', '');
                 $return = array();
                 $return['reset'] = 'success';
-                header('Content-Type: application/json');
+                
+                SQ_Tools::setHeader('json');
                 echo json_encode($return);
                 exit();
                 break;
@@ -70,7 +71,7 @@ class SQ_Blocklogin extends SQ_BlockController {
         }else
             $return->error = sprintf(__('Could not send your informations to squirrly. Please register %smanually%s.',_PLUGIN_NAME_),'<a href="'._SQ_DASH_URL_ .'login/?action=register" target="_blank">','</a>');
         
-        header('Content-Type: application/json');
+        SQ_Tools::setHeader('json');
         echo json_encode($return);
         exit();
     }
@@ -110,7 +111,7 @@ class SQ_Blocklogin extends SQ_BlockController {
         }else
             $return->error = __('Both fields are required.',_PLUGIN_NAME_);
         
-        header('Content-Type: application/json');
+        SQ_Tools::setHeader('json');
         echo json_encode($return);
         exit();
     }
