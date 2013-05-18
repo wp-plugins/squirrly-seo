@@ -1,7 +1,11 @@
 <?php
 class SQ_Blockrank extends SQ_BlockController {
    
-    
+    /**
+     * Load the Rank block header
+     * 
+     * @global type $sq_postID
+     */
     function hookHead() {
        global $sq_postID;
        

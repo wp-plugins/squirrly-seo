@@ -18,16 +18,25 @@ class Model_SQ_PostsList{
     }
     /**
      * Get the traffic progress from loca database
-     * @return int
+     * @return array
      */
     public function getTrafficProgress(){
         return SQ_ObjController::getController('SQ_Traffic', false)->getTraffic($this->post_id, $this->interval);
     }
     
+    /**
+     * Get he global average values
+     * 
+     * @return array
+     */
     public function getGlobalAverage(){
         return SQ_ObjController::getController('SQ_Traffic', false)->getGlobalAverage();
     }
     
+    /**
+     * Get the average progress for the given interval
+     * @return array
+     */
     public function getAverageProgress(){
         return SQ_ObjController::getController('SQ_Traffic', false)->getAverage($this->interval);
     }

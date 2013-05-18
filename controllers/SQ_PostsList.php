@@ -40,6 +40,12 @@ class SQ_PostsList extends SQ_FrontController {
         }
     }
     
+    /**
+     * Filter the Posts when sq_post_id is set
+     * 
+     * @param string $where
+     * @return string
+     */
     function filterPosts($where){
         if( !is_admin() ) return;
         
@@ -51,11 +57,18 @@ class SQ_PostsList extends SQ_FrontController {
         return $where;
     }
     
+    /**
+     * Sorting option
+     * 
+     * @param type $request
+     * @return type
+     */
     function sortPosts($request){
         if( !is_admin() ) return;
         
         return $request;
     }
+    
     /**
      * Hook the Wordpress header
      */
@@ -279,10 +292,23 @@ class SQ_PostsList extends SQ_FrontController {
           
     }
     
+    /**
+     * Replace string ()
+     * @param type $search
+     * @param type $replace
+     * @param type $subject
+     * @return type
+     */
     function str_lreplace($search, $replace, $subject){
         return preg_replace('~(.*)' . preg_quote($search, '~') . '~', '$1' . $replace, $subject, 1);
     }
     
+    /**
+     * Add slash to pages
+     * 
+     * @param type $link
+     * @return string
+     */
     function getPaged($link) {
         $page = get_query_var('paged');
         if ($page && $page > 1) {
