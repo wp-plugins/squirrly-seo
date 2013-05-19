@@ -59,7 +59,7 @@ class SQ_Ranking extends SQ_FrontController {
         //SQ_Tools::dump($return->indexed);
         //If is indexed search is a keyword is indexed
         if ($return->indexed == 1){
-            $this->processRanking(&$return, $post_id);
+            $this->processRanking($return, $post_id);
         }
 
         if ($return->indexed == -1 || $return->indexed == 0)
