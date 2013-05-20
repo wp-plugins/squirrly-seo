@@ -609,6 +609,9 @@ class SQ_Tools extends SQ_FrontController {
 
     }
     
+    /**
+     * Store the debug for a later view
+     */
     public static function dump(){
         $callee = array('file' => '', 'line' => '');
         if (function_exists('func_get_args')){
@@ -646,6 +649,9 @@ class SQ_Tools extends SQ_FrontController {
         self::$debug[] = $output;
     }
     
+    /**
+     * Show the debug dump 
+     */
     public static function showDebug(){
             echo "Debug result: <br />".@implode( '<br />', self::$debug );
     }
