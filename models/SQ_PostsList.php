@@ -76,7 +76,7 @@ class Model_SQ_PostsList{
         /////////////////////////////////////////////
         $response->serp = json_decode(json_encode($response->serp), FALSE);
         
-        SQ_Tools::dump($response);
+        //SQ_Tools::dump($response);
         
                 
         if (isset($response->total) && isset($response->history) && isset($response->serp)){
@@ -151,7 +151,7 @@ class Model_SQ_PostsList{
             if ((int)$this->traffic[$date->id]['count'] > 0)
                 $progress = true;
             
-            SQ_Tools::dump($this->traffic); 
+            //SQ_Tools::dump($this->traffic); 
             $str .= '<li class="sq_history_icon"><span class="sq_rank_sprite sq_total_traffic_icon"></span><span class="sq_rank_sprite sq_total_social_icon"></span><span class="sq_rank_sprite sq_total_links_icon"></span></li>';
             $str .= '<li class="sq_rank_score-unit">
                         <div class="sq_rank_history_arrow"><span class="'. ((!$progress) ? 'sq_rank_progress_zero' : 'sq_rank_progress_pos') .'"></span></div>';
