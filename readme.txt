@@ -66,7 +66,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 6. Easy to insert paragraphs from the articles that you are reading
 7. Optimize your article with Squirrly Live SEO Assistant
 8. You will know when your seo is good
-9. Squirrly Article Rank for each post/page progress monitor
+9. Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
 10. Squirrly Seo settings tab with extra Seo optimization features
 
 
