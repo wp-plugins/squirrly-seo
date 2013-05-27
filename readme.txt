@@ -69,10 +69,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
 10. Squirrly Seo settings tab with extra Seo optimization features
 
-
+ 
 == Changelog ==
 = 2.0.1 =
-* Added Squirrly Rank (Beta Version) in Post/Page lists
+* Added Squirrly Rank in Post/Page lists 
 * Added Traffic progress monitor for each post/page
 * Added Social Impact progress monitor for each post/page
 * Added Inbound Links progress monitor for each post/page
