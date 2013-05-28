@@ -123,12 +123,12 @@ class SQ_PostsList extends SQ_FrontController {
     function hookFooter() {
         if (!$this->is_list) return;
         SQ_Tools::dump($this->posts);
-        //if (!is_array($this->posts) || count($this->posts) == 0)  return;
+        
         $posts = '';
         foreach($this->posts as $post) {
             $posts .= '"'.$post.'",';
         }
-        if (strlen($posts) > 0) $posts = substr($posts, $start, strlen($posts)-1);
+        if (strlen($posts) > 0) $posts = substr($posts, 0, strlen($posts)-1);
         
         echo '<script type="text/javascript">
                     var sq_posts = new Array('.$posts.');

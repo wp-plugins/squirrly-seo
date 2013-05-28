@@ -609,6 +609,7 @@ class SQ_Tools extends SQ_FrontController {
      * Store the debug for a later view
      */
     public static function dump(){
+        $output = '';
         $callee = array('file' => '', 'line' => '');
         if (function_exists('func_get_args')){
             $arguments = func_get_args();
