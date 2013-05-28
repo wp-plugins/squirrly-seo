@@ -162,7 +162,7 @@ class SQ_Menu extends SQ_FrontController {
                 if (SQ_Tools::getValue('url') <> '')
                     $url = SQ_Tools::getValue('url');
                 else
-                    $url = get_bloginfo('wpurl');
+                    $url = get_bloginfo('url');
                 
                 $snippet = SQ_Tools::getSnippet($url);
                 /*if((int)SQ_Tools::getValue('post_id') > 0)

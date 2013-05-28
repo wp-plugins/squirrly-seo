@@ -346,7 +346,7 @@
     </div>
     </form>
     <script type="text/javascript">
-       var sq_blogurl = "<?php echo get_bloginfo('wpurl') ?>"; 
+       var sq_blogurl = "<?php echo get_bloginfo('url') ?>"; 
        
     </script>
 </div>
