@@ -386,7 +386,7 @@ class SQ_Tools extends SQ_FrontController {
 
  
         $link = get_option('permalink_structure');
-        if ($link == '' || strpos($link, '%postname%') === false)
+        if ($link == '')
             return true;
     }
     
