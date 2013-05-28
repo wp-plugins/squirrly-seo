@@ -332,6 +332,7 @@ class SQ_Tools extends SQ_FrontController {
         
         /* IF SEO INDEX IS OFF*/
         if ( self::getPrivateBlog() ){
+            
             if ($count_only)
                 self::$errors_count ++;
             else SQ_Error::setError(__('You\'re blocking google from indexing your site!', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_google_index1').attr('checked',true);", "sq_fixprivate") . " | ", 'settings','sq_fix_private');
@@ -339,15 +340,10 @@ class SQ_Tools extends SQ_FrontController {
         
         if ( self::getBadLinkStructure() ){
             if ($count_only)
-                self::$errors_count ++;
-            else SQ_Error::setError(__('It is highly recommended that you include the %postname% variable in the permalink structure.', _PLUGIN_NAME_)  . " <br />" . sprintf( $fixit, "","sq_fixpermalink"). " | ", 'settings');
+                self::$errors_count ++; 
+            else SQ_Error::setError(__('It is highly recommended that you include the %postname% variable in the permalink structure. <br />Go to Settings > Permalinks and add /%postname%/ in Custom Structure', _PLUGIN_NAME_)  . " <br /> ", 'settings');
         }
         
-       /* if ( !self::getCommentsNotification() ){
-            if ($count_only)
-                self::$errors_count ++;
-            else SQ_Error::setError(__('It is highly recommended that you set to receive notifications for new comments.', _PLUGIN_NAME_)  . " <br />" . sprintf( $fixit, "","sq_fixcomments"). " | ", 'settings');
-        }*/
     }
     
     /**

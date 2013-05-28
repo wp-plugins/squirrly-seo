@@ -71,6 +71,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
  
 == Changelog ==
+= 2.0.2 =
+* Fixed minor Squirrly Rank Bugs
+
 = 2.0.1 =
 * Added Squirrly Rank in Post/Page lists 
 * Added Traffic progress monitor for each post/page
