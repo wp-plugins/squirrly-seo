@@ -243,7 +243,7 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - Integrated with other Ecommerce Plugins like WooCommerce, MarketPress, Ready!, Shopp
 - Compatibility with all the other plugins, like Auto Meta, Ultimate Tag Warrior and others. 
 
-And the best ones that we have (and the others don't):
+And the best ones that we have (and the others don't): 
 
  - *Keyword research*: find the perfect keywords for your articles
  - *Inspiration box*: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
