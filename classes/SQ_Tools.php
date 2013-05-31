@@ -378,16 +378,21 @@ class SQ_Tools extends SQ_FrontController {
      * @return bool
      */
     private static function getBadLinkStructure() {
+        global $wp_rewrite;
         if(function_exists('apache_get_modules') ){
             //Check if mod_rewrite is installed in apache
             if(!in_array('mod_rewrite',apache_get_modules())) 
                 return false;    
         }
 
- 
-        $link = get_option('permalink_structure');
-        if ($link == '')
-            return true;
+        $home_path = get_home_path();
+	$htaccess_file = $home_path.'.htaccess';
+        
+        if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
+                $link = get_option('permalink_structure');
+                if ($link == '')
+                    return true;
+        }
     }
     
     /**
