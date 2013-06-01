@@ -72,12 +72,12 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
  
 == Changelog ==
 = 2.0.2 =
-* Fixed minor Squirrly Rank Bugs
+* Fixed minor Squirrly SEO Rank Bugs
 * Fixed minor Snippet/Settings issues
 * Added the Squirrly Keyword Suggestion in Squirrly Rank
 
 = 2.0.1 =
-* Added Squirrly Rank in Post/Page lists 
+* Added Squirrly SEO Rank in Post/Page lists 
 * Added Traffic progress monitor for each post/page
 * Added Social Impact progress monitor for each post/page
 * Added Inbound Links progress monitor for each post/page
@@ -250,6 +250,7 @@ And the best ones that we have (and the others don't):
  - *Inspiration box*: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
  - *Read industry-related blogs*, straight from your wordpress. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
  - *SEO Live Assistant*: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
+ - *SEO Rank: A great tool to track your progress on each article. You get Traffic, Social, Inbound-Links and Search engines Rank information instantly. 
 
 = Where can I enter the title and page description? =
 If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and click Change it. You can enter custom Title, Description and Keywords. 
