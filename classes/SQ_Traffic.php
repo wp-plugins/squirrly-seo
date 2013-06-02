@@ -20,6 +20,11 @@ class SQ_Traffic extends SQ_FrontController {
     function init() { return; }
     function action() {}
     
+    /**
+     * Get the aray accourding to the passed days
+     * @param integer $interval
+     * @return string
+     */
     private function getDays($interval){
         $days = 30;
         switch ($interval){
@@ -37,6 +42,15 @@ class SQ_Traffic extends SQ_FrontController {
         }
         return $days;
     }
+    
+    /**
+     * Get the traffic history for the specific inverval
+     * @global type $wpdb
+     * @param type $post_id
+     * @param type $interval
+     * @param type $order
+     * @return type
+     */
     function getHistory($post_id, $interval, $order){
         global $wpdb;
         
@@ -49,6 +63,13 @@ class SQ_Traffic extends SQ_FrontController {
         return $wpdb->get_results($sql); 
     }
     
+    /**
+     * Get the average value for a specific interval
+     * @global type $wpdb
+     * @param type $interval
+     * @param type $post_id
+     * @return type
+     */
     function getAverage($interval = null, $post_id = 0){
         global $wpdb;
         
@@ -95,6 +116,12 @@ class SQ_Traffic extends SQ_FrontController {
         return $this->getAverage();
     }
     
+    /**
+     * Get the count, unique and average value for day,week and month
+     * @param type $post_id
+     * @param type $interval
+     * @return type
+     */
     public function getTraffic($post_id, $interval = 'month'){
         
         $traffic = array('day'=>array('count'=>0,'unique'=>0),'week' =>array('count'=>0,'unique'=>0),'month' =>array('count'=>0,'unique'=>0));
@@ -124,6 +151,10 @@ class SQ_Traffic extends SQ_FrontController {
         
     }
     
+    /**
+     * Create the tables for traffic and keyword
+     * @global type $wpdb
+     */
     private function createBdTables(){
         global $wpdb;
 
@@ -234,6 +265,10 @@ class SQ_Traffic extends SQ_FrontController {
         return $wpdb->query($wpdb->prepare($sql)) ; 
     }
     
+    /**
+     * Save the keyword from the referral
+     * @return string
+     */
     private function getReferralKeyword(){
         if (!function_exists('parse_url') || !function_exists('preg_match')) return '';
         
