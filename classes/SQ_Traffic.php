@@ -118,9 +118,9 @@ class SQ_Traffic extends SQ_FrontController {
     
     /**
      * Get the count, unique and average value for day,week and month
-     * @param type $post_id
-     * @param type $interval
-     * @return type
+     * @param integer $post_id
+     * @param string $interval: day | week | month
+     * @return array
      */
     public function getTraffic($post_id, $interval = 'month'){
         
@@ -208,6 +208,7 @@ class SQ_Traffic extends SQ_FrontController {
         global $wpdb, $wp_query;
         $post_id = 0;
         $home = 0;
+        $sql = '';
         
         //Be sure not to save the bots
         $botlist = array("bot", "crawl", "crawler", "spider", "google", "yahoo", "msn", "ask", "ia_archiver", "@", "ripper", "robot", "radian", "python", "perl", "java");
@@ -230,14 +231,14 @@ class SQ_Traffic extends SQ_FrontController {
 
         
         //Save Keyword
-        $referral  = $this->getReferralKeyword();
-        if ($referral['keyword'] <> ''){
-            $sql = "INSERT INTO `".$this->keyword_table."`
-                        (`post_id`,`home`,`domain`,`keyword`,`date`) 
-                        VALUES (".(int)$post_id.",".(int)$home.",'".$referral['domain']."','".$referral['keyword']."','".date("Y-m-d",$this->now)."')";
-            
-            $wpdb->query($wpdb->prepare($sql));
-        }
+        if ($referral  = $this->getReferralKeyword())
+            if ($referral['keyword'] <> ''){
+                $sql = "INSERT INTO `".$this->keyword_table."`
+                            (`post_id`,`home`,`domain`,`keyword`,`date`) 
+                            VALUES (".(int)$post_id.",".(int)$home.",'".$referral['domain']."','".$referral['keyword']."','".date("Y-m-d",$this->now)."')";
+
+                $wpdb->query($wpdb->prepare($sql));
+            }
        
         
         $sql = "SELECT analytics.`id`,analytics.`count`,analytics.`unique` 
@@ -246,6 +247,7 @@ class SQ_Traffic extends SQ_FrontController {
         
         $row = $wpdb->get_row($sql); 
         
+        $sql = '';
         if($row){
             $row->count += 1;
             if (!isset($_COOKIE['sq_visited'])){
@@ -256,13 +258,13 @@ class SQ_Traffic extends SQ_FrontController {
                        SET analytics.`count`='". (int)$row->count ."',
                            analytics.`unique`='". (int)$row->unique ."'
                        WHERE analytics.`id`=". (int)$row->id;
-            
         }else{
             $sql = "INSERT INTO `".$this->analytics_table."`
                     (`count`,`unique`,`post_id`,`home`,`date`) 
                     VALUES (1,1,".(int)$post_id.",".(int)$home.",'".date("Y-m-d")."')";
         }
-        return $wpdb->query($wpdb->prepare($sql)) ; 
+        $sql = $wpdb->prepare($sql, null);
+        return $wpdb->query($sql) ; 
     }
     
     /**
@@ -273,6 +275,9 @@ class SQ_Traffic extends SQ_FrontController {
         if (!function_exists('parse_url') || !function_exists('preg_match')) return '';
         
         $keywords = '';
+        if (!isset($_SERVER['HTTP_REFERER']))
+            return false;
+        
         $refer = parse_url($_SERVER['HTTP_REFERER']);
         //echo "Referer:".'<pre>'.print_R($_SERVER,true).'</pre>';
         $host = $refer['host'];

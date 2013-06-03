@@ -82,7 +82,7 @@
                               <label for="sq_auto_sitemap0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
                               <span class="sq_switch-selection"></span>
                             </div>
-                            <span><?php _e('Add the <strong>XML Sitemap</strong> for search engines', _PLUGIN_NAME_); ?>: <strong><?php echo get_bloginfo('siteurl') . '/sitemap.xml' ?></strong></span>
+                            <span><?php _e('Add the <strong>XML Sitemap</strong> for search engines', _PLUGIN_NAME_); ?>: <strong><?php echo get_bloginfo('url') . '/sitemap.xml' ?></strong></span>
                           </div>
                       </li>
                       <li>
@@ -299,7 +299,7 @@
 		<p>
                     <?php _e('Upload file:', _PLUGIN_NAME_); ?><br />
                     <?php if(file_exists(ABSPATH.'/favicon.ico')){ ?>
-                    <img src="<?php echo get_bloginfo('siteurl') . '/favicon.ico' . '?' . time() ?>"  style="float: left; margin-top: 5px; width: 20px; height: 20px;" />
+                    <img src="<?php echo get_bloginfo('url') . '/favicon.ico' . '?' . time() ?>"  style="float: left; margin-top: 5px; width: 20px; height: 20px;" />
                     <?php }?>
                     <input type="file" name="favicon" id="favicon" style="float: left;" />
                     <input type="submit" name="sq_update" value="<?php _e('Upload', _PLUGIN_NAME_)?>" style="float: left; margin-top: 0;" /> 

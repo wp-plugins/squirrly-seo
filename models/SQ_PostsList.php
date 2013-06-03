@@ -1,13 +1,29 @@
 <?php
 
 class Model_SQ_PostsList{
-    
-    private $traffic;
-    public $reportTitles;
+
+    /** @var integer */
     public $post_id;
+        
+     /** @var array */
+    private $traffic;
+    
+    public $reportTitles;
+    
+    /** @var string */
     public $interval = 'month';
+    
+    /** @var integer */
     public $max_val_show = 99999;
+    
+    /** @var string */
     public $ctx;
+    
+    /** @var integer */
+    var $local_rank;
+    
+    /** @var integer */
+    var $global_rank;
     
     function __construct() {
         $this->ctx = __('This article',_PLUGIN_NAME_).'|'.__('All your articles',_PLUGIN_NAME_);
@@ -46,6 +62,7 @@ class Model_SQ_PostsList{
      * @return string
      */
     public function packBrief($response){
+        if (!isset($response->seo)) return;
         
         if (isset($response->seo) && ($response->seo->optimized == '0%')){
             $error = array('error' => 'sq_no_information',
@@ -62,8 +79,9 @@ class Model_SQ_PostsList{
             if (!$pos = min($response->global_rank, $response->local_rank))
                $pos = max($response->global_rank, $response->local_rank);
         
-        if (!isset($response->local_rank)) 
-            $pos = $response->global_rank;
+        if (!isset($response->local_rank) && isset($response->global_rank)) 
+                $pos = $response->global_rank;
+            
         
         
         //add the local SERP value
@@ -195,7 +213,7 @@ class Model_SQ_PostsList{
         if (!is_object($squirrly)) return false;
         //if ($squirrly->max == 0) return '';
         
-        $str = 
+        $str = '';
         $str .= '<ul class="sq_rank_squirrly">';
         $str .= '<li>
                     <div class="sq_rank_squirrly_score"><span class="sq_rank_sprite sq_rank_squirrly_icon"></span>

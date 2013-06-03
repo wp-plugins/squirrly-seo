@@ -64,10 +64,11 @@ class SQ_Ranking extends SQ_FrontController {
 
         if ($return->indexed == -1 || $return->indexed == 0)
            //Save if indexed in any position
-            if ($this->getGoogleRank($post_id, $return->seo->permalink) > 0) {
-                $this->saveIndexed($post_id);
-                $return->indexed = 1;
-            }
+            if (isset($return->seo))
+                if ($this->getGoogleRank($post_id, $return->seo->permalink) > 0) {
+                    $this->saveIndexed($post_id);
+                    $return->indexed = 1;
+                }
       
         
     }    

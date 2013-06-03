@@ -19,9 +19,6 @@ class SQ_Tools extends SQ_FrontController {
         
         self::$options = $this->getOptions();
         
-        /* active squirrly by default */
-        if(!isset(self::$options['sq_use']))
-            self::$options['sq_use'] = 1;
         
         //if debug is called
         if (self::getIsset('sq_debug')){
@@ -109,12 +106,40 @@ class SQ_Tools extends SQ_FrontController {
     * @return void
     */
     public static function getOptions(){
+        $default = array(
+            'sq_api' => '',
+            'sq_use' => 1,
+            'sq_howto' => 1,
+            'sq_auto_canonical' => 1,
+            'sq_auto_sitemap' => 1,
+            'sq_auto_meta' => 1,
+            'sq_auto_favicon' => 1,
+            'sq_auto_twitter' => 1,
+            'sq_twitter_account' => '',
+            
+            'sq_auto_seo' => 1,
+            'sq_fp_title' => '',
+            'sq_fp_description' => '',
+            'sq_fp_keywords' => '',
+            
+            'sq_google_plus' => '',
+            'sq_google_wt' => '',
+            'sq_google_analytics' => '',
+            'sq_facebook_insights' => '',
+            'sq_bing_wt' => '',
+            
+            'ignore_warn' => 0,
+            'sq_keyword_help' => 1,
+            'sq_keyword_information' => 0
+        );
         $options = json_decode(get_option(SQ_OPTION),true);
         
-        if (is_array($options))
+        if (is_array($options)){
+            $options = @array_merge($default, $options);
             return $options;
+        }
        
-        return false;
+        return $default;
     }
     
     /**
