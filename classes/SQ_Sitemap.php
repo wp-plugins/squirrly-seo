@@ -8,6 +8,7 @@ class SQ_Sitemap extends SQ_FrontController {
     var $opt = array();
     var $data = array();
     var $args = array();
+    var $posts_limit = 0;
     
      function __construct() {
         if (!isset(SQ_Tools::$options['sq_use']) || SQ_Tools::$options['sq_use'] == 0) return;
@@ -125,15 +126,16 @@ class SQ_Sitemap extends SQ_FrontController {
                 $this->addLine($permalink, $this->getTimestamp($out['lastmod']), $out['changefreq'], $out['priority']);
 
                 $subPage = '';
-                for($i = 1; $i <= $post->postPages; $i++) {
-                    if(get_option('permalink_structure') == '') {
-                        $subPage = $permalink . '&amp;page=' . ($p+1);
-                    } else {
-                        $subPage = trailingslashit($permalink) . user_trailingslashit($p+1, 'single_paged');
-                    }
+                if (isset($post->postPages) > 0)
+                    for($i = 1; $i <= $post->postPages; $i++) {
+                        if(get_option('permalink_structure') == '') {
+                            $subPage = $permalink . '&amp;page=' . ($p+1);
+                        } else {
+                            $subPage = trailingslashit($permalink) . user_trailingslashit($p+1, 'single_paged');
+                        }
 
-                    $this->addLine($subPage, $this->getTimestamp($out['lastmod']), $out['changefreq'], $out['priority']);
-                }
+                        $this->addLine($subPage, $this->getTimestamp($out['lastmod']), $out['changefreq'], $out['priority']);
+                    }
 
             }
         }
