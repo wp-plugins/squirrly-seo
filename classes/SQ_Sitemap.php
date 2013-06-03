@@ -9,13 +9,13 @@ class SQ_Sitemap extends SQ_FrontController {
     var $data = array();
     var $args = array();
     var $posts_limit = 0;
-    
+
      function __construct() {
         if (!isset(SQ_Tools::$options['sq_use']) || SQ_Tools::$options['sq_use'] == 0) return;
         if (isset(SQ_Tools::$options['sq_auto_sitemap']) && SQ_Tools::$options['sq_auto_sitemap'] == 0) return;
 
         $this->filename = 'sitemap.xml';
-        
+
         $this->file = ABSPATH . $this->filename;
         //For sitemap ping
         $this->args['timeout'] = 10;
@@ -29,9 +29,9 @@ class SQ_Sitemap extends SQ_FrontController {
                             'tag' => array(0.3,'weekly'),
                             'author' => array(0.3,'weekly'),
                            );
-        
-        
-        
+
+
+
         //Existing posts was deleted
         add_action('delete_post', array($this, 'generateSitemap'),9999,1);
         //Existing post was published
@@ -39,10 +39,10 @@ class SQ_Sitemap extends SQ_FrontController {
         //Existing page was published
         add_action('publish_page', array($this, 'generateSitemap'),9999,1);
     }
-    
+
     function init() { return; }
     function action() {}
-   
+
     /**
      * Generate the XML sitemap for google
      */
@@ -52,7 +52,7 @@ class SQ_Sitemap extends SQ_FrontController {
         $home = get_bloginfo('url');
         $homeID = 0;
         $wpCompat = (floatval($wp_version) < 2.1);
-        
+
         /* If the site starts with a page */
         if(get_option('show_on_front') == 'page' && get_option('page_on_front')) {
             $page = get_page(get_option('page_on_front'));
@@ -62,45 +62,45 @@ class SQ_Sitemap extends SQ_FrontController {
                 $this->addLine($home, $this->getTimestamp($lastmod), $this->opt['home'][1], $this->opt['home'][0]);
             }
         } else $this->addLine($home, $this->getTimestamp(get_lastpostmodified('GMT')), $this->opt['home'][1], $this->opt['home'][0]);
-        
+
        /***********************************************************************/
        //Add the pages
        $query = array();
-        
+
         /* CREATE QUERY */
         $query['what'] = "`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_status`, `post_name`, `post_modified`, `post_modified_gmt`, `post_parent`, `post_type` ";
-        
+
         /* from */
         $query['from'] = " `" . $wpdb->posts . "` " ;
         /* where */
         $query['where'] = '(';
-      
-        
-        if($wpCompat) 
+
+       
+        if($wpCompat)
             $query['where'] .= "(post_status = 'publish' AND post_date_gmt <= '" . gmdate('Y-m-d H:i:59') . "')";
         else
             $query['where'] .= "(post_status = 'publish' AND (post_type = 'post' OR post_type = '')) ";
-        
+
         $query['where'] .= " OR ";
-        if($wpCompat) 
+        if($wpCompat)
             $query['where'] .= " post_status='static' ";
-        else 
+        else
             $query['where'] .= " (post_status = 'publish' AND post_type = 'page') ";
 
-        $query['where'] .= ") ";    
+        $query['where'] .= ") ";
         $query['where'] .= " AND post_password=''";
         /* order */
         $query['order'] = " ORDER BY post_modified DESC";
         /* limit */
         $query['limit'] = ((int)$this->posts_limit > 0) ? " LIMIT 0," . $this->posts_limit : '';
-        
-        
+
+
         $posts = $wpdb->get_results('SELECT '.$query['what'].' FROM '.$query['from'].' WHERE '.$query['where'].' '.$query['order'].' '.$query['limit'].' ');
         if(!$posts) {
                 trigger_error( ucfirst(_PLUGIN_NAME_) . " failed to connect to database: " . mysql_error(), E_USER_NOTICE); //E_USER_NOTICE will be displayed on our debug mode
                 return;
         }
-        
+
         /* loop */
         foreach ($posts as $post) {
             $out = array();
@@ -112,7 +112,7 @@ class SQ_Sitemap extends SQ_FrontController {
                     $isPage = ($post->post_status == 'static');
                 else
                     $isPage = ($post->post_type == 'page');
-                
+
                 if($isPage){
                     $out['priority'] = $this->opt['page'][0];
                     $out['changefreq'] = $this->opt['page'][1];
@@ -139,7 +139,7 @@ class SQ_Sitemap extends SQ_FrontController {
 
             }
         }
-        
+
         /***********************************************************************/
         /* Add links ftom categories */
         if(!$this->IsTaxonomySupported()) {
@@ -170,7 +170,7 @@ class SQ_Sitemap extends SQ_FrontController {
                     }
             }
         }
-        
+
          /***********************************************************************/
        //Add the archives
         $now = current_time('mysql');
@@ -186,7 +186,7 @@ class SQ_Sitemap extends SQ_FrontController {
 
         $archives= $wpdb->get_results("SELECT DISTINCT ".$query['what']." FROM ".$query['from']." WHERE ".$query['where']." ".$query['group']." ".$query['order']." ".$query['limit']."");
 
-       
+
         if ($archives) {
             foreach ($archives as $archive) {
 
@@ -201,18 +201,18 @@ class SQ_Sitemap extends SQ_FrontController {
                 $this->addLine(get_month_link($archive->year,$archive->month), $this->getTimestamp($archive->last_mod),$changeFreq,$this->opt['archive'][0]);
             }
         }
-        
+
         /***********************************************************************/
         //Add the author pages
         $linkFunc = null;
-			
+
         //get_author_link is deprecated in WP 2.1, try to use get_author_posts_url first.
-        if(function_exists('get_author_posts_url')) 
+        if(function_exists('get_author_posts_url'))
             $linkFunc = 'get_author_posts_url';
-        else if(function_exists('get_author_link')) 
+        else if(function_exists('get_author_link'))
             $linkFunc = 'get_author_link';
-        
-        if($linkFunc !== null) {                
+
+        if($linkFunc !== null) {
             $query = array();
 
             /* CREATE QUERY */
@@ -233,9 +233,9 @@ class SQ_Sitemap extends SQ_FrontController {
                     $this->addLine($author_url, $this->getTimestamp($author->last_post),$this->opt['author'][1],$this->opt['author'][0]);
                 }
             }
-            
+
         }
-        
+
         /***********************************************************************/
         if($this->IsTaxonomySupported()) {
             $count = 0;
@@ -247,22 +247,22 @@ class SQ_Sitemap extends SQ_FrontController {
                     $count++;
                 }
             }
-        }    
-        
+        }
+
         return $this->render();
 
-    } # end function  
-    
+    } # end function
+
     /**
      * Push new info to array
-     * 
+     *
      * @param string $link
      * @param string $timestamp
      * @param string $changefreq
      * @param string $priority
      */
     private function addLine($link, $timestamp, $changefreq, $priority){
-       
+
         array_push($this->data, array(
             'loc' => $link,
             'lastmod' => date('Y-m-d\TH:i:s+00:00',$timestamp),
@@ -270,7 +270,7 @@ class SQ_Sitemap extends SQ_FrontController {
             'priority' => $priority
         ));
     }
-    
+
     /**
      * Create the XML sitemap
      * @return string
@@ -279,11 +279,11 @@ class SQ_Sitemap extends SQ_FrontController {
         $content = '';
         try{
             @ini_set( 'memory_limit', apply_filters( 'admin_memory_limit', WP_MAX_MEMORY_LIMIT ) );
-            
+
             $content .= '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-            $content .= '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+            $content .= '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
                 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
 
@@ -297,29 +297,29 @@ class SQ_Sitemap extends SQ_FrontController {
                         $content .= "\t" . '</url>' . "\n";
                 } # end foreach
             $content .= '</urlset>';
-        
+
         }catch(Exception $e){}
-        
+
         $this->saveSitemap($content);
-        
+
         $this->doPing();
         return $content;
     }
-    
+
     private function doPing(){
         //Ping Google
         $google_url="http://www.google.com/webmasters/sitemaps/ping?sitemap=" . urlencode($this->getXmlUrl());
         $response = wp_remote_get( $google_url, $this->args);
-        
+
         //Ping Bing
         $bing_url="http://www.bing.com/webmaster/ping.aspx?siteMap=" . urlencode($this->getXmlUrl());
         $response = wp_remote_get( $bing_url, $this->args);
 
     }
-    
+
     /**
     * Converts into a unix timestamp
-    * 
+    *
     * @param string time
     * @return string
     */
@@ -333,31 +333,31 @@ class SQ_Sitemap extends SQ_FrontController {
      * Function to save the sitemap data to file as either XML or XML.GZ format
      * @param string $data XML data
      * @param string $filename file path
-     * 
+     *
      * @return boolean
-     */	
+     */
     private function saveSitemap($data){
             if(function_exists('gzopen') && function_exists('gzwrite') && function_exists('gzclose')){
                 if (function_exists('file_exists') && file_exists($this->file.'.gz'))
                     @unlink($this->file.'.gz');
-                
+
                 if (function_exists('file_exists') && !file_exists($this->file.'.gz'))
                     if ($gz = @gzopen($this->file.'.gz','wb9')){
                             @gzwrite($gz, $data);
                             @gzclose($gz);
                     }
             }
-            
+
             if(function_exists('fopen'))
                 if ($fp = @fopen($this->file, 'w+')){
                     fwrite($fp, $data);
                     fclose($fp);
                     return true;
                 }
-            
+
        return false;
-    } # end function	
-  
+    } # end function
+
     /**
     * Returns the URL for the XML sitemap file
     *
@@ -365,8 +365,8 @@ class SQ_Sitemap extends SQ_FrontController {
     */
     public function getXmlUrl() {
         return trailingslashit(get_bloginfo('url')). $this->filename;
-    }    
-    
+    }
+
     /**
     * Returns if this version of WordPress supports the new taxonomy system
     *

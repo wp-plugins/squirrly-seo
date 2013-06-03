@@ -5,8 +5,8 @@
         <div id="sq_settings_howto_title" ><?php _e('With Squirrly SEO, your Wordpress will get Excellent SEO on each article you write.', _PLUGIN_NAME_); ?></div>
         <div id="sq_settings_howto_body">
             <p><span><?php _e('SEO Software', _PLUGIN_NAME_); ?></span><?php _e('delivered as a plugin for Wordpress. <br /><br />We connect your wordpress with Squirrly, so that we can find the best SEO opportunities, give you reports and analyse your competitors.', _PLUGIN_NAME_); ?></p>
-            <p><object width="420" height="315"><param name="movie" value="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p> 
-            <a id="sq_settings_button" href="post-new.php"><?php echo  __( 'Write a new post with Squirrly', _PLUGIN_NAME_); ?></a> 
+            <p><object width="420" height="315"><param name="movie" value="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+            <a id="sq_settings_button" href="post-new.php"><?php echo  __( 'Write a new post with Squirrly', _PLUGIN_NAME_); ?></a>
             <div id="sq_settings_howto_close" class="sq_close" >x</div>
         </div>
     </div>
@@ -14,26 +14,26 @@
     <?php if(isset($view->options['sq_api'])) {?>
         <div id="sq_userinfo"></div>
         <script type="text/javascript">
-           jQuery(document).ready(function() {  
+           jQuery(document).ready(function() {
                 sq_getUserInfo('<?php echo _SQ_API_URL_ ?>', '<?php echo SQ_Tools::$options['sq_api']?>');
            });
         </script>
     <?php }?>
-        
+
     <div id="sq_settings_title" ><?php _e('Squirrly settings', _PLUGIN_NAME_); ?> <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> </div>
     <div id="sq_settings_body">
-      
-      
-         <div id="sq_settings_left" >  
+
+
+         <div id="sq_settings_left" >
          <fieldset style="display: none">
             <legend><?php _e(ucfirst(_PLUGIN_NAME_) . ' API', _PLUGIN_NAME_); ?></legend>
             <div>
              <p>
-              <?php _e('API Key:', _PLUGIN_NAME_); ?><input type="text" name="sq_api" value="<?php echo ((isset($view->options['sq_api']) && $view->options['sq_api']) ? $view->options['sq_api'] : '')?>" size="60" /> 
+              <?php _e('API Key:', _PLUGIN_NAME_); ?><input type="text" name="sq_api" value="<?php echo ((isset($view->options['sq_api']) && $view->options['sq_api']) ? $view->options['sq_api'] : '')?>" size="60" />
              </p>
             </div>
         </fieldset>
-          
+
         <fieldset>
             <legend><?php _e('Let Squirrly automatically optimize my blog', _PLUGIN_NAME_); ?></legend>
             <div>
@@ -47,12 +47,12 @@
                      <span class="sq_switch-selection"></span>
                    </div>
                </div>
-                
+
                   <ul id="sq_settings_sq_use" class="sq_settings_info">
                       <span ><?php _e('What does Squirrly automatically do for SEO?', _PLUGIN_NAME_); ?></span>
-                       
+
                       <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_canonical']) || (isset($view->options['sq_auto_canonical']) && $view->options['sq_auto_canonical'] == 1)))
                                   $auto_option = true;
@@ -69,7 +69,7 @@
                           </div>
                       </li>
                       <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_sitemap']) || (isset($view->options['sq_auto_sitemap']) && $view->options['sq_auto_sitemap'] == 1)))
                                   $auto_option = true;
@@ -86,7 +86,7 @@
                           </div>
                       </li>
                       <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_meta']) || (isset($view->options['sq_auto_meta']) && $view->options['sq_auto_meta'] == 1)))
                                   $auto_option = true;
@@ -103,7 +103,7 @@
                           </div>
                       </li>
                       <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_favicon']) || (isset($view->options['sq_auto_favicon']) && $view->options['sq_auto_favicon'] == 1)))
                                   $auto_option = true;
@@ -120,7 +120,7 @@
                           </div>
                      </li>
                      <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_facebook']) || (isset($view->options['sq_auto_facebook']) && $view->options['sq_auto_facebook'] == 1)))
                                   $auto_option = true;
@@ -137,7 +137,7 @@
                           </div>
                      </li>
                      <li>
-                          <?php 
+                          <?php
                               $auto_option = false;
                               if((!isset($view->options['sq_auto_twitter']) || (isset($view->options['sq_auto_twitter']) && $view->options['sq_auto_twitter'] == 1)))
                                   $auto_option = true;
@@ -155,16 +155,16 @@
                           </div>
                      </li>
                   </ul>
-              
-            
+
+
             </div>
-        </fieldset>  
+        </fieldset>
 
         <fieldset id="sq_title_description_keywords" style="<?php echo ((!isset($view->options['sq_use']) || (isset($view->options['sq_use']) && $view->options['sq_use'] == 0)) ? 'display:none;' : ''); ?>">
             <legend><?php _e('First page optimization (Title, Description, Keywords)', _PLUGIN_NAME_); ?></legend>
             <ul id="sq_settings_sq_use" class="sq_settings_info">
                 <li>
-                    <?php 
+                    <?php
                         $auto_option = false;
                         if((!isset($view->options['sq_auto_title']) || (isset($view->options['sq_auto_title']) && $view->options['sq_auto_title'] == 1)))
                             $auto_option = true;
@@ -181,7 +181,7 @@
                     </div>
                 </li>
                 <li>
-                    <?php 
+                    <?php
                         $auto_option = false;
                         if((!isset($view->options['sq_auto_description']) || (isset($view->options['sq_auto_description']) && $view->options['sq_auto_description'] == 1)))
                             $auto_option = true;
@@ -196,29 +196,29 @@
                       </div>
                       <span><?php _e('Add the correct <strong>description</strong> and <strong>keywords</strong> in all pages', _PLUGIN_NAME_); ?></span>
                     </div>
-                </li>   
+                </li>
             </ul>
-            
-            <?php 
-                
+
+            <?php
+
                 $auto_option = false;
                 if((!isset($view->options['sq_fp_title']) || $view->options['sq_fp_title'] == '') || (isset($view->options['sq_auto_seo']) && $view->options['sq_auto_seo'] == 1))
-                 $auto_option = true;   
+                 $auto_option = true;
             ?>
             <div id="sq_snippet">
                 <div id="sq_snippet_name"><?php _e('Squirrly Snippet',_PLUGIN_NAME_)?></div>
-                
+
                 <ul id="sq_snippet_ul">
                     <li id="sq_snippet_title"></li>
                     <li id="sq_snippet_url"></li>
                     <li id="sq_snippet_description"></li>
                     <li id="sq_snippet_source"><a href="http://www.google.com/webmasters/tools/richsnippets?url=<?php echo urlencode(get_bloginfo('wpurl')) ?>" target="_blank"><?php _e('Check with google ...',_PLUGIN_NAME_) ?></a></li>
                 </ul>
-                
+
                 <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO',_PLUGIN_NAME_)?></div>
             </div>
-            
-            
+
+
             <div class="sq_option_content">
                 <div class="sq_switch">
                   <input id="sq_automatically" type="radio" class="sq_switch-input" name="sq_auto_seo" value="1" <?php echo ($auto_option ? "checked" : '')?> />
@@ -228,11 +228,11 @@
                   <span class="sq_switch-selection"></span>
                 </div>
             </div>
-            
+
            <div id="sq_customize_settings" <?php echo (!$auto_option ? '' : 'style="display: none;"')?>>
 
              <p class="withborder">
-              <?php _e('Title:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '')?>" size="75" /> 
+              <?php _e('Title:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo ((isset($view->options['sq_fp_title']) && $view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '')?>" size="75" />
               <span id="sq_fp_title_length"></span><span class="sq_settings_info"><?php _e('Tips: Length 10-75 chars', _PLUGIN_NAME_); ?></span>
              </p>
              <p class="withborder">
@@ -240,12 +240,12 @@
               <span id="sq_fp_description_length"></span><span class="sq_settings_info"><?php _e('Tips: Length 70-165 chars', _PLUGIN_NAME_); ?></span>
              </p>
              <p class="withborder">
-              <?php _e('Keywords:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_keywords" value="<?php echo ((isset($view->options['sq_fp_keywords']) && $view->options['sq_fp_keywords'] <> '') ? $view->options['sq_fp_keywords'] : '')?>" size="70" /> 
+              <?php _e('Keywords:', _PLUGIN_NAME_); ?><input type="text" name="sq_fp_keywords" value="<?php echo ((isset($view->options['sq_fp_keywords']) && $view->options['sq_fp_keywords'] <> '') ? $view->options['sq_fp_keywords'] : '')?>" size="70" />
               <span id="sq_fp_keywords_length"></span><span class="sq_settings_info"><?php _e('Tips: 2-4 keywords', _PLUGIN_NAME_); ?></span>
              </p>
-           </div>  
+           </div>
         </fieldset>
-                     
+
         <fieldset>
             <legend><?php _e('Squirrly Options', _PLUGIN_NAME_); ?></legend>
             <div class="sq_option_content">
@@ -269,7 +269,7 @@
                 </div>
                 <span><?php _e('Show <strong>"Enter a keyword"</strong> bubble when posting a new article.', _PLUGIN_NAME_); ?></span>
             </div>
-            
+
             <div class="sq_option_content">
                 <div class="sq_switch">
                   <input id="sq_keyword_information1" type="radio" class="sq_switch-input" name="sq_keyword_information" value="1" <?php echo ((isset($view->options['sq_keyword_information']) && $view->options['sq_keyword_information'] == 1) ? "checked" : '')?> />
@@ -280,16 +280,16 @@
                 </div>
                 <span><?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?></span>
             </div>
-       </fieldset> 
-                  
+       </fieldset>
 
-        
+
+
 
         </div>
-          
+
         <div id="sq_settings_right">
-           
-            
+
+
            <fieldset>
             <legend><?php _e('Change the Website Icon', _PLUGIN_NAME_); ?></legend>
             <div>
@@ -302,13 +302,13 @@
                     <img src="<?php echo get_bloginfo('url') . '/favicon.ico' . '?' . time() ?>"  style="float: left; margin-top: 5px; width: 20px; height: 20px;" />
                     <?php }?>
                     <input type="file" name="favicon" id="favicon" style="float: left;" />
-                    <input type="submit" name="sq_update" value="<?php _e('Upload', _PLUGIN_NAME_)?>" style="float: left; margin-top: 0;" /> 
+                    <input type="submit" name="sq_update" value="<?php _e('Upload', _PLUGIN_NAME_)?>" style="float: left; margin-top: 0;" />
                     <span class="sq_settings_info"><?php echo ((defined('SQ_MESSAGE_FAVICON')) ? SQ_MESSAGE_FAVICON : '')?></span>
-               </p>	
+               </p>
             </div>
             <span class="sq_settings_info"><?php _e('If you don\'t see the new icon in your browser, empty the browser cache and refresh the page.', _PLUGIN_NAME_); ?></span>
           </fieldset>
-            
+
           <fieldset>
             <legend><?php _e('Tool for Search Engines', _PLUGIN_NAME_); ?></legend>
             <div>
@@ -333,20 +333,20 @@
               <?php echo sprintf(__('Bing META code (for %sWebmaster Tool%s )`:', _PLUGIN_NAME_), '`<a href="http://www.bing.com/toolbox/webmaster/" target="_blank">','</a>'); ?><br><strong>&lt;meta name="msvalidate.01" content=" <input type="text" name="sq_bing_wt" value="<?php echo ((isset($view->options['sq_bing_wt']) && $view->options['sq_bing_wt'] <> '') ? $view->options['sq_bing_wt'] : '')?>" size="15" /> " /&gt;</strong>
              </p>
             </div>
-        </fieldset>            
+        </fieldset>
        </div>
-          
-       <div id="sq_settings_submit">   
-        <input type="hidden" name="action" value="sq_settings_update" /> 
+
+       <div id="sq_settings_submit">
+        <input type="hidden" name="action" value="sq_settings_update" />
         <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
-        <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" /> 
+        <input type="submit" name="sq_update" value="<?php _e('Save settings', _PLUGIN_NAME_)?> &raquo;" />
       </div>
-     
+
 
     </div>
     </form>
     <script type="text/javascript">
-       var sq_blogurl = "<?php echo get_bloginfo('url') ?>"; 
-       
+       var sq_blogurl = "<?php echo get_bloginfo('url') ?>";
+
     </script>
 </div>

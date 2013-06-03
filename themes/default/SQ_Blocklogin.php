@@ -18,14 +18,14 @@
               <div id="sq_register_email" ><label for="sq_email"><?php _e('Your E-mail:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_email" name="sq_email" autocomplete="off" /></div>
               <div id="sq_loginimage"><?php _e('Sign Up', _PLUGIN_NAME_); ?></div>
               <span><?php _e('This email connects you to Squirrly.co' , _PLUGIN_NAME_); ?></span>
-             
+
           </div>
-          
+
       </div>
       <script type="text/javascript">
          // autoLogin();
-         // 
-          //Call the autologin 
+         //
+          //Call the autologin
           var __invalid_email = '<?php _e('The email address is invalid!',_PLUGIN_NAME_); ?>';
           var __try_again = '<?php _e('Click on Sign Up button and try again ...',_PLUGIN_NAME_); ?>';
           var __error_login = '<?php _e('An error occured while logging in!',_PLUGIN_NAME_); ?>';

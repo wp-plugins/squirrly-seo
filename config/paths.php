@@ -11,7 +11,7 @@ define('_SQ_API_URL_',          'http://api.squirrly.co/');
 define('_SQ_STATIC_API_URL_',   'http://static.api.squirrly.co/');
 define('_SQ_SUPPORT_URL_',      'https://www.facebook.com/Squirrly.co');
 
-if(WP_VERSION_ID >= 3000) 
+if(WP_VERSION_ID >= 3000)
     define('SQ_URI', 'wp350');
 else
     define('SQ_URI', 'wp2');
@@ -32,5 +32,4 @@ define('_SQ_URL_',             WP_PLUGIN_URL.'/'._PLUGIN_NAME_);
 define('_SQ_CACHE_URL_',            _SQ_URL_.'/cache/');
 define('_SQ_ALL_THEMES_URL_',       _SQ_URL_.'/themes/');
 define('_SQ_THEME_URL_',            _SQ_URL_.'/themes/'._THEME_NAME_.'/');
-
 ?>

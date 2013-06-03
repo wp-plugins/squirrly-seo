@@ -4,7 +4,7 @@ Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,squirrely,wo
 Requires at least: 3.1
 Tested up to: 3.6
 Stable tag: trunk
- 
+
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
@@ -17,14 +17,14 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
  * <strong>SEO Live Assistant:</strong> Checks your SEO on each article or page in real time. Before you click the Post button, you know if your article is  optimized 100% or not.
 
  * <strong>Inspiration box:</strong> pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
- 
+
  * <strong>Read industry-related blogs straight from your wordpress</strong>. The KeenSkim filter that we use will mark the relevant content so that you can reduce 60% of your reading time and start writing your next great article.
 
  * Besides excellence in SEO delivered to your Wordpress through our software, <strong>we strive to offer excellence in Customer Service</strong>. We were featured on the <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringhappiness.com/everyday-happiness-florin-squirrly-and-how-theyre-making-happy-work/" target="_blank">Delivering Happiness Blog</a> for this.
 
  * Our software is <strong>always up-to-date</strong> with the latest in terms of search engine optimization, and we improve the product for you on a weekly basis.
 
-You will always get the latest in terms of search engine optimization developments. We've made a monthly pricing plan so that you will always get the latest updates related to search engines, stress-free. 
+You will always get the latest in terms of search engine optimization developments. We've made a monthly pricing plan so that you will always get the latest updates related to search engines, stress-free.
 
 Your blogging will become 230% more effective in terms of time it takes to rank articles (by continued use) and with long-lasting effects  and your experience with SEO much easier, since a team of 5 people work full time on delivering you the best in terms of SEO and Content Marketing.
 
@@ -41,7 +41,7 @@ Founder and CEO
 Squirrly UK
 
 
-See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>. 
+See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>.
 
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
  | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a>
@@ -69,7 +69,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
 10. Squirrly Seo settings tab with extra Seo optimization features
 
- 
+
 == Changelog ==
 = 2.0.2 =
 * Fixed minor Squirrly SEO Rank Bugs
@@ -77,7 +77,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added the Squirrly Keyword Suggestion in Squirrly Rank
 
 = 2.0.1 =
-* Added Squirrly SEO Rank in Post/Page lists 
+* Added Squirrly SEO Rank in Post/Page lists
 * Added Traffic progress monitor for each post/page
 * Added Social Impact progress monitor for each post/page
 * Added Inbound Links progress monitor for each post/page
@@ -101,7 +101,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed settings bugs on saving
 
 = 1.1.5 =
-* Added multiple Countries for Keyword Research 
+* Added multiple Countries for Keyword Research
 * Changed the Squirrly SEO Settings Look
 
 = 1.1.4 =
@@ -111,7 +111,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 1.1.3 =
 * Added multi-language support in SEO Live Assistant
 * Improved compatibility with other SEO plugins and themes
-* Improved META information 
+* Improved META information
 
 = 1.1.2 =
 * Now works with Ecommerce plugins WooCommerce, MarketPress, Ready!, Shopp
@@ -143,12 +143,12 @@ Also:
 * Added how many words to write for keyword density in Squirrly Live SEO Assistant
 * Added copyright free images in inspiration box
 * Added the google suggestion in search box
-* Added notification if no keyword is used 
+* Added notification if no keyword is used
 * CSS changed for mobile (tested on Android and IOS)
-* Fixed issues for javascript 
+* Fixed issues for javascript
 
 = 1.0.7 =
-* Fixed Seo Live Assistant bugs 
+* Fixed Seo Live Assistant bugs
 
 = 1.0.6 =
 * Automatically register on squirrly with email address
@@ -160,7 +160,7 @@ Also:
 = 1.0.3 =
 * Added Support and link to dashboard in Happiness bar
 * Changed the keyword suggestion design
-* Automatically add tag with the used seo keyword 
+* Automatically add tag with the used seo keyword
 
 = 1.0.2 =
 * Fixed PHP5 version check
@@ -189,7 +189,7 @@ Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a 
 
 == Reviews ==
 What have Bloggers and Experts written about Squirrly SEO?:
- 
+
 Experts in online marketing have tested Squirrly SEO Plugin and wrote their opinion about it. This here page highlights them, so that you can see what Squirrly SEO Plugin is all about :)
 <a href="http://www.squirrly.co/reviews-pag68312.html" title="Squirrly SEO Reviews" target="_blank">Squirrly SEO Reviews</a>
 
@@ -240,17 +240,17 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - For beginners, all these settings are made automatically to get the best SEO possible.
 - For advanced users, you can fine-tune everything.
 - You can override any title and set any META description and any META keywords you want.
-- Real Time Snippet Preview 
+- Real Time Snippet Preview
 - Integrated with other Ecommerce Plugins like WooCommerce, MarketPress, Ready!, Shopp
-- Compatibility with all the other plugins, like Auto Meta, Ultimate Tag Warrior and others. 
+- Compatibility with all the other plugins, like Auto Meta, Ultimate Tag Warrior and others.
 
-And the best ones that we have (and the others don't): 
+And the best ones that we have (and the others don't):
 
  - *Keyword research*: find the perfect keywords for your articles
  - *Inspiration box*: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.
  - *Read industry-related blogs*, straight from your wordpress. The KeenSkim filter that we use, will mark the relevant content, so that you can reduce 60% of your reading time and start writing your next great article.
  - *SEO Live Assistant*: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.
- - *SEO Rank: A great tool to track your progress on each article. You get Traffic, Social, Inbound-Links and Search engines Rank information instantly. 
+ - *SEO Rank: A great tool to track your progress on each article. You get Traffic, Social, Inbound-Links and Search engines Rank information instantly.
 
 = Where can I enter the title and page description? =
-If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and click Change it. You can enter custom Title, Description and Keywords. 
+If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and click Change it. You can enter custom Title, Description and Keywords.

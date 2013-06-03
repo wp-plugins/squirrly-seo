@@ -16,7 +16,7 @@
 		<name>SQ_Post</name>
 		<description>Post Page</description>
 		<actions>
-                    
+
                     <action>sq_feedback</action>
                     <action>sq_support</action>
                 </actions>
@@ -41,16 +41,16 @@
                     <action>sq_settings_update</action>
                     <action>sq_howto</action>
                     <action>sq_get_snippet</action>
-                    
+
                     <action>sq_fixautoseo</action>
                     <action>sq_fixpermalink</action>
                     <action>sq_fixprivate</action>
                     <action>sq_fixcomments</action>
-                    
+
                     <action>sq_warnings_off</action>
-                    
-                    
-                    
+
+
+
                 </actions>
 		<active>1</active>
 		<path>controllers</path>
@@ -65,11 +65,11 @@
                     <action>sq_login</action>
                     <action>sq_register</action>
                     <action>sq_reset</action>
-                    
+
                 </actions>
 		<active>1</active>
 		<path>core</path>
-	</block>	
+	</block>
 	<block>
 		<name>SQ_Blocksearch</name>
 		<description>Inspiration box</description>
@@ -84,7 +84,7 @@
 		<active>1</active>
 		<path>core</path>
 	</block>
-	
+
 	<block>
 		<name>SQ_Blockseo</name>
 		<description>SEO Live assistant</description>
@@ -94,7 +94,7 @@
 		<active>1</active>
 		<path>core</path>
 	</block>
-        	
+
         <block>
 		<name>SQ_Blockresearch</name>
 		<description>Research block</description>
@@ -104,7 +104,7 @@
 		<active>1</active>
 		<path>core</path>
 	</block>
-        
+
         <block>
 		<name>SQ_Blockrank</name>
 		<description>Article Rank</description>
@@ -122,5 +122,5 @@
 		</controllers>
 		<active>1</active>
 		<path>core</path>
-	</block>	
+	</block>
 </blocks>

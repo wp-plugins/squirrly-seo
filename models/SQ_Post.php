@@ -1,17 +1,17 @@
 <?php
 /**
- * Shown in the Post page (called from SQ_Menu) 
- * 
+ * Shown in the Post page (called from SQ_Menu)
+ *
  */
 class Model_SQ_Post {
-	
+
     /**
      * Set the callback to tinymce with javascript SQ_eventChange function call on event
      * @param string $init
      * @return string
      */
     public function setCallback( $init ) {
-        
+
             if ( wp_default_editor() == 'tinymce' ){
                     $init['setup'] = 'window.sq_tinymce.setup';
                     $init['onchange_callback'] = 'window.sq_tinymce.callback';
@@ -20,7 +20,7 @@ class Model_SQ_Post {
 
             return $init;
     }
-    
+
     /**
      * Register a button in tinymce editor
      */
@@ -28,7 +28,7 @@ class Model_SQ_Post {
         array_push($buttons, "|", "heading");
         return $buttons;
     }
-    
+
     public function addHeadingButton($plugin_array){
          $plugin_array['heading'] = _SQ_THEME_URL_.'js/tinymce.js';
          return $plugin_array;
@@ -36,7 +36,7 @@ class Model_SQ_Post {
 
     /**
      * Search for posts in the local blog
-     * 
+     *
      * @global object $wpdb
      * @param string $q
      * @return array
@@ -53,33 +53,33 @@ class Model_SQ_Post {
       //echo "SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr);
       /* search in wp database */
       $posts = $wpdb->get_results("SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr));
-      
-      
+
+
       if ($posts){
-          
-          $responce['total'] = $wpdb->num_rows; 
+
+          $responce['total'] = $wpdb->num_rows;
           foreach ($posts as $post) {
               $responce['results'][] = array('id' => $post->ID,
                                             'url' => get_permalink($post->ID),
                                             'title' => $post->post_title,
                                             'content' => $this->truncate($post->post_content, 50),
                                             'date' => $post->post_date_gmt);
-              
-          } 
-          
+
+          }
+
       }else{
           $responce['error'] .= __('Squirrly could not find any results for: ') .' "' . stripslashes($q) . '"';
       }
       return json_encode($responce);
   }
-    
+
     private function truncate($text, $length = 25){
       if (!$length)
           return $text;
-      
+
       $text = strip_tags($text);
       $words = explode(' ', $text, $length + 1);
-      
+
       if (count($words) > $length) {
           array_pop($words);
           array_push($words, '...');
@@ -87,9 +87,9 @@ class Model_SQ_Post {
       }
       return $text;
   }
-  
-  
-  
+
+
+
     /**
     * Upload the image on server
     *
@@ -103,7 +103,7 @@ class Model_SQ_Post {
             $file_name = wp_unique_filename($upload_dir, basename($url));
             $file_path = $upload_dir . $file_name;
 
-            if(!file_exists($file_path)) 
+            if(!file_exists($file_path))
             {
                     $http_response = wp_remote_get($url, array('timeout' => 10));
 
@@ -116,7 +116,7 @@ class Model_SQ_Post {
 
                     WP_Filesystem();
 
-                    if (!$wp_filesystem->put_contents($file_path, $data, FS_CHMOD_FILE)) {        
+                    if (!$wp_filesystem->put_contents($file_path, $data, FS_CHMOD_FILE)) {
                             return false;
                     }
 
@@ -144,17 +144,16 @@ class Model_SQ_Post {
     }
 
     /**
-    * Get the upload url 
+    * Get the upload url
     */
     public function getImgUrl() {
         $url = parse_url(get_bloginfo('wpurl'));
         $url = $url['scheme'] . '://'. $url['host'];
         $wpurl = str_replace($url,'',get_bloginfo('wpurl'));
-        
+
         return $wpurl. '/wp-content/uploads/';
     }
-    
-    
-}
 
+
+}
 ?>

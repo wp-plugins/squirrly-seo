@@ -5,7 +5,7 @@ The copyrights to the software code in this file are licensed under the (revised
 
 Plugin Name: SEO Plugin by SQUIRRLY
 Plugin URI: http://my.squirrly.co
-Description: Squirrly SEO Plugin helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time. <BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a> 
+Description: Squirrly SEO Plugin helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time. <BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
 Author: cifi, calinvingan, florinmuresan, lucianpacurar
 Version: 2.0.2
 Author URI: http://www.squirrly.co
@@ -25,14 +25,14 @@ if (PHP_VERSION_ID >= 5100){
     /* Main class call */
     $fc = SQ_ObjController::getController('SQ_FrontController', false);
     $fc->run();
-    
+
     if( !is_admin() ) SQ_ObjController::getController('SQ_Frontend');
 }else{
     /* Main class call */
     add_action('admin_init','phpError');
 }
 
-/** 
+/**
  * Show PHP Error message if PHP is lower the required
  */
 function phpError(){

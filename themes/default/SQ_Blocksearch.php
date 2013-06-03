@@ -3,14 +3,14 @@
     <div class="sq_header" ><?php _e('Optimize for Keyword', _PLUGIN_NAME_); ?></div>
     <div id="sq_blocksearch">
       <div class="sq_keyword">
-          <?php 
+          <?php
           global $sq_postID;
-          if(!isset($_COOKIE['sq_keyword_'.$sq_postID]) || $_COOKIE['sq_keyword_'.$sq_postID] == '') { 
+          if(!isset($_COOKIE['sq_keyword_'.$sq_postID]) || $_COOKIE['sq_keyword_'.$sq_postID] == '') {
                     if(!isset(SQ_Tools::$options['sq_keyword_help']) || (int)SQ_Tools::$options['sq_keyword_help'] == 1) { ?>
             <div id="sq_keyword_help" style="display:none" ><span></span><?php _e('Enter a keyword', _PLUGIN_NAME_); ?><p><?php _e('for Squirrly Live SEO optimization', _PLUGIN_NAME_); ?></p></div>
           <?php }}?>
             <input type="text" id="sq_keyword" name="sq_keyword" value="<?php echo ((isset($_COOKIE['sq_keyword_'.$sq_postID]) && $_COOKIE['sq_keyword_'.$sq_postID] <> '') ? utf8_decode($_COOKIE['sq_keyword_'.$sq_postID]) : '') ?>" autocomplete="off" />
-          
+
           <input type="button" id="sq_keyword_check" value=">" />
           <div id="sq_suggestion" style="display:none">
               <div id="sq_suggestion_close">x</div>
