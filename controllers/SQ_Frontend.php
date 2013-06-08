@@ -40,6 +40,8 @@ class SQ_Frontend extends SQ_FrontController {
          */
         public function hookFronthead(){
             parent::hookHead();
+            
+            SQ_Tools::dump(self::$options);
 
             if ( isset(self::$options['sq_use']) && (int)self::$options['sq_use'] == 1 ){
                 echo $this->model->setHeader(self::$options);
@@ -48,6 +50,8 @@ class SQ_Frontend extends SQ_FrontController {
                 if((!isset(self::$options['sq_auto_title']) || (isset(self::$options['sq_auto_title']) && self::$options['sq_auto_title'] == 1)))
                     $this->model->flushHeader();
             }
+
+
 
 	}
 

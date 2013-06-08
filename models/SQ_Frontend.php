@@ -57,7 +57,7 @@ class Model_SQ_Frontend {
      * @return buffer
      */
     function getBuffer($buffer){
-        $buffer = $this->setTitleInBuffer($buffer);
+        $buffer = $this->setMetaInBuffer($buffer);
         return $buffer;
     }
 
@@ -76,13 +76,16 @@ class Model_SQ_Frontend {
             @ob_end_flush();
         }
     }
+
     /**
-     * Change the title in site
+     * Change the title, description and keywords in site's buffer
      *
      * @return string
      */
-    private function setTitleInBuffer($buffer) {
+    private function setMetaInBuffer($buffer) {
         global $wp_query;
+        $options = SQ_Tools::getOptions();
+
         $title = $this->getCustomTitle();
 
         if (isset ($title) && !empty($title)){
@@ -90,6 +93,22 @@ class Model_SQ_Frontend {
                 $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $this->clearTitle($title)),$buffer, 1, $count);
                 if ($count == 0)
                    $buffer .= sprintf("<title>%s</title>" , $this->clearTitle($title)) . "\n" ;
+            }
+        }
+
+        if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
+            $description = $this->setCustomDescription();
+            if (isset ($description) && !empty($description) && $description <> ''){
+                    $buffer = @preg_replace('/<meta[^>]*name=\"description\"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si',$description, $buffer, 1, $count);
+                    if ($count == 0)
+                       $buffer .= $description . "\n" ;
+            }
+
+            $keyword = $this->setCustomKeyword();
+            if (isset ($keyword) && !empty($keyword) && $keyword <> ''){
+                    $buffer = @preg_replace('/<meta[^>]*name=\"keywords"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si',$keyword, $buffer, 1, $count);
+                    if ($count == 0)
+                       $buffer .= $keyword . "\n" ;
             }
         }
         return $buffer;
@@ -119,8 +138,8 @@ class Model_SQ_Frontend {
 
 
             if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
-                $ret .= $this->setCustomDescription();
-                $ret .= $this->setCustomKeyword();
+                $ret .= $this->setCustomDescription(). "\n" ;
+                $ret .= $this->setCustomKeyword(). "\n" ;
             }
 
             if((!isset($options['sq_auto_canonical']) || (isset($options['sq_auto_canonical']) && $options['sq_auto_canonical'] == 1)))
@@ -348,7 +367,7 @@ class Model_SQ_Frontend {
             $this->description = $this->clearDescription($description);
 
             if ($this->description <> ''){ //prevent blank description
-                return sprintf("<meta name=\"description\" content=\"%s\" />" , $this->description ) . "\n" ;
+                return sprintf("<meta name=\"description\" content=\"%s\" />" , $this->description ) ;
             }else{
                 return '';
             }
@@ -390,7 +409,7 @@ class Model_SQ_Frontend {
         if (isset ($keywords) && !empty($keywords) && !(is_home() && is_paged())) {
             $keywords = str_replace('"','',$keywords);
 
-            return sprintf("<meta name=\"keywords\" content=\"%s\" />" , $keywords) . "\n" ;
+            return sprintf("<meta name=\"keywords\" content=\"%s\" />" , $keywords) ;
         }
 
         return false;

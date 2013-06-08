@@ -19,27 +19,33 @@ class SQ_Tools extends SQ_FrontController {
 
         self::$options = $this->getOptions();
 
-
-        //if debug is called
-        if (self::getIsset('sq_debug')){
-            if(is_admin() || is_super_admin()){
-                $_GET['sq_debug'] = 'on';
-            }else{
-                if(self::getValue('sq_debug') <> self::$options['sq_api'])
-                    $_GET['sq_debug'] = 'off';
-            }
-
-            if(self::getValue('sq_debug') === 'on')
-                if (function_exists('register_shutdown_function')){
-                    register_shutdown_function(array($this, 'showDebug'));
-                }
-        }
+        $this->checkDebug(); //Check for debug
     }
 
     public static function getUserID(){
         global $current_user;
         return $current_user->ID;
     }
+
+    /**
+     * Check if debug is called
+     */
+    private function checkDebug(){
+        //if debug is called
+        if (self::getIsset('sq_debug')){
+            if(self::getValue('sq_debug') == self::$options['sq_api'])
+                $_GET['sq_debug'] = 'on';
+
+            if(is_admin())
+                $_GET['sq_debug'] = 'on';
+
+            if(self::getValue('sq_debug') === 'on')
+                if (function_exists('register_shutdown_function'))
+                    register_shutdown_function(array($this, 'showDebug'));
+
+        }
+    }
+
 
     /**
     * This hook will save the current version in database and load the messages from usermeta
@@ -56,6 +62,7 @@ class SQ_Tools extends SQ_FrontController {
         $this->loadMultilanguage();
         $this->checkPluginUpdated();
         $this->load_flashdata();
+
     }
 
     /**
