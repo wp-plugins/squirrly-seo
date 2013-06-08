@@ -74,6 +74,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 2.0.3 =
 * Added attributes informations for copyright free images
 * Improved the Keyword Research results with competition results
+* Improved custom META description
 
 = 2.0.2 =
 * Fixed minor Squirrly SEO Rank Bugs
