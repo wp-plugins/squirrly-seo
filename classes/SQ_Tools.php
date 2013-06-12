@@ -33,11 +33,13 @@ class SQ_Tools extends SQ_FrontController {
     private function checkDebug(){
         //if debug is called
         if (self::getIsset('sq_debug')){
+
             if(self::getValue('sq_debug') == self::$options['sq_api'])
                 $_GET['sq_debug'] = 'on';
-
-            if(is_admin())
+            elseif(is_admin())
                 $_GET['sq_debug'] = 'on';
+            else
+                $_GET['sq_debug'] = 'off';
 
             if(self::getValue('sq_debug') === 'on')
                 if (function_exists('register_shutdown_function'))
