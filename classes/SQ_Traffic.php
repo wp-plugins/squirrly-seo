@@ -263,8 +263,12 @@ class SQ_Traffic extends SQ_FrontController {
                     (`count`,`unique`,`post_id`,`home`,`date`) 
                     VALUES (1,1,".(int)$post_id.",".(int)$home.",'".date("Y-m-d")."')";
         }
-        $sql = $wpdb->prepare($sql, null);
-        return $wpdb->query($sql) ; 
+        //$sql = $wpdb->prepare($sql, null);
+
+        if ($sql <> '')
+            return $wpdb->query($sql);
+        else
+            return false; 
     }
     
     /**
