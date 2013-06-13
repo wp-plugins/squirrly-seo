@@ -283,7 +283,8 @@ class SQ_Traffic extends SQ_FrontController {
             return false;
         
         $refer = parse_url($_SERVER['HTTP_REFERER']);
-        //echo "Referer:".'<pre>'.print_R($_SERVER,true).'</pre>';
+        if (!isset($refer['host']) || !isset($refer['query'])) return;
+
         $host = $refer['host'];
         $refer = $refer['query'];
         $return = array('domain'=>$host,'keyword'=>'');
