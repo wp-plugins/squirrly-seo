@@ -468,7 +468,7 @@ class Model_SQ_Frontend {
 
         $favicon = get_bloginfo('wpurl') . '/favicon.ico'.$rnd;
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) &&  file_exists(ABSPATH.'/favicon.ico')){
+        if (file_exists(ABSPATH.'/favicon.ico')){
             $str .= sprintf("<link rel=\"shortcut icon\" type=\"image/png\"  href=\"%s\" />" . "\n", $favicon);
             $str .= sprintf("<link rel=\"apple-touch-icon\" type=\"image/png\"  href=\"%s\" />" . "\n", $favicon);
             $str .= sprintf("<link rel=\"apple-touch-icon-precomposed\" type=\"image/png\"  href=\"%s\" />" . "\n", $favicon);
