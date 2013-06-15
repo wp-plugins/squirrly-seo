@@ -23,6 +23,11 @@ class Model_SQ_Frontend {
     /** @var integer */
     private $max_keywrods = 4;
 
+    function __construct() {
+        SQ_ObjController::getController('SQ_Tools', false);
+    }
+    /** @var meta from other plugins */
+   // private $op_meta = array();
     /**
      * Write the signature
      * @return string
@@ -83,20 +88,19 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function setMetaInBuffer($buffer) {
+
         global $wp_query;
-        $options = SQ_Tools::getOptions();
+        $options = SQ_Tools::$options;
 
+        //SQ_Tools::dump($buffer);
         $title = $this->getCustomTitle();
-
-        if (isset ($title) && !empty($title)){
-            if ($title <> ''){
-                $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $this->clearTitle($title)),$buffer, 1, $count);
-                if ($count == 0)
-                   $buffer .= sprintf("<title>%s</title>" , $this->clearTitle($title)) . "\n" ;
-            }
+        if (isset ($title) && !empty($title) && $title <> ''){
+            $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si',sprintf("<title>%s</title>" , $title),$buffer, 1, $count);
+            if ($count == 0)
+               $buffer .= sprintf("<title>%s</title>" , $title) . "\n" ;
         }
 
-        if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
+        if($options['sq_auto_description'] == 1){
             $description = $this->setCustomDescription();
             if (isset ($description) && !empty($description) && $description <> ''){
                     $buffer = @preg_replace('/<meta[^>]*name=\"description\"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si',$description, $buffer, 1, $count);
@@ -123,9 +127,11 @@ class Model_SQ_Frontend {
      *
      * @return string
      */
-    function setHeader($options = array()){
+    function setHeader(){
         global $wp_query;
         $ret = '';
+        $options = SQ_Tools::$options;
+        SQ_Tools::dump($wp_query);
 
         if (!function_exists('preg_replace')) return $ret;
 
@@ -136,23 +142,22 @@ class Model_SQ_Frontend {
             /* Meta setting*/
             $this->title = $this->clearTitle($this->getCustomTitle());
 
-
-            if((!isset($options['sq_auto_description']) || (isset($options['sq_auto_description']) && $options['sq_auto_description'] == 1))){
+            if($options['sq_auto_description'] == 1){
                 $ret .= $this->setCustomDescription(). "\n" ;
                 $ret .= $this->setCustomKeyword(). "\n" ;
             }
 
-            if((!isset($options['sq_auto_canonical']) || (isset($options['sq_auto_canonical']) && $options['sq_auto_canonical'] == 1)))
+            if($options['sq_auto_canonical'] == 1)
                $ret .= $this->setCanonical();
 
-            if((!isset($options['sq_auto_sitemap']) || (isset($options['sq_auto_sitemap']) && $options['sq_auto_sitemap'] == 1)))
+            if($options['sq_auto_sitemap'] == 1)
                 $ret .= $this->getXMLSitemap();
             /* Auto setting*/
 
-            if((!isset($options['sq_auto_favicon']) || (isset($options['sq_auto_favicon']) && $options['sq_auto_favicon'] == 1)))
+            if($options['sq_auto_favicon'] == 1)
                 $ret .= $this->getFavicon();
 
-            if((!isset($options['sq_auto_meta']) || (isset($options['sq_auto_meta']) && $options['sq_auto_meta'] == 1))){
+            if($options['sq_auto_meta'] == 1){
                 $ret .= $this->getCopyright();
                 $ret .= $this->getPublisher();
                 $ret .= $this->getLanguage();
@@ -160,10 +165,10 @@ class Model_SQ_Frontend {
                 $ret .= $this->getTheDate();
             }
 
-            if((!isset($options['sq_auto_facebook']) || (isset($options['sq_auto_facebook']) && $options['sq_auto_facebook'] == 1)))
+            if($options['sq_auto_facebook'] == 1)
                 $ret .= $this->getFacebookObject($options)."\n";
 
-            if((!isset($options['sq_auto_twitter']) || (isset($options['sq_auto_twitter']) && $options['sq_auto_twitter'] == 1)))
+            if($options['sq_auto_twitter'] == 1)
                 $ret .= $this->getTwitterCard($options)."\n";
             /* SEO optimizer tool*/
             $ret .= $this->getGoogleWT();
@@ -278,17 +283,19 @@ class Model_SQ_Frontend {
         global $wp_query;
         $count  = 0;
         $title = '';
+        $optitle = '';
         $sep = '|';
-        $homepage = (is_home() || $wp_query->query_vars['name'] == '');
+        $homepage = (is_home() || ($wp_query->query_vars['name'] == '' && !is_preview()));
 
         if ($this->checkHomePosts()){
             $title = $this->clearTitle( $this->grabTitleFromPost() );
             if (get_bloginfo('name') <> '' )
                 $title .= " ".$sep." " . get_bloginfo('name');
 
-        }elseif(is_single()){
+        }elseif(is_single() || is_page()){
             $post = $wp_query->get_queried_object();
             $title = $this->clearTitle( $this->grabTitleFromPost($post->ID) );
+
         }
 
         if ($title <> ''){
@@ -297,12 +304,18 @@ class Model_SQ_Frontend {
         }
 
         /* Check if is a predefined Title */
-        if($homepage && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_title'] <> ''){
-            $title = $this->clearTitle( SQ_Frontend::$options['sq_fp_title'] );
+        if($homepage &&
+                SQ_Tools::$options['sq_auto_seo'] <> 1 &&
+                SQ_Tools::$options['sq_fp_title'] <> '' &&
+                !$this->getAdvancedMeta($post->ID, 'title')){
+            $title = $this->clearTitle( SQ_Tools::$options['sq_fp_title'] );
         }
 
+        //SQ_Tools::dump($title);
         return $title;
     }
+
+
 
     /**
      * Get the image from content
@@ -347,8 +360,12 @@ class Model_SQ_Frontend {
         $description = '';
 
         if(is_home() || is_single() || is_page() || $this->checkPostsPage()) {
-            if(is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_description'] <> ''){
-                $description = strip_tags( SQ_Frontend::$options['sq_fp_description'] );
+            if(is_home() &&
+                    SQ_Tools::$options['sq_auto_seo'] <> 1 &&
+                    SQ_Tools::$options['sq_fp_description'] <> '' &&
+                    !$this->getAdvancedMeta($post->ID, 'description')){
+                $description = strip_tags( SQ_Tools::$options['sq_fp_description'] );
+
             }else{
                 $description = $this->grabDescriptionFromPost();
                 if ($description <> '' && strlen($description) < $description_min_lng) $description = '';
@@ -375,11 +392,20 @@ class Model_SQ_Frontend {
         return '';
     }
 
-    private function clearDescription($description){
-        $description = str_replace(array('"',"\r\n","\n","&nbsp;","  "), array('',' ',' ',' ',' '), $description);
-        $description = trim(strip_tags(html_entity_decode($description)));
+    private function clearDescription ( $description ){
 
-        return $description;
+        $description = str_replace(array("&nbsp;","  ","\r","\n"), array(' ','','',' '), $description);
+        $search = array ("'<script[^>]*?>.*?<\/script>'si",	// strip out javascript
+                      "/<form.*?<\/form>/si",
+                      "/<iframe.*?<\/iframe>/si"
+                      );
+
+        if(function_exists('preg_replace'))
+            $description =  preg_replace($search, '', $description);
+
+        $description =  html_entity_decode($description);
+        $description =  strip_tags($description);
+        return trim ( $description );
     }
 
     /**
@@ -402,8 +428,8 @@ class Model_SQ_Frontend {
         }
 
         /* Check if is a predefined Keyword */
-        if((is_home() && SQ_Frontend::$options['sq_auto_seo'] <> 1 && SQ_Frontend::$options['sq_fp_keywords'] <> '') || $keywords == ''){
-            $keywords = strip_tags( SQ_Frontend::$options['sq_fp_keywords'] );
+        if((is_home() && SQ_Tools::$options['sq_auto_seo'] <> 1 && SQ_Tools::$options['sq_fp_keywords'] <> '') || $keywords == ''){
+            $keywords = strip_tags( SQ_Tools::$options['sq_fp_keywords'] );
         }
 
         if (isset ($keywords) && !empty($keywords) && !(is_home() && is_paged())) {
@@ -436,7 +462,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getPublisher(){
-        $author = SQ_Frontend::$options['sq_google_plus'];
+        $author = SQ_Tools::$options['sq_google_plus'];
         if ($author == '')
             $author = $this->getAuthorLinkFromBlog();
         elseif (!$author)
@@ -526,7 +552,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getGoogleWT(){
-        $sq_google_wt = SQ_Frontend::$options['sq_google_wt'];
+        $sq_google_wt = SQ_Tools::$options['sq_google_wt'];
 
         if ( ($this->checkHomePosts() || $this->checkFrontPage()) && $sq_google_wt )
             return sprintf("<meta name=\"google-site-verification\" content=\"%s\" />" , $sq_google_wt) . "\n" ;
@@ -540,7 +566,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getGoogleAnalytics(){
-        $sq_google_analytics = SQ_Frontend::$options['sq_google_analytics'];
+        $sq_google_analytics = SQ_Tools::$options['sq_google_analytics'];
 
         if ($sq_google_analytics )
             return sprintf("<script type=\"text/javascript\">
@@ -563,7 +589,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getFacebookIns(){
-        $sq_facebook_insights = SQ_Frontend::$options['sq_facebook_insights'];
+        $sq_facebook_insights = SQ_Tools::$options['sq_facebook_insights'];
 
         if ( ($this->checkHomePosts() || $this->checkFrontPage()) && $sq_facebook_insights )
             return sprintf("<meta property=\"fb:admins\" content=\"%s\" />", $sq_facebook_insights) . "\n" ;
@@ -577,7 +603,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getBingWT(){
-        $sq_bing_wt = SQ_Frontend::$options['sq_bing_wt'];
+        $sq_bing_wt = SQ_Tools::$options['sq_bing_wt'];
 
         if ( ($this->checkHomePosts() || $this->checkFrontPage()) && $sq_bing_wt )
             return sprintf("<meta name=\"msvalidate.01\" content=\"%s\" />" , $sq_bing_wt) . "\n" ;
@@ -598,18 +624,31 @@ class Model_SQ_Frontend {
     private function grabTitleFromPost($id = null){
         global $wp_query;
         $post = null;
+        $title = '';
+        $advtitle = '';
 
         if (isset($id))
             $post = get_post($id);
 
-        if (isset($post)) return $post->post_title ;
+        if (!$post)
+            foreach ($wp_query->posts as $post){
+                $id = (is_attachment())?($post->post_parent):($post->ID);
+                $post = get_post($id);
+                break;
+            }
 
-        foreach ($wp_query->posts as $post){
-            if ($post->post_title <> '')
-                return $post->post_title ;
+        if ($post){
+            $title = SQ_Tools::i18n($post->post_title);
+
+            //If there is title saved in database
+            if ($advtitle = $this->getAdvancedMeta($post->ID, 'title') )
+                $title = SQ_Tools::i18n($advtitle);
+            elseif ($advtitle = $this->getOtherPluginsMeta($post->ID, 'title') )
+                $title = SQ_Tools::i18n($advtitle);
+
         }
 
-
+        return $title;
     }
 
     /**
@@ -619,10 +658,13 @@ class Model_SQ_Frontend {
      */
     function grabDescriptionFromPost($id = null) {
         global $wp_query;
+        $post = null;
+        $description = '';
+        $advdescription = '';
 
-        $post = $wp_query->get_queried_object();
-
-        if (isset($id)) $post = get_post($id);
+        if (isset($id)) {
+            $post = get_post($id);
+        }
 
         if (!$post)
             foreach ($wp_query->posts as $post){
@@ -631,11 +673,18 @@ class Model_SQ_Frontend {
                 break;
             }
 
-        if ($post)
+        if ($post){
             $description = $this->_truncate(SQ_Tools::i18n($post->post_excerpt), $this->min_description_length, $this->max_description_length);
             if (!$description) {
                     $description = $this->truncate(SQ_Tools::i18n($post->post_content), $this->min_description_length, $this->max_description_length);
             }
+
+           //If there is description saved in database
+           if ($advdescription = $this->getAdvancedMeta($post->ID, 'description') )
+                $description = SQ_Tools::i18n($advdescription);
+           elseif ($advdescription = $this->getOtherPluginsMeta($post->ID, 'description') )
+                $description = SQ_Tools::i18n($advdescription);
+        }
         // "internal whitespace trim"
 
         $description = @preg_replace("/\s\s+/u", " ", $description);
@@ -655,6 +704,7 @@ class Model_SQ_Frontend {
         if ($this->max_keywrods == 0) return;
 
         $keywords = array();
+        $advkeywords = '';
 
 
         if (isset($id)){
@@ -731,12 +781,20 @@ class Model_SQ_Frontend {
                     if (isset($autometa) && !empty($autometa)) {
                         $autometa_array = explode(' ', $autometa);
                         foreach ($autometa_array as $e) {
-                                $keywords[] = $e;
+                                $keywords[] = SQ_Tools::i18n($e);
                         }
                     }
                 }
         }
 
+        //If there are keywords saved in database
+        if ($advkeywords = $this->getAdvancedMeta($post->ID, 'keyword')){
+                $keywords[] = SQ_Tools::i18n($advkeywords);
+        }
+
+        //If there are keywords in other plugins
+        if ($advkeywords = $this->getOtherPluginsMeta($post->ID, 'keyword'))
+                $keywords[] = SQ_Tools::i18n($advkeywords);
 
         return $this->getUniqueKeywords($keywords);
     }
@@ -771,7 +829,7 @@ class Model_SQ_Frontend {
           }
           if ($common != true){
             if (!preg_match("/http/i", $value) && !preg_match("/mailto:/i", $value)) {
-              $keywords[] = $value;
+              $keywords[] = SQ_Tools::i18n($value);
               $words_sum++;
             }
           }
@@ -1074,5 +1132,89 @@ class Model_SQ_Frontend {
             $traffic->saveVisit();
     }
 
+    /**
+     * Check if other plugin are/were installed and don't change the SEO
+     *
+     * @param type $post_id
+     * @return boolean
+     */
+    public function getAdvancedMeta($post_id, $meta = 'title'){
+        global $wpdb;
+        $field = '';
+
+        if (!isset($post_id) || (int)$post_id == 0) return '';
+
+        //check yoast
+        switch ($meta){
+            case 'title':
+                $field = 'sq_fp_title';
+                break;
+            case 'description':
+                $field = 'sq_fp_description';
+                break;
+            case 'keyword':
+                $field = 'sq_fp_keywords';
+                break;
+            default:
+                $field = 'sq_fp_title';
+        }
+
+        if ($field <> ''){
+            $sql = "SELECT `meta_value`
+                           FROM `".$wpdb->postmeta."`
+                           WHERE `meta_key` = '$field' AND `post_id`=".(int)$post_id  ;
+           //echo "History: ".$sql;
+            $row = $wpdb->get_row($sql);
+
+            if($row && $row->meta_value <> ''){
+                return $row->meta_value;
+            }
+        }
+        /////////////
+        return false;
+    }
+
+    /**
+     * Check if other plugin are/were installed and don't change the SEO
+     *
+     * @param type $post_id
+     * @return boolean
+     */
+    public function getOtherPluginsMeta($post_id, $meta = 'title'){
+        global $wpdb;
+        $field = '';
+
+        if (!isset($post_id) || (int)$post_id == 0) return '';
+
+        //check yoast
+        switch ($meta){
+            case 'title':
+                $field = '_yoast_wpseo_title';
+                break;
+            case 'description':
+                $field = '_yoast_wpseo_metadesc';
+                break;
+            case 'keyword':
+                $field = '_yoast_wpseo_focuskw';
+                break;
+            default:
+                $field = '_yoast_wpseo_title';
+        }
+
+        if ($field <> ''){
+            $sql = "SELECT `meta_value`
+                           FROM `".$wpdb->postmeta."`
+                           WHERE `meta_key` = '$field' AND `post_id`=".(int)$post_id  ;
+           //echo "History: ".$sql;
+            $row = $wpdb->get_row($sql);
+
+            if($row && $row->meta_value <> ''){
+                //SQ_Tools::dump($meta,$field,(int)$post_id,$row->meta_value);
+                return $row->meta_value;
+            }
+        }
+        /////////////
+        return false;
+    }
 }
 ?>

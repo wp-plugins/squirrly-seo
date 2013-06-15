@@ -27,7 +27,7 @@ class Model_SQ_PostsList{
 
     function __construct() {
         $this->ctx = __('This article',_PLUGIN_NAME_).'|'.__('All your articles',_PLUGIN_NAME_);
-        $this->reportTitles = array('day' => __('Today',_PLUGIN_NAME_),
+        $this->reportTitles = array('day' => __('Latest',_PLUGIN_NAME_),
                         'week' => __('Last 7 days',_PLUGIN_NAME_),
                         'month' => __('Last 30 days',_PLUGIN_NAME_),
                         );
@@ -66,9 +66,11 @@ class Model_SQ_PostsList{
 
         if (isset($response->seo) && ($response->seo->optimized == '0%')){
             $error = array('error' => 'sq_no_information',
-                           'message' => __('Optimize this article to start Squirrly Rank',_PLUGIN_NAME_));
+                           'message' => __('Optimize this article to start Squirrly Article Rank',_PLUGIN_NAME_));
             return $error;
         }
+
+        
 
         //echo 'pack';
         $this->interval = 'month'; //Get the traffic for the whole month
@@ -367,7 +369,7 @@ class Model_SQ_PostsList{
 
         $serp[] = array('id'=>'sq_rank_serp',
                         'class'=>'sq_rank_flag_google_header',
-                        'lastcheck'=>$rank['change']['lastcheck'],
+                        'lastcheck'=>(isset($rank['change']['lastcheck']) ? $rank['change']['lastcheck'] : null),
                         'title'=>__('Google result for: ',_PLUGIN_NAME_),
                         'keyword'=> $rank['keyword']);
 
