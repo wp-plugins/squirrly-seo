@@ -16,7 +16,7 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 
 3) to get great support
 
-<h3>SEO Plugin by Squirrly helps you write rich content that will be found by potential customers on search engines, research and analyze keywords that will give you a better chance of being found on google, it helps you measure the social signals that come to your site from various social networks and with one click you can check the SEO improvement of each article.</h3>
+<strong>SEO Plugin by Squirrly helps you write rich content that will be found by potential customers on search engines, research and analyze keywords that will give you a better chance of being found on google, it helps you measure the social signals that come to your site from various social networks and with one click you can check the SEO improvement of each article.</strong>
 
 
 All of these help you get Excellent SEO on all your articles and measure the success of your site.
