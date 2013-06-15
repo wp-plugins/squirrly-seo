@@ -8,15 +8,16 @@ Stable tag: trunk
 Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress and do keyword researches in less then 2 minutes.
 
 == Description ==
-=You'll always want only three things from a seo plugin:=
+<strong>The three things you should look for in a seo plugin:</strong>
 
-1) to increase the chances of being found on search engines, by writing better optimized content
+1) to increase the chances of being found on search engines, by writting better optimized content
 
 2) to help you measure the improvement of your site, in terms of ranking, traffic, links and Social Signals.
 
-3) to get Excellent Customer Service from a helpful, dedicated team
+3) to get great support
 
 <h3>SEO Plugin by Squirrly helps you write rich content that will be found by potential customers on search engines, research and analyze keywords that will give you a better chance of being found on google, it helps you measure the social signals that come to your site from various social networks and with one click you can check the SEO improvement of each article.</h3>
+
 
 All of these help you get Excellent SEO on all your articles and measure the success of your site.
 
