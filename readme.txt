@@ -41,13 +41,14 @@ To suggest them, it checks how much the keyword is discussed on Twitter (we have
 
 <strong>The SEO analytics</strong> (that we call Article Rank), helps you measure the improvement and impact of each article you've written on your blog using Squirrly.
 
-"You can be confident that without ever leaving your Add New Blog page you have a strong keyword, good and current content, and your post will be 100% optimized for the search engines." - Jason Fox Marketing
+<h3>Reviews</h3>
+* "You can be confident that without ever leaving your Add New Blog page you have a strong keyword, good and current content, and your post will be 100% optimized for the search engines." - Jason Fox Marketing
 
-"Features that exceed the stereotypical plugin" - Robert, Yieldkit
+* "Features that exceed the stereotypical plugin" - Robert, Yieldkit
 
-"It's amazing! seeing a huge boost in traffic"
+* "It's amazing! seeing a huge boost in traffic"
 
-"Great SEO info at a click"
+* "Great SEO info at a click"
 
 You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews-pag68312.html
 
