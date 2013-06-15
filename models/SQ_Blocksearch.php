@@ -68,32 +68,5 @@ class Model_SQ_Blocksearch{
               }
         }
 
-        function searchTwitter($get){
-            $twitter = SQ_ObjController::getController('SQ_Twitter',false);
-            /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
-            $settings = array(
-                'oauth_access_token' => "725640583-4VqD83C6inDIDVJW4LjUqKYB5ddNNfn6rXKafAGn",
-                'oauth_access_token_secret' => "XTNFLI32GfVqAIZsisjg6VcOsAXz0rInV4NoaiPZRck",
-                'consumer_key' => "eNQJufxXVsTo4ql75BNA",
-                'consumer_secret' => "cjHfGP3fvLX1ae4eMIyzkBx2J3ehcb7x3Q3cf8herY"
-            );
-
-            /** Perform a GET request and echo the response **/
-            /** Note: Set the GET field BEFORE calling buildOauth(); **/
-            $url = 'https://api.twitter.com/1.1/search/tweets.json';
-            $params = array(
-                  'result_type' => 'mixed',
-                  'count' => '100',
-                  'q' => 'squirrly'
-                 );
-            foreach ($params as $k => $v) {
-                  $pack[] = urlencode($k) . '=' . urlencode($v);
-              }
-            $requestMethod = 'GET';
-            $twitter->setSettings($settings);
-            echo $twitter->setGetfield('?'.implode('&', $pack))
-                         ->buildOauth($url, $requestMethod)
-                         ->performRequest();
-        }
 }
 ?>
