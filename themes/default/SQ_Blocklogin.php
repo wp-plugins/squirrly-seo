@@ -9,7 +9,7 @@
             <li><label for="sq_user"><?php _e('Email:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_user" name="sq_user"  autocomplete="off" /></li>
             <li><label for="sq_password"><?php _e('Password:', _PLUGIN_NAME_); ?></label><input type="password" id="sq_password" name="sq_password" autocomplete="off" /></li>
             <li><input type="button" id="sq_login" value="<?php _e('Login', _PLUGIN_NAME_); ?>"  /></li>
-            <li><a href="<?php echo _SQ_DASH_URL_ .'login/?action=register'?>" target="_blank" title="<?php _e('Register', _PLUGIN_NAME_); ?>"><?php _e('Register to Squirrly.co', _PLUGIN_NAME_); ?></a> |
+            <li><a id="sq_signup" href="javascript:void(0);" target="_blank" title="<?php _e('Register', _PLUGIN_NAME_); ?>"><?php _e('Register to Squirrly.co', _PLUGIN_NAME_); ?></a> |
                 <a href="<?php echo _SQ_DASH_URL_ .'login/?action=lostpassword'?>" target="_blank" title="<?php _e('Lost password?', _PLUGIN_NAME_); ?>"><?php _e('Lost password', _PLUGIN_NAME_); ?></a></li>
           </ul>
           <div id="sq_autologin" align="center">
