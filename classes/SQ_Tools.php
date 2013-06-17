@@ -267,7 +267,7 @@ class SQ_Tools extends SQ_FrontController {
         if (isset($param['timeout']))
             $timeout = $param['timeout'];
         else
-            $timeout = 20;
+            $timeout = 30;
 
         if ($url_domain == $_SERVER['HTTP_HOST'] && strpos($url,'preview=true') !== false) $post_preview = true;
 
@@ -314,7 +314,7 @@ class SQ_Tools extends SQ_FrontController {
         if (isset($param['timeout']))
             $timeout = $param['timeout'];
         else
-            $timeout = 20;
+            $timeout = 30;
 
         if (function_exists('curl_exec')){
             $ch = curl_init($url);
