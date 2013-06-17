@@ -99,7 +99,7 @@ class Model_SQ_Post {
         $dir = null;
         $file = array();
 
-        $response = wp_remote_get($url, array('timeout' => 5));
+        $response = wp_remote_get($url, array('timeout' => 30));
         $file = wp_upload_bits( basename( $url ), '', wp_remote_retrieve_body( $response ), $dir);
 
         $file['type'] = wp_remote_retrieve_header( $response, 'content-type' );
@@ -108,7 +108,7 @@ class Model_SQ_Post {
             if (isset($file['url']) && $file['url'] <> ''){
                 $file['url'] = str_replace(get_bloginfo('url'), '', $file['url']);
                 $file['filename'] = basename($file['url']);
-                
+
                 return $file;
             }
 
