@@ -50,7 +50,7 @@ To suggest them, it checks how much the keyword is discussed on Twitter (we have
 
 * "Great SEO info at a click"
 
-You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews-pag68312.html
+<strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews-pag68312.html</strong>
 
 [youtube http://www.youtube.com/watch?v=HYTcdLXNhhw]
 
