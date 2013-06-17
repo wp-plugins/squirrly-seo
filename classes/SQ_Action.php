@@ -150,7 +150,7 @@ class SQ_Action extends SQ_FrontController{
 
        SQ_Tools::dump($url);
 
-       return SQ_Tools::sq_remote_get($url);
+       return SQ_Tools::sq_remote_get($url,array('timeout' => 60));
 
    }
 
