@@ -292,7 +292,7 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 
 And the best ones that we have (and the others don't):
 
- - *Keyword research*: find the keywords that are easier to rank for
+ - *Keyword research and Analysis*: find the keywords that are easier to rank for
  - *SEO Live Assistant*: Your Wordpress gives you SEO adivce as you type your article
  - *Inspiration box*: get images you can use for free, tweets you can quote and get up to date with latest news about your subject
  - *SEO Rank*: Measure and Monitor the impact of SEO and Social Signals for each of your articles

@@ -37,7 +37,7 @@
       </script>
 </div>
 <div id="sq_login_success" style="display: none;">
-    <div class="sq_header"><?php _e('Congratulations! Write a new article with:', _PLUGIN_NAME_); ?></div>
+    <div class="sq_header"><?php _e('Congratulations! Now write a new article with:', _PLUGIN_NAME_); ?></div>
     <img src="<?php echo _SQ_STATIC_API_URL_?>default/img/squirrly_wordpress.png" />
     <ul>
         <li><?php _e('- <strong>Keyword Research and Analysis</strong>: find the keywords that are easier to rank for.', _PLUGIN_NAME_); ?></li>
