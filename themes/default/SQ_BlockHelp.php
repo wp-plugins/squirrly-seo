@@ -5,7 +5,6 @@
         <div id="sq_settings_howto_body">
             <p><span><?php _e('SEO Software', _PLUGIN_NAME_); ?></span><?php _e('delivered as a plugin for Wordpress. <br /><br />We connect your wordpress with Squirrly, so that we can find the best SEO opportunities, give you reports and analyse your competitors.', _PLUGIN_NAME_); ?></p>
             <p><object width="420" height="315"><param name="movie" value="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/HYTcdLXNhhw?hl=en_US&amp;version=3" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
-            <a id="sq_settings_button" href="post-new.php"><?php echo  __( 'Write a new post with Squirrly', _PLUGIN_NAME_); ?></a>
 
         </div>
     </div>

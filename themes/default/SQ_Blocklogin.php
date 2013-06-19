@@ -6,7 +6,7 @@
                 <div class="sq_error"></div>
                 <div class="sq_message" style="display: none;"></div>
             </li>
-            <li><label for="sq_user"><?php _e('Email:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_user" name="sq_user" autocomplete="on" /></li>
+            <li><label for="sq_user"><?php _e('Email:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_user" name="sq_user" /></li>
             <li><label for="sq_password"><?php _e('Password:', _PLUGIN_NAME_); ?></label><input type="password" id="sq_password" name="sq_password"  /></li>
             <li><input type="button" id="sq_login" value="<?php _e('Login', _PLUGIN_NAME_); ?>"  /></li>
             <li><a id="sq_signup" href="javascript:void(0);" target="_blank" title="<?php _e('Register', _PLUGIN_NAME_); ?>"><?php _e('Register to Squirrly.co', _PLUGIN_NAME_); ?></a> |
@@ -15,7 +15,7 @@
           <div id="sq_autologin" align="center">
               <div class="sq_error"></div>
               <span id="sq_register"><?php _e('Enter your email', _PLUGIN_NAME_); ?></span><span id="sq_register_wait"></span>
-              <div id="sq_register_email" ><label for="sq_email"><?php _e('Your E-mail:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_email" name="sq_email" autocomplete="on" /></div>
+              <div id="sq_register_email" ><label for="sq_email"><?php _e('Your E-mail:', _PLUGIN_NAME_); ?></label><input type="text" id="sq_email" name="sq_email" /></div>
               <div id="sq_loginimage"><?php _e('Sign Up', _PLUGIN_NAME_); ?></div>
               <div id="sq_signin"><?php _e('I already have an account', _PLUGIN_NAME_); ?></div>
               <span><?php _e('This email connects you to Squirrly.co' , _PLUGIN_NAME_); ?></span>
