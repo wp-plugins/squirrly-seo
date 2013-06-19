@@ -17,7 +17,7 @@
         }?>
     <div id="sq_settings_title" style="text-align: right">
       <span id="sq_settings_howto_close" ><?php _e('Don\'t show this page', _PLUGIN_NAME_)?> </span>
-      <a href="post-new.php" id="sq_goto_newpost" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> /><?php _e('See squirrly in action', _PLUGIN_NAME_)?></a>
+      <a href="post-new.php" id="sq_goto_newpost" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> /><?php _e('See Squirrly in action', _PLUGIN_NAME_)?></a>
       <input id="sq_goto_dashboard" type="button" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> value="<?php _e('See dashboard', _PLUGIN_NAME_)?>" />
       <input id="sq_goto_settings" type="button" value="<?php _e('Go to settings', _PLUGIN_NAME_)?> &raquo;" />
     </div>

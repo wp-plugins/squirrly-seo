@@ -37,13 +37,13 @@
       </script>
 </div>
 <div id="sq_login_success" style="display: none;">
-    <div class="sq_header"><?php _e('Congratulation! Write a new post with:', _PLUGIN_NAME_); ?></div>
+    <div class="sq_header"><?php _e('Congratulations! Write a new article with:', _PLUGIN_NAME_); ?></div>
     <img src="<?php echo _SQ_STATIC_API_URL_?>default/img/squirrly_wordpress.png" />
     <ul>
-        <li><?php _e('<strong>Keyword Research</strong>: find the perfect keywords for your articles.', _PLUGIN_NAME_); ?></li>
-        <li><?php _e('<strong>Inspiration box</strong>: pulls images, tweets, wikis and blogs, so that you can inspire yourself very fast on what to write in your article.', _PLUGIN_NAME_); ?></li>
-        <li><?php _e('<strong>SEO Live Assistant</strong>: Checks your SEO in real time. Before you click the Post button, you know if your article is perfectly optimized or not.', _PLUGIN_NAME_); ?></li>
-        <li><?php _e('<strong>Article Rank</strong>: A great tool to track your progress on each article. You get Traffic, Social, Inbound-Links and Search engines Rank information instantly.', _PLUGIN_NAME_); ?></li>
+        <li><?php _e('- <strong>Keyword Research and Analysis</strong>: find the keywords that are easier to rank for.', _PLUGIN_NAME_); ?></li>
+        <li><?php _e('- <strong>SEO Live Assistant</strong>: Your Wordpress gives you SEO adivce as you type your article.', _PLUGIN_NAME_); ?></li>
+        <li><?php _e('- <strong>Inspiration box</strong>: get images you can use for free, tweets you can quote and get up to date with latest news about your subject.', _PLUGIN_NAME_); ?></li>
+        <li><?php _e('- <strong>Article Rank</strong>: Measure and Monitor the impact of SEO and Social Signals for each of your articles.', _PLUGIN_NAME_); ?></li>
     </ul>
 
 </div>
