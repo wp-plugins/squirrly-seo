@@ -147,7 +147,6 @@ class SQ_Action extends SQ_FrontController{
            $parameters = 'q='.base64_encode($parameters);
 
        $url = self::cleanUrl(_SQ_API_URL_.$module."?".$parameters);
-
        SQ_Tools::dump($url);
 
        return SQ_Tools::sq_remote_get($url,array('timeout' => 60));
