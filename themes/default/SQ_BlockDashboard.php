@@ -1,4 +1,5 @@
 <div id="sq_settings" >
+    <?php SQ_ObjController::getBlock('SQ_BlockSupport')->init(); ?>
     <?php  if ($view->options['sq_api'] <> ''){ ?>
     <div id="sq_settings_title" ><?php _e('Squirrly dashboard', _PLUGIN_NAME_); ?> </div>
     <div id="sq_settings_body">
