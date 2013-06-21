@@ -118,6 +118,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Changed the timeout for remote API requests
 * Fixed Squirrly SEO loading loop when all posts are not public in All posts
 * Add default message in SEO Article Rank when adding a new Post/Page
+* Added support options in Squirrly SEO Settings
 
 = 2.0.3 =
 * Added attributes informations for copyright free images
