@@ -21,9 +21,7 @@ Squirrly SEO Plugin helps you write excellent SEO articles for your WordPress an
 
 All of these help you get <strong>Excellent SEO on all your articles and measure the success of your site</strong>.
 
-<em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em> - <strong>Pierre Perpal</strong>
-Pierre worked hard to get that, and even though success stories keep coming in, they don't happen for all of our users. SEO Plugin by Squirrly does not guarantee that you will succeed.
-It's just a tool that makes it possible to reach such results. It's a door opener.
+<em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em> - <strong>Pierre Perpal</strong>. Pierre worked hard to get that, and even though success stories keep coming in, they don't happen for all of our users. SEO Plugin by Squirrly does not guarantee that you will succeed. It's just a tool that makes it possible to reach such results. It's a door opener.
 
 <strong>How does Squirrly help you boost your ranking in search engines?</strong>
 
