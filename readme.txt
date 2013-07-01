@@ -100,7 +100,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
-= 2.0.5 =
+= 2.0.6 =
 * Fixed Squirrly SEO loading loop when all posts are not public in All posts
 * Add default message in SEO Article Rank when adding a new Post/Page
 * Added support options in Squirrly SEO Settings
