@@ -100,6 +100,14 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.0.5 =
+* Fixed Squirrly SEO loading loop when all posts are not public in All posts
+* Add default message in SEO Article Rank when adding a new Post/Page
+* Added support options in Squirrly SEO Settings
+* Added the Russian translation in Squirly SEO
+* Added the Brazilian translation in Squirly SEO
+* Check calls for HTTPS when curl protocol could not support that
+
 = 2.0.4 =
 * Added Custom Title/Description option in all Post/Pages
 * Added SEO check if custom title is entered in Post/Page
@@ -112,11 +120,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Compatible with Twitter search 1.1
 * Changed the Sign-up messages
 * Changed the timeout for remote API requests
-* Fixed Squirrly SEO loading loop when all posts are not public in All posts
-* Add default message in SEO Article Rank when adding a new Post/Page
-* Added support options in Squirrly SEO Settings
-* Added the Russian translation in Squirly SEO
-* Added the Brazilian translation in Squirly SEO
 
 = 2.0.3 =
 * Added attributes informations for copyright free images
