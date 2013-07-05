@@ -243,6 +243,9 @@ class SQ_Tools extends SQ_FrontController {
         return $message;
     }
 
+    /**
+     * Load the multilanguage support from .mo
+     */
     private function loadMultilanguage(){
         if ( !defined('WP_PLUGIN_DIR') ) {
                 load_plugin_textdomain( _PLUGIN_NAME_, _PLUGIN_NAME_ . '/languages/' );
@@ -364,6 +367,11 @@ class SQ_Tools extends SQ_FrontController {
         return false;
     }
 
+    /**
+     * Get the Json from responce if any
+     * @param string $response
+     * @return string
+     */
     private static function cleanResponce($response){
 
        if (function_exists('substr_count'))
