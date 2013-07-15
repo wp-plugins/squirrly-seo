@@ -10,6 +10,8 @@ class SQ_Tools extends SQ_FrontController {
     public static $options = array();
     public $flash_data = null;
     public $showNote = array();
+    
+
     static $errors_count = 0;
     private static $debug;
 
