@@ -104,6 +104,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added the Squirrly SEO Traffic Progress report
 * Fixed minor frontend bugs
 * Fixed the date in sitemap for tags
+* Added the Spanish (es_ES) translation in Squirly SEO
+* Added the French (fr_FR) translation in Squirly SEO
 
 
 = 2.0.6 =
@@ -117,8 +119,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed Squirrly SEO loading loop when all posts are not public in All posts
 * Add default message in SEO Article Rank when adding a new Post/Page
 * Added support options in Squirrly SEO Settings
-* Added the Russian translation in Squirly SEO
-* Added the Brazilian translation in Squirly SEO
+* Added the Russian (ru_RU) translation in Squirly SEO
+* Added the Brazilian (pt_BR) translation in Squirly SEO
 * Check calls for HTTPS when curl protocol could not support that
 
 = 2.0.4 =
