@@ -1199,8 +1199,10 @@ class Model_SQ_Frontend {
                 $this->meta[$post_id][$row->meta_key] = $row->meta_value;
             }
         }
-
-        $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
+        if (isset($this->meta[$post_id]) && is_array($this->meta[$post_id]))
+            $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
+        else
+            $this->meta[$post_id] = $fields;
         //////////////////////////////////////////
 
         if ($field <> '')
@@ -1258,7 +1260,10 @@ class Model_SQ_Frontend {
                 $this->meta[$post_id][$row->meta_key] = $row->meta_value;
             }
         }
-        $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
+        if (isset($this->meta[$post_id]) && is_array($this->meta[$post_id]))
+            $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
+        else
+            $this->meta[$post_id] = $fields;
         //////////////////////////////////////////
         if ($field <> '')
             return $this->meta[$post_id][$field];
