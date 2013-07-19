@@ -1179,8 +1179,8 @@ class Model_SQ_Frontend {
                 $field = 'sq_fp_title';
         }
 
-        if ($field <> '' && isset($this->meta[$field]))
-            return $this->meta[$field];
+        if ($field <> '' && isset($this->meta[$post_id][$field]))
+            return $this->meta[$post_id][$field];
 
         // Get the custom Squirrly meta
         //////////////////////////////////////////
@@ -1196,15 +1196,15 @@ class Model_SQ_Frontend {
 
         if($rows = $wpdb->get_results($sql)){
             foreach ($rows as $row) {
-                $this->meta[$row->meta_key] = $row->meta_value;
+                $this->meta[$post_id][$row->meta_key] = $row->meta_value;
             }
         }
-        
-        $this->meta = @array_merge($fields,$this->meta);
+
+        $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
         //////////////////////////////////////////
 
         if ($field <> '')
-            return $this->meta[$field];
+            return $this->meta[$post_id][$field];
         /////////////
         return false;
     }
@@ -1237,8 +1237,8 @@ class Model_SQ_Frontend {
                 $field = '_yoast_wpseo_title';
         }
 
-        if ($field <> '' && isset($this->meta[$field]))
-            return $this->meta[$field];
+        if ($field <> '' && isset($this->meta[$post_id][$field]))
+            return $this->meta[$post_id][$field];
 
         // Get the custom Squirrly meta
         //////////////////////////////////////////
@@ -1255,13 +1255,13 @@ class Model_SQ_Frontend {
         $rows = $wpdb->get_results($sql);
         if($rows){
             foreach ($rows as $row) {
-                $this->meta[$row->meta_key] = $row->meta_value;
+                $this->meta[$post_id][$row->meta_key] = $row->meta_value;
             }
         }
-        $this->meta = @array_merge($fields,$this->meta);
+        $this->meta[$post_id] = @array_merge($fields,$this->meta[$post_id]);
         //////////////////////////////////////////
         if ($field <> '')
-            return $this->meta[$field];
+            return $this->meta[$post_id][$field];
         /////////////
         return false;
     }
