@@ -27,7 +27,7 @@ class Model_SQ_Frontend {
     private $post;
 
     /** @var array Meta custom content */
-    private $meta;
+    private $meta = array();
 
     function __construct() {
         SQ_ObjController::getController('SQ_Tools', false);
@@ -1199,6 +1199,7 @@ class Model_SQ_Frontend {
                 $this->meta[$row->meta_key] = $row->meta_value;
             }
         }
+        
         $this->meta = @array_merge($fields,$this->meta);
         //////////////////////////////////////////
 
