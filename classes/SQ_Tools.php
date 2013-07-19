@@ -84,27 +84,6 @@ class SQ_Tools extends SQ_FrontController {
     }
 
     /**
-    * This hook will save the new# sign notices in the usermeta table in database
-    *
-    * @return void
-    */
-    function hookShutdown(){
-         global $user_ID;
-        $new_data = array();
-
-        if(is_array($this->flash_data)) {
-            foreach($this->flash_data as $k => $v) {
-                    if(substr($k, 0, 4) == 'new#')
-                           $new_data['old#' . substr($k, 4)] = $v;
-            }
-
-            update_user_option($user_ID, SQ_META, $new_data, false);
-        }
-
-        return;
-    }
-
-    /**
     * Load the Options from user option table in DB
     *
     * @return void
