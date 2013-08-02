@@ -109,7 +109,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 = 2.0.7 =
 * Added the Squirrly SEO Traffic Progress report
-* Fixed minor frontend bugs 
+* Fixed minor frontend bugs
 * Fixed the date in sitemap for tags
 
 
