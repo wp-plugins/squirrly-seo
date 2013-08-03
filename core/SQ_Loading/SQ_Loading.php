@@ -38,3 +38,4 @@ class SQ_Loading extends SQ_BlockController {
 
 }
 
+?>

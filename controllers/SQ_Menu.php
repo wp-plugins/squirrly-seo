@@ -222,3 +222,4 @@ class SQ_Menu extends SQ_FrontController {
 
 }
 
+?>

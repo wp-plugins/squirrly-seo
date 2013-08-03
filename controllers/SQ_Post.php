@@ -219,3 +219,4 @@ class SQ_Post extends SQ_FrontController {
 
 }
 
+?>

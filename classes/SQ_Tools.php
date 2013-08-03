@@ -624,3 +624,4 @@ class SQ_Tools extends SQ_FrontController {
 
 }
 
+?>
