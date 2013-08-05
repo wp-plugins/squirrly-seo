@@ -106,6 +106,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed the custom SEO Title and Description notification in posts list
 * Changed the default SEO Settings
 * Fixed image insert in editor
+* Fixed minor bug that appeared on plugin activation
 
 = 2.0.7 =
 * Added the Squirrly SEO Traffic Progress report
