@@ -107,6 +107,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Changed the default SEO Settings
 * Fixed image insert in editor
 * Fixed minor bug that appeared on plugin activation
+* Fixed Squirrly SEO local save for remote images
 
 = 2.0.7 =
 * Added the Squirrly SEO Traffic Progress report
