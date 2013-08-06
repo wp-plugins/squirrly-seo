@@ -82,6 +82,7 @@ class SQ_Post extends SQ_FrontController {
 
     function checkImage($post_id) {
         @set_time_limit(90);
+        $local_file = false;
 
         $content = stripslashes(SQ_Tools::getValue('post_content'));
         $tmpcontent = trim($content, "\n");
@@ -114,16 +115,16 @@ class SQ_Post extends SQ_FrontController {
                     continue;
 
                 //encode special characters
-                $file['url'] = str_replace($file['filename'], urlencode($file['filename']), $file['url']);
+                $local_file = str_replace($file['filename'], urlencode($file['filename']), $file['url']);
 
-                $content = str_replace($url, $file['url'], $content);
+                $content = str_replace($url, $local_file, $content);
 
                 $attach_id = wp_insert_attachment(array(
                     'post_mime_type' => $file['type'],
                     'post_title' => preg_replace('/\.[^.]+$/', '', $file['filename']),
                     'post_content' => '',
                     'post_status' => 'inherit',
-                    'guid' => $file['url']
+                    'guid' => $local_file
                         ), $file['file'], $post_id);
 
                 $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
@@ -132,7 +133,7 @@ class SQ_Post extends SQ_FrontController {
         }
 
 
-        if ($file_name !== false) {
+        if ($local_file !== false) {
             wp_update_post(array(
                 'ID' => $post_id,
                 'post_content' => $content)
