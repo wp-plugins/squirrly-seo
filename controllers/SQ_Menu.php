@@ -21,7 +21,12 @@ class SQ_Menu extends SQ_FrontController {
         $first_page = preg_replace('/\s/', '_', _SQ_NAME_);
 
         SQ_Tools::checkErrorSettings(true);
-        $this->post_type = array('post', 'page', 'product', 'shopp_page_shopp-products');
+        $this->post_type = array('post', 'page', 'movie', 'product', 'shopp_page_shopp-products');
+
+        //add custom post types
+        if (SQ_Tools::getIsset('post_type'))
+            @array_push($this->post_type, SQ_Tools::getValue('post_type'));
+
         if (SQ_Tools::$options['sq_howto'] == 1)
             $first_page = 'sq_howto';
         else
