@@ -100,6 +100,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.0.9 =
+* Added Squirrly SEO for custom post types
+
 = 2.0.8 =
 * Added the Spanish (es_ES) translation in Squirly SEO
 * Added the French (fr_FR) translation in Squirly SEO

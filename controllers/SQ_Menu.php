@@ -13,11 +13,25 @@ class SQ_Menu extends SQ_FrontController {
 
     }
 
+    function upgradeRedirect() {
+        // Bail if no activation redirect
+        if (!get_transient('sq_upgrade'))
+            return;
+
+        // Delete the redirect transient
+        delete_transient('sq_upgrade');
+
+        wp_safe_redirect(admin_url('admin.php?page=sq_howto'));
+        exit;
+    }
+
     /*
      * Creates the Setting menu in Wordpress
      */
 
     public function hookMenu() {
+        $this->upgradeRedirect();
+
         $first_page = preg_replace('/\s/', '_', _SQ_NAME_);
 
         SQ_Tools::checkErrorSettings(true);
@@ -94,6 +108,7 @@ class SQ_Menu extends SQ_FrontController {
                     'normal',
                     'high'
                 ));
+
 
         //Add the Rank in the Posts list
         $postlist = SQ_ObjController::getController('SQ_PostsList');
