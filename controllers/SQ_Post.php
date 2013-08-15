@@ -180,7 +180,7 @@ class SQ_Post extends SQ_FrontController {
         $args['author'] = (int) SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
 
-        SQ_Action::apiCall('sq/seo/post', $args);
+        SQ_Action::apiCall('sq/seo/post', $args, 5);
     }
 
     function getPaged($link) {
