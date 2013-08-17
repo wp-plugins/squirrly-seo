@@ -104,6 +104,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added Squirrly Live Assistant for both Visual and HTML editors
 * Added Squirrly SEO for custom post types
 * Compatible with the Wordpress version 3.6
+* Fixed some bugz for Seo Live Assistant 
 
 = 2.0.8 =
 * Added the Spanish (es_ES) translation in Squirly SEO
