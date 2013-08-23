@@ -62,8 +62,7 @@ class SQ_Post extends SQ_FrontController {
      */
     function hookSavePost($post_id) {
         $file_name = false;
-        if ($this->saved)
-            return;
+
 
         // unhook this function so it doesn't loop infinitely
         remove_action('save_post', array($this, 'hookSavePost'), 10);
@@ -74,7 +73,7 @@ class SQ_Post extends SQ_FrontController {
                 wp_is_post_autosave($post_id) == '' &&
                 get_post_status($post_id) != 'auto-draft' &&
                 SQ_Tools::getValue('autosave') == '') {
-
+            //echo 'saving';
             //check for custom SEO
             $this->checkAdvMeta($post_id);
             //check the SEO from Squirrly Live Assistant
@@ -87,6 +86,8 @@ class SQ_Post extends SQ_FrontController {
                 get_post_status($post_id) != 'auto-draft' &&
                 SQ_Tools::getValue('autosave') == '') {
 
+            if ($this->saved)
+                return;
             //check the remote images
             $this->checkImage($post_id);
         }
