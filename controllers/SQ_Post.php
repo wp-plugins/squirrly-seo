@@ -88,10 +88,9 @@ class SQ_Post extends SQ_FrontController {
                 get_post_status($post_id) != 'inherit' &&
                 SQ_Tools::getValue('autosave') == '') {
 
-            if ($this->saved)
-                return;
+            if (!$this->saved)
             //check the remote images
-            $this->checkImage($post_id);
+                $this->checkImage($post_id);
             $this->saved = true;
         }
 

@@ -105,6 +105,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added Squirrly SEO for custom post types
 * Compatible with the Wordpress version 3.6
 * Fixed the type delay for Seo Live Assistant
+* Fixed local save images minor bug
 
 = 2.0.8 =
 * Added the Spanish (es_ES) translation in Squirly SEO

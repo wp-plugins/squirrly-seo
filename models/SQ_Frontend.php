@@ -334,7 +334,7 @@ class Model_SQ_Frontend {
             }
 
         if ($post)
-            @preg_match('/<img[^>]+src="([^"]+)"[^>]+>/i', $post->post_content, $match);
+            @preg_match('/<img[^>]*src="([^"]*)"[^>]*>/i', $post->post_content, $match);
 
         if (empty($match))
             return;
