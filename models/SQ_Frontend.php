@@ -303,6 +303,17 @@ class Model_SQ_Frontend {
             $title = $this->clearTitle($this->grabTitleFromPost($post->ID));
         }
 
+        //If is category
+        if (is_category()) { //for homepage
+            $category = get_category(get_query_var('cat'), false);
+            $title = SQ_Tools::i18n($category->cat_name);
+            if ($title == '')
+                $title = $this->clearTitle($this->grabTitleFromPost());
+            if (is_paged()) {
+                $title .= " " . $sep . " " . __('Page', _PLUGIN_NAME_) . " " . get_query_var('paged');
+            }
+        }
+
         //If title then clear it
         if ($title <> '') {
             $title = $this->clearTitle($title);
@@ -380,6 +391,10 @@ class Model_SQ_Frontend {
                 $description = SQ_Tools::i18n($category->cat_name);
             if ($description == '')
                 $description = $this->grabDescriptionFromPost();
+
+            if (is_paged()) {
+                $description .= " " . $sep . " " . __('Page', _PLUGIN_NAME_) . " " . get_query_var('paged');
+            }
 
             if ($this->isHomePage() && $description <> '')
                 if ($this->meta['blogname'] <> '')
