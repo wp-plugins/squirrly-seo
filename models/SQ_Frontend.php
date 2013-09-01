@@ -97,7 +97,7 @@ class Model_SQ_Frontend {
         global $wp_query;
         $this->post = $wp_query->get_queried_object();
 
-        if (is_home() || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
+        if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
 
             $title = $this->getCustomTitle();
             if (isset($title) && !empty($title) && $title <> '') {
@@ -136,7 +136,7 @@ class Model_SQ_Frontend {
         if (!function_exists('preg_replace'))
             return $ret;
 
-        if (is_home() || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
+        if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
 
 
             /* Meta setting */
@@ -1049,7 +1049,7 @@ class Model_SQ_Frontend {
      */
     private function isHomePage() {
         global $wp_query;
-        return (is_home() || (isset($wp_query->query) && count($wp_query->query) == 0 && !is_preview()));
+        return (is_home() || (isset($wp_query->query) && empty($wp_query->query) && !is_preview()));
     }
 
     /**
