@@ -100,6 +100,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.1.2 =
+* Added unique SEO (title and description) for the author and category pages
+* Fixed Open Graph image size and image url for a better view in facebook and google
+* Fixed minor bug on Squirrly SEO load
+
 = 2.1.1 =
 * Fixed absolute path for images in feed
 * Fixed unique title and description for categories and pages
@@ -107,7 +112,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed keyword saving for main domain optimization
 * Changed the blog limit and optimization limit for the free account
 * Added the weekly SEO audit for all accounts
-* Added unique SEO (title and description) for the author and category pages
 
 = 2.1.0 =
 * Added Squirrly Live Assistant for both Visual and HTML editors
