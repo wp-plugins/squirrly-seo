@@ -232,7 +232,7 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', $this->meta['blogname']) . "\n" : '');
-        $meta .= sprintf('<meta property="og:type" content="%s" />', 'blog') . "\n";
+        $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
 
         return $meta;
     }
@@ -352,8 +352,8 @@ class Model_SQ_Frontend {
 
         if (!$post)
             foreach ($wp_query->posts as $post) {
-                $id = (is_attachment()) ? ($post->post_parent) : ($post->ID);
-                $post = get_post($id);
+                if ($post->ID)
+                    $post = get_post($post->ID);
                 break;
             }
 
