@@ -107,6 +107,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed keyword saving for main domain optimization
 * Changed the blog limit and optimization limit for the free account
 * Added the weekly SEO audit for all accounts
+* Added unique SEO (title and description) for the author and category pages
 
 = 2.1.0 =
 * Added Squirrly Live Assistant for both Visual and HTML editors
