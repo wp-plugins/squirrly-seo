@@ -298,8 +298,6 @@
                         <span><?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?></span>
                     </div>
 
-
-
                     <div class="sq_option_content">
                         <div class="sq_switch">
                             <input id="sq_audit1" type="radio" class="sq_switch-input" name="sq_ws" value="1" <?php echo (($view->options['sq_ws'] == 1) ? "checked" : '') ?> />
@@ -310,7 +308,6 @@
                         </div>
                         <span><?php _e('Let Squirrly inform me about the progress of my <strong>Wordpress site</strong>.', _PLUGIN_NAME_); ?></span>
                     </div>
-
                 </fieldset>
             </div>
 
