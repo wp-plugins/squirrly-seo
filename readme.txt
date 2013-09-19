@@ -102,7 +102,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 2.1.3 =
 * Optimized Squirrly SEO for a faster load
-* Fixed CSS minor bugs
+* Fixed minor bugs in the theme's css files
 
 = 2.1.2 =
 * Added unique SEO (title and description) for the author, tag and category pages
