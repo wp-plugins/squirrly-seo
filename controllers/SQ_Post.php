@@ -119,8 +119,8 @@ class SQ_Post extends SQ_FrontController {
                 if (!is_array($out[1]) || count($out[1]) == 0)
                     return;
 
-                if (get_bloginfo('url') <> '') {
-                    $domain = parse_url(get_bloginfo('url'));
+                if (get_bloginfo('wpurl') <> '') {
+                    $domain = parse_url(get_bloginfo('wpurl'));
 
                     foreach ($out[1] as $row) {
                         if (strpos($row, 'http') !== false &&
