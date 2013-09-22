@@ -110,6 +110,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 2.1.3 =
 * Optimized Squirrly SEO for a faster load
 * Fixed minor bugs in the theme's css files
+* Local save for remote images is now optional in Settings
 
 = 2.1.2 =
 * Added unique SEO (title and description) for the author, tag and category pages
