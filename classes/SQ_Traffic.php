@@ -225,7 +225,11 @@ class SQ_Traffic extends SQ_FrontController {
         $sql = '';
 
         //Be sure not to save the bots
-        $botlist = array("bot", "crawl", "crawler", "spider", "google", "yahoo", "msn", "ask", "ia_archiver", "@", "ripper", "robot", "radian", "python", "perl", "java");
+        $botlist = array('alexa', 'altavista', 'ask jeeves', 'attentio', 'baiduspider', 'bingbot', 'chtml generic', 'crawler', 'fastmobilecrawl',
+            'feedfetcher-google', 'firefly', 'froogle', 'gigabot', 'googlebot', 'googlebot-mobile', 'heritrix', 'ia_archiver', 'irlbot',
+            'infoseek', 'jumpbot', 'lycos', 'mediapartners', 'mediobot', 'motionbot', 'msnbot', 'mshots', 'openbot',
+            'pss-webkit-request', 'pythumbnail', 'scooter', 'slurp', 'snapbot', 'spider', 'taptubot', 'technoratisnoop',
+            'teoma', 'twiceler', 'yahooseeker', 'yahooysmcm', 'yammybot',);
         foreach ($botlist as $bot) {
             if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], $bot) !== false)
                 return;
@@ -263,9 +267,9 @@ class SQ_Traffic extends SQ_FrontController {
 
         $sql = '';
         if ($row) {
-            $row->count += 1;
+            $row->count = (int) $row->count + 1;
             if (!isset($_COOKIE['sq_visited'])) {
-                $row->unique += 1;
+                $row->unique = (int) $row->unique + 1;
             }
 
             $sql = "UPDATE `" . $this->analytics_table . "` analytics

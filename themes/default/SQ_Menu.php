@@ -298,16 +298,6 @@
                         <span><?php _e('Always show <strong>Keyword Informations</strong> about the selected keyword.', _PLUGIN_NAME_); ?></span>
                     </div>
 
-                    <div class="sq_option_content">
-                        <div class="sq_switch">
-                            <input id="sq_savelocal1" type="radio" class="sq_switch-input" name="sq_savelocal" value="1" <?php echo (($view->options['sq_savelocal'] == 1) ? "checked" : '') ?> />
-                            <label for="sq_savelocal1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
-                            <input id="sq_savelocal0" type="radio" class="sq_switch-input" name="sq_savelocal"  value="0" <?php echo (($view->options['sq_savelocal'] == 0) ? "checked" : '') ?> />
-                            <label for="sq_savelocal0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
-                            <span class="sq_switch-selection"></span>
-                        </div>
-                        <span><?php _e('Let Squirrly automatically <strong>save remote images</strong> to upload directory.', _PLUGIN_NAME_); ?></span>
-                    </div>
 
                     <div class="sq_option_content">
                         <div class="sq_switch">
@@ -353,19 +343,23 @@
                         </p>
                         <p class="withborder withcode sq_beginner_condition"<?php echo ($view->options['sq_beginner_user'] == 1) ? 'style="display:none"' : '' ?>>
                             <span class="sq_icon sq_icon_googlewt"></span>
-                            <?php echo sprintf(__('Google META verification code for %sWebmaster Tool%s`:', _PLUGIN_NAME_), '`<a href="http://maps.google.com/webmasters/" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="google-site-verification" content=" <input type="text" name="sq_google_wt" value="<?php echo (($view->options['sq_google_wt'] <> '') ? $view->options['sq_google_wt'] : '') ?>" size="15" /> " /&gt;</strong>
+                            <?php echo sprintf(__('Google META verification code for %sWebmaster Tool%s:', _PLUGIN_NAME_), '<a href="http://maps.google.com/webmasters/" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="google-site-verification" content=" <input type="text" name="sq_google_wt" value="<?php echo (($view->options['sq_google_wt'] <> '') ? $view->options['sq_google_wt'] : '') ?>" size="15" /> " /&gt;</strong>
                         </p>
                         <p class="withborder withcode">
                             <span class="sq_icon sq_icon_googleanalytics"></span>
-                            <?php echo sprintf(__('Google  %sAnalytics ID%s`:', _PLUGIN_NAME_), '`<a href="http://maps.google.com/analytics/" target="_blank">', '</a>'); ?><br><strong><input type="text" name="sq_google_analytics" value="<?php echo (($view->options['sq_google_analytics'] <> '') ? $view->options['sq_google_analytics'] : '') ?>" size="15" /> (e.g. UA-XXXXXXX-XX)</strong>
+                            <?php echo sprintf(__('Google  %sAnalytics ID%s:', _PLUGIN_NAME_), '<a href="http://maps.google.com/analytics/" target="_blank">', '</a>'); ?><br><strong><input type="text" name="sq_google_analytics" value="<?php echo (($view->options['sq_google_analytics'] <> '') ? $view->options['sq_google_analytics'] : '') ?>" size="15" /> (e.g. UA-XXXXXXX-XX)</strong>
                         </p>
                         <p class="withborder withcode sq_beginner_condition" <?php echo ($view->options['sq_beginner_user'] == 1) ? 'style="display:none"' : '' ?>>
                             <span class="sq_icon sq_icon_facebookinsights"></span>
-                            <?php echo sprintf(__('Facebook META code (for %sInsights%s )`:', _PLUGIN_NAME_), '`<a href="http://www.facebook.com/insights/" target="_blank">', '</a>'); ?><br><strong>&lt;meta property="fb:admins" content=" <input type="text" name="sq_facebook_insights" value="<?php echo (($view->options['sq_facebook_insights'] <> '') ? $view->options['sq_facebook_insights'] : '') ?>" size="15" /> " /&gt;</strong>
+                            <?php echo sprintf(__('Facebook META code (for %sInsights%s ):', _PLUGIN_NAME_), '<a href="http://www.facebook.com/insights/" target="_blank">', '</a>'); ?><br><strong>&lt;meta property="fb:admins" content=" <input type="text" name="sq_facebook_insights" value="<?php echo (($view->options['sq_facebook_insights'] <> '') ? $view->options['sq_facebook_insights'] : '') ?>" size="15" /> " /&gt;</strong>
                         </p>
                         <p class="withcode sq_beginner_condition" <?php echo ($view->options['sq_beginner_user'] == 1) ? 'style="display:none"' : '' ?>>
                             <span class="sq_icon sq_icon_bingwt" ></span>
-                            <?php echo sprintf(__('Bing META code (for %sWebmaster Tool%s )`:', _PLUGIN_NAME_), '`<a href="http://www.bing.com/toolbox/webmaster/" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="msvalidate.01" content=" <input type="text" name="sq_bing_wt" value="<?php echo (($view->options['sq_bing_wt'] <> '') ? $view->options['sq_bing_wt'] : '') ?>" size="15" /> " /&gt;</strong>
+                            <?php echo sprintf(__('Bing META code (for %sWebmaster Tool%s ):', _PLUGIN_NAME_), '<a href="http://www.bing.com/toolbox/webmaster/" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="msvalidate.01" content=" <input type="text" name="sq_bing_wt" value="<?php echo (($view->options['sq_bing_wt'] <> '') ? $view->options['sq_bing_wt'] : '') ?>" size="15" /> " /&gt;</strong>
+                        </p>
+                        <p class="withcode sq_beginner_condition" <?php echo ($view->options['sq_beginner_user'] == 1) ? 'style="display:none"' : '' ?>>
+                            <span class="sq_icon sq_icon_alexat" ></span>
+                            <?php echo sprintf(__('Alexa META code (for %sAlexa Tool%s ):', _PLUGIN_NAME_), '<a href="http://www.alexa.com/pro/subscription/signup?tsver=0&puid=200" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="alexaVerifyID" content=" <input type="text" name="sq_alexa" value="<?php echo (($view->options['sq_alexa'] <> '') ? $view->options['sq_alexa'] : '') ?>" size="15" /> /&gt;</strong>
                         </p>
                     </div>
                 </fieldset>

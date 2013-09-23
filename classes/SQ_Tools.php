@@ -117,11 +117,11 @@ class SQ_Tools extends SQ_FrontController {
             'sq_google_analytics' => '',
             'sq_facebook_insights' => '',
             'sq_bing_wt' => '',
+            'sq_alexa' => '',
             // --
             'ignore_warn' => 0,
             'sq_keyword_help' => 1,
             'sq_keyword_information' => 0,
-            'sq_savelocal' => 1,
             // --
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',

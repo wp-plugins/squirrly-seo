@@ -186,12 +186,13 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_google_analytics', $this->model->checkGoogleAnalyticsCode(SQ_Tools::getValue('sq_google_analytics')));
                 SQ_Tools::saveOptions('sq_facebook_insights', $this->model->checkFavebookInsightsCode(SQ_Tools::getValue('sq_facebook_insights')));
                 SQ_Tools::saveOptions('sq_bing_wt', $this->model->checkBingWTCode(SQ_Tools::getValue('sq_bing_wt')));
+                SQ_Tools::saveOptions('sq_alexa', $this->model->checkBingWTCode(SQ_Tools::getValue('sq_alexa')));
+
 
                 SQ_Tools::saveOptions('ignore_warn', (int) SQ_Tools::getValue('ignore_warn'));
                 SQ_Tools::saveOptions('sq_keyword_help', (int) SQ_Tools::getValue('sq_keyword_help'));
                 SQ_Tools::saveOptions('sq_keyword_information', (int) SQ_Tools::getValue('sq_keyword_information'));
                 SQ_Tools::saveOptions('sq_ws', (int) SQ_Tools::getValue('sq_ws'));
-                SQ_Tools::saveOptions('sq_savelocal', (int) SQ_Tools::getValue('sq_savelocal'));
 
                 //update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
 

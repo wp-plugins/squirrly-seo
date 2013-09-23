@@ -54,7 +54,7 @@ class Model_SQ_Post {
         $q = trim($q, '"');
         //echo "SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr);
         /* search in wp database */
-        $posts = $wpdb->get_results("SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr));
+        $posts = $wpdb->get_results("SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr));
 
 
         if ($posts) {
@@ -77,6 +77,8 @@ class Model_SQ_Post {
         if (!$length)
             return $text;
 
+        $text = str_replace(']]>', ']]&gt;', $text);
+        $text = @preg_replace('|\[(.+?)\](.+?\[/\\1\])?|s', '', $text);
         $text = strip_tags($text);
         $words = explode(' ', $text, $length + 1);
 

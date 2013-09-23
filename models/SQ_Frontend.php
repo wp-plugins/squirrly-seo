@@ -177,6 +177,7 @@ class Model_SQ_Frontend {
             $ret .= $this->getGoogleAnalytics();
             $ret .= $this->getFacebookIns();
             $ret .= $this->getBingWT();
+            $ret .= $this->getAlexaT();
 
             $ret .= $this->setEnd();
         }
@@ -232,7 +233,19 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', $this->meta['blogname']) . "\n" : '');
-        $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
+
+
+        if (is_author()) {
+            $author = get_queried_object();
+
+            $meta .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
+            $meta .= sprintf('<meta property="og:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
+            $meta .= sprintf('<meta property="og:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
+        } elseif (is_singular()) {
+            $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
+        }
+        else
+            $meta .= sprintf('<meta property="og:type" content="%s" />', 'blog') . "\n";
 
         return $meta;
     }
@@ -631,7 +644,7 @@ class Model_SQ_Frontend {
     private function getGoogleWT() {
         $sq_google_wt = SQ_Tools::$options['sq_google_wt'];
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_google_wt)
+        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_google_wt <> '')
             return sprintf("<meta name=\"google-site-verification\" content=\"%s\" />", $sq_google_wt) . "\n";
 
         return false;
@@ -645,7 +658,7 @@ class Model_SQ_Frontend {
     private function getGoogleAnalytics() {
         $sq_google_analytics = SQ_Tools::$options['sq_google_analytics'];
 
-        if ($sq_google_analytics)
+        if ($sq_google_analytics <> '')
             return sprintf("<script type=\"text/javascript\">
                             var _gaq = _gaq || [];
                             _gaq.push(['_setAccount', '%s']);
@@ -668,8 +681,22 @@ class Model_SQ_Frontend {
     private function getFacebookIns() {
         $sq_facebook_insights = SQ_Tools::$options['sq_facebook_insights'];
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_facebook_insights)
+        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_facebook_insights <> '')
             return sprintf("<meta property=\"fb:admins\" content=\"%s\" />", $sq_facebook_insights) . "\n";
+
+        return false;
+    }
+
+    /**
+     * Get the Alexa Tool code
+     *
+     * @return string
+     */
+    private function getAlexaT() {
+        $sq_alexa = SQ_Tools::$options['sq_alexa'];
+
+        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_alexa <> '')
+            return sprintf("<meta name=\"alexaVerifyID\" content=\"%s\" />", $sq_alexa) . "\n";
 
         return false;
     }
@@ -682,7 +709,7 @@ class Model_SQ_Frontend {
     private function getBingWT() {
         $sq_bing_wt = SQ_Tools::$options['sq_bing_wt'];
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_bing_wt)
+        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_bing_wt <> '')
             return sprintf("<meta name=\"msvalidate.01\" content=\"%s\" />", $sq_bing_wt) . "\n";
 
         return false;
@@ -1010,11 +1037,11 @@ class Model_SQ_Frontend {
         } elseif (($wp_query->is_single || $wp_query->is_page) && $haspost) {
             $post = $wp_query->posts[0];
             $link = get_permalink($post->ID);
-            $link = $this->yoastGetPaged($link);
+            $link = $this->getPaged($link);
         } elseif (($wp_query->is_single || $wp_query->is_page) && $haspost) {
             $post = $wp_query->posts[0];
             $link = get_permalink($post->ID);
-            $link = $this->yoastGetPaged($link);
+            $link = $this->getPaged($link);
         } elseif ($wp_query->is_author && $haspost) {
             global $wp_version;
             if ($wp_version >= '2') {
@@ -1029,13 +1056,13 @@ class Model_SQ_Frontend {
             }
         } elseif ($wp_query->is_category && $haspost) {
             $link = get_category_link(get_query_var('cat'));
-            $link = $this->yoastGetPaged($link);
+            $link = $this->getPaged($link);
         } else if ($wp_query->is_tag && $haspost) {
             $tag = get_term_by('slug', get_query_var('tag'), 'post_tag');
             if (!empty($tag->term_id)) {
                 $link = get_tag_link($tag->term_id);
             }
-            $link = $this->yoastGetPaged($link);
+            $link = $this->getPaged($link);
         } elseif ($wp_query->is_day && $haspost) {
             $link = get_day_link(get_query_var('year'), get_query_var('monthnum'), get_query_var('day'));
         } elseif ($wp_query->is_month && $haspost) {
@@ -1045,7 +1072,7 @@ class Model_SQ_Frontend {
         } elseif ($wp_query->is_home) {
             if ((get_option('show_on_front') == 'page') && ($pageid = get_option('page_for_posts'))) {
                 $link = get_permalink($pageid);
-                $link = $this->yoastGetPaged($link);
+                $link = $this->getPaged($link);
                 $link = trailingslashit($link);
             } else {
                 if (function_exists('icl_get_home_url')) {
@@ -1053,14 +1080,14 @@ class Model_SQ_Frontend {
                 } else {
                     $link = get_option('home');
                 }
-                $link = $this->yoastGetPaged($link);
+                $link = $this->getPaged($link);
                 $link = trailingslashit($link);
             }
         } elseif ($wp_query->is_tax && $haspost) {
             $taxonomy = get_query_var('taxonomy');
             $term = get_query_var('term');
             $link = get_term_link($term, $taxonomy);
-            $link = $this->yoastGetPaged($link);
+            $link = $this->getPaged($link);
         } else {
             return false;
         }
@@ -1086,7 +1113,7 @@ class Model_SQ_Frontend {
         return false;
     }
 
-    function yoastGetPaged($link) {
+    function getPaged($link) {
         $page = get_query_var('paged');
         if ($page && $page > 1) {
             $link = trailingslashit($link) . "page/" . "$page";

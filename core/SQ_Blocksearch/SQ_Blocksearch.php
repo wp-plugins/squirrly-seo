@@ -34,7 +34,7 @@ class SQ_Blocksearch extends SQ_BlockController {
                     $start = array((int) SQ_Tools::getValue('start'));
 
                 if (SQ_Tools::getValue('nrb'))
-                    $nrb = array((int) SQ_Tools::getValue('nrb'));
+                    $nrb = (int) SQ_Tools::getValue('nrb');
 
                 if (SQ_Tools::getValue('q') <> '')
                     echo SQ_ObjController::getController('SQ_Post')->model->searchPost(SQ_Tools::getValue('q'), $exclude, (int) $start, (int) $nrb);
