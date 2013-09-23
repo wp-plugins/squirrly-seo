@@ -111,6 +111,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Optimized Squirrly SEO for a faster load
 * Fixed minor bugs in the theme's css files
 * Added Alexa Meta Tool in Squirrly SEO Settings
+* Updated the bot list in SEO Squirrly Article Rank
 
 = 2.1.2 =
 * Added unique SEO (title and description) for the author, tag and category pages
