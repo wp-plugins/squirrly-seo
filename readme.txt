@@ -8,9 +8,6 @@ Stable tag: trunk
 Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
 
 == Description ==
-[youtube http://www.youtube.com/watch?v=HYTcdLXNhhw]
-
-
 <strong>Lets Face It. SEO is tough.</strong> How does Squirrly take the hard work out of SEO?
 
 - <strong>Gives You SEO Advice as you're typing your articles.</strong> Squirrly helps you in real time to optimize your articles to 100%, while you are writing or editing them.
