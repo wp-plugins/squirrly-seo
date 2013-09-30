@@ -14,7 +14,9 @@ class ABH_Models_Frontend {
 
         $content = '';
 
-        if (isset($this->author) && isset($this->author->ID) && $this->author->user_description <> '') {
+        if (isset($this->author) && isset($this->author->ID)) {
+            if (!isset($this->author->user_description))
+                $this->author->user_description = '';
 
             $content .= '
                          <div id="abh_box" class="abh_box_' . $this->position . '">
@@ -201,4 +203,5 @@ class ABH_Models_Frontend {
     }
 
 }
+
 ?>
