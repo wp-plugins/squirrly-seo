@@ -8,6 +8,9 @@ Stable tag: trunk
 Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5, Social Media Profiles, Google Authorship
 
 == Description ==
+
+<h3>Starbox is the Author Box for Humans</h3>
+
 While search engines and other software that read your site care about files like robots.txt, you need Human readers to actually engage with your content and fall in love with it.
 
 Humans look at beauty more than anything else (as you most probably already know, men and women alike). That's why you'll get an <strong>Author Box that's gorgeous to look at and it makes your readers click all the way through</strong> to see more about the Authors.
@@ -74,11 +77,11 @@ So get your very own Starbox now:
 
 == Changelog ==
 = 1.1.1 =
-* Added HTML5 author tags
+* Added HTML5 author box tags
 * Added Klout score in social icon
 * Added Google vCard microformats for rich snippets
 * Added Google and Facebook Meta for rich snippets
-* Added author custom image upload
+* Added author box custom image upload
 * WordPress 3.6.1 compatibility
 
 
