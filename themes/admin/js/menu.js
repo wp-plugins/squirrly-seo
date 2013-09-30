@@ -14,10 +14,8 @@ jQuery(document).ready(function($) {
             event.preventDefault();
 
         $.getJSON(
-                'http://squirrly.us6.list-manage.com/subscribe/post-json?c=?',
+                'http://wordpress.us6.list-manage.com/subscribe/post-json?u=01c449a97e954978ad15d0665&id=e30e0cf0f6&c=?',
                 {
-                    u: '01c449a97e954978ad15d0665',
-                    id: 'e30e0cf0f6',
                     EMAIL: $('#abh_subscribe_email').val()
                 }, function(data) {
             $.getJSON(
