@@ -1,4 +1,3 @@
-<?php ?>
 <div id="abh_settings" >
     <a name="abh_settings"></a>
 
