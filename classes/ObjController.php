@@ -169,7 +169,7 @@ class ABH_Classes_ObjController {
      * @return boolean
      */
     private static function checkClassPath($className) {
-        $path = split('_', $className);
+        $path = preg_split('/[_]+/', $className);
         if (is_array($path) && count($path) > 1) {
             if (in_array(_ABH_NAMESPACE_, $path)) {
                 return true;
@@ -194,7 +194,7 @@ class ABH_Classes_ObjController {
         $dir = '';
 
         if (self::checkClassPath($className)) {
-            $path = split('_', $className);
+            $path = preg_split('/[_]+/', $className);
             for ($i = 1; $i < sizeof($path) - 1; $i++)
                 $dir .= strtolower($path[$i]) . '/';
 
