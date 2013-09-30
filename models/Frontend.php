@@ -20,12 +20,12 @@ class ABH_Models_Frontend {
                 $this->author->user_description = '';
 
             $content .= '
-                         <div id="abh_box" class="abh_box_' . $this->position . '">
-                                <ul id="abh_tabs">
+                         <div class="abh_box abh_box_' . $this->position . '">
+                                <ul class="abh_tabs">
                                  <li class="abh_about abh_active"><a href="#abh_about">' . __('About', _ABH_PLUGIN_NAME_) . '</a></li>
                                  <li class="abh_posts"><a href="#abh_posts">' . __('Latest Posts', _ABH_PLUGIN_NAME_) . '</a></li>
                                 </ul>
-                                <div id="abh_tab_content" class="abh_content">' .
+                                <div class="abh_tab_content">' .
                     $this->showAuthorDescription() .
                     $this->showAuthorPosts() . '
                                 </div>
@@ -46,7 +46,7 @@ class ABH_Models_Frontend {
 
     private function showAuthorDescription() {
         $content = '
-                <section id="abh_about" class="' . (($this->single) ? 'vcard' : '') . ' abh_tab" style="display:block">
+                <section class="' . (($this->single) ? 'vcard' : '') . ' abh_about_tab abh_tab" style="display:block">
                     <div class="abh_image">
                       ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
                     </div>
@@ -62,7 +62,7 @@ class ABH_Models_Frontend {
 
     private function showAuthorPosts() {
         $content = '
-                <section id="abh_posts" class="abh_tab" >
+                <section class="abh_posts_tab abh_tab" >
                     <div class="abh_image">
                       ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
                     </div>

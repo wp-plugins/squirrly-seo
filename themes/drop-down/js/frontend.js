@@ -40,22 +40,15 @@
     };
 
 
-    $.abh_showDiv = function(selected_tab) {
-        if (typeof selected_tab !== 'undefined') {
-            $(selected_tab).fadeIn();
-            $(selected_tab).parents('#abh_box').find(selected_tab.replace('#', '.')).addClass("abh_active");
-        }
-    };
-
     $.abh_showContent = function(obj) {
-        obj.find("#abh_tabs").show();
+        obj.find(".abh_tabs").show();
         obj.find(".abh_job").show();
         obj.find(".abh_allposts").show();
         obj.find(".abh_social").show();
 
-        obj.find("#abh_tab_content").css('border-bottom-width', '1px');
-        obj.find("#abh_tab_content h3").css('border-bottom-width', '0px');
-        obj.find("#abh_tab_content h4").css('border-bottom-width', '0px');
+        obj.find(".abh_tab_content").css('border-bottom-width', '1px');
+        obj.find(".abh_tab_content h3").css('border-bottom-width', '0px');
+        obj.find(".abh_tab_content h4").css('border-bottom-width', '0px');
         obj.find(".abh_description").slideDown('fast');
 
         obj.find(".abh_arrow").addClass('abh_active');
@@ -63,13 +56,13 @@
 
     $.abh_hideContent = function(obj) {
         obj.find(".abh_description").slideUp('fast', function() {
-            obj.find("#abh_tabs").hide();
+            obj.find(".abh_tabs").hide();
             obj.find(".abh_job").hide();
             obj.find(".abh_allposts").hide();
             obj.find(".abh_social").hide();
-            obj.find("#abh_tab_content").css('border-bottom-width', '0px');
-            obj.find("#abh_tab_content h3").css('border-bottom-width', '1px');
-            obj.find("#abh_tab_content h4").css('border-bottom-width', '1px');
+            obj.find(".abh_tab_content").css('border-bottom-width', '0px');
+            obj.find(".abh_tab_content h3").css('border-bottom-width', '1px');
+            obj.find(".abh_tab_content h4").css('border-bottom-width', '1px');
             obj.find(".abh_arrow").removeClass('abh_active');
         });
     };
@@ -78,37 +71,38 @@
 
 jQuery(document).ready(function($) {
 
-    $("#abh_tab_content .abh_image img, #abh_tab_content h4, #abh_tab_content h3").bind('click', function(event) {
+    $(".abh_tab_content .abh_image img, .abh_tab_content h4, .abh_tab_content h3").bind('click', function(event) {
         event.preventDefault();
-        if ($(this).parents('#abh_box').find("#abh_tabs").is(':visible')) {
-            $.abh_hideContent($(this).parents('#abh_box'));
+        if ($(this).parents('.abh_box').find(".abh_tabs").is(':visible')) {
+            $.abh_hideContent($(this).parents('.abh_box'));
         } else {
-            $.abh_showContent($(this).parents('#abh_box'));
+            $.abh_showContent($(this).parents('.abh_box'));
         }
     });
 
     // On tab click
-    $("#abh_tabs li").click(function() {
+    $(".abh_tabs li").click(function() {
         //First remove class "active" from currently active tab
-        $("#abh_tabs li").removeClass('abh_active');
+        $(".abh_tabs li").removeClass('abh_active');
 
         //Now add class "active" to the selected/clicked tab
         $(this).addClass("abh_active");
 
         //Hide all tab content
-        $(".abh_tab").hide();
+        $(this).parents('.abh_box').find(".abh_tab").hide();
 
         //Here we get the href value of the selected tab
         var selected_tab = $(this).find("a").attr("href");
 
         //Show the selected tab content
-        $.abh_showDiv(selected_tab);
+        $(this).parents('.abh_box').find(selected_tab.replace('#', '.') + '_tab').fadeIn();
+        $(this).parents('.abh_box').find(selected_tab.replace('#', '.') + '_tab').parents('.abh_box').find(selected_tab.replace('#', '.')).addClass("abh_active");
         $._setCookie('abh_tab', selected_tab);
 
         //At the end, we add return false so that the click on the link is not executed
         return false;
     });
 
-    $(".abh_content").find("h3").append('<span class="abh_arrow"></span>');
+    $(".abh_tab_content").find("h3").append('<span class="abh_arrow"></span>');
 });
 

@@ -43,9 +43,9 @@
 
 jQuery(document).ready(function($) {
     // On tab click
-    $("#abh_tabs li").click(function() {
+    $(".abh_tabs li").click(function() {
         //First remove class "active" from currently active tab
-        $("#abh_tabs li").removeClass('abh_active');
+        $(".abh_tabs li").removeClass('abh_active');
 
         //Now add class "active" to the selected/clicked tab
         $(this).addClass("abh_active");
@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
         var selected_tab = $(this).find("a").attr("href");
 
         //Show the selected tab content
-        $(selected_tab).fadeIn();
+        $(selected_tab.replace('#', '.') + '_tab').fadeIn();
         $._setCookie('abh_tab', selected_tab);
 
         //At the end, we add return false so that the click on the link is not executed
@@ -67,12 +67,12 @@ jQuery(document).ready(function($) {
     //Show the saved cookie tab content
     if ($._getCookie('abh_tab') != null) {
         $(".abh_tab").hide();
-        $("#abh_tabs li").removeClass('abh_active');
+        $(".abh_tabs li").removeClass('abh_active');
 
         //Get the tab from cookie
         var selected_tab = $._getCookie('abh_tab');
-        $(selected_tab).fadeIn();
-        $(selected_tab).parents('#abh_box').find(selected_tab.replace('#', '.')).addClass("abh_active");
+        $(selected_tab.replace('#', '.') + '_tab').fadeIn();
+        $(selected_tab).parents('.abh_box').find(selected_tab.replace('#', '.')).addClass("abh_active");
     }
 
 });

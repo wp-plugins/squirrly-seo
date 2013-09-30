@@ -1,20 +1,20 @@
-#abh_box {
+.abh_box {
     width: 100%;
     margin: 25px 0;
 }
-#abh_tabs {
+.abh_tabs {
     list-style: none;
     padding: 5px 0px 5px 0px !important;
     margin: 0px 0px 0px 0px !important;
     font: 13px arial;
     border-bottom: 1px solid #ccc;
 }
-#abh_tabs li {
+.abh_tabs li {
     display: inline;
     margin: 0;
     padding: 0;
 }
-#abh_tabs li a {
+.abh_tabs li a {
     color: #333;
     background-color: #fefefe;
 
@@ -25,11 +25,11 @@
     border-bottom: none;
     outline: none;
 }
-#abh_tabs li a:hover {
+.abh_tabs li a:hover {
     background-color: #dddddd;
     padding: 4px 10px 5px;
 }
-#abh_tabs li.abh_active a {
+.abh_tabs li.abh_active a {
     color: #333;
     background-color: #eeeeee;
 
@@ -37,45 +37,45 @@
     padding: 4px 10px 5px 10px;
     border-bottom: none;
 }
-#abh_tabs li.abh_active a:hover {
+.abh_tabs li.abh_active a:hover {
     background-color: #eeeeee;
     padding: 4px 10px 5px 10px;
     border-bottom: none;
 }
 
-#abh_tabs li a.icon_accept {
+.abh_tabs li a.icon_accept {
     background-image: url(accept.png);
     background-position: 5px;
     background-repeat: no-repeat;
     padding-left: 24px;
 }
-#abh_tabs li a.icon_accept:hover {
+.abh_tabs li a.icon_accept:hover {
     padding-left: 24px;
 }
 
-#abh_tabs_content_container {
+.abh_tabs_content_container {
     border: 2px solid #ccc;
     border-top: none;
     padding: 10px;
     width: 400px;
 }
 
-#abh_tab_content{
+.abh_tab_content{
     padding: 12px;
     min-height: 80px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
 }
-#abh_tab_content .abh_tab {
+.abh_tab_content .abh_tab {
     display: none;
 }
-#abh_tab_content .abh_image{
+.abh_tab_content .abh_image{
     display: block;
     float: left;
     width: 80px;
     margin-top: 10px;
 }
-#abh_tab_content .abh_image img{
+.abh_tab_content .abh_image img{
     border-radius: 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -84,18 +84,18 @@
     border-radius: 50% 50% 50% 50%;
 }
 
-#abh_tab_content .abh_text{
+.abh_tab_content .abh_text{
     margin-left: 96px;
     line-height: 1.5;
 }
-#abh_tab_content .abh_text h3,
-#abh_tab_content .abh_text h4{
+.abh_tab_content .abh_text h3,
+.abh_tab_content .abh_text h4{
     padding: 0;
     margin: 0 ;
     clear: none;
     font-weight: bold;
 }
-#abh_tab_content .abh_text .fn{
+.abh_tab_content .abh_text .fn{
     text-transform: capitalize;
     clear: none !important;
     font-size: 18px;
@@ -103,31 +103,31 @@
     margin: 0 !important;
     padding: 0;
 }
-#abh_tab_content .abh_text a{
+.abh_tab_content .abh_text a{
     text-decoration: none;
 }
-#abh_tab_content .abh_text .abh_job span{
+.abh_tab_content .abh_text .abh_job span{
     font-size: 13px;
     margin-bottom: 10px;
 }
-#abh_tab_content .abh_text .abh_description{
+.abh_tab_content .abh_text .abh_description{
     padding-top: 6px;
 }
-#abh_tab_content .abh_text .abh_allposts{
+.abh_tab_content .abh_text .abh_allposts{
     font-size: 11px;
     vertical-align: middle;
 }
-#abh_tab_content .abh_text ul{
+.abh_tab_content .abh_text ul{
     list-style: none;
     padding: 0;
     margin: 5px 0 0 20px;
 }
-#abh_tab_content .abh_text ul li{
+.abh_tab_content .abh_text ul li{
     font-size: 13px;
     margin: 0;
 }
 
-#abh_tab_content .abh_social{
+.abh_tab_content .abh_social{
     display: block;
     float: right;
     line-height: 1px;
@@ -135,11 +135,11 @@
     margin: 0;
     text-align: right;
 }
-#abh_tab_content .abh_social div{
+.abh_tab_content .abh_social div{
     width:140px;
     margin: 0 0 0 auto;
 }
-#abh_tab_content .abh_social a{
+.abh_tab_content .abh_social a{
     display: inline-block;
     background: transparent url('../img/sprite.png') no-repeat;
 
@@ -158,26 +158,26 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
 }
-#abh_tab_content .abh_social a:hover{
+.abh_tab_content .abh_social a:hover{
     opacity: 1;
 }
 
-#abh_tab_content .abh_social a.abh_facebook{  background-position: 0px 0px; }
-#abh_tab_content .abh_social a.abh_flickr{  background-position: -24px 0px; }
-#abh_tab_content .abh_social a.abh_google{  background-position: -48px 0px; }
-#abh_tab_content .abh_social a.abh_instagram{  background-position: -72px 0px; }
-#abh_tab_content .abh_social a.abh_linkedin{  background-position: -96px 0px; }
-#abh_tab_content .abh_social a.abh_pinterest{  background-position: -120px 0px; }
-#abh_tab_content .abh_social a.abh_tumblr{  background-position: -144px 0px; }
-#abh_tab_content .abh_social a.abh_twitter{  background-position: -168px 0px; }
-#abh_tab_content .abh_social a.abh_vimeo{  background-position: -192px 0px; }
-#abh_tab_content .abh_social a.abh_youtube{  background-position: -216px 0px; }
-#abh_tab_content .abh_social a.abh_klout{
+.abh_tab_content .abh_social a.abh_facebook{  background-position: 0px 0px; }
+.abh_tab_content .abh_social a.abh_flickr{  background-position: -24px 0px; }
+.abh_tab_content .abh_social a.abh_google{  background-position: -48px 0px; }
+.abh_tab_content .abh_social a.abh_instagram{  background-position: -72px 0px; }
+.abh_tab_content .abh_social a.abh_linkedin{  background-position: -96px 0px; }
+.abh_tab_content .abh_social a.abh_pinterest{  background-position: -120px 0px; }
+.abh_tab_content .abh_social a.abh_tumblr{  background-position: -144px 0px; }
+.abh_tab_content .abh_social a.abh_twitter{  background-position: -168px 0px; }
+.abh_tab_content .abh_social a.abh_vimeo{  background-position: -192px 0px; }
+.abh_tab_content .abh_social a.abh_youtube{  background-position: -216px 0px; }
+.abh_tab_content .abh_social a.abh_klout{
     background-position: -240px 0px;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;}
-#abh_tab_content .abh_social a.abh_klout_score{
+.abh_tab_content .abh_social a.abh_klout_score{
     text-align: center;
     color: #fff;
     font-size: 11px;
