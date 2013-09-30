@@ -71,6 +71,16 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 //echo '<pre>' . print_R($wp_query, true) . '</pre>';
             } elseif (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
                 $this->show = true;
+
+                //Add the header meta authors for single post
+                //for google
+                if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
+                    add_action('wp_head', array($this->model, 'showGoogleAuthorMeta'));
+                }
+                //for facebook
+                if (!isset($this->model->details['abh_facebook']) || $this->model->details['abh_facebook']) {
+                    add_action('wp_head', array($this->model, 'showFacebookAuthorMeta'));
+                }
             }
 
             if ($this->show) {
@@ -82,16 +92,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
                 if (!is_author())
                     echo '<style type="text/css">.author-box, .article-author, #entry-author-info{display:none;}</style>';
-            }
-
-            //Add the header meta authors
-            //for google
-            if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
-                add_action('wp_head', array($this->model, 'showGoogleAuthorMeta'));
-            }
-            //for facebook
-            if (!isset($this->model->details['abh_facebook']) || $this->model->details['abh_facebook']) {
-                add_action('wp_head', array($this->model, 'showFacebookAuthorMeta'));
             }
         }
     }
@@ -113,7 +113,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         if (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
             if ((is_single() && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
                     (is_page() && ABH_Classes_Tools::getOption('abh_inpages') == 1)) {
-
+                $this->model->single = true;
                 $box = $this->model->showAuthorBox();
             }
 
@@ -137,8 +137,10 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
 
-            if ($this->model->details['abh_use'])
+            if ($this->model->details['abh_use']) {
+                $this->model->single = false;
                 echo $this->model->showAuthorBox();
+            }
         }
 
         return $content;

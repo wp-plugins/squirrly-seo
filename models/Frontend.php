@@ -5,6 +5,7 @@ class ABH_Models_Frontend {
     public $author;
     public $details;
     public $position;
+    public $single = true;
 
     function showAuthorBox() {
         global $wp_query;
@@ -45,7 +46,7 @@ class ABH_Models_Frontend {
 
     private function showAuthorDescription() {
         $content = '
-                <section id="abh_about" class="vcard abh_tab" style="display:block">
+                <section id="abh_about" class="' . (($this->single) ? 'vcard' : '') . ' abh_tab" style="display:block">
                     <div class="abh_image">
                       ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
                     </div>
@@ -87,7 +88,10 @@ class ABH_Models_Frontend {
         }
         if (isset($this->details['abh_google']) && $this->details['abh_google'] <> '') {
             $count++;
-            $content .= '<a href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '?rel=author" title="' . __('Google Plus', _ABH_PLUGIN_NAME_) . '" class="abh_google" rel="author" target="_blank"></a>';
+            if ($this->single)
+                $content .= '<a href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '?rel=author" title="' . __('Google Plus', _ABH_PLUGIN_NAME_) . '" class="abh_google" rel="author" target="_blank"></a>';
+            else
+                $content .= '<a href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '" title="' . __('Google Plus', _ABH_PLUGIN_NAME_) . '" class="abh_google" target="_blank"></a>';
         }
         if (isset($this->details['abh_linkedin']) && $this->details['abh_linkedin'] <> '') {
             $count++;
