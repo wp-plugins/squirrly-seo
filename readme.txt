@@ -1,5 +1,5 @@
 === Starbox - the Author Box for Humans ===
-Contributors: cifi
+Contributors: cifi,florinmuresan
 Tags: author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet
 Requires at least: 3.1
 Tested up to: 3.6.1
