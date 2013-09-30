@@ -34,13 +34,8 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
             'abh_klout' => "",
             'abh_gravatar' => "",
         );
-        if (!isset($this->author['abh_use']))
+        if (!isset($this->author))
             $this->author = $default;
-
-        if (!isset($this->author['abh_gravatar']))
-            $this->author['abh_gravatar'] = "";
-        if (!isset($this->author['abh_klout']))
-            $this->author['abh_klout'] = "";
 
         $this->themes = ABH_Classes_Tools::getOption('abh_themes');
 
@@ -53,6 +48,9 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
             case 'update':
             case 'createuser':
                 $user_id = ABH_CLasses_Tools::getValue('user_id');
+
+                //Get the default settings
+                $settings = ABH_Classes_Tools::getOption('abh_author' . $user_id);
 
                 $settings['abh_use'] = (bool) ABH_CLasses_Tools::getValue('abh_use');
 
@@ -84,7 +82,7 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
                         define('ABH_MESSAGE_FAVICON', $return['message']);
                 }
 
-                if (ABH_CLasses_Tools::getValue('abh_resetgravatar'))
+                if (ABH_CLasses_Tools::getValue('abh_resetgravatar') == 1)
                     $settings['abh_gravatar'] = '';
 
                 ABH_Classes_Tools::saveOptions('abh_author' . $user_id, $settings);
