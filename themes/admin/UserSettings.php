@@ -37,7 +37,7 @@
                         <div class="abh_upload">
                             <input type="file" name="abh_gravatar" />
                             <input type="submit"  id="abh_gravatar_update" name="abh_update" value="<?php _e('Upload', _ABH_PLUGIN_NAME_) ?>" />
-                            <div class="abh_upload_reset"><label for="abh_resetgravatar"><?php _e('Reset the custom image', _ABH_PLUGIN_NAME_); ?></label><input name="abh_resetgravatar" type="checkbox" value="1" /></div>
+                            <div class="abh_upload_reset"><label for="abh_resetgravatar"><?php _e('Reset the uploaded image', _ABH_PLUGIN_NAME_); ?></label><input name="abh_resetgravatar" type="checkbox" value="1" /></div>
                             <span class="abh_settings_info"><?php echo sprintf(__('You can also set your image on %shttps://en.gravatar.com/%s for your email address', _ABH_PLUGIN_NAME_), '<a href="https://en.gravatar.com/" target="_blank">', '</a>'); ?></span>
                         </div>
                     </div>

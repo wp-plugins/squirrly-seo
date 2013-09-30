@@ -75,7 +75,7 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
                 $settings['abh_theme'] = ABH_CLasses_Tools::getValue('abh_theme');
                 $settings['abh_position'] = ABH_CLasses_Tools::getValue('abh_position');
                 /* if there is an icon to upload */
-                if (!empty($_FILES['abh_gravatar'])) {
+                if (isset($_FILES['abh_gravatar']) && !empty($_FILES['abh_gravatar'])) {
 
                     $return = $this->model->addImage($_FILES['abh_gravatar']);
                     if ($return['name'] <> '')

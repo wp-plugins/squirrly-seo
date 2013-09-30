@@ -5,7 +5,8 @@
   The copyrights to the software code in this file are licensed under the (revised) BSD open source license.
 
   Plugin Name: StarBox
-  Plugin URI: http://www.squirrly.co
+  Plugin URI:
+  Author: Squirrly UK
   Description: Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5, Social Media Profiles, Google Authorship
   Version: 1.0.1
   Author URI: http://www.squirrly.co
