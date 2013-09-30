@@ -28,24 +28,43 @@ Are you afraid of having to spend time setting Starbox up? Don't worry. You're c
 You'll build up some good social proof, you'll give your Human readers the sense of quality and they'll be happy to return for more (which will help you with the search engines who track your site, as well).
 
 If you're doing the tech stuff on your site or want to know what Starbox's inner workings are all about, here's a list:
+
 - HTML 5
+
 - Google Microformats (vCard), to display Rich Snippets in google search results
+
 - Easy to customize for each Author
+
 - You'll get Google Authorship on your hands :-) For all your authors.
+
 - Have it work only on blog posts, only on pages, or both!
+
 - Links to social media profiles of your authors: Facebook, Twitter, Klout, Google+, LinkedIN, Instagram, Flickr, Pinterest, Tumblr, Youtube, Vimeo)
+
 - Each of your Authors can have a different set of social media profiles added
+
 - Links to all the articles
+
 - Section that displays the latest posts of a certain author
+
 - Themes to choose from
+
 - Can set the Name of the Author
+
 - Can set Job Title
+
 - Can set Company (with link to company's site)
+
 - Each Author can make the Author Box look like it's his own
+
 - You can choose not to display it for certain authors
+
 - Removes any other author box from the page, so that there aren't duplicates
+
 - Enables you to upload your own image (so that you won't need a Gravatar)
+
 - Paragraphs in the Author Bio
+
 - Displays the Author Box in the special pages built for each author.
 
 <strong>It's Free!!</strong> and always will be.
