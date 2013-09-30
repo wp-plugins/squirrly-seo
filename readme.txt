@@ -74,6 +74,23 @@ So get your very own Starbox now:
 6. After the upload is finished, click Activate Plugin.
 
 == Screenshots ==
+1. Author Box with Business Theme
+2. Author Box with Business Theme
+3. Author Box Settings
+4. Author Box Settings for each Author
+5. Author Box Social Settings
+6. Author Box with Drop-Down Theme
+7. Author Box with Drop-Down Theme
+8. Author Box with Drop-Down Theme
+9. Google Rich Snippets with the author's image
+10. Google Rich Snippets with the author's image
+11. Author Box with TopStar Theme
+12. Author Box with TopStar Theme
+13. Author Box with Drop-Down Theme
+14. Author Box with Drop-Down Theme
+15. Author Box with Fancy Theme
+16. Author Box with Drop-Down Theme
+
 
 == Changelog ==
 = 1.1.1 =

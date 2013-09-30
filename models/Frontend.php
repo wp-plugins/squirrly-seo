@@ -36,7 +36,7 @@ class ABH_Models_Frontend {
         return '';
     }
 
-    private function getProfileImage() {
+    public function getProfileImage() {
         if (isset($this->details['abh_gravatar']) && $this->details['abh_gravatar'] <> '' && file_exists(_ABH_GRAVATAR_DIR_ . $this->details['abh_gravatar'])) {
             return '<img src="' . _ABH_GRAVATAR_URL_ . $this->details['abh_gravatar'] . '" class="photo" width="80" />';
         } else {
