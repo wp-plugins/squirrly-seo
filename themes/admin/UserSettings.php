@@ -1,6 +1,5 @@
 <div id="abh_settings" >
     <a name="abh_settings"></a>
-
     <div id="abh_settings_title" ><?php _e('Starbox Settings for this Author', _ABH_PLUGIN_NAME_); ?><a href="http://wordpress.org/support/view/plugin-reviews/starbox" target="_blank"><span class="abh_settings_rate" ><span></span><?php _e('Please support us on Wordpress', _ABH_PLUGIN_NAME_); ?></span></a></div>
     <div id="abh_settings_body">
         <div id="abh_settings_left" >
@@ -21,7 +20,7 @@
                 <legend><?php _e('Change the Profile Image', _ABH_PLUGIN_NAME_); ?></legend>
                 <div class="abh_gravatar">
                     <p>
-                        <?php _e('File types: JPG, JPEG, GIF and PNG. Ideal image size is 80x80', _ABH_PLUGIN_NAME_); ?>
+                        <?php _e('File types: JPG, JPEG, GIF and PNG. Ideal image size is: 80x80', _ABH_PLUGIN_NAME_); ?>
                     </p>
                     <p><span class="sq_settings_info"><?php echo ((defined('ABH_MESSAGE_FAVICON')) ? ABH_MESSAGE_FAVICON : '') ?></span></p>
                     <div>

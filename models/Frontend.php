@@ -144,7 +144,12 @@ class ABH_Models_Frontend {
     private function getKloutScore() {
         $data = null;
 
-        if (isset($this->details['abh_klout']) && $this->details['abh_klout'] <> '' && strpos($this->details['abh_klout'], 'http') === false) {
+        if (isset($this->details['abh_klout']) && $this->details['abh_klout'] <> '') {
+            if (strpos($this->details['abh_klout'], 'http') !== false) {
+                $this->details['abh_klout'] = preg_replace('/http:\/\/klout.com\/#\//', '', $this->details['abh_klout']);
+                if (strpos($this->details['abh_klout'], 'http') !== false)
+                    return false;
+            }
 
             if (is_file(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) && @filemtime(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) > (time() - (3600 * 24))) {
                 $data = json_decode(@file_get_contents(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']));
