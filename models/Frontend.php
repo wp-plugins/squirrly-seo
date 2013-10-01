@@ -50,7 +50,7 @@ class ABH_Models_Frontend {
                     <div class="abh_image">
                       ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
                     </div>
-                    <div class="abh_social"> ' . $this->getSocial() . ' </div>
+                    <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
                         <h3 class="fn name">' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank">' . $this->author->display_name . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url">' . $this->author->display_name . '</a>' ) . '</h3>
                         <div class="abh_job">' . (($this->details['abh_title'] <> '' && $this->details['abh_company'] <> '') ? '<span class="title">' . $this->details['abh_title'] . '</span> ' . __('at', _ABH_PLUGIN_NAME_) . ' <span class="org">' . (($this->details['abh_company_url'] <> '') ? sprintf('<a href="%s" target="_blank">%s</a>', $this->details['abh_company_url'], $this->details['abh_company']) : $this->details['abh_company']) . '</span>' : '') . '</div>
@@ -66,7 +66,7 @@ class ABH_Models_Frontend {
                     <div class="abh_image">
                       ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
                     </div>
-                    <div class="abh_social"> ' . $this->getSocial() . ' </div>
+                    <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
                         <h4>' . sprintf(__('Latest posts by %s', _ABH_PLUGIN_NAME_), $this->author->display_name) . ' <span class="abh_allposts">(<a href="' . get_author_posts_url($this->author->ID) . '">' . __('see all', _ABH_PLUGIN_NAME_) . '</a>)</span></h4>
                         <div class="abh_description note">' . $this->getLatestPosts() . '</div>
