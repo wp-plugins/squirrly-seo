@@ -109,7 +109,7 @@
                     </div>
                     <input type="email" value="<?php echo esc_attr($GLOBALS['profileuser']->user_email) ?>" size="30" name="abh_email" id="abh_subscribe_email" >
                     <input type="button" value="Subscribe" id="abh_subscribe_subscribe">
-                    <div style="margin:3px; font-style: italic;" ><?php _e('You will only subscribe to StarBox News (No spams)', _ABH_PLUGIN_NAME_); ?></div>
+                    <div style="margin:3px; font-style: italic;" ><?php _e('You will only subscribe to StarBox News (No spam). <br />We do not connect your site to our server in any way. The plugin is stand-alone.', _ABH_PLUGIN_NAME_); ?></div>
 
                 </div>
                 <div id="abh_option_social" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 0) echo 'style="display:none"'; ?>>

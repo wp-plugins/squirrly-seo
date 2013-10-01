@@ -18,6 +18,7 @@ class ABH_Controllers_Menu extends ABH_Classes_FrontController {
 
         // Delete the redirect transient
         delete_transient('abh_upgrade');
+        ABH_Classes_Tools::emptyCache();
 
         wp_safe_redirect(admin_url('admin.php?page=abh_settings'));
         exit();
