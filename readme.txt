@@ -94,7 +94,11 @@ So get your very own Starbox now:
 
 
 == Changelog ==
-= 1.1.1 =
+= 1.0.2 =
+* Fixed the custom image upload
+* Fixed theme css issues
+
+= 1.0.1 =
 * Added HTML5 author box tags
 * Added Klout score in social icon
 * Added Google vCard microformats for rich snippets
