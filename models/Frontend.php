@@ -7,7 +7,7 @@ class ABH_Models_Frontend {
     public $position;
     public $single = true;
 
-    function showAuthorBox() {
+    function getAuthorBox() {
         global $wp_query;
 
         if (!isset($this->author))

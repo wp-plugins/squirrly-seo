@@ -3,7 +3,9 @@
 class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     public static $options;
+    private $box = '';
     private $show = false;
+    public $custom = false;
 
     function __construct() {
         parent::__construct();
@@ -13,9 +15,83 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     }
 
     /**
+     * Get the author box
+     * Dependency: hookFronthead();
+     * @return string|false if the author  is not found
+     */
+    public function getBox() {
+        $this->model->single = true;
+        return $this->model->getAuthorBox();
+    }
+
+    /**
+     * Show the author box to the correct position
+     * @param string $content
+     * @return string
+     */
+    public function showAuthorBox($content = '') {
+        if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
+            $content = preg_replace('/rel=[\"|\']([^\"\']*author[^\"\']*)[\"|\']/i', '', $content);
+        }
+
+        if (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
+            if ((is_single() && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
+                    (is_page() && ABH_Classes_Tools::getOption('abh_inpages') == 1)) {
+                $this->model->single = true;
+                $this->box = $this->getBox();
+            }
+
+            switch ($this->model->position) {
+                case 'up':
+                    $content = $this->box . $content;
+                    break;
+                case 'down':
+                default:
+                    $content .= $this->box;
+                    break;
+            }
+        }
+        return $content;
+    }
+
+    /**
+     * If called it will return the box and will not show the author box in article
+     * @return string
+     */
+    public function showBox() {
+        global $wp_query;
+        $this->custom = true;
+
+        if (!empty($wp_query->posts))
+            foreach ($wp_query->posts as $post) {
+                if ($post->ID && get_post_status($post->ID) == 'publish') {
+                    // Get the author data
+                    $post = get_post($post->ID);
+                    break;
+                }
+            }
+        // cancel on errors
+        if (!isset($post) || !isset($post->post_author))
+            return;
+
+
+        // get the author data
+        if (is_author())
+            $this->model->author = get_queried_object();
+        else
+            $this->model->author = get_userdata($post->post_author);
+
+        //get the author details settings
+        $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+
+        $this->model->position = 'custom';
+        return $this->getBox();
+    }
+
+    /**
      * Hook the Init in Frontend
      */
-    function hookFrontinit() {
+    public function hookFrontinit() {
         if ($this->model->details['abh_google'] <> '') {
             remove_action('wp_head', 'author_rel_link');
         }
@@ -25,6 +101,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * Hook the Frontend Header load
      */
     public function hookFronthead() {
+
         global $wp_query;
         $post = null;
 
@@ -34,13 +111,14 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
 
-            foreach ($wp_query->posts as $post) {
-                if ($post->ID && get_post_status($post->ID) == 'publish') {
-                    // Get the author data
-                    $post = get_post($post->ID);
-                    break;
+            if (!empty($wp_query->posts))
+                foreach ($wp_query->posts as $post) {
+                    if ($post->ID && get_post_status($post->ID) == 'publish') {
+                        // Get the author data
+                        $post = get_post($post->ID);
+                        break;
+                    }
                 }
-            }
             // cancel on errors
             if (!isset($post) || !isset($post->post_author))
                 return;
@@ -98,37 +176,20 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     }
 
     /**
-     * Hook the Frontend Content
+     * Hook the Article/Page Content
+     * @global object $post
+     * @param string $content
+     * @return string
      */
-    function hookFrontcontent($content) {
-        if (!$this->show)
+    public function hookFrontcontent($content) {
+        global $post;
+
+        if (!$this->show || $this->custom)
             return $content;
 
-        global $wp_query, $post;
-        $box = '';
+        $content = $this->showAuthorBox($content);
 
-        if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
-            $content = preg_replace('/rel=[\"|\']([^\"\']*author[^\"\']*)[\"|\']/i', '', $content);
-        }
-
-        if (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
-            if ((is_single() && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
-                    (is_page() && ABH_Classes_Tools::getOption('abh_inpages') == 1)) {
-                $this->model->single = true;
-                $box = $this->model->showAuthorBox();
-            }
-
-            switch ($this->model->position) {
-                case 'up':
-                    $content = $box . $content;
-                    break;
-                case 'down':
-                    $content .= $box;
-                    break;
-            }
-        }
-
-        if (ABH_Classes_Tools::getOption('abh_ineachpost') == 1 && $box == '') {
+        if (ABH_Classes_Tools::getOption('abh_ineachpost') == 1 && $this->box == '') {
             $post = get_post($post->ID);
             if (!isset($post->post_author))
                 return;
@@ -140,7 +201,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
             if ($this->model->details['abh_use']) {
                 $this->model->single = false;
-                echo $this->model->showAuthorBox();
+                echo $this->model->getAuthorBox();
             }
         }
 
@@ -150,7 +211,8 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     /**
      * Hook the Frontend Widgets Content
      */
-    function hookFrontwidget($content) {
+    public function hookFrontwidget($content) {
+
         if (!$this->show)
             return $content;
 
@@ -163,7 +225,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     /**
      * Hook the Frontend Footer
      */
-    function hookFrontfooter() {
+    public function hookFrontfooter() {
 
     }
 
