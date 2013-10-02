@@ -90,7 +90,7 @@
                 </div>
             </fieldset>
             <fieldset >
-                <legend><?php _e('Social icons:', _ABH_PLUGIN_NAME_); ?></legend>
+                <legend><?php _e('Social settings:', _ABH_PLUGIN_NAME_); ?></legend>
                 <div id="abh_option_subscribe" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 1) echo 'style="display:none"'; ?>>
                     <div id="abh_subscribe"><?php _e('To unlock social fields please enter your email:', _ABH_PLUGIN_NAME_); ?></div>
                     <div id="abh_subscribe_social">
