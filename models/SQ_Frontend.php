@@ -242,7 +242,10 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="og:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
             $meta .= sprintf('<meta property="og:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (is_singular()) {
+            global $post;
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
+            $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $post->ID)) . "\n";
+            $meta .= sprintf('<meta property="article:author" content="%s" />', get_author_posts_url($post->post_author)) . "\n";
         }
         else
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'blog') . "\n";
