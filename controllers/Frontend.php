@@ -56,30 +56,37 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     /**
      * If called it will return the box and will not show the author box in article
+     *  @param int $author_id
      * @return string
      */
-    public function showBox() {
-        global $wp_query;
+    public function showBox($author_id = 0) {
+
         $this->custom = true;
 
-        if (!empty($wp_query->posts))
-            foreach ($wp_query->posts as $post) {
-                if ($post->ID && get_post_status($post->ID) == 'publish') {
-                    // Get the author data
-                    $post = get_post($post->ID);
-                    break;
+        if ($author_id == 0) {
+            global $wp_query;
+            if (!empty($wp_query->posts))
+                foreach ($wp_query->posts as $post) {
+                    if ($post->ID && get_post_status($post->ID) == 'publish') {
+                        // Get the author data
+                        $post = get_post($post->ID);
+                        break;
+                    }
                 }
-            }
-        // cancel on errors
-        if (!isset($post) || !isset($post->post_author))
-            return;
+            // cancel on errors
+            if (!isset($post) || !isset($post->post_author))
+                return;
+
+            // get the author data
+            if (is_author())
+                $this->model->author = get_queried_object();
+            else
+                $this->model->author = get_userdata($post->post_author);
+        }else {
+            $this->model->author = get_userdata($author_id);
+        }
 
 
-        // get the author data
-        if (is_author())
-            $this->model->author = get_queried_object();
-        else
-            $this->model->author = get_userdata($post->post_author);
 
         //get the author details settings
         $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
