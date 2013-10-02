@@ -36,6 +36,17 @@
                         </div>
                         <span><?php _e('Show the Starbox with Top Star theme in the global feed of your blog (eg. "/blog" page) under each title of every post', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
+
+                    <div class="abh_option_content">
+                        <div class="abh_switch">
+                            <input id="abh_showopengraph_on" type="radio" class="abh_switch-input" name="abh_showopengraph"  value="1" <?php echo ((ABH_Classes_Tools::getOption('abh_showopengraph') == 1) ? "checked" : '') ?> />
+                            <label for="abh_showopengraph_on" class="abh_switch-label abh_switch-label-off"><?php _e('Yes', _ABH_PLUGIN_NAME_); ?></label>
+                            <input id="abh_showopengraph_off" type="radio" class="abh_switch-input" name="abh_showopengraph" value="0" <?php echo ((!ABH_Classes_Tools::getOption('abh_showopengraph')) ? "checked" : '') ?> />
+                            <label for="abh_showopengraph_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
+                            <span class="abh_switch-selection"></span>
+                        </div>
+                        <span><?php echo sprintf(__('Show the Open Graph Profile in meta for each author %sdetails%s (useful for rich snippets)', _ABH_PLUGIN_NAME_), '<a href="http://ogp.me/#type_profile" target="_blank">', '</a>'); ?></span>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend><?php _e('Theme setting:', _ABH_PLUGIN_NAME_); ?></legend>

@@ -203,12 +203,41 @@ class ABH_Models_Frontend {
         return str_replace(array("\r", "\n", "  "), '', $match[0]);
     }
 
+    function showMeta() {
+        if (!isset($this->author))
+            return;
+
+        $meta = "\n<!-- StarBox - the Author Box for Humans " . ABH_VERSION . ", visit: http://wordpress.org/plugins/starbox/ -->\n";
+
+        if (ABH_Classes_Tools::getOption('abh_showopengraph') == 1 && is_author()) {
+            //Show the OpenGraph
+            $meta .= $this->showOpenGraph();
+        }
+
+        $meta .= $this->showGoogleAuthorMeta(); //show google author meta
+        $meta .= $this->showFacebookAuthorMeta(); //show facebook author meta
+
+        $meta .= "<!-- /StarBox - the Author Box for Humans -->\n\n";
+
+        return $meta;
+    }
+
+    function showOpenGraph() {
+        $og = '';
+        $og .= sprintf('<meta property="og:url" content="%s" />', get_author_posts_url($this->author->ID)) . "\n";
+        $og .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
+        $og .= sprintf('<meta property="og:first_name" content="%s" />', get_the_author_meta('first_name', $this->author->ID)) . "\n";
+        $og .= sprintf('<meta property="og:last_name" content="%s" />', get_the_author_meta('last_name', $this->author->ID)) . "\n";
+
+        return $og;
+    }
+
     function showGoogleAuthorMeta() {
-        echo '<link rel="author" href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '" />' . "\n";
+        return '<link rel="author" href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '" />' . "\n";
     }
 
     function showFacebookAuthorMeta() {
-        echo '<meta property="article:author" content="' . ((strpos($this->details['abh_facebook'], 'http') === false) ? 'http://facebook.com/' : '') . $this->details['abh_facebook'] . '" />' . "\n";
+        return '<meta property="article:author" content="' . ((strpos($this->details['abh_facebook'], 'http') === false) ? 'http://facebook.com/' : '') . $this->details['abh_facebook'] . '" />' . "\n";
     }
 
 }

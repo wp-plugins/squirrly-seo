@@ -30,7 +30,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
         if ((is_single() && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
                 (is_page() && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
-                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && !is_author() && (is_category() || is_tag() || is_page() || is_archive() || is_search())) {
+                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || is_page() || is_archive() || is_search())) {
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
 
@@ -46,7 +46,10 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 return;
 
             // get the author data
-            $this->model->author = get_userdata($post->post_author);
+            if (is_author())
+                $this->model->author = get_queried_object();
+            else
+                $this->model->author = get_userdata($post->post_author);
 
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
@@ -65,21 +68,19 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 $theme = $this->model->details['abh_theme'];
 
             // set theme for author box shown for each article
-            if ((ABH_Classes_Tools::getOption('abh_ineachpost') == 1 && count($wp_query->posts) > 1)) {
-                $theme = ABH_Classes_Tools::getOption('abh_achposttheme');
-                $this->show = true;
-                //echo '<pre>' . print_R($wp_query, true) . '</pre>';
-            } elseif (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
-                $this->show = true;
-
+            if (is_author()) {
                 //Add the header meta authors for single post
-                //for google
-                if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
-                    add_action('wp_head', array($this->model, 'showGoogleAuthorMeta'));
-                }
-                //for facebook
-                if (!isset($this->model->details['abh_facebook']) || $this->model->details['abh_facebook']) {
-                    add_action('wp_head', array($this->model, 'showFacebookAuthorMeta'));
+                echo $this->model->showMeta();
+            } else {
+                if ((ABH_Classes_Tools::getOption('abh_ineachpost') == 1 && count($wp_query->posts) > 1)) {
+                    $theme = ABH_Classes_Tools::getOption('abh_achposttheme');
+                    $this->show = true;
+                    //echo '<pre>' . print_R($wp_query, true) . '</pre>';
+                } elseif (!isset($this->model->details['abh_use']) || $this->model->details['abh_use']) {
+                    $this->show = true;
+
+                    //Add the header meta authors for single post
+                    echo $this->model->showMeta();
                 }
             }
 
