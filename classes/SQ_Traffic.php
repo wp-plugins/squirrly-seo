@@ -256,7 +256,7 @@ class SQ_Traffic extends SQ_FrontController {
                             (`post_id`,`home`,`domain`,`keyword`,`date`)
                             VALUES (" . (int) $post_id . "," . (int) $home . ",'" . $referral['domain'] . "','" . $referral['keyword'] . "','" . date("Y-m-d", $this->now) . "')";
 
-                $wpdb->query($wpdb->prepare($sql));
+                $wpdb->query($sql);
             }
 
         $sql = "SELECT analytics.`id`,analytics.`count`,analytics.`unique`
