@@ -44,26 +44,6 @@
             </fieldset>
             <fieldset>
                 <legend><?php _e('Theme settings:', _ABH_PLUGIN_NAME_); ?></legend>
-
-                <div class="abh_option_content">
-
-                    <div class="abh_select">
-                        <select name="abh_theme">
-                            <?php
-                            if (isset($view->author['abh_theme']))
-                                $theme = $view->author['abh_theme'];
-                            else
-                                $theme = ABH_Classes_Tools::getOption('abh_theme');
-
-                            foreach ($view->themes as $name) {
-                                echo '<option value="' . $name . '" ' . (($theme == $name) ? 'selected="selected"' : '') . ' >' . ucfirst($name) . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <span><?php _e('This Author\'s theme', _ABH_PLUGIN_NAME_); ?></span>
-                </div>
-
                 <div class="abh_option_content">
                     <div class="abh_select">
                         <select name="abh_position">
@@ -79,6 +59,33 @@
                     </div>
                     <span><?php _e('The Author Box position', _ABH_PLUGIN_NAME_); ?></span>
                 </div>
+
+                <div class="abh_option_content">
+
+                    <div class="abh_select">
+                        <select id="abh_theme_select" name="abh_theme">
+                            <?php
+                            if (isset($view->author['abh_theme']))
+                                $theme = $view->author['abh_theme'];
+                            else
+                                $theme = ABH_Classes_Tools::getOption('abh_theme');
+
+                            foreach ($view->themes as $name) {
+                                echo '<option value="' . $name . '" ' . (($theme == $name) ? 'selected="selected"' : '') . ' >' . ucfirst($name) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <span><?php _e('This Author\'s theme', _ABH_PLUGIN_NAME_); ?></span>
+
+                </div>
+                <div id="abh_box_preview_title"><?php _e('Preview mode (change the theme)', _ABH_PLUGIN_NAME_); ?></div>
+                <div id="abh_box_preview"><?php
+                    echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js' . '"></script>';
+                    echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css' . '" type="text/css" media="all" />';
+
+                    echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($view->user->ID);
+                    ?></div>
             </fieldset>
             <fieldset >
                 <legend><?php _e('Job settings:', _ABH_PLUGIN_NAME_); ?></legend>
@@ -86,7 +93,7 @@
                     <p><span><?php _e('Job Title:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_title" value="<?php echo $view->author['abh_title']; ?>" size="30" /></p>
                     <p><span><?php _e('Company:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company" value="<?php echo $view->author['abh_company']; ?>" size="30" /></p>
                     <p><span><?php _e('Company URL:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company_url" value="<?php echo $view->author['abh_company_url']; ?>" size="30" /></p>
-                    <p class="abh_description"></p>
+                    <p class="abh_description_settings"></p>
                 </div>
             </fieldset>
             <fieldset >
@@ -94,17 +101,17 @@
                 <div id="abh_option_subscribe" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 1) echo 'style="display:none"'; ?>>
                     <div id="abh_subscribe"><?php _e('To unlock social fields please enter your email:', _ABH_PLUGIN_NAME_); ?></div>
                     <div id="abh_subscribe_social">
-                        <span class="abh_social abh_twitter"></span>
-                        <span class="abh_social abh_facebook"></span>
-                        <span class="abh_social abh_google"></span>
-                        <span class="abh_social abh_linkedin"></span>
-                        <span class="abh_social abh_klout"></span>
-                        <span class="abh_social abh_instagram"></span>
-                        <span class="abh_social abh_flickr"></span>
-                        <span class="abh_social abh_pinterest"></span>
-                        <span class="abh_social abh_tumblr"></span>
-                        <span class="abh_social abh_youtube"></span>
-                        <span class="abh_social abh_vimeo"></span>
+                        <span class="abh_social_settings abh_twitter"></span>
+                        <span class="abh_social_settings abh_facebook"></span>
+                        <span class="abh_social_settings abh_google"></span>
+                        <span class="abh_social_settings abh_linkedin"></span>
+                        <span class="abh_social_settings abh_klout"></span>
+                        <span class="abh_social_settings abh_instagram"></span>
+                        <span class="abh_social_settings abh_flickr"></span>
+                        <span class="abh_social_settings abh_pinterest"></span>
+                        <span class="abh_social_settings abh_tumblr"></span>
+                        <span class="abh_social_settings abh_youtube"></span>
+                        <span class="abh_social_settings abh_vimeo"></span>
                     </div>
                     <input type="email" value="<?php echo esc_attr($GLOBALS['profileuser']->user_email) ?>" size="30" name="abh_email" id="abh_subscribe_email" >
                     <input type="button" value="Subscribe" id="abh_subscribe_subscribe">
@@ -112,17 +119,17 @@
 
                 </div>
                 <div id="abh_option_social" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 0) echo 'style="display:none"'; ?>>
-                    <p><span class="abh_social abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_google"></span><span><?php _e('Google +:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_google" value="<?php echo $view->author['abh_google']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_linkedin"></span><span><?php _e('LinkedIn:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_linkedin" value="<?php echo $view->author['abh_linkedin']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_klout"></span><span><?php _e('Klout:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_klout" value="<?php echo $view->author['abh_klout']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_instagram"></span><span><?php _e('Instagram:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_instagram" value="<?php echo $view->author['abh_instagram']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_flickr"></span><span><?php _e('Flickr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_flickr" value="<?php echo $view->author['abh_flickr']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_pinterest"></span><span><?php _e('Pinterest:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_pinterest" value="<?php echo $view->author['abh_pinterest']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_tumblr"></span><span><?php _e('Tumblr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_tumblr" value="<?php echo $view->author['abh_tumblr']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_youtube"></span><span><?php _e('YouTube:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_youtube" value="<?php echo $view->author['abh_youtube']; ?>" size="30" /></p>
-                    <p><span class="abh_social abh_vimeo"></span><span><?php _e('Vimeo:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_vimeo" value="<?php echo $view->author['abh_vimeo']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_google"></span><span><?php _e('Google +:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_google" value="<?php echo $view->author['abh_google']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_linkedin"></span><span><?php _e('LinkedIn:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_linkedin" value="<?php echo $view->author['abh_linkedin']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_klout"></span><span><?php _e('Klout:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_klout" value="<?php echo $view->author['abh_klout']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_instagram"></span><span><?php _e('Instagram:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_instagram" value="<?php echo $view->author['abh_instagram']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_flickr"></span><span><?php _e('Flickr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_flickr" value="<?php echo $view->author['abh_flickr']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_pinterest"></span><span><?php _e('Pinterest:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_pinterest" value="<?php echo $view->author['abh_pinterest']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_tumblr"></span><span><?php _e('Tumblr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_tumblr" value="<?php echo $view->author['abh_tumblr']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_youtube"></span><span><?php _e('YouTube:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_youtube" value="<?php echo $view->author['abh_youtube']; ?>" size="30" /></p>
+                    <p><span class="abh_social_settings abh_vimeo"></span><span><?php _e('Vimeo:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_vimeo" value="<?php echo $view->author['abh_vimeo']; ?>" size="30" /></p>
                 </div>
             </fieldset>
 

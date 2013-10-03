@@ -226,8 +226,8 @@ class ABH_Models_Frontend {
         $og = '';
         $og .= sprintf('<meta property="og:url" content="%s" />', get_author_posts_url($this->author->ID)) . "\n";
         $og .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
-        $og .= sprintf('<meta property="og:first_name" content="%s" />', get_the_author_meta('first_name', $this->author->ID)) . "\n";
-        $og .= sprintf('<meta property="og:last_name" content="%s" />', get_the_author_meta('last_name', $this->author->ID)) . "\n";
+        $og .= sprintf('<meta property="profile:first_name" content="%s" />', get_the_author_meta('first_name', $this->author->ID)) . "\n";
+        $og .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $this->author->ID)) . "\n";
 
         return $og;
     }

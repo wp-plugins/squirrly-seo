@@ -5,6 +5,7 @@
         <actions>
             <action>abh_settings_update</action>
             <action>abh_settings_subscribe</action>
+
         </actions>
         <active>1</active>
     </block>
@@ -12,7 +13,7 @@
     <block>
         <name>ABH_Core_UserSettings</name>
         <actions>
-            <action>abh_saveuser</action>
+            <action>abh_get_box</action>
         </actions>
         <active>1</active>
     </block>

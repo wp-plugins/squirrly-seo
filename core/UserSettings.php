@@ -93,6 +93,17 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
                 /* Force call of error display */
                 ABH_Classes_ObjController::getController('ABH_Classes_Error')->hookNotices();
                 break;
+
+            case 'abh_get_box':
+                $user_id = ABH_CLasses_Tools::getValue('user_id');
+                $str = '';
+                $str .= '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . ABH_CLasses_Tools::getValue('abh_theme') . '/js/frontend.js' . '"></script>';
+                $str .= '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . ABH_CLasses_Tools::getValue('abh_theme') . '/css/frontend.css' . '" type="text/css" media="all" />';
+                $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user_id);
+                ABH_Classes_Tools::setHeader('json');
+                echo json_encode(array('box' => $str));
+                exit();
+                break;
         }
     }
 
