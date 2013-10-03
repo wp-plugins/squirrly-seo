@@ -239,8 +239,8 @@ class Model_SQ_Frontend {
             $author = get_queried_object();
 
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
-            $meta .= sprintf('<meta property="og:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
-            $meta .= sprintf('<meta property="og:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
+            $meta .= sprintf('<meta property="profile:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
+            $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (is_singular()) {
             global $post;
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
