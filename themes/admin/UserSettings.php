@@ -81,8 +81,8 @@
                 </div>
                 <div id="abh_box_preview_title"><?php _e('Preview mode (change the theme)', _ABH_PLUGIN_NAME_); ?></div>
                 <div id="abh_box_preview"><?php
-                    echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js' . '"></script>';
-                    echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css' . '" type="text/css" media="all" />';
+                    echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
+                    echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
 
                     echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($view->user->ID);
                     ?></div>
