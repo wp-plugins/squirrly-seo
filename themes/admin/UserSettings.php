@@ -114,6 +114,8 @@
                         <span class="abh_social_settings abh_vimeo"></span>
                     </div>
                     <input type="email" value="<?php echo esc_attr($GLOBALS['profileuser']->user_email) ?>" size="30" name="abh_email" id="abh_subscribe_email" >
+                    <input type="text" style="display: none;" value="<?php echo get_bloginfo('url') ?>" size="30" id="abh_subscribe_url" >
+
                     <input type="button" value="Subscribe" id="abh_subscribe_subscribe">
                     <div style="margin:3px; font-style: italic;" ><?php _e('You will only subscribe to StarBox News (No spam). <br />We do not connect your site to our server in any way. The plugin is stand-alone.', _ABH_PLUGIN_NAME_); ?></div>
 
