@@ -108,13 +108,12 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * Hook the Frontend Header load
      */
     public function hookFronthead() {
-
         global $wp_query;
         $post = null;
 
-        if ((is_single() && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
-                (is_page() && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
-                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || is_page() || is_archive() || is_search())) {
+        if ((is_single() && get_post_type() == 'post' && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
+                (is_single() && get_post_type() == 'page' && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
+                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || (is_single() && get_post_type() == 'page') || is_archive() || is_search())) {
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
 
