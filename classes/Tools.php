@@ -72,6 +72,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
             'abh_use' => 1,
             'abh_subscribe' => 0,
             'abh_inposts' => 1,
+            'abh_strictposts' => 0,
             'abh_inpages' => 0,
             'abh_ineachpost' => 0,
             'abh_showopengraph' => 1,

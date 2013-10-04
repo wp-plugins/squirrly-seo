@@ -13,6 +13,8 @@
                             <span class="abh_switch-selection"></span>
                         </div>
                         <span><?php _e('Visible in posts', _ABH_PLUGIN_NAME_); ?></span>
+                        <div class="abh_option_strictposts"><input name="abh_strictposts" type="checkbox" value="1"  <?php echo ((ABH_Classes_Tools::getOption('abh_strictposts') == 1) ? "checked" : '') ?> /><label for="abh_strictposts"><?php _e('Hide Author Box from custom posts types', _ABH_PLUGIN_NAME_); ?></label></div>
+
                     </div>
 
                     <div class="abh_option_content">
