@@ -37,7 +37,8 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
         if (!isset($this->author))
             $this->author = $default;
 
-        $this->themes = ABH_Classes_Tools::getOption('abh_themes');
+        $this->themes = @array_merge(array('default'), ABH_Classes_Tools::getOption('abh_themes'));
+
 
         parent::init();
     }
@@ -96,9 +97,13 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
 
             case 'abh_get_box':
                 $user_id = ABH_CLasses_Tools::getValue('user_id');
+                $theme = ABH_CLasses_Tools::getValue('abh_theme');
+                if ($theme == 'default')
+                    $theme = ABH_Classes_Tools::getOption('abh_theme');
+
                 $str = '';
-                $str .= '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . ABH_CLasses_Tools::getValue('abh_theme') . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
-                $str .= '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . ABH_CLasses_Tools::getValue('abh_theme') . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
+                $str .= '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
+                $str .= '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
                 $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user_id);
                 ABH_Classes_Tools::setHeader('json');
                 echo json_encode(array('box' => $str));

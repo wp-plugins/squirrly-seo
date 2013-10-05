@@ -3,7 +3,9 @@
         <div id="abh_settings_title" ><?php _e('StartBox Settings', _ABH_PLUGIN_NAME_); ?><a href="http://wordpress.org/support/view/plugin-reviews/starbox" target="_blank"><span class="abh_settings_rate" ><span></span><?php _e('Please support us on Wordpress', _ABH_PLUGIN_NAME_); ?></span></a></div>
         <div id="abh_settings_body">
             <div id="abh_settings_left" >
+
                 <fieldset>
+
                     <div class="abh_option_content">
                         <div class="abh_switch">
                             <input id="abh_inposts_on" type="radio" class="abh_switch-input" name="abh_inposts"  value="1" <?php echo ((ABH_Classes_Tools::getOption('abh_inposts') == 1) ? "checked" : '') ?> />
@@ -55,7 +57,19 @@
                     <div class="abh_option_content">
 
                         <div class="abh_select">
-                            <select name="abh_theme">
+                            <select name="abh_position">
+                                <option value="up" <?php echo ((ABH_Classes_Tools::getOption('abh_position') == 'up') ? 'selected="selected"' : '') ?>>Up</option>
+                                <option value="down" <?php echo ((ABH_Classes_Tools::getOption('abh_position') == 'down') ? 'selected="selected"' : '') ?>>Down</option>
+                            </select>
+                        </div>
+                        <span><?php _e('The Author Box <strong>position</strong> (Topstar and Topstar-round are always on shown on top)', _ABH_PLUGIN_NAME_); ?></span>
+                    </div>
+
+                    <div class="abh_option_content">
+
+
+                        <div class="abh_select">
+                            <select id="abh_theme_select" name="abh_theme">
                                 <?php
                                 foreach (ABH_Classes_Tools::getOption('abh_themes') as $name) {
                                     echo '<option value="' . $name . '" ' . ((ABH_Classes_Tools::getOption('abh_theme') == $name) ? 'selected="selected"' : '') . ' >' . ucfirst($name) . '</option>';
@@ -63,8 +77,20 @@
                                 ?>
                             </select>
                         </div>
-                        <span><?php _e('Choose the default theme to be displayed inside each blog article', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Choose the default theme to be displayed <strong>inside each blog article</strong>', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
+
+
+                    <div id="abh_box_preview_title"><?php _e('Preview mode for the default theme', _ABH_PLUGIN_NAME_); ?></div>
+                    <div id="abh_box_preview"><?php
+                        echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . ABH_Classes_Tools::getOption('abh_theme') . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
+                        echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . ABH_Classes_Tools::getOption('abh_theme') . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
+                        global $current_user;
+                        echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($current_user->ID);
+                        ?>
+
+                    </div>
+                    <input type="text" style="display: none;" value="<?php echo $current_user->ID ?>" size="1" id="user_id" >
 
                     <div class="abh_option_content">
                         <div class="abh_select">
@@ -76,19 +102,11 @@
                                 ?>
                             </select>
                         </div>
-                        <span><?php _e('Choose the theme to be displayed in your global list of posts (eg. /blog)', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Choose the theme to be displayed in your <strong>global list of posts</strong> (eg. /blog)', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
 
-                    <div class="abh_option_content">
 
-                        <div class="abh_select">
-                            <select name="abh_position">
-                                <option value="up" <?php echo ((ABH_Classes_Tools::getOption('abh_position') == 'up') ? 'selected="selected"' : '') ?>>Up</option>
-                                <option value="down" <?php echo ((ABH_Classes_Tools::getOption('abh_position') == 'down') ? 'selected="selected"' : '') ?>>Down</option>
-                            </select>
-                        </div>
-                        <span><?php _e('The Author Box position', _ABH_PLUGIN_NAME_); ?></span>
-                    </div>
+
                     <div><br /><br /><?php echo sprintf(__('Use the Google Tool to check rich snippets %sclick here%s', _ABH_PLUGIN_NAME_), '<a href="http://www.google.com/webmasters/tools/richsnippets?url=' . get_bloginfo('url') . '" target="_blank">', '</a>'); ?></div>
 
                 </fieldset>

@@ -140,16 +140,16 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
 
             //Se the author box position
-            if (isset($this->model->details['abh_position']))
+            if (isset($this->model->details['abh_position']) && $this->model->details['abh_position'] <> 'default')
                 $this->model->position = $this->model->details['abh_position'];
             else
                 $this->model->position = ABH_Classes_Tools::getOption('abh_position');
 
             // For some themes the position is important to be on top
-            if ($this->model->details['abh_theme'] == 'topstar' || $this->model->details['abh_theme'] == 'topstar-round')
+            if (strpos($this->model->details['abh_theme'], 'topstar') !== false || ($this->model->details['abh_theme'] == 'default' && strpos(ABH_Classes_Tools::getOption('abh_theme'), 'topstar') !== false))
                 $this->model->position = 'up'; //force position for this theme
 
-            if (isset($this->model->details) && !empty($this->model->details) && $this->model->details['abh_theme'] <> '')
+            if (isset($this->model->details) && !empty($this->model->details) && $this->model->details['abh_theme'] <> '' && $this->model->details['abh_theme'] <> 'default')
                 $theme = $this->model->details['abh_theme'];
 
             // set theme for author box shown for each article

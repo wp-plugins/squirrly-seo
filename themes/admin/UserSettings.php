@@ -53,8 +53,9 @@
                             else
                                 $position = ABH_Classes_Tools::getOption('abh_position');
                             ?>
-                            <option value="up" <?php echo (($position == 'up') ? 'selected="selected"' : '') ?>>Up</option>
-                            <option value="down" <?php echo (($position == 'down') ? 'selected="selected"' : '') ?>>Down</option>
+                            <option value="default" <?php echo (($position == 'default') ? 'selected="selected"' : '') ?>><?php _e('Default', _ABH_PLUGIN_NAME_); ?></option>
+                            <option value="up" <?php echo (($position == 'up') ? 'selected="selected"' : '') ?>><?php _e('Up', _ABH_PLUGIN_NAME_); ?></option>
+                            <option value="down" <?php echo (($position == 'down') ? 'selected="selected"' : '') ?>><?php _e('Down', _ABH_PLUGIN_NAME_); ?></option>
                         </select>
                     </div>
                     <span><?php _e('The Author Box position', _ABH_PLUGIN_NAME_); ?></span>
@@ -81,6 +82,8 @@
                 </div>
                 <div id="abh_box_preview_title"><?php _e('Preview mode (change the theme)', _ABH_PLUGIN_NAME_); ?></div>
                 <div id="abh_box_preview"><?php
+                    if ($theme == 'default')
+                        $theme = ABH_Classes_Tools::getOption('abh_theme');
                     echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
                     echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
 

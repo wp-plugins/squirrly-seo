@@ -19,8 +19,11 @@ class ABH_Models_Frontend {
             if (!isset($this->author->user_description))
                 $this->author->user_description = '';
 
+            if ($this->details['abh_theme'] == 'default')
+                $this->details['abh_theme'] = ABH_Classes_Tools::getOption('abh_theme');
+
             $content .= '
-                         <div class="abh_box abh_box_' . $this->position . '">
+                         <div class="abh_box abh_box_' . $this->position . ' abh_box_' . $this->details['abh_theme'] . '">
                                 <ul class="abh_tabs">
                                  <li class="abh_about abh_active"><a href="#abh_about">' . __('About', _ABH_PLUGIN_NAME_) . '</a></li>
                                  <li class="abh_posts"><a href="#abh_posts">' . __('Latest Posts', _ABH_PLUGIN_NAME_) . '</a></li>
