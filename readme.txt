@@ -94,10 +94,15 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 1.0.4 =
+* Added an option to restrict author box just for post and pages
+* Loads even on sites with javascript errors
+* Improved the themes to work with more wordpress themes
+
 = 1.0.3 =
 * Added the Open Graph for the author profile (profile:first_name, profile:last_name, og:type, og:url)
 * Added Author Box Preview mode in user settings
-* Updated the CSS in themes 
+* Updated the CSS in themes
 
 = 1.0.2 =
 * Fixed the custom image upload
