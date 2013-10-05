@@ -14,7 +14,7 @@
                             <label for="abh_inposts_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php _e('Visible in posts', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Visible in <strong>posts</strong>', _ABH_PLUGIN_NAME_); ?></span>
                         <div class="abh_option_strictposts"><input name="abh_strictposts" type="checkbox" value="1"  <?php echo ((ABH_Classes_Tools::getOption('abh_strictposts') == 1) ? "checked" : '') ?> /><label for="abh_strictposts"><?php _e('Hide Author Box from custom posts types', _ABH_PLUGIN_NAME_); ?></label></div>
 
                     </div>
@@ -27,7 +27,7 @@
                             <label for="abh_inpages_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php _e('Visible in pages', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Visible in <strong>pages</strong>', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
 
                     <div class="abh_option_content">
@@ -38,7 +38,7 @@
                             <label for="abh_ineachpost_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php _e('Show the Starbox with Top Star theme in the global feed of your blog (eg. "/blog" page) under each title of every post', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Show the Starbox with Top Star theme <strong>in the global feed of your blog</strong> (eg. "/blog" page) under each title of every post', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
 
                     <div class="abh_option_content">
@@ -49,7 +49,7 @@
                             <label for="abh_showopengraph_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php echo sprintf(__('Show the Open Graph Profile in meta for each author %sdetails%s (useful for rich snippets)', _ABH_PLUGIN_NAME_), '<a href="http://ogp.me/#type_profile" target="_blank">', '</a>'); ?></span>
+                        <span><?php echo sprintf(__('Show the <strong>Open Graph</strong> Profile in meta for each author %sdetails%s (useful for rich snippets)', _ABH_PLUGIN_NAME_), '<a href="http://ogp.me/#type_profile" target="_blank">', '</a>'); ?></span>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -88,10 +88,9 @@
                         global $current_user;
                         echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($current_user->ID);
                         ?>
-
                     </div>
                     <input type="text" style="display: none;" value="<?php echo $current_user->ID ?>" size="1" id="user_id" >
-
+                    <br /><br />
                     <div class="abh_option_content">
                         <div class="abh_select">
                             <select name="abh_achposttheme">

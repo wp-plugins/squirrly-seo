@@ -51,7 +51,7 @@
                             if (isset($view->author['abh_position']))
                                 $position = $view->author['abh_position'];
                             else
-                                $position = ABH_Classes_Tools::getOption('abh_position');
+                                $position = 'default';
                             ?>
                             <option value="default" <?php echo (($position == 'default') ? 'selected="selected"' : '') ?>><?php _e('Default', _ABH_PLUGIN_NAME_); ?></option>
                             <option value="up" <?php echo (($position == 'up') ? 'selected="selected"' : '') ?>><?php _e('Up', _ABH_PLUGIN_NAME_); ?></option>
@@ -69,7 +69,7 @@
                             if (isset($view->author['abh_theme']))
                                 $theme = $view->author['abh_theme'];
                             else
-                                $theme = ABH_Classes_Tools::getOption('abh_theme');
+                                $theme = 'default';
 
                             foreach ($view->themes as $name) {
                                 echo '<option value="' . $name . '" ' . (($theme == $name) ? 'selected="selected"' : '') . ' >' . ucfirst($name) . '</option>';
