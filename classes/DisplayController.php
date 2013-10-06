@@ -45,12 +45,12 @@ class ABH_Classes_DisplayController {
 
 
         if ($css_uri <> '') {
-            wp_enqueue_style($name, $css_uri, null, ABH_VERSION);
-            //echo "<link rel='stylesheet' id='abh_menu.css-css'  href='" . $css_uri . "' type='text/css' media='all' />" . "\n";
+            //wp_enqueue_style($name, $css_uri, null, ABH_VERSION);
+            echo "<link rel='stylesheet' id='abh_menu.css-css'  href='" . $css_uri . "' type='text/css' media='all' />" . "\n";
         }
 
         if ($js_uri <> '') {
-            wp_register_script($name, $js_uri, array('jquery'), '1.0');
+            wp_register_script($name, $js_uri, array('jquery'));
             wp_enqueue_script($name);
             // echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
         }

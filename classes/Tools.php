@@ -81,7 +81,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
             'anh_crt_posts' => 3,
             'abh_author' => array(),
             'abh_theme' => 'business',
-            'abh_achposttheme' => 'topstar',
+            'abh_achposttheme' => 'drop-down',
         );
         $options = json_decode(get_option(ABH_OPTION), true);
 

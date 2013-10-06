@@ -33,12 +33,13 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
             'abh_vimeo' => "",
             'abh_klout' => "",
             'abh_gravatar' => "",
+            'abh_theme' => "default",
+            'abh_position' => "default",
         );
-        if (!isset($this->author))
+        if (!isset($this->author) || empty($this->author))
             $this->author = $default;
 
         $this->themes = @array_merge(array('default'), ABH_Classes_Tools::getOption('abh_themes'));
-
 
         parent::init();
     }

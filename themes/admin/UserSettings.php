@@ -6,9 +6,9 @@
             <fieldset >
                 <div class="abh_option_content">
                     <div class="abh_switch">
-                        <input id="abh_use_on" type="radio" class="abh_switch-input" name="abh_use"  value="1" <?php echo (($view->author['abh_use']) ? "checked" : '') ?> />
+                        <input id="abh_use_on" type="radio" class="abh_switch-input" name="abh_use"  value="1" <?php echo (($view->author['abh_use'] == 1) ? "checked" : '') ?> />
                         <label for="abh_use_on" class="abh_switch-label abh_switch-label-off"><?php _e('Yes', _ABH_PLUGIN_NAME_); ?></label>
-                        <input id="abh_use_off" type="radio" class="abh_switch-input" name="abh_use" value="0" <?php echo ((!$view->author['abh_use']) ? "checked" : '') ?> />
+                        <input id="abh_use_off" type="radio" class="abh_switch-input" name="abh_use" value="0" <?php echo ((!$view->author['abh_use'] == 1) ? "checked" : '') ?> />
                         <label for="abh_use_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                         <span class="abh_switch-selection"></span>
                     </div>
@@ -90,13 +90,13 @@
                     echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($view->user->ID);
                     ?></div>
             </fieldset>
-            <fieldset >
+            <fieldset>
                 <legend><?php _e('Job settings:', _ABH_PLUGIN_NAME_); ?></legend>
                 <div>
                     <p><span><?php _e('Job Title:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_title" value="<?php echo $view->author['abh_title']; ?>" size="30" /></p>
                     <p><span><?php _e('Company:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company" value="<?php echo $view->author['abh_company']; ?>" size="30" /></p>
                     <p><span><?php _e('Company URL:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company_url" value="<?php echo $view->author['abh_company_url']; ?>" size="30" /></p>
-                    <p class="abh_description_settings"></p>
+                    <p class="abh_description_author"></p>
                 </div>
             </fieldset>
             <fieldset >

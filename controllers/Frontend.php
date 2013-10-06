@@ -206,7 +206,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
 
-            if ($this->model->details['abh_use']) {
+            if (!isset($this->model->details['abh_use']) || $this->model->details['abh_use'] == 1) {
                 $this->model->single = false;
                 echo $this->model->getAuthorBox();
             }
