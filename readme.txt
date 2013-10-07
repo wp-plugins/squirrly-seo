@@ -104,6 +104,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.1.4 =
+* Update the Traffic Bot List
+* Fixed database bugs for the traffic records
+
 = 2.1.3 =
 * Optimized Squirrly SEO for a faster load
 * Fixed minor bugs in the theme's css files
