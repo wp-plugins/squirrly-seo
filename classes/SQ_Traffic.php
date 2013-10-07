@@ -253,8 +253,8 @@ class SQ_Traffic extends SQ_FrontController {
         if ($referral = $this->getReferralKeyword())
             if ($referral['keyword'] <> '') {
                 $sql = "INSERT INTO `" . $this->keyword_table . "`
-                            (`post_id`,`home`,`domain`,`keyword`,`date`)
-                            VALUES (" . (int) $post_id . "," . (int) $home . ",'" . $referral['domain'] . "','" . $referral['keyword'] . "','" . date("Y-m-d", $this->now) . "')";
+                            (`post_id`,`home`,`keyword`,`date`)
+                            VALUES (" . (int) $post_id . "," . (int) $home . ",'" . $referral['keyword'] . "','" . date("Y-m-d", $this->now) . "')";
 
                 $wpdb->query($sql);
             }
