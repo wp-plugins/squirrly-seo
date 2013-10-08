@@ -495,6 +495,8 @@ class Model_SQ_Frontend {
 
         $description = html_entity_decode($description);
         $description = strip_tags($description);
+        $description = str_replace('"', '\'', $description);
+
         return trim($description);
     }
 
