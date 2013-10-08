@@ -46,6 +46,13 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
     }
 
     /**
+     * Hook the frontent event to load the languages
+     */
+    function hookFrontinit() {
+        $this->loadMultilanguage();
+    }
+
+    /**
      * Add a link to settings in the plugin list
      *
      * @param array $links

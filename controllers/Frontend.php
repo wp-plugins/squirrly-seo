@@ -177,7 +177,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                         ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
 
                 if (!is_author())
-                    echo '<style type="text/css">.author-box, .article-author, .author-info, #entry-author-info, #author-bio-box, #cab-author{display:none;}</style>';
+                    echo '<style type="text/css">.author-box, .article-author, .author-info, #entry-author-info, #author-bio-box, #cab-author, #authorarea{display:none;}</style>';
             }
         }
     }
