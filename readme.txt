@@ -100,6 +100,7 @@ So get your very own Starbox now:
 * Improved the themes to work with more wordpress themes
 * Added Author Box Preview mode in default settings
 * Added default options for theme and position in user settings
+* Added Romanian Translation
 * Added German Translation
 
 = 1.0.3 =
