@@ -24,7 +24,7 @@ class ABH_Classes_Error extends ABH_Classes_FrontController {
 
         /* Check the PHP version */
         if (PHP_VERSION_ID < 5100) {
-            self::setError(__('The PHP version has to be greater then 4.0', _ABH_PLUGIN_NAME_), 'fatal');
+            self::setError(__('The PHP version has to be greater then 5.1', _ABH_PLUGIN_NAME_), 'fatal');
         }
     }
 
