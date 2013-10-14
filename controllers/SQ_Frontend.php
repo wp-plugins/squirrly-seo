@@ -5,6 +5,10 @@ class SQ_Frontend extends SQ_FrontController {
     public static $options;
 
     function __construct() {
+           if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+              return;
+            if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+              return;
         parent::__construct();
 
         SQ_ObjController::getController('SQ_Tools', false);
@@ -21,6 +25,10 @@ class SQ_Frontend extends SQ_FrontController {
      */
     function hookLoaded() {
         if (self::$options['sq_use'] == 1) {
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+              return;
+            if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+              return;
             //Use buffer only for meta Title
             //if(self::$options['sq_auto_title'] == 1)
             $this->model->startBuffer();
@@ -35,6 +43,10 @@ class SQ_Frontend extends SQ_FrontController {
      * Set the unique visitor cookie for the SQ_Traffic record
      */
     function hookFrontinit() {
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+              return;
+            if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+              return;
         $traffic = SQ_ObjController::getController('SQ_Traffic', false);
         if (is_object($traffic))
             $traffic->saveCookie();
@@ -44,6 +56,10 @@ class SQ_Frontend extends SQ_FrontController {
      * Hook the Header load
      */
     public function hookFronthead() {
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+              return;
+            if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+              return;
         echo $this->model->setStart();
         parent::hookHead();
 
