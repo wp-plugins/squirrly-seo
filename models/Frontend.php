@@ -217,8 +217,10 @@ class ABH_Models_Frontend {
             $meta .= $this->showOpenGraph();
         }
 
-        $meta .= $this->showGoogleAuthorMeta(); //show google author meta
-        $meta .= $this->showFacebookAuthorMeta(); //show facebook author meta
+        if (isset($this->details['abh_google']) && $this->details['abh_google'] <> '')
+            $meta .= $this->showGoogleAuthorMeta(); //show google author meta
+        if (isset($this->details['abh_facebook']) && $this->details['abh_facebook'] <> '')
+            $meta .= $this->showFacebookAuthorMeta(); //show facebook author meta
 
         $meta .= "<!-- /StarBox - the Author Box for Humans -->\n\n";
 
