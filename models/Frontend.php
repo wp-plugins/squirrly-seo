@@ -7,7 +7,12 @@ class ABH_Models_Frontend {
     public $position;
     public $single = true;
 
-    function getAuthorBox() {
+    /**
+     * Get the html author box
+     * @global object $wp_query
+     * @return string
+     */
+    public function getAuthorBox() {
         global $wp_query;
 
         if (!isset($this->author))
@@ -39,6 +44,10 @@ class ABH_Models_Frontend {
         return '';
     }
 
+    /**
+     * Get the image for the author
+     * @return string
+     */
     public function getProfileImage() {
         if (isset($this->details['abh_gravatar']) && $this->details['abh_gravatar'] <> '' && file_exists(_ABH_GRAVATAR_DIR_ . $this->details['abh_gravatar'])) {
             return '<img src="' . _ABH_GRAVATAR_URL_ . $this->details['abh_gravatar'] . '" class="photo" width="80" />';
@@ -47,6 +56,10 @@ class ABH_Models_Frontend {
         }
     }
 
+    /**
+     * Get the author Title and Description
+     * @return string
+     */
     private function showAuthorDescription() {
         $content = '
                 <section class="' . (($this->single) ? 'vcard' : '') . ' abh_about_tab abh_tab" style="display:block">
@@ -63,6 +76,10 @@ class ABH_Models_Frontend {
         return $content;
     }
 
+    /**
+     * Get the html author latest posts
+     * @return string
+     */
     private function showAuthorPosts() {
         $content = '
                 <section class="abh_posts_tab abh_tab" >
@@ -78,6 +95,10 @@ class ABH_Models_Frontend {
         return $content;
     }
 
+    /**
+     * Get the social icon for the author
+     * @return string
+     */
     private function getSocial() {
         $content = '';
         $count = 0;
@@ -144,6 +165,10 @@ class ABH_Models_Frontend {
         return $content;
     }
 
+    /**
+     * Get the Klout Score for the author
+     * @return boolean
+     */
     private function getKloutScore() {
         $data = null;
 
@@ -179,6 +204,10 @@ class ABH_Models_Frontend {
         return false;
     }
 
+    /**
+     * Get the List Of Posts for the author
+     * @return string
+     */
     private function getLatestPosts() {
         $content = '<ul>';
         $latest_posts = new WP_Query(array('posts_per_page' => ABH_Classes_Tools::getOption('anh_crt_posts'), 'author' => $this->author->ID));
@@ -198,15 +227,29 @@ class ABH_Models_Frontend {
         return $content;
     }
 
+    /**
+     * Clear the new lines from the author box
+     * @param type $content
+     * @return string
+     */
     private function clearTags($content) {
         return preg_replace_callback('~\<[^>]+\>.*\</[^>]+\>~ms', array($this, 'stripNewLines'), $content);
     }
 
-    function stripNewLines($match) {
+    /**
+     * Clear the new lines
+     * @param type $match
+     * @return type
+     */
+    public function stripNewLines($match) {
         return str_replace(array("\r", "\n", "  "), '', $match[0]);
     }
 
-    function showMeta() {
+    /**
+     * Get the meta with Social and Profile
+     * @return string
+     */
+    public function showMeta() {
         if (!isset($this->author))
             return;
 
@@ -227,7 +270,11 @@ class ABH_Models_Frontend {
         return $meta;
     }
 
-    function showOpenGraph() {
+    /**
+     * Get the Open Graph for the current author
+     * @return string
+     */
+    public function showOpenGraph() {
         $og = '';
         $og .= sprintf('<meta property="og:url" content="%s" />', get_author_posts_url($this->author->ID)) . "\n";
         $og .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
@@ -237,11 +284,19 @@ class ABH_Models_Frontend {
         return $og;
     }
 
-    function showGoogleAuthorMeta() {
+    /**
+     * Get the Google author Meta
+     * @return string
+     */
+    public function showGoogleAuthorMeta() {
         return '<link rel="author" href="' . ((strpos($this->details['abh_google'], 'http') === false) ? 'http://plus.google.com/' : '') . $this->details['abh_google'] . '" />' . "\n";
     }
 
-    function showFacebookAuthorMeta() {
+    /**
+     * Get the Facebook author Meta
+     * @return string
+     */
+    public function showFacebookAuthorMeta() {
         return '<meta property="article:author" content="' . ((strpos($this->details['abh_facebook'], 'http') === false) ? 'http://facebook.com/' : '') . $this->details['abh_facebook'] . '" />' . "\n";
     }
 
