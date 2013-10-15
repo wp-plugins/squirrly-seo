@@ -70,7 +70,7 @@ class ABH_Models_Frontend {
                     <div class="abh_text">
                         <h3 class="fn name">' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank">' . $this->author->display_name . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url">' . $this->author->display_name . '</a>' ) . '</h3>
                         <div class="abh_job">' . (($this->details['abh_title'] <> '' && $this->details['abh_company'] <> '') ? '<span class="title">' . $this->details['abh_title'] . '</span> ' . __('at', _ABH_PLUGIN_NAME_) . ' <span class="org">' . (($this->details['abh_company_url'] <> '') ? sprintf('<a href="%s" target="_blank">%s</a>', $this->details['abh_company_url'], $this->details['abh_company']) : $this->details['abh_company']) . '</span>' : '') . '</div>
-                        <div class="description note abh_description">' . nl2br($this->author->user_description) . '</div>
+                        <div class="description note abh_description">' . ((isset($this->details['abh_extra_description']) && $this->details['abh_extra_description'] <> '') ? nl2br($this->details['abh_extra_description']) : nl2br($this->author->user_description)) . '</div>
                     </div>
                </section>';
         return $content;
@@ -161,6 +161,9 @@ class ABH_Models_Frontend {
         } elseif ($count == 11 || $count == 12) {
             $content = '<div style="width:160px; margin: 0 0 0 auto;">' . $content . '</div>';
         }
+
+        if ($count > 0 && isset($this->details['abh_socialtext']) && $this->details['abh_socialtext'] <> '')
+            $content = '<div style="clear: both; font-size:12px; font-weight:normal; width: 85px; margin: 0 0 2px auto; line-height: 20px;">' . $this->details['abh_socialtext'] . '</div>' . $content;
 
         return $content;
     }

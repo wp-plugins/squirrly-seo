@@ -97,6 +97,9 @@
                     <p><span><?php _e('Company:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company" value="<?php echo $view->author['abh_company']; ?>" size="30" /></p>
                     <p><span><?php _e('Company URL:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company_url" value="<?php echo $view->author['abh_company_url']; ?>" size="30" /></p>
                     <p class="abh_description_author"></p>
+                    <p class="abh_show_extra_description" <?php echo (($view->author['abh_extra_description'] == '') ? '' : 'style="display: none"'); ?>><?php _e('show another description >>', _ABH_PLUGIN_NAME_); ?></p>
+                    <p class="abh_extra_description" <?php echo (($view->author['abh_extra_description'] <> '') ? '' : 'style="display: none"'); ?>><span><?php _e('Author Info:', _ABH_PLUGIN_NAME_); ?></span> <textarea name="abh_extra_description"  ><?php echo $view->author['abh_extra_description']; ?></textarea>
+                    </p>
                 </div>
             </fieldset>
             <fieldset >
@@ -124,6 +127,8 @@
 
                 </div>
                 <div id="abh_option_social" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 0) echo 'style="display:none"'; ?>>
+                    <p class="abh_social_text"><span><?php _e('Social text (12 chars):', _ABH_PLUGIN_NAME_); ?></span> <input name="abh_socialtext" value="<?php echo $view->author['abh_socialtext']; ?>" size="30" maxlength="12" style="min-width: 100px; width: 100px;" />
+                    </p>
                     <p><span class="abh_social_settings abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
                     <p><span class="abh_social_settings abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
                     <p><span class="abh_social_settings abh_google"></span><span><?php _e('Google +:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_google" value="<?php echo $view->author['abh_google']; ?>" size="30" /></p>

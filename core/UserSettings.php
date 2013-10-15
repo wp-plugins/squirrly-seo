@@ -20,7 +20,9 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
             'abh_title' => "",
             'abh_company' => "",
             'abh_company_url' => "",
+            'abh_extra_description' => "",
             // --
+            'abh_socialtext' => "",
             'abh_twitter' => "",
             'abh_facebook' => "",
             'abh_google' => "",
@@ -59,6 +61,11 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
                 $settings['abh_title'] = ABH_CLasses_Tools::getValue('abh_title');
                 $settings['abh_company'] = ABH_CLasses_Tools::getValue('abh_company');
                 $settings['abh_company_url'] = ABH_CLasses_Tools::getValue('abh_company_url');
+                $settings['abh_extra_description'] = ABH_CLasses_Tools::getValue('abh_extra_description');
+
+                // --
+
+                $settings['abh_socialtext'] = ABH_CLasses_Tools::getValue('abh_socialtext');
                 $settings['abh_twitter'] = ABH_CLasses_Tools::getValue('abh_twitter');
                 $settings['abh_facebook'] = ABH_CLasses_Tools::getValue('abh_facebook');
                 $settings['abh_google'] = ABH_CLasses_Tools::getValue('abh_google');
