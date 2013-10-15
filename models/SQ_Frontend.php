@@ -545,7 +545,7 @@ class Model_SQ_Frontend {
         if (!$name)
             $name = $this->meta['blogname'];
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $name)
+        if ($name <> '')
             return sprintf("<meta name=\"copyright\" content=\"%s\" />" . "\n", $name) . "\n";
 
         return false;
@@ -605,7 +605,7 @@ class Model_SQ_Frontend {
     private function getLanguage() {
         $language = get_bloginfo('language');
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $language)
+        if ($language <> '')
             return sprintf("<meta name=\"language\" content=\"%s\" />", $language) . "\n";
 
         return false;
@@ -621,7 +621,7 @@ class Model_SQ_Frontend {
         if (!$name)
             $name = $this->meta['blogname'];
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $name)
+        if ($name <> '')
             return sprintf("<meta name=\"DC.Publisher\" content=\"%s\" />", $name) . "\n";
 
         return false;
@@ -635,7 +635,7 @@ class Model_SQ_Frontend {
     private function getXMLSitemap() {
         $xml_url = SQ_ObjController::getController('SQ_Sitemap', false)->getXmlUrl();
 
-        if (($this->checkHomePosts() || $this->checkFrontPage()) && $xml_url <> '')
+        if ($xml_url <> '')
             return sprintf("<link rel=\"alternate\" type=\"application/rss+xml\" " . (($this->title <> '') ? "title=\"%s\"" : "") . " href=\"%s\" />", $this->title, $xml_url) . "\n";
 
         return false;
