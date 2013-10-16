@@ -94,6 +94,10 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 1.0.5 =
+* Added custom author bio to avoid multiple author boxes
+* Update the theme css for more themes
+
 = 1.0.4 =
 * Added an option to restrict author box just for post and pages
 * Loads even on sites with javascript errors

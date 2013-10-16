@@ -97,8 +97,11 @@
                     <p><span><?php _e('Company:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company" value="<?php echo $view->author['abh_company']; ?>" size="30" /></p>
                     <p><span><?php _e('Company URL:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_company_url" value="<?php echo $view->author['abh_company_url']; ?>" size="30" /></p>
                     <p class="abh_description_author"></p>
-                    <p class="abh_show_extra_description" <?php echo (($view->author['abh_extra_description'] == '') ? '' : 'style="display: none"'); ?>><?php _e('show another description >>', _ABH_PLUGIN_NAME_); ?></p>
-                    <p class="abh_extra_description" <?php echo (($view->author['abh_extra_description'] <> '') ? '' : 'style="display: none"'); ?>><span><?php _e('Author Info:', _ABH_PLUGIN_NAME_); ?></span> <textarea name="abh_extra_description"  ><?php echo $view->author['abh_extra_description']; ?></textarea>
+                    <p class="abh_show_extra_description" <?php echo (($view->author['abh_extra_description'] == '') ? '' : 'style="display: none"'); ?>><?php _e('add custom author bio >>', _ABH_PLUGIN_NAME_); ?></p>
+                    <p class="abh_extra_description" <?php echo (($view->author['abh_extra_description'] <> '') ? '' : 'style="display: none"'); ?>>
+                        <span> </span><span style="font-size:12px; font-weight: normal; margin-left: 15px; font-style: italic;"><?php _e('By adding text here, you will replace the above description with this one', _ABH_PLUGIN_NAME_); ?></span>
+                        <br style="clear:both;" />
+                        <span><?php _e('Author BIO:', _ABH_PLUGIN_NAME_); ?></span> <textarea name="abh_extra_description"  ><?php echo $view->author['abh_extra_description']; ?></textarea>
                     </p>
                 </div>
             </fieldset>
@@ -127,7 +130,10 @@
 
                 </div>
                 <div id="abh_option_social" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 0) echo 'style="display:none"'; ?>>
-                    <p class="abh_social_text"><span><?php _e('Social text (12 chars):', _ABH_PLUGIN_NAME_); ?></span> <input name="abh_socialtext" value="<?php echo $view->author['abh_socialtext']; ?>" size="30" maxlength="12" style="min-width: 100px; width: 100px;" />
+                    <p class="abh_social_text" style="height:30px; line-height: 30px;">
+                        <span><?php _e('Social text (12 chars):', _ABH_PLUGIN_NAME_); ?></span>
+                        <span ><input name="abh_socialtext" value="<?php echo $view->author['abh_socialtext']; ?>" size="30" maxlength="12" style="min-width: 100px; width: 100px;" /></span>
+                        <span style="font-size:12px; font-weight: normal; font-style: italic; margin-left: 5px;"><?php _e('eq. "Follow me"', _ABH_PLUGIN_NAME_); ?></span>
                     </p>
                     <p><span class="abh_social_settings abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
                     <p><span class="abh_social_settings abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
