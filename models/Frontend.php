@@ -158,6 +158,8 @@ class ABH_Models_Frontend {
             $content = '<div style="width:85px; margin: 0 0 0 auto;">' . $content . '</div>';
         } elseif ($count == 7 || $count == 8) {
             $content = '<div style="width:120px; margin: 0 0 0 auto;">' . $content . '</div>';
+        } elseif ($count == 9 || $count == 10) {
+            $content = '<div style="width:140px; margin: 0 0 0 auto;">' . $content . '</div>';
         } elseif ($count == 11 || $count == 12) {
             $content = '<div style="width:160px; margin: 0 0 0 auto;">' . $content . '</div>';
         }

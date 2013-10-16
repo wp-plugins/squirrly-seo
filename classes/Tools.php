@@ -98,7 +98,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
             $options = $default;
         }
 
-        $options['abh_themes'] = array('business', 'fancy', 'drop-down', 'topstar', 'topstar-round');
+        $options['abh_themes'] = array('business', 'fancy', 'minimal', 'drop-down', 'topstar', 'topstar-round');
         $options['abh_achpostthemes'] = array('drop-down', 'topstar', 'topstar-round');
         return $options;
     }
