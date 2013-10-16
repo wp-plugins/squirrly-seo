@@ -105,7 +105,7 @@ So get your very own Starbox now:
 * Added Author Box Preview mode in default settings
 * Added default options for theme and position in user settings
 * Added Romanian Translation
-* Added German Translation
+* Added German Translation by Joerg Gebauer
 
 = 1.0.3 =
 * Added the Open Graph for the author profile (profile:first_name, profile:last_name, og:type, og:url)
