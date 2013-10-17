@@ -49,7 +49,7 @@ class ABH_Classes_HookController {
                 //echo $value . '<br>';
                 //print_r(array($instance, 'hook'.ucfirst($hook)));
                 //call the WP add_action function
-                add_action($value, array($instance, 'hook' . ucfirst($hook)), 5);
+                add_action($value, array($instance, 'hook' . ucfirst($hook)), 10);
             }
         }
 

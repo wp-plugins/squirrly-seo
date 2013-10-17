@@ -6,10 +6,12 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     private $box = '';
     private $show = false;
     public $custom = false;
+    private $shortcode = '';
 
     function __construct() {
         parent::__construct();
 
+        $this->shortcode = '/\[starbox([\s+][^\]]+)*\]/i';
         //Load the tools for options in frontend
         ABH_Classes_ObjController::getController('ABH_Classes_Tools');
     }
@@ -25,20 +27,12 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     }
 
     /**
-     * Call before shortcode
-     *
-     */
-    public function hookShortSettings() {
-        $this->custom = true;
-    }
-
-    /**
      * Called on shortcode
      * @param string $content
      * @return string
      */
     public function hookShortStarbox($param) {
-
+        $this->custom = true;
         extract(shortcode_atts(array('id' => 0), $param));
         if ($id > 0) {
             $this->model->author = get_userdata($id);
@@ -60,7 +54,8 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     public function hookShortWidgetStarbox($content) {
         $id = 0;
-        if (preg_match("/\[starbox([\s+][^\]]+)*\]/i", $content, $out)) {
+        if (preg_match($this->shortcode, $content, $out)) {
+            $this->custom = true;
             if (!empty($out) && isset($out[1])) {
                 if (trim($out[1]) <> '') {
                     parse_str(trim($out[1]));
@@ -242,6 +237,11 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         if (!$this->show || $this->custom)
             return $content;
 
+        if (preg_match($this->shortcode, $content)) {
+            $this->custom = true;
+            return $content;
+        }
+
         $content = $this->showAuthorBox($content);
 
         if (ABH_Classes_Tools::getOption('abh_ineachpost') == 1 && $this->box == '') {
@@ -267,9 +267,9 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * Hook the Frontend Widgets Content
      */
     public function hookFrontwidget($content) {
-
         if (!$this->show)
             return $content;
+
 
         if (!isset($this->model->details['abh_google']) || $this->model->details['abh_google']) {
             $content = preg_replace('/rel=[\"|\']([^\"\']*author[^\"\']*)[\"|\']/i', '', $content);
