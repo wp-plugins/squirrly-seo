@@ -119,8 +119,6 @@ class ABH_Classes_HookController {
                     if (isset($block['active']) && $block['active'] == 1)
                         if (isset($block['shortcodes']['shortcode'])) {
                             $instance = ABH_Classes_ObjController::getController($block['name']);
-                            if (is_callable(array($instance, 'hookShortSettings')))
-                                $instance->hookShortSettings();
                             if (!is_array($block['shortcodes']['shortcode'])) {
 
                                 if (is_callable(array($instance, 'hookShortWidget' . ucfirst($block['shortcodes']['shortcode'])))) {
