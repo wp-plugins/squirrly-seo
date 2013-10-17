@@ -52,6 +52,8 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Paragraphs in the Author Bio
 * Displays the Author Box in the special pages built for each author.
 
+* NEW! Add Starbox in the post content or widgets with the shortcode [starbox] or [starbox id=<<USER ID>>]
+
 **It's Free!!** and always will be.
 
 
@@ -97,6 +99,7 @@ So get your very own Starbox now:
 = 1.0.5 =
 * Added custom author bio to avoid multiple author boxes
 * Update the theme css for more themes
+* Added [starbox] shortcode to show starbox in content or widgets
 
 = 1.0.4 =
 * Added an option to restrict author box just for post and pages

@@ -9,6 +9,7 @@ class ABH_Classes_HookController {
     private $admin_hooks = array();
     private $custom_hooks = array();
     private $block_hooks = array();
+    private static $shortCodesSet = false;
 
     public function __construct() {
         $this->admin_hooks = array(
@@ -89,6 +90,54 @@ class ABH_Classes_HookController {
         foreach ($this->block_hooks as $hook => $value)
             if (is_callable(array($instance, 'hook' . ucfirst($hook))))
                 call_user_func_array(array($instance, 'hook' . ucfirst($hook)), $param_arr);
+    }
+
+    /**
+     * Get all core classes from config.xml in core directory
+     *
+     */
+    public function getShortcodes() {
+        if (self::$shortCodesSet == true)
+            return;
+
+        self::$shortCodesSet = true;
+        /* if config allready in cache */
+        if (!isset(ABH_Classes_ObjController::$config)) {
+            $config_file = _ABH_CORE_DIR_ . 'config.xml';
+            if (!file_exists($config_file))
+                return;
+
+            /* load configuration blocks data from core config files */
+            $data = file_get_contents($config_file);
+            ABH_Classes_ObjController::$config = json_decode(json_encode((array) simplexml_load_string($data)), 1);
+        }
+        // echo '<pre>' . print_r(ABH_Classes_ObjController::$config['block'], true) . '</br>';
+        //print_r(ABH_Classes_ObjController::$config);
+        if (is_array(ABH_Classes_ObjController::$config))
+            foreach (ABH_Classes_ObjController::$config['block'] as $block) {
+                if (isset($block['name'])) {
+                    if (isset($block['active']) && $block['active'] == 1)
+                        if (isset($block['shortcodes']['shortcode'])) {
+                            $instance = ABH_Classes_ObjController::getController($block['name']);
+                            if (is_callable(array($instance, 'hookShortSettings')))
+                                $instance->hookShortSettings();
+                            if (!is_array($block['shortcodes']['shortcode'])) {
+
+                                if (is_callable(array($instance, 'hookShortWidget' . ucfirst($block['shortcodes']['shortcode'])))) {
+                                    add_action('widget_text', array($instance, 'hookShortWidget' . ucfirst($block['shortcodes']['shortcode'])), 10);
+                                }
+                                add_shortcode($block['shortcodes']['shortcode'], array($instance, 'hookShort' . ucfirst($block['shortcodes']['shortcode'])));
+                            } else {
+                                foreach ($block['shortcodes']['shortcode'] as $shortcode) {
+                                    if (is_callable(array($instance, 'hookShortWidget' . ucfirst($shortcode)))) {
+                                        add_action('widget_text', array($instance, 'hookShortWidget' . ucfirst($shortcode)), 10, 1);
+                                    }
+                                    add_shortcode($shortcode, array($instance, 'hookShort' . ucfirst($shortcode)));
+                                }
+                            }
+                        }
+                }
+            }
     }
 
 }

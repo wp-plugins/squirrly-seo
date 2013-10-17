@@ -25,6 +25,54 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     }
 
     /**
+     * Call before shortcode
+     *
+     */
+    public function hookShortSettings() {
+        $this->custom = true;
+    }
+
+    /**
+     * Called on shortcode
+     * @param string $content
+     * @return string
+     */
+    public function hookShortStarbox($param) {
+
+        extract(shortcode_atts(array('id' => 0), $param));
+        if ($id > 0) {
+            $this->model->author = get_userdata($id);
+
+            //get the author details settings
+            $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+            $theme = $this->model->details['abh_theme'];
+        }
+        else
+            $theme = ABH_Classes_Tools::getOption('abh_theme');
+
+        ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
+        ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+
+        return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($id);
+    }
+
+    public function hookShortWidgetStarbox($content) {
+        $id = 0;
+        if (preg_match("/\[starbox([\s+][^\]]+)*\]/i", $content, $out)) {
+            if (!empty($out) && isset($out[1])) {
+                if (trim($out[1]) <> '') {
+                    parse_str(trim($out[1]));
+                }
+            }
+
+            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id)), $content);
+        }
+        return $content;
+    }
+
+    /**
      * Show the author box to the correct position
      * @param string $content
      * @return string

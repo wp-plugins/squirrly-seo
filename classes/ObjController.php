@@ -9,7 +9,7 @@ class ABH_Classes_ObjController {
     public static $instances;
 
     /** @var array from core config */
-    private static $config;
+    public static $config;
 
     /**
      * Get the instance of the specified class

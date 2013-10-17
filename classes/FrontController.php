@@ -28,8 +28,8 @@ class ABH_Classes_FrontController {
         $this->model = ABH_Classes_ObjController::getModel($this->name);
         //IMPORTANT TO LOAD HOOKS HERE
         /* check if there is a hook defined in the controller clients class */
-        ABH_Classes_ObjController::getController('ABH_Classes_HookController')
-                ->setAdminHooks($this);
+        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->setAdminHooks($this);
+        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->getShortcodes($this);
     }
 
     /**

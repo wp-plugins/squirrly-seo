@@ -17,4 +17,13 @@
         </actions>
         <active>1</active>
     </block>
+
+    <block>
+        <name>ABH_Controllers_Frontend</name>
+        <shortcodes>
+            <shortcode>starbox</shortcode>
+        </shortcodes>
+        <active>1</active>
+    </block>
+
 </blocks>

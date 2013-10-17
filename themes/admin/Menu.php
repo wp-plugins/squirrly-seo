@@ -106,7 +106,7 @@
 
 
 
-                    <div><br /><br /><?php echo sprintf(__('Use the Google Tool to check rich snippets %sclick here%s', _ABH_PLUGIN_NAME_), '<a href="http://www.google.com/webmasters/tools/richsnippets?url=' . get_bloginfo('url') . '" target="_blank">', '</a>'); ?></div>
+                    <div><br /><br /><?php _e('Add Starbox in the post content or widgets with the shortcode <strong>[starbox]</strong> or <strong>[starbox id=USER_ID]</strong>', _ABH_PLUGIN_NAME_); ?></div>
 
                 </fieldset>
 
@@ -119,6 +119,9 @@
                 <input type="submit" name="abh_update" class="abh_button" value="<?php _e('Save settings', _ABH_PLUGIN_NAME_) ?> &raquo;" />
                 <a href="profile.php#abh_settings" class="abh_button"><?php _e('Go to user settings', _ABH_PLUGIN_NAME_) ?></a>
             </div>
+
+            <div><br /><br /><?php echo sprintf(__('Use the Google Tool to check rich snippets %sclick here%s', _ABH_PLUGIN_NAME_), '<a href="http://www.google.com/webmasters/tools/richsnippets?url=' . get_bloginfo('url') . '" target="_blank">', '</a>'); ?></div>
+
         </div>
     </form>
 </div>

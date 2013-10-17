@@ -75,7 +75,6 @@ class ABH_Classes_Action extends ABH_Classes_FrontController {
             /* load configuration blocks data from core config files */
             $data = file_get_contents($config_file);
             self::$config = json_decode(json_encode((array) simplexml_load_string($data)), 1);
-            ;
         }
 
         if (is_array(self::$config))
