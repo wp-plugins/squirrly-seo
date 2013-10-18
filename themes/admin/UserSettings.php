@@ -101,7 +101,9 @@
                     <p class="abh_extra_description" <?php echo (($view->author['abh_extra_description'] <> '') ? '' : 'style="display: none"'); ?>>
                         <span> </span><span style="font-size:12px; font-weight: normal; margin-left: 15px; font-style: italic;"><?php _e('By adding text here, you will replace the above description with this one', _ABH_PLUGIN_NAME_); ?></span>
                         <br style="clear:both;" />
-                        <span><?php _e('Author BIO:', _ABH_PLUGIN_NAME_); ?></span> <textarea name="abh_extra_description"  ><?php echo $view->author['abh_extra_description']; ?></textarea>
+                        <span><?php _e('Author BIO:', _ABH_PLUGIN_NAME_); ?></span> <textarea id="abh_extra_description" name="abh_extra_description"  ><?php echo $view->author['abh_extra_description']; ?></textarea>
+                        <br style="clear:both;" />
+                        <span> </span><a href="javascript:void(0);" onclick="jQuery('#abh_extra_description').val('')" style="font-size:12px; font-weight: normal; margin-left: 15px;"><?php _e('Clear the custom description and show the default description', _ABH_PLUGIN_NAME_); ?></a>
                     </p>
                 </div>
             </fieldset>
