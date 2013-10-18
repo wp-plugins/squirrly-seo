@@ -54,8 +54,6 @@ class SQ_DisplayController {
 
         if ($js_uri <> '') {
             echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
-//            wp_register_script($name, $js_uri);
-//            wp_enqueue_script($name);
         }
 
     }
