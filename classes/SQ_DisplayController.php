@@ -31,14 +31,15 @@ class SQ_DisplayController {
 
         /* if is a custom css file */
         if (strpos($uri, '/') === false) {
-            if (file_exists(_SQ_THEME_DIR_ . 'css/' . strtolower($uri) . '.css')) {
-                $css_uri = _SQ_THEME_URL_ . 'css/' . strtolower($uri) . '.css?ver=' . SQ_VERSION_ID;
+            $name = strtolower($uri);
+            if (file_exists(_SQ_THEME_DIR_ . 'css/' . $name . '.css')) {
+                $css_uri = _SQ_THEME_URL_ . 'css/' . $name . '.css?ver=' . SQ_VERSION_ID;
             }
-            if (file_exists(_SQ_THEME_DIR_ . 'js/' . strtolower($uri) . '.js')) {
-                $js_uri = _SQ_THEME_URL_ . 'js/' . strtolower($uri) . '.js?ver=' . SQ_VERSION_ID;
+            if (file_exists(_SQ_THEME_DIR_ . 'js/' . $name . '.js')) {
+                $js_uri = _SQ_THEME_URL_ . 'js/' . $name . '.js?ver=' . SQ_VERSION_ID;
             }
         } else {
-
+            $name = strtolower(basename($uri));
             if (strpos($uri, '.css') !== FALSE)
                 $css_uri = $uri;
             elseif (strpos($uri, '.js') !== FALSE) {
@@ -47,14 +48,16 @@ class SQ_DisplayController {
         }
 
 
+        if ($css_uri <> '') {
+            wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID);
+        }
 
-        if ($css_uri <> '')
-            echo "<link rel='stylesheet' id='sq_menu.css-css'  href='" . $css_uri . "' type='text/css' media='all' />" . "\n";
-
-        if ($js_uri <> '')
+        if ($js_uri <> '') {
             echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
+//            wp_register_script($name, $js_uri);
+//            wp_enqueue_script($name);
+        }
 
-        //wp_enqueue_style(basename($css_uri), $css_uri,null, SQ_VERSION);
     }
 
     /**
