@@ -27,15 +27,15 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     }
 
     /**
-     * Called on shortcode
+     * Called on shortcode+
      * @param string $content
      * @return string
      */
     public function hookShortStarbox($param) {
         $this->custom = true;
         extract(shortcode_atts(array('id' => 0), $param));
-        if ($id > 0) {
-            $this->model->author = get_userdata($id);
+        if ((int) $id > 0) {
+            $this->model->author = get_userdata((int) $id);
 
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
@@ -48,8 +48,21 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
         ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                 ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+        //show all the authors in the content
+        if ($id === 'all') {
+            $args = array(
+                'orderyby' => 'post_count',
+                'order' => 'DESC'
+            );
+            $users = get_users($args);
+            foreach ($users as $user) {
+                $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID);
+            }
 
-        return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($id);
+            return $str;
+        }
+        else
+            return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id);
     }
 
     public function hookShortWidgetStarbox($content) {
