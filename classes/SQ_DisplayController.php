@@ -22,6 +22,9 @@ class SQ_DisplayController {
      * @return string
      */
     public static function loadMedia($uri = '', $media = 'all', $params = null) {
+	if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER ['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'))
+            return;
+
         $css_uri = '';
         $js_uri = '';
 
