@@ -32,9 +32,7 @@ class ABH_Classes_Action extends ABH_Classes_FrontController {
      */
     function hookMenu() {
         /* Only if post */
-        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
-            return;
-        if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
             return;
 
         $this->actions = array();

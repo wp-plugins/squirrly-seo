@@ -20,8 +20,12 @@ class ABH_Classes_DisplayController {
         $css_uri = '';
         $js_uri = '';
 
+        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+            return;
+
         if (isset(self::$cache[$uri]))
             return;
+
         self::$cache[$uri] = true;
 
         /* if is a custom css file */
