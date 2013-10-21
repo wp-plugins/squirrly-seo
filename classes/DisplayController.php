@@ -49,10 +49,10 @@ class ABH_Classes_DisplayController {
 
 
         if ($css_uri <> '') {
-            if (!is_admin())
-                wp_enqueue_style($name, $css_uri, null, ABH_VERSION);
-            else
-                echo "<link rel='stylesheet' id='abh_menu.css-css'  href='" . $css_uri . "' type='text/css' media='all' />" . "\n";
+            // if (!is_admin())
+            wp_enqueue_style($name, $css_uri, null, ABH_VERSION);
+            //else
+            //     echo "<link rel='stylesheet' id='abh_menu.css-css'  href='" . $css_uri . "' type='text/css' media='all' />" . "\n";
         }
 
         if ($js_uri <> '') {
