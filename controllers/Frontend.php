@@ -32,22 +32,38 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * @return string
      */
     public function hookShortStarbox($param) {
+        $id = 0;
+        $desc = '';
+        $theme = '';
+
         $this->custom = true;
-        extract(shortcode_atts(array('id' => 0), $param));
+        extract(shortcode_atts(array('id' => 0, 'desc' => '', 'theme' => ''), $param));
+        if ($theme <> '') {
+            if (!in_array($theme, ABH_Classes_Tools::getOption('abh_themes')))
+                $theme = '';
+        }
         if ((int) $id > 0) {
             $this->model->author = get_userdata((int) $id);
 
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
-            $theme = $this->model->details['abh_theme'];
+            $theme = ($theme == '') ? $this->model->details['abh_theme'] : $theme;
         }
         else
-            $theme = ABH_Classes_Tools::getOption('abh_theme');
+            $theme = ($theme == '') ? ABH_Classes_Tools::getOption('abh_theme') : $theme;
+
+
+        //remove the multiple new lines from custom description
+        if ($desc <> '') {
+            $desc = ABH_Classes_Tools::i18n($desc);
+            $desc = preg_replace('/(<br[^>]*>)+/i', "", $desc);
+        }
 
         ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                 ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
         ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                 ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+        //
         //show all the authors in the content
         if ($id === 'all') {
             $args = array(
@@ -68,7 +84,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             $users = get_users($args);
             foreach ($users as $user) {
                 if ($id === $user->user_login) {
-                    return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID);
+                    return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
                 }
             }
         }
@@ -78,15 +94,19 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     public function hookShortWidgetStarbox($content) {
         $id = 0;
+        $desc = '';
+        $theme = '';
+
         if (preg_match($this->shortcode, $content, $out)) {
             $this->custom = true;
             if (!empty($out) && isset($out[1])) {
                 if (trim($out[1]) <> '') {
+                    $out[1] = str_replace(array('" ', '"'), array('"&', ''), $out[1]);
                     parse_str(trim($out[1]));
                 }
             }
 
-            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id)), $content);
+            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id, 'desc' => $desc, 'theme' => $theme)), $content);
         }
         return $content;
     }
@@ -123,10 +143,11 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     /**
      * If called it will return the box and will not show the author box in article
-     *  @param int $author_id
+     * @param int $author_id (optional) The author ID
+     * @param string $custom_desc (optional) The custom description for the author
      * @return string
      */
-    public function showBox($author_id = 0) {
+    public function showBox($author_id = 0, $description = '') {
 
         $this->custom = true;
 
@@ -157,6 +178,10 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
         //get the author details settings
         $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+
+
+        if ($description <> '')
+            $this->model->details['abh_extra_description'] = $description;
 
         $this->model->position = 'custom';
         return $this->getBox();
