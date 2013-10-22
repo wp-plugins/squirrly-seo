@@ -60,6 +60,17 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             }
 
             return $str;
+        } elseif (!is_numeric($id)) {
+            $args = array(
+                'orderyby' => 'post_count',
+                'order' => 'DESC'
+            );
+            $users = get_users($args);
+            foreach ($users as $user) {
+                if ($id === $user->user_login) {
+                    return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID);
+                }
+            }
         }
         else
             return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id);
