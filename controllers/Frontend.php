@@ -74,7 +74,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             );
             $users = get_users($args);
             foreach ($users as $user) {
-                $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID);
+                $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
             }
 
             return $str;
@@ -91,7 +91,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             }
         }
         else
-            return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id);
+            return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id, $desc);
     }
 
     public function hookShortWidgetStarbox($content) {
