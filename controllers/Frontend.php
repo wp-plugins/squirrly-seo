@@ -60,7 +60,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         }
 
         if ($theme <> '') {
-            echo $theme;
             ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                     ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
             ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
