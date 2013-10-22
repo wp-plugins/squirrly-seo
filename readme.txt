@@ -288,8 +288,8 @@ Calin Vingan CTO at Squirrly
 And 3 Great collaborators:
 
 Andreea - creative marketing intern
-Bogdan - stylish designer
 Cristina  - Squirrly mascot designer
+Alexandra - Content Writer
 
 Many Thanks.
 
