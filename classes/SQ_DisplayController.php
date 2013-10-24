@@ -22,11 +22,12 @@ class SQ_DisplayController {
      * @return string
      */
     public static function loadMedia($uri = '', $media = 'all', $params = null) {
-	if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER ['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'))
+        if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER ['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'))
             return;
 
         $css_uri = '';
         $js_uri = '';
+        $local = true;
 
         if (isset(self::$cache[$uri]))
             return;
@@ -48,17 +49,23 @@ class SQ_DisplayController {
             elseif (strpos($uri, '.js') !== FALSE) {
                 $js_uri = $uri;
             }
+            $local = false;
         }
 
 
         if ($css_uri <> '') {
-            wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID);
+            wp_register_style($name, $css_uri, null, SQ_VERSION_ID);
+            wp_enqueue_style($name);
         }
 
         if ($js_uri <> '') {
-            echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
+            if (!$local) {
+                echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
+            } else {
+                wp_register_script($name, $js_uri);
+                wp_enqueue_script($name);
+            }
         }
-
     }
 
     /**
