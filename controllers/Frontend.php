@@ -5,7 +5,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     public static $options;
     private $box = '';
     private $show = false;
-    public $custom = false;
+    public $custom = array();
     private $shortcode = '';
 
     function __construct() {
@@ -31,12 +31,16 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * @param string $content
      * @return string
      */
-    public function hookShortStarbox($param) {
+    public function hookShortStarbox($param, $force = false) {
+        global $post;
         $id = 0;
+        $str = '';
         $desc = '';
         $theme = '';
 
-        $this->custom = true;
+        if (isset($post->ID))
+            $this->custom[$post->ID] = true;
+
         extract(shortcode_atts(array('id' => 0, 'desc' => '', 'theme' => ''), $param));
         if ($theme <> '') {
             if (!in_array($theme, ABH_Classes_Tools::getOption('abh_themes')))
@@ -67,6 +71,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         }
         //
         //show all the authors in the content
+
         if ($id === 'all') {
             $args = array(
                 'orderyby' => 'post_count',
@@ -75,23 +80,36 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             $users = get_users($args);
             foreach ($users as $user) {
                 $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
+                if (!$force && (!is_single() || !is_singular()))
+                    break; //don't show multiple authors in post list
             }
 
             return $str;
         } elseif (!is_numeric($id)) {
+            if (strpos($id, ',') !== false)
+                $show_list = @preg_split("/,/", $id);
+            else
+                $show_list = array($id);
+
             $args = array(
                 'orderyby' => 'post_count',
-                'order' => 'DESC'
+                'order' => 'DESC',
             );
+
             $users = get_users($args);
             foreach ($users as $user) {
-                if ($id === $user->user_login) {
-                    return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
+                // show mutiple authors in one shortcode
+                if (in_array($user->user_login, $show_list) || in_array($user->ID, $show_list)) {
+                    $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
+                    if (!$force && (!is_single() || !is_singular()))
+                        break; //don't show multiple authors in post list
                 }
             }
+            return $str;
         }
-        else
+        else {
             return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id, $desc);
+        }
     }
 
     public function hookShortWidgetStarbox($content) {
@@ -100,7 +118,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         $theme = '';
 
         if (preg_match($this->shortcode, $content, $out)) {
-            $this->custom = true;
             if (!empty($out) && isset($out[1])) {
                 if (trim($out[1]) <> '') {
                     $out[1] = str_replace(array('" ', '"'), array('"&', ''), $out[1]);
@@ -108,7 +125,8 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 }
             }
 
-            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id, 'desc' => $desc, 'theme' => $theme)), $content);
+
+            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id, 'desc' => $desc, 'theme' => $theme), true), $content);
         }
         return $content;
     }
@@ -150,9 +168,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * @return string
      */
     public function showBox($author_id = 0, $description = '') {
-
-        $this->custom = true;
-
         if ($author_id == 0) {
             global $wp_query;
             if (!empty($wp_query->posts))
@@ -193,7 +208,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * Hook the Init in Frontend
      */
     public function hookFrontinit() {
-        if ($this->model->details['abh_google'] <> '') {
+        if (isset($this->model->details) && $this->model->details['abh_google'] <> '') {
             remove_action('wp_head', 'author_rel_link');
         }
     }
@@ -285,11 +300,11 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     public function hookFrontcontent($content) {
         global $post;
 
-        if (!$this->show || $this->custom)
+        if (!$this->show || (isset($this->custom[$post->ID]) && $this->custom[$post->ID]))
             return $content;
 
         if (preg_match($this->shortcode, $content)) {
-            $this->custom = true;
+            $this->custom[$post->ID] = true;
             return $content;
         }
 
