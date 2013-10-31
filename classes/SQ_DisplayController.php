@@ -54,17 +54,19 @@ class SQ_DisplayController {
 
 
         if ($css_uri <> '') {
-            wp_register_style($name, $css_uri, null, SQ_VERSION_ID);
+            if (wp_style_is($name))
+                wp_deregister_style($name);
+
+            wp_register_style($name, $css_uri, null, SQ_VERSION_ID, 'all');
             wp_enqueue_style($name);
         }
 
         if ($js_uri <> '') {
-            if (!$local) {
-                echo '<script type="text/javascript" src="' . $js_uri . '">' . (isset($params) ? $params : '') . '</script>' . "\n";
-            } else {
-                wp_register_script($name, $js_uri);
-                wp_enqueue_script($name);
-            }
+            if (wp_script_is($name))
+                wp_deregister_script($name);
+
+            wp_register_script($name, $js_uri);
+            wp_enqueue_script($name);
         }
     }
 

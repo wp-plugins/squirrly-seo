@@ -86,9 +86,10 @@ class SQ_PostsList extends SQ_FrontController {
      */
     function hookHead() {
         parent::hookHead();
-        echo '<script type="text/javascript">
-                   google.load("visualization", "1", {packages: ["corechart"]});
-              </script>';
+        SQ_ObjController::getController('SQ_DisplayController', false)
+                ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
+        SQ_ObjController::getController('SQ_DisplayController', false)
+                ->loadMedia(_SQ_THEME_URL_ . '/js/sq_rank.js');
     }
 
     /**
@@ -99,12 +100,15 @@ class SQ_PostsList extends SQ_FrontController {
      */
     function add_column($columns) {
         $this->is_list = true;
-        SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css?ver=' . SQ_VERSION_ID);
-        SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia(_SQ_THEME_URL_ . '/js/sq_rank.js?ver=' . SQ_VERSION_ID);
 
-        return $this->insert($columns, array($this->column_id => __('Squirrly')), $this->pos);
+
+//        echo '<script type="text/javascript">
+//                   google.load("visualization", "1", {packages: ["corechart"]});
+//              </script>';
+
+        return $this->insert($columns, array($this->column_id => __('Squirrly') . '<script type="text/javascript">
+                   google.load("visualization", "1", {packages: ["corechart"]});
+              </script>'), $this->pos);
     }
 
     /**

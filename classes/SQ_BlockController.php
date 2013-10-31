@@ -72,12 +72,12 @@ class SQ_BlockController {
      * @return void
      */
     protected function hookHead() {
-
+        if (!is_admin())
+            return;
         SQ_ObjController::getController('SQ_DisplayController', false)
                 ->loadMedia($this->name);
     }
 
-    /** @todo _ GASESTE O CALE SA INCARC CSS PENTRU BLOCURI */
 }
 
 ?>
