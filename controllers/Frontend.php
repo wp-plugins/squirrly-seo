@@ -117,7 +117,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         $desc = '';
         $theme = '';
 
-        if (preg_match($this->shortcode, $content, $out)) {
+        if (@preg_match($this->shortcode, $content, $out)) {
             if (!empty($out) && isset($out[1])) {
                 if (trim($out[1]) <> '') {
                     $out[1] = str_replace(array('" ', '"'), array('"&', ''), $out[1]);
