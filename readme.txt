@@ -107,6 +107,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 2.1.4 =
 * Update the Traffic Bot List
 * Fixed database bugs for the traffic records
+* Fixed header loading bugs
 
 = 2.1.3 =
 * Optimized Squirrly SEO for a faster load
