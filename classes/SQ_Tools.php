@@ -628,6 +628,15 @@ class SQ_Tools extends SQ_FrontController {
         echo "Debug result: <br />" . @implode('<br />', self::$debug);
     }
 
+    public static function emptyCache() {
+        if (function_exists('w3tc_pgcache_flush')) {
+            w3tc_pgcache_flush();
+        }
+        if (function_exists('wp_cache_clear_cache')) {
+            wp_cache_clear_cache();
+        }
+    }
+
 }
 
 ?>
