@@ -138,6 +138,14 @@ So get your very own Starbox now:
 * Added author box custom image upload
 * WordPress 3.6.1 compatibility
 
+== Frequently Asked Questions ==
+= Why there is no meta for google and facebook authorship? =
+You have to fill the google and facebook social in your profile and it will show up.
+
+= How can i call the author box in post or widget? =
+Just add [starbox] or [starbox id="login_name"] in your post or widget.
+You can also add different description for the author box adding [starbox id="login_name" desc="custom description" ]
+And more, add a default theme fot author box [starbox id="login_name" desc="custom description"  theme="business"]
 
 == Credits ==
 Squirrly Limited UK
