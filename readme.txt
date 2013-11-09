@@ -146,6 +146,3 @@ You have to fill the google and facebook social in your profile and it will show
 Just add [starbox] or [starbox id="login_name"] in your post or widget.
 You can also add different description for the author box adding [starbox id="login_name" desc="custom description" ]
 And more, add a default theme fot author box [starbox id="login_name" desc="custom description"  theme="business"]
-
-== Credits ==
-Squirrly Limited UK
