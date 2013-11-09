@@ -276,6 +276,7 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getTheDate() {
+        $meta = '';
         global $wp_query;
         $date = null;
 
@@ -288,11 +289,12 @@ class Model_SQ_Frontend {
             $date = date('Y-m-d', strtotime($post->post_date));
         }
 
-        if ($date) {
-            return sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />", $date) . "\n";
+        if ($date <> '') {
+            $meta .= sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />", $date) . "\n";
+            $meta .= sprintf("<meta name=\"DC.Date\" content=\"%s\" />", $date) . "\n";
         }
 
-        return '';
+        return $meta;
     }
 
     /**
@@ -565,10 +567,8 @@ class Model_SQ_Frontend {
         elseif (strpos($author, 'plus.google.com') === false && is_numeric($author))
             $author = 'https://plus.google.com/' . $author . '/posts';
 
-        if ((is_singular() || is_home()) && $author)
+        if ($this->isHomePage() && $author <> '')
             return '<link rel="author me" href="' . $author . '" />' . "\n";
-        elseif ($author)
-            return '<link rel="publisher" href="' . $author . '" />' . "\n";
 
         return false;
     }
@@ -617,14 +617,19 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getDCPublisher() {
+        $meta = '';
+
         $name = $this->getAuthorLinkFromBlog();
         if (!$name)
             $name = $this->meta['blogname'];
 
         if ($name <> '')
-            return sprintf("<meta name=\"DC.Publisher\" content=\"%s\" />", $name) . "\n";
+            $meta .= sprintf("<meta name=\"DC.Publisher\" content=\"%s\" />", $name) . "\n";
 
-        return false;
+        $meta .= sprintf('<meta name="DC.Title" content="%s" />', $this->title) . "\n";
+        $meta .= sprintf('<meta name="DC.Description" content="%s" />', $this->description) . "\n";
+
+        return (($meta <> '') ? "\n" : "") . $meta;
     }
 
     /**
