@@ -204,7 +204,7 @@ class Model_SQ_Frontend {
         $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" value="%s" />', $sq_twitter_site) . "\n" : '');
 
         $meta .= sprintf('<meta name="twitter:title" content="%s">', $this->title) . "\n";
-        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
+        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : sprintf('<meta name="twitter:description" content="%s">', $this->description) . "\n" );
         $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">', $this->thumb_image) . "\n" : '');
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta name="twitter:domain" content="%s">', $this->meta['blogname']) . "\n" : '');
 
@@ -245,7 +245,6 @@ class Model_SQ_Frontend {
             global $post;
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
             $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $post->ID)) . "\n";
-            $meta .= sprintf('<meta property="article:author" content="%s" />', get_author_posts_url($post->post_author)) . "\n";
         }
         else
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'blog') . "\n";
@@ -568,9 +567,10 @@ class Model_SQ_Frontend {
             $author = 'https://plus.google.com/' . $author . '/posts';
 
         if ($this->isHomePage() && $author <> '')
-            return '<link rel="author me" href="' . $author . '" />' . "\n";
-
-        return false;
+            return '<link rel="author" href="' . $author . '" />' . "\n";
+        elseif (is_single() || is_page())
+            if (!class_exists('ABH_Controllers_Frontend')) //if starbox not installed
+                return '<link rel="author" href="' . $author . '" />' . "\n";
     }
 
     /**

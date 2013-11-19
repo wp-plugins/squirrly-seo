@@ -107,6 +107,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 2.1.5 =
 * Compatible with 3.7.1
 * Update Meta in Frontend
+* Update for Seo Live Assistant
 
 = 2.1.4 =
 * Update the Traffic Bot List
@@ -140,8 +141,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed the type delay for Seo Live Assistant
 
 = 2.0.8 =
-* Added the Spanish (es_ES) translation in Squirly SEO
-* Added the French (fr_FR) translation in Squirly SEO
 * Fixed the custom SEO Title and Description notification in posts list
 * Changed the default SEO Settings
 * Fixed image insert in editor
@@ -165,7 +164,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Add default message in SEO Article Rank when adding a new Post/Page
 * Added support options in Squirrly SEO Settings
 * Added the Russian (ru_RU) translation in Squirly SEO
-* Added the Brazilian (pt_BR) translation in Squirly SEO
 * Check calls for HTTPS when curl protocol could not support that
 
 = 2.0.4 =

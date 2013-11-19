@@ -212,6 +212,7 @@ class SQ_Menu extends SQ_FrontController {
                 if (SQ_Tools::getValue('sq_use'))
                     add_action('admin_footer', array(SQ_ObjController::getController('SQ_Sitemap', false), 'generateSitemap'), 9999, 1);
 
+                //empty the cache on settings changed
                 SQ_Tools::emptyCache();
                 break;
             case 'sq_fixautoseo':
