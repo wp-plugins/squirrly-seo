@@ -159,7 +159,7 @@
                             <label for="abh_nofollow_social_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php _e('Add nofollow links to Social links', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Add rel="nofollow" to Social links', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
                 </div>
             </fieldset>
