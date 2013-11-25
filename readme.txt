@@ -106,8 +106,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 2.1.5 =
 * Compatible with 3.7.1
-* Update Meta in Frontend
-* Update for Seo Live Assistant
+* Update Open Graph Meta in Frontend
+* Updates for Seo Live Assistant
 
 = 2.1.4 =
 * Update the Traffic Bot List
