@@ -51,9 +51,8 @@ class Model_SQ_Frontend {
         return "<!-- /Squirrly Wordpress SEO Plugin -->\n\n";
     }
 
-    /*     * *****USE BUFFER****** */
-
     /**
+     *  ****USE BUFFER******
      * Start the buffer record
      * @return type
      */
@@ -415,6 +414,9 @@ class Model_SQ_Frontend {
 
         if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_description'] == 1) { //for homepage
             $description = $this->grabDescriptionFromPost();
+            if ($this->isHomePage() && $description <> '')
+                if ($this->meta['blogname'] <> '')
+                    $description .= " " . $sep . " " . $this->meta['blogname'];
         }
         //If its a post/page
         if (!$this->isHomePage() && (is_single() || is_page() || $this->checkPostsPage())) {
@@ -725,7 +727,7 @@ class Model_SQ_Frontend {
         return false;
     }
 
-    /*     * *******************************************************************
+    /**     * ******************************************************************
      * ******************************************************************** */
 
     /**
