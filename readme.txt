@@ -91,16 +91,16 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
-1. Enter a keyword for Squirrly Live SEO Assistant optimization
-2. Find out if it's worth it to use it
-3. Add an image in your article
-4. Find images, tweets, wiki, blogs, news or other articles from your blog
-5. Easy to read external blogs
-6. Easy to insert paragraphs from the articles that you are reading
-7. Optimize your article with Squirrly Live SEO Assistant
-8. You will know when your seo is good
-9. Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
-10. Squirrly Seo settings tab with extra Seo optimization features
+1. Squirrly SEO - Enter a keyword for Squirrly Live SEO Assistant optimization
+2. Squirrly SEO - Find out if it's worth it to use it
+3. Squirrly SEO - Add an image in your article
+4. Squirrly SEO - Find images, tweets, wiki, blogs, news or other articles from your blog
+5. Squirrly SEO - Easy to read external blogs
+6. Squirrly SEO - Easy to insert paragraphs from the articles that you are reading
+7. Squirrly SEO - Optimize your article with Squirrly Live SEO Assistant
+8. Squirrly SEO - You will know when your seo is good
+9. Squirrly SEO - Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
+10. Squirrly SEO - Settings tab with extra Seo optimization features
 
 
 == Changelog ==
