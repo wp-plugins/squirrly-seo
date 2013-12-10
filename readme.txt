@@ -35,15 +35,9 @@ Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And
 
 - <strong>Social Intelligence through the Inspiration Box, to help you write better content, by showing you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
-
-
-
 <strong>You Only Pay Us If You Love Us. Otherwise You Can Use Squirrly for Free.</strong>
 
 You’ll start with the full version of Squirrly. If in 14 Days, you decide you love to get all the benefits from Squirrly, you pay for it (Pricing Plans below). If not, then you will continue using the <strong>Free Version</strong> of our Content Marketing tool, no questions asked.
-
-
-
 
 <em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em>
 
