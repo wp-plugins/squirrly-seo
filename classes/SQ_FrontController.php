@@ -49,6 +49,8 @@ class SQ_FrontController {
 
         /* load the blocks for this controller */
         SQ_ObjController::getController('SQ_ObjController', false)->getBlocks($this->name);
+
+        $this->hookHead();
     }
 
     protected function output() {

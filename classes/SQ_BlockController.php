@@ -43,6 +43,8 @@ class SQ_BlockController {
         SQ_ObjController::getController('SQ_HookController', false)
                 ->setBlockHooks($this);
 
+        $this->hookHead();
+
         if ($this->flush)
             $this->output();
     }
