@@ -98,11 +98,14 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.1.6 =
+* Fixed css load issue
+* Fixed duplicate descriptions
+
 = 2.1.5 =
 * Compatible with 3.7.1
 * Update Open Graph Meta in Frontend
 * Updates for Seo Live Assistant
-* Fixed duplicate descriptions
 
 = 2.1.4 =
 * Update the Traffic Bot List
