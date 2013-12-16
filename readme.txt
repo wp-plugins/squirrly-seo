@@ -96,6 +96,9 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 1.0.9 =
+* Fixed loading issues
+
 = 1.0.8 =
 * Fixed shortcode for multiple authors
 * Fixed display css issues
