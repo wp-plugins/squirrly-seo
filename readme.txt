@@ -2,7 +2,7 @@
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta
 Requires at least: 3.1
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: trunk
 
 Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
@@ -98,6 +98,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.1.7 =
+* Compatible with Wordpress 3.8
+
 = 2.1.6 =
 * Fixed css load issue
 * Fixed duplicate descriptions
