@@ -100,6 +100,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 2.1.7 =
 * Compatible with Wordpress 3.8 version
+* Fixed css issue for WP 3.8
 
 = 2.1.6 =
 * Fixed css load issue
