@@ -42,7 +42,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Links to all the articles
 * Section that displays the latest posts of a certain author
 * Themes to choose from
-* Can set the Name of the Author
+* Can set the Name of the Author Box
 * Can set Job Title
 * Can set Company (with link to company's site)
 * Each Author can make the Author Box look like it's his own
@@ -55,7 +55,6 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * NEW! Add Starbox in the post content or widgets with the shortcode [starbox] or [starbox id=USER_ID]
 
 **It's Free!!** and always will be.
-
 
 So get your very own Starbox now:
 
@@ -99,6 +98,7 @@ So get your very own Starbox now:
 = 1.0.9 =
 * Fixed loading issues
 * Compatible with Wordpress 3.8
+
 
 = 1.0.8 =
 * Fixed shortcode for multiple authors
