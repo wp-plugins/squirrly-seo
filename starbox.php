@@ -8,11 +8,11 @@
   Plugin URI:
   Author: Squirrly UK
   Description: Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5, Social Media Profiles, Google Authorship
-  Version: 1.0.9
+  Version: 2.0.0
   Author URI: http://www.squirrly.co
  */
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
-define('ABH_VERSION', '1.0.9');
+define('ABH_VERSION', '2.0.0');
 /* Call config files */
 require(dirname(__FILE__) . '/config/config.php');
 
@@ -39,4 +39,3 @@ register_activation_hook(__FILE__, 'abh_upgrade');
 function abh_upgrade() {
     set_transient('abh_upgrade', true, 30);
 }
-

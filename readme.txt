@@ -95,10 +95,10 @@ So get your very own Starbox now:
 
 
 == Changelog ==
-= 1.0.9 =
+= 2.0.0 =
 * Fixed loading issues
 * Compatible with Wordpress 3.8
-
+* Fixed css for different themes and for Wordpress 3.8
 
 = 1.0.8 =
 * Fixed shortcode for multiple authors
