@@ -50,8 +50,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
             $theme = ($theme == '') ? $this->model->details['abh_theme'] : $theme;
-        }
-        else
+        } else
             $theme = ($theme == '') ? ABH_Classes_Tools::getOption('abh_theme') : $theme;
 
 
@@ -217,12 +216,11 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      */
     public function hookFronthead() {
         global $wp_query;
-        //echo '<pre>' . print_r($wp_query, true) . '</pre>';
         $post = null;
 
         if ((is_single() && (ABH_Classes_Tools::getOption('abh_strictposts') == 0 || (ABH_Classes_Tools::getOption('abh_strictposts') == 1 && get_post_type() == 'post')) && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
-                (is_single() && get_post_type() == 'page' && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
-                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || (is_single() && get_post_type() == 'page') || is_archive() || is_search())) {
+                (is_singular() && get_post_type() == 'page' && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
+                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || (is_singular() && get_post_type() == 'page') || is_archive() || is_search())) {
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
 
