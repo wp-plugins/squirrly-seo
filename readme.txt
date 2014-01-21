@@ -339,7 +339,6 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - Automatically PING the XML Sitemap in google blogs
 - Automatically adds the required METAs for home page (icon, author, language, dc publisher, etc.)
 - Automatically adds the favicon and the icon for Apple devices.
-- Automatically Support for Custom Post Types
 - Fine tune Page Navigational Links
 - Provides SEO Integration for WP e-Commerce sites
 - Support for CMS-style WordPress installations
