@@ -102,6 +102,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Compatible with Wordpress 3.8 version
 * Fixed css issue
 * Updated the SEO live assistant
+* Added Competition in SEO Audit 
 
 = 2.1.6 =
 * Fixed css load issue
