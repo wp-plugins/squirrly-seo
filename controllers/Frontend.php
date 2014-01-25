@@ -77,7 +77,9 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             );
             $users = get_users($args);
             foreach ($users as $user) {
-                $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
+                $details = ABH_Classes_Tools::getOption('abh_author' . $user->ID);
+                if (!isset($details['abh_use']) || $details['abh_use'])
+                    $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
                 if (!$force && (!is_single() && !is_singular()))
                     break; //don't show multiple authors in post list
             }
@@ -98,7 +100,10 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             foreach ($users as $user) {
                 // show mutiple authors in one shortcode
                 if (in_array($user->user_login, $show_list) || in_array($user->ID, $show_list)) {
-                    $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
+
+                    $details = ABH_Classes_Tools::getOption('abh_author' . $user->ID);
+                    if (!isset($details['abh_use']) || $details['abh_use'])
+                        $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($user->ID, $desc);
                     if (!$force && (!is_single() && !is_singular()))
                         break; //don't show multiple authors in post list
                 }
