@@ -103,7 +103,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed css issue
 * Updated the SEO live assistant
 * Added Competition in SEO Audit 
-* Working on a new theme for WP 3.8
+* Working on a new theme for WP 3.8.1
 
 = 2.1.6 =
 * Fixed css load issue
