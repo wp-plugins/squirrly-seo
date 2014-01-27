@@ -4,6 +4,7 @@ class ABH_Models_Frontend {
 
     public $author;
     public $details;
+    public $category = null;
     public $position;
     public $single = true;
 
@@ -221,6 +222,24 @@ class ABH_Models_Frontend {
 
 
         while ($latest_posts->have_posts()) : $latest_posts->the_post();
+
+            if (isset($this->category)) {
+                $found = false;
+                $categories = get_the_category();
+                foreach ($categories as $category) {
+                    if (!is_numeric($this->category)) {
+                        if ($this->category == $category->name)
+                            $found = true;
+                    }elseif (is_numeric($this->category)) {
+                        if ($this->category == $category->cat_ID)
+                            $found = true;;
+                    }
+                }
+                if (!$found)
+                    continue;
+                //echo '<pre>' . print_r($category, true) . '</pre>';
+            }
+
             if (get_the_title() <> '')
                 $content .= '
 				<li>

@@ -34,16 +34,22 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         $id = 0;
         $str = '';
         $desc = '';
+        $lpc = null; //latest posts category
         $theme = '';
 
         if (isset($post->ID))
             $this->custom[$post->ID] = true;
 
-        extract(shortcode_atts(array('id' => 0, 'desc' => '', 'theme' => ''), $param));
+        extract(shortcode_atts(array('id' => 0, 'desc' => '', 'lpc' => '', 'theme' => ''), $param));
         if ($theme <> '') {
             if (!in_array($theme, ABH_Classes_Tools::getOption('abh_themes')))
                 $theme = '';
         }
+
+        if (isset($lpc)) {
+            $this->model->category = $lpc;
+        }
+
         if ((int) $id > 0) {
             $this->model->author = get_userdata((int) $id);
 
@@ -118,6 +124,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
     public function hookShortWidgetStarbox($content) {
         $id = 0;
         $desc = '';
+        $lpc = null; //latest posts category
         $theme = '';
 
         if (@preg_match($this->shortcode, $content, $out)) {
@@ -129,7 +136,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             }
 
 
-            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id, 'desc' => $desc, 'theme' => $theme), true), $content);
+            return str_replace($out[0], $this->hookShortStarbox(array('id' => $id, 'desc' => $desc, 'lpc' => $lpc, 'theme' => $theme), true), $content);
         }
         return $content;
     }
@@ -249,6 +256,9 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+
+            if (isset($this->model->details['abh_lpc'])) //if the latest post category is set
+                $this->model->category = $this->model->details['abh_lpc'];
 
             //Se the author box position
             if (isset($this->model->details['abh_position']) && $this->model->details['abh_position'] <> 'default')
