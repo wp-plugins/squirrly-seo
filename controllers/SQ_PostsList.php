@@ -84,7 +84,7 @@ class SQ_PostsList extends SQ_FrontController {
     /**
      * Hook the Wordpress header
      */
-    function hookHead() {
+    function loadHead() {
         parent::hookHead();
         SQ_ObjController::getController('SQ_DisplayController', false)
                 ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
@@ -99,6 +99,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @return array
      */
     function add_column($columns) {
+        $this->loadHead(); //load the js only for post list
         $this->is_list = true;
 
 
@@ -230,9 +231,6 @@ class SQ_PostsList extends SQ_FrontController {
 
                 //Check the global progress in traffic for optimized and not optimized articles
                 $status = SQ_ObjController::getModel('SQ_BlockStatus');
-                if (is_object($status) && SQ_Tools::$options['sq_ws'] == 1) {
-                    $progress = $status->getGlobalProgress();
-                }
 
                 if (is_array(SQ_Tools::getValue('posts'))) {
                     $posts = SQ_Tools::getValue('posts');
@@ -271,13 +269,6 @@ class SQ_PostsList extends SQ_FrontController {
                 if (!isset($return) || !is_object($return))
                     $return = (object) NULL;
 
-                //Set the progress information for the article
-                if (is_array($progress) && !isset($return->status) && is_object($status)) {
-                    if (SQ_Tools::$options['sq_ws'] == 1)
-                        $return->status = $status->packStatus($progress);
-                    else
-                        $return->status = '';
-                }
 
                 SQ_Tools::setHeader('json');
                 echo json_encode($return);

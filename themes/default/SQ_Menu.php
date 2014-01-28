@@ -301,13 +301,13 @@
 
                     <div class="sq_option_content">
                         <div class="sq_switch">
-                            <input id="sq_audit1" type="radio" class="sq_switch-input" name="sq_ws" value="1" <?php echo (($view->options['sq_ws'] == 1) ? "checked" : '') ?> />
-                            <label for="sq_audit1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
-                            <input id="sq_audit0" type="radio" class="sq_switch-input" name="sq_ws"  value="0" <?php echo (($view->options['sq_ws'] == 0) ? "checked" : '') ?> />
-                            <label for="sq_audit0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
+                            <input id="sq_sla1" type="radio" class="sq_switch-input" name="sq_sla" value="1" <?php echo (($view->options['sq_sla'] == 1) ? "checked" : '') ?> />
+                            <label for="sq_sla1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _PLUGIN_NAME_); ?></label>
+                            <input id="sq_sla0" type="radio" class="sq_switch-input" name="sq_sla"  value="0" <?php echo (($view->options['sq_sla'] == 0) ? "checked" : '') ?> />
+                            <label for="sq_sla0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _PLUGIN_NAME_); ?></label>
                             <span class="sq_switch-selection"></span>
                         </div>
-                        <span><?php _e('Let Squirrly inform me about the progress of my <strong>Wordpress site</strong>.', _PLUGIN_NAME_); ?></span>
+                        <span><?php _e('Use <strong> V2 of the SEO Live Assistant</strong>.', _PLUGIN_NAME_); ?></span>
                     </div>
                 </fieldset>
             </div>

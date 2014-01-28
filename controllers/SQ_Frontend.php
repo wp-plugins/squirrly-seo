@@ -121,8 +121,6 @@ class SQ_Frontend extends SQ_FrontController {
             //if(self::$options['sq_auto_title'] == 1)
             $this->model->flushHeader();
         }
-        //RECORD THE TRAFFIC
-        $this->model->recordTraffic();
     }
 
 }

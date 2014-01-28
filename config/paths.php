@@ -11,7 +11,7 @@ defined('_SQ_API_URL_') ||
         define('_SQ_API_URL_', ((strpos(get_bloginfo('wpurl'), 'https') !== false) ? 'https:' : 'http:') . '//api.squirrly.co/');
 define('_SQ_STATIC_API_URL_', ((strpos(get_bloginfo('wpurl'), 'https') !== false) ? 'https:' : 'http:') . '//api.squirrly.co/static/');
 defined('_SQ_SUPPORT_URL_') ||
-        define('_SQ_SUPPORT_URL_', 'https://www.facebook.com/Squirrly.co');
+        define('_SQ_SUPPORT_URL_', 'https://plus.google.com/communities/104196720668136264985');
 
 if (!defined('SQ_URI'))
     if (WP_VERSION_ID >= 3000)

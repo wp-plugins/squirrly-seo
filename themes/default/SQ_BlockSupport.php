@@ -22,11 +22,15 @@
             </li>
             <li id="sq_options_feedback">
 
-                <span class="sq_icon <?php if (isset($_COOKIE['sq_feedback_face']) && (int) $_COOKIE['sq_feedback_face'] > 0) {
-        echo 'sq_label_feedback_' . ((int) $_COOKIE['sq_feedback_face'] - 1);
-    } ?>" <?php if (!isset($_COOKIE['sq_feedback_face'])) {
-                echo 'title="' . __('How was your Squirrly experience today?', _PLUGIN_NAME_) . '"';
-            } ?>></span>
+                <span class="sq_icon <?php
+                if (isset($_COOKIE['sq_feedback_face']) && (int) $_COOKIE['sq_feedback_face'] > 0) {
+                    echo 'sq_label_feedback_' . ((int) $_COOKIE['sq_feedback_face'] - 1);
+                }
+                ?>" <?php
+                      if (!isset($_COOKIE['sq_feedback_face'])) {
+                          echo 'title="' . __('How was your Squirrly experience today?', _PLUGIN_NAME_) . '"';
+                      }
+                      ?>></span>
     <?php if (!isset($_COOKIE['sq_feedback_face']) || (isset($_COOKIE['sq_feedback_face']) && (int) $_COOKIE['sq_feedback_face'] < 3)) { ?>
         <?php if (!isset(SQ_Tools::$options['sq_feedback'])) { ?>
                         <span class="sq_push">1</span>
@@ -37,11 +41,11 @@
                         <li>
                             <table width="100%" cellpadding="2" cellspacing="0" border="0">
                                 <tr>
-                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_0" for="sq_feedback_0"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_0" value="1" /></td>
-                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_1" for="sq_feedback_1"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_1" value="2" /></td>
-                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_2" for="sq_feedback_2"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_2" value="3" /></td>
-                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_3" for="sq_feedback_3"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_3" value="4" /></td>
-                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_4" for="sq_feedback_4"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_4" value="5" /></td>
+                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_0" for="sq_feedback_0"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_0" value="1" title="<?php _e('Angry', _PLUGIN_NAME_) ?>" /></td>
+                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_1" for="sq_feedback_1"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_1" value="2" title="<?php _e('Sad', _PLUGIN_NAME_) ?>" /></td>
+                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_2" for="sq_feedback_2"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_2" value="3" title="<?php _e('Happy', _PLUGIN_NAME_) ?>" /></td>
+                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_3" for="sq_feedback_3"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_3" value="4" title="<?php _e('Excited', _PLUGIN_NAME_) ?>" /></td>
+                                    <td><label class="sq_label_feedback_smiley sq_label_feedback_4" for="sq_feedback_4"></label><input class="sq_feedback_smiley" type="radio" name="sq_feedback_face" id="sq_feedback_4" value="5" title="<?php _e('Love it', _PLUGIN_NAME_) ?>" /></td>
                                 </tr>
                             </table>
                             <div id="sq_options_feedback_error"></div>
@@ -65,4 +69,4 @@
 
         </ul>
     </div>
-<?php } ?> 
+<?php } ?>

@@ -22,33 +22,11 @@ class SQ_Tools extends SQ_FrontController {
         self::$options = $this->getOptions();
 
         //$this->checkDebug(); //Check for debug
-        $this->checkWs();
     }
 
     public static function getUserID() {
         global $current_user;
         return $current_user->ID;
-    }
-
-    /**
-     * Check if ws is called
-     */
-    private function checkWs() {
-        if (!self::$options['sq_ws'])
-            return;
-
-        //if debug is called
-        if (self::getIsset('sq_ws'))
-            if (self::getValue('sq_ws') == self::$options['sq_api']) {
-                $ws = SQ_ObjController::getController('SQ_Wservice', false);
-                if (is_object($ws)) {
-                    $info = $ws->getInfo();
-                    if (is_array($info)) {
-                        echo json_encode($info);
-                        exit();
-                    }
-                }
-            }
     }
 
     /**
@@ -125,7 +103,7 @@ class SQ_Tools extends SQ_FrontController {
             // --
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',
-            'sq_ws' => 1,
+            'sq_sla' => 1,
         );
         $options = json_decode(get_option(SQ_OPTION), true);
 
@@ -587,8 +565,7 @@ class SQ_Tools extends SQ_FrontController {
         if (function_exists('func_get_args')) {
             $arguments = func_get_args();
             $total_arguments = count($arguments);
-        }
-        else
+        } else
             $arguments = array();
 
 
@@ -603,7 +580,7 @@ class SQ_Tools extends SQ_FrontController {
         $i = 0;
         foreach ($arguments as $argument) {
             if (count($arguments) > 1)
-                $output .= "\n" . '<strong>#' . (++$i ) . ' of ' . $total_arguments . '</strong>: ';
+                $output .= "\n" . '<strong>#' . ( ++$i ) . ' of ' . $total_arguments . '</strong>: ';
 
             // if argument is boolean, false value does not display, so ...
             if (is_bool($argument))

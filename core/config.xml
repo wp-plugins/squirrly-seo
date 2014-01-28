@@ -122,15 +122,6 @@
     </block>
 
     <block>
-        <name>SQ_Blockrank</name>
-        <description>Article Rank</description>
-        <controllers>
-            <controller>SQ_PostMiddle</controller>
-        </controllers>
-        <active>1</active>
-        <path>core</path>
-    </block>
-    <block>
         <name>SQ_BlockAffiliate</name>
         <description>Affiliate Page</description>
         <actions>

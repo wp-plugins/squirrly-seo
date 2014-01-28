@@ -108,17 +108,16 @@ class SQ_Menu extends SQ_FrontController {
                 'side',
                 'high'
             ));
-        if (SQ_ObjController::getController('SQ_PostMiddle'))
-            foreach ($this->post_type as $type)
-                $this->model->addMeta(array('postmiddle' . _SQ_NAME_,
-                    __('Squirrly Article Rank', _PLUGIN_NAME_),
-                    array(SQ_ObjController::getController('SQ_PostMiddle'), 'init'),
-                    $type,
-                    'normal',
-                    'high'
-                ));
 
-
+//        if (SQ_ObjController::getController('SQ_PostMiddle'))
+//            foreach ($this->post_type as $type)
+//                $this->model->addMeta(array('postmiddle' . _SQ_NAME_,
+//                    __('Squirrly Article Rank', _PLUGIN_NAME_),
+//                    array(SQ_ObjController::getController('SQ_PostMiddle'), 'init'),
+//                    $type,
+//                    'normal',
+//                    'high'
+//                ));
         //Add the Rank in the Posts list
         $postlist = SQ_ObjController::getController('SQ_PostsList');
         if (is_object($postlist))
@@ -192,7 +191,7 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('ignore_warn', (int) SQ_Tools::getValue('ignore_warn'));
                 SQ_Tools::saveOptions('sq_keyword_help', (int) SQ_Tools::getValue('sq_keyword_help'));
                 SQ_Tools::saveOptions('sq_keyword_information', (int) SQ_Tools::getValue('sq_keyword_information'));
-                SQ_Tools::saveOptions('sq_ws', (int) SQ_Tools::getValue('sq_ws'));
+                SQ_Tools::saveOptions('sq_sla', (int) SQ_Tools::getValue('sq_sla'));
 
                 //update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
 

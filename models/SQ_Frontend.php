@@ -8,6 +8,9 @@ class Model_SQ_Frontend {
     /** @var string */
     private $description;
 
+    /** @var array */
+    private $keywords;
+
     /** @var integer */
     private $min_title_length = 10;
 
@@ -51,8 +54,9 @@ class Model_SQ_Frontend {
         return "<!-- /Squirrly Wordpress SEO Plugin -->\n\n";
     }
 
+    /*     * *****USE BUFFER****** */
+
     /**
-     *  ****USE BUFFER******
      * Start the buffer record
      * @return type
      */
@@ -158,16 +162,15 @@ class Model_SQ_Frontend {
 
             if (SQ_Tools::$options['sq_auto_meta'] == 1) {
                 $ret .= $this->getCopyright();
-                $ret .= $this->getPublisher();
+                $ret .= $this->getGooglePlusMeta();
                 $ret .= $this->getLanguage();
-                $ret .= $this->getDCPublisher();
-                $ret .= $this->getTheDate();
+                $ret .= $this->getDublinCore();
             }
 
 
 
             if (SQ_Tools::$options['sq_auto_facebook'] == 1)
-                $ret .= $this->getFacebookObject(SQ_Tools::$options) . "\n";
+                $ret .= $this->getOpenGraph(SQ_Tools::$options) . "\n";
 
             if (SQ_Tools::$options['sq_auto_twitter'] == 1)
                 $ret .= $this->getTwitterCard(SQ_Tools::$options) . "\n";
@@ -203,7 +206,7 @@ class Model_SQ_Frontend {
         $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" value="%s" />', $sq_twitter_site) . "\n" : '');
 
         $meta .= sprintf('<meta name="twitter:title" content="%s">', $this->title) . "\n";
-        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : sprintf('<meta name="twitter:description" content="%s">', $this->description) . "\n" );
+        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
         $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">', $this->thumb_image) . "\n" : '');
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta name="twitter:domain" content="%s">', $this->meta['blogname']) . "\n" : '');
 
@@ -211,10 +214,10 @@ class Model_SQ_Frontend {
     }
 
     /**
-     * Get the Facebook object meta
+     * Get the Open Graph Protocol
      * @return string
      */
-    private function getFacebookObject($options) {
+    private function getOpenGraph($options) {
         $meta = "\n";
         $image = '';
         $url = '';
@@ -226,9 +229,9 @@ class Model_SQ_Frontend {
         if ($image == '' && $url == '')
             return;
         //GET THE URL
-
         $meta .= sprintf('<meta property="og:url" content="%s" />', $url) . "\n";
         $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n" : '');
+        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image:width" content="400" />') . "\n" : '');
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', $this->meta['blogname']) . "\n" : '');
@@ -242,11 +245,19 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (is_singular()) {
             global $post;
+
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
             $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $post->ID)) . "\n";
-        }
-        else
-            $meta .= sprintf('<meta property="og:type" content="%s" />', 'blog') . "\n";
+            $meta .= sprintf('<meta property="article:author" content="%s" />', get_author_posts_url($post->post_author)) . "\n";
+            if ($this->keywords <> '') {
+                $keywords = preg_split('/[,]+/', $this->keywords);
+                if (is_array($keywords) && !empty($keywords))
+                    foreach ($keywords as $keyword) {
+                        $meta .= sprintf('<meta property="article:tag" content="%s" />', $keyword) . "\n";
+                    }
+            }
+        } else
+            $meta .= sprintf('<meta property="og:type" content="%s" />', 'website') . "\n";
 
         return $meta;
     }
@@ -266,33 +277,6 @@ class Model_SQ_Frontend {
         }
 
         return '';
-    }
-
-    /**
-     * Get the post date issued
-     *
-     * @return string
-     */
-    private function getTheDate() {
-        $meta = '';
-        global $wp_query;
-        $date = null;
-
-        if (is_home()) {
-            $args = array('numberposts' => 1);
-
-            $date = date('Y-m-d', strtotime(get_lastpostmodified()));
-        } elseif (is_single()) {
-            $post = $this->post;
-            $date = date('Y-m-d', strtotime($post->post_date));
-        }
-
-        if ($date <> '') {
-            $meta .= sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />", $date) . "\n";
-            $meta .= sprintf("<meta name=\"DC.Date\" content=\"%s\" />", $date) . "\n";
-        }
-
-        return $meta;
     }
 
     /**
@@ -414,9 +398,6 @@ class Model_SQ_Frontend {
 
         if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_description'] == 1) { //for homepage
             $description = $this->grabDescriptionFromPost();
-            if ($this->isHomePage() && $description <> '')
-                if ($this->meta['blogname'] <> '')
-                    $description .= " " . $sep . " " . $this->meta['blogname'];
         }
         //If its a post/page
         if (!$this->isHomePage() && (is_single() || is_page() || $this->checkPostsPage())) {
@@ -531,8 +512,8 @@ class Model_SQ_Frontend {
             }
 
         if (isset($keywords) && !empty($keywords) && !(is_home() && is_paged())) {
-            $keywords = str_replace('"', '', $keywords);
-            return sprintf("<meta name=\"keywords\" content=\"%s\" />", $keywords);
+            $this->keywords = str_replace('"', '', $keywords);
+            return sprintf("<meta name=\"keywords\" content=\"%s\" />", $this->keywords);
         }
 
         return false;
@@ -555,11 +536,11 @@ class Model_SQ_Frontend {
     }
 
     /**
-     * Get the publisher meta
+     * Get the Google Plus Author meta
      *
      * @return string
      */
-    private function getPublisher() {
+    private function getGooglePlusMeta() {
         $author = SQ_Tools::$options['sq_google_plus'];
         if ($author == '')
             $author = $this->getAuthorLinkFromBlog();
@@ -568,11 +549,14 @@ class Model_SQ_Frontend {
         elseif (strpos($author, 'plus.google.com') === false && is_numeric($author))
             $author = 'https://plus.google.com/' . $author . '/posts';
 
-        if ($this->isHomePage() && $author <> '')
+        if ($this->isHomePage() && $author <> '') {
             return '<link rel="author" href="' . $author . '" />' . "\n";
-        elseif (is_single() || is_page())
-            if (!class_exists('ABH_Controllers_Frontend')) //if starbox not installed
+        } else {
+            if (is_single() && !class_exists('ABH_Classes_ObjController')) {
                 return '<link rel="author" href="' . $author . '" />' . "\n";
+            }
+        }
+        return false;
     }
 
     /**
@@ -618,7 +602,9 @@ class Model_SQ_Frontend {
      *
      * @return string
      */
-    private function getDCPublisher() {
+    private function getDublinCore() {
+        global $wp_query;
+        $date = null;
         $meta = '';
 
         $name = $this->getAuthorLinkFromBlog();
@@ -631,7 +617,21 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta name="DC.Title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta name="DC.Description" content="%s" />', $this->description) . "\n";
 
-        return (($meta <> '') ? "\n" : "") . $meta;
+        if (is_home()) {
+            $args = array('numberposts' => 1);
+
+            $date = date('Y-m-d', strtotime(get_lastpostmodified()));
+        } elseif (is_single()) {
+            $post = $this->post;
+            $date = date('Y-m-d', strtotime($post->post_date));
+        }
+
+        if ($date) {
+            $meta .= sprintf("<meta name=\"DC.Date\" content=\"%s\" />", $date) . "\n";
+            $meta .= sprintf("<meta name=\"DC.date.issued\" content=\"%s\" />", $date) . "\n";
+        }
+
+        return $meta;
     }
 
     /**
@@ -727,7 +727,7 @@ class Model_SQ_Frontend {
         return false;
     }
 
-    /**     * ******************************************************************
+    /*     * *******************************************************************
      * ******************************************************************** */
 
     /**
@@ -987,7 +987,7 @@ class Model_SQ_Frontend {
                 if (!isset($frequencies[$key])) {
                     $frequencies[$key] = 0;
                 }
-                $frequencies[$key]++;
+                $frequencies[$key] ++;
             }
         }
         arsort($frequencies);
@@ -1240,11 +1240,11 @@ class Model_SQ_Frontend {
     /**
      * Record the traffic for this page for the analytics
      */
-    function recordTraffic() {
-        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
-        if (is_object($traffic))
-            $traffic->saveVisit();
-    }
+//    function recordTraffic() { 
+//        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
+//        if (is_object($traffic))
+//            $traffic->saveVisit();
+//    }
 
     /**
      * Check if other plugin are/were installed and don't change the SEO
