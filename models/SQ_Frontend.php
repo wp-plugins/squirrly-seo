@@ -233,13 +233,18 @@ class Model_SQ_Frontend {
             return;
         //GET THE URL
         $meta .= sprintf('<meta property="og:url" content="%s" />', $url) . "\n";
-        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n" : '');
-        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image:width" content="%s" />', '400') . "\n" : '');
-        $meta .= ((isset($this->thumb_video) && $this->thumb_video <> '') ? sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n" : '');
+        if ((isset($this->thumb_image) && $this->thumb_image <> '')) {
+            $meta .= sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n";
+            $meta .= sprintf('<meta property="og:image:width" content="%s" />', '500') . "\n";
+        }
+
+        if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
+            $meta .= sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n";
+        }
+
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', $this->meta['blogname']) . "\n" : '');
-
 
         if (is_author()) {
             $author = get_queried_object();
@@ -247,7 +252,7 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
             $meta .= sprintf('<meta property="profile:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
-        } elseif (is_singular()) {
+        } elseif (is_single() || is_page()) {
             global $post;
             $meta .= sprintf('<meta property="og:type" content="%s" />', ((isset($this->thumb_video) && $this->thumb_video <> '') ? 'video' : 'article')) . "\n";
             if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
@@ -401,7 +406,7 @@ class Model_SQ_Frontend {
 
         preg_match('/(https?:)?\/\/(?:[0-9A-Z-]+\.)?(?:(youtube|youtu)(?:-nocookie)?\.(com|be)\/(?:[^"\']+))/si', $post->post_content, $match);
 
-        if (strpos($match[0], '//') !== false && strpos($match[0], 'http/') === false)
+        if (strpos($match[0], '//') !== false && strpos($match[0], 'http') === false)
             $match[0] = 'http:' . $match[0];
 
         if (empty($match))

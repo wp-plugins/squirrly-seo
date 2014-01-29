@@ -98,11 +98,17 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
-= 2.1.7 =
+= 2.2.0 =
+* Added a new theme for Squirrly
+* Added the 2nd version for SEO Live assistant
+* Added Top Headline suggestion when adding a post title
 * Compatible with Wordpress 3.8.1 version
+* Fixed snippet issues
+
+= 2.1.7 =
+* Compatible with Wordpress 3.8 version
 * Fixed css issue
 * Updated the SEO live assistant
-* Added a new theme for Squirrly
 
 = 2.1.6 =
 * Fixed css load issue
