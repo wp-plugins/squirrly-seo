@@ -226,12 +226,16 @@ class Model_SQ_Frontend {
         if (!isset($this->thumb_image) || $this->thumb_image == '')
             $this->thumb_image = $this->getImageFromContent();
 
+        if (!isset($this->thumb_video) || $this->thumb_video == '')
+            $this->thumb_video = $this->getVideoFromContent();
+
         if ($image == '' && $url == '')
             return;
         //GET THE URL
         $meta .= sprintf('<meta property="og:url" content="%s" />', $url) . "\n";
         $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n" : '');
-        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image:width" content="400" />') . "\n" : '');
+        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta property="og:image:width" content="%s" />', '400') . "\n" : '');
+        $meta .= ((isset($this->thumb_video) && $this->thumb_video <> '') ? sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n" : '');
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', $this->meta['blogname']) . "\n" : '');
@@ -245,16 +249,18 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (is_singular()) {
             global $post;
+            $meta .= sprintf('<meta property="og:type" content="%s" />', ((isset($this->thumb_video) && $this->thumb_video <> '') ? 'video' : 'article')) . "\n";
+            if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
 
-            $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
-            $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $post->ID)) . "\n";
-            $meta .= sprintf('<meta property="article:author" content="%s" />', get_author_posts_url($post->post_author)) . "\n";
-            if ($this->keywords <> '') {
-                $keywords = preg_split('/[,]+/', $this->keywords);
-                if (is_array($keywords) && !empty($keywords))
-                    foreach ($keywords as $keyword) {
-                        $meta .= sprintf('<meta property="article:tag" content="%s" />', $keyword) . "\n";
-                    }
+            } else {
+                $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $post->ID)) . "\n";
+                if ($this->keywords <> '') {
+                    $keywords = preg_split('/[,]+/', $this->keywords);
+                    if (is_array($keywords) && !empty($keywords))
+                        foreach ($keywords as $keyword) {
+                            $meta .= sprintf('<meta property="article:tag" content="%s" />', $keyword) . "\n";
+                        }
+                }
             }
         } else
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'website') . "\n";
@@ -379,6 +385,30 @@ class Model_SQ_Frontend {
             $match[1] = get_bloginfo('url') . $match[1];
 
         return $match[1];
+    }
+
+    /**
+     * Get the video from content
+     * @global type $wp_query
+     * @return type
+     */
+    public function getVideoFromContent() {
+        global $wp_query;
+        $post = $this->post;
+
+        if (!$post)
+            return false;
+
+        preg_match('/(https?:)?\/\/(?:[0-9A-Z-]+\.)?(?:(youtube|youtu)(?:-nocookie)?\.(com|be)\/(?:[^"\']+))/si', $post->post_content, $match);
+
+        if (strpos($match[0], '//') !== false && strpos($match[0], 'http/') === false)
+            $match[0] = 'http:' . $match[0];
+
+        if (empty($match))
+            return;
+
+
+        return $match[0];
     }
 
     private function clearTitle($title) {
@@ -1369,5 +1399,4 @@ class Model_SQ_Frontend {
     }
 
 }
-
 ?>
