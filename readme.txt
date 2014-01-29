@@ -1,8 +1,8 @@
-﻿=== SEO Plugin by SQUIRRLY ===
+=== SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
 Requires at least: 3.1
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 
 Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
@@ -99,11 +99,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 == Changelog ==
 = 2.1.7 =
-* Compatible with Wordpress 3.8 version
+* Compatible with Wordpress 3.8.1 version
 * Fixed css issue
 * Updated the SEO live assistant
-* Added Competition in SEO Audit 
-* Working on a new theme for WP 3.8.1
+* Added a new theme for Squirrly
 
 = 2.1.6 =
 * Fixed css load issue
@@ -341,6 +340,7 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 - Automatically PING the XML Sitemap in google blogs
 - Automatically adds the required METAs for home page (icon, author, language, dc publisher, etc.)
 - Automatically adds the favicon and the icon for Apple devices.
+- Automatically Support for Custom Post Types
 - Fine tune Page Navigational Links
 - Provides SEO Integration for WP e-Commerce sites
 - Support for CMS-style WordPress installations

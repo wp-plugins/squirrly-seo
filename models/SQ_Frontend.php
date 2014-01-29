@@ -1240,11 +1240,11 @@ class Model_SQ_Frontend {
     /**
      * Record the traffic for this page for the analytics
      */
-//    function recordTraffic() { 
-//        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
-//        if (is_object($traffic))
-//            $traffic->saveVisit();
-//    }
+    function recordTraffic() {
+        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
+        if (is_object($traffic))
+            $traffic->saveVisit();
+    }
 
     /**
      * Check if other plugin are/were installed and don't change the SEO
