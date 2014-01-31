@@ -8,7 +8,7 @@ Stable tag: trunk
 Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
 
 == Description ==
-<strong>Lets Face It. SEO is tough.</strong> How does Squirrly take the hard work out of SEO?
+Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.
 
 - <strong>Gives You SEO Advice as you're typing your articles.</strong> Squirrly helps you in real time to optimize your articles to 100%, while you are writing or editing them.
 
@@ -33,11 +33,15 @@ Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And
 
 - <strong>Free Images that You Can Use.</strong>
 
+- <strong>Headline Suggestions based on your SEO keyword.</strong>
+
 - <strong>Social Intelligence through the Inspiration Box, to help you write better content, by showing you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
-<strong>You Only Pay Us If You Love Us. Otherwise You Can Use Squirrly for Free.</strong>
+<strong>This is the FREE version of Squirrly SEO.</strong>
 
-You’ll start with the full version of Squirrly. If in 14 Days, you decide you love to get all the benefits from Squirrly, you pay for it (Pricing Plans below). If not, then you will continue using the <strong>Free Version</strong> of our Content Marketing tool, no questions asked.
+You can now use Squirrly SEO for free and if you have small content marketing needs, it's the perfect plan for you.
+
+Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. [Link at the end of the page]
 
 <em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em>
 
@@ -50,7 +54,7 @@ You’ll start with the full version of Squirrly. If in 14 Days, you decide you 
 
 * <em>"Great SEO info at a click"</em>
 
-<strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews-pag68312.html</strong>
+<strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
@@ -71,7 +75,7 @@ Founder and CEO Squirrly UK
 See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>.
 
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
- | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a> | Free Version OR <a href="http://www.squirrly.co/pricing" title="See Pricing" target="_blank">Pricing Plans</a>
+ | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a> | Free Version (if you install from the WP directory) OR <a href="http://www.squirrly.co/pricing" title="See Pricing" target="_blank">Pricing Plans</a>
 
 == Installation ==
 1. Log In as an Admin on your Wordpress blog.
@@ -80,13 +84,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 4. There, you have the buttons: "Search | Upload | Featured | Popular | Newest". Click "Upload".
 5. Upload the squirrly-seo.zip file.
 6. After the upload is finished, click Activate Plugin.
-7. In the menu on the left, there is the "Squirrly" tab now. Click it.
+7. Good. Now enter your email to connect with Squirrly.co
 8. Then click "Write a New Post with Squirrly Seo".
 9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
 1. Squirrly SEO - Enter a keyword for Squirrly Live SEO Assistant optimization
-2. Squirrly SEO - Find out if it's worth it to use it
+2. Squirrly SEO - Find out if it's worth to use it
 3. Squirrly SEO - Add an image in your article
 4. Squirrly SEO - Find images, tweets, wiki, blogs, news or other articles from your blog
 5. Squirrly SEO - Easy to read external blogs
@@ -297,25 +301,43 @@ Also:
 == Credits ==
 Florin Muresan CEO at Squirrly
 Calin Vingan CTO at Squirrly
-
-And 3 Great collaborators:
-
-Andreea - creative marketing intern
+Andreea - VP Marketing
 Cristina  - Squirrly mascot designer
 Alexandra - Content Writer
+
+Investors:
+Ibrahim Evsan, serial entrepreneur, one of the best known bloggers in Germany
+Philipp Kandal, co-Founder and CTO of Skobbler (recently aquired for $24M by Telenav)
 
 Many Thanks.
 
 == License ==
-Squirrly Seo has a Trial period of 14 Days, after which you may choose to buy a monthly subscription or keep using Squirrly for Free and be able to optimize 5 articles/month
+Squirrly is Free to use. The version from the WP directory will install the Free Version.
+
+You'll be able to use this seo software once you install the plugin and use your email to connect to Squirrly.co
+
+For higher content marketing and SEO needs, you can check our Official Site and see what the PRO Plan offers.
 
 
 == Frequently Asked Questions ==
 = How does Squirrly Wordpress SEO Plugin work? =
-Please watch the following video http://www.youtube.com/watch?v=ymh8DBKrfhw
+Neil Patel, the Co-Founder of Kissmetrics and Crazy Egg made a great video on how to use Squirrly's Live Assistant:
+http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
 
 = How does the META Description work in Squirrly SEO Optimization? =
-Based on your article, Squirrly will find the most relevant text and add it in META Description.
+Based on your article, Squirrly will find the most relevant text and add it in the META Description.
+
+You can opt-in to use the Advanced SEO Settings, which will allow you to customize how the META Title and Description will be. All while writing or editing your article.
+
+= Is Squirrly SEO Plugin free? =
+Yes, you just have to install the plugin from the WP directory into your site. Then connect with your email to Squirrly. The Free Version will automatically start.
+Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
+
+= Does the Free Plan offer all the features? =
+Yes. As of January 2014 all the features are also included in the free plan. There is NO trial period, NO other features that can be activated by paying money for the plugin. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing.
+
+= What about the PRO Plan? =
+The PRO Plan is for those with bigger content marketing and SEO needs. For anything regarding the paid plans, go to our website: squirrly.co | The wordpress directory listing is only to be used for concerns regarding the Free version. You can get the PRO Plan after you've installed the plugin from this directory.
 
 = Can I use squirrly seo on mobile? =
 Yes, on IOS and ANDROID, it works both through the browser and wordpress app
@@ -323,7 +345,7 @@ Yes, on IOS and ANDROID, it works both through the browser and wordpress app
 = Can I use the images, tweets and articles given by the Inspiration Box? Are there any legal concerns? =
 Yes, you can use the tweets and the paragraphs in your articles. They contain a link to the source and are perfectly legal to use. Of course, for the
 articles add only some paragraphs, not the whole article. As for the images, you can use the Copyright-Free images that we offer, to make sure you will
-not have any legal problems.
+not have any legal problems. Follow the license-compliance guidance we offer for each of them.
 
 = Do I get support for your Wordpress SEO Plugin? =
 Yes, we are focused on Delivering Happiness and this comes along with a good support package. We have a track record of replying in under 5 hours to
@@ -334,23 +356,47 @@ All of the features that we offer have been built having the customer's best int
 and we've proven time and again that we are a great team that knows all there is to know about good *SEO automation*. We had a community of 20,000 blogs that all
 used our SEO techniques, and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
 
+[UPDATE] Squirrly now has over 300,000 downloads, so we've been offering great software for over a year now.
+
+- SEO Advice as you're typing your articles
+- Advice in real time from the SEO Live Assistant on how to write better content for your Human readers
+- Weekly SEO Audit report, that shows you how well you did on: Blogging, Traffic, Links, SEO, Social Media and Authority
+- Lots of advice in the reports for how you can fix each section
+- Keyword Research and Analysis (that takes data from both SEMrush AND social media)
+- Monitors your Site's Progress
+- SEO Analytics for each post or page
+- Shows you rank in Google
+- Shows you Social Signals for each article
+- Social Intelligence
+- Images you can use (with advice on License for each image. Most are Free to use)
+- Read Tweets, Wikis, Blogs
+- Insert Tweets, Wikis, Blogs
+- Headline Suggestions for your SEO Keyword or general topic
+- You'll be alerted if there are SEO issues, 404 errors, visibility problems
+- Search of images, tweets, wikis, blogs, etc. based on your keyword
+- As you type your article or edit older articles, you can set the META information for that article (using the Squirrly Snippet)
+- Facebook Open Graph support for both Images and Videos (if you have a video in your article, Squirrly will attach the open graph properties to it)
+- Twitter Cards
+- Customize your FavIcon
+- Adds the icon for Apple Devices
 - Google Analytics setup support
 - Google Webmaster Tools setup support
+- Google Authorship
 - Google+ URL
 - Bing META Code support
 - Facebook META Code support
-- Automatically adds the correct seo title in the home page
-- Automatically adds the correct seo description and seo keywords in all pages
-- Automatically adds canonical link in all pages
-- Automatically adds the XML Sitemap for search engines: /sitemap.xml
-- Automatically PING the XML Sitemap in google blogs
-- Automatically adds the required METAs for home page (icon, author, language, dc publisher, etc.)
-- Automatically adds the favicon and the icon for Apple devices.
-- Automatically Support for Custom Post Types
+- adds the correct seo title in the home page
+- adds the correct seo description and seo keywords in all pages
+- adds canonical link in all pages
+- adds the XML Sitemap for search engines: /sitemap.xml
+- PING the XML Sitemap in google blogs
+- adds the required METAs for home page (icon, author, language, dc publisher, etc.)
+- adds the favicon and the icon for Apple devices.
+- Support for Custom Post Types
 - Fine tune Page Navigational Links
 - Provides SEO Integration for WP e-Commerce sites
 - Support for CMS-style WordPress installations
-- Automatically optimizes your titles for search engines
+- optimizes your titles for search engines
 - Generates META tags automatically
 - For beginners, all these settings are made automatically to get the best SEO possible.
 - For advanced users, you can fine-tune everything.
