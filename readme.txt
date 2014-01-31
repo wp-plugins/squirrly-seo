@@ -41,7 +41,7 @@ Squirrly helps you write content that's both Google Friendly and Human friendly.
 
 You can now use Squirrly SEO for free and if you have small content marketing needs, it's the perfect plan for you.
 
-Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. [Link at the end of the page]
+Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
 
 <em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em>
 
