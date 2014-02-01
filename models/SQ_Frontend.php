@@ -98,6 +98,9 @@ class Model_SQ_Frontend {
      */
     private function setMetaInBuffer($buffer) {
         global $wp_query;
+        if (!isset($wp_query))
+            return $buffer;
+
         $this->post = $wp_query->get_queried_object();
 
         if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
@@ -1404,4 +1407,5 @@ class Model_SQ_Frontend {
     }
 
 }
+
 ?>
