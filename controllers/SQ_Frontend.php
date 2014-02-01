@@ -120,6 +120,7 @@ class SQ_Frontend extends SQ_FrontController {
             //Use buffer only for meta Title
             //if(self::$options['sq_auto_title'] == 1)
             $this->model->flushHeader();
+            $this->model->recordTraffic();
         }
     }
 
