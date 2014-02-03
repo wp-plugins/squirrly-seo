@@ -95,6 +95,10 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.0.1 =
+* Fixed css for more themes
+* Fixed hide from all posts in WP 3.8.1 issue
+
 = 2.0.0 =
 * Fixed loading issues
 * Compatible with Wordpress 3.8
