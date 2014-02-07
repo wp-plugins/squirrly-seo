@@ -1,6 +1,6 @@
 === SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
-Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
+Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
 Requires at least: 3.1
 Tested up to: 3.8.1
 Stable tag: trunk
@@ -39,7 +39,9 @@ Squirrly helps you write content that's both Google Friendly and Human friendly.
 
 <strong>This is the FREE version of Squirrly SEO.</strong>
 
-You can now use Squirrly SEO for free and if you have small content marketing needs, it's the perfect plan for you.
+You can now use Squirrly SEO for free and if you have small content marketing needs (about one article posted per week, some keywords that you want to analyze), it's the perfect plan for you.
+
+Once you start having bigger content marketing and SEO needs, you can go PRO. Read more about it in the FAQ section.
 
 Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
 
@@ -337,7 +339,7 @@ Yes, you just have to install the plugin from the WP directory into your site. T
 Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
 
 = Does the Free Plan offer all the features? =
-Yes. As of January 2014 all the features are also included in the free plan. There is NO trial period, NO other features that can be activated by paying money for the plugin. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing.
+Yes. As of January 2014 all the features are also included in the free plan. There is NO trial period, NO other features that can be activated by paying money for the plugin. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing. These are the blogs on which owners want to publish about 5 articles / month, analyze 5 different seo keywords, need a general Audit of their whole site and want to see the SEO analytics for their last posts.
 
 = What about the PRO Plan? =
 The PRO Plan is for those with bigger content marketing and SEO needs. For anything regarding the paid plans, go to our website: squirrly.co | The wordpress directory listing is only to be used for concerns regarding the Free version. You can get the PRO Plan after you've installed the plugin from this directory.
