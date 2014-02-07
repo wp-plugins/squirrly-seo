@@ -91,22 +91,22 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
-1. Squirrly SEO - Enter a keyword for Squirrly Live SEO Assistant optimization
-2. Squirrly SEO - Find out if it's worth to use it
-3. Squirrly SEO - Add an image in your article
-4. Squirrly SEO - Find images, tweets, wiki, blogs, news or other articles from your blog
-5. Squirrly SEO - Easy to read external blogs
-6. Squirrly SEO - Easy to insert paragraphs from the articles that you are reading
-7. Squirrly SEO - Optimize your article with Squirrly Live SEO Assistant
-8. Squirrly SEO - You will know when your seo is good
-9. Squirrly SEO - Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
-10. Squirrly SEO - Settings tab with extra Seo optimization features
+1. Wordpress Seo by Squirrly - Enter a keyword for Squirrly Live SEO Assistant optimization
+2. Wordpress Seo by Squirrly - Find out if it's worth to use it
+3. Wordpress Seo by Squirrly - Add an image in your article
+4. Wordpress Seo by Squirrly - Find images, tweets, wiki, blogs, news or other articles from your blog
+5. Wordpress Seo by Squirrly - Easy to read external blogs
+6. Wordpress Seo by Squirrly - Easy to insert paragraphs from the articles that you are reading
+7. Wordpress Seo by Squirrly - Optimize your article with Squirrly Live SEO Assistant
+8. Wordpress Seo by Squirrly - You will know when your seo is good
+9. Wordpress Seo by Squirrly - Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
+10. Wordpress Seo by Squirrly - Settings tab with extra Seo optimization features
 
 
 == Changelog ==
 = 2.2.1 =
 * Fixed traffic record issue
-* Fixed SSL connection issue
+* Fixed SSL connection with the API issue
 
 = 2.2.0 =
 * Added a new theme for Squirrly
@@ -215,93 +215,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added Social Impact progress monitor for each post/page
 * Added Inbound Links progress monitor for each post/page
 
-= 1.1.9 =
-* Added Facebook META Object for a good looking share
-* Added Twitter Card in META
-* Fixed local saved post images bugs
-* Fixed Sitemap file permission error
-* Wordpress 3.6 theme compatibility
-* Fixed Frontend custom meta for blogs with pages
-
-= 1.1.8 =
-* Fixed snipped security bugs
-* SEO improvement for META Title
-
-= 1.1.7 =
-* Added the real time snippet before you publish the article
-
-= 1.1.6 =
-* Fixed settings bugs on saving
-
-= 1.1.5 =
-* Added multiple Countries for Keyword Research
-* Changed the Squirrly SEO Settings Look
-
-= 1.1.4 =
-* Fixed Frontend META and Frontend ob_gzhandler (for login problems)
-* Added new feature for SEO Live Assistant (minimum words in article for google news)
-
-= 1.1.3 =
-* Added multi-language support in SEO Live Assistant
-* Improved compatibility with other SEO plugins and themes
-* Improved META information
-
-= 1.1.2 =
-* Now works with Ecommerce plugins WooCommerce, MarketPress, Ready!, Shopp
-
-= 1.1.0 =
-* Stable version of Squirrly SEO (as we just finished with the beta)
-* WordPress 3.5 compatibility
-
-Also:
-
-* Fixed the most recent SEO bugs
-* Works nice on iOS and Android in the WP apps.
-* Works in the browsers of iOS and Android devices
-* On-boarding made much better
-* From now on we ping your posts to search engines, to get fast and better indexing
-* Seamless connection and integration between Squirrly.co and WP.
-* Added stats in the dashboard.
-
-= 1.0.9 =
-* Keyword Information has been made optional
-* Added the Keyword Research bar
-* Fixed article post error
-* Fixed issues for support and profile login
-* Added the German language (de_DE)
-* Added the Romanian language (ro_RO)
-
-= 1.0.8 =
-* Added the notification bar for Squirrly Live SEO Assistant
-* Added how many words to write for keyword density in Squirrly Live SEO Assistant
-* Added copyright free images in inspiration box
-* Added the google suggestion in search box
-* Added notification if no keyword is used
-* CSS changed for mobile (tested on Android and IOS)
-* Fixed issues for javascript
-
-= 1.0.7 =
-* Fixed Seo Live Assistant bugs
-
-= 1.0.6 =
-* Automatically register on squirrly with email address
-* Fixed the fopen for remote request
-
-= 1.0.4 =
-* Fixed the register URL and Login messages
-
-= 1.0.3 =
-* Added Support and link to dashboard in Happiness bar
-* Changed the keyword suggestion design
-* Automatically add tag with the used seo keyword
-
-= 1.0.2 =
-* Fixed PHP5 version check
-* Fixed Squirrly Login for PHP 5.0 version
-* Added Heading button in Tinymce editor
-
-= 1.0.1 =
-* WordPress 3.4 compatibility
 
 
 == Credits ==
