@@ -15,7 +15,7 @@ defined('_SQ_API_URL_') ||
         define('_SQ_API_URL_', $scheme . '//api.squirrly.co/');
 
 define('_SQ_STATIC_API_URL_', $scheme . '//api.squirrly.co/static/');
-define('_SQ_SUPPORT_URL_', 'https://plus.google.com/communities/104196720668136264985');
+define('_SQ_SUPPORT_URL_', 'https://plus.google.com/u/0/+SquirrlyCo');
 
 
 /* Directories */
