@@ -106,6 +106,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 2.2.1 =
 * Fixed traffic record issue
+* Fixed SSL connection issue
 
 = 2.2.0 =
 * Added a new theme for Squirrly
