@@ -218,8 +218,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Credits ==
-Florin Muresan CEO at Squirrly
-Calin Vingan CTO at Squirrly
+Florin Muresan - CEO at Squirrly
+Calin Vingan - CTO at Squirrly
 Andreea - VP Marketing
 Cristina  - Squirrly mascot designer
 Alexandra - Content Writer
