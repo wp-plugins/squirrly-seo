@@ -108,6 +108,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed traffic record issue
 * Fixed SSL connection with the API issue
 
+
 = 2.2.0 =
 * Added a new theme for Squirrly
 * Added the 2nd version for SEO Live assistant
@@ -214,8 +215,6 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added Traffic progress monitor for each post/page
 * Added Social Impact progress monitor for each post/page
 * Added Inbound Links progress monitor for each post/page
-
-
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
