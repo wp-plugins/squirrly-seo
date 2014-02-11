@@ -47,8 +47,7 @@ class Model_SQ_Post {
         $responce = array();
         if (sizeof($exclude) > 1) {
             $exclude = join(',', $exclude);
-        }
-        else
+        } else
             $exclude = (int) $exclude;
 
         $q = trim($q, '"');
@@ -135,7 +134,7 @@ class Model_SQ_Post {
 
             if ($wpdb->get_row($sql)) {
                 $sql = "UPDATE `" . $wpdb->postmeta . "`
-                       SET `meta_value` = '" . $meta['value'] . "'
+                       SET `meta_value` = '" . addslashes($meta['value']) . "'
                        WHERE `meta_key` = '" . $meta['key'] . "' AND `post_id`=" . (int) $post_id;
             } else {
                 $sql = "INSERT INTO `" . $wpdb->postmeta . "`

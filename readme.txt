@@ -104,10 +104,14 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.2.2 =
+* Small changes in Squirrly SEO Keyword Research look
+* Fixed the snippet description issues
+* Fixed small bugs
+
 = 2.2.1 =
 * Fixed traffic record issue
 * Fixed SSL connection with the API issue
-
 
 = 2.2.0 =
 * Added a new theme for Squirrly

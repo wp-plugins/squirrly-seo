@@ -18,7 +18,7 @@ class Model_SQ_Frontend {
     private $max_title_length = 100;
 
     /** @var integer */
-    private $max_description_length = 160;
+    private $max_description_length = 170;
 
     /** @var integer */
     private $min_description_length = 70;

@@ -233,15 +233,16 @@ class SQ_Post extends SQ_FrontController {
      *
      */
     private function checkAdvMeta($post_id) {
+
         $meta = array();
         if (SQ_Tools::getIsset('sq_fp_title') || SQ_Tools::getIsset('sq_fp_description') || SQ_Tools::getIsset('sq_fp_keywords')) {
             if (SQ_Tools::getIsset('sq_fp_title'))
                 $meta[] = array('key' => 'sq_fp_title',
-                    'value' => SQ_Tools::getValue('sq_fp_title'));
+                    'value' => utf8_encode(urldecode(SQ_Tools::getValue('sq_fp_title'))));
 
             if (SQ_Tools::getIsset('sq_fp_description'))
                 $meta[] = array('key' => 'sq_fp_description',
-                    'value' => SQ_Tools::getValue('sq_fp_description'));
+                    'value' => utf8_encode(urldecode(SQ_Tools::getValue('sq_fp_description'))));
 
             if (SQ_Tools::getIsset('sq_fp_keywords'))
                 $meta[] = array('key' => 'sq_fp_keywords',

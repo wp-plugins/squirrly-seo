@@ -30,7 +30,7 @@ class SQ_Blockseo extends SQ_BlockController {
 
         if (is_array($metas))
             foreach ($metas as $key => $meta) {
-                echo 'var __' . $key . ' = "' . $meta . '";' . "\n";
+                echo 'var __' . $key . ' = "' . str_replace('"', '\"', $meta) . '";' . "\n";
             }
 
         echo '</script>';
