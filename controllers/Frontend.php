@@ -67,10 +67,9 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         }
 
         if ($theme <> '') {
-            ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                    ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
-            ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                    ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+            if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/css/frontend.css'))
+                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
         }
         //
         //show all the authors in the content
@@ -293,10 +292,12 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
             if ($this->show) {
                 // load the theme css and js in header
-                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
-                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+                if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/css/frontend.css'))
+                    ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                            ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
+                if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/js/frontend.js'))
+                    ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                            ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
 
                 if (!is_author())
                     ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')

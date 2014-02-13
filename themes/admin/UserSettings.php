@@ -84,7 +84,8 @@
                 <div id="abh_box_preview"><?php
                     if ($theme == 'default')
                         $theme = ABH_Classes_Tools::getOption('abh_theme');
-                    echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
+                    if (file_exists((_ABH_ALL_THEMES_DIR_ . $theme . '/js/frontend.js')))
+                        echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
                     echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
 
                     echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($view->user->ID);

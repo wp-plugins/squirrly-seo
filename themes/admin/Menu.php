@@ -83,7 +83,8 @@
 
                     <div id="abh_box_preview_title"><?php _e('Preview mode for the default theme', _ABH_PLUGIN_NAME_); ?></div>
                     <div id="abh_box_preview"><?php
-                        echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . ABH_Classes_Tools::getOption('abh_theme') . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
+                        if (file_exists(_ABH_ALL_THEMES_DIR_ . ABH_Classes_Tools::getOption('abh_theme') . '/js/frontend.js'))
+                            echo '<script type="text/javascript" src="' . _ABH_ALL_THEMES_URL_ . ABH_Classes_Tools::getOption('abh_theme') . '/js/frontend.js?ver=' . ABH_VERSION . '"></script>';
                         echo '<link rel="stylesheet"  href="' . _ABH_ALL_THEMES_URL_ . ABH_Classes_Tools::getOption('abh_theme') . '/css/frontend.css?ver=' . ABH_VERSION . '" type="text/css" media="all" />';
                         global $current_user;
                         echo ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox($current_user->ID);
