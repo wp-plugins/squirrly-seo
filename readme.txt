@@ -104,6 +104,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.2.3 =
+* Fixed snippet encoding issue
+
 = 2.2.2 =
 * Small changes in Squirrly SEO Keyword Research look
 * Fixed the snippet description issues
