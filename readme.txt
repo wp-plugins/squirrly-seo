@@ -95,6 +95,10 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.0.2 =
+* fixed show latest posts for shortcodes
+* added show latest posts from specific category in shortcode [starbox lpc="category id"] or [starbox lpc="category name"]
+
 = 2.0.1 =
 * Fixed css for more themes
 * Fixed hide from all posts in WP 3.8.1 issue

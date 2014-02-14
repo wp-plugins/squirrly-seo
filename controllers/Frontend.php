@@ -45,7 +45,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             if (!in_array($theme, ABH_Classes_Tools::getOption('abh_themes')))
                 $theme = '';
         }
-
         if (isset($lpc)) {
             $this->model->category = $lpc;
         }
@@ -55,9 +54,10 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
             //get the author details settings
             $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
-            $theme = ($theme == '') ? $this->model->details['abh_theme'] : $theme;
-        } else
-            $theme = ($theme == '') ? ABH_Classes_Tools::getOption('abh_theme') : $theme;
+            $theme = ($theme == '' || $this->model->details['abh_theme'] <> 'default') ? $this->model->details['abh_theme'] : $theme;
+        }
+
+        $theme = ($theme == '' || $theme == 'default' ) ? ABH_Classes_Tools::getOption('abh_theme') : $theme;
 
 
         //remove the multiple new lines from custom description
@@ -66,23 +66,17 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             $desc = preg_replace('/(<br[^>]*>)+/i', "", $desc);
         }
 
-        if ($theme <> '') {
-            if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/css/frontend.css'))
-                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
-            if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/js/frontend.js'))
-                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
-                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
-        }
         //
         //show all the authors in the content
 
         if ($id === 'all') {
-
             $args = array(
                 'orderyby' => 'post_count',
                 'order' => 'DESC'
             );
+
+            $theme = ABH_Classes_Tools::getOption('abh_theme');
+
             $users = get_users($args);
             foreach ($users as $user) {
                 $details = ABH_Classes_Tools::getOption('abh_author' . $user->ID);
@@ -91,13 +85,18 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                 if (!$force && (!is_single() && !is_singular()))
                     break; //don't show multiple authors in post list
             }
-
-            return $str;
         } elseif (!is_numeric($id)) {
-            if (strpos($id, ',') !== false)
+            if (strpos($id, ',') !== false) {
                 $show_list = @preg_split("/,/", $id);
-            else
+                $theme = ABH_Classes_Tools::getOption('abh_theme');
+            } else {
                 $show_list = array($id);
+                $this->model->author = get_userdatabylogin($id);
+
+                //get the author details settings
+                $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+                $theme = ($theme == '' || $this->model->details['abh_theme'] <> 'default') ? $this->model->details['abh_theme'] : $theme;
+            }
 
             $args = array(
                 'orderyby' => 'post_count',
@@ -116,11 +115,22 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
                         break; //don't show multiple authors in post list
                 }
             }
-            return $str;
+            $str;
         }
         else {
-            return ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id, $desc);
+            $str = ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showBox((int) $id, $desc);
         }
+
+        if ($theme <> '') {
+            if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/css/frontend.css'))
+                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/css/frontend.css'); //load the css and js for frontend
+            if (file_exists(_ABH_ALL_THEMES_DIR_ . $theme . '/js/frontend.js'))
+                ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
+                        ->loadMedia(_ABH_ALL_THEMES_URL_ . $theme . '/js/frontend.js'); //load the css and js for frontend
+        }
+
+        return $str;
     }
 
     public function hookShortWidgetStarbox($content) {

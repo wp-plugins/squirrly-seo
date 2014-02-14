@@ -223,16 +223,20 @@ class ABH_Models_Frontend {
 
         while ($latest_posts->have_posts()) : $latest_posts->the_post();
 
-            if (isset($this->category)) {
+            if (isset($this->category) && $this->category <> '') {
                 $found = false;
                 $categories = get_the_category();
                 foreach ($categories as $category) {
                     if (!is_numeric($this->category)) {
-                        if ($this->category == $category->name)
+                        if ($this->category == $category->name) {
                             $found = true;
-                    }elseif (is_numeric($this->category)) {
-                        if ($this->category == $category->cat_ID)
-                            $found = true;;
+                            break;
+                        }
+                    } elseif (is_numeric($this->category)) {
+                        if ($this->category == $category->cat_ID) {
+                            $found = true;
+                            break;
+                        }
                     }
                 }
                 if (!$found)
@@ -327,5 +331,4 @@ class ABH_Models_Frontend {
     }
 
 }
-
 ?>
