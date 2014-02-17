@@ -29,6 +29,79 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * @param string $content
      * @return string
      */
+    public function hookShortStarboximg($param) {
+        global $post;
+        $id = 0;
+
+        if (isset($post->ID))
+            $this->custom[$post->ID] = true;
+
+        extract(shortcode_atts(array('id' => 0), $param));
+
+        if ((int) $id > 0) {
+            $this->model->author = get_userdata((int) $id);
+            //get the author details settings
+            $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+        }
+
+        if ($id === 'all') {
+            $args = array(
+                'orderyby' => 'post_count',
+                'order' => 'DESC'
+            );
+
+            $theme = ABH_Classes_Tools::getOption('abh_theme');
+
+            $users = get_users($args);
+            foreach ($users as $user) {
+                $details = ABH_Classes_Tools::getOption('abh_author' . $user->ID);
+                if (!isset($details['abh_use']) || $details['abh_use'])
+                    $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showStarboximg($user->ID);
+                if (!$force && (!is_single() && !is_singular()))
+                    break; //don't show multiple authors in post list
+            }
+        } elseif (!is_numeric($id)) {
+            if (strpos($id, ',') !== false) {
+                $show_list = @preg_split("/,/", $id);
+            } else {
+                $show_list = array($id);
+                $this->model->author = get_userdatabylogin($id);
+
+                //get the author details settings
+                $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+            }
+
+            $args = array(
+                'orderyby' => 'post_count',
+                'order' => 'DESC',
+            );
+
+            $users = get_users($args);
+            foreach ($users as $user) {
+                // show mutiple authors in one shortcode
+                if (in_array($user->user_login, $show_list) || in_array($user->ID, $show_list)) {
+
+                    $details = ABH_Classes_Tools::getOption('abh_author' . $user->ID);
+                    if (!isset($details['abh_use']) || $details['abh_use'])
+                        $str .= ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showStarboximg($user->ID);
+                    if (!$force && (!is_single() && !is_singular()))
+                        break; //don't show multiple authors in post list
+                }
+            }
+            $str;
+        }
+        else {
+            $str = ABH_Classes_ObjController::getController('ABH_Controllers_Frontend')->showStarboximg((int) $id);
+        }
+
+        return $str;
+    }
+
+    /**
+     * Called on shortcode+
+     * @param string $content
+     * @return string
+     */
     public function hookShortStarbox($param, $force = false) {
         global $post;
         $id = 0;
@@ -224,6 +297,41 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
         $this->model->position = 'custom';
         return $this->getBox();
+    }
+
+    /**
+     * If called it will return the author image or the gravatar img
+     * @param int $author_id (optional) The author ID
+     * @return string
+     */
+    public function showStarboximg($author_id = 0) {
+        if ($author_id == 0) {
+            global $wp_query;
+            if (!empty($wp_query->posts))
+                foreach ($wp_query->posts as $post) {
+                    if ($post->ID && get_post_status($post->ID) == 'publish') {
+                        // Get the author data
+                        $post = get_post($post->ID);
+                        break;
+                    }
+                }
+            // cancel on errors
+            if (!isset($post) || !isset($post->post_author))
+                return;
+
+            // get the author data
+            if (is_author())
+                $this->model->author = get_queried_object();
+            else
+                $this->model->author = get_userdata($post->post_author);
+        }else {
+            $this->model->author = get_userdata($author_id);
+        }
+
+        //get the author details settings
+        $this->model->details = ABH_Classes_Tools::getOption('abh_author' . $this->model->author->ID);
+
+        return $this->model->getProfileImage();
     }
 
     /**

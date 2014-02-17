@@ -22,6 +22,7 @@
         <name>ABH_Controllers_Frontend</name>
         <shortcodes>
             <shortcode>starbox</shortcode>
+            <shortcode>starboximg</shortcode>
         </shortcodes>
         <active>1</active>
     </block>
