@@ -37,6 +37,7 @@ class ABH_Models_Frontend {
                                 <div class="abh_tab_content">' .
                     $this->showAuthorDescription() .
                     $this->showAuthorPosts() . '
+                                ' . ((ABH_Classes_Tools::getOption('abh_powered_by') == 1) ? '<div class="abh_pwb"><a href="http://wordpress.org/plugins/starbox/" target="_blank" title="Starbox - Author Box">' . __('Powered by Starbox', _ABH_PLUGIN_NAME_) . '</a></div>' : '') . '
                                 </div>
                          </div>';
 
@@ -69,9 +70,9 @@ class ABH_Models_Frontend {
                     </div>
                     <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
-                        <h3 class="fn name">' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank">' . $this->author->display_name . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url">' . $this->author->display_name . '</a>' ) . '</h3>
-                        <div class="abh_job">' . (($this->details['abh_title'] <> '' && $this->details['abh_company'] <> '') ? '<span class="title">' . $this->details['abh_title'] . '</span> ' . __('at', _ABH_PLUGIN_NAME_) . ' <span class="org">' . (($this->details['abh_company_url'] <> '') ? sprintf('<a href="%s" target="_blank">%s</a>', $this->details['abh_company_url'], $this->details['abh_company']) : $this->details['abh_company']) . '</span>' : '') . '</div>
-                        <div class="description note abh_description">' . ((isset($this->details['abh_extra_description']) && $this->details['abh_extra_description'] <> '') ? nl2br($this->details['abh_extra_description']) : nl2br($this->author->user_description)) . '</div>
+                        <h3 class="fn name" ' . ((ABH_Classes_Tools::getOption('abh_titlefontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_titlefontsize') . ' !important;"' : '') . '>' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank">' . $this->author->display_name . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url">' . $this->author->display_name . '</a>' ) . '</h3>
+                        <div class="abh_job" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_descfontsize') . ' !important;"' : '') . '>' . (($this->details['abh_title'] <> '' && $this->details['abh_company'] <> '') ? '<span class="title" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_descfontsize') . ' !important;"' : '') . '>' . $this->details['abh_title'] . '</span> ' . __('at', _ABH_PLUGIN_NAME_) . ' <span class="org" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_descfontsize') . ' !important;"' : '') . '>' . (($this->details['abh_company_url'] <> '') ? sprintf('<a href="%s" target="_blank">%s</a>', $this->details['abh_company_url'], $this->details['abh_company']) : $this->details['abh_company']) . '</span>' : '') . '</div>
+                        <div class="description note abh_description" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_descfontsize') . ' !important;"' : '') . '>' . ((isset($this->details['abh_extra_description']) && $this->details['abh_extra_description'] <> '') ? nl2br($this->details['abh_extra_description']) : nl2br($this->author->user_description)) . '</div>
                     </div>
                </section>';
         return $content;
@@ -89,8 +90,8 @@ class ABH_Models_Frontend {
                     </div>
                     <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
-                        <h4>' . sprintf(__('Latest posts by %s', _ABH_PLUGIN_NAME_), $this->author->display_name) . ' <span class="abh_allposts">(<a href="' . get_author_posts_url($this->author->ID) . '">' . __('see all', _ABH_PLUGIN_NAME_) . '</a>)</span></h4>
-                        <div class="abh_description note">' . $this->getLatestPosts() . '</div>
+                        <h4 ' . ((ABH_Classes_Tools::getOption('abh_titlefontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_titlefontsize') . ' !important;"' : '') . '>' . sprintf(__('Latest posts by %s', _ABH_PLUGIN_NAME_), $this->author->display_name) . ' <span class="abh_allposts">(<a href="' . get_author_posts_url($this->author->ID) . '">' . __('see all', _ABH_PLUGIN_NAME_) . '</a>)</span></h4>
+                        <div class="abh_description note" >' . $this->getLatestPosts() . '</div>
                     </div>
                </section>';
         return $content;
@@ -246,7 +247,7 @@ class ABH_Models_Frontend {
 
             if (get_the_title() <> '')
                 $content .= '
-				<li>
+				<li ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') <> 'default') ? 'style="font-size:' . ABH_Classes_Tools::getOption('abh_descfontsize') . ' !important;"' : '') . ' >
 					<a href="' . get_permalink() . '">' . get_the_title() . '</a>' .
                         (((int) get_the_time('U') > 0) ? '<span> - ' . @date_i18n(get_option('date_format'), (int) get_the_time('U')) . '</span>' : '') . '
 				</li>';
@@ -331,4 +332,5 @@ class ABH_Models_Frontend {
     }
 
 }
+
 ?>

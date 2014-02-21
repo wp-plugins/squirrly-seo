@@ -110,6 +110,11 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
             case 'abh_get_box':
                 $user_id = ABH_CLasses_Tools::getValue('user_id');
                 $theme = ABH_CLasses_Tools::getValue('abh_theme');
+
+
+                ABH_CLasses_Tools::setOption('abh_titlefontsize', ABH_CLasses_Tools::getValue('abh_titlefontsize', 'default'));
+                ABH_CLasses_Tools::setOption('abh_descfontsize', ABH_CLasses_Tools::getValue('abh_descfontsize', 'default'));
+
                 if ($theme == 'default')
                     $theme = ABH_Classes_Tools::getOption('abh_theme');
 

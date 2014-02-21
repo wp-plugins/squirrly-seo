@@ -83,6 +83,9 @@ class ABH_Controllers_Menu extends ABH_Classes_FrontController {
             case 'abh_settings_subscribe':
                 ABH_Classes_Tools::saveOptions('abh_subscribe', 1);
                 break;
+            case 'abh_powered_by':
+                ABH_Classes_Tools::saveOptions('abh_powered_by', ABH_Classes_Tools::getValue('abh_powered_by'));
+                break;
         }
     }
 

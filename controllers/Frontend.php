@@ -51,6 +51,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             );
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
+            ABH_Classes_Tools::setOption('abh_powered_by', 0); //down show powered by for too many
 
             $users = get_users($args);
             foreach ($users as $user) {
@@ -63,6 +64,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         } elseif (!is_numeric($id)) {
             if (strpos($id, ',') !== false) {
                 $show_list = @preg_split("/,/", $id);
+                ABH_Classes_Tools::setOption('abh_powered_by', 0); //down show powered by for too many
             } else {
                 $show_list = array($id);
                 $this->model->author = get_userdatabylogin($id);
@@ -149,6 +151,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             );
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
+            ABH_Classes_Tools::setOption('abh_powered_by', 0); //down show powered by for too many
 
             $users = get_users($args);
             foreach ($users as $user) {
@@ -162,6 +165,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
             if (strpos($id, ',') !== false) {
                 $show_list = @preg_split("/,/", $id);
                 $theme = ABH_Classes_Tools::getOption('abh_theme');
+                ABH_Classes_Tools::setOption('abh_powered_by', 0); //down show powered by for too many
             } else {
                 $show_list = array($id);
                 $this->model->author = get_userdatabylogin($id);

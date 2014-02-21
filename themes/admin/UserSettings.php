@@ -162,6 +162,18 @@
                         </div>
                         <span><?php _e('Add rel="nofollow" to Social links', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
+
+                    <div class="abh_option_content">
+                        <div class="abh_switch">
+                            <input id="abh_powered_by_on" type="radio" class="abh_switch-input abh_powered_by" name="abh_powered_by"  value="1" <?php echo (($view->author['abh_powered_by'] == 0) ? "checked" : '') ?> />
+                            <label for="abh_powered_by_on" class="abh_switch-label abh_switch-label-off"><?php _e('Yes', _ABH_PLUGIN_NAME_); ?></label>
+                            <input id="abh_powered_by_off" type="radio" class="abh_switch-input abh_powered_by" name="abh_powered_by" value="0" <?php echo ((!$view->author['abh_powered_by'] == 0) ? "checked" : '') ?> />
+                            <label for="abh_powered_by_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
+                            <span class="abh_switch-selection"></span>
+                        </div>
+                        <span><?php _e('Show "Powered by Starbox"', _ABH_PLUGIN_NAME_); ?></span>
+                    </div>
+
                 </div>
             </fieldset>
 

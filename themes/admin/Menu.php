@@ -66,8 +66,6 @@
                     </div>
 
                     <div class="abh_option_content">
-
-
                         <div class="abh_select">
                             <select id="abh_theme_select" name="abh_theme">
                                 <?php
@@ -78,6 +76,30 @@
                             </select>
                         </div>
                         <span><?php _e('Choose the default theme to be displayed <strong>inside each blog article</strong>', _ABH_PLUGIN_NAME_); ?></span>
+                    </div>
+
+                    <div class="abh_option_content">
+                        <div class="abh_select">
+                            <select id="abh_titlefontsize_select" name="abh_titlefontsize">
+                                <?php
+                                foreach (ABH_Classes_Tools::getOption('abh_titlefontsizes') as $name) {
+                                    echo '<option value="' . $name . '" ' . ((ABH_Classes_Tools::getOption('abh_titlefontsize') == $name) ? 'selected="selected"' : '') . ' >' . $name . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <span><?php _e('Choose the size of the name', _ABH_PLUGIN_NAME_); ?></span>
+
+                        <div class="abh_select">&nbsp;
+                            <select id="abh_descfontsize_select" name="abh_descfontsize">
+                                <?php
+                                foreach (ABH_Classes_Tools::getOption('abh_descfontsizes') as $name) {
+                                    echo '<option value="' . $name . '" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') == $name) ? 'selected="selected"' : '') . ' >' . $name . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <span><?php _e('Choose the size of the description', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
 
 
@@ -116,7 +138,7 @@
                             <label for="abh_shortcode_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
                             <span class="abh_switch-selection"></span>
                         </div>
-                        <span><?php echo __('Check for <strong>[starbox]</strong> shortcode in my blog.', _ABH_PLUGIN_NAME_); ?></span>
+                        <span><?php echo sprintf(__('Check for <strong>[starbox]</strong> shortcode in my blog. %sRead more >>%s', _ABH_PLUGIN_NAME_), '<a href="http://wordpress.org/plugins/starbox/faq/" target="_blank">', '</a>'); ?> </span>
                     </div>
                 </fieldset>
 

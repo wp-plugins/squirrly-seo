@@ -84,12 +84,15 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
             'abh_ineachpost' => 0,
             'abh_showopengraph' => 1,
             'abh_shortcode' => 1,
+            'abh_powered_by' => 1,
             // --
             'abh_position' => 'down',
             'anh_crt_posts' => 3,
             'abh_author' => array(),
             'abh_theme' => 'business',
             'abh_achposttheme' => 'drop-down',
+            'abh_titlefontsize' => 'default',
+            'abh_descfontsize' => 'default',
         );
         $options = json_decode(get_option(ABH_OPTION), true);
 
@@ -101,7 +104,15 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
 
         $options['abh_themes'] = array('business', 'fancy', 'minimal', 'drop-down', 'topstar', 'topstar-round');
         $options['abh_achpostthemes'] = array('drop-down', 'topstar', 'topstar-round');
+        $options['abh_titlefontsizes'] = array('default', '10px', '12px', '14px', '16px', '18px', '20px', '24px', '26px', '30px');
+        $options['abh_descfontsizes'] = array('default', '10px', '12px', '14px', '16px', '18px', '20px', '24px', '26px', '30px');
+
         return $options;
+    }
+
+    public static function setOption($value, $new) {
+        self::$options[$value] = $new;
+        return self::$options[$value];
     }
 
     public static function getOption($value) {
@@ -372,8 +383,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
         if (function_exists('func_get_args')) {
             $arguments = func_get_args();
             $total_arguments = count($arguments);
-        }
-        else
+        } else
             $arguments = array();
 
 
@@ -388,7 +398,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
         $i = 0;
         foreach ($arguments as $argument) {
             if (count($arguments) > 1)
-                $output .= "\n" . '<strong>#' . (++$i ) . ' of ' . $total_arguments . '</strong>: ';
+                $output .= "\n" . '<strong>#' . ( ++$i ) . ' of ' . $total_arguments . '</strong>: ';
 
             // if argument is boolean, false value does not display, so ...
             if (is_bool($argument))
