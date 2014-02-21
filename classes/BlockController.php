@@ -76,6 +76,9 @@ class ABH_Classes_BlockController {
      * @return void
      */
     protected function hookHead() {
+        if (!is_admin()) //this hook is for admin panel only
+            return;
+
         if ($class = ABH_Classes_ObjController::getClassPath($this->name)) {
             ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                     ->loadMedia($class['name']);

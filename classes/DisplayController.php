@@ -65,7 +65,7 @@ class ABH_Classes_DisplayController {
             if (wp_script_is($name))
                 wp_deregister_script($name);
 
-            wp_register_script($name, $js_uri, null, ABH_VERSION);
+            wp_register_script($name, $js_uri, array('jquery'), ABH_VERSION, true);
             wp_enqueue_script($name);
         }
     }

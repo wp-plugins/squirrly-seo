@@ -80,6 +80,31 @@
                     <span><?php _e('This Author\'s theme', _ABH_PLUGIN_NAME_); ?></span>
 
                 </div>
+
+                <div class="abh_option_content" style="display: none">
+                    <div class="abh_select">
+                        <select id="abh_titlefontsize_select" name="abh_titlefontsize">
+                            <?php
+                            foreach (ABH_Classes_Tools::getOption('abh_titlefontsizes') as $name) {
+                                echo '<option value="' . $name . '" ' . ((ABH_Classes_Tools::getOption('abh_titlefontsize') == $name) ? 'selected="selected"' : '') . ' >' . $name . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <span><?php _e('Choose the size of the name', _ABH_PLUGIN_NAME_); ?></span>
+
+                    <div class="abh_select">&nbsp;
+                        <select id="abh_descfontsize_select" name="abh_descfontsize">
+                            <?php
+                            foreach (ABH_Classes_Tools::getOption('abh_descfontsizes') as $name) {
+                                echo '<option value="' . $name . '" ' . ((ABH_Classes_Tools::getOption('abh_descfontsize') == $name) ? 'selected="selected"' : '') . ' >' . $name . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <span><?php _e('Choose the size of the description', _ABH_PLUGIN_NAME_); ?></span>
+                </div>
+
                 <div id="abh_box_preview_title"><?php _e('Preview mode (change the theme)', _ABH_PLUGIN_NAME_); ?></div>
                 <div id="abh_box_preview"><?php
                     if ($theme == 'default')

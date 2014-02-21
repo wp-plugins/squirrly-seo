@@ -10,7 +10,6 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
     function __construct() {
         parent::__construct();
-
         $this->shortcode = '/\[starbox([\s+][^\]]+)*\]/i';
     }
 
