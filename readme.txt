@@ -95,6 +95,9 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.0.3 =
+* Added Font Size option for the name and description
+
 = 2.0.2 =
 * fixed show latest posts for shortcodes
 * added show latest posts from specific category in shortcode [starbox lpc="category id"] or [starbox lpc="category name"]
