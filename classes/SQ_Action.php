@@ -119,7 +119,7 @@ class SQ_Action extends SQ_FrontController {
      * @param array $args
      * @return json | string
      */
-    public static function apiCall($module, $args = array(), $timeout = 60) {
+    public static function apiCall($module, $args = array(), $timeout = 90) {
         $parameters = "";
 
         if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register')

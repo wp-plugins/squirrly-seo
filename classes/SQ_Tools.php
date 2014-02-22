@@ -21,7 +21,7 @@ class SQ_Tools extends SQ_FrontController {
 
         self::$options = $this->getOptions();
 
-        //$this->checkDebug(); //Check for debug
+        $this->checkDebug(); //Check for debug
     }
 
     public static function getUserID() {

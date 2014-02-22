@@ -2,7 +2,7 @@
 (function(){var SQ=this;if(typeof this.sq_dashurl=='undefined')
 if(typeof sq_dashurl!=='undefined')
 this.sq_dashurl=sq_dashurl;else
-this.sq_dashurl='http://my.squirrly.co/';if(typeof this.__token=='undefined'&&typeof __token!=='undefined')
+this.sq_dashurl='https://my.squirrly.co/';if(typeof this.__token=='undefined'&&typeof __token!=='undefined')
 this.__token=__token;if(typeof this.typenow=='undefined'&&typeof typenow!=='undefined')
 this.typenow=typenow;this.inArray=function(id,array){if(array.length==0)
 return false;for(var i=0;i<array.length;i++){if(array[i]==id){return true;}}
