@@ -91,6 +91,14 @@ class SQ_Menu extends SQ_FrontController {
                 ));
             }
             $this->model->addSubmenu(array($first_page,
+                __('Seo audit by ', _PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
+                __('Seo audit', _PLUGIN_NAME_),
+                'edit_posts',
+                'sq_audit',
+                array(SQ_ObjController::getBlock('SQ_BlockAudit'), 'init')
+            ));
+
+            $this->model->addSubmenu(array($first_page,
                 __('Make money with ', _PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
                 __('Make money', _PLUGIN_NAME_),
                 'edit_posts',
