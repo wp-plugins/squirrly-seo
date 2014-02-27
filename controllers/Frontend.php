@@ -346,6 +346,11 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         }
     }
 
+    //used for some themes
+    public function hookFronthead1() {
+        $this->hookFronthead();
+    }
+
     /**
      * Hook the Frontend Header load
      */
