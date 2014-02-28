@@ -407,14 +407,17 @@ class Model_SQ_Frontend {
         if (!$post)
             return false;
 
-        preg_match('/(https?:)?\/\/(?:[0-9A-Z-]+\.)?(?:(youtube|youtu)(?:-nocookie)?\.(com|be)\/(?:[^"\']+))/si', $post->post_content, $match);
+        if (isset($post->post_content)) {
+            preg_match('/(https?:)?\/\/(?:[0-9A-Z-]+\.)?(?:(youtube|youtu)(?:-nocookie)?\.(com|be)\/(?:[^"\']+))/si', $post->post_content, $match);
 
-        if (strpos($match[0], '//') !== false && strpos($match[0], 'http') === false)
-            $match[0] = 'http:' . $match[0];
+            if (isset($match[0]))
+                if (strpos($match[0], '//') !== false && strpos($match[0], 'http') === false)
+                    $match[0] = 'http:' . $match[0];
 
-        if (empty($match))
+            if (empty($match))
+                return;
+        } else
             return;
-
 
         return $match[0];
     }

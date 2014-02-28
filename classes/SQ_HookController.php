@@ -28,7 +28,6 @@ class SQ_HookController {
             'frontfooter' => 'wp_footer',
             'frontcontent' => 'the_content',
         );
-        $this->custom_hooks = array();
         $this->block_hooks = array('getContent' => 'getContent');
     }
 
@@ -48,16 +47,6 @@ class SQ_HookController {
                 //print_r(array($instance, 'hook'.ucfirst($hook)));
                 //call the WP add_action function
                 add_action($value, array($instance, 'hook' . ucfirst($hook)), 5);
-            }
-        }
-
-        /* for each custom action check if is defined in class and call it */
-        foreach ($this->custom_hooks as $hook => $value) {
-
-            if (is_callable(array($instance, 'hook' . ucfirst($hook)))) {
-                //call the controller custom hook function
-
-                call_user_func(array($instance, 'hook' . ucfirst($hook)));
             }
         }
     }
