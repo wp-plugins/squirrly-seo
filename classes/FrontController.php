@@ -34,8 +34,16 @@ class ABH_Classes_FrontController {
         $this->model = ABH_Classes_ObjController::getModel($this->name);
         //IMPORTANT TO LOAD HOOKS HERE
         /* check if there is a hook defined in the controller clients class */
-        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->setAdminHooks($this);
+
+        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->setHooks($this);
         ABH_Classes_ObjController::getController('ABH_Classes_HookController')->getShortcodes($this);
+    }
+
+    /**
+     * Hook the Init in Frontend
+     */
+    public function hookFrontinit() {
+        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->setFrontHooks($this);
     }
 
     /**
@@ -54,8 +62,6 @@ class ABH_Classes_FrontController {
         /* load the blocks for this controller */
 
         ABH_Classes_ObjController::getController('ABH_Classes_ObjController')->getBlocks($this->name);
-
-        $this->hookHead();
     }
 
     protected function output() {
@@ -114,6 +120,7 @@ class ABH_Classes_FrontController {
         if (!is_admin()) //this hook is for admin panel only
             return;
 
+        //execute this only if admin
         if ($class = ABH_Classes_ObjController::getClassPath($this->name)) {
             ABH_Classes_ObjController::getController('ABH_Classes_DisplayController')
                     ->loadMedia($class['name']);

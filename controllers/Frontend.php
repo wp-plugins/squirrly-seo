@@ -344,11 +344,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
         if (isset($this->model->details) && $this->model->details['abh_google'] <> '') {
             remove_action('wp_head', 'author_rel_link');
         }
-    }
-
-    //used for some themes
-    public function hookFronthead1() {
-        $this->hookFronthead();
+        parent::hookFrontinit();
     }
 
     /**

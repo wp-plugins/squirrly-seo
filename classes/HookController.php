@@ -13,7 +13,6 @@ class ABH_Classes_HookController {
 
     public function __construct() {
         $this->admin_hooks = array(
-            'init' => 'admin_init',
             'head' => 'admin_head',
             'footer' => 'admin_footer',
             // --
@@ -23,15 +22,15 @@ class ABH_Classes_HookController {
             'loaded' => 'plugins_loaded',
             'scripts' => 'admin_enqueue_scripts',
             'notices' => 'admin_notices',
+                // --
+        );
+        $this->front_hooks = array(
             // --
-            'frontinit' => 'init',
             'fronthead' => 'wp_head',
-            'fronthead1' => 'get_header',
             'frontcontent' => 'the_content',
             'frontwidget' => 'widget_text',
             'frontfooter' => 'wp_footer',
         );
-        $this->custom_hooks = array();
         $this->block_hooks = array('getContent' => 'getContent');
     }
 
@@ -41,26 +40,48 @@ class ABH_Classes_HookController {
      *
      * @return void
      */
-    public function setAdminHooks($instance) {
+    public function setHooks($instance) {
+        if (is_admin()) {
+            add_action('admin_init', array($instance, 'hookInit'));
+            $this->setAdminHooks($instance);
+        } else {
+            add_action('init', array($instance, 'hookFrontinit'));
+        }
+    }
 
+    /**
+     * Calls the specified action in WP
+     * @param oject $instance The parent class instance
+     *
+     * @return void
+     */
+    public function setAdminHooks($instance) {
+        if (!is_admin())
+            return;
         /* for each admin action check if is defined in class and call it */
         foreach ($this->admin_hooks as $hook => $value) {
 
             if (is_callable(array($instance, 'hook' . ucfirst($hook)))) {
-                //echo $value . '<br>';
-                //print_r(array($instance, 'hook'.ucfirst($hook)));
                 //call the WP add_action function
-                add_action($value, array($instance, 'hook' . ucfirst($hook)), 10);
+                add_action($value, array($instance, 'hook' . ucfirst($hook)));
             }
         }
+    }
 
-        /* for each custom action check if is defined in class and call it */
-        foreach ($this->custom_hooks as $hook => $value) {
+    /**
+     * Calls the specified action in WP
+     * @param oject $instance The parent class instance
+     *
+     * @return void
+     */
+    public function setFrontHooks($instance) {
+
+        /* for each admin action check if is defined in class and call it */
+        foreach ($this->front_hooks as $hook => $value) {
 
             if (is_callable(array($instance, 'hook' . ucfirst($hook)))) {
-                //call the controller custom hook function
-
-                call_user_func(array($instance, 'hook' . ucfirst($hook)));
+                //call the WP add_action function
+                add_action($value, array($instance, 'hook' . ucfirst($hook)));
             }
         }
     }
