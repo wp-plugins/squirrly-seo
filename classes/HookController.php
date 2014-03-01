@@ -13,6 +13,7 @@ class ABH_Classes_HookController {
 
     public function __construct() {
         $this->admin_hooks = array(
+            'init' => 'admin_init',
             'head' => 'admin_head',
             'footer' => 'admin_footer',
             // --
@@ -22,10 +23,10 @@ class ABH_Classes_HookController {
             'loaded' => 'plugins_loaded',
             'scripts' => 'admin_enqueue_scripts',
             'notices' => 'admin_notices',
-                // --
         );
         $this->front_hooks = array(
             // --
+            'frontinit' => 'init',
             'fronthead' => 'wp_head',
             'frontcontent' => 'the_content',
             'frontwidget' => 'widget_text',
@@ -44,7 +45,7 @@ class ABH_Classes_HookController {
         if (is_admin()) {
             $this->setAdminHooks($instance);
         } else {
-            add_action('init', array($instance, 'hookFrontinit'));
+            $this->setFrontHooks($instance);
         }
     }
 

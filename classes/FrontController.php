@@ -40,13 +40,6 @@ class ABH_Classes_FrontController {
     }
 
     /**
-     * Hook the Init in Frontend
-     */
-    public function hookFrontinit() {
-        ABH_Classes_ObjController::getController('ABH_Classes_HookController')->setFrontHooks($this);
-    }
-
-    /**
      * load sequence of classes
      * Function called usualy when the controller is loaded in WP
      *
@@ -59,8 +52,8 @@ class ABH_Classes_FrontController {
         if ($this->flush)
             $this->output();
 
-        /* load the blocks for this controller */
 
+        /* load the blocks for this controller */
         ABH_Classes_ObjController::getController('ABH_Classes_ObjController')->getBlocks($this->name);
     }
 
@@ -77,10 +70,10 @@ class ABH_Classes_FrontController {
      * @return void
      */
     public function run() {
+
         /** check the admin condition */
         if (!is_admin())
             return;
-
         /* Load the Submit Actions Handler */
         ABH_Classes_ObjController::getController('ABH_Classes_Action');
         ABH_Classes_ObjController::getController('ABH_Classes_DisplayController');
