@@ -95,6 +95,11 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.0.4 =
+* Fixed hook bugs for preview and frontend
+* Update css for some themes
+* Fixed small bugs for FOnt size option
+
 = 2.0.3 =
 * Added Font Size option for the name and description
 
