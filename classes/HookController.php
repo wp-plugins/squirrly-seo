@@ -42,7 +42,6 @@ class ABH_Classes_HookController {
      */
     public function setHooks($instance) {
         if (is_admin()) {
-            add_action('admin_init', array($instance, 'hookInit'));
             $this->setAdminHooks($instance);
         } else {
             add_action('init', array($instance, 'hookFrontinit'));
