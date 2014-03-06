@@ -2,7 +2,7 @@
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio
 Requires at least: 3.1
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EBVRXTDRTJH2W&lc=US&item_name=StarBox%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 
@@ -99,6 +99,7 @@ So get your very own Starbox now:
 * Fixed hook bugs for preview and frontend
 * Update css for some themes
 * Fixed small bugs for FOnt size option
+* Works with W3 Total Cache and Super Cache
 
 = 2.0.3 =
 * Added Font Size option for the name and description
@@ -178,3 +179,6 @@ You can use startbox shortcode at the bottom of the content like this:
 or
 [starbox id="1,2..n"] where 1,2, .. n are the ID of the authors
 
+= How do I hide Powered by Starbox? =
+
+Go to your use profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
