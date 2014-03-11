@@ -10,6 +10,14 @@ Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And
 == Description ==
 Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.
 
+Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this tool, and by measuring and improving as advized by our tool.
+
+All-In-All :: Squirrly SEO will help you get a tool that acts like an Expert Consultant, sitting right next to you, advising on SEO, and telling you where you need to improve.
+
+Squirrly is a Freemium software, like MailChimp.
+
+You’ll start with the free version of Squirrly SEO. It will help you if you have small content marketing needs, such as 5 articles published / month, 5 keyword analysis and a weekly audit report. When you'll require more, you can pay for the PRO Plan.
+
 - <strong>Gives You SEO Advice as you're typing your articles.</strong> Squirrly helps you in real time to optimize your articles to 100%, while you are writing or editing them.
 
 - <strong>Optimized articles get +285% traffic,</strong> on average (real statistics from over 16,500 people who participated in the survey).
@@ -227,9 +235,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Credits ==
 Florin Muresan - CEO at Squirrly
 Calin Vingan - CTO at Squirrly
-Andreea - VP Marketing
-Cristina  - Squirrly mascot designer
-Alexandra - Content Writer
+Andreea Leau - VP Marketing
+Cristina Leau  - Squirrly mascot designer
+Alexandra Nicola - Content Writer
 
 Investors:
 Ibrahim Evsan, serial entrepreneur, one of the best known bloggers in Germany
@@ -256,8 +264,7 @@ Based on your article, Squirrly will find the most relevant text and add it in t
 You can opt-in to use the Advanced SEO Settings, which will allow you to customize how the META Title and Description will be. All while writing or editing your article.
 
 = Is Squirrly SEO Plugin free? =
-Yes, you just have to install the plugin from the WP directory into your site. Then connect with your email to Squirrly. The Free Version will automatically start.
-Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
+Yes, you just have to install the plugin from the WP directory into your site. Then connect with your email to Squirrly. The Free Version will automatically start. Read below for more. Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
 
 = Does the Free Plan offer all the features? =
 Yes. As of January 2014 all the features are also included in the free plan. There is NO trial period, NO other features that can be activated by paying money for the plugin. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing. These are the blogs on which owners want to publish about 5 articles / month, analyze 5 different seo keywords, need a general Audit of their whole site and want to see the SEO analytics for their last posts.
