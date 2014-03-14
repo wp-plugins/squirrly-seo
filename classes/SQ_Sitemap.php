@@ -259,8 +259,6 @@ class SQ_Sitemap extends SQ_FrontController {
         return $this->render();
     }
 
-# end function
-
     /**
      * Push new info to array
      *
@@ -358,8 +356,6 @@ class SQ_Sitemap extends SQ_FrontController {
 
         return false;
     }
-
-# end function
 
     /**
      * Returns the URL for the XML sitemap file
