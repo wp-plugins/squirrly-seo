@@ -137,7 +137,7 @@
                 <legend><?php _e('Social settings:', _ABH_PLUGIN_NAME_); ?></legend>
 
                 <div id="abh_option_subscribe" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 1) echo 'style="display:none"'; ?>>
-                    <div id="abh_subscribe"><?php _e('To unlock social fields please enter your email (only one email required per entire site):', _ABH_PLUGIN_NAME_); ?></div>
+                    <div id="abh_subscribe"><?php _e('To unlock social fields and hide the "Powered By" link please enter your email (only one email required per entire site):', _ABH_PLUGIN_NAME_); ?></div>
                     <div id="abh_subscribe_social">
                         <span class="abh_social_settings abh_twitter"></span>
                         <span class="abh_social_settings abh_facebook"></span>
