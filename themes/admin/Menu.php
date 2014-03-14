@@ -1,6 +1,6 @@
 <div id="abh_settings" >
     <form id="abh_settings_form" name="settings" action="" method="post" enctype="multipart/form-data">
-        <div id="abh_settings_title" ><?php _e('StartBox Settings', _ABH_PLUGIN_NAME_); ?><a href="http://wordpress.org/support/view/plugin-reviews/starbox" target="_blank"><span class="abh_settings_rate" ><span></span><?php _e('Please support us on Wordpress', _ABH_PLUGIN_NAME_); ?></span></a></div>
+        <div id="abh_settings_title" ><?php _e('StarBox Settings', _ABH_PLUGIN_NAME_); ?><a href="http://wordpress.org/support/view/plugin-reviews/starbox" target="_blank"><span class="abh_settings_rate" ><span></span><?php _e('Please support us on Wordpress', _ABH_PLUGIN_NAME_); ?></span></a></div>
         <div id="abh_settings_body">
             <div id="abh_settings_left" >
 
