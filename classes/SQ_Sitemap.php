@@ -25,16 +25,14 @@ class SQ_Sitemap extends SQ_FrontController {
         $this->args['timeout'] = 5;
         $this->opt = array('home' => array(1, 'daily'),
             'page' => array(0.6, 'monthly'),
-            'post' => array(0.6, 'monthly'),
+            'post' => array(0.8, 'weekly'),
             'static' => array(0.6, 'weekly'),
             'category' => array(0.4, 'monthly'),
-            'archive' => array(0.3, 'daily'),
+            'archive' => array(0.3, 'weekly'),
             'oldarchive' => array(0.3, 'monthly'),
             'tag' => array(0.3, 'weekly'),
-            'author' => array(0.3, 'weekly'),
+            'author' => array(0.3, 'monthly'),
         );
-
-
 
         //Existing posts was deleted
         add_action('delete_post', array($this, 'generateSitemap'), 9999, 1);
@@ -70,8 +68,7 @@ class SQ_Sitemap extends SQ_FrontController {
                 $lastmod = ($page->post_modified_gmt && $page->post_modified_gmt != '0000-00-00 00:00:00' ? $page->post_modified_gmt : $page->post_date_gmt);
                 $this->addLine($home, $this->getTimestamp($lastmod), $this->opt['home'][1], $this->opt['home'][0]);
             }
-        }
-        else
+        } else
             $this->addLine($home, $this->getTimestamp(get_lastpostmodified('GMT')), $this->opt['home'][1], $this->opt['home'][0]);
 
         /*         * ******************************************************************** */
@@ -314,18 +311,7 @@ class SQ_Sitemap extends SQ_FrontController {
 
         $this->saveSitemap($content);
 
-        $this->doPing();
         return $content;
-    }
-
-    private function doPing() {
-        //Ping Google
-        $google_url = "http://www.google.com/webmasters/sitemaps/ping?sitemap=" . urlencode($this->getXmlUrl());
-        SQ_Tools::sq_remote_get($google_url, $this->args);
-
-        //Ping Bing
-        $bing_url = "http://www.bing.com/webmaster/ping.aspx?siteMap=" . urlencode($this->getXmlUrl());
-        SQ_Tools::sq_remote_get($bing_url, $this->args);
     }
 
     /**
