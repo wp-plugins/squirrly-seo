@@ -188,7 +188,7 @@ class ABH_Models_Frontend {
                     return false;
             }
 
-            if (is_file(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) && @filemtime(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) > (time() - (3600 * 24))) {
+            if (isset($this->details['abh_klout']) && is_file(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) && @filemtime(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']) > (time() - (3600 * 24))) {
                 $data = json_decode(@file_get_contents(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout']));
             } else {
 
