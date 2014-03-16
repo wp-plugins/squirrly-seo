@@ -194,15 +194,18 @@ class ABH_Models_Frontend {
 
                 //First, we need to retreive the user's Klout ID
                 $userID = "http://api.klout.com/v2/identity.json/twitter?screenName=" . $this->details['abh_klout'] . "&key=7a8z53zg55bk2gkuuznm98xe";
-                $user = json_decode((@file_get_contents($userID)));
-                $klout = $user->id;
+                $user = json_decode(@file_get_contents($userID));
 
-                //Then, retreive the Klout score of the user, using the user's Klout ID and API key V2
-                $url_kscore = "http://api.klout.com/v2/user.json/" . $klout . "/score?key=7a8z53zg55bk2gkuuznm98xe";
-                $data = (@file_get_contents($url_kscore));
+                if (is_object($user) && isset($user->id)) {
+                    $klout = $user->id;
 
-                @file_put_contents(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout'], $data);
-                $data = json_decode($data);
+                    //Then, retreive the Klout score of the user, using the user's Klout ID and API key V2
+                    $url_kscore = "http://api.klout.com/v2/user.json/" . $klout . "/score?key=7a8z53zg55bk2gkuuznm98xe";
+                    $data = (@file_get_contents($url_kscore));
+
+                    @file_put_contents(_ABH_GRAVATAR_DIR_ . $this->details['abh_klout'], $data);
+                    $data = json_decode($data);
+                }
             }
 
             //If everything works well, then display Klout score
