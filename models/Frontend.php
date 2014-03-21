@@ -194,7 +194,9 @@ class ABH_Models_Frontend {
 
                 //First, we need to retreive the user's Klout ID
                 $userID = "http://api.klout.com/v2/identity.json/twitter?screenName=" . $this->details['abh_klout'] . "&key=7a8z53zg55bk2gkuuznm98xe";
-                $user = json_decode(@file_get_contents($userID));
+                if ($user = ABH_Classes_Tools::abh_remote_get($userID)) {
+                    $user = json_decode($user);
+                }
 
                 if (is_object($user) && isset($user->id)) {
                     $klout = $user->id;
