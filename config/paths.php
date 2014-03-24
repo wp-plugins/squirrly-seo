@@ -3,7 +3,7 @@
 $currentDir = dirname(__FILE__);
 
 define('_SQ_NAME_', 'squirrly');
-define('_PLUGIN_NAME_', 'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
+define('_SQ_PLUGIN_NAME_', 'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
 define('_THEME_NAME_', 'default'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
 
 define('_SQ_DASH_URL_', 'https://my.squirrly.co/');

@@ -119,6 +119,7 @@ class Model_SQ_BlockStatus {
 
 
 
+
 //Set the percent string to progress
         $progress['gapr'] = number_format($progress['gapr'], 0) . '%';
         $str .= '
@@ -155,5 +156,3 @@ class Model_SQ_BlockStatus {
     }
 
 }
-
-?>

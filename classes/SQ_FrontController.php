@@ -10,7 +10,7 @@ class SQ_FrontController {
     public $model;
 
     /** @var boolean */
-    private $flush = true;
+    public $flush = true;
 
     /** @var object of the view class */
     public $view;
@@ -43,19 +43,22 @@ class SQ_FrontController {
     public function init() {
 
         $this->view = SQ_ObjController::getController('SQ_DisplayController', false);
+        $this->view->setBlock($this->name);
 
-        if ($this->flush)
-            $this->output();
 
         /* load the blocks for this controller */
         SQ_ObjController::getController('SQ_ObjController', false)->getBlocks($this->name);
 
-        $this->hookHead();
+        if ($this->flush) {
+            echo $this->output();
+        } else {
+            return $this->output();
+        }
     }
 
     protected function output() {
-        /* view is called from theme directory with the class name by defauls */
-        $this->view->output($this->name, $this);
+        $this->hookHead();
+        return $this->view->echoBlock($this);
     }
 
     /**
@@ -124,5 +127,3 @@ class SQ_FrontController {
     }
 
 }
-
-?>

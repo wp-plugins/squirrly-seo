@@ -55,9 +55,9 @@ class SQ_BlockSupport extends SQ_BlockController {
 
                     //$this->error='buuum';
                     if (wp_mail(_SQ_SUPPORT_EMAIL_, $subject, $message, $headers))
-                        $return['message'] = __('Thank you for your feedback', _PLUGIN_NAME_);
+                        $return['message'] = __('Thank you for your feedback', _SQ_PLUGIN_NAME_);
                     else {
-                        $return['message'] = __('Could not send the email...', _PLUGIN_NAME_);
+                        $return['message'] = __('Could not send the email...', _SQ_PLUGIN_NAME_);
                     }
                 } else {
                     $return['message'] = __('No message.', _SQD_PLUGIN_NAME_);
@@ -90,9 +90,9 @@ class SQ_BlockSupport extends SQ_BlockController {
 
                     //$this->error='buuum';
                     if (wp_mail(_SQ_SUPPORT_EMAIL_, $subject, $message, $headers))
-                        $return['message'] = __('Message sent...', _PLUGIN_NAME_);
+                        $return['message'] = __('Message sent...', _SQ_PLUGIN_NAME_);
                     else {
-                        $return['message'] = __('Could not send the email...', _PLUGIN_NAME_);
+                        $return['message'] = __('Could not send the email...', _SQ_PLUGIN_NAME_);
                     }
                 } else {
                     $return['message'] = __('No message.', _SQD_PLUGIN_NAME_);
@@ -106,5 +106,3 @@ class SQ_BlockSupport extends SQ_BlockController {
     }
 
 }
-
-?>

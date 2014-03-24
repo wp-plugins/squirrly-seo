@@ -2,7 +2,7 @@
 
 class SQ_Blocklogin extends SQ_BlockController {
 
-    function init() {
+    public function init() {
         /* If logged in, then return */
         if (SQ_Tools::$options['sq_api'] <> '')
             return;
@@ -13,7 +13,7 @@ class SQ_Blocklogin extends SQ_BlockController {
      * Called for sq_login on Post action
      * Login or register a user
      */
-    function action() {
+    public function action() {
         parent::action();
         switch (SQ_Tools::getValue('action')) {
             //login action
@@ -44,7 +44,7 @@ class SQ_Blocklogin extends SQ_BlockController {
      * Register a new user to Squirrly and get the token
      * @global string $current_user
      */
-    function squirrlyRegister() {
+    public function squirrlyRegister() {
         global $current_user;
         //set return to null object as default
         $return = (object) NULL;
@@ -78,16 +78,15 @@ class SQ_Blocklogin extends SQ_BlockController {
                 //if an error is throw then ...
                 switch ($return->error) {
                     case 'alreadyregistered':
-                        $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly Email. If you forgot your password click %shere%s', _PLUGIN_NAME_), '<a href="' . _SQ_DASH_URL_ . 'login/?action=lostpassword" target="_blank">', '</a>');
+                        $return->info = sprintf(__('We found your email, so it means you already have a Squirrly.co account. Please login with your Squirrly Email. If you forgot your password click %shere%s', _SQ_PLUGIN_NAME_), '<a href="' . _SQ_DASH_URL_ . 'login/?action=lostpassword" target="_blank">', '</a>');
                         break;
                 }
             } else {
                 //if unknown error
-                $return->error = __('An error occured. Mabe a network error :(', _PLUGIN_NAME_);
+                $return->error = __('An error occured. Mabe a network error :(', _SQ_PLUGIN_NAME_);
             }
-        }
-        else
-            $return->error = sprintf(__('Could not send your informations to squirrly. Please register %smanually%s.', _PLUGIN_NAME_), '<a href="' . _SQ_DASH_URL_ . 'login/?action=register" target="_blank">', '</a>');
+        } else
+            $return->error = sprintf(__('Could not send your informations to squirrly. Please register %smanually%s.', _SQ_PLUGIN_NAME_), '<a href="' . _SQ_DASH_URL_ . 'login/?action=register" target="_blank">', '</a>');
 
         //Set the header to json
         SQ_Tools::setHeader('json');
@@ -99,7 +98,7 @@ class SQ_Blocklogin extends SQ_BlockController {
     /**
      * Login a user to Squirrly and get the token
      */
-    function squirrlyLogin() {
+    public function squirrlyLogin() {
         //set return to null object as default
         $return = (object) NULL;
         //api responce variable
@@ -127,19 +126,17 @@ class SQ_Blocklogin extends SQ_BlockController {
                 //if an error is throw then ...
                 switch ($return->error) {
                     case 'badlogin':
-                        $return->error = __('Wrong email or password!', _PLUGIN_NAME_);
+                        $return->error = __('Wrong email or password!', _SQ_PLUGIN_NAME_);
                         break;
                     case 'multisite':
-                        $return->error = __('You can use this account only for the URL you registered first!', _PLUGIN_NAME_);
+                        $return->error = __('You can use this account only for the URL you registered first!', _SQ_PLUGIN_NAME_);
                         break;
                 }
-            }
-            else
+            } else
             //if unknown error
-                $return->error = __('An error occured.', _PLUGIN_NAME_);
-        }
-        else
-            $return->error = __('Both fields are required.', _PLUGIN_NAME_);
+                $return->error = __('An error occured.', _SQ_PLUGIN_NAME_);
+        } else
+            $return->error = __('Both fields are required.', _SQ_PLUGIN_NAME_);
 
         //Set the header to json
         SQ_Tools::setHeader('json');
@@ -149,5 +146,3 @@ class SQ_Blocklogin extends SQ_BlockController {
     }
 
 }
-
-?>

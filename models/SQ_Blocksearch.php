@@ -6,7 +6,7 @@
  */
 class Model_SQ_Blocksearch {
 
-    var $results;
+    public $results;
 
     public function searchImage($get) {
         $pack = $results_free = $results = array();
@@ -70,5 +70,3 @@ class Model_SQ_Blocksearch {
     }
 
 }
-
-?>

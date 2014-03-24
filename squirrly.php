@@ -27,9 +27,12 @@ if (PHP_VERSION_ID >= 5100) {
     $fc = SQ_ObjController::getController('SQ_FrontController', false);
     $fc->run();
 
-    if (!is_admin())
+    if (!is_admin()) {
         SQ_ObjController::getController('SQ_Frontend');
-}else {
+    }
+
+    add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
+} else {
     /* Main class call */
     add_action('admin_init', 'phpError');
 }
@@ -45,13 +48,14 @@ function phpError() {
  * Called in Notice Hook
  */
 function showError() {
-    echo '<div class="update-nag"><span style="color:red; font-weight:bold;">' . __('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _PLUGIN_NAME_) . '</span></div>';
+    echo '<div class="update-nag"><span style="color:red; font-weight:bold;">' . __('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _SQ_PLUGIN_NAME_) . '</span></div>';
 }
 
 // --
-// Upgrade Squirrly call.
-register_activation_hook(__FILE__, 'sq_upgrade');
+/**
+ *  Upgrade Squirrly call.
+ */
+register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
+register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
 
-function sq_upgrade() {
-    set_transient('sq_upgrade', true, 30);
-}
+

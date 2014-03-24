@@ -12,7 +12,7 @@ class SQ_Sitemap extends SQ_FrontController {
     var $args = array();
     var $posts_limit = 0;
 
-    function __construct() {
+    public function __construct() {
         if (!isset(SQ_Tools::$options['sq_use']) || SQ_Tools::$options['sq_use'] == 0)
             return;
         if (isset(SQ_Tools::$options['sq_auto_sitemap']) && SQ_Tools::$options['sq_auto_sitemap'] == 0)
@@ -42,11 +42,11 @@ class SQ_Sitemap extends SQ_FrontController {
         add_action('publish_page', array($this, 'generateSitemap'), 9999, 1);
     }
 
-    function init() {
+    public function init() {
         return;
     }
 
-    function action() {
+    public function action() {
 
     }
 
@@ -105,7 +105,7 @@ class SQ_Sitemap extends SQ_FrontController {
 
         $posts = $wpdb->get_results('SELECT ' . $query['what'] . ' FROM ' . $query['from'] . ' WHERE ' . $query['where'] . ' ' . $query['order'] . ' ' . $query['limit'] . ' ');
         if (!$posts) {
-            trigger_error(ucfirst(_PLUGIN_NAME_) . " failed to connect to database: " . mysql_error(), E_USER_NOTICE); //E_USER_NOTICE will be displayed on our debug mode
+            trigger_error(ucfirst(_SQ_PLUGIN_NAME_) . " failed to connect to database: " . mysql_error(), E_USER_NOTICE); //E_USER_NOTICE will be displayed on our debug mode
             return;
         }
 
@@ -379,5 +379,3 @@ class SQ_Sitemap extends SQ_FrontController {
     }
 
 }
-
-?>

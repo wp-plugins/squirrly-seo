@@ -16,7 +16,7 @@ class SQ_Tools extends SQ_FrontController {
     /** @var array */
     private static $debug;
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
 
         self::$options = $this->getOptions();
@@ -53,9 +53,9 @@ class SQ_Tools extends SQ_FrontController {
      * @return array
      */
     public function hookActionlink($links, $file) {
-        if ($file == _PLUGIN_NAME_ . '/squirrly.php') {
+        if ($file == _SQ_PLUGIN_NAME_ . '/squirrly.php') {
             if (SQ_Tools::$options['sq_howto'] == 1) {
-                $link = '<a href="' . admin_url('admin.php?page=sq_howto') . '">' . __('Getting started', _PLUGIN_NAME_) . '</a>';
+                $link = '<a href="' . admin_url('admin.php?page=sq_howto') . '">' . __('Getting started', _SQ_PLUGIN_NAME_) . '</a>';
                 array_unshift($links, $link);
             }
         }
@@ -100,6 +100,9 @@ class SQ_Tools extends SQ_FrontController {
             'ignore_warn' => 0,
             'sq_keyword_help' => 1,
             'sq_keyword_information' => 0,
+            //
+            'sq_google_country' => 'com',
+            'sq_google_language' => 'en',
             // --
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',
@@ -190,9 +193,9 @@ class SQ_Tools extends SQ_FrontController {
      */
     private function loadMultilanguage() {
         if (!defined('WP_PLUGIN_DIR')) {
-            load_plugin_textdomain(_PLUGIN_NAME_, _PLUGIN_NAME_ . '/languages/');
+            load_plugin_textdomain(_SQ_PLUGIN_NAME_, _SQ_PLUGIN_NAME_ . '/languages/');
         } else {
-            load_plugin_textdomain(_PLUGIN_NAME_, null, _PLUGIN_NAME_ . '/languages/');
+            load_plugin_textdomain(_SQ_PLUGIN_NAME_, null, _SQ_PLUGIN_NAME_ . '/languages/');
         }
     }
 
@@ -200,26 +203,22 @@ class SQ_Tools extends SQ_FrontController {
      * Connect remote with CURL if exists
      */
     public static function sq_remote_get($url, $param = array()) {
-        $cookies = '';
-        $post_preview = false;
+        $parameters = '';
         $cookies = array();
         $cookie_string = '';
 
         $url_domain = parse_url($url);
         $url_domain = $url_domain['host'];
 
+        foreach ($param as $key => $value) {
+            if ($value <> '' && $key <> 'timeout')
+                $parameters .= ($parameters == "" ? "" : "&") . $key . "=" . $value;
+        }
+        if ($parameters <> '')
+            $url .= ((strpos($url, "?") === false) ? "?" : "&") . $parameters;
 
-        if (isset($param['timeout']))
-            $timeout = $param['timeout'];
-        else
-            $timeout = 30;
-
-        if ($url_domain == $_SERVER['HTTP_HOST'] && strpos($url, 'preview=true') !== false)
-            $post_preview = true;
-
-        if ($post_preview) {
+        if ($url_domain == $_SERVER['HTTP_HOST'] && strpos($url, 'preview=true') !== false) {
             foreach ($_COOKIE as $name => $value) {
-
                 if (strpos($name, 'wordpress') !== false || strpos($name, 'wpta') !== false) {
                     $cookies[] = new WP_Http_Cookie(array('name' => $name, 'value' => $value));
                     $cookie_string .= "$name=$value;";
@@ -228,6 +227,8 @@ class SQ_Tools extends SQ_FrontController {
             $cookies[] = new WP_Http_Cookie(array('name' => 'sq_snippet', 'value' => 1));
             $cookie_string .= "sq_snippet=1;";
         }
+
+        $timeout = (isset($param['timeout'])) ? $param['timeout'] : 30;
 
         if (function_exists('curl_init')) {
             return self::sq_curl($url, array('timeout' => $timeout, 'cookies' => $cookies, 'cookie_string' => $cookie_string));
@@ -243,12 +244,16 @@ class SQ_Tools extends SQ_FrontController {
      * @return string
      */
     private static function sq_curl($url, $param) {
-        $ch = curl_init($url);
+
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
         curl_setopt($ch, CURLOPT_TIMEOUT, $param['timeout']);
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
 
         if ($param['cookie_string'] <> '')
             curl_setopt($ch, CURLOPT_COOKIE, $param['cookie_string']);
@@ -284,11 +289,6 @@ class SQ_Tools extends SQ_FrontController {
     public static function sq_remote_head($url) {
         $response = array();
 
-        if (isset($param['timeout']))
-            $timeout = $param['timeout'];
-        else
-            $timeout = 30;
-
         if (function_exists('curl_exec')) {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -301,7 +301,7 @@ class SQ_Tools extends SQ_FrontController {
 
             return $response;
         } else {
-            return wp_remote_head($url, array('timeout' => $timeout));
+            return wp_remote_head($url, array('timeout' => 30));
         }
 
         return false;
@@ -336,13 +336,13 @@ class SQ_Tools extends SQ_FrontController {
         if (isset(self::$options['ignore_warn']) && self::$options['ignore_warn'] == 1)
             return;
 
-        $fixit = "<a href=\"javascript:void(0);\"  onclick=\"%s jQuery(this).closest('div').fadeOut('slow'); if(parseInt(jQuery('.sq_count').html())>0) { var notif = (parseInt(jQuery('.sq_count').html()) - 1); if (notif > 0) {jQuery('.sq_count').html(notif); }else{ jQuery('.sq_count').html(notif); jQuery('.sq_count').hide(); } } jQuery.post(ajaxurl, { action: '%s', nonce: '" . wp_create_nonce('sq_none') . "'});\" >" . __("Fix it for me!", _PLUGIN_NAME_) . "</a>";
+        $fixit = "<a href=\"javascript:void(0);\"  onclick=\"%s jQuery(this).closest('div').fadeOut('slow'); if(parseInt(jQuery('.sq_count').html())>0) { var notif = (parseInt(jQuery('.sq_count').html()) - 1); if (notif > 0) {jQuery('.sq_count').html(notif); }else{ jQuery('.sq_count').html(notif); jQuery('.sq_count').hide(); } } jQuery.post(ajaxurl, { action: '%s', nonce: '" . wp_create_nonce('sq_none') . "'});\" >" . __("Fix it for me!", _SQ_PLUGIN_NAME_) . "</a>";
 
         /* IF SEO INDEX IS OFF */
 //        if ( self::getAutoSeoSquirrly() ){
 //            if ($count_only)
 //                self::$errors_count ++;
-//            else SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_use_on').attr('checked', true); jQuery('#sq_use_on').attr('checked',true);", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
+//            else SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _SQ_PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_use_on').attr('checked', true); jQuery('#sq_use_on').attr('checked',true);", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
 //        }
 
         /* IF SEO INDEX IS OFF */
@@ -351,14 +351,14 @@ class SQ_Tools extends SQ_FrontController {
             if ($count_only)
                 self::$errors_count++;
             else
-                SQ_Error::setError(__('You\'re blocking google from indexing your site!', _PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_google_index1').attr('checked',true);", "sq_fixprivate") . " | ", 'settings', 'sq_fix_private');
+                SQ_Error::setError(__('You\'re blocking google from indexing your site!', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_google_index1').attr('checked',true);", "sq_fixprivate") . " | ", 'settings', 'sq_fix_private');
         }
 
         if (self::getBadLinkStructure()) {
             if ($count_only)
                 self::$errors_count++;
             else
-                SQ_Error::setError(__('It is highly recommended that you include the %postname% variable in the permalink structure. <br />Go to Settings > Permalinks and add /%postname%/ in Custom Structure', _PLUGIN_NAME_) . " <br /> ", 'settings');
+                SQ_Error::setError(__('It is highly recommended that you include the %postname% variable in the permalink structure. <br />Go to Settings > Permalinks and add /%postname%/ in Custom Structure', _SQ_PLUGIN_NAME_) . " <br /> ", 'settings');
         }
     }
 
@@ -603,6 +603,20 @@ class SQ_Tools extends SQ_FrontController {
      */
     public static function showDebug() {
         echo "Debug result: <br />" . @implode('<br />', self::$debug);
+    }
+
+    function sq_activate() {
+        //add variable
+        set_transient('sq_upgrade', true, 30);
+    }
+
+    function sq_deactivate() {
+        //clear the cron job
+        wp_clear_scheduled_hook('sq_processCron');
+
+        $args = array();
+        $args['type'] = 'deact';
+        SQ_Action::apiCall('sq/user/log', $args, 5);
     }
 
     public static function emptyCache() {

@@ -8,32 +8,49 @@ class SQ_Menu extends SQ_FrontController {
     /** @var array snippet */
     var $options = array();
 
-    //
-    function init() {
-
-    }
-
-    function upgradeRedirect() {
+    /**
+     * Called on plugin activation
+     *
+     * @global type $wpdb
+     * @return type
+     */
+    public function checkActivation() {
         // Bail if no activation redirect
-        if (!get_transient('sq_upgrade'))
+        if (!get_transient('sq_upgrade')) {
             return;
+        }
+
+        //Delete the old versions table
+        if (SQ_Tools::$options['sq_dbtables'] == 1) {
+            global $wpdb;
+            $ranking = SQ_ObjController::getController('SQ_Ranking', false);
+            $ranking->getKeywordHistory();
+
+            $wpdb->query("DROP TABLE IF EXISTS `sq_analytics`");
+            $wpdb->query("DROP TABLE IF EXISTS `sq_keywords`");
+            SQ_Tools::saveOptions('sq_dbtables', 0);
+        }
 
         // Delete the redirect transient
         delete_transient('sq_upgrade');
 
-        if (SQ_Tools::$options['sq_howto'] == 1)
+        //activate the plugin
+        $args = array();
+        $args['type'] = 'act';
+        SQ_Action::apiCall('sq/user/log', $args, 5);
+
+        if (SQ_Tools::$options['sq_howto'] == 1) {
             wp_safe_redirect(admin_url('admin.php?page=sq_howto'));
-        else
+        } else {
             wp_safe_redirect(admin_url('admin.php?page=sq_dashboard'));
-        exit;
+        }
+        exit();
     }
 
-    /*
+    /**
      * Creates the Setting menu in Wordpress
      */
-
     public function hookMenu() {
-        $this->upgradeRedirect();
         $first_page = preg_replace('/\s/', '_', _SQ_NAME_);
 
         SQ_Tools::checkErrorSettings(true);
@@ -57,6 +74,14 @@ class SQ_Menu extends SQ_FrontController {
 
         /* add the plugin menu in admin */
         if (current_user_can('administrator')) {
+            //check if activated
+            $this->checkActivation();
+            //activate the cron job if not exists
+            if (!wp_get_schedule('sq_processCron')) {
+                wp_schedule_event(time(), 'hourly', 'sq_processCron');
+            }
+            //SQ_ObjController::getController('SQ_Ranking', false)->processCron();
+
             $this->model->addMenu(array(ucfirst(_SQ_NAME_),
                 'Squirrly' . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                 'edit_posts',
@@ -66,8 +91,8 @@ class SQ_Menu extends SQ_FrontController {
             ));
             if (SQ_Tools::$options['sq_howto'] == 1) {
                 $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' getting started', _PLUGIN_NAME_),
-                    __('Getting started', _PLUGIN_NAME_),
+                    ucfirst(_SQ_NAME_) . __(' getting started', _SQ_PLUGIN_NAME_),
+                    __('Getting started', _SQ_PLUGIN_NAME_),
                     'edit_posts',
                     'sq_howto',
                     array(SQ_ObjController::getBlock('SQ_BlockHelp'), 'init')
@@ -75,16 +100,16 @@ class SQ_Menu extends SQ_FrontController {
             }
             if (SQ_Tools::$options['sq_api'] <> '') {
                 $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' dashboard', _PLUGIN_NAME_),
-                    __('Dashboard', _PLUGIN_NAME_),
+                    ucfirst(_SQ_NAME_) . __(' dashboard', _SQ_PLUGIN_NAME_),
+                    __('Dashboard', _SQ_PLUGIN_NAME_),
                     'edit_posts',
                     'sq_dashboard',
                     array(SQ_ObjController::getBlock('SQ_BlockDashboard'), 'init')
                 ));
 
                 $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' settings', _PLUGIN_NAME_),
-                    __('Settings', _PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
+                    ucfirst(_SQ_NAME_) . __(' settings', _SQ_PLUGIN_NAME_),
+                    __('Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                     'edit_posts',
                     preg_replace('/\s/', '_', _SQ_NAME_),
                     array($this, 'showMenu')
@@ -92,8 +117,8 @@ class SQ_Menu extends SQ_FrontController {
             }
 
             $this->model->addSubmenu(array($first_page,
-                __('Make money with ', _PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
-                __('Make money', _PLUGIN_NAME_),
+                __('Make money with ', _SQ_PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
+                __('Make money', _SQ_PLUGIN_NAME_),
                 'edit_posts',
                 'sq_affiliate',
                 array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
@@ -113,7 +138,7 @@ class SQ_Menu extends SQ_FrontController {
 //        if (SQ_ObjController::getController('SQ_PostMiddle'))
 //            foreach ($this->post_type as $type)
 //                $this->model->addMeta(array('postmiddle' . _SQ_NAME_,
-//                    __('Squirrly Article Rank', _PLUGIN_NAME_),
+//                    __('Squirrly Article Rank', _SQ_PLUGIN_NAME_),
 //                    array(SQ_ObjController::getController('SQ_PostMiddle'), 'init'),
 //                    $type,
 //                    'normal',
@@ -130,7 +155,7 @@ class SQ_Menu extends SQ_FrontController {
      *
      * @return void
      */
-    function showMenu() {
+    public function showMenu() {
 
         SQ_Tools::checkErrorSettings();
         /* Force call of error display */
@@ -215,6 +240,11 @@ class SQ_Menu extends SQ_FrontController {
                 //empty the cache on settings changed
                 SQ_Tools::emptyCache();
                 break;
+            case 'sq_save_analytics':
+
+                SQ_Tools::saveOptions('sq_analytics_code', SQ_Tools::getValue('sq_analytics_code'));
+                SQ_Tools::emptyCache();
+                break;
             case 'sq_fixautoseo':
                 SQ_Tools::saveOptions('sq_use', 1);
                 break;
@@ -254,5 +284,3 @@ class SQ_Menu extends SQ_FrontController {
     }
 
 }
-
-?>

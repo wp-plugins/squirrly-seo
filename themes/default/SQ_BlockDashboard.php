@@ -2,7 +2,7 @@
     <?php SQ_ObjController::getBlock('SQ_BlockSupport')->init(); ?>
     <?php if ($view->options['sq_api'] <> '') { ?>
         <form id="sq_settings_dashboard_form" name="settings" action="" method="post" enctype="multipart/form-data">
-            <div id="sq_settings_title" ><?php _e('Squirrly dashboard', _PLUGIN_NAME_); ?> </div>
+            <div id="sq_settings_title" ><?php _e('Squirrly dashboard', _SQ_PLUGIN_NAME_); ?> </div>
             <div id="sq_settings_body" style="min-height: 400px;">
 
                 <?php
@@ -19,8 +19,8 @@
 
                 <div id="sq_settings_title" style="text-align: right">
                     <?php SQ_ObjController::getBlock('SQ_BlockAudit')->init(); ?>
-                    <a href="post-new.php" id="sq_goto_newpost" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> /><?php _e('Optimize with Squirrly', _PLUGIN_NAME_) ?></a>
-                    <input id="sq_goto_settings" type="button" value="<?php _e('Go to settings', _PLUGIN_NAME_) ?> &raquo;" />
+                    <a href="post-new.php" id="sq_goto_newpost" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> /><?php _e('Optimize with Squirrly', _SQ_PLUGIN_NAME_) ?></a>
+                    <input id="sq_goto_settings" type="button" value="<?php _e('Go to settings', _SQ_PLUGIN_NAME_) ?> &raquo;" />
                 </div>
 
             </div>

@@ -147,6 +147,38 @@ class Model_SQ_Post {
         return $metas;
     }
 
-}
+    /**
+     * get the keyword
+     * @global object $wpdb
+     * @param integer $post_id
+     * @return boolean
+     */
+    public function getKeyword($post_id) {
+        global $wpdb;
 
-?>
+        if ($row = $wpdb->get_row("SELECT `post_id`, `meta_value`
+                       FROM `" . $wpdb->postmeta . "`
+                       WHERE (`meta_key` = 'sq_post_keyword' AND `post_id`=" . (int) $post_id . ")
+                       ORDER BY `meta_id` DESC")) {
+
+            return json_decode($row->meta_value);
+        }
+
+        return false;
+    }
+
+    /**
+     * Save the post keyword
+     * @param integer $post_id
+     * @param object $args
+     */
+    public function saveKeyword($post_id, $args) {
+        $args->update = current_time('timestamp');
+
+        $meta[] = array('key' => 'sq_post_keyword',
+            'value' => json_encode($args));
+
+        $this->saveAdvMeta($post_id, $meta);
+    }
+
+}

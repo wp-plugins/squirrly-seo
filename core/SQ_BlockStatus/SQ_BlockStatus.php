@@ -6,9 +6,6 @@ class SQ_BlockStatus extends SQ_BlockController {
 
     public function hookGetContent() {
         global $wpdb;
-        $this->progress = $this->model->getGlobalProgress();
     }
 
 }
-
-?>

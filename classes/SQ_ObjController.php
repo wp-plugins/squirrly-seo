@@ -40,8 +40,7 @@ class SQ_ObjController {
                 self::$instances[$className] = new $className;
                 return self::$instances[$className];
             }
-        }
-        else
+        } else
             return self::$instances[$className];
 
         return false;
@@ -79,8 +78,7 @@ class SQ_ObjController {
                 self::$instances[$prefix . $className] = new $classModel;
                 return self::$instances[$prefix . $className];
             }
-        }
-        else
+        } else
             return self::$instances[$prefix . $className];
 
         return;
@@ -113,11 +111,9 @@ class SQ_ObjController {
             if (class_exists($className)) {
                 self::$instances[$className] = new $className;
                 return self::$instances[$className];
-            }
-            else
+            } else
                 exit("Block error: Can't call $className class");
-        }
-        else
+        } else
             return self::$instances[$className];
 
         return;
@@ -162,5 +158,3 @@ class SQ_ObjController {
     }
 
 }
-
-?>

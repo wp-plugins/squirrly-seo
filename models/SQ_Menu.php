@@ -27,7 +27,7 @@ class Model_SQ_Menu {
      * */
     public $meta = array();
 
-    function __construct() {
+    public function __construct() {
 
     }
 
@@ -46,8 +46,8 @@ class Model_SQ_Menu {
 
             if ($this->menu[0] <> '' && $this->menu[1] <> '') {
                 /* add the translation */
-                $this->menu[0] = __($this->menu[0], _PLUGIN_NAME_);
-                $this->menu[1] = __($this->menu[1], _PLUGIN_NAME_);
+                $this->menu[0] = __($this->menu[0], _SQ_PLUGIN_NAME_);
+                $this->menu[1] = __($this->menu[1], _SQ_PLUGIN_NAME_);
 
                 if (!isset($this->menu[5]))
                     $this->menu[5] = null;
@@ -77,8 +77,8 @@ class Model_SQ_Menu {
 
             if ($this->menu[0] <> '' && $this->menu[1] <> '') {
                 /* add the translation */
-                $this->menu[0] = __($this->menu[0], _PLUGIN_NAME_);
-                $this->menu[1] = __($this->menu[1], _PLUGIN_NAME_);
+                $this->menu[0] = __($this->menu[0], _SQ_PLUGIN_NAME_);
+                $this->menu[1] = __($this->menu[1], _SQ_PLUGIN_NAME_);
 
                 if (!isset($this->menu[5]))
                     $this->menu[5] = null;
@@ -109,7 +109,7 @@ class Model_SQ_Menu {
 
             if ($this->meta[0] <> '' && $this->meta[1] <> '') {
                 /* add the translation */
-                $this->meta[1] = __($this->meta[1], _PLUGIN_NAME_);
+                $this->meta[1] = __($this->meta[1], _SQ_PLUGIN_NAME_);
 
                 if (!isset($this->meta[5]))
                     $this->meta[5] = null;
@@ -125,10 +125,12 @@ class Model_SQ_Menu {
 
 
 
+
+
 //print_r($this->meta);
                 /* add the box content with WP */
                 add_meta_box($this->meta[0], $this->meta[1], $this->meta[2], $this->meta[3], $this->meta[4], $this->meta[5]);
-                //add_meta_box('post'._PLUGIN_NAME_, __(ucfirst(_PLUGIN_NAME_),_PLUGIN_NAME_), array($this, 'showMenu'), 'post', 'side', 'high');
+                //add_meta_box('post'._SQ_PLUGIN_NAME_, __(ucfirst(_SQ_PLUGIN_NAME_),_SQ_PLUGIN_NAME_), array($this, 'showMenu'), 'post', 'side', 'high');
             }
         }
     }
@@ -153,7 +155,7 @@ class Model_SQ_Menu {
             }
 
             if ($code == '')
-                SQ_Error::setError(__("The code for Google Webmaster Tool is incorrect.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("The code for Google Webmaster Tool is incorrect.", _SQ_PLUGIN_NAME_));
         }
         return $code;
     }
@@ -180,7 +182,7 @@ class Model_SQ_Menu {
 
             if (strpos($code, 'UA-') === false) {
                 $code = '';
-                SQ_Error::setError(__("The code for Google Analytics is incorrect.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("The code for Google Analytics is incorrect.", _SQ_PLUGIN_NAME_));
             }
         }
         return $code;
@@ -206,7 +208,7 @@ class Model_SQ_Menu {
             }
 
             if ($code == '')
-                SQ_Error::setError(__("The code for Facebook is incorrect.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("The code for Facebook is incorrect.", _SQ_PLUGIN_NAME_));
         }
         return $code;
     }
@@ -231,7 +233,7 @@ class Model_SQ_Menu {
             }
 
             if ($code == '')
-                SQ_Error::setError(__("The code for Bing is incorrect.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("The code for Bing is incorrect.", _SQ_PLUGIN_NAME_));
         }
         return $code;
     }
@@ -264,7 +266,7 @@ class Model_SQ_Menu {
             $key = in_array($file_type, $files);
 
             if (!$key) {
-                SQ_Error::setError(__("File type error: Only ICO, JPEG, JPG, GIF or PNG files are allowed.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("File type error: Only ICO, JPEG, JPG, GIF or PNG files are allowed.", _SQ_PLUGIN_NAME_));
                 return;
             }
 
@@ -276,26 +278,26 @@ class Model_SQ_Menu {
                     return;
                 }
             } elseif (!$img->checkFunctions()) {
-                SQ_Error::setError(__("GD error: The GD library must be installed on your server.", _PLUGIN_NAME_));
+                SQ_Error::setError(__("GD error: The GD library must be installed on your server.", _SQ_PLUGIN_NAME_));
                 return;
             } else {
                 /* Delete the previous file if exists */
                 if (is_file($out['tmp'])) {
                     if (!unlink($out['tmp'])) {
-                        SQ_Error::setError(__("Delete error: Could not delete the old favicon.", _PLUGIN_NAME_));
+                        SQ_Error::setError(__("Delete error: Could not delete the old favicon.", _SQ_PLUGIN_NAME_));
                         return;
                     }
                 }
 
                 /* Upload the file */
                 if (!move_uploaded_file($file['tmp_name'], $out['tmp'])) {
-                    SQ_Error::setError(__("Upload error: Could not upload the favicon.", _PLUGIN_NAME_));
+                    SQ_Error::setError(__("Upload error: Could not upload the favicon.", _SQ_PLUGIN_NAME_));
                     return;
                 }
 
                 /* Change the permision */
                 if (!chmod($out['tmp'], 0755)) {
-                    SQ_Error::setError(__("Permission error: Could not change the favicon permissions.", _PLUGIN_NAME_));
+                    SQ_Error::setError(__("Permission error: Could not change the favicon permissions.", _SQ_PLUGIN_NAME_));
                     return;
                 }
 
@@ -322,12 +324,12 @@ class Model_SQ_Menu {
                     if ($im)
                         new Model_SQ_Icon($im, $out['favicon']);
                     else
-                        SQ_Error::setError(__("ICO Error: Could not create the ICO from file. Try with another file type.", _PLUGIN_NAME_));
+                        SQ_Error::setError(__("ICO Error: Could not create the ICO from file. Try with another file type.", _SQ_PLUGIN_NAME_));
                 }else {
                     copy($out['tmp'], $out['favicon']);
                 }
 
-                $out['message'] .= __("The favicon has been updated.", _PLUGIN_NAME_);
+                $out['message'] .= __("The favicon has been updated.", _SQ_PLUGIN_NAME_);
 
                 return $out;
             }
@@ -346,7 +348,7 @@ class Model_SQ_Image {
     var $image;
     var $quality = 100;
 
-    function openImage($image) {
+    public function openImage($image) {
         $this->image = $image;
 
         if (!file_exists($image))
@@ -379,7 +381,7 @@ class Model_SQ_Image {
         }
     }
 
-    function saveImage() {
+    public function saveImage() {
         switch ($this->imageType) {
             case 'image/jpg':
             case 'image/jpeg':
@@ -396,7 +398,7 @@ class Model_SQ_Image {
         }
     }
 
-    function resizeImage($maxwidth, $maxheight, $preserveAspect = true) {
+    public function resizeImage($maxwidth, $maxheight, $preserveAspect = true) {
         $width = @imagesx($this->imgH);
         $height = @imagesy($this->imgH);
 
@@ -431,7 +433,7 @@ class Model_SQ_Image {
         }
     }
 
-    function applyTransparency($imgH) {
+    public function applyTransparency($imgH) {
         if ($this->imageType == 'image/png' || $this->imageType == 'image/gif') {
             imagealphablending($imgH, false);
             $col = imagecolorallocatealpha($imgH, 255, 255, 255, 127);
@@ -440,7 +442,7 @@ class Model_SQ_Image {
         }
     }
 
-    function checkFunctions() {
+    public function checkFunctions() {
         return function_exists('gd_info');
     }
 
@@ -457,7 +459,7 @@ class Model_SQ_Icon {
      *
      * @return string
      */
-    function __construct($image, $newfile) {
+    public function __construct($image, $newfile) {
         $ret = "";
 
         $ret.= $this->jpexs_inttoword(0); //PASSWORD
@@ -685,7 +687,7 @@ class Model_SQ_Icon {
         }
     }
 
-    /*
+    /**
      * Internal functions:
      * -------------------------
      * jpexs_inttobyte($n) - returns chr(n)
@@ -699,12 +701,11 @@ class Model_SQ_Icon {
      * jpexs_RetBits($byte,$start,$len) - returns bits $start->$start+$len from $byte
      * jpexs_freadbits($file,$count) - reads next $count bits from $file
      */
-
-    function jpexs_decbin8($d) {
+    public function jpexs_decbin8($d) {
         return $this->jpexs_decbinx($d, 8);
     }
 
-    function jpexs_decbinx($d, $n) {
+    public function jpexs_decbinx($d, $n) {
         $bin = decbin($d);
         $sbin = strlen($bin);
         for ($j = 0; $j < $n - $sbin; $j++)
@@ -713,14 +714,14 @@ class Model_SQ_Icon {
         return $bin;
     }
 
-    function jpexs_retBits($byte, $start, $len) {
+    public function jpexs_retBits($byte, $start, $len) {
         $bin = $this->jpexs_decbin8($byte);
         $r = bindec(substr($bin, $start, $len));
 
         return $r;
     }
 
-    function jpexs_freadbits($f, $count) {
+    public function jpexs_freadbits($f, $count) {
         $jpexs_currentBit = 0;
         global $jpexs_currentBit, $jpexs_SMode;
 
@@ -737,38 +738,36 @@ class Model_SQ_Icon {
         return $this->jpexs_retBits($Byte, $LastCBit, $count);
     }
 
-    function jpexs_freadbyte($f) {
+    public function jpexs_freadbyte($f) {
         return ord(fread($f, 1));
     }
 
-    function jpexs_freadword($f) {
+    public function jpexs_freadword($f) {
         $b1 = $this->jpexs_freadbyte($f);
         $b2 = $this->jpexs_freadbyte($f);
         return $b2 * 256 + $b1;
     }
 
-    function jpexs_freadlngint($f) {
+    public function jpexs_freadlngint($f) {
         return $this->jpexs_freaddword($f);
     }
 
-    function jpexs_freaddword($f) {
+    public function jpexs_freaddword($f) {
         $b1 = $this->jpexs_freadword($f);
         $b2 = $this->jpexs_freadword($f);
         return $b2 * 65536 + $b1;
     }
 
-    function jpexs_inttobyte($n) {
+    public function jpexs_inttobyte($n) {
         return chr($n);
     }
 
-    function jpexs_inttodword($n) {
+    public function jpexs_inttodword($n) {
         return chr($n & 255) . chr(($n >> 8) & 255) . chr(($n >> 16) & 255) . chr(($n >> 24) & 255);
     }
 
-    function jpexs_inttoword($n) {
+    public function jpexs_inttoword($n) {
         return chr($n & 255) . chr(($n >> 8) & 255);
     }
 
 }
-
-?>

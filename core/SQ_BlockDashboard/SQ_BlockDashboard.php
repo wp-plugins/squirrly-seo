@@ -5,7 +5,7 @@
  */
 class SQ_BlockDashboard extends SQ_BlockController {
 
-    function hookGetContent() {
+    public function hookGetContent() {
         $this->options = SQ_Tools::$options;
     }
 
@@ -25,5 +25,3 @@ class SQ_BlockDashboard extends SQ_BlockController {
     }
 
 }
-
-?>

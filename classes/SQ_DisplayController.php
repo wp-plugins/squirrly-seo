@@ -70,16 +70,8 @@ class SQ_DisplayController {
         }
     }
 
-    /**
-     * Called for any class to show the block content
-     *
-     * @param string $block the name of the block file in theme directory (class name by default)
-     *
-     * @return string of the current class view
-     */
-    public function output($block, $obj) {
+    public function setBlock($block) {
         self::$name = $block;
-        echo $this->echoBlock($obj);
     }
 
     /**
@@ -101,6 +93,16 @@ class SQ_DisplayController {
         }
     }
 
-}
+    /**
+     * Called for any class to show the block content
+     *
+     * @param string $block the name of the block file in theme directory (class name by default)
+     *
+     * @return string of the current class view
+     */
+    public function output($block, $obj) {
+        self::$name = $block;
+        echo $this->echoBlock($obj);
+    }
 
-?>
+}

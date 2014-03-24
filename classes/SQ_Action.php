@@ -16,7 +16,7 @@ class SQ_Action extends SQ_FrontController {
      *
      * @return void
      */
-    function hookInit() {
+    public function hookInit() {
 
         /* Only if ajax */
         if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
@@ -30,7 +30,7 @@ class SQ_Action extends SQ_FrontController {
      *
      * @return void
      */
-    function hookMenu() {
+    public function hookMenu() {
         /* Only if post */
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
             return;
@@ -47,7 +47,7 @@ class SQ_Action extends SQ_FrontController {
      *
      * @return void
      */
-    function hookHead() {
+    public function hookHead() {
 
         echo '<script type="text/javascript" src="https://www.google.com/jsapi"></script>
               <script type="text/javascript">
@@ -153,6 +153,7 @@ class SQ_Action extends SQ_FrontController {
 
 
         $url = self::cleanUrl(_SQ_API_URL_ . $module . "?" . $parameters);
+
         return SQ_Tools::sq_remote_get($url, array('timeout' => $timeout));
     }
 
@@ -166,5 +167,3 @@ class SQ_Action extends SQ_FrontController {
     }
 
 }
-
-?>

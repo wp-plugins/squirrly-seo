@@ -5,7 +5,7 @@
  */
 class SQ_BlockHelp extends SQ_BlockController {
 
-    function action() {
+    public function action() {
         parent::action();
         switch (SQ_Tools::getValue('action')) {
             case 'sq_howto':
@@ -15,10 +15,8 @@ class SQ_BlockHelp extends SQ_BlockController {
         }
     }
 
-    function hookGetContent() {
+    public function hookGetContent() {
         $this->options = SQ_Tools::$options;
     }
 
 }
-
-?>

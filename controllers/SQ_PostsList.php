@@ -18,18 +18,19 @@ class SQ_PostsList extends SQ_FrontController {
     /**
      * Called in SQ_Menu > hookMenu
      */
-    function init() {
+    public function init() {
         $this->types = array('post_posts',
             'page_posts',
             'edit-product',
             'product_posts');
+        // do_action('sq_processCron');
     }
 
     /**
      * Create the column and filter for the Posts List
      *
      */
-    function hookInit() {
+    public function hookInit() {
         $browser = SQ_Tools::getBrowserInfo();
 
         if ($browser['name'] == 'IE' && (int) $browser['version'] < 9 && (int) $browser['version'] > 0)
@@ -44,9 +45,6 @@ class SQ_PostsList extends SQ_FrontController {
                 add_action('manage_' . $type . '_custom_column', array($this, 'add_row'), 10, 2);
             }
             add_filter('posts_where', array($this, 'filterPosts'));
-
-
-            //add_filter( 'request', array( $this, 'sortPosts' ) );
         }
     }
 
@@ -56,10 +54,9 @@ class SQ_PostsList extends SQ_FrontController {
      * @param string $where
      * @return string
      */
-    function filterPosts($where) {
+    public function filterPosts($where) {
         if (!is_admin())
             return;
-
 
         if (SQ_Tools::getIsset('sq_post_id')) {
             $where .= " AND ID = " . (int) SQ_Tools::getValue('sq_post_id');
@@ -69,27 +66,16 @@ class SQ_PostsList extends SQ_FrontController {
     }
 
     /**
-     * Sorting option
-     *
-     * @param type $request
-     * @return type
-     */
-    function sortPosts($request) {
-        if (!is_admin())
-            return;
-
-        return $request;
-    }
-
-    /**
      * Hook the Wordpress header
      */
-    function loadHead() {
+    public function loadHead() {
         parent::hookHead();
         SQ_ObjController::getController('SQ_DisplayController', false)
                 ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
+//        SQ_ObjController::getController('SQ_DisplayController', false)
+//                ->loadMedia(_SQ_THEME_URL_ . '/js/sq_rank.js');
         SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia(_SQ_THEME_URL_ . '/js/sq_rank.js');
+                ->loadMedia(_SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js');
     }
 
     /**
@@ -98,18 +84,46 @@ class SQ_PostsList extends SQ_FrontController {
      * @param array $columns
      * @return array
      */
-    function add_column($columns) {
+    public function add_column($columns) {
         $this->loadHead(); //load the js only for post list
         $this->is_list = true;
 
+        return $this->insert($columns, array($this->column_id => __('Squirrly') . '
+            <script type="text/javascript">
+                google.load("visualization", "1", {packages: ["corechart"]});
 
-//        echo '<script type="text/javascript">
-//                   google.load("visualization", "1", {packages: ["corechart"]});
-//              </script>';
+                function drawChart(id, values, reverse) {
+                    var data = google.visualization.arrayToDataTable(values);
 
-        return $this->insert($columns, array($this->column_id => __('Squirrly') . '<script type="text/javascript">
-                   google.load("visualization", "1", {packages: ["corechart"]});
-              </script>'), $this->pos);
+                    var options = {
+
+                        curveType: "function",
+                        title: "",
+                        chartArea:{width:"100%",height:"100%"},
+                        enableInteractivity: "true",
+                        tooltip: {trigger: "auto"},
+                        pointSize: "0",
+                        legend: "none",
+                        backgroundColor: "transparent",
+                        colors: ["#55b2ca"],
+                        hAxis: {
+                          baselineColor: "transparent",
+                           gridlineColor: "transparent",
+                           textPosition: "none"
+                        } ,
+                        vAxis:{
+                          direction: ((reverse) ? -1 : 1),
+                          baselineColor: "transparent",
+                          gridlineColor: "transparent",
+                          textPosition: "none"
+                        }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById(id));
+                    chart.draw(data, options);
+                    return chart;
+                }
+          </script>'), $this->pos);
     }
 
     /**
@@ -118,7 +132,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @param object $column
      * @param integer $post_id
      */
-    function add_row($column, $post_id) {
+    public function add_row($column, $post_id) {
         $title = '';
         $description = '';
         $frontend = null;
@@ -144,7 +158,7 @@ class SQ_PostsList extends SQ_FrontController {
                         $description = SQ_Tools::$options['sq_fp_description'];
                 }
                 echo '<script type="text/javascript">
-                    jQuery(\'#post-' . $post_id . '\').find(\'.row-title\').before(\'' . (($description <> '') ? '<span class="sq_rank_custom_meta sq_rank_customdescription sq_rank_sprite" title="' . __('Custom description: ', _PLUGIN_NAME_) . ' ' . $description . '"></span>' : '') . ' ' . (($title <> '') ? '<span class="sq_rank_custom_meta sq_rank_customtitle sq_rank_sprite" title="' . __('Custom title: ', _PLUGIN_NAME_) . ' ' . $title . '"></span>' : '') . '\');
+                    jQuery(\'#post-' . $post_id . '\').find(\'.row-title\').before(\'' . (($description <> '') ? '<span class="sq_rank_custom_meta sq_rank_customdescription sq_rank_sprite" title="' . __('Custom description: ', _SQ_PLUGIN_NAME_) . ' ' . addslashes($description) . '"></span>' : '') . ' ' . (($title <> '') ? '<span class="sq_rank_custom_meta sq_rank_customtitle sq_rank_sprite" title="' . __('Custom title: ', _SQ_PLUGIN_NAME_) . ' ' . $title . '"></span>' : '') . '\');
                </script>';
             }
         }
@@ -154,7 +168,7 @@ class SQ_PostsList extends SQ_FrontController {
      * Hook the Footer
      *
      */
-    function hookFooter() {
+    public function hookFooter() {
         if (!$this->is_list)
             return;
 
@@ -172,28 +186,21 @@ class SQ_PostsList extends SQ_FrontController {
         $this->setVars();
     }
 
+    /**
+     * Set the javascript variables
+     */
     public function setVars() {
         echo '<script type="text/javascript">
-                    var __sq_article_rank = "' . __('Squirrly article rank', _PLUGIN_NAME_) . '";
-                    var __sq_refresh = "' . __('Update', _PLUGIN_NAME_) . '"
-                    var __sq_more_details = "' . __('More details', _PLUGIN_NAME_) . '";
-                    var __sq_less_details = "' . __('Less details', _PLUGIN_NAME_) . '";
-                    var __sq_interval_text = "' . __('Interval: ', _PLUGIN_NAME_) . '";
-                    var __sq_interval_day = "' . __('Latest', _PLUGIN_NAME_) . '";
-                    var __sq_interval_week = "' . __('Last 7 days', _PLUGIN_NAME_) . '";
-                    var __sq_interval_month = "' . __('Last 30 days', _PLUGIN_NAME_) . '";
+                    var __sq_article_rank = "' . __('SEO Analytics, by Squirrly', _SQ_PLUGIN_NAME_) . '";
+                    var __sq_refresh = "' . __('Update', _SQ_PLUGIN_NAME_) . '"
+                    var __sq_interval = "' . __('Last 30 days', _SQ_PLUGIN_NAME_) . '";
 
-                    var __sq_goto_allposts = "";
-                    var __sq_rankglobal_text = "' . __('progress', _PLUGIN_NAME_) . '";
-                    var __sq_rankoptimized_text = "' . __('optimized', _PLUGIN_NAME_) . '";
-                    var __sq_rankseemore_text = "' . __('See rank', _PLUGIN_NAME_) . '";
-                    var __sq_rankseeless_text = "' . __('Hide rank', _PLUGIN_NAME_) . '";
-                    var __sq_optimize_text = "' . __('Optimize', _PLUGIN_NAME_) . '";
-                    if (typeof sq_dashurl === "undefined") var sq_dashurl = "' . _SQ_STATIC_API_URL_ . '";
-                    if (typeof __token === "undefined") var __token = "' . SQ_Tools::$options['sq_api'] . '";
-                    var __sq_ranknotpublic_text = "' . __('Not Public', _PLUGIN_NAME_) . '";
-
-                  </script>';
+                    var __sq_dashurl = "' . _SQ_STATIC_API_URL_ . '";
+                    var __token = "' . SQ_Tools::$options['sq_api'] . '";
+                    var sq_analytics_code = "' . SQ_Tools::$options['sq_analytics_code'] . '";
+                    var __sq_ranknotpublic_text = "' . __('Not Public', _SQ_PLUGIN_NAME_) . '";
+                    var __sq_couldnotprocess_text = "' . __('Could not process', _SQ_PLUGIN_NAME_) . '";
+              </script>';
     }
 
     /**
@@ -203,7 +210,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @param integer $pos
      * @return array
      */
-    function insert($src, $in, $pos) {
+    public function insert($src, $in, $pos) {
         if (is_int($pos))
             $array = array_merge(array_slice($src, 0, $pos), $in, array_slice($src, $pos));
         else {
@@ -221,168 +228,71 @@ class SQ_PostsList extends SQ_FrontController {
      * @return string
      */
     public function action() {
-
         parent::action();
 
         switch (SQ_Tools::getValue('action')) {
             case 'sq_posts_rank':
                 $args = array();
-                $progress = array();
-
-                //Check the global progress in traffic for optimized and not optimized articles
-                $status = SQ_ObjController::getModel('SQ_BlockStatus');
-
-                if (is_array(SQ_Tools::getValue('posts'))) {
+                $posts = SQ_Tools::getValue('posts');
+                if (is_array($posts) && !empty($posts)) {
                     $posts = SQ_Tools::getValue('posts');
                     $args['posts'] = join(',', $posts);
 
-                    //Send totals to api
-                    $args['visit'] = '';
-                    $args['unique'] = '';
-                    $args['avgmonth'] = '';
-
-
-                    //$args['rank'] = '';
-                    foreach ($posts as $post_id) {
-                        $this->model->post_id = (int) $post_id;
-
-                        $traffic = array();
-                        $traffic = $this->model->getTrafficProgress();
-                        if (is_array($traffic)) {
-                            $args['visit'] .= (($args['visit'] <> '') ? ',' : '') . (int) $traffic['month']['count'];
-                            $args['unique'] .= (($args['unique'] <> '') ? ',' : '') . (int) $traffic['month']['unique'];
-                            $args['avgmonth'] .= (($args['avgmonth'] <> '') ? ',' : '') . (int) $traffic['month']['average']['count'];
-                        }
-                        //$args['average'] = (int)$traffic['global']['average']['count'];
-                    }
-                    $global = array();
-                    $global = $this->model->getGlobalAverage();
-                    $args['average'] = $global['count'];
-                    $args['progress'] = $progress;
-                    //////////////////////////////
-
-                    $response = SQ_Action::apiCall('sq/pack/total', $args);
-                    //echo 'responce'.$response;
-                    $return = json_decode($response);
+                    $response = json_decode(SQ_Action::apiCall('sq/user-analytics/total', $args));
                 }
-
-                if (!isset($return) || !is_object($return))
-                    $return = (object) NULL;
-
-
-                SQ_Tools::setHeader('json');
-                echo json_encode($return);
-                exit();
-            case 'sq_post_rank_brief':
-
-                $args['post_id'] = (int) SQ_Tools::getValue('post');
-                $args['permalink'] = get_permalink($args['post_id']);
-                $args['permalink'] = $this->getPaged($args['permalink']);
-                $args['permalink'] = urlencode($args['permalink']);
-
-                $this->model->post_id = $args['post_id'];
-
-                if (get_post_status($args['post_id']) == 'draft') {
-                    $error = array('error' => 'sq_no_information',
-                        'message' => __('Publish the article to start Squirrly Article Rank', _PLUGIN_NAME_));
-
-                    exit(json_encode($error));
+                if (isset($response) && is_object($response)) {
+                    $response = $this->model->getTotal($response);
+                    SQ_Tools::setHeader('json');
+                    exit(json_encode($response));
                 }
-
-                $traffic = array();
-                $traffic = $this->model->getTrafficProgress();
-                if (is_array($traffic)) {
-                    $args['visit'] = (int) $traffic['month']['count'];
-                    $args['unique'] = (int) $traffic['month']['unique'];
-                    $args['avgmonth'] = (int) $traffic['month']['average']['count'];
-                }
-                //Call the api and get the totals
-                $response = SQ_Action::apiCall('sq/pack/brief', $args);
-                //echo 'responce'.$response;
-                $return = json_decode($response);
-
-                if (!is_object($return))
-                    $return = (object) NULL;
-                //print_R($return);
-                //Get the rank in google for the current post
-                $rank = SQ_ObjController::getController('SQ_Ranking', false);
-                if (is_object($rank)) {
-                    $rank->checkIndexed($return, $args['post_id']);
-                }
-                //Pack the response in json
-                $return = $this->model->packBrief($return);
-
-                SQ_Tools::setHeader('json');
-                echo json_encode($return);
-
-                exit();
-
+                exit(json_encode(array('posts' => array())));
             case 'sq_post_rank':
-                $args['post_id'] = (int) SQ_Tools::getValue('post');
-                $args['ctx'] = $this->model->ctx;
-                $args['interval'] = SQ_Tools::getValue('interval', 'week');
-                $args['title'] = $this->model->reportTitles[$args['interval']];
+                $args = array();
+                $this->model->post_id = (int) SQ_Tools::getValue('post');
+                $args['post_id'] = $this->model->post_id;
 
-                $this->model->post_id = $args['post_id'];
-                $this->model->interval = $args['interval']; //Get the traffic for the whole month
+                $response = json_decode(SQ_Action::apiCall('sq/user-analytics/detail', $args));
 
-                $response = SQ_Action::apiCall('sq/pack/detail', $args);
-                //echo 'responce'.$response;
-                $return = json_decode($response);
+                if (!is_object($response)) {
+                    exit(json_encode(array('error' => $response)));
+                } else {
 
-                if (!is_object($return))
-                    $return = (object) NULL;
+                    if ($response->keyword) {
+                        $ranking = SQ_ObjController::getController('SQ_Ranking', false);
+                        if (is_object($ranking)) {
+                            //if not rank checked
+                            if (!$rank = get_transient('sq_rank' . $this->model->post_id)) {
+                                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
+                                    if (isset($json->rank)) {
+                                        $rank = $json->rank;
+                                    }
+                                    set_transient('sq_rank' . $this->model->post_id, $rank, 60 * 60 * 24 * 2);
+                                } elseif ($rank = $ranking->processRanking($this->model->post_id, $response->keyword)) {
+                                    set_transient('sq_rank' . $this->model->post_id, $rank, 60 * 60 * 24 * 2);
+                                }
+                            }
 
-                $rank = SQ_ObjController::getController('SQ_Ranking', false);
-                if (is_object($rank)) {
-                    $rank->processRanking($return, $args['post_id']);
+                            if ($rank = get_transient('sq_rank' . $this->model->post_id) && $rank > -2) {
+                                $args = array();
+                                $args['post_id'] = $this->model->post_id;
+                                $args['rank'] = get_transient('sq_rank' . $this->model->post_id);
+                                $args['country'] = $ranking->getCountry();
+                                $args['language'] = $ranking->getLanguage();
+                                SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
+                            }
+                        }
+                    }
+
+                    $analytics = SQ_ObjController::getBlock('SQ_BlockAnalytics');
+                    $analytics->flush = false;
+                    $analytics->post_id = $this->model->post_id;
+                    $analytics->audit = $this->model->getAnalytics($response, $this->model->post_id);
+                    $response = $analytics->init();
+
+                    SQ_Tools::setHeader('json');
+                    exit(json_encode($response));
                 }
-
-                $return->rank = @str_replace('<!--traffic-->', $this->model->getTrafficZone(), $return->rank);
-                $serp = $this->model->packSERP();
-                $other = $this->model->packOthersSERP();
-                $return->rank = @str_replace('<!--rank-->', $this->model->getSERPZone($serp) . $this->model->getOthersSERPZone($other), $return->rank);
-                // echo $return->rank;
-                //exit();
-                SQ_Tools::setHeader('json');
-                echo json_encode($return);
-                exit();
-            case 'sq_posts_status_close':
-                SQ_Tools::saveOptions('sq_posts_status_close', time());
-                exit();
         }
-    }
-
-    /**
-     * Replace string ()
-     * @param type $search
-     * @param type $replace
-     * @param type $subject
-     * @return type
-     */
-    function str_lreplace($search, $replace, $subject) {
-        return preg_replace('~(.*)' . preg_quote($search, '~') . '~', '$1' . $replace, $subject, 1);
-    }
-
-    /**
-     * Add slash to pages
-     *
-     * @param type $link
-     * @return string
-     */
-    function getPaged($link) {
-        $page = get_query_var('paged');
-        if ($page && $page > 1) {
-            $link = trailingslashit($link) . "page/" . "$page";
-            if ($has_ut) {
-                $link = user_trailingslashit($link, 'paged');
-            } else {
-                $link .= '/';
-            }
-        }
-        return $link;
     }
 
 }
-
-?>

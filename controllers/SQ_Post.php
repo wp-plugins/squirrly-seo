@@ -9,7 +9,7 @@ class SQ_Post extends SQ_FrontController {
      *
      * @return void
      */
-    function hookInit() {
+    public function hookInit() {
         add_filter('tiny_mce_before_init', array(&$this->model, 'setCallback'));
         add_filter('mce_external_plugins', array(&$this->model, 'addHeadingButton'));
         add_filter('mce_buttons', array(&$this->model, 'registerButton'));
@@ -28,7 +28,7 @@ class SQ_Post extends SQ_FrontController {
      *
      * @global integer $post_ID
      */
-    function hookHead() {
+    public function hookHead() {
         global $post_ID;
         parent::hookHead();
 
@@ -52,7 +52,7 @@ class SQ_Post extends SQ_FrontController {
     /**
      * Hook the Shopp plugin save product
      */
-    function hookShopp($Product) {
+    public function hookShopp($Product) {
         $this->checkSeo($Product->id);
     }
 
@@ -60,7 +60,7 @@ class SQ_Post extends SQ_FrontController {
      * Hook the post save/update
      * @param type $post_id
      */
-    function hookSavePost($post_id) {
+    public function hookSavePost($post_id) {
         $file_name = false;
 
 
@@ -76,7 +76,7 @@ class SQ_Post extends SQ_FrontController {
                 SQ_Tools::getValue('autosave') == '') {
             //echo 'saving';
             //check for custom SEO
-            $this->checkAdvMeta($post_id);
+            $this->_checkAdvMeta($post_id);
             //check the SEO from Squirrly Live Assistant
             $this->checkSeo($post_id, get_post_status($post_id));
         }
@@ -103,7 +103,7 @@ class SQ_Post extends SQ_FrontController {
      * @param integer $post_id
      * @return false|void
      */
-    function checkImage($post_id) {
+    public function checkImage($post_id) {
         @set_time_limit(90);
         $local_file = false;
 
@@ -176,7 +176,7 @@ class SQ_Post extends SQ_FrontController {
      * @param integer $post_id
      * @param void
      */
-    function checkSeo($post_id, $status = '') {
+    public function checkSeo($post_id, $status = '') {
         $args = array();
 
         $seo = SQ_Tools::getValue('sq_seo');
@@ -193,18 +193,22 @@ class SQ_Post extends SQ_FrontController {
         $args['author'] = (int) SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
 
-        SQ_Action::apiCall('sq/seo/post', $args, 5);
+        SQ_Action::apiCall('sq/seo/post', $args, 10);
+
+        if ($json = $this->model->getKeyword($post_id)) {
+            $json->keyword = urldecode(SQ_Tools::getValue('sq_keyword'));
+            $this->model->saveKeyword($post_id, $json);
+        } else {
+            $args = array();
+            $args['keyword'] = urldecode(SQ_Tools::getValue('sq_keyword'));
+            $this->model->saveKeyword($post_id, json_decode(json_encode($args)));
+        }
     }
 
-    function getPaged($link) {
+    public function getPaged($link) {
         $page = get_query_var('paged');
         if ($page && $page > 1) {
-            $link = trailingslashit($link) . "page/" . "$page";
-            if ($has_ut) {
-                $link = user_trailingslashit($link, 'paged');
-            } else {
-                $link .= '/';
-            }
+            $link = trailingslashit($link) . "page/" . "$page" . '/';
         }
         return $link;
     }
@@ -219,7 +223,7 @@ class SQ_Post extends SQ_FrontController {
 
         switch (SQ_Tools::getValue('action')) {
             case 'sq_save_meta':
-                $return = $this->checkAdvMeta(SQ_Tools::getValue('post_id'));
+                $return = $this->_checkAdvMeta(SQ_Tools::getValue('post_id'));
                 echo json_encode($return);
                 break;
         }
@@ -232,7 +236,7 @@ class SQ_Post extends SQ_FrontController {
      * @return array | false
      *
      */
-    private function checkAdvMeta($post_id) {
+    private function _checkAdvMeta($post_id) {
 
         $meta = array();
         if (SQ_Tools::getIsset('sq_fp_title') || SQ_Tools::getIsset('sq_fp_description') || SQ_Tools::getIsset('sq_fp_keywords')) {
@@ -255,5 +259,3 @@ class SQ_Post extends SQ_FrontController {
     }
 
 }
-
-?>

@@ -4,7 +4,7 @@ class SQ_Frontend extends SQ_FrontController {
 
     public static $options;
 
-    function __construct() {
+    public function __construct() {
         if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
             return;
 
@@ -22,7 +22,7 @@ class SQ_Frontend extends SQ_FrontController {
     /**
      * Called after plugins are loaded
      */
-    function hookLoaded() {
+    public function hookLoaded() {
         if (self::$options['sq_use'] == 1) {
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
                 return;
@@ -34,20 +34,8 @@ class SQ_Frontend extends SQ_FrontController {
         }
     }
 
-    function action() {
+    public function action() {
 
-    }
-
-    /**
-     * Set the unique visitor cookie for the SQ_Traffic record
-     */
-    function hookFrontinit() {
-        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
-            return;
-
-        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
-        if (is_object($traffic))
-            $traffic->saveCookie();
     }
 
     /**
@@ -58,10 +46,6 @@ class SQ_Frontend extends SQ_FrontController {
             return;
 
         echo $this->model->setStart();
-        parent::hookHead();
-
-        SQ_Tools::dump(self::$options, $GLOBALS['wp_query']); //output debug
-
 
         if (isset(self::$options['sq_use']) && (int) self::$options['sq_use'] == 1) {
             echo $this->model->setHeader();
@@ -78,7 +62,7 @@ class SQ_Frontend extends SQ_FrontController {
     /**
      * Change the image path to absolute when in feed
      */
-    function hookFrontcontent($content) {
+    public function hookFrontcontent($content) {
         if (!is_feed())
             return $content;
 
@@ -115,15 +99,16 @@ class SQ_Frontend extends SQ_FrontController {
     /**
      * Hook Footer load to save the visit and to close the buffer
      */
-    function hookFrontfooter() {
+    public function hookFrontfooter() {
         if (isset(self::$options['sq_use']) && (int) self::$options['sq_use'] == 1) {
-            //Use buffer only for meta Title
+            //Be sure the heder is flushed
             //if(self::$options['sq_auto_title'] == 1)
             $this->model->flushHeader();
         }
-        $this->model->recordTraffic();
+
+        if (isset(self::$options['sq_analytics_code']) && !( current_user_can('edit_posts') )) {
+            $this->model->setFooter(self::$options['sq_analytics_code']);
+        }
     }
 
 }
-
-?>

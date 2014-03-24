@@ -10,7 +10,7 @@ class SQ_BlockController {
     protected $model;
 
     /** @var boolean */
-    private $flush = true;
+    public $flush = true;
 
     /** @var object of the view class */
     protected $view;
@@ -38,22 +38,22 @@ class SQ_BlockController {
     public function init() {
 
         $this->view = SQ_ObjController::getController('SQ_DisplayController', false);
+        $this->view->setBlock($this->name);
 
         /* check if there is a hook defined in the block class */
         SQ_ObjController::getController('SQ_HookController', false)
                 ->setBlockHooks($this);
 
-        if ($this->flush)
-            $this->output();
-        else
-            $this->hookHead();
+        if ($this->flush) {
+            echo $this->output();
+        } else {
+            return $this->output();
+        }
     }
 
     protected function output() {
         $this->hookHead();
-
-        /* view is called from theme directory with the class name by default */
-        $this->view->output($this->name, $this);
+        return $this->view->echoBlock($this);
     }
 
     /**
@@ -81,5 +81,3 @@ class SQ_BlockController {
     }
 
 }
-
-?>
