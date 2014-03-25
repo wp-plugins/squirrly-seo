@@ -307,7 +307,7 @@ class SQ_PostsList extends SQ_FrontController {
             if ($rank = get_transient('sq_rank' . $this->model->post_id) && $rank >= -1) {
                 $args = array();
                 $args['post_id'] = $this->model->post_id;
-                $args['rank'] = $rank;
+                $args['rank'] = get_transient('sq_rank' . $this->model->post_id);
                 $args['country'] = $ranking->getCountry();
                 $args['language'] = $ranking->getLanguage();
                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
