@@ -284,14 +284,16 @@ class SQ_PostsList extends SQ_FrontController {
 
         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
         if (is_object($ranking)) {
-            //if the rank is not in transient
-            $rank = get_transient('sq_rank' . $this->model->post_id);
-            if ($rank === false) {
 
+            $rank = get_transient('sq_rank' . $this->model->post_id);
+
+            //if the rank is not in transient
+            if ($rank === false) {
                 //get the keyword from database
                 if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id) && isset($json->rank)) {
+                    $rank = $json->rank;
                     //add it to transient
-                    set_transient('sq_rank' . $this->model->post_id, $json->rank, (60 * 60 * 24 * 2));
+                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
                 } else {
                     $rank = $ranking->processRanking($this->model->post_id, $keyword);
 
@@ -299,8 +301,9 @@ class SQ_PostsList extends SQ_FrontController {
                         sleep(3);
                         //if not indexed with the keyword then find the url
                         $rank = $ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id));
-                        if (isset($rank) && $rank > 0)
-                            $rank = 0; //for permalink index set 0
+                        if (isset($rank) && $rank > 0) { //for permalink index set 0
+                            $rank = 0;
+                        }
                     }
                     $args = array();
                     $args['keyword'] = $keyword;
@@ -309,8 +312,6 @@ class SQ_PostsList extends SQ_FrontController {
                     //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
                 }
-
-                $rank = get_transient('sq_rank' . $this->model->post_id);
             }
 
             //save the rank if there is no error
