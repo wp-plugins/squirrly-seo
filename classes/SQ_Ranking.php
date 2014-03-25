@@ -126,7 +126,7 @@ class SQ_Ranking extends SQ_FrontController {
         $sql = "SELECT `post_id`, `meta_value`
                        FROM `" . $wpdb->postmeta . "`
                        WHERE (`meta_key` = 'sq_post_keyword')
-                       ORDER BY `meta_id` DESC";
+                       ORDER BY `post_id` DESC";
 
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
@@ -141,15 +141,15 @@ class SQ_Ranking extends SQ_FrontController {
                             (!isset($json->rank) ||
                             (isset($json->update) && (time() - $json->update > (60 * 60 * 24 * 2))))) {
 
-                        if ($json->rank = $this->processRanking($row->post_id, $json->keyword)) {
-                            if ($json->rank == -1) {
-                                sleep(mt_rand(10, 20));
-                                //if not indexed with the keyword then find the url
-                                $json->rank = $this->processRanking($row->post_id, get_permalink($row->post_id));
-                                if (isset($json->rank) && $json->rank > 0)
-                                    $json->rank = 0; //for permalink index set 0
-                            }
+                        $json->rank = $this->processRanking($row->post_id, $json->keyword);
+                        if ($json->rank == -1) {
+                            sleep(mt_rand(10, 20));
+                            //if not indexed with the keyword then find the url
+                            $json->rank = $this->processRanking($row->post_id, get_permalink($row->post_id));
+                            if (isset($json->rank) && $json->rank > 0)
+                                $json->rank = 0; //for permalink index set 0
                         }
+
 
                         if (isset($json->rank)) {
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
