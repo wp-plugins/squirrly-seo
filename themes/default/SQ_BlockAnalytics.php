@@ -212,47 +212,58 @@
                                                 for ($i = 0; $i < substr_count($task->description, '%s'); $i++)
                                                     $array[] = $replace;
 
+
+                                                if (isset($task->graph) && !empty($task->graph) && isset($task->video) && $task->video <> '') {
+                                                    ?>
+                                                    <div style="position: relative; text-align: center; margin-bottom: 15px;">
+                                                        <div id="sq_analytics_tasks_video_cover_<?php echo $task->id ?>" class="sq_analytics_tasks_video_cover" rel="<?php echo $task->video ?>" ></div>
+                                                        <a href="http://www.youtube.com/watch?v=<?php echo $task->video ?>" target="_blank"  rel="nofollow" >Go to video</a>
+                                                    </div>
+                                                    <?php
+                                                }
                                                 echo @vsprintf($task->description, $array);
                                                 ?>
                                             </td>
                                             <td class="sq_third_column">
-                                                <?php
-                                                if (isset($task->graph) && !empty($task->graph)) {
-                                                    $data = array();
-                                                    $data[] = array('', '');
-                                                    foreach ($task->graph as $value) {
-                                                        $data[] = array('', (int) number_format_i18n($value));
-                                                    }
-                                                    if (isset($task->value) && $task->name == 'GoogleSerp') {
-                                                        echo '<div class="sq_chart_text">'
-                                                        . (($task->value->value > 0) ? __('Current: ', _SQ_PLUGIN_NAME_) . $task->value->value : '') . '<br />'
-                                                        . (($task->value->min > 0) ? __('Lowest: ', _SQ_PLUGIN_NAME_) . $task->value->min : '') . '<br />'
-                                                        . (($task->value->max > 0) ? __('Highest: ', _SQ_PLUGIN_NAME_) . $task->value->max : '') . '<br />'
-                                                        . '</div>';
-                                                        echo '<div id="sq_chart_' . $task->id . '" class="sq_chart" style="margin:0 auto; width:200px; height:60px;"></div><script>var sq_chart_' . $task->id . '_val = drawChart("sq_chart_' . $task->id . '", ' . json_encode($data) . ',true); </script>';
-                                                    } else {
-                                                        echo '<div class="sq_chart_text">' . __('last 30 days', _SQ_PLUGIN_NAME_) . '</div>';
-                                                        echo '<div id="sq_chart_' . $task->id . '" class="sq_chart" style="margin:0 auto; width:200px; height:60px;"></div><script>var sq_chart_' . $task->id . '_val = drawChart("sq_chart_' . $task->id . '", ' . json_encode($data) . ',false); </script>';
-                                                    }
-                                                } elseif (isset($task->video) && $task->video <> '') {
-                                                    ?>
-                                                    <div id="sq_analytics_tasks_video_cover_<?php echo $task->id ?>" class="sq_analytics_tasks_video_cover" rel="<?php echo $task->video ?>" ></div>
-                                                    <a href="http://www.youtube.com/watch?v=<?php echo $task->video ?>" target="_blank"  rel="nofollow" >Go to video</a>
+                                                <div style="position:relative">
                                                     <?php
-                                                } elseif (isset($task->side) && $task->side <> '') {
-                                                    echo $task->side;
-                                                }
-                                                ?>
+                                                    if (isset($task->graph) && !empty($task->graph)) {
+                                                        $data = array();
+                                                        $data[] = array('', '');
+                                                        foreach ($task->graph as $value) {
+                                                            $data[] = array('', (int) number_format_i18n($value));
+                                                        }
+                                                        if (isset($task->value) && $task->name == 'GoogleSerp') {
+                                                            echo '<div class="sq_chart_text">'
+                                                            . (($task->value->value > 0) ? __('Current: ', _SQ_PLUGIN_NAME_) . $task->value->value : '') . '<br />'
+                                                            . (($task->value->min > 0) ? __('Lowest: ', _SQ_PLUGIN_NAME_) . $task->value->min : '') . '<br />'
+                                                            . (($task->value->max > 0) ? __('Highest: ', _SQ_PLUGIN_NAME_) . $task->value->max : '') . '<br />'
+                                                            . '</div>';
+                                                            echo '<div id="sq_chart_' . $task->id . '" class="sq_chart" style="margin:0 auto; width:200px; height:60px;"></div><script>var sq_chart_' . $task->id . '_val = drawChart("sq_chart_' . $task->id . '", ' . json_encode($data) . ',true); </script>';
+                                                        } else {
+                                                            echo '<div class="sq_chart_text">' . __('last 30 days', _SQ_PLUGIN_NAME_) . '</div>';
+                                                            echo '<div id="sq_chart_' . $task->id . '" class="sq_chart" style="margin:0 auto; width:200px; height:60px;"></div><script>var sq_chart_' . $task->id . '_val = drawChart("sq_chart_' . $task->id . '", ' . json_encode($data) . ',false); </script>';
+                                                        }
+                                                    } elseif (isset($task->video) && $task->video <> '') {
+                                                        ?>
+                                                        <div id="sq_analytics_tasks_video_cover_<?php echo $task->id ?>" class="sq_analytics_tasks_video_cover" rel="<?php echo $task->video ?>" ></div>
+                                                        <a href="http://www.youtube.com/watch?v=<?php echo $task->video ?>" target="_blank"  rel="nofollow" >Go to video</a>
+                                                        <?php
+                                                    } elseif (isset($task->side) && $task->side <> '') {
+                                                        echo $task->side;
+                                                    }
+                                                    ?>
+                                                </div>
                                             </td>
                                         </tr>
                                     </table>
                                 </li>
-        <?php } ?>
+                            <?php } ?>
                     </ul>
                 </li>
             </ul>
         </div>
-<?php } ?>
+    <?php } ?>
 </div>
 <script>
     jQuery('.sq_analytics_tasks_video_cover').unbind('click').bind('click', function() {
