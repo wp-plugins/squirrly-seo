@@ -195,12 +195,13 @@ class SQ_Post extends SQ_FrontController {
 
         SQ_Action::apiCall('sq/seo/post', $args, 10);
 
+        //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {
-            $json->keyword = urldecode(SQ_Tools::getValue('sq_keyword'));
+            $json->keyword = SQ_Tools::getValue('sq_keyword');
             $this->model->saveKeyword($post_id, $json);
         } else {
             $args = array();
-            $args['keyword'] = urldecode(SQ_Tools::getValue('sq_keyword'));
+            $args['keyword'] = SQ_Tools::getValue('sq_keyword');
             $this->model->saveKeyword($post_id, json_decode(json_encode($args)));
         }
     }

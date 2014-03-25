@@ -257,31 +257,8 @@ class SQ_PostsList extends SQ_FrontController {
                     exit(json_encode(array('error' => $response)));
                 } else {
 
-                    if ($response->keyword) {
-                        $ranking = SQ_ObjController::getController('SQ_Ranking', false);
-                        if (is_object($ranking)) {
-                            //if not rank checked
-                            if (!$rank = get_transient('sq_rank' . $this->model->post_id)) {
-                                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
-                                    if (isset($json->rank)) {
-                                        $rank = $json->rank;
-                                    }
-                                    set_transient('sq_rank' . $this->model->post_id, $rank, 60 * 60 * 24 * 2);
-                                } elseif ($rank = $ranking->processRanking($this->model->post_id, $response->keyword)) {
-                                    set_transient('sq_rank' . $this->model->post_id, $rank, 60 * 60 * 24 * 2);
-                                }
-                            }
-
-                            if ($rank = get_transient('sq_rank' . $this->model->post_id) && $rank > -2) {
-                                $args = array();
-                                $args['post_id'] = $this->model->post_id;
-                                $args['rank'] = get_transient('sq_rank' . $this->model->post_id);
-                                $args['country'] = $ranking->getCountry();
-                                $args['language'] = $ranking->getLanguage();
-                                SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
-                            }
-                        }
-                    }
+                    //check and save the keyword serp
+                    $this->checkKeyword($response->keyword);
 
                     $analytics = SQ_ObjController::getBlock('SQ_BlockAnalytics');
                     $analytics->flush = false;
@@ -292,6 +269,50 @@ class SQ_PostsList extends SQ_FrontController {
                     SQ_Tools::setHeader('json');
                     exit(json_encode($response));
                 }
+        }
+    }
+
+    /**
+     * Check and save the Keyword SERP
+     *
+     * @param type $keyword
+     * @return type
+     */
+    private function checkKeyword($keyword) {
+        if ($keyword == '')
+            return;
+
+        $ranking = SQ_ObjController::getController('SQ_Ranking', false);
+        if (is_object($ranking)) {
+            //if the rank is not in transient
+            if (!$rank = get_transient('sq_rank' . $this->model->post_id)) {
+                //get the keyword from database
+                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
+                    if (isset($json->rank)) { //if is set
+                        $rank = $json->rank;
+
+                        //add it to transient
+                        set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
+                    }
+                } elseif ($rank = $ranking->processRanking($this->model->post_id, $keyword)) {
+                    $args = array();
+                    $args['keyword'] = $keyword;
+                    $args['rank'] = $rank;
+                    SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
+                    //add it to transient
+                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
+                }
+            }
+
+            //save the rank if there is no error
+            if ($rank = get_transient('sq_rank' . $this->model->post_id) && $rank >= -1) {
+                $args = array();
+                $args['post_id'] = $this->model->post_id;
+                $args['rank'] = $rank;
+                $args['country'] = $ranking->getCountry();
+                $args['language'] = $ranking->getLanguage();
+                SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
+            }
         }
     }
 

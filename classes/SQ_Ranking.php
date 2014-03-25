@@ -53,9 +53,7 @@ class SQ_Ranking extends SQ_FrontController {
         $this->setKeyword($keyword);
 
         if (isset($this->keyword)) {
-            $rank = $this->getGoogleRank();
-
-            return $rank;
+            return $this->getGoogleRank();
         }
         return false;
     }
@@ -79,12 +77,11 @@ class SQ_Ranking extends SQ_FrontController {
         $arg = array('timeout' => 10);
         $arg['q'] = $this->keyword;
         $arg['hl'] = $this->language;
-        $arg['ie'] = 'utf-8';
-        $arg['aq'] = 't';
-        $arg['as_qdr'] = 'all';
         $arg['num'] = '100';
-        $arg['nfpr'] = '1';
-        $arg['filter'] = '0';
+        $arg['as_qdr'] = 'all';
+        $arg['safe'] = 'off';
+        $arg['pws'] = '0';
+
         //Search google for rank
         $url = "https://www.google.$country/search";
 
@@ -102,7 +99,7 @@ class SQ_Ranking extends SQ_FrontController {
 
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
-        @preg_match_all('/<h3 class="r"><a href="\/url\?q=(.*?)&amp;sa=U&amp;ei=/', $response, $matches);
+        preg_match_all('/<h3 class="r"><a href="\/url\?q=(.*?)&amp;sa=U&amp;ei=/', $response, $matches);
 
         $pos = -1;
         if (!empty($matches[1])) {
@@ -113,7 +110,6 @@ class SQ_Ranking extends SQ_FrontController {
                 }
             }
         }
-        @file_put_contents(_SQ_ROOT_DIR_ . 'sq_log', 'google: ' . $response . "\n\n" . 'position: ' . $pos . "\n\n");
         return $pos;
     }
 
@@ -123,6 +119,7 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function processCron() {
         global $wpdb;
+        set_time_limit(400);
         /* Load the Submit Actions Handler */
         SQ_ObjController::getController('SQ_Action', false);
 
@@ -151,16 +148,16 @@ class SQ_Ranking extends SQ_FrontController {
                                 //if not indexed with the keyword then find the url
                                 $json->rank = $this->processRanking($row->post_id, get_permalink($row->post_id));
                                 if (isset($json->rank) && $json->rank > 0)
-                                    $json->rank = 0; //for permalink index
+                                    $json->rank = 0; //for permalink index set 0
                             }
                         }
 
                         if ($json->rank) {
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
-                            //if rank proccess has no error
-                            if ($json->rank > -2) {
-                                set_transient('sq_rank' . $row->post_id, $json->rank, 60 * 60 * 24 * 2);
+                            set_transient('sq_rank' . $row->post_id, $json->rank, 60 * 60 * 24 * 2);
 
+                            //if rank proccess has no error
+                            if ($json->rank >= -1) {
                                 $args = array();
                                 $args['post_id'] = $row->post_id;
                                 $args['rank'] = $json->rank;
@@ -170,7 +167,7 @@ class SQ_Ranking extends SQ_FrontController {
                                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
                             }
                             $count++;
-                            sleep(mt_rand(10, 25));
+                            sleep(mt_rand(10, 20));
                         }
                     }
                 }
