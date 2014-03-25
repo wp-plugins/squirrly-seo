@@ -286,7 +286,6 @@ class SQ_PostsList extends SQ_FrontController {
         if (is_object($ranking)) {
 
             $rank = get_transient('sq_rank' . $this->model->post_id);
-
             //if the rank is not in transient
             if ($rank === false) {
                 //get the keyword from database
