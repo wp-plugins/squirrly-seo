@@ -289,10 +289,8 @@ class SQ_PostsList extends SQ_FrontController {
 
                 //get the keyword from database
                 if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id) && isset($json->rank)) {
-                    $rank = $json->rank;
-
                     //add it to transient
-                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
+                    set_transient('sq_rank' . $this->model->post_id, $json->rank, (60 * 60 * 24 * 2));
                 } elseif ($rank = $ranking->processRanking($this->model->post_id, $keyword)) {
                     $args = array();
                     $args['keyword'] = $keyword;

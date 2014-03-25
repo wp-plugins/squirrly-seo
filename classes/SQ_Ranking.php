@@ -82,11 +82,8 @@ class SQ_Ranking extends SQ_FrontController {
         $arg['safe'] = 'off';
         $arg['pws'] = '0';
 
-        //Search google for rank
-        $url = "https://www.google.$country/search";
-
         //Grab the remote informations from google
-        $response = utf8_decode(SQ_Tools::sq_remote_get($url, $arg));
+        $response = utf8_decode(SQ_Tools::sq_remote_get("https://www.google.$country/search", $arg));
 
         //Check the values for block IP
         if (strpos($response, "computer virus or spyware application") !== false ||
@@ -97,6 +94,7 @@ class SQ_Ranking extends SQ_FrontController {
             return -2; //return error
         }
 
+
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
         preg_match_all('/<h3 class="r"><a href="\/url\?q=(.*?)&amp;sa=U&amp;ei=/', $response, $matches);
@@ -104,6 +102,7 @@ class SQ_Ranking extends SQ_FrontController {
         $pos = -1;
         if (!empty($matches[1])) {
             foreach ($matches[1] as $index => $url) {
+
                 if (strpos($url, $permalink) !== false) {
                     $pos = $index + 1;
                     break;
@@ -152,7 +151,7 @@ class SQ_Ranking extends SQ_FrontController {
                             }
                         }
 
-                        if ($json->rank) {
+                        if (isset($json->rank)) {
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
                             set_transient('sq_rank' . $row->post_id, $json->rank, 60 * 60 * 24 * 2);
 
