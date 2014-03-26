@@ -299,8 +299,7 @@ class SQ_PostsList extends SQ_FrontController {
                     if ($rank == -1) {
                         sleep(3);
                         //if not indexed with the keyword then find the url
-                        $rank = $ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id));
-                        if (isset($rank) && $rank > 0) { //for permalink index set 0
+                        if ($ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id)) > 0) { //for permalink index set 0
                             $rank = 0;
                         }
                     }
@@ -317,7 +316,7 @@ class SQ_PostsList extends SQ_FrontController {
             if ($rank !== false && $rank >= -1) {
                 $args = array();
                 $args['post_id'] = $this->model->post_id;
-                $args['rank'] = $rank;
+                $args['rank'] = (string) $rank;
                 $args['country'] = $ranking->getCountry();
                 $args['language'] = $ranking->getLanguage();
                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
