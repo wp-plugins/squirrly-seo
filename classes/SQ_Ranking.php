@@ -131,18 +131,18 @@ class SQ_Ranking extends SQ_FrontController {
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
             foreach ($rows as $row) {
-                if ($count > 10) {
+                if ($count > 20) {
                     break; //check only 10 keywords at the time
                 }
                 if ($row->meta_value <> '') {
                     $json = json_decode($row->meta_value);
                     //If keyword is set and no rank or last check is 2 days ago
                     if (isset($json->keyword) &&
-                            (!isset($json->rank) ||
-                            (isset($json->update) && (time() - $json->update > (60 * 60 * 24 * 2))))) {
+                            (!isset($json->rank) || (isset($json->update) && (time() - $json->update > (60 * 60 * 24 * 2))))) {
 
                         $json->rank = $this->processRanking($row->post_id, $json->keyword);
                         if ($json->rank == -1) {
+                            $count++;
                             sleep(mt_rand(10, 20));
                             //if not indexed with the keyword then find the url
                             if ($this->processRanking($row->post_id, get_permalink($row->post_id)) > 0) {
