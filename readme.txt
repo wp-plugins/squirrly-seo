@@ -112,6 +112,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 2.3.1 =
+* Fixed the javascript loading issue for some wordpress dashboards.
+* Fixed rank report for indexed url in google
+
 = 2.3.0 =
 * Add the new Squirrly SEO Analytics in all posts list
 * Traffic graph for each post

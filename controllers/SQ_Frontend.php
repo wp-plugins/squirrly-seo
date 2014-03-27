@@ -34,10 +34,6 @@ class SQ_Frontend extends SQ_FrontController {
         }
     }
 
-    public function action() {
-
-    }
-
     /**
      * Hook the Header load
      */

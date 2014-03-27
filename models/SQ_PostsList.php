@@ -56,8 +56,21 @@ class Model_SQ_PostsList {
                     foreach ($audit as $task) {
                         @$group[$key]['total'] = number_format_i18n($task->total);
                         @$group[$key]['complete'] += ($task->complete) ? 1 : 0;
-                        @$group[$key]['processed'] = 1;
+                        @$group[$key]['processed'] += 1;
                     }
+
+                    $color = 'sq_audit_task_completed_green';
+                    if ($group[$key]['complete'] < ($group[$key]['processed'] / 2)) {
+                        $color = 'sq_audit_task_completed_red';
+                    }
+                    if ($group[$key]['complete'] >= ($group[$key]['processed'] / 2)) {
+                        $color = 'sq_audit_task_completed_yellow';
+                    }
+                    if ($group[$key]['complete'] == $group[$key]['processed']) {
+                        $color = 'sq_audit_task_completed_green';
+                    }
+
+                    @$group[$key]['color'] = $color;
                 }
             }
             $this->audit->groups = json_decode(json_encode($group));

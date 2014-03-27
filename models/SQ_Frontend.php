@@ -258,7 +258,7 @@ class Model_SQ_Frontend {
         }
         //GET THE URL
         $meta .= sprintf('<meta property="og:url" content="%s" />', $url) . "\n";
-        if ((isset($this->thumb_image) && $this->thumb_image <> '')) {
+        if (!$this->isHomePage() && (isset($this->thumb_image) && $this->thumb_image <> '')) {
             $meta .= sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n";
             $meta .= sprintf('<meta property="og:image:width" content="%s" />', '500') . "\n";
         }

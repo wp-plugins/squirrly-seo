@@ -194,11 +194,10 @@ class SQ_PostsList extends SQ_FrontController {
         echo '<script type="text/javascript">
                     var __sq_article_rank = "' . __('SEO Analytics, by Squirrly', _SQ_PLUGIN_NAME_) . '";
                     var __sq_refresh = "' . __('Update', _SQ_PLUGIN_NAME_) . '"
-                    var __sq_interval = "' . __('Last 30 days', _SQ_PLUGIN_NAME_) . '";
 
+                    var sq_analytics_code = "' . SQ_Tools::$options['sq_analytics_code'] . '";
                     var __sq_dashurl = "' . _SQ_STATIC_API_URL_ . '";
                     var __token = "' . SQ_Tools::$options['sq_api'] . '";
-                    var sq_analytics_code = "' . SQ_Tools::$options['sq_analytics_code'] . '";
                     var __sq_ranknotpublic_text = "' . __('Not Public', _SQ_PLUGIN_NAME_) . '";
                     var __sq_couldnotprocess_text = "' . __('Could not process', _SQ_PLUGIN_NAME_) . '";
               </script>';

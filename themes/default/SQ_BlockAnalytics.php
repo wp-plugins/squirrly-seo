@@ -9,10 +9,10 @@
                     <table>
                         <tr>
                             <td id="sq_analytics_tasks_header_<?php echo $key ?>" class="sq_analytics_tasks_header" colspan="4">
-                                <span class="persist-header sq_analytics_tasks_header_title <?php echo $key . '_color_text' ?>">
+                                <span class="persist-header sq_analytics_tasks_header_title <?php echo $current_grup->color . '_text' ?>">
                                     <?php echo ucfirst($key) ?>
                                 </span>
-                                <span class="sq_analytics_task_completed <?php echo $key . '_color_icon' ?>">
+                                <span class="sq_analytics_task_completed <?php echo $current_grup->color ?>">
                                     <?php echo ((isset($current_grup->total) && $current_grup->total >= 0) ? $current_grup->total : 'N/A') ?>
                                 </span>
                             </td>
@@ -52,12 +52,6 @@
                                     } elseif ($task->name === 'Authority') {
                                         $task->value->mozAuthority = number_format_i18n($task->value->mozAuthority);
                                         $task->value->mozRank = number_format_i18n($task->value->mozRank);
-                                        if (isset($task->value->auditScore)) {
-                                            $task->value->auditScore = number_format_i18n($task->value->auditScore);
-                                        }
-                                        if (isset($task->value->googleRank)) {
-                                            $task->value->googleRank = number_format_i18n($task->value->googleRank);
-                                        }
 
                                         $replace .= '<ul class="sq_analytics_values" >
                                                     <li>
