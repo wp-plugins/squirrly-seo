@@ -82,6 +82,10 @@ class Model_SQ_PostsList {
                     if ($group[$key]['complete'] == $group[$key]['processed']) {
                         $color = 'sq_audit_task_completed_green';
                     }
+                    //if the post its just indexed with the url then is not so good
+                    if ($key == 'rank' && (int) $group[$key]['total'] == 0) {
+                        $color = 'sq_audit_task_completed_yellow';
+                    }
 
                     @$group[$key]['color'] = $color;
                 }

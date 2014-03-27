@@ -153,7 +153,7 @@ class SQ_Ranking extends SQ_FrontController {
 
                         if (isset($json->rank)) {
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
-                            set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24 * 2));
+                            set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24 * 1));
 
                             //if rank proccess has no error
                             if ($json->rank >= -1) {

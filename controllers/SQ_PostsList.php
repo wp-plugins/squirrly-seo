@@ -292,7 +292,7 @@ class SQ_PostsList extends SQ_FrontController {
                 if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id) && isset($json->rank)) {
                     $rank = $json->rank;
                     //add it to transient
-                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
+                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 } else {
                     $rank = $ranking->processRanking($this->model->post_id, $keyword);
 
@@ -308,7 +308,7 @@ class SQ_PostsList extends SQ_FrontController {
                     $args['rank'] = $rank;
                     SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
                     //add it to transient
-                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 2));
+                    set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 }
             }
 
