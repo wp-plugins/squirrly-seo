@@ -72,10 +72,6 @@ class SQ_PostsList extends SQ_FrontController {
         parent::hookHead();
         SQ_ObjController::getController('SQ_DisplayController', false)
                 ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
-//        SQ_ObjController::getController('SQ_DisplayController', false)
-//                ->loadMedia(_SQ_THEME_URL_ . '/js/sq_rank.js');
-        SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia(_SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js');
     }
 
     /**
@@ -90,9 +86,14 @@ class SQ_PostsList extends SQ_FrontController {
 
         return $this->insert($columns, array($this->column_id => __('Squirrly') . '
             <script type="text/javascript">
-                google.load("visualization", "1", {packages: ["corechart"]});
+                //load the rank from squirrly
+                var sq_script = document.createElement(\'script\');
+                sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js?ver=' . SQ_VERSION_ID . '";
+                var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
+                site_head.insertBefore(sq_script, site_head.firstChild);
 
-                function drawChart(id, values, reverse) {
+               google.load("visualization", "1", {packages: ["corechart"]});
+               function drawChart(id, values, reverse) {
                     var data = google.visualization.arrayToDataTable(values);
 
                     var options = {
