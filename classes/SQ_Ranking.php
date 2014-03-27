@@ -11,12 +11,8 @@ class SQ_Ranking extends SQ_FrontController {
     private $country;
     private $language;
 
-    public function __construct() {
-        $this->country = SQ_Tools::$options['sq_google_country'];
-        $this->language = SQ_Tools::$options['sq_google_language'];
-    }
-
     public function getCountry() {
+        $this->country = SQ_Tools::$options['sq_google_country'];
         return $this->country;
     }
 
@@ -25,6 +21,7 @@ class SQ_Ranking extends SQ_FrontController {
      * @return type
      */
     public function getLanguage() {
+        $this->language = SQ_Tools::$options['sq_google_language'];
         return $this->language;
     }
 
@@ -69,14 +66,14 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function getGoogleRank() {
         global $wpdb;
-        $country = $this->country;
+        $country = $this->getCountry();
 
         if (!function_exists('preg_match_all'))
             return;
 
         $arg = array('timeout' => 10);
         $arg['q'] = $this->keyword;
-        $arg['hl'] = $this->language;
+        $arg['hl'] = $this->getLanguage();
         $arg['num'] = '100';
         $arg['as_qdr'] = 'all';
         $arg['safe'] = 'off';
