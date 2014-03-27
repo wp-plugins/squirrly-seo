@@ -90,7 +90,7 @@ class SQ_Ranking extends SQ_FrontController {
                 strpos($response, "entire network is affected") !== false ||
                 strpos($response, "http://www.download.com/Antivirus") !== false ||
                 strpos($response, "/images/yellow_warning.gif") !== false ||
-                strpos($response, "Our systems have detected unusual traffic") !== false) {
+                strpos($response, "302 Moved") !== false) {
             return -2; //return error
         }
 
