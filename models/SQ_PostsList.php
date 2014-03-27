@@ -60,12 +60,25 @@ class Model_SQ_PostsList {
                     }
 
                     $color = 'sq_audit_task_completed_green';
+
                     if ($group[$key]['complete'] < ($group[$key]['processed'] / 2)) {
                         $color = 'sq_audit_task_completed_red';
                     }
                     if ($group[$key]['complete'] >= ($group[$key]['processed'] / 2)) {
                         $color = 'sq_audit_task_completed_yellow';
                     }
+
+                    //custom values
+                    if ($key == 'rank' && $group[$key]['total'] <= 10) { //in case of first page
+                        $color = 'sq_audit_task_completed_green';
+                    }
+                    if ($key == 'links' && $group[$key]['total'] > 50) { //in case of first page
+                        $color = 'sq_audit_task_completed_yellow';
+                    }
+                    if ($key == 'authority' && $group[$key]['total'] > 70) { //in case of first page
+                        $color = 'sq_audit_task_completed_yellow';
+                    }
+
                     if ($group[$key]['complete'] == $group[$key]['processed']) {
                         $color = 'sq_audit_task_completed_green';
                     }
