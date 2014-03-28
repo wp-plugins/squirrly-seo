@@ -117,6 +117,7 @@ class SQ_Ranking extends SQ_FrontController {
         global $wpdb;
         set_time_limit(400);
         /* Load the Submit Actions Handler */
+        SQ_ObjController::getController('SQ_Tools', false);
         SQ_ObjController::getController('SQ_Action', false);
 
         //check 20 keyword at one time
