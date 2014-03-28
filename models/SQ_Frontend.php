@@ -406,7 +406,7 @@ class Model_SQ_Frontend {
             }
         }
 
-        if ($post) {
+        if ($post && isset($post->post_content)) {
             preg_match('/<img[^>]*src="([^"]*)"[^>]*>/i', $post->post_content, $match);
         }
 
