@@ -7,13 +7,10 @@ class SQ_Ranking extends SQ_FrontController {
 
     private $keyword;
     private $post_id;
-    //--
-    private $country;
-    private $language;
 
+    //--
     public function getCountry() {
-        $this->country = SQ_Tools::$options['sq_google_country'];
-        return $this->country;
+        return SQ_Tools::$options['sq_google_country'];
     }
 
     /**
@@ -21,8 +18,7 @@ class SQ_Ranking extends SQ_FrontController {
      * @return type
      */
     public function getLanguage() {
-        $this->language = SQ_Tools::$options['sq_google_language'];
-        return $this->language;
+        return SQ_Tools::$options['sq_google_language'];
     }
 
     /**
