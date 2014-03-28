@@ -112,8 +112,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
-= 2.3.2 =
+= 2.3.3 =
 * Fixed the curl call issue in some cases
+* Fixed the traffic loading speed
 * Changed the task color for Squirrly SEO Analytics
 * Changed the Rank check frequency
 
