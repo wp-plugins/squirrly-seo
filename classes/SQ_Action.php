@@ -166,7 +166,7 @@ class SQ_Action extends SQ_FrontController {
 
 
         $url = self::cleanUrl(_SQ_API_URL_ . $module . "?" . $parameters);
-
+        //SQ_Tools::dump($url);
         return SQ_Tools::sq_remote_get($url, array('timeout' => $timeout));
     }
 

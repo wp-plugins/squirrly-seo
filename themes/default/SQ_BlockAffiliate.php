@@ -1,17 +1,42 @@
 <div id="sq_settings" >
     <?php SQ_ObjController::getBlock('SQ_BlockSupport')->init(); ?>
     <form id="sq_settings_affiliate_form" name="settings" action="" method="post" enctype="multipart/form-data">
+        <span class="sq_icon"></span>
         <div id="sq_settings_title" ><?php _e('Join Squirrly today!', _SQ_PLUGIN_NAME_); ?> </div>
         <div id="sq_settings_body">
             <?php
             if (SQ_Tools::$options['sq_api'] == '') {
-                echo '<fieldset style="padding: 0; border: none;" ><div id="sq_settings_login">';
+                echo '<fieldset style="padding: 0; border: none; background-color:transparent; box-shadow:none;" ><div id="sq_settings_login">';
                 SQ_ObjController::getBlock('SQ_Blocklogin')->init();
                 echo '</div></fieldset>';
             }
             ?>
             <fieldset>
-                <legend><?php _e('Join Squirrly today!', _SQ_PLUGIN_NAME_); ?></legend>
+                <legend>
+                    <span class="sq_legend_title"><?php _e('Join Squirrly today!', _SQ_PLUGIN_NAME_); ?></span>
+                    <span><?php echo sprintf(__('%sHow I Started Making Money With the Squirrly Affiliate Program%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/affiliate_program_squirrly-pagblog-article_id62228.html" target="_blank">', '</a>'); ?></span>
+
+                    <span><p class="sq_settings_affiliate_bigtitle">
+                            <?php _e('Affiliate Benefits', _SQ_PLUGIN_NAME_); ?>
+                        </p>
+                        <ul class="sq_settings_affiliate_info">
+                            <li>
+                                <div>
+                                    <span><?php echo sprintf(__('- Recurring 45%s commission', _SQ_PLUGIN_NAME_), '%'); ?></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <span><?php _e('- No cost', _SQ_PLUGIN_NAME_); ?></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <span><?php _e('- Monthly payments in your Paypal account', _SQ_PLUGIN_NAME_); ?></span>
+                                </div>
+                            </li>
+                        </ul></span>
+                </legend>
                 <div>
                     <p class="sq_settings_affiliate_bigbutton" style="margin-bottom:35px;">
                         <?php
@@ -24,26 +49,7 @@
                             }
                         ?>
                     </p>
-                    <p class="sq_settings_affiliate_bigtitle">
-                        <?php _e('Affiliate Benefits', _SQ_PLUGIN_NAME_); ?>
-                    </p>
-                    <ul class="sq_settings_affiliate_info">
-                        <li>
-                            <div>
-                                <span><?php echo sprintf(__('- Recurring 45%s commission', _SQ_PLUGIN_NAME_), '%'); ?></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span><?php _e('- No cost', _SQ_PLUGIN_NAME_); ?></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span><?php _e('- Monthly payments in your Paypal account', _SQ_PLUGIN_NAME_); ?></span>
-                            </div>
-                        </li>
-                    </ul>
+
                     <?php
                     if (SQ_Tools::$options['sq_api'] <> '') {
                         if (SQ_Tools::$options['sq_affiliate_link'] <> '') {
@@ -62,7 +68,9 @@
             </fieldset>
             <?php if (SQ_Tools::$options['sq_affiliate_link'] <> '') { ?>
                 <fieldset>
-                    <legend><?php _e('Squirrly banners you can use', _SQ_PLUGIN_NAME_); ?></legend>
+                    <legend class="sq_legend_big">
+                        <span class="sq_legend_title"><?php _e('Squirrly banners you can use', _SQ_PLUGIN_NAME_); ?></span>
+                    </legend>
                     <div>
                         <ul class="sq_settings_affiliate_info">
                             <?php
@@ -82,12 +90,14 @@
                 </fieldset>
             <?php } ?>
         </div>
+        <br style="clear: both;"/>
         <div id="sq_settings_title" style="text-align: right">
-            <a href="post-new.php" id="sq_goto_newpost" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> /><?php _e('Optimize with Squirrly', _SQ_PLUGIN_NAME_) ?></a>
-            <input id="sq_goto_dashboard" type="button" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> value="<?php _e('See dashboard', _SQ_PLUGIN_NAME_) ?>" />
             <?php if ($view->options['sq_api'] <> '') { ?><input id="sq_goto_settings" type="button" value="<?php _e('Go to settings', _SQ_PLUGIN_NAME_) ?> &raquo;" /><?php } ?>
+            <input id="sq_goto_dashboard" type="button" <?php echo (($view->options['sq_api'] <> '') ? '' : 'style="display:none"') ?> value="<?php _e('See dashboard', _SQ_PLUGIN_NAME_) ?>" />
         </div>
-
+        <div id="sq_settings_title" style="text-align: right">
+            <a href="?page=sq_dashboard" id="sq_goto_newpost" style="display:none" /><?php _e('<< START HERE >>', _SQ_PLUGIN_NAME_) ?></a>
+        </div>
         <input type="hidden" name="action" value="sq_settings_affiliate" />
         <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
     </form>

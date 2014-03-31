@@ -54,8 +54,11 @@ class SQ_Tools extends SQ_FrontController {
      */
     public function hookActionlink($links, $file) {
         if ($file == _SQ_PLUGIN_NAME_ . '/squirrly.php') {
-            if (SQ_Tools::$options['sq_howto'] == 1) {
+            if (SQ_Tools::$options['sq_api'] == '') {
                 $link = '<a href="' . admin_url('admin.php?page=sq_howto') . '">' . __('Getting started', _SQ_PLUGIN_NAME_) . '</a>';
+                array_unshift($links, $link);
+            } elseif (SQ_Tools::$options['sq_api'] <> '') {
+                $link = '<a href="' . admin_url('admin.php?page=sq_dashboard') . '">' . __('Dashboard', _SQ_PLUGIN_NAME_) . '</a>';
                 array_unshift($links, $link);
             }
         }
@@ -70,9 +73,8 @@ class SQ_Tools extends SQ_FrontController {
      */
     public static function getOptions() {
         $default = array(
-            'sq_beginner_user' => 1,
             'sq_api' => '',
-            'sq_use' => 0,
+            'sq_use' => 1,
             'sq_howto' => 1,
             // --
             'sq_auto_canonical' => 1,
@@ -445,6 +447,7 @@ class SQ_Tools extends SQ_FrontController {
     }
 
     public static function getBrowserInfo() {
+        $ub = '';
         $u_agent = $_SERVER['HTTP_USER_AGENT'];
         $bname = 'Unknown';
         $platform = 'Unknown';

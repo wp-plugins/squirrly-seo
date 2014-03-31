@@ -650,7 +650,7 @@ class Model_SQ_Frontend {
         $rnd = '';
 
         if (function_exists('base64_encode')) {
-            if (isset(SQ_Tools::$options['favicon_tmp'])) {
+            if (isset(SQ_Tools::$options['favicon_tmp']) && current_user_can('edit_plugins')) {
                 $rnd = '?ver=' . base64_encode(SQ_Tools::$options['favicon_tmp']);
             }
         }

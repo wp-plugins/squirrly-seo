@@ -8,11 +8,11 @@
   Plugin URI: https://my.squirrly.co
   Description: Squirrly SEO Plugin helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time. <BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan, lucianpacurar
-  Version: 2.3.3
+  Version: 3.0.0
   Author URI: http://www.squirrly.co
  */
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
-define('SQ_VERSION', '2.3.3');
+define('SQ_VERSION', '3.0.0');
 
 /* Call config files */
 require(dirname(__FILE__) . '/config/config.php');
@@ -55,6 +55,7 @@ function showError() {
 /**
  *  Upgrade Squirrly call.
  */
+//add_action('upgrader_process_complete', array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
 register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
 register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
 

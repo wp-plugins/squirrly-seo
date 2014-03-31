@@ -132,7 +132,10 @@ class SQ_Ranking extends SQ_FrontController {
                     $json = json_decode($row->meta_value);
                     //If keyword is set and no rank or last check is 2 days ago
                     if (isset($json->keyword) &&
-                            (!isset($json->rank) || (isset($json->update) && (time() - $json->update > (60 * 60 * 24 * 2))))) {
+                            (!isset($json->rank) ||
+                            (isset($json->update) && (time() - $json->update > (60 * 60 * 24 * 2))) || //if indexed then check every 2 days
+                            (isset($json->update) && isset($json->rank) && $json->rank == -1 && (time() - $json->update > (60 * 60 * 24))) //if not indexed than check often
+                            )) {
 
                         $json->rank = $this->processRanking($row->post_id, $json->keyword);
                         if ($json->rank == -1) {
@@ -147,7 +150,7 @@ class SQ_Ranking extends SQ_FrontController {
 
                         if (isset($json->rank)) {
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
-                            set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24 * 1));
+                            set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24));
 
                             //if rank proccess has no error
                             if ($json->rank >= -1) {

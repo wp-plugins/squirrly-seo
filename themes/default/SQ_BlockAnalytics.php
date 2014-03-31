@@ -223,9 +223,18 @@
                                                     <?php
                                                     if (isset($task->graph) && !empty($task->graph)) {
                                                         $data = array();
-                                                        $data[] = array('', '');
-                                                        foreach ($task->graph as $value) {
-                                                            $data[] = array('', (int) number_format_i18n($value));
+
+                                                        if ($task->name == 'Traffic') {
+                                                            $data[] = array('', __('Visits', _SQ_PLUGIN_NAME_));
+                                                        } else {
+                                                            $data[] = array('', '');
+                                                        }
+                                                        foreach ($task->graph as $key => $value) {
+                                                            if ($task->name == 'Traffic') {
+                                                                $data[] = array($key, (int) number_format_i18n($value));
+                                                            } else {
+                                                                $data[] = array('', (int) number_format_i18n($value));
+                                                            }
                                                         }
                                                         if (isset($task->value) && $task->name == 'GoogleSerp') {
                                                             echo '<div class="sq_chart_text">'

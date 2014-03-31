@@ -16,8 +16,8 @@ class Model_SQ_PostsList {
 
             foreach ($response->posts as $post_id => &$values) {
                 if (isset($values->error)) {
-                    if ($values->error == 'post_limited') {
-                        $values = '<span class="sq_no_rank" ref="' . $post_id . '"><a href="' . _SQ_DASH_URL_ . 'login/?token=' . SQ_Tools::$options['sq_api'] . '&redirect_to=' . _SQ_DASH_URL_ . 'user/plans" target="_blank">' . __('Upgrade Squirrly SEO to see the Analytics for this post', _SQ_PLUGIN_NAME_) . '</a></span>';
+                    if ($values->error == 'post_limited' && isset($values->error_message)) {
+                        $values = '<span class="sq_no_rank" ref="' . $post_id . '"><a href="' . $values->error_link . '" target="_blank">' . $values->error_message . '</a></span>';
                         continue;
                     }
                 }
@@ -27,9 +27,9 @@ class Model_SQ_PostsList {
 
                     if (!empty($values->visits)) {
                         $data = array();
-                        $data[] = array('', '');
-                        foreach ($values->visits as $visit) {
-                            $data[] = array('', (int) number_format_i18n($visit));
+                        $data[] = array('', __('Visits', _SQ_PLUGIN_NAME_));
+                        foreach ($values->visits as $key => $visit) {
+                            $data[] = array($key, (int) number_format_i18n($visit));
                         }
                         $graph = '<div class="sq_chart_title">' . __('monthly traffic', _SQ_PLUGIN_NAME_) . '</div><div id="sq_chart_' . $post_id . '" style="margin:0 auto; width:100px; height:40px;"></div><script>jQuery( document ).ready(function() {drawChart("sq_chart_' . $post_id . '", ' . json_encode($data) . ',false);});</script>';
                     }

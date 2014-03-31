@@ -148,6 +148,48 @@ class Model_SQ_Post {
     }
 
     /**
+     * check if there are keywords saved
+     * @global object $wpdb
+     * @return integer|false
+     */
+    public function countKeywords() {
+        global $wpdb;
+
+        if ($posts = $wpdb->get_row("SELECT count(`post_id`) as count
+                       FROM `" . $wpdb->postmeta . "`
+                       WHERE (`meta_key` = 'sq_post_keyword')")) {
+
+            return $posts->count;
+        }
+
+        return false;
+    }
+
+    /**
+     * check if there are keywords saved
+     * @global object $wpdb
+     * @return integer|false
+     */
+    public function getKeywords($filter = '', $ord = 'meta_id') {
+        global $wpdb;
+
+        if ($filter <> '') {
+            $filter = ' AND (' . $filter . ') ';
+        }
+
+        if ($posts = $wpdb->get_results("SELECT `post_id`
+                FROM `" . $wpdb->postmeta . "`
+                WHERE (`meta_key` = 'sq_post_keyword')"
+                . $filter .
+                'ORDER BY `' . $ord . '`')) {
+
+            return $posts;
+        }
+
+        return false;
+    }
+
+    /**
      * get the keyword
      * @global object $wpdb
      * @param integer $post_id

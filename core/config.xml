@@ -39,15 +39,6 @@
         <path>controllers</path>
     </block>
     <block>
-        <name>SQ_BlockDashboard</name>
-        <description></description>
-        <actions>
-            <action>sq_beginner_set</action>
-        </actions>
-        <active>1</active>
-        <path>core</path>
-    </block>
-    <block>
         <name>SQ_BlockHelp</name>
         <description>Get started with Squirrly settings</description>
         <actions>
@@ -79,7 +70,6 @@
             <action>sq_login</action>
             <action>sq_register</action>
             <action>sq_reset</action>
-
         </actions>
         <active>1</active>
         <path>core</path>

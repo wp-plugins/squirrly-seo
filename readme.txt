@@ -112,15 +112,23 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.0.0 =
+* Added a new look in Squirrly SEO Settings
+* Added the new dashboard tab in Squirrly Menu
+* Added the traffic date information in Squirrly SEO Analytics
+* Fixed the Favicon issue for PNG images
+
 = 2.3.3 =
 * Fixed the curl call issue in some cases
-* Fixed the traffic loading speed
+* Fixed the traffic loading speed in all posts
 * Changed the task color for Squirrly SEO Analytics
-* Changed the Rank check frequency
+* Changed the Keyword SERP check frequency
+* Fixed minor bugs in SEO Live Assistant
+* Enjoy Squirrly SEO!
 
 = 2.3.1 =
 * Fixed the javascript loading issue for some wordpress dashboards.
-* Fixed rank report for indexed url in google
+* Fixed SERP report for indexed url in google
 
 = 2.3.0 =
 * Add the new Squirrly SEO Analytics in all posts list
@@ -140,7 +148,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Fixed SSL connection with the API issue
 
 = 2.2.0 =
-* Added a new theme for Squirrly
+* Added a new theme for Squirrly SEO
 * Added the 2nd version for SEO Live assistant
 * Added Top Headline suggestion when adding a post title
 * Compatible with Wordpress 3.8.1 version
@@ -186,7 +194,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 * Added the weekly SEO audit for all accounts
 
 = 2.1.0 =
-* Added Squirrly Live Assistant for both Visual and HTML editors
+* Added Squirrly SEO Live Assistant for both Visual and HTML editors
 * Added Squirrly SEO for custom post types
 * Compatible with the Wordpress version 3.6
 * Fixed the type delay for Seo Live Assistant

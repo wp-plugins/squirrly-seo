@@ -57,20 +57,27 @@ class SQ_Menu extends SQ_FrontController {
         $this->post_type = array('post', 'page', 'movie', 'product', 'download', 'shopp_page_shopp-products');
 
         //add custom post types
-        if (SQ_Tools::getIsset('post_type'))
-            @array_push($this->post_type, SQ_Tools::getValue('post_type'));
-        elseif (SQ_Tools::getIsset('post')) {
+        if (SQ_Tools::getIsset('post_type')) {
+            if (SQ_Tools::getValue('post_type') <> '') {
+                array_push($this->post_type, SQ_Tools::getValue('post_type'));
+            }
+        } elseif (SQ_Tools::getIsset('post')) {
             $post = get_post(SQ_Tools::getValue('post'));
-            @array_push($this->post_type, $post->post_type);
+            if (isset($post->post_type)) {
+                array_push($this->post_type, $post->post_type);
+            }
         } elseif (SQ_Tools::getIsset('id')) {
             $post = get_post(SQ_Tools::getValue('id'));
-            @array_push($this->post_type, $post->post_type);
+            if (isset($post->post_type)) {
+                array_push($this->post_type, $post->post_type);
+            }
         }
 
-        if (SQ_Tools::$options['sq_howto'] == 1)
+        if (SQ_Tools::$options['sq_api'] == '') {
             $first_page = 'sq_howto';
-        else
+        } else {
             $first_page = 'sq_dashboard';
+        }
 
         /* add the plugin menu in admin */
         if (current_user_can('administrator')) {
@@ -80,7 +87,6 @@ class SQ_Menu extends SQ_FrontController {
             if (!wp_get_schedule('sq_processCron')) {
                 wp_schedule_event(time(), 'hourly', 'sq_processCron');
             }
-            //SQ_ObjController::getController('SQ_Ranking', false)->processCron();
 
             $this->model->addMenu(array(ucfirst(_SQ_NAME_),
                 'Squirrly' . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
@@ -89,7 +95,7 @@ class SQ_Menu extends SQ_FrontController {
                 null,
                 _SQ_THEME_URL_ . 'img/menu_icon_16.png'
             ));
-            if (SQ_Tools::$options['sq_howto'] == 1) {
+            if (SQ_Tools::$options['sq_api'] == '') {
                 $this->model->addSubmenu(array($first_page,
                     ucfirst(_SQ_NAME_) . __(' getting started', _SQ_PLUGIN_NAME_),
                     __('Getting started', _SQ_PLUGIN_NAME_),
@@ -108,8 +114,16 @@ class SQ_Menu extends SQ_FrontController {
                 ));
 
                 $this->model->addSubmenu(array($first_page,
+                    ucfirst(_SQ_NAME_) . __(' account info', _SQ_PLUGIN_NAME_),
+                    __('Account Info', _SQ_PLUGIN_NAME_),
+                    'edit_posts',
+                    'sq_account',
+                    array(SQ_ObjController::getBlock('SQ_BlockAccount'), 'init')
+                ));
+
+                $this->model->addSubmenu(array($first_page,
                     ucfirst(_SQ_NAME_) . __(' settings', _SQ_PLUGIN_NAME_),
-                    __('Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
+                    __('SEO Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
                     'edit_posts',
                     preg_replace('/\s/', '_', _SQ_NAME_),
                     array($this, 'showMenu')
