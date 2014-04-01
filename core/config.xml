@@ -39,17 +39,17 @@
         <path>controllers</path>
     </block>
     <block>
-        <name>SQ_BlockHelp</name>
-        <description>Get started with Squirrly settings</description>
+        <name>SQ_BlockAccount</name>
+        <description>Account information</description>
         <actions>
-            <action>sq_howto</action>
+            <action>sq_hide_survey</action>
         </actions>
         <active>1</active>
         <path>core</path>
     </block>
     <block>
         <name>SQ_BlockSupport</name>
-        <description>The support icons</description>
+        <description>The support</description>
         <controllers>
             <controller>SQ_Post</controller>
         </controllers>
@@ -62,7 +62,7 @@
     </block>
     <block>
         <name>SQ_Blocklogin</name>
-        <description>Login to Squirrly</description>
+        <description>Connect to Squirrly</description>
         <controllers>
             <controller>SQ_Post</controller>
         </controllers>

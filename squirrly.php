@@ -6,7 +6,7 @@
 
   Plugin Name: SEO Plugin by SQUIRRLY
   Plugin URI: https://my.squirrly.co
-  Description: Squirrly SEO Plugin helps you find the right keywords to rank by, in less then 2 minutes, and checks your on-page SEO in real time. <BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
+  Description: Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan, lucianpacurar
   Version: 3.0.0
   Author URI: http://www.squirrly.co

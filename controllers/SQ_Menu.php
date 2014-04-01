@@ -39,7 +39,7 @@ class SQ_Menu extends SQ_FrontController {
         $args['type'] = 'act';
         SQ_Action::apiCall('sq/user/log', $args, 5);
 
-        if (SQ_Tools::$options['sq_howto'] == 1) {
+        if (SQ_Tools::$options['sq_api'] == '') {
             wp_safe_redirect(admin_url('admin.php?page=sq_howto'));
         } else {
             wp_safe_redirect(admin_url('admin.php?page=sq_dashboard'));
@@ -134,7 +134,7 @@ class SQ_Menu extends SQ_FrontController {
         $this->model->addSubmenu(array($first_page,
             __('Make money with ', _SQ_PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
             __('Make money', _SQ_PLUGIN_NAME_),
-            'edit_posts',
+            'administrator',
             'sq_affiliate',
             array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
         ));
