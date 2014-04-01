@@ -87,57 +87,58 @@ class SQ_Menu extends SQ_FrontController {
             if (!wp_get_schedule('sq_processCron')) {
                 wp_schedule_event(time(), 'hourly', 'sq_processCron');
             }
+        }
 
-            $this->model->addMenu(array(ucfirst(_SQ_NAME_),
-                'Squirrly' . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
-                'edit_posts',
-                $first_page,
-                null,
-                _SQ_THEME_URL_ . 'img/menu_icon_16.png'
-            ));
-            if (SQ_Tools::$options['sq_api'] == '') {
-                $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' getting started', _SQ_PLUGIN_NAME_),
-                    __('Getting started', _SQ_PLUGIN_NAME_),
-                    'edit_posts',
-                    'sq_howto',
-                    array(SQ_ObjController::getBlock('SQ_BlockHelp'), 'init')
-                ));
-            }
-            if (SQ_Tools::$options['sq_api'] <> '') {
-                $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' dashboard', _SQ_PLUGIN_NAME_),
-                    __('Dashboard', _SQ_PLUGIN_NAME_),
-                    'edit_posts',
-                    'sq_dashboard',
-                    array(SQ_ObjController::getBlock('SQ_BlockDashboard'), 'init')
-                ));
-
-                $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' account info', _SQ_PLUGIN_NAME_),
-                    __('Account Info', _SQ_PLUGIN_NAME_),
-                    'edit_posts',
-                    'sq_account',
-                    array(SQ_ObjController::getBlock('SQ_BlockAccount'), 'init')
-                ));
-
-                $this->model->addSubmenu(array($first_page,
-                    ucfirst(_SQ_NAME_) . __(' settings', _SQ_PLUGIN_NAME_),
-                    __('SEO Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
-                    'edit_posts',
-                    preg_replace('/\s/', '_', _SQ_NAME_),
-                    array($this, 'showMenu')
-                ));
-            }
-
+        $this->model->addMenu(array(ucfirst(_SQ_NAME_),
+            'Squirrly' . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
+            'edit_posts',
+            $first_page,
+            null,
+            _SQ_THEME_URL_ . 'img/menu_icon_16.png'
+        ));
+        if (SQ_Tools::$options['sq_api'] == '') {
             $this->model->addSubmenu(array($first_page,
-                __('Make money with ', _SQ_PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
-                __('Make money', _SQ_PLUGIN_NAME_),
+                ucfirst(_SQ_NAME_) . __(' getting started', _SQ_PLUGIN_NAME_),
+                __('Getting started', _SQ_PLUGIN_NAME_),
                 'edit_posts',
-                'sq_affiliate',
-                array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
+                'sq_howto',
+                array(SQ_ObjController::getBlock('SQ_BlockHelp'), 'init')
             ));
         }
+        if (SQ_Tools::$options['sq_api'] <> '') {
+            $this->model->addSubmenu(array($first_page,
+                ucfirst(_SQ_NAME_) . __(' dashboard', _SQ_PLUGIN_NAME_),
+                __('Dashboard', _SQ_PLUGIN_NAME_),
+                'edit_posts',
+                'sq_dashboard',
+                array(SQ_ObjController::getBlock('SQ_BlockDashboard'), 'init')
+            ));
+
+            $this->model->addSubmenu(array($first_page,
+                ucfirst(_SQ_NAME_) . __(' account info', _SQ_PLUGIN_NAME_),
+                __('Account Info', _SQ_PLUGIN_NAME_),
+                'administrator',
+                'sq_account',
+                array(SQ_ObjController::getBlock('SQ_BlockAccount'), 'init')
+            ));
+
+            $this->model->addSubmenu(array($first_page,
+                ucfirst(_SQ_NAME_) . __(' settings', _SQ_PLUGIN_NAME_),
+                __('SEO Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
+                'administrator',
+                preg_replace('/\s/', '_', _SQ_NAME_),
+                array($this, 'showMenu')
+            ));
+        }
+
+        $this->model->addSubmenu(array($first_page,
+            __('Make money with ', _SQ_PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
+            __('Make money', _SQ_PLUGIN_NAME_),
+            'edit_posts',
+            'sq_affiliate',
+            array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
+        ));
+
 
 
         foreach ($this->post_type as $type)
