@@ -87,11 +87,12 @@ class SQ_PostsList extends SQ_FrontController {
         return $this->insert($columns, array($this->column_id => __('Squirrly') . '
             <script type="text/javascript">
                 //load the rank from squirrly
-                var sq_script = document.createElement(\'script\');
-                sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js?ver=' . SQ_VERSION_ID . '";
-                var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
-                site_head.insertBefore(sq_script, site_head.firstChild);
-
+                if (typeof sq_script === "undefined"){
+                    var sq_script = document.createElement(\'script\');
+                    sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js?ver=' . SQ_VERSION_ID . '";
+                    var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
+                    site_head.insertBefore(sq_script, site_head.firstChild);
+                }
                google.load("visualization", "1", {packages: ["corechart"]});
                function drawChart(id, values, reverse) {
                     var data = google.visualization.arrayToDataTable(values);

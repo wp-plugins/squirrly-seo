@@ -28,11 +28,12 @@ class SQ_Loading extends SQ_BlockController {
                     var sq_keyword_information = "' . ((isset(SQ_Tools::$options['sq_keyword_information'])) ? SQ_Tools::$options['sq_keyword_information'] : '0') . '"; var __noopt = "' . __('You haven`t used Squirrly SEO to optimize your article. Do you want to optimize for a keyword before publishing?', _SQ_PLUGIN_NAME_) . '";
                     var sq_frontend_css = "' . _SQ_THEME_URL_ . 'css/sq_frontend.css";
 
-                    var sq_script = document.createElement(\'script\');
-                    sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/squirrly.js?ver=' . SQ_VERSION_ID . '";
-                    var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
-                    site_head.insertBefore(sq_script, site_head.firstChild);
-
+                    if (typeof sq_script === "undefined"){
+                        var sq_script = document.createElement(\'script\');
+                        sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/squirrly.js?ver=' . SQ_VERSION_ID . '";
+                        var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
+                        site_head.insertBefore(sq_script, site_head.firstChild);
+                    }
                     jQuery(document).ready(function() {
                         jQuery("#sq_preloading").addClass("sq_loading").html("");
                     });
