@@ -74,8 +74,9 @@
                     <div>
                         <ul class="sq_settings_affiliate_info">
                             <?php
-                            $sq_affiliate_images[] = _SQ_STATIC_API_URL_ . 'default/img/banners/banner1.jpg';
-                            $sq_affiliate_images[] = _SQ_STATIC_API_URL_ . 'default/img/banners/banner2.jpg';
+                            $sq_affiliate_images[] = _SQ_THEME_URL_ . 'img/banners/banner1.jpg';
+                            $sq_affiliate_images[] = _SQ_THEME_URL_ . 'img/banners/banner1.png';
+                            $sq_affiliate_images[] = _SQ_THEME_URL_ . 'img/banners/banner2.png';
 
                             foreach ($sq_affiliate_images as $sq_affiliate_image) {
                                 echo '<li><a href="' . SQ_Tools::$options['sq_affiliate_link'] . '" target="_blank"><img src="' . $sq_affiliate_image . '" alt="Seo Plugin by Squirrly" /></a>';
