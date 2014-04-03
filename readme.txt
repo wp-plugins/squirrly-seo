@@ -115,7 +115,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 = 3.1.0 =
 * Added the Performance Analytics in Squirrly SEO Tab
 * Added Analytics filter for custom post types
-* Added Google Rank Column in Performance Analytics
+* Added Google Rank Column in Squirrly SEO > Performance Analytics
 * Added Google Country Select in Squirrly SEO > Settings
 
 = 3.0.0 =
