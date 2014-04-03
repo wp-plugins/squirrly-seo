@@ -51,7 +51,6 @@ class Model_SQ_Post {
             $exclude = (int) $exclude;
 
         $q = trim($q, '"');
-        //echo "SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr);
         /* search in wp database */
         $posts = $wpdb->get_results("SELECT ID, post_title, post_date_gmt, post_content, post_type FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' AND (post_title LIKE '%$q%' OR post_content LIKE '%$q%') AND ID not in ($exclude) ORDER BY post_title LIMIT " . $start . ',' . ($start + $nbr));
 
@@ -170,19 +169,20 @@ class Model_SQ_Post {
      * @global object $wpdb
      * @return integer|false
      */
-    public function getKeywords($filter = '', $ord = 'meta_id') {
+    public function getPostWithKeywords($filter = '', $ord = 'meta_id') {
         global $wpdb;
 
         if ($filter <> '') {
             $filter = ' AND (' . $filter . ') ';
         }
 
-        if ($posts = $wpdb->get_results("SELECT `post_id`
+        if ($posts = $wpdb->get_results("SELECT `post_id`, `meta_value`
                 FROM `" . $wpdb->postmeta . "`
                 WHERE (`meta_key` = 'sq_post_keyword')"
                 . $filter .
                 'ORDER BY `' . $ord . '`')) {
 
+            $posts = array_map(create_function('$post', '$post->meta_value = json_decode($post->meta_value); return $post;'), $posts);
             return $posts;
         }
 

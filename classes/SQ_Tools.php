@@ -35,7 +35,7 @@ class SQ_Tools extends SQ_FrontController {
      * @return void
      */
     function hookInit() {
-
+        $this->sq_patch3000(); //Update the older version
         //TinyMCE editor required
         //set_user_setting('editor', 'tinymce');
 
@@ -109,6 +109,9 @@ class SQ_Tools extends SQ_FrontController {
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',
             'sq_sla' => 1,
+            //--
+            'sq_dbtables' => 0,
+            'sq_analytics' => 0,
         );
         $options = json_decode(get_option(SQ_OPTION), true);
 
@@ -348,12 +351,14 @@ class SQ_Tools extends SQ_FrontController {
 
         $fixit = "<a href=\"javascript:void(0);\"  onclick=\"%s jQuery(this).closest('div').fadeOut('slow'); if(parseInt(jQuery('.sq_count').html())>0) { var notif = (parseInt(jQuery('.sq_count').html()) - 1); if (notif > 0) {jQuery('.sq_count').html(notif); }else{ jQuery('.sq_count').html(notif); jQuery('.sq_count').hide(); } } jQuery.post(ajaxurl, { action: '%s', nonce: '" . wp_create_nonce('sq_none') . "'});\" >" . __("Fix it for me!", _SQ_PLUGIN_NAME_) . "</a>";
 
+
         /* IF SEO INDEX IS OFF */
-//        if ( self::getAutoSeoSquirrly() ){
-//            if ($count_only)
-//                self::$errors_count ++;
-//            else SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _SQ_PLUGIN_NAME_) . " <br />" . sprintf( $fixit, "jQuery('#sq_use_on').attr('checked', true); jQuery('#sq_use_on').attr('checked',true);", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
-//        }
+        if (self::getAutoSeoSquirrly()) {
+            if ($count_only)
+                self::$errors_count ++;
+            else
+                SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_use_on').attr('checked', true); jQuery('#sq_use_on').attr('checked',true);", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
+        }
 
         /* IF SEO INDEX IS OFF */
         if (self::getPrivateBlog()) {
@@ -616,18 +621,36 @@ class SQ_Tools extends SQ_FrontController {
         echo "Debug result: <br />" . @implode('<br />', self::$debug);
     }
 
-    function sq_activate() {
+    public function sq_activate() {
         //add variable
         set_transient('sq_upgrade', true, 30);
     }
 
-    function sq_deactivate() {
+    public function sq_deactivate() {
         //clear the cron job
         wp_clear_scheduled_hook('sq_processCron');
 
         $args = array();
         $args['type'] = 'deact';
         SQ_Action::apiCall('sq/user/log', $args, 5);
+    }
+
+    /**
+     * Update patch for older versions
+     */
+    public function sq_patch3000() {
+        //Delete the old versions table
+        if (self::$options['sq_dbtables'] == 1) {
+            self::$options['sq_dbtables'] = 0;
+            global $wpdb;
+
+            $ranking = SQ_ObjController::getController('SQ_Ranking', false);
+            $ranking->getKeywordHistory();
+
+            $wpdb->query("DROP TABLE IF EXISTS `sq_analytics`");
+            $wpdb->query("DROP TABLE IF EXISTS `sq_keywords`");
+            self::saveOptions('sq_dbtables', self::$options['sq_dbtables']);
+        }
     }
 
     public static function emptyCache() {

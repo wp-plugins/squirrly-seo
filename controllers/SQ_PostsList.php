@@ -26,6 +26,14 @@ class SQ_PostsList extends SQ_FrontController {
         // do_action('sq_processCron');
     }
 
+    public function setPosts($posts) {
+        if (!empty($posts)) {
+            $this->posts = $posts;
+            $this->is_list = true;
+        }
+        return $this;
+    }
+
     /**
      * Create the column and filter for the Posts List
      *
@@ -84,48 +92,7 @@ class SQ_PostsList extends SQ_FrontController {
         $this->loadHead(); //load the js only for post list
         $this->is_list = true;
 
-        return $this->insert($columns, array($this->column_id => __('Squirrly') . '
-            <script type="text/javascript">
-                //load the rank from squirrly
-                if (typeof sq_script === "undefined"){
-                    var sq_script = document.createElement(\'script\');
-                    sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js?ver=' . SQ_VERSION_ID . '";
-                    var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
-                    site_head.insertBefore(sq_script, site_head.firstChild);
-                }
-               google.load("visualization", "1", {packages: ["corechart"]});
-               function drawChart(id, values, reverse) {
-                    var data = google.visualization.arrayToDataTable(values);
-
-                    var options = {
-
-                        curveType: "function",
-                        title: "",
-                        chartArea:{width:"100%",height:"100%"},
-                        enableInteractivity: "true",
-                        tooltip: {trigger: "auto"},
-                        pointSize: "0",
-                        legend: "none",
-                        backgroundColor: "transparent",
-                        colors: ["#55b2ca"],
-                        hAxis: {
-                          baselineColor: "transparent",
-                           gridlineColor: "transparent",
-                           textPosition: "none"
-                        } ,
-                        vAxis:{
-                          direction: ((reverse) ? -1 : 1),
-                          baselineColor: "transparent",
-                          gridlineColor: "transparent",
-                          textPosition: "none"
-                        }
-                    };
-
-                    var chart = new google.visualization.LineChart(document.getElementById(id));
-                    chart.draw(data, options);
-                    return chart;
-                }
-          </script>'), $this->pos);
+        return $this->insert($columns, array($this->column_id => __('Squirrly') . $this->getScripts()), $this->pos);
     }
 
     /**
@@ -204,6 +171,50 @@ class SQ_PostsList extends SQ_FrontController {
               </script>';
     }
 
+    public function getScripts() {
+        return '<script type="text/javascript">
+                //load the rank from squirrly
+                if (typeof sq_script === "undefined"){
+                    var sq_script = document.createElement(\'script\');
+                    sq_script.src = "' . _SQ_STATIC_API_URL_ . SQ_URI . '/js/sq_rank.js?ver=' . SQ_VERSION_ID . '";
+                    var site_head = document.getElementsByTagName ("head")[0] || document.documentElement;
+                    site_head.insertBefore(sq_script, site_head.firstChild);
+                }
+               google.load("visualization", "1", {packages: ["corechart"]});
+               function drawChart(id, values, reverse) {
+                    var data = google.visualization.arrayToDataTable(values);
+
+                    var options = {
+
+                        curveType: "function",
+                        title: "",
+                        chartArea:{width:"100%",height:"100%"},
+                        enableInteractivity: "true",
+                        tooltip: {trigger: "auto"},
+                        pointSize: "0",
+                        legend: "none",
+                        backgroundColor: "transparent",
+                        colors: ["#55b2ca"],
+                        hAxis: {
+                          baselineColor: "transparent",
+                           gridlineColor: "transparent",
+                           textPosition: "none"
+                        } ,
+                        vAxis:{
+                          direction: ((reverse) ? -1 : 1),
+                          baselineColor: "transparent",
+                          gridlineColor: "transparent",
+                          textPosition: "none"
+                        }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById(id));
+                    chart.draw(data, options);
+                    return chart;
+                }
+          </script>';
+    }
+
     /**
      * Push the array to a specific index
      * @param array $src
@@ -252,6 +263,15 @@ class SQ_PostsList extends SQ_FrontController {
                 $this->model->post_id = (int) SQ_Tools::getValue('post');
                 $args['post_id'] = $this->model->post_id;
 
+                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
+                    if (isset($json->rank)) {
+                        $ranking = SQ_ObjController::getController('SQ_Ranking', false);
+                        $args['rank'] = (string) $json->rank;
+                        $args['country'] = $ranking->getCountry();
+                        $args['language'] = $ranking->getLanguage();
+                    }
+                }
+
                 $response = json_decode(SQ_Action::apiCall('sq/user-analytics/detail', $args));
 
                 if (!is_object($response)) {
@@ -290,7 +310,8 @@ class SQ_PostsList extends SQ_FrontController {
             //if the rank is not in transient
             if ($rank === false) {
                 //get the keyword from database
-                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id) && isset($json->rank)) {
+                $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
+                if (isset($json->rank)) {
                     $rank = $json->rank;
                     //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
@@ -307,6 +328,8 @@ class SQ_PostsList extends SQ_FrontController {
                     $args = array();
                     $args['keyword'] = $keyword;
                     $args['rank'] = $rank;
+                    $args['country'] = $ranking->getCountry();
+                    $args['language'] = $ranking->getLanguage();
                     SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
                     //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));

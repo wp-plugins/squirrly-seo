@@ -1,7 +1,7 @@
 === SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
-Requires at least: 3.1
+Requires at least: 3.3
 Tested up to: 3.8.1
 Stable tag: trunk
 
@@ -112,6 +112,12 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.0 =
+* Added the Performance Analytics in Squirrly SEO Tab
+* Added Analytics filter for custom post types
+* Added Google Rank Column in Performance Analytics
+* Added Google Country Select in Squirrly SEO > Settings
+
 = 3.0.0 =
 * Added a new look in Squirrly SEO Settings
 * Added the new dashboard tab in Squirrly Menu

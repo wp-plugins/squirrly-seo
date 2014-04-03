@@ -20,17 +20,6 @@ class SQ_Menu extends SQ_FrontController {
             return;
         }
 
-        //Delete the old versions table
-        if (SQ_Tools::$options['sq_dbtables'] == 1) {
-            global $wpdb;
-            $ranking = SQ_ObjController::getController('SQ_Ranking', false);
-            $ranking->getKeywordHistory();
-
-            $wpdb->query("DROP TABLE IF EXISTS `sq_analytics`");
-            $wpdb->query("DROP TABLE IF EXISTS `sq_keywords`");
-            SQ_Tools::saveOptions('sq_dbtables', 0);
-        }
-
         // Delete the redirect transient
         delete_transient('sq_upgrade');
 
@@ -52,7 +41,6 @@ class SQ_Menu extends SQ_FrontController {
      */
     public function hookMenu() {
         $first_page = preg_replace('/\s/', '_', _SQ_NAME_);
-
         SQ_Tools::checkErrorSettings(true);
         $this->post_type = array('post', 'page', 'movie', 'product', 'download', 'shopp_page_shopp-products');
 
@@ -89,6 +77,14 @@ class SQ_Menu extends SQ_FrontController {
             }
         }
 
+        //Push the Analytics Check
+        $analytics_alert = 0;
+        if (SQ_ObjController::getModel('SQ_Post')->countKeywords() > 0) {
+            $analytics_alert = ((SQ_Tools::$options['sq_analytics'] == 0) ? 1 : 0);
+        }
+        SQ_Tools::$errors_count += $analytics_alert;
+        ///////////////
+
         $this->model->addMenu(array(ucfirst(_SQ_NAME_),
             'Squirrly' . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
             'edit_posts',
@@ -112,6 +108,14 @@ class SQ_Menu extends SQ_FrontController {
                 'edit_posts',
                 'sq_dashboard',
                 array(SQ_ObjController::getBlock('SQ_BlockDashboard'), 'init')
+            ));
+
+            $this->model->addSubmenu(array($first_page,
+                ucfirst(_SQ_NAME_) . __(' post list', _SQ_PLUGIN_NAME_),
+                __('Performance <br />Analytics', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices($analytics_alert, 'errors_count'),
+                'edit_posts',
+                'sq_posts',
+                array(SQ_ObjController::getBlock('SQ_BlockPostsAnalytics'), 'init')
             ));
 
             $this->model->addSubmenu(array($first_page,
@@ -219,7 +223,7 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));
                 SQ_Tools::saveOptions('sq_fp_keywords', SQ_Tools::getValue('sq_fp_keywords'));
 
-
+                SQ_Tools::saveOptions('sq_google_country', SQ_Tools::getValue('sq_google_country'));
 
                 SQ_Tools::saveOptions('sq_google_plus', SQ_Tools::getValue('sq_google_plus'));
                 SQ_Tools::saveOptions('sq_google_wt', $this->model->checkGoogleWTCode(SQ_Tools::getValue('sq_google_wt')));
