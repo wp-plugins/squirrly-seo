@@ -9,7 +9,7 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
     public $author = array();
     public $themes = array();
 
-    public function init($user) {
+    public function init($user = null) {
         $this->user = $user;
 
         if (isset($this->user->ID))
