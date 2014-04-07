@@ -31,6 +31,9 @@
             <action>sq_fixpermalink</action>
             <action>sq_fixprivate</action>
             <action>sq_fixcomments</action>
+            <action>sq_fix_ogduplicate</action>
+            <action>sq_fix_tcduplicate</action>
+            <action>sq_fix_descduplicate</action>
 
             <action>sq_upgrade</action>
             <action>sq_warnings_off</action>

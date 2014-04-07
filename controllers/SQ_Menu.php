@@ -41,7 +41,6 @@ class SQ_Menu extends SQ_FrontController {
      */
     public function hookMenu() {
         $first_page = preg_replace('/\s/', '_', _SQ_NAME_);
-        SQ_Tools::checkErrorSettings(true);
         $this->post_type = array('post', 'page', 'movie', 'product', 'download', 'shopp_page_shopp-products');
 
         //add custom post types
@@ -69,6 +68,7 @@ class SQ_Menu extends SQ_FrontController {
 
         /* add the plugin menu in admin */
         if (current_user_can('administrator')) {
+            SQ_Tools::checkErrorSettings(true);
             //check if activated
             $this->checkActivation();
             //activate the cron job if not exists
@@ -143,8 +143,6 @@ class SQ_Menu extends SQ_FrontController {
             array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
         ));
 
-
-
         foreach ($this->post_type as $type)
             $this->model->addMeta(array('post' . _SQ_NAME_,
                 ucfirst(_SQ_NAME_),
@@ -154,15 +152,6 @@ class SQ_Menu extends SQ_FrontController {
                 'high'
             ));
 
-//        if (SQ_ObjController::getController('SQ_PostMiddle'))
-//            foreach ($this->post_type as $type)
-//                $this->model->addMeta(array('postmiddle' . _SQ_NAME_,
-//                    __('Squirrly Article Rank', _SQ_PLUGIN_NAME_),
-//                    array(SQ_ObjController::getController('SQ_PostMiddle'), 'init'),
-//                    $type,
-//                    'normal',
-//                    'high'
-//                ));
         //Add the Rank in the Posts list
         $postlist = SQ_ObjController::getController('SQ_PostsList');
         if (is_object($postlist))
@@ -270,7 +259,6 @@ class SQ_Menu extends SQ_FrontController {
             case 'sq_fixprivate':
                 update_option('blog_public', 1);
                 break;
-
             case 'sq_fixcomments':
                 update_option('comments_notify', 1);
                 break;
@@ -283,6 +271,17 @@ class SQ_Menu extends SQ_FrontController {
 
                 flush_rewrite_rules();
                 break;
+            case 'sq_fix_ogduplicate':
+                SQ_Tools::saveOptions('sq_auto_facebook', 0);
+                break;
+            case 'sq_fix_tcduplicate':
+                SQ_Tools::saveOptions('sq_auto_twitter', 0);
+                break;
+            case 'sq_fix_descduplicate':
+                SQ_Tools::saveOptions('sq_auto_description', 0);
+                SQ_Tools::saveOptions('sq_auto_seo', 1);
+                break;
+
             case 'sq_warnings_off':
                 SQ_Tools::saveOptions('ignore_warn', 1);
                 break;

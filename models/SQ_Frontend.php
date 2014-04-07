@@ -105,7 +105,7 @@ class Model_SQ_Frontend {
 
         $this->post = $wp_query->get_queried_object();
 
-        if ($this->isHomePage() || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
+        if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
             $title = $this->getCustomTitle();
             if (isset($title) && !empty($title) && $title <> '') {
                 $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si', sprintf("<title>%s</title>", $title), $buffer, 1, $count);
