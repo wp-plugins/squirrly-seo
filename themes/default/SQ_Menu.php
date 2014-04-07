@@ -40,7 +40,7 @@
                                     <label for="sq_auto_canonical0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _SQ_PLUGIN_NAME_); ?></label>
                                     <span class="sq_switch-selection"></span>
                                 </div>
-                                <span><?php echo sprintf(__('Add <strong>%scanonical link%s</strong> in pages', _SQ_PLUGIN_NAME_), '<a href="https://support.google.com/webmasters/answer/139066?hl=en" target="_blank">', '</a>'); ?></span>
+                                <span><?php echo sprintf(__('Add <strong>%scanonical link%s</strong>, %srel="prev" and rel="next"%s metas', _SQ_PLUGIN_NAME_), '<a href="https://support.google.com/webmasters/answer/139066" target="_blank">', '</a>', '<a href="https://support.google.com/webmasters/answer/1663744" target="_blank">', '</a>'); ?></span>
                             </div>
                         </li>
                         <li>
