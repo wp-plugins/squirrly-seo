@@ -316,11 +316,13 @@ class Model_SQ_Frontend {
     public function setRelPrevNext() {
         global $paged;
         $meta = "";
-        if (get_previous_posts_link()) {
-            $meta .= sprintf('<link rel="prev" href="%s" />', get_pagenum_link($paged - 1)) . "\n";
-        }
-        if (get_next_posts_link()) {
-            $meta .= sprintf('<link rel="next" href="%s" />', get_pagenum_link($paged + 1)) . "\n";
+        if (is_paged()) {
+            if (get_previous_posts_link()) {
+                $meta .= sprintf('<link rel="prev" href="%s" />', get_pagenum_link($paged - 1)) . "\n";
+            }
+            if (get_next_posts_link()) {
+                $meta .= sprintf('<link rel="next" href="%s" />', get_pagenum_link($paged + 1)) . "\n";
+            }
         }
 
         return (($meta <> '') ? $meta . "\n" : '');
