@@ -102,7 +102,7 @@ class SQ_Frontend extends SQ_FrontController {
             $this->model->flushHeader();
         }
 
-        if (isset(self::$options['sq_analytics_code']) && !( current_user_can('edit_posts') )) {
+        if (isset(self::$options['sq_analytics_code']) && !(current_user_can('edit_posts') )) {
             $this->model->setFooter(self::$options['sq_analytics_code']);
         }
     }

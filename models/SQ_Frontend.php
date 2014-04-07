@@ -105,8 +105,7 @@ class Model_SQ_Frontend {
 
         $this->post = $wp_query->get_queried_object();
 
-        if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
-
+        if ($this->isHomePage() || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
             $title = $this->getCustomTitle();
             if (isset($title) && !empty($title) && $title <> '') {
                 $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si', sprintf("<title>%s</title>", $title), $buffer, 1, $count);
@@ -146,8 +145,7 @@ class Model_SQ_Frontend {
             return $ret;
         }
 
-        if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_category() || is_author() || is_tag() || is_search()) {
-
+        if ($this->isHomePage() || is_single() || is_page() || is_singular() || is_preview() || is_archive() || is_category() || is_author() || is_tag() || is_search()) {
 
             /* Meta setting */
             $this->title = $this->clearTitle($this->getCustomTitle());
@@ -176,9 +174,6 @@ class Model_SQ_Frontend {
                 $ret .= $this->getLanguage();
                 $ret .= $this->getDublinCore();
             }
-
-
-
             if (SQ_Tools::$options['sq_auto_facebook'] == 1) {
                 $ret .= $this->getOpenGraph() . "\n";
             }
@@ -323,8 +318,8 @@ class Model_SQ_Frontend {
     public function getCustomTitle() {
         $title = '';
         $sep = '|';
-
-        //If its a home page and home page title is activated
+        $post = $this->post;
+        //If its a home page and home page auto title is activated
         if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_title'] == 1) { //for homepage
             $title = $this->clearTitle($this->grabTitleFromPost());
             if ($this->meta['blogname'] <> '') {
@@ -332,8 +327,8 @@ class Model_SQ_Frontend {
             }
         }
         //If its a post/page
-        if (!$this->isHomePage() && (is_single() || is_page())) {
-            $post = $this->post;
+        if (!$this->isHomePage() && (is_single() || is_page() || is_singular())) {
+
             $title = $this->clearTitle($this->grabTitleFromPost($post->ID));
         }
 
@@ -379,9 +374,13 @@ class Model_SQ_Frontend {
         if ($this->isHomePage() &&
                 SQ_Tools::$options['sq_auto_title'] == 1 &&
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
-                SQ_Tools::$options['sq_fp_title'] <> '' &&
-                (!isset($post) || !$this->getAdvancedMeta($post->ID, 'title'))) {
-            $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
+                SQ_Tools::$options['sq_fp_title'] <> '') {
+
+            if (isset($post) && $this->getAdvancedMeta($post->ID, 'title')) {
+                $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
+            } else {
+                $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
+            }
         }
 
         return $title;
@@ -468,14 +467,17 @@ class Model_SQ_Frontend {
         $sep = '|';
         $description = '';
 
+        //Is home page, has posts and autodescription is on
         if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_description'] == 1) { //for homepage
             $description = $this->grabDescriptionFromPost();
         }
-        //If its a post/page
-        if (!$this->isHomePage() && (is_single() || is_page() || $this->checkPostsPage())) {
+
+        //If not homepage and its a post/page
+        if (!$this->isHomePage() && (is_single() || is_page() || is_singular() || $this->checkPostsPage())) {
             $description = $this->grabDescriptionFromPost();
         }
 
+        //If is a category
         if (is_category()) { //for categories
             $category = get_category(get_query_var('cat'), false);
             $description = SQ_Tools::i18n($category->category_description);
@@ -497,6 +499,7 @@ class Model_SQ_Frontend {
             }
         }
 
+        //If is the author page
         if (is_author()) { //for author
             $description = SQ_Tools::i18n(get_the_author_meta('description', get_query_var('author')));
             if ($description == '') {
@@ -508,6 +511,7 @@ class Model_SQ_Frontend {
             }
         }
 
+        //If is tag
         if (is_tag()) { //for tags
             $description = SQ_Tools::i18n(tag_description());
             if ($description == '') {
@@ -519,14 +523,17 @@ class Model_SQ_Frontend {
             }
         }
 
-        /* Check if is a predefined Title */
+        /* Check if is a predefined TitleIn Snippet */
         if ($this->isHomePage() &&
                 SQ_Tools::$options['sq_auto_description'] == 1 &&
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
-                SQ_Tools::$options['sq_fp_description'] <> '' &&
-                (!isset($post) || !$this->getAdvancedMeta($post->ID, 'description'))) {
+                SQ_Tools::$options['sq_fp_description'] <> '') {
 
-            $description = strip_tags(SQ_Tools::$options['sq_fp_description']);
+            if (isset($post) && $this->getAdvancedMeta($post->ID, 'description')) {
+                $description = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'description'));
+            } else {
+                $description = strip_tags(SQ_Tools::$options['sq_fp_description']);
+            }
         }
 
         $description = (($description <> '') ? $description : $this->title);
@@ -878,6 +885,7 @@ class Model_SQ_Frontend {
                 break;
             }
         }
+
 
         if ($post) {
             $description = $this->_truncate(SQ_Tools::i18n($post->post_excerpt), $this->min_description_length, $this->max_description_length);
@@ -1237,7 +1245,7 @@ class Model_SQ_Frontend {
      */
     private function isHomePage() {
         global $wp_query;
-        return (is_home() || (isset($wp_query->query) && empty($wp_query->query) && !is_preview()));
+        return (is_home() || (isset($wp_query->query) && empty($wp_query->query) && !is_preview() ));
     }
 
     /**

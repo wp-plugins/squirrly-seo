@@ -3,12 +3,13 @@
 class SQ_BlockPostsAnalytics extends SQ_BlockController {
 
     public function hookGetContent() {
+        SQ_ObjController::getController('SQ_DisplayController', false)
+                ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
+
         SQ_Tools::saveOptions('sq_analytics', 1); //Save analytics viewed
         $this->postlist = SQ_ObjController::getController('SQ_PostsList');
 
         $this->model->prepare_items();
-        SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
     }
 
     public function getNavigationTop() {
