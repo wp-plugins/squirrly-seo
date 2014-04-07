@@ -342,8 +342,6 @@ class SQ_Tools extends SQ_FrontController {
      * Check for SEO blog bad settings
      */
     public static function checkErrorSettings($count_only = false) {
-
-
         if (function_exists('is_network_admin') && is_network_admin())
             return;
 

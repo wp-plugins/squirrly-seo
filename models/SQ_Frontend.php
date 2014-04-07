@@ -157,6 +157,7 @@ class Model_SQ_Frontend {
 
             if (SQ_Tools::$options['sq_auto_canonical'] == 1) {
                 $ret .= $this->setCanonical();
+                $ret .= $this->setRelPrevNext();
             }
 
             if (SQ_Tools::$options['sq_auto_sitemap'] == 1) {
@@ -187,6 +188,8 @@ class Model_SQ_Frontend {
             $ret .= $this->getFacebookIns();
             $ret .= $this->getBingWT();
             $ret .= $this->getAlexaT();
+
+
 
             $ret .= $this->setEnd();
         }
@@ -308,6 +311,19 @@ class Model_SQ_Frontend {
         }
 
         return '';
+    }
+
+    public function setRelPrevNext() {
+        global $paged;
+        $meta = "";
+        if (get_previous_posts_link()) {
+            $meta .= sprintf('<link rel="prev" href="%s" />', get_pagenum_link($paged - 1)) . "\n";
+        }
+        if (get_next_posts_link()) {
+            $meta .= sprintf('<link rel="next" href="%s" />', get_pagenum_link($paged + 1)) . "\n";
+        }
+
+        return (($meta <> '') ? $meta . "\n" : '');
     }
 
     /**

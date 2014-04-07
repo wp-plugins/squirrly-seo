@@ -112,6 +112,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.1 =
+* Added rel="prev" and rel="next" in head
+* Added SEO META Duplicates notification
+* Fixed the snippet for home page when the home is a specific page
+
 = 3.1.0 =
 * Added the Performance Analytics in Squirrly SEO Tab
 * Added Analytics filter for custom post types
