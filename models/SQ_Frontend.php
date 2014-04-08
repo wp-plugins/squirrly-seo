@@ -316,7 +316,7 @@ class Model_SQ_Frontend {
     public function setRelPrevNext() {
         global $paged;
         $meta = "";
-        if (is_paged()) {
+        if (!$this->isHomePage()) {
             if (get_previous_posts_link()) {
                 $meta .= sprintf('<link rel="prev" href="%s" />', get_pagenum_link($paged - 1)) . "\n";
             }

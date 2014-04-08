@@ -286,11 +286,11 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('ignore_warn', 1);
                 break;
             case 'sq_get_snippet':
-                if (SQ_Tools::getValue('url') <> '')
+                if (SQ_Tools::getValue('url') <> '') {
                     $url = SQ_Tools::getValue('url');
-                else
+                } else {
                     $url = get_bloginfo('url');
-
+                }
                 $snippet = SQ_Tools::getSnippet($url);
 
                 /* if((int)SQ_Tools::getValue('post_id') > 0)

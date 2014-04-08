@@ -757,12 +757,15 @@ class SQ_Tools extends SQ_FrontController {
         }
     }
 
-    public static function emptyCache() {
+    public static function emptyCache($post_id = null) {
         if (function_exists('w3tc_pgcache_flush')) {
             w3tc_pgcache_flush();
         }
         if (function_exists('wp_cache_clear_cache')) {
             wp_cache_clear_cache();
+        }
+        if (function_exists('wp_cache_post_edit') && isset($post_id)) {
+            wp_cache_post_edit($post_id);
         }
     }
 
