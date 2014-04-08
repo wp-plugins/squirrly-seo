@@ -87,6 +87,22 @@ class Model_SQ_PostsList {
                         $color = 'sq_audit_task_completed_yellow';
                     }
 
+                    if ($key == 'rank') {
+                        $total_tooltip = __('This post\'s current position in Google', _SQ_PLUGIN_NAME_);
+                    }
+                    if ($key == 'traffic') {
+                        $total_tooltip = __('The total traffic for the last 30 days, for the current post', _SQ_PLUGIN_NAME_);
+                    }
+                    if ($key == 'social') {
+                        $total_tooltip = __('The total number of shares on social media channels for this post', _SQ_PLUGIN_NAME_);
+                    }
+                    if ($key == 'authority') {
+                        $total_tooltip = __('The total authority for this post', _SQ_PLUGIN_NAME_);
+                    }
+                    if ($key == 'links') {
+                        $total_tooltip = __('The total number of inbound links to this post', _SQ_PLUGIN_NAME_);
+                    }
+                    @$group[$key]['tooltip'] = $total_tooltip;
                     @$group[$key]['color'] = $color;
                 }
             }

@@ -6,19 +6,25 @@
         <div class="sq_analytics_groups" >
             <ul class="sq_analytics_list" >
                 <li>
+                    <?php if ($key <> 'rank') { ?>
+                        <div class="sq_separator"></div>
+                    <?php } ?>
                     <table>
                         <tr>
                             <td id="sq_analytics_tasks_header_<?php echo $key ?>" class="sq_analytics_tasks_header" colspan="4">
-                                <span class="persist-header sq_analytics_tasks_header_title <?php echo $current_grup->color . '_text' ?>">
-                                    <?php echo ucfirst($key) ?>
-                                </span>
-                                <span class="sq_analytics_task_completed <?php echo $current_grup->color ?>">
-                                    <?php echo ((isset($current_grup->total) && $current_grup->total >= 0) ? $current_grup->total : 'N/A') ?>
-                                </span>
+                                <div class="sq_tooltip" title="<?php echo $current_grup->tooltip ?>">
+                                    <span class="persist-header sq_analytics_tasks_header_title <?php echo $current_grup->color . '_text' ?>">
+                                        <?php echo ucfirst($key) ?>
+                                    </span>
+
+                                    <span class="sq_analytics_task_completed <?php echo $current_grup->color ?>"  >
+                                        <?php echo ((isset($current_grup->total) && $current_grup->total >= 0) ? $current_grup->total : 'N/A') ?>
+                                    </span>
+                                </div>
                             </td>
                         </tr>
                     </table>
-                    <div class="sq_separator"></div>
+
 
                     <ul>
                         <?php
@@ -152,7 +158,7 @@
                                 <li id="sq_analytics_task_<?php echo $task->id ?>" class="sq_analytics_tasks_row">
                                     <table>
                                         <tr>
-                                            <td rowspan="2" class="sq_first_header_column"><span class="<?php echo ((int) $task->complete == 1) ? 'sq_analytics_tasks_pass' : 'sq_analytics_tasks_fail' ?>"></span></td>
+                                            <td rowspan="2" class="sq_first_header_column"><span class="<?php echo ((int) $task->complete == 1) ? 'sq_analytics_tasks_pass' : 'sq_analytics_tasks_fail' ?> sq_tooltip" title="<?php echo ((int) $task->complete == 1) ? __('Nicely done! Now you can focus on the other tasks', _SQ_PLUGIN_NAME_) : __('I know you can improve this. Please follow the documentation for a quicker progress', _SQ_PLUGIN_NAME_) ?>"></span></td>
                                             <td colspan="2"  class="sq_second_header_column"><?php if ($task->title <> '') { ?><span class="sq_analytics_tasks_title"><?php echo $task->title ?></span><?php } ?>
                                                 <span class="sq_analytics_tasks_value sq_analytics_tasks_value<?php echo ((int) $task->complete == 1) ? '_pass' : '_fail' ?>">
                                                     <?php
