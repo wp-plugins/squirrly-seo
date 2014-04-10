@@ -101,16 +101,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
-1. Wordpress Seo by Squirrly - Enter a keyword for Squirrly Live SEO Assistant optimization
-2. Wordpress Seo by Squirrly - Find out if it's worth to use it
-3. Wordpress Seo by Squirrly - Add an image in your article
-4. Wordpress Seo by Squirrly - Find images, tweets, wiki, blogs, news or other articles from your blog
-5. Wordpress Seo by Squirrly - Easy to read external blogs
-6. Wordpress Seo by Squirrly - Easy to insert paragraphs from the articles that you are reading
-7. Wordpress Seo by Squirrly - Optimize your article with Squirrly Live SEO Assistant
-8. Wordpress Seo by Squirrly - You will know when your seo is good
-9. Wordpress Seo by Squirrly - Squirrly Article Rank for each post/page. Traffic, Social, Inbound Links and Google Ranking.
-10. Wordpress Seo by Squirrly - Settings tab with extra Seo optimization features
+1. Wordpress Seo by Squirrly - Optimize your article with SEO Live Assistant
+2. Wordpress Seo by Squirrly - Find the top keywords with the Keyword Researh
+3. Wordpress Seo by Squirrly - Customize the META with the SEO Snippet
+4. Wordpress Seo by Squirrly - Find your top posts and authors with Squirrly Analytics
+5. Wordpress Seo by Squirrly - Monitor your success with the Performance Analytics
+6. Wordpress Seo by Squirrly - Let Squirrly do the SEO Settings that your blog needs
+7. Wordpress Seo by Squirrly - et Squirrly do the SEO Settings that your blog needs
 
 
 == Changelog ==
