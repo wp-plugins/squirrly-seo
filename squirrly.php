@@ -5,12 +5,13 @@
   The copyrights to the software code in this file are licensed under the (revised) BSD open source license.
 
   Plugin Name: SEO Plugin by SQUIRRLY
-  Plugin URI: https://my.squirrly.co
+  Plugin URI: http://www.squirrly.co
   Description: Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
-  Author: cifi, calinvingan, florinmuresan, lucianpacurar
+  Author: cifi, calinvingan, florinmuresan
   Version: 3.1.1
   Author URI: http://www.squirrly.co
  */
+
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
 define('SQ_VERSION', '3.1.1');
 
@@ -55,7 +56,6 @@ function showError() {
 /**
  *  Upgrade Squirrly call.
  */
-//add_action('upgrader_process_complete', array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
 register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
 register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
 
