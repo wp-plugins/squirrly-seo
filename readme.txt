@@ -12,8 +12,7 @@ Squirrly helps you write content that's both Google Friendly and Human friendly.
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
-See all the Squirrly SEO features at:
-https://www.youtube.com/watch?v=mEjrE7TuDDc&list=PLHzAWlbV2nTyn7L6Xq6gy-ZAKH_mVx81l
+See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
 
 Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this tool, and by measuring and improving as advized by our tool.
 
