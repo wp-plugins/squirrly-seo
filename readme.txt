@@ -10,7 +10,10 @@ Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And
 == Description ==
 Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.
 
-[youtube https://www.youtube.com/watch?v=Bf5runIfod0&list=PLKizZr50E58ZZukX6x-rbXATdYSgAlXDA]
+[youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
+
+See all the Squirrly SEO features at:
+https://www.youtube.com/watch?v=mEjrE7TuDDc&list=PLHzAWlbV2nTyn7L6Xq6gy-ZAKH_mVx81l
 
 Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this tool, and by measuring and improving as advized by our tool.
 
