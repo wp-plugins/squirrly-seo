@@ -10,9 +10,9 @@ class SQ_Post extends SQ_FrontController {
      * @return void
      */
     public function hookInit() {
-        add_filter('tiny_mce_before_init', array(&$this->model, 'setCallback'));
-        add_filter('mce_external_plugins', array(&$this->model, 'addHeadingButton'));
-        add_filter('mce_buttons', array(&$this->model, 'registerButton'));
+        add_filter('tiny_mce_before_init', array($this->model, 'setCallback'));
+        add_filter('mce_external_plugins', array($this->model, 'addHeadingButton'));
+        add_filter('mce_buttons', array($this->model, 'registerButton'));
 
         if (SQ_Tools::$options['sq_api'] == '')
             return;
