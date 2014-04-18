@@ -1,8 +1,8 @@
 === Starbox - the Author Box for Humans ===
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio
-Requires at least: 3.1
-Tested up to: 3.8.1
+Requires at least: 3.2
+Tested up to: 3.9
 Stable tag: trunk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EBVRXTDRTJH2W&lc=US&item_name=StarBox%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 
@@ -95,6 +95,9 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.1.0 =
+* Compatible with WP 3.9
+
 = 2.0.5 =
 * Fixed Klout issue
 
