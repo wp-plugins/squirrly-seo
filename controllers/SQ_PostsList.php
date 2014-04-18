@@ -250,7 +250,7 @@ class SQ_PostsList extends SQ_FrontController {
                     $posts = SQ_Tools::getValue('posts');
                     $args['posts'] = join(',', $posts);
 
-                    $response = json_decode(SQ_Action::apiCall('sq/user-analytics/total', $args));
+                    $response = json_decode(SQ_Action::apiCall('sq/user-analytics/total', $args, 30));
                 }
                 if (isset($response) && is_object($response)) {
                     $response = $this->model->getTotal($response);
@@ -272,7 +272,7 @@ class SQ_PostsList extends SQ_FrontController {
                     }
                 }
 
-                $response = json_decode(SQ_Action::apiCall('sq/user-analytics/detail', $args));
+                $response = json_decode(SQ_Action::apiCall('sq/user-analytics/detail', $args, 30));
 
                 if (!is_object($response)) {
                     exit(json_encode(array('error' => $response)));
