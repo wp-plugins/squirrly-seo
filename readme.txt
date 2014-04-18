@@ -113,6 +113,11 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.2 =
+* Compatible with WP 3.9
+* Fixed Squirrly SEO Live Assistant issue in WP 3.9
+* Fixed SEO Analytics in WP 3.9
+
 = 3.1.1 =
 * Added rel="prev" and rel="next" in head
 * Added SEO META Duplicates notification
