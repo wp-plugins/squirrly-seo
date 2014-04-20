@@ -186,5 +186,7 @@ or
 [starbox id="1,2..n"] where 1,2, .. n are the ID of the authors
 
 = How do I hide Powered by Starbox? =
-
+You can buy Starbox without links and subscription from:
+http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
+or
 Go to your use profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
