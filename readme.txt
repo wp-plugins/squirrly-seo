@@ -4,7 +4,7 @@ Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,
 Requires at least: 3.2
 Tested up to: 3.9
 Stable tag: trunk
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EBVRXTDRTJH2W&lc=US&item_name=StarBox%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Donate link: http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 
 Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5, Social Media Profiles, Google Authorship
 
