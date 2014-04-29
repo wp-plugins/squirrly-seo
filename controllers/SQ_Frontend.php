@@ -98,12 +98,9 @@ class SQ_Frontend extends SQ_FrontController {
     public function hookFrontfooter() {
         if (isset(self::$options['sq_use']) && (int) self::$options['sq_use'] == 1) {
             //Be sure the heder is flushed
-            //if(self::$options['sq_auto_title'] == 1)
             $this->model->flushHeader();
-        }
-
-        if (isset(self::$options['sq_analytics_code']) && !(current_user_can('edit_posts') )) {
-            $this->model->setFooter(self::$options['sq_analytics_code']);
+        } elseif (isset(self::$options['sq_analytics_code']) && !(current_user_can('edit_posts') )) {
+            echo $this->model->setFooter(self::$options['sq_analytics_code']);
         }
     }
 

@@ -185,11 +185,10 @@ class Model_SQ_Frontend {
             /* SEO optimizer tool */
             $ret .= $this->getGoogleWT();
             $ret .= $this->getGoogleAnalytics();
+            $ret .= $this->setFooter(SQ_Tools::$options['sq_analytics_code']);
             $ret .= $this->getFacebookIns();
             $ret .= $this->getBingWT();
             $ret .= $this->getAlexaT();
-
-
 
             $ret .= $this->setEnd();
         }
@@ -199,9 +198,7 @@ class Model_SQ_Frontend {
     public function setFooter($code) {
         $traffic = SQ_ObjController::getController('SQ_Traffic', false);
         if (is_object($traffic)) {
-            echo $this->setStart();
-            echo $traffic->getTrafficScript($code);
-            echo $this->setEnd();
+            return $traffic->getTrafficScript($code) . "\n";
         }
     }
 
