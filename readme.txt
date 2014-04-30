@@ -1,7 +1,7 @@
 === Starbox - the Author Box for Humans ===
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio
-Requires at least: 3.2
+Requires at least: 3.3
 Tested up to: 3.9
 Stable tag: trunk
 Donate link: http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
@@ -95,6 +95,9 @@ So get your very own Starbox now:
 
 
 == Changelog ==
+= 2.1.1 =
+* Removed Author Box from product in Woocommerce when only posts are set in settings
+
 = 2.1.0 =
 * Compatible with WP 3.9
 

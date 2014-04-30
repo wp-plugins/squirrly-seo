@@ -356,7 +356,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
 
         if ((is_single() && (ABH_Classes_Tools::getOption('abh_strictposts') == 0 || (ABH_Classes_Tools::getOption('abh_strictposts') == 1 && get_post_type() == 'post')) && ABH_Classes_Tools::getOption('abh_inposts') == 1) ||
                 (is_singular() && get_post_type() == 'page' && ABH_Classes_Tools::getOption('abh_inpages') == 1) ||
-                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || (!is_singular() && get_post_type() == 'page') || is_archive() || is_search())) {
+                (ABH_Classes_Tools::getOption('abh_ineachpost') == 1) && (is_category() || is_tag() || (!is_singular() && get_post_type() == 'page') || (ABH_Classes_Tools::getOption('abh_strictposts') == 0 && is_archive()) || (ABH_Classes_Tools::getOption('abh_strictposts') == 0 && is_search()))) {
 
             $theme = ABH_Classes_Tools::getOption('abh_theme');
 
