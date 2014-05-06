@@ -4,6 +4,7 @@ Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress se
 Requires at least: 3.3
 Tested up to: 3.9
 Stable tag: trunk
+Donate link: http://www.squirrly.co
 
 Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
 
