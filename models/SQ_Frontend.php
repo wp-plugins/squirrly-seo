@@ -218,10 +218,10 @@ class Model_SQ_Frontend {
             $this->thumb_image = $this->getImageFromContent();
         }
 
-        $meta .= '<meta name="twitter:card" value="summary" />' . "\n";
+        $meta .= '<meta name="twitter:card" content="summary" />' . "\n";
 
-        $meta .= (($sq_twitter_creator <> '') ? sprintf('<meta name="twitter:creator" value="%s" />', $sq_twitter_creator) . "\n" : '');
-        $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" value="%s" />', $sq_twitter_site) . "\n" : '');
+        $meta .= (($sq_twitter_creator <> '') ? sprintf('<meta name="twitter:creator" content="%s" />', $sq_twitter_creator) . "\n" : '');
+        $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" content="%s" />', $sq_twitter_site) . "\n" : '');
 
         $meta .= sprintf('<meta name="twitter:title" content="%s">', $this->title) . "\n";
         $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
