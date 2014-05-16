@@ -325,12 +325,14 @@ class SQ_PostsList extends SQ_FrontController {
                             $rank = 0;
                         }
                     }
-                    $args = array();
-                    $args['keyword'] = $keyword;
-                    $args['rank'] = $rank;
-                    $args['country'] = $ranking->getCountry();
-                    $args['language'] = $ranking->getLanguage();
-                    SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
+                    if ($rank !== false && $rank >= -1) {
+                        $args = array();
+                        $args['keyword'] = $keyword;
+                        $args['rank'] = $rank;
+                        $args['country'] = $ranking->getCountry();
+                        $args['language'] = $ranking->getLanguage();
+                        SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
+                    }
                     //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 }

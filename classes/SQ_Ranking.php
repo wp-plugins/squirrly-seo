@@ -148,22 +148,22 @@ class SQ_Ranking extends SQ_FrontController {
                         }
 
 
-                        if (isset($json->rank)) {
+                        if (isset($json->rank) && $json->rank >= -1) {
                             $json->country = $this->getCountry();
                             $json->language = $this->getLanguage();
                             SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
                             set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24));
 
                             //if rank proccess has no error
-                            if ($json->rank >= -1) {
-                                $args = array();
-                                $args['post_id'] = $row->post_id;
-                                $args['rank'] = (string) $json->rank;
-                                $args['country'] = $this->getCountry();
-                                $args['language'] = $this->getLanguage();
 
-                                SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
-                            }
+                            $args = array();
+                            $args['post_id'] = $row->post_id;
+                            $args['rank'] = (string) $json->rank;
+                            $args['country'] = $this->getCountry();
+                            $args['language'] = $this->getLanguage();
+
+                            SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
+
                             $count++;
                             sleep(mt_rand(10, 20));
                         }
