@@ -114,8 +114,8 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
-= 3.1.3 =
-* Speeded up the traffic monitor script
+= 3.1.4 =
+* Removed the traffic monitor (to increase the site speed and analytics)
 
 = 3.1.2 =
 * Compatible with WP 3.9
