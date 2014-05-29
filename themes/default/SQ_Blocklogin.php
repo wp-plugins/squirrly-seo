@@ -34,6 +34,8 @@
         jQuery('#sq_loginimage').bind('click', function() {
             sq_autoLogin();
         });
+
+        //listenLogin(); //listen the login
     </script>
 </div>
 <div id="sq_login_success" style="display: none;">

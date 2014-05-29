@@ -114,6 +114,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.5 =
+* Fixed cache issues
+* Fixed login/sign-up jQuery conflicts
+
 = 3.1.4 =
 * Removed the traffic monitor (to increase the site speed and analytics)
 
