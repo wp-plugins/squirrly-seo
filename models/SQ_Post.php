@@ -221,6 +221,8 @@ class Model_SQ_Post {
             'value' => json_encode($args));
 
         $this->saveAdvMeta($post_id, $meta);
+
+        return json_encode($args);
     }
 
 }

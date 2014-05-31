@@ -296,20 +296,22 @@ class SQ_PostsList extends SQ_FrontController {
                 if (get_transient('google_blocked') === false) {
                     $this->model->post_id = (int) SQ_Tools::getValue('post_id');
                     if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
-                        if ($json->keyword <> '') {
+                        if (get_transient('sq_rank' . $this->model->post_id) !== false) {
                             delete_transient('sq_rank' . $this->model->post_id);
                         }
-                        $rank = $this->checkKeyword($json->keyword, true);
-                        if ($rank == -2) {
-                            $rank = __('Could not receive data from google (Err: blocked IP)');
-                        } elseif ($rank == -1) {
-                            $rank = __('> 100');
-                        } elseif ($rank == 0) {
-                            $rank = __('URL Indexed');
-                        } elseif ($rank > 0) {
-                            $rank = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
+
+                        $this->checkKeyword($json->keyword, true);
+                        $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
+                        if ($json->rank == -2) {
+                            $value = __('Could not receive data from google (Err: blocked IP)');
+                        } elseif ($json->rank == -1) {
+                            $value = __('> 100');
+                        } elseif ($json->rank == 0) {
+                            $value = __('URL Indexed');
+                        } elseif ($json->rank > 0) {
+                            $value = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $json->rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
                         }
-                        exit(json_encode(array('rank' => $rank)));
+                        exit(json_encode(array('rank' => $value)));
                     }
 
                     exit(json_encode(array('error' => true)));
@@ -328,7 +330,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @return type
      */
     private function checkKeyword($keyword, $force = false) {
-        $rank = null;
+        $json = null;
 
         if ($keyword == '')
             return;
@@ -377,7 +379,7 @@ class SQ_PostsList extends SQ_FrontController {
                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
             }
         }
-        return $rank;
+        return $json;
     }
 
 }
