@@ -79,18 +79,14 @@ class SQ_Ranking extends SQ_FrontController {
         $response = utf8_decode(SQ_Tools::sq_remote_get("https://www.google.$country/search", $arg));
 
         //Check the values for block IP
-        if (strpos($response, "computer virus or spyware application") !== false ||
-                strpos($response, "entire network is affected") !== false ||
-                strpos($response, "http://www.download.com/Antivirus") !== false ||
-                strpos($response, "/images/yellow_warning.gif") !== false ||
-                strpos($response, "302 Moved") !== false) {
+        if (strpos($response, "</h3>") === false) {
             return -2; //return error
         }
 
 
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
-        preg_match_all('/<h3 class="r"><a href="\/url\?q=(.*?)&amp;sa=U&amp;ei=/', $response, $matches);
+        preg_match_all('/<h3.*?><a href="(.*?)".*?</h3>', $response, $matches);
 
         $pos = -1;
         if (!empty($matches[1])) {
@@ -140,7 +136,7 @@ class SQ_Ranking extends SQ_FrontController {
                         $json->rank = $this->processRanking($row->post_id, $json->keyword);
                         if ($json->rank == -1) {
                             $count++;
-                            sleep(mt_rand(10, 20));
+                            sleep(mt_rand(5, 10));
                             //if not indexed with the keyword then find the url
                             if ($this->processRanking($row->post_id, get_permalink($row->post_id)) > 0) {
                                 $json->rank = 0; //for permalink index set 0

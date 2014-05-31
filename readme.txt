@@ -2,7 +2,7 @@
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
 Requires at least: 3.3
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
@@ -114,6 +114,12 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.7 =
+* Fixed serp cron with the google last changes
+
+= 3.1.6 =
+* Compatible with WP 3.9.1
+
 = 3.1.5 =
 * Fixed cache issues
 * Fixed login/sign-up jQuery conflicts

@@ -264,9 +264,12 @@ class SQ_PostsList extends SQ_FrontController {
                 $args['post_id'] = $this->model->post_id;
 
                 if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
-                    if (isset($json->rank)) {
+                    //check and save the keyword serp
+                    $rank = $this->checkKeyword($json->keyword);
+
+                    if (isset($rank)) {
                         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
-                        $args['rank'] = (string) $json->rank;
+                        $args['rank'] = (string) $rank;
                         $args['country'] = $ranking->getCountry();
                         $args['language'] = $ranking->getLanguage();
                     }
@@ -277,9 +280,6 @@ class SQ_PostsList extends SQ_FrontController {
                 if (!is_object($response)) {
                     exit(json_encode(array('error' => $response)));
                 } else {
-
-                    //check and save the keyword serp
-                    $this->checkKeyword($response->keyword);
 
                     $analytics = SQ_ObjController::getBlock('SQ_BlockAnalytics');
                     $analytics->flush = false;
@@ -300,12 +300,13 @@ class SQ_PostsList extends SQ_FrontController {
      * @return type
      */
     private function checkKeyword($keyword) {
+        $rank = null;
+
         if ($keyword == '')
             return;
 
         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
         if (is_object($ranking)) {
-
             $rank = get_transient('sq_rank' . $this->model->post_id);
             //if the rank is not in transient
             if ($rank === false) {
@@ -348,6 +349,7 @@ class SQ_PostsList extends SQ_FrontController {
                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
             }
         }
+        return $rank;
     }
 
 }
