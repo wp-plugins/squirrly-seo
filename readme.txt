@@ -116,6 +116,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 == Changelog ==
 = 3.1.8 =
 * Fixed serp cron with the google last changes
+* Added force recheck for google rank in SEO Analytics
 
 = 3.1.6 =
 * Compatible with WP 3.9.1

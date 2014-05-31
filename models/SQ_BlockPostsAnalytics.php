@@ -396,7 +396,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                             } elseif ($json->rank > 0) {
                                 $value = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $json->rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
                             }
-                            $value = sprintf('<a id="sq_rank_value' . $post->ID . '" href="%s" style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => $json->rank), 'admin.php')), $value, __('Recheck rank', _SQ_PLUGIN_NAME_));
+                            $value = sprintf('<a id="sq_rank_value' . $post->ID . '" href="%s" style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => $json->rank), 'admin.php')), $value, __('Force recheck', _SQ_PLUGIN_NAME_));
                         } else {
                             $value = __('Not yet verified');
                         }
