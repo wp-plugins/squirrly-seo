@@ -388,15 +388,15 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                         $value = '';
                         if (isset($json->rank)) {
                             if ($json->rank == -2) {
-                                $value = __('Not yet verified');
+                                $value = __('Could not receive data from google (Err: blocked IP)');
                             } elseif ($json->rank == -1) {
-                                $value = __('Not indexed');
+                                $value = __('> 100');
                             } elseif ($json->rank == 0) {
-                                $value = __('Indexed with the URL');
+                                $value = __('URL Indexed');
                             } elseif ($json->rank > 0) {
                                 $value = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $json->rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
                             }
-                            $value = sprintf('<a href="%s"  style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => $json->rank), 'admin.php')), $value);
+                            $value = sprintf('<a id="sq_rank_value' . $post->ID . '" href="%s" style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => $json->rank), 'admin.php')), $value, __('Recheck rank', _SQ_PLUGIN_NAME_));
                         } else {
                             $value = __('Not yet verified');
                         }

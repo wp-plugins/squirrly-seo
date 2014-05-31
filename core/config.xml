@@ -15,6 +15,7 @@
         <actions>
             <action>sq_posts_rank</action>
             <action>sq_post_rank</action>
+            <action>sq_recheck</action>
         </actions>
         <active>1</active>
         <path>controllers</path>

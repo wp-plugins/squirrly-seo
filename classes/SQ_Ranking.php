@@ -83,10 +83,9 @@ class SQ_Ranking extends SQ_FrontController {
             return -2; //return error
         }
 
-
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
-        preg_match_all('/<h3.*?><a href="(.*?)".*?</h3>', $response, $matches);
+        preg_match_all('/<h3.*?><a href="(.*?)".*?<\/h3>/is', $response, $matches);
 
         $pos = -1;
         if (!empty($matches[1])) {
