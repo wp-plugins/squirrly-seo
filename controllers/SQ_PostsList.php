@@ -293,27 +293,30 @@ class SQ_PostsList extends SQ_FrontController {
                 }
                 break;
             case 'sq_recheck':
+                if (get_transient('google_blocked') === false) {
+                    $this->model->post_id = (int) SQ_Tools::getValue('post_id');
+                    if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
+                        if ($json->keyword <> '') {
+                            delete_transient('sq_rank' . $this->model->post_id);
+                        }
+                        $rank = $this->checkKeyword($json->keyword, true);
+                        if ($rank == -2) {
+                            $rank = __('Could not receive data from google (Err: blocked IP)');
+                        } elseif ($rank == -1) {
+                            $rank = __('> 100');
+                        } elseif ($rank == 0) {
+                            $rank = __('URL Indexed');
+                        } elseif ($rank > 0) {
+                            $rank = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
+                        }
+                        exit(json_encode(array('rank' => $rank)));
+                    }
 
-                $this->model->post_id = (int) SQ_Tools::getValue('post_id');
-                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
-                    if ($json->keyword <> '') {
-                        $json->rank = null;
-                        SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, $json);
-                        delete_transient('sq_rank' . $this->model->post_id);
-                    }
-                    $rank = $this->checkKeyword($json->keyword);
-                    if ($rank == -2) {
-                        $rank = __('Could not receive data from google (Err: blocked IP)');
-                    } elseif ($rank == -1) {
-                        $rank = __('> 100');
-                    } elseif ($rank == 0) {
-                        $rank = __('URL Indexed');
-                    } elseif ($rank > 0) {
-                        $rank = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
-                    }
+                    exit(json_encode(array('error' => true)));
+                } else {
+                    $rank = __('Could not receive data from google (Err: blocked IP)');
                     exit(json_encode(array('rank' => $rank)));
                 }
-                exit(json_encode(array('error' => true)));
                 break;
         }
     }
@@ -324,7 +327,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @param type $keyword
      * @return type
      */
-    private function checkKeyword($keyword) {
+    private function checkKeyword($keyword, $force = false) {
         $rank = null;
 
         if ($keyword == '')
@@ -337,7 +340,7 @@ class SQ_PostsList extends SQ_FrontController {
             if ($rank === false) {
                 //get the keyword from database
                 $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
-                if (isset($json->rank)) {
+                if ($force === false && isset($json->rank)) {
                     $rank = $json->rank;
                     //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
@@ -345,7 +348,7 @@ class SQ_PostsList extends SQ_FrontController {
                     $rank = $ranking->processRanking($this->model->post_id, $keyword);
 
                     if ($rank == -1) {
-                        sleep(3);
+                        sleep(mt_rand(3, 5));
                         //if not indexed with the keyword then find the url
                         if ($ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id)) > 0) { //for permalink index set 0
                             $rank = 0;

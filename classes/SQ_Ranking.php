@@ -80,6 +80,7 @@ class SQ_Ranking extends SQ_FrontController {
 
         //Check the values for block IP
         if (strpos($response, "</h3>") === false) {
+            set_transient('google_blocked', 1, (60 * 60 * 1));
             return -2; //return error
         }
 
@@ -106,7 +107,10 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function processCron() {
         global $wpdb;
-        set_time_limit(400);
+        if (get_transient('google_blocked') !== false) {
+            return;
+        }
+        set_time_limit(3600);
         /* Load the Submit Actions Handler */
         SQ_ObjController::getController('SQ_Tools', false);
         SQ_ObjController::getController('SQ_Action', false);
@@ -120,7 +124,7 @@ class SQ_Ranking extends SQ_FrontController {
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
             foreach ($rows as $row) {
-                if ($count > 20) {
+                if ($count > 100) {
                     break; //check only 10 keywords at the time
                 }
                 if ($row->meta_value <> '') {
@@ -132,36 +136,38 @@ class SQ_Ranking extends SQ_FrontController {
                             (isset($json->update) && isset($json->rank) && $json->rank == -1 && (time() - $json->update > (60 * 60 * 24))) //if not indexed than check often
                             )) {
 
-                        $json->rank = $this->processRanking($row->post_id, $json->keyword);
-                        if ($json->rank == -1) {
+                        $rank = $this->processRanking($row->post_id, $json->keyword);
+                        if ($rank == -1) {
                             $count++;
-                            sleep(mt_rand(5, 10));
+                            sleep(mt_rand(20, 30));
                             //if not indexed with the keyword then find the url
                             if ($this->processRanking($row->post_id, get_permalink($row->post_id)) > 0) {
-                                $json->rank = 0; //for permalink index set 0
+                                $rank = 0; //for permalink index set 0
                             }
                         }
 
-
-                        if (isset($json->rank) && $json->rank >= -1) {
-                            $json->country = $this->getCountry();
-                            $json->language = $this->getLanguage();
-                            SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
-                            set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24));
-
-                            //if rank proccess has no error
-
-                            $args = array();
-                            $args['post_id'] = $row->post_id;
-                            $args['rank'] = (string) $json->rank;
-                            $args['country'] = $this->getCountry();
-                            $args['language'] = $this->getLanguage();
-
-                            SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
-
-                            $count++;
-                            sleep(mt_rand(10, 20));
+                        //if there is a success response than save it
+                        if (isset($rank) && $rank >= -1) {
+                            $json->rank = $rank;
                         }
+
+                        $json->country = $this->getCountry();
+                        $json->language = $this->getLanguage();
+                        SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
+                        set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24));
+
+                        //if rank proccess has no error
+
+                        $args = array();
+                        $args['post_id'] = $row->post_id;
+                        $args['rank'] = (string) $json->rank;
+                        $args['country'] = $this->getCountry();
+                        $args['language'] = $this->getLanguage();
+
+                        SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
+
+                        $count++;
+                        sleep(mt_rand(20, 30));
                     }
                 }
             }
