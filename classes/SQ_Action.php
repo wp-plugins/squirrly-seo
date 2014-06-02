@@ -19,7 +19,7 @@ class SQ_Action extends SQ_FrontController {
     public function hookInit() {
 
         /* Only if ajax */
-        if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
+        if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
             $this->actions = array();
             $this->getActions(((isset($_GET['action']) ? $_GET['action'] : (isset($_POST['action']) ? $_POST['action'] : ''))));
         }
@@ -32,10 +32,7 @@ class SQ_Action extends SQ_FrontController {
      */
     public function hookMenu() {
         /* Only if post */
-        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            return;
-        }
-        if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
+        if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
             return;
         }
 

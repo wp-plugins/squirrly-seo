@@ -5,7 +5,7 @@ class SQ_Frontend extends SQ_FrontController {
     public static $options;
 
     public function __construct() {
-        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+        if ($this->_isAjax())
             return;
 
         parent::__construct();
@@ -19,14 +19,21 @@ class SQ_Frontend extends SQ_FrontController {
             self::$options['sq_use'] = 0;
     }
 
+    private function _isAjax() {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+            return true;
+        if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+            return true;
+
+        return false;
+    }
+
     /**
      * Called after plugins are loaded
      */
     public function hookLoaded() {
         if (self::$options['sq_use'] == 1) {
-            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
-                return;
-            if (strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+            if ($this->_isAjax())
                 return;
             //Use buffer only for meta Title
             //if(self::$options['sq_auto_title'] == 1)
@@ -38,7 +45,7 @@ class SQ_Frontend extends SQ_FrontController {
      * Hook the Header load
      */
     public function hookFronthead() {
-        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+        if ($this->_isAjax())
             return;
 
         echo $this->model->setStart();

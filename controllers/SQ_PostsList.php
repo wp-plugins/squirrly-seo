@@ -330,7 +330,7 @@ class SQ_PostsList extends SQ_FrontController {
      * @return type
      */
     private function checkKeyword($keyword, $force = false) {
-        $json = null;
+        $rank = null;
 
         if ($keyword == '')
             return;
@@ -379,7 +379,7 @@ class SQ_PostsList extends SQ_FrontController {
                 SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
             }
         }
-        return $json;
+        return $rank;
     }
 
 }

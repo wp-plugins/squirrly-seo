@@ -1,6 +1,6 @@
 === SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
-Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly,title suggestion
+Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly
 Requires at least: 3.3
 Tested up to: 3.9.1
 Stable tag: trunk
