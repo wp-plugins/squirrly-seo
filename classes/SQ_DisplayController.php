@@ -21,7 +21,7 @@ class SQ_DisplayController {
      *
      * @return string
      */
-    public static function loadMedia($uri = '', $media = 'all', $echo = false) {
+    public static function loadMedia($uri = '', $media = 'all') {
         if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
             return;
 
@@ -52,26 +52,17 @@ class SQ_DisplayController {
             $local = false;
         }
 
-        if ($echo) {
-            if ($css_uri <> '') {
-                echo "<link rel='stylesheet' id='$name'  href='" . $css_uri . "' type='text/css' media='$media' />" . "\n";
-            }
 
-            if ($js_uri <> '') {
-                echo '<script type="text/javascript" src="' . $js_uri . '"></script>' . "\n";
-            }
-        } else {
 
-            if ($css_uri <> '') {
-                if (!wp_style_is($name)) {
-                    wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID, $media);
-                }
+        if ($css_uri <> '') {
+            if (!wp_style_is($name)) {
+                wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID, $media);
             }
+        }
 
-            if ($js_uri <> '') {
-                if (!wp_script_is($name)) {
-                    wp_enqueue_script($name, $js_uri, null, SQ_VERSION_ID);
-                }
+        if ($js_uri <> '') {
+            if (!wp_script_is($name)) {
+                wp_enqueue_script($name, $js_uri, null, SQ_VERSION_ID);
             }
         }
     }

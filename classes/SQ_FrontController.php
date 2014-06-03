@@ -123,7 +123,7 @@ class SQ_FrontController {
             return;
         SQ_ObjController::getController('SQ_DisplayController', false)->init();
         SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia($this->name, 'all', false);
+                ->loadMedia($this->name);
     }
 
 }

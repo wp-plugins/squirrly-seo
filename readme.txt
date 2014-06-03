@@ -114,6 +114,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.1.9 =
+* Fixed css issues for some cases
+* Fixed the "See Analytics" loading issue
+
 = 3.1.8 =
 * Fixed serp cron with the google last changes
 * Changed the cron rate for serp search

@@ -77,7 +77,7 @@ class SQ_BlockController {
         if (!is_admin())
             return;
         SQ_ObjController::getController('SQ_DisplayController', false)
-                ->loadMedia($this->name, 'all', true);
+                ->loadMedia($this->name);
     }
 
 }
