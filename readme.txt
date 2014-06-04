@@ -114,6 +114,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.2 =
+* Fixed serp check rate to prevent IP block
+
 = 3.1.9 =
 * Fixed css issues for some cases
 * Fixed the "See Analytics" loading issue
