@@ -124,7 +124,7 @@ class SQ_Ranking extends SQ_FrontController {
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
             foreach ($rows as $row) {
-                if ($count > 100) {
+                if ($count > 20) {
                     break; //check only 10 keywords at the time
                 }
                 if ($row->meta_value <> '') {
