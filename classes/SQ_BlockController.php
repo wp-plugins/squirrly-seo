@@ -63,8 +63,8 @@ class SQ_BlockController {
     protected function action() {
         // check to see if the submitted nonce matches with the
         // generated nonce we created
-        if (class_exists('wp_verify_nonce'))
-            if (!wp_verify_nonce(SQ_Tools::getValue(_SQ_NONCE_ID_), _SQ_NONCE_ID_))
+        if (function_exists('wp_verify_nonce'))
+            if (!wp_verify_nonce(SQ_Tools::getValue('nonce'), _SQ_NONCE_ID_))
                 die('Invalid request!');
     }
 

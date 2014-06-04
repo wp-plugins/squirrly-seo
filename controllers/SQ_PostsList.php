@@ -241,7 +241,6 @@ class SQ_PostsList extends SQ_FrontController {
      */
     public function action() {
         parent::action();
-
         switch (SQ_Tools::getValue('action')) {
             case 'sq_posts_rank':
                 $args = array();

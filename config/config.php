@@ -4,7 +4,7 @@
  * The configuration file
  */
 define('_SQ_SUPPORT_EMAIL_', 'support@squirrly.co');
-define('_SQ_NONCE_ID_', 'sq_none');
+define('_SQ_NONCE_ID_', NONCE_KEY);
 
 if (!defined('PHP_VERSION_ID')) {
     $version = explode('.', PHP_VERSION);
