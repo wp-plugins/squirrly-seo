@@ -75,7 +75,7 @@ class SQ_Tools extends SQ_FrontController {
     public static function getOptions() {
         $default = array(
             'sq_api' => '',
-            'sq_use' => 1,
+            'sq_use' => 0,
             'sq_hide_survey' => 0,
             // --
             'sq_auto_canonical' => 1,
