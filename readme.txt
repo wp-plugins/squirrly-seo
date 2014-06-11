@@ -1,4 +1,4 @@
-=== SEO Plugin by SQUIRRLY ===
+﻿=== SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly
 Requires at least: 3.3
@@ -44,15 +44,13 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Stay up to date with your SEO and Social Signals, with our Email Alerts</strong>. We send out email alerts if something on your wordpress site needs immediate attention, so that you can act upon it and save your business the trouble.
 
-- <strong>Free Images that You Can Use.</strong>
+- <strong>Copyright-Free Images that You Can Use.</strong>
 
 - <strong>Headline Suggestions based on your SEO keyword.</strong>
 
 - <strong>Social Intelligence through the Inspiration Box, to help you write better content, by showing you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
-<strong>This is the FREE version of Squirrly SEO.</strong>
-
-You can now use Squirrly SEO for free and if you have small content marketing needs (about one article posted per week, some keywords that you want to analyze), it's the perfect plan for you.
+You can use Squirrly SEO for free and if you have small content marketing needs (about one article posted per week, some keywords that you want to analyze), it's the perfect plan for you.
 
 Once you start having bigger content marketing and SEO needs (more than one article posted per week), you can go PRO. Read more about it in the FAQ section.
 
