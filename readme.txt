@@ -100,7 +100,7 @@ So get your very own Starbox now:
 
 
 == Changelog ==
-= 2.1.1 =
+= 2.1.2 =
 * Compatible with WP 3.9.1
 
 = 2.1.1 =
