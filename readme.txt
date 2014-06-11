@@ -1,4 +1,4 @@
-=== Starbox - the Author Box for Humans ===
+﻿=== Starbox - the Author Box for Humans ===
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio
 Requires at least: 3.3
@@ -22,7 +22,7 @@ Now, if you have just yourself as an Author on your site, or a super-star team o
 You can buy Starbox without links and subscription from:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 or
-Go to your use profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
+Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
 
 You want the classy, bottom-of-the-page Author Box? You can choose that one as well.
 
@@ -200,4 +200,4 @@ or
 You can buy Starbox without links and subscription from:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 or
-Go to your use profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
+Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
