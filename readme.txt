@@ -18,7 +18,7 @@ Humans look at beauty more than anything else (as you most probably already know
 
 Now, if you have just yourself as an Author on your site, or a super-star team of Authors, you'll love Starbox, because you can <strong>choose from the professionaly built themes and landscaping</strong>. If you are the super-star type, or want to boost social proof, place your Author Box on top of the page, so that your Human readers will know that they're reading stuff that a real awesome person has written.
 
-<h3>How do I hide Powered by Starbox?</h3>
+<strong>How do I hide Powered by Starbox?</strong>
 You can buy Starbox without links and subscription from:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 or
