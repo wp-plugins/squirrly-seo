@@ -8,12 +8,12 @@
   Plugin URI: http://www.squirrly.co
   Description: Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan
-  Version: 3.2.0
+  Version: 3.2.1
   Author URI: http://www.squirrly.co
  */
 
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
-define('SQ_VERSION', '3.2.0');
+define('SQ_VERSION', '3.2.1');
 
 /* Call config files */
 require(dirname(__FILE__) . '/config/config.php');

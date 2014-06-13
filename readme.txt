@@ -6,10 +6,10 @@ Tested up to: 3.9.1
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
-Squirrly SEO Plugin is the Only SEO Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
+Squirrly SEO Plugin: Get Excellent SEO with the Only Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Engines.
 
 == Description ==
-Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.
+Squirrly helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO.
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
@@ -112,6 +112,10 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.2.1 =
+* Improved SEO Stats for Google Rankings by Country
+* SEO Settings out-of-the-box, but also works awesome if you have the settings already done with All In One SEO or Yoast (wordpress seo)
+
 = 3.2 =
 * Fixed serp check rate to prevent IP block
 
