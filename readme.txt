@@ -1,6 +1,6 @@
 ﻿=== Starbox - the Author Box for Humans ===
 Contributors: florinmuresan,cifi
-Tags: author box‎,author,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio
+Tags: author box‎,author,twitter,sidebar,images,shortcode,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio,widget,comments
 Requires at least: 3.3
 Tested up to: 3.9.1
 Stable tag: trunk
@@ -63,7 +63,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 
 So get your very own Starbox now:
 
-1. Your Authors become real Stars
+1. Your Authors will become real Stars
 2. Your readers will notice the person behind the articles better
 3. It increases your social proof and credibility as an Author
 4. It will increase subscriber numbers across social media streams
