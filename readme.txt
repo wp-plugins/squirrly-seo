@@ -1,6 +1,6 @@
 ﻿=== SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
-Tags: seo,seo optimization,seo content,seo plugin,squirly,squirrley,wordpress seo,content marketing strategy,marketing strategy,plugin,dutch,german,russian,romanian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,google,content,title,description,favicon,apple,ios,andriod,mobile,canonical,author,googleplus,analytics,automation,admin,automatic seo,seo correction,seo title,seo meta,human friendly
+Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,german,russian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
 Tested up to: 3.9.1
 Stable tag: trunk
@@ -9,7 +9,7 @@ Donate link: http://www.squirrly.co
 Squirrly SEO Plugin: Get Excellent SEO with the Only Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Bots.
 
 == Description ==
-Squirrly helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO.
+Squirrly helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO. You can opt-in to keep those settings, so no need to start over again :-)
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
