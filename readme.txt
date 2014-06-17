@@ -48,6 +48,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Links to all the articles
 * Section that displays the latest posts of a certain author
 * Themes to choose from
+* Themes setup for each individual Author, to really make them shine
 * Can set the Name of the Author Box
 * Can set Job Title
 * Can set Company (with link to company's site)
