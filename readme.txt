@@ -6,7 +6,7 @@ Tested up to: 3.9.1
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
-Squirrly SEO Plugin: Get Excellent SEO with the Only Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Bots.
+Squirrly SEO Plugin is for the NON-SEO expert. Get Excellent SEO with Better Content and SEO Stats. For Both Humans and Search Bots.
 
 == Description ==
 Squirrly helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO. You can opt-in to keep those settings, so no need to start over again :-)
