@@ -112,6 +112,9 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 
 
 == Changelog ==
+= 3.2.2 =
+* Added the Custom Open Graph Image upload in Squirrly Snippet
+
 = 3.2.1 =
 * Improved SEO Stats for Google Rankings by Country
 * SEO Settings out-of-the-box, but also works awesome if you have the settings already done with All In One SEO or Yoast (wordpress seo)

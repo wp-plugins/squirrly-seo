@@ -225,6 +225,27 @@ class SQ_Post extends SQ_FrontController {
         switch (SQ_Tools::getValue('action')) {
             case 'sq_save_meta':
                 $return = $this->_checkAdvMeta(SQ_Tools::getValue('post_id'));
+                SQ_Tools::setHeader('json');
+                echo json_encode($return);
+                break;
+            case 'sq_save_ogimage':
+                if (!empty($_FILES['ogimage'])) {
+                    $return = $this->model->addImage($_FILES['ogimage']);
+                }
+                $return['filename'] = basename($return['file']);
+                $local_file = str_replace($return['filename'], urlencode($return['filename']), $return['url']);
+                $attach_id = wp_insert_attachment(array(
+                    'post_mime_type' => $return['type'],
+                    'post_title' => preg_replace('/\.[^.]+$/', '', $return['filename']),
+                    'post_content' => '',
+                    'post_status' => 'inherit',
+                    'guid' => $local_file
+                        ), $return['file'], SQ_Tools::getValue('post_id'));
+
+                $attach_data = wp_generate_attachment_metadata($attach_id, $return['file']);
+                wp_update_attachment_metadata($attach_id, $attach_data);
+
+                SQ_Tools::setHeader('json');
                 echo json_encode($return);
                 break;
         }
@@ -252,6 +273,10 @@ class SQ_Post extends SQ_FrontController {
             if (SQ_Tools::getIsset('sq_fp_keywords'))
                 $meta[] = array('key' => 'sq_fp_keywords',
                     'value' => SQ_Tools::getValue('sq_fp_keywords'));
+
+            if (SQ_Tools::getIsset('sq_fp_ogimage') && SQ_Tools::getValue('sq_fp_ogimage') <> '')
+                $meta[] = array('key' => 'sq_fp_ogimage',
+                    'value' => SQ_Tools::getValue('sq_fp_ogimage'));
 
             $this->model->saveAdvMeta($post_id, $meta);
             return $meta;

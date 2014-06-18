@@ -5,6 +5,7 @@
         <description>Post Page</description>
         <actions>
             <action>sq_save_meta</action>
+            <action>sq_save_ogimage</action>
         </actions>
         <active>1</active>
         <path>controllers</path>

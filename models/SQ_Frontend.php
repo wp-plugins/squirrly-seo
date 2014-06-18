@@ -238,10 +238,16 @@ class Model_SQ_Frontend {
     private function getOpenGraph() {
         $meta = "\n";
         $image = '';
+        $ogimage = null;
+        $post = $this->post;
 
         $url = $this->getCanonicalUrl();
         if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            $this->thumb_image = $this->getImageFromContent();
+            if (isset($post) && $ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
+                $this->thumb_image = $ogimage;
+            } else {
+                $this->thumb_image = $this->getImageFromContent();
+            }
         }
 
         if (!isset($this->thumb_video) || $this->thumb_video == '') {
@@ -253,7 +259,7 @@ class Model_SQ_Frontend {
         }
         //GET THE URL
         $meta .= sprintf('<meta property="og:url" content="%s" />', $url) . "\n";
-        if (!$this->isHomePage() && (isset($this->thumb_image) && $this->thumb_image <> '')) {
+        if ((isset($ogimage) && $this->isHomePage() ) || !$this->isHomePage() && (isset($this->thumb_image) && $this->thumb_image <> '')) {
             $meta .= sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n";
             $meta .= sprintf('<meta property="og:image:width" content="%s" />', '500') . "\n";
         }
@@ -1382,6 +1388,9 @@ class Model_SQ_Frontend {
             case 'keyword':
                 $field = 'sq_fp_keywords';
                 break;
+            case 'ogimage':
+                $field = 'sq_fp_ogimage';
+                break;
             default:
                 $field = 'sq_fp_title';
         }
@@ -1392,7 +1401,7 @@ class Model_SQ_Frontend {
 
         // Get the custom Squirrly meta
         //////////////////////////////////////////
-        $fields = array('sq_fp_title' => '', 'sq_fp_description' => '', 'sq_fp_keywords' => '');
+        $fields = array('sq_fp_title' => '', 'sq_fp_description' => '', 'sq_fp_keywords' => '', 'sq_fp_ogimage' => '');
 
         foreach ($fields as $meta_key => $meta_value) {
             $cond .= ($cond <> '' ? ' OR ' : '') . "`meta_key` = '$meta_key'";

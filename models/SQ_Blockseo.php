@@ -21,7 +21,8 @@ class Model_SQ_Blockseo {
             return;
 
         $meta = array('sq_fp_title' => '',
-            'sq_fp_description' => '');
+            'sq_fp_description' => '',
+            'sq_fp_ogimage' => '');
 
         $sql = "SELECT `meta_id`, `meta_value`, `meta_key`
                     FROM `" . $wpdb->postmeta . "`

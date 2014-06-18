@@ -234,9 +234,7 @@ class Model_SQ_Menu {
      *
      */
     public function addFavicon($file, $path = ABSPATH) {
-        if (function_exists('fopen')) {
-            $f = @fopen($newfile, "w");
-        }
+
         $out = array();
         $out['name'] = strtolower(basename($file['name']));
         $out['tmp'] = _SQ_CACHE_DIR_ . strtolower(basename($file['name']));
