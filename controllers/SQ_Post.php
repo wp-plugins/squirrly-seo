@@ -227,6 +227,7 @@ class SQ_Post extends SQ_FrontController {
                 $return = $this->_checkAdvMeta(SQ_Tools::getValue('post_id'));
                 SQ_Tools::setHeader('json');
                 echo json_encode($return);
+                SQ_Tools::emptyCache();
                 break;
             case 'sq_save_ogimage':
                 if (!empty($_FILES['ogimage'])) {
@@ -247,6 +248,7 @@ class SQ_Post extends SQ_FrontController {
 
                 SQ_Tools::setHeader('json');
                 echo json_encode($return);
+                SQ_Tools::emptyCache();
                 break;
         }
         exit();
@@ -274,7 +276,7 @@ class SQ_Post extends SQ_FrontController {
                 $meta[] = array('key' => 'sq_fp_keywords',
                     'value' => SQ_Tools::getValue('sq_fp_keywords'));
 
-            if (SQ_Tools::getIsset('sq_fp_ogimage') && SQ_Tools::getValue('sq_fp_ogimage') <> '')
+            if (SQ_Tools::getIsset('sq_fp_ogimage'))
                 $meta[] = array('key' => 'sq_fp_ogimage',
                     'value' => SQ_Tools::getValue('sq_fp_ogimage'));
 
