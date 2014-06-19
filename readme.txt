@@ -34,7 +34,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a report by email.
 
-- <strong>Send the Audit report by email</strong> to your content writer, SEO person, developers, etc.
+- <strong>Send the Audit report by email</strong> to your content writer, SEO person, developers, or to your boss.
 
 - <strong>It Gives You Professional Advice on How To Fix</strong> any of those areas that it helps track, so you can easily find out how to improve. Content from SEO Moz (recently just MOZ), Google, Authority Labs, etc.
 
