@@ -17,7 +17,7 @@ See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
 
 Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this tool, and by measuring and improving as advized by our tool.
 
-All-In-All :: Squirrly SEO will help you get a tool that acts like an Expert Consultant, sitting right next to you, advising on SEO, and telling you where you need to improve.
+All-In-All: Squirrly SEO will help you get a tool that acts like an Expert Consultant, sitting right next to you, advising on SEO, and telling you where you need to improve.
 
 The best things is: YOU DON'T have to be an SEO expert to use it. Wait, you don't even need to know about all that. Squirrly will help you write great content, will show you where your wordpress needs improvements and it will even help you learn all about content marketing and seo strategies by email trainings.
 
