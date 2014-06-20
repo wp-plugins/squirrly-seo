@@ -29,7 +29,10 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Optimized articles get +285% traffic,</strong> on average (real statistics from over 16,500 people who participated in the survey).
 
+- <strong>SEO Settings remain</strong>. If you already made your SEO settings for Wordpress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
+
 - <strong>Finds you Keywords and Topics that your Customers actively search for</strong> and which will help you out-rank your competitors, not just follow them around
+
 - <strong>The algorithm for Keyword analysis</strong> takes into accounts elements that will help you find suitable keywords for content optimization: for Humans and for Search Engines.
 
 - <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a report by email.
