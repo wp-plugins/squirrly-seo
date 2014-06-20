@@ -201,4 +201,4 @@ or
 You can buy Starbox without links and subscription from:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 or
-Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
+Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all of your authors. No need to change them one-by-one
