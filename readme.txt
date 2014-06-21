@@ -65,7 +65,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 So get your very own Starbox now:
 
 1. Your Authors will become real Stars
-2. Your readers will notice the person behind the articles better
+2. Your readers will notice the persons behind the articles better
 3. It increases your social proof and credibility as an Author
 4. It will increase subscriber numbers across social media streams
 5. Your readers will feel like they know you better and feel a connection, so they'll return more often
