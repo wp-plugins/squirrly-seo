@@ -35,7 +35,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>The algorithm for Keyword analysis</strong> takes into accounts elements that will help you find suitable keywords for content optimization: for Humans and for Search Engines.
 
-- <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a report by email.
+- <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a new report by email.
 
 - <strong>Send the Audit report by email</strong> to your content writer, SEO person, developers, or to your boss.
 
