@@ -32,7 +32,7 @@ The <strong>Social Profiles</strong> of your writers will be obvious and clickab
 
 Because your authors are stars or will be very soon, <strong>Google Authorship and Facebook Authorship</strong> are here for them with Starbox, and it's just type->click->boom! to set up. Amazingly easy.
 
-Are you afraid of having to spend time setting Starbox up? Don't worry. You're covered by our "For Humans" guarantee. With NO coding or complicated menus, whatsoever, you'll set your Author Box in a matter of minutes, and since we took a lot of care regarding coding, it will work well and you won't worry about that.
+Are you afraid of having to spend time setting Starbox up? Don't worry. You're covered by our "For Humans" guarantee. With NO coding or complicated menus whatsoever, you'll set your Author Box in a matter of minutes, and since we took a lot of care regarding all the coding, it will work well and you won't worry about that.
 
 You'll build up some good social proof, you'll give your Human readers the sense of quality and they'll be happy to return for more (which will help you with the search engines who track your site, as well).
 
