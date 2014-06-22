@@ -45,7 +45,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Have it work only on blog posts, only on pages, or both!
 * Links to social media profiles of your authors: Facebook, Twitter, Klout, Google+, LinkedIN, Instagram, Flickr, Pinterest, Tumblr, Youtube, Vimeo)
 * Each of your Authors can have a different set of social media profiles added
-* Links to all the articles
+* Links to all the articles written by that author
 * Section that displays the latest posts of a certain author
 * Themes to choose from
 * Themes setup for each individual Author, to really make them shine
