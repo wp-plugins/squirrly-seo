@@ -72,7 +72,7 @@ So get your very own Starbox now:
 6. You know that right now for Google it matters a lot that you have returning visitors (because it means your site is: quality)
 7. You'll get Google Authorship on your hands :-) For all your authors.
 
-Download it today from the Wordpress Directory and try it out. Having an author box after posts will certainly increase engagement and help your authors grow their authority on the web.
+Download it from the Wordpress Directory and try it out. Having an author box after posts will certainly increase engagement and help your authors grow their authority on the web.
 
 
 == Installation ==
