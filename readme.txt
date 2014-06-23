@@ -51,7 +51,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Stay up to date with your SEO and Social Signals, with our Email Alerts</strong>. We send out email alerts if something on your wordpress site needs immediate attention, so that you can act upon it and save your business the trouble.
 
-- <strong>Copyright-Free Images that You Can Use.</strong>
+- <strong>Copyright-Free Images That You Can Use.</strong>
 
 - <strong>Headline Suggestions based on your SEO keyword.</strong>
 
