@@ -106,7 +106,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 6. After the upload is finished, click Activate Plugin.
 7. Good. Now enter your email to connect with Squirrly.co
 8. Then click "Write a New Post with Squirrly Seo".
-9. Done. Start getting Excellent SEO
+9. Done. Start getting Excellent SEO on wordpress
 
 Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
