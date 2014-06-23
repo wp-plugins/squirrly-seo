@@ -70,7 +70,7 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 * <em>"Features that exceed the stereotypical plugin"</em> - <strong>Robert, Yieldkit</strong>
 
-* <em>"It's amazing! seeing a huge boost in traffic"</em>
+* <em>"It's amazing! Seeing a huge boost in traffic"</em>
 
 * <em>"Great SEO info at a click"</em>
 
