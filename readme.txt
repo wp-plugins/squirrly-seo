@@ -82,7 +82,7 @@ More than helping you with your internet marketing efforts, we strive to offer E
 
 - we have a Free Coaching session with 14 lessons and 10 actionable work files, awaiting you after you install the plugin and connect to squirrly.co
 
-- you'll be able to get support from us from the plugin, from our Facebook, our Twitter, email and we can even schedule a Skype call.
+- you'll be able to get support from us from the plugin, from our Facebook, our Twitter, email and we can even schedule a Skype call
 
 We're passionate about seeing you get a great and happy experience, so we'll do our best to fix anything that may come up very fast.
 
