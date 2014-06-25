@@ -91,7 +91,7 @@ The <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringh
 
 We're glad to have you,
 Florin Muresan
-Founder and CEO Squirrly
+CEO of Squirrly
 
 
 See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>.
