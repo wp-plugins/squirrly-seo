@@ -1,4 +1,4 @@
-=== SEO Plugin by SQUIRRLY ===
+﻿=== SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,german,russian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
@@ -47,7 +47,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Optimize Your Content for Humans.</strong> We've recently added tools and lessons (free of charge) that will help you optimize all of your Content for Humans, not just for search engines.
 
-- <strong>Write Better Content.</strong> We help you build up seo content that is also great-to-read for Human readers and helps you build up subtle seo.
+- <strong>Write Better Content.</strong> We help you build up seo content that is also great-to-read for Human readers and helps you build up some valuable and subtle seo.
 
 - <strong>Stay up to date with your SEO and Social Signals, with our Email Alerts</strong>. We send out email alerts if something on your wordpress site needs immediate attention, so that you can act upon it and save your business the trouble.
 
