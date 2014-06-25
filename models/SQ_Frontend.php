@@ -185,7 +185,6 @@ class Model_SQ_Frontend {
             /* SEO optimizer tool */
             $ret .= $this->getGoogleWT();
             $ret .= $this->getGoogleAnalytics();
-            $ret .= $this->setFooter(SQ_Tools::$options['sq_analytics_code']);
             $ret .= $this->getFacebookIns();
             $ret .= $this->getBingWT();
             $ret .= $this->getAlexaT();
@@ -193,13 +192,6 @@ class Model_SQ_Frontend {
             $ret .= $this->setEnd();
         }
         return $ret;
-    }
-
-    public function setFooter($code) {
-        $traffic = SQ_ObjController::getController('SQ_Traffic', false);
-        if (is_object($traffic)) {
-            return $traffic->getTrafficScript($code) . "\n";
-        }
     }
 
     private function getTwitterCard($options) {

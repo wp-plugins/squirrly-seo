@@ -163,7 +163,6 @@ class SQ_PostsList extends SQ_FrontController {
                     var __sq_article_rank = "' . __('SEO Analytics, by Squirrly', _SQ_PLUGIN_NAME_) . '";
                     var __sq_refresh = "' . __('Update', _SQ_PLUGIN_NAME_) . '"
 
-                    var sq_analytics_code = "' . SQ_Tools::$options['sq_analytics_code'] . '";
                     var __sq_dashurl = "' . _SQ_STATIC_API_URL_ . '";
                     var __token = "' . SQ_Tools::$options['sq_api'] . '";
                     var __sq_ranknotpublic_text = "' . __('Not Public', _SQ_PLUGIN_NAME_) . '";
@@ -264,10 +263,13 @@ class SQ_PostsList extends SQ_FrontController {
                 $args['post_id'] = $this->model->post_id;
 
                 if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
-                    //check and save the keyword serp
-                    $rank = $this->checkKeyword($json->keyword);
+                    if (isset($json->rank)) {
+                        $rank = $json->rank;
+                    } else {
+                        $rank = get_transient('sq_rank' . $this->model->post_id);
+                    }
 
-                    if (isset($rank)) {
+                    if ($rank !== false) {
                         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
                         $args['rank'] = (string) $rank;
                         $args['country'] = $ranking->getCountry();

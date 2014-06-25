@@ -248,11 +248,6 @@ class SQ_Menu extends SQ_FrontController {
                 //empty the cache on settings changed
                 SQ_Tools::emptyCache();
                 break;
-            case 'sq_save_analytics':
-
-                SQ_Tools::saveOptions('sq_analytics_code', SQ_Tools::getValue('sq_analytics_code'));
-                SQ_Tools::emptyCache();
-                break;
             case 'sq_fixautoseo':
                 SQ_Tools::saveOptions('sq_use', 1);
                 break;
