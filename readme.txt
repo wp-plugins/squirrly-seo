@@ -6,7 +6,7 @@ Tested up to: 3.9.1
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
-Squirrly SEO Plugin is for the NON-SEO expert. Get Excellent SEO with Better Content and SEO Stats. For Both Humans and Search Bots.
+Squirrly SEO Plugin: Get Excellent SEO with the Only Tool that Allows You To Optimize Content And Measure Its Success. For Both Humans and Search Bots.
 
 == Description ==
 Squirrly helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO. You can opt-in to keep those settings, so no need to start over again :-)
@@ -17,9 +17,7 @@ See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
 
 Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this tool, and by measuring and improving as advized by our tool.
 
-All-In-All: Squirrly SEO will help you get a tool that acts like an Expert Consultant, sitting right next to you, advising on SEO, and telling you where you need to improve.
-
-The best things is: YOU DON'T have to be an SEO expert to use it. Wait, you don't even need to know about all that. Squirrly will help you write great content, will show you where your wordpress needs improvements and it will even help you learn all about content marketing and seo strategies through email trainings.
+All-In-All :: Squirrly SEO will help you get a tool that acts like an Expert Consultant, sitting right next to you, advising on SEO, and telling you where you need to improve.
 
 Squirrly is a Freemium software, like MailChimp.
 
@@ -29,15 +27,12 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Optimized articles get +285% traffic,</strong> on average (real statistics from over 16,500 people who participated in the survey).
 
-- <strong>SEO Settings remain</strong>. If you already made your SEO settings for Wordpress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
-
 - <strong>Finds you Keywords and Topics that your Customers actively search for</strong> and which will help you out-rank your competitors, not just follow them around
-
 - <strong>The algorithm for Keyword analysis</strong> takes into accounts elements that will help you find suitable keywords for content optimization: for Humans and for Search Engines.
 
-- <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a new report by email.
+- <strong>Tracks all the aspects of your Content Marketing Strategy:</strong> Blogging, Traffic, SEO, Social Signals, Links, Authority. Every single week you get a report by email.
 
-- <strong>Send the Audit report by email</strong> to your content writer, SEO person, developers, or to your boss.
+- <strong>Send the Audit report by email</strong> to your content writer, SEO person, developers, etc.
 
 - <strong>It Gives You Professional Advice on How To Fix</strong> any of those areas that it helps track, so you can easily find out how to improve. Content from SEO Moz (recently just MOZ), Google, Authority Labs, etc.
 
@@ -47,11 +42,9 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Optimize Your Content for Humans.</strong> We've recently added tools and lessons (free of charge) that will help you optimize all of your Content for Humans, not just for search engines.
 
-- <strong>Write Better Content.</strong> We help you build up seo content that is also great-to-read for Human readers and helps you build up subtle seo.
-
 - <strong>Stay up to date with your SEO and Social Signals, with our Email Alerts</strong>. We send out email alerts if something on your wordpress site needs immediate attention, so that you can act upon it and save your business the trouble.
 
-- <strong>Copyright-Free Images That You Can Use.</strong>
+- <strong>Copyright-Free Images that You Can Use.</strong>
 
 - <strong>Headline Suggestions based on your SEO keyword.</strong>
 
@@ -59,7 +52,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 You can use Squirrly SEO for free and if you have small content marketing needs (about one article posted per week, some keywords that you want to analyze), it's the perfect plan for you.
 
-Once you start having bigger content marketing and SEO needs (more than one article posted per week), you can go PRO. Read more about it in our FAQ section.
+Once you start having bigger content marketing and SEO needs (more than one article posted per week), you can go PRO. Read more about it in the FAQ section.
 
 Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
 
@@ -70,13 +63,11 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 * <em>"Features that exceed the stereotypical plugin"</em> - <strong>Robert, Yieldkit</strong>
 
-* <em>"It's amazing! Seeing a huge boost in traffic"</em>
+* <em>"It's amazing! seeing a huge boost in traffic"</em>
 
 * <em>"Great SEO info at a click"</em>
 
 <strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
-
-Over 100 Content Marketing Experts have reviewed our SEO plugin for wordpress and loved it.
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
@@ -108,9 +99,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 6. After the upload is finished, click Activate Plugin.
 7. Good. Now enter your email to connect with Squirrly.co
 8. Then click "Write a New Post with Squirrly Seo".
-9. Done. Start getting Excellent SEO on wordpress
-
-Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
+9. Done. Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
 
 == Screenshots ==
 1. Wordpress Seo by Squirrly - Optimize your article with SEO Live Assistant

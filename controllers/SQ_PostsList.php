@@ -259,6 +259,7 @@ class SQ_PostsList extends SQ_FrontController {
                 break;
             case 'sq_post_rank':
                 $args = array();
+                $rank = null;
                 $this->model->post_id = (int) SQ_Tools::getValue('post');
                 $args['post_id'] = $this->model->post_id;
 
@@ -269,7 +270,7 @@ class SQ_PostsList extends SQ_FrontController {
                         $rank = get_transient('sq_rank' . $this->model->post_id);
                     }
 
-                    if ($rank !== false) {
+                    if (isset($rank) && $rank !== false) {
                         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
                         $args['rank'] = (string) $rank;
                         $args['country'] = $ranking->getCountry();
