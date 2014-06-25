@@ -68,7 +68,7 @@ So get your very own Starbox now:
 1. Your Authors will become real Stars
 2. Your readers will notice the persons behind the articles better
 3. It increases your social proof and credibility as an Author
-4. It will increase subscriber numbers across social media streams
+4. It will increase the subscriber numbers across social media streams
 5. Your readers will feel like they know you better and feel a connection, so they'll return more often
 6. You know that right now for Google it matters a lot that you have returning visitors (because it means your site is: quality)
 7. You'll get Google Authorship on your hands :-) For all your authors.
