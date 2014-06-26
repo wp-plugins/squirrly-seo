@@ -110,7 +110,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 8. Then click "Write a New Post with Squirrly Seo".
 9. Done. Start getting Excellent SEO on wordpress
 
-Type a keyword to the right of the screen and start using Squirrly Seo :) Enjoy!
+Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Screenshots ==
 1. Wordpress Seo by Squirrly - Optimize your article with SEO Live Assistant
