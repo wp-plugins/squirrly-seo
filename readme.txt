@@ -118,7 +118,7 @@ Download it on the Wordpress directory and try it out. Having an author box afte
 
 = 2.0.4 =
 * Fixed hook bugs for preview and frontend
-* Update css for some themes
+* Update css on the author box plugin for some themes
 * Fixed small bugs for Font size option
 * Works with W3 Total Cache and Super Cache
 
