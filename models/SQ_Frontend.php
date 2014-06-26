@@ -187,6 +187,7 @@ class Model_SQ_Frontend {
             $ret .= $this->getGoogleAnalytics();
             $ret .= $this->getFacebookIns();
             $ret .= $this->getBingWT();
+            $ret .= $this->getPinterest();
             $ret .= $this->getAlexaT();
 
             $ret .= $this->setEnd();
@@ -801,6 +802,21 @@ class Model_SQ_Frontend {
 
         if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_facebook_insights <> '') {
             return sprintf("<meta property=\"fb:admins\" content=\"%s\" />", $sq_facebook_insights) . "\n";
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the Pinterest code
+     *
+     * @return string
+     */
+    private function getPinterest() {
+        $sq_pinterest = SQ_Tools::$options['sq_pinterest'];
+
+        if (($this->checkHomePosts() || $this->checkFrontPage()) && $sq_pinterest <> '') {
+            return sprintf("<meta name=\"p:domain_verify\" content=\"%s\" />", $sq_pinterest) . "\n";
         }
 
         return false;

@@ -219,6 +219,7 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_google_analytics', $this->model->checkGoogleAnalyticsCode(SQ_Tools::getValue('sq_google_analytics')));
                 SQ_Tools::saveOptions('sq_facebook_insights', $this->model->checkFavebookInsightsCode(SQ_Tools::getValue('sq_facebook_insights')));
                 SQ_Tools::saveOptions('sq_bing_wt', $this->model->checkBingWTCode(SQ_Tools::getValue('sq_bing_wt')));
+                SQ_Tools::saveOptions('sq_pinterest', $this->model->checkPinterestCode(SQ_Tools::getValue('sq_pinterest')));
                 SQ_Tools::saveOptions('sq_alexa', $this->model->checkBingWTCode(SQ_Tools::getValue('sq_alexa')));
 
 

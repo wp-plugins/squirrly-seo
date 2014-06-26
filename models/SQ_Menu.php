@@ -201,6 +201,31 @@ class Model_SQ_Menu {
     }
 
     /**
+     * Check the Pinterest code saved at settings
+     *
+     * @return string
+     */
+    public function checkPinterestCode($code) {
+        if ($code <> '') {
+            if (strpos($code, 'content') !== false) {
+                preg_match('/content\\s*=\\s*[\'\"]([^\'\"]+)[\'\"]/i', $code, $result);
+                if (isset($result[1]) && !empty($result[1]))
+                    $code = $result[1];
+            }
+
+            if (strpos($code, '"') !== false) {
+                preg_match('/[\'\"]([^\'\"]+)[\'\"]/i', $code, $result);
+                if (isset($result[1]) && !empty($result[1]))
+                    $code = $result[1];
+            }
+
+            if ($code == '')
+                SQ_Error::setError(__("The code for Pinterest is incorrect.", _SQ_PLUGIN_NAME_));
+        }
+        return $code;
+    }
+
+    /**
      * Check the Bing code saved at settings
      *
      * @return string

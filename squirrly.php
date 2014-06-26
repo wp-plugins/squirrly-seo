@@ -6,7 +6,7 @@
 
   Plugin Name: SEO Plugin by SQUIRRLY
   Plugin URI: http://www.squirrly.co
-  Description: Squirrly helps you write content that's both Google Friendly and Human friendly. Excellent ballance between what search engine bots look for in your content and what Human readers crave for.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
+  Description: Squirrly SEO Plugin is for the NON-SEO expert. Get Excellent SEO with Better Content and SEO Stats. For Both Humans and Search Bots.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan
   Version: 3.2.2
   Author URI: http://www.squirrly.co

@@ -98,6 +98,7 @@ class SQ_Tools extends SQ_FrontController {
             'sq_google_analytics' => '',
             'sq_facebook_insights' => '',
             'sq_bing_wt' => '',
+            'sq_pinterest' => '',
             'sq_alexa' => '',
             // --
             'ignore_warn' => 0,

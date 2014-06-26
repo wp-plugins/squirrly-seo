@@ -433,7 +433,7 @@
                 </div>
             </fieldset>
             <fieldset >
-                <legend>
+                <legend class="sq_legend_medium"> 
                     <span class="sq_legend_title"><?php _e('Tracking Tools', _SQ_PLUGIN_NAME_); ?></span>
                     <span><?php echo sprintf(__('%sLink your Google+ profile to the content you create%s', _SQ_PLUGIN_NAME_), '<a href="https://plus.google.com/authorship" target="_blank">', '</a>'); ?></span>
                     <span><?php echo sprintf(__('%sStarBox, the author box that’s pushing content marketing to the stars%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/starbox-the-author-box-thats-pushing-content-marketing-to-the-stars" target="_blank">', '</a>'); ?></span>
@@ -453,6 +453,10 @@
                     <p class="withborder withcode" >
                         <span class="sq_icon sq_icon_facebookinsights"></span>
                         <?php echo sprintf(__('Facebook META code (for %sInsights%s ):', _SQ_PLUGIN_NAME_), '<a href="http://www.facebook.com/insights/" target="_blank">', '</a>'); ?><br><strong>&lt;meta property="fb:admins" content=" <input type="text" name="sq_facebook_insights" value="<?php echo (($view->options['sq_facebook_insights'] <> '') ? $view->options['sq_facebook_insights'] : '') ?>" size="15" /> " /&gt;</strong>
+                    </p>
+                    <p class="withborder withcode" >
+                        <span class="sq_icon sq_icon_pinterest"></span>
+                        <?php echo sprintf(__('Pinterest META code:', _SQ_PLUGIN_NAME_), '<a href="#" target="_blank">', '</a>'); ?><br><strong>&lt;meta name="p:domain_verify" content=" <input type="text" name="sq_pinterest" value="<?php echo (($view->options['sq_pinterest'] <> '') ? $view->options['sq_pinterest'] : '') ?>" size="15" /> " /&gt;</strong>
                     </p>
                 </div>
             </fieldset>
