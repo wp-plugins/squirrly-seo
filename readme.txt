@@ -115,7 +115,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Compatible with WP 3.9
 
 = 2.0.5 =
-* Fixed Klout issue
+* Fixed Klout score issue
 
 = 2.0.4 =
 * Fixed hook bugs for preview and frontend
