@@ -86,7 +86,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 == Screenshots ==
 1. Author Box with Business Theme
-2. Author Box with Business Theme
+2. Author Bio Box with Business Theme
 3. Author Box Settings
 4. Author Box Settings for each Author
 5. Author Box Social Settings
