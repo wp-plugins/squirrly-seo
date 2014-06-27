@@ -125,6 +125,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 3.2.2 =
 * Added the Custom Open Graph Image upload in Squirrly Snippet
+* Speed improvements
 
 = 3.2.1 =
 * Improved SEO Stats for Google Rankings by Country
