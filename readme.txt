@@ -31,7 +31,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>SEO Settings remain</strong>. If you already made your SEO settings for Wordpress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
 
-- <strong>Finds you Keywords and Topics that your Customers actively search for</strong> and which will help you out-rank your competitors, not just follow them around
+- <strong>Finds you Keywords and Topics that your Customers actively search for</strong> and which will help you out-rank your competitors, not just follow them around the serps
 
 - <strong>The algorithm for Keyword analysis</strong> takes into accounts elements that will help you find suitable keywords for content optimization: for Humans and for Search Engines.
 
