@@ -27,6 +27,8 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Gives You SEO Advice as you're typing your articles.</strong> Squirrly helps you in real time to optimize your articles to 100%, while you are writing or editing them.
 
+- <strong>Green lights turn on everytime you do something right.</strong> When all the lights turn green, you can publish or schedule the article because it has excellent seo.
+
 - <strong>Optimized articles get +285% traffic,</strong> on average (real statistics from over 16,500 people who participated in the survey).
 
 - <strong>SEO Settings remain</strong>. If you already made your SEO settings for Wordpress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
