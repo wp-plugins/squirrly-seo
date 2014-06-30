@@ -41,7 +41,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>It Gives You Professional Advice on How To Fix</strong> any of those areas that it helps track, so you can easily find out how to improve. Content from SEO Moz (recently just MOZ), Google, Authority Labs, etc.
 
-- <strong>Monitors Your Progress, week by week.</strong> You'll get interesting data about the historical performance of each article you write.
+- <strong>Monitors Your Progress, week by week.</strong> You'll get interesting data about the historical performance of each article you write and find out how to improve its seo ranking.
 
 - <strong>Analyze any single article. See how it improves over time.</strong>
 
