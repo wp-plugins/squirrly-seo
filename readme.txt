@@ -119,7 +119,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 4. Wordpress Seo by Squirrly - Find your top posts and authors with Squirrly Analytics
 5. Wordpress Seo by Squirrly - Monitor your success with the Performance Analytics
 6. Wordpress Seo by Squirrly - Let Squirrly do the SEO Settings that your blog needs
-7. Wordpress Seo by Squirrly - Check your Weekly Site Audit and get higher scores
+7. Wordpress Seo by Squirrly - Check your Weekly Site Audit and improve to get higher scores
 
 
 == Changelog ==
