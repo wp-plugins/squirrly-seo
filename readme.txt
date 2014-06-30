@@ -26,7 +26,7 @@ Go to your user profile just switch off "Powered By Starbox" (under the social i
 
 You want the classy, bottom-of-the-page Author Box? You can choose that one as well.
 
-And if your star Authors want different things, satisfy their needs by allowing them to place their Author Box top or bottom, with the default theme, or a better looking one. You can make each of them shine in their own way.
+And if your star Authors want different things, satisfy their needs by allowing them to place their Author Box at the top or bottom, with the default theme, or a better looking one. You can make each of them shine in their own way.
 
 The <strong>Social Profiles</strong> of your writers will be obvious and clickable, getting you Humans that will engage with content on your blog and also on your social media streams.
 
