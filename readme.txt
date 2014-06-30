@@ -34,7 +34,7 @@ Because your authors are stars or will be very soon, <strong>Google Authorship a
 
 Are you afraid of having to spend time setting Starbox up? Don't worry. You're covered by our "For Humans" guarantee. With NO coding or complicated menus whatsoever, you'll set your Author Box in a matter of minutes. And since we took a lot of care regarding all the coding, it will work well and you won't have to worry about that.
 
-You'll build up some good social proof, you'll give your Human readers the sense of quality and they'll be happy to return for more (which will help you with the search engines who track your site, as well).
+You'll build up some good social proof, you'll give your Human readers a sense of quality and they'll be happy to return for more (which will help you with the search engines who track your site, as well).
 
 If you're doing the tech stuff on your site or want to know what Starbox's inner workings are all about, here's a list:
 
