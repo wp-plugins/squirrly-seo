@@ -57,7 +57,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Headline Suggestions based on your SEO keyword.</strong>
 
-- <strong>Social Intelligence through the Inspiration Box, to help you write better content, by showing you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
+- <strong>Social Intelligence through the Inspiration Box, to help you write better content. Shows you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
 You can use Squirrly SEO for free and if you have small content marketing needs (about one article posted per week, some keywords that you want to analyze), then it's the perfect plan for you.
 
