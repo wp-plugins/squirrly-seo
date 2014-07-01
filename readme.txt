@@ -190,6 +190,13 @@ Download it from the Wordpress directory and try it out. Having an author box af
 = Why there is no meta for google and facebook authorship? =
 You have to fill the google and facebook social in your profile and it will show up.
 
+= How Do I Get Support For This Plugin? =
+We're following the threads and based on them we always try to build up new and better implementations for the Author Box for Humans. If you want Premium Support, that also comes with High Priority, then go to:
+http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
+
+= How Do I Make Sure I Get Priority Support From Buying The Recommended Version? =
+It will help you have a premium email from us, on which you can get super-fast support.
+
 = How can i call the author box in post or widget? =
 Just add <strong>[starbox]</strong> or <strong>[starbox id="login_name"]</strong> in your post or widget..
 You can also add different description for the author box adding <strong>[starbox id="login_name" desc="custom description" ]</strong>
