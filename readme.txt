@@ -179,7 +179,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Fixed theme css issues
 
 = 1.0.1 =
-* Added HTML5 author box tags
+* Added HTML5 author box tags to make it better
 * Added Klout score in social icon
 * Added Google vCard microformats for rich snippets
 * Added Google and Facebook Meta for rich snippets
