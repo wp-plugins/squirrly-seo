@@ -197,7 +197,7 @@ http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 = How Do I Make Sure I Get Priority Support From Buying The Recommended Version? =
 It will help you have a premium email from us, on which you can get super-fast support.
 
-= How can i call the author box in post or widget? =
+= How can I call the author box in a post or widget? =
 Just add <strong>[starbox]</strong> or <strong>[starbox id="login_name"]</strong> in your post or widget..
 You can also add different description for the author box adding <strong>[starbox id="login_name" desc="custom description" ]</strong>
 And more, add a default theme fot author box <strong>[starbox id="login_name" desc="custom description"  theme="business"]</strong>
