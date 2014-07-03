@@ -16,11 +16,11 @@ class ABH_Classes_DisplayController {
      *
      * @return string
      */
-    public static function loadMedia($uri = '', $media = 'all', $params = null) {
+    public static function loadMedia($uri = '', $params = array('trigger' => true), $media = 'all') {
         $css_uri = '';
         $js_uri = '';
 
-        if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
+        if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
             return;
 
         if (isset(self::$cache[$uri]))
@@ -46,27 +46,30 @@ class ABH_Classes_DisplayController {
             }
         }
 
-
-
         if ($css_uri <> '') {
-            if (wp_style_is($name))
-                wp_deregister_style($name);
 
-            wp_register_style($name, $css_uri, null, ABH_VERSION, 'all');
-            wp_enqueue_style($name);
+            if (!wp_style_is($name)) {
+                wp_enqueue_style($name, $css_uri, null, ABH_VERSION, $media);
+            }
+
+            if (isset($params['trigger']) && $params['trigger'] === true) {
+                wp_print_styles(array($name));
+            }
         }
 
         if ($js_uri <> '') {
+
             if (!wp_style_is('jquery')) {
-                wp_register_script('jquery', "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", false, 'latest', false);
-                wp_enqueue_script('jquery');
+                wp_enqueue_script('jquery', "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js", null, ABH_VERSION);
             }
 
-            if (wp_script_is($name))
-                wp_deregister_script($name);
+            if (!wp_script_is($name)) {
+                wp_enqueue_script($name, $js_uri, array('jquery'), ABH_VERSION, true);
+            }
 
-            wp_register_script($name, $js_uri, array('jquery'), ABH_VERSION, true);
-            wp_enqueue_script($name);
+            if (isset($params['trigger']) && $params['trigger'] === true) {
+                wp_print_scripts(array($name));
+            }
         }
     }
 
