@@ -487,8 +487,7 @@ class ABH_Controllers_Frontend extends ABH_Classes_FrontController {
      * Hook the Frontend Footer
      */
     public function hookFrontfooter() {
-        //make sure is called
-        do_action('wp_head');
+
     }
 
 }
