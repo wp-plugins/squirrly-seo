@@ -105,9 +105,12 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 
 == Changelog ==
+= 2.1.3 =
+* Fixed css and js loading issues for different themes
+* Fixed repeated header section
+
 = 2.1.2 =
 * Compatible with WP 3.9.1
-* Fixed css and js loading issues for different themes
 
 = 2.1.1 =
 * Removed Author Box from product in Woocommerce when only posts are set in settings
