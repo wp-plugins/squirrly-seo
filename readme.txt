@@ -160,7 +160,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Added cutome theme in shortcode [starbox theme="business"]
 
 = 1.0.5 =
-* Added custom author bio to avoid multiple author boxes
+* Added custom author bio to avoid having multiple author boxes
 * Update the theme css for more themes
 * Added [starbox] shortcode to show starbox in content or widgets
 
