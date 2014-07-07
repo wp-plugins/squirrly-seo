@@ -80,7 +80,7 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 <strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
 
-Over 100 Content Marketing Experts have reviewed our SEO plugin for wordpress and loved it.
+Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
