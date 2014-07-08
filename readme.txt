@@ -84,7 +84,7 @@ Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and lo
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
-- we have a Free Training session with 14 lessons and 10 actionable work files, awaiting you after you install the plugin and connect to squirrly.co
+- we have a Free Training session with 14 lessons and 10 actionable work files, awaiting you after you install the plugin and connect to squirrly.co (you'll receive them by email)
 
 - you'll be able to get support from us from the plugin, from our Facebook, our Twitter, email and we can even schedule a Skype call, if fixes are needed
 
