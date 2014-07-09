@@ -192,7 +192,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 == Frequently Asked Questions ==
 = Why is there no meta for google and facebook authorship? =
-You have to fill the google and facebook social in your profile and it will show up.
+You have to fill the google and facebook social accounts in your profile and it will show up.
 
 = How Do I Get Support For This Plugin? =
 We're following the threads and based on them we always try to build up new and better implementations for the Author Box for Humans. If you want Premium Support, that also comes with High Priority, then go to:
