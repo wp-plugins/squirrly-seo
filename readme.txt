@@ -374,7 +374,7 @@ All of the features that we offer have been built having the customer's best int
 and we've proven time and again that we are a great team that knows all there is to know about good *SEO automation*. We had a community of 20,000 blogs that all
 used our SEO techniques, and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
 
-[UPDATE] Squirrly now has over 300,000 downloads, so we've been offering great software for over a year now.
+[UPDATE] Squirrly now has over 500,000 downloads, so we've been offering great software for over a year now.
 
 - SEO Advice as you're typing your articles
 - Advice in real time from the SEO Live Assistant on how to write better content for your Human readers
@@ -433,3 +433,6 @@ And the best ones that we have (and the others don't):
 = Where can I enter the title and page description? =
 If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and switch to Custom. You can enter custom Title, Description and Keywords.
 If you are an advanced user then in each post/page edit you can customize the title and description from snippet section
+
+= Is this wordpress seo plugin the only seo plugin I will need to install? =
+Yes.. and no. It all depends on how you setup your wordpress until now. Some people use Squirrly seo plugin only for the Content Optimization with the Live Assistant part, some use use it to check their SEO stats and see where they need to improve their wordpress seo, but most of our users and customer use Squirrly for everything related to SEO: from keyword analysis, to seo settings on wordpress, to analytics and to weekly monitoring and audit reports.
