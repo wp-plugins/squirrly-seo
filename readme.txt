@@ -200,6 +200,8 @@ http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 
 = How Do I Make Sure I Get Priority Support From Buying The Recommended Version? =
 It will help you have a premium email from us, on which you can get super-fast support.
+http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
+After you buy it, it will show you the email on which you can write to us for Premium and Fast Support
 
 = How can I call (display) the author box in a post or widget? =
 Just add <strong>[starbox]</strong> or <strong>[starbox id="login_name"]</strong> in your post or widget..
