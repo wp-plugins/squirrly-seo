@@ -205,7 +205,7 @@ After you buy it, it will show you the email on which you can write to us for Pr
 
 = How can I call (display) the author box in a post or widget? =
 Just add <strong>[starbox]</strong> or <strong>[starbox id="login_name"]</strong> in your post or widget..
-You can also add different description for the author box adding <strong>[starbox id="login_name" desc="custom description" ]</strong>
+You can also add different description for the author box, by adding <strong>[starbox id="login_name" desc="custom description" ]</strong>
 And more than that, you can add a default theme for author box <strong>[starbox id="login_name" desc="custom description"  theme="business"]</strong>
 
 = How can i add multiple author boxes to a post? =
