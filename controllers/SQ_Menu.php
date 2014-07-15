@@ -80,8 +80,27 @@ class SQ_Menu extends SQ_FrontController {
         //Push the Analytics Check
         $analytics_alert = 0;
         if (SQ_ObjController::getModel('SQ_Post')->countKeywords() > 0) {
-            $analytics_alert = ((SQ_Tools::$options['sq_analytics'] == 0) ? 1 : 0);
+            if (SQ_Tools::$options['sq_analytics'] == 0) {
+                $analytics_alert = 1;
+            }
+
+            if (strpos($_SERVER['REQUEST_URI'], '?page=sq_dashboard') !== false) {
+                SQ_Tools::saveOptions('sq_dashboard', 1);
+            } else {
+                if (SQ_Tools::$options['sq_dashboard'] == 0) {
+                    $analytics_alert = 1;
+                    if (!get_transient('sq_dashboard')) {
+                        set_transient('sq_dashboard', time(), (60 * 60 * 24 * 7));
+                    } else {
+                        $time_loaded = get_transient('sq_dashboard');
+                        if (time() - $time_loaded > (60 * 60 * 24 * 3)) {
+                            SQ_Error::setError(__('Check out your SEO Audit and the Performance Analytics section. <a href="admin.php?page=sq_dashboard" title="Squirrly Dashboard">Click here</a>', _SQ_PLUGIN_NAME_));
+                        }
+                    }
+                }
+            }
         }
+
         SQ_Tools::$errors_count += $analytics_alert;
         ///////////////
 

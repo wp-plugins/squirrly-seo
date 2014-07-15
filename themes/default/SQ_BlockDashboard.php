@@ -23,7 +23,8 @@
     //Dashboard
     jQuery("#sq_dashboard").find('.sq_dashboard_assistant').bind('click', function() {
 <?php
-$recent_posts = wp_get_recent_posts();
+global $current_user;
+$recent_posts = wp_get_recent_posts(array('post_status' => 'publish', 'author' => $current_user->ID));
 if (!empty($recent_posts)) {
     foreach ($recent_posts as $recent) {
         echo 'location.href = "post.php?post=' . $recent["ID"] . '&action=edit";';
@@ -48,3 +49,6 @@ if (SQ_ObjController::getModel('SQ_Post')->countKeywords() > 0) {
         location.href = "post-new.php#sq_research=1";
     });
 </script>
+
+<?php
+

@@ -113,6 +113,7 @@ class SQ_Tools extends SQ_FrontController {
             'sq_sla' => 1,
             //--
             'sq_dbtables' => 0,
+            'sq_dashboard' => 0,
             'sq_analytics' => 0,
         );
         $options = json_decode(get_option(SQ_OPTION), true);

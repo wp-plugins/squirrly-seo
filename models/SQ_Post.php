@@ -256,7 +256,6 @@ class Model_SQ_Post {
 
         if (!isset($file['error']) || $file['error'] == '')
             if (isset($file['url']) && $file['url'] <> '') {
-                $file['url'] = str_replace(get_bloginfo('url'), '', $file['url']);
                 $file['filename'] = basename($file['url']);
 
                 return $file;
@@ -375,6 +374,123 @@ class Model_SQ_Post {
         $this->saveAdvMeta($post_id, $meta);
 
         return json_encode($args);
+    }
+
+    public function getKeywordsFromPost($id) {
+        $post = get_post($id);
+        return $this->_getKeywordsbyDensity($post);
+    }
+
+    /**
+     * Get keyword by density from post
+     *
+     * @return array
+     */
+    private function _getKeywordsbyDensity($post) {
+        $keywords = array();
+        $content = '';
+
+        if (function_exists('preg_replace')) {
+            $content = strtolower(preg_replace('/[^a-zA-Z0-9-.]/', ' ', strip_tags($post->post_content)));
+        } else {
+            $content = strtolower(strip_tags($post->post_content));
+        }
+
+        $words = explode(" ", $content);
+        $phrases = $this->searchPhrase($content);
+
+        if ($post->post_title == '' || count($words) < 5) {
+            return false;
+        }
+
+        $common_words = "a,at,i,he,she,it,and,me,my,you,the,tags,hash,to,that,this,they,their";
+        $common_words = strtolower($common_words);
+        $common_words = explode(",", $common_words);
+        // Get keywords
+        $words_sum = 0;
+        foreach ($words as $value) {
+            $common = false;
+            $value = $this->trimReplace($value);
+            if (strlen($value) >= 3) {
+                foreach ($common_words as $common_word) {
+                    if ($common_word == $value) {
+                        $common = true;
+                    }
+                }
+                if ($common != true) {
+                    if (!preg_match("/http/i", $value) && !preg_match("/mailto:/i", $value)) {
+                        $keywords[] = SQ_Tools::i18n($value);
+                        $words_sum++;
+                    }
+                }
+            }
+        }
+
+        $results = $results1 = $results2 = array();
+        if (is_array($keywords) && !empty($keywords)) {
+            // Do some maths and write array
+            $keywords = array_count_values($keywords);
+            arsort($keywords);
+
+            foreach ($keywords as $key => $value) {
+                $percent = 100 / $words_sum * $value;
+                if ($percent > 1) {
+                    foreach ($phrases as $phrase => $count) {
+                        if (strpos($phrase, $key) !== false && !in_array($phrase, $results)) {
+                            if (strpos(strtolower($post->post_title), $phrase) !== false) {
+                                return $phrase;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Return array
+        return false;
+    }
+
+    public function searchPhrase($text) {
+        $words = explode(".", strtolower($text));
+        //print_r($words);
+        $frequencies = array();
+        foreach ($words as $str) {
+            $phrases = $this->twoWordPhrases($str);
+
+            foreach ($phrases as $phrase) {
+                $key = join(' ', $phrase);
+                if (!isset($frequencies[$key])) {
+                    $frequencies[$key] = 0;
+                }
+                $frequencies[$key] ++;
+            }
+        }
+        arsort($frequencies);
+        if (sizeof($frequencies) > 10) {
+            $frequencies = array_slice($frequencies, 0, 10);
+        }
+        return $frequencies;
+    }
+
+    public function twoWordPhrases($str) {
+        $words = preg_split('#\s+#', $str, -1, PREG_SPLIT_NO_EMPTY);
+
+        $phrases = array();
+        if (count($words) > 2) {
+            foreach (range(0, count($words) - 2) as $offset) {
+                $phrases[] = array_slice($words, $offset, 2);
+            }
+        }
+        return $phrases;
+    }
+
+    /**
+     * Get the newlines out
+     *
+     * @return string
+     */
+    private function trimReplace($string) {
+        $string = trim($string);
+        return (string) str_replace(array("\r", "\r\n", "\n"), '', $string);
     }
 
 }

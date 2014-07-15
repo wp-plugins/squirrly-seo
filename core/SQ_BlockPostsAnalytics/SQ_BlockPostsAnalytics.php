@@ -7,6 +7,7 @@ class SQ_BlockPostsAnalytics extends SQ_BlockController {
                 ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
 
         SQ_Tools::saveOptions('sq_analytics', 1); //Save analytics viewed
+        SQ_Tools::saveOptions('sq_dashboard', 1); //Save dashboard viewed
         $this->postlist = SQ_ObjController::getController('SQ_PostsList');
 
         $this->model->prepare_items();

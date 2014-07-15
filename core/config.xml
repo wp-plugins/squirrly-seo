@@ -6,6 +6,7 @@
         <actions>
             <action>sq_save_meta</action>
             <action>sq_save_ogimage</action>
+            <action>sq_get_keyword</action>
         </actions>
         <active>1</active>
         <path>controllers</path>

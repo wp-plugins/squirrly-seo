@@ -250,6 +250,15 @@ class SQ_Post extends SQ_FrontController {
                 echo json_encode($return);
                 SQ_Tools::emptyCache();
                 break;
+            case 'sq_get_keyword':
+                SQ_Tools::setHeader('json');
+                if (SQ_Tools::getIsset('post_id')) {
+                    echo json_encode($this->model->getKeywordsFromPost(SQ_Tools::getValue('post_id')));
+                } else {
+                    echo json_encode(array('error' => true));
+                }
+                SQ_Tools::emptyCache();
+                break;
         }
         exit();
     }
