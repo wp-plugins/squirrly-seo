@@ -165,7 +165,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Added [starbox] shortcode to show starbox in content or widgets
 
 = 1.0.4 =
-* Added an option to restrict author box just for post and pages
+* Added an option to restrict author box just for blog posts and pages
 * Loads even on sites with javascript errors
 * Improved the themes to work with more wordpress themes
 * Added Author Box Preview mode in default settings
