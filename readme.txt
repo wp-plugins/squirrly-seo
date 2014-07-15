@@ -322,7 +322,7 @@ Florin Muresan - CEO at Squirrly
 Calin Vingan - CTO at Squirrly
 Andreea Leau - VP Marketing
 Cristina Leau  - Squirrly mascot designer
-Alexandra Nicola - Content Writer
+Alexandra Nicola - Content Writer, future COO
 
 Investors:
 Ibrahim Evsan, serial entrepreneur, one of the best known bloggers in Germany
