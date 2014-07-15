@@ -113,6 +113,7 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 7. Good. Now enter your email to connect with Squirrly.co
 8. Then click "Write a New Post with Squirrly Seo".
 9. Done. Start getting Excellent SEO on wordpress
+10. The Email Lessons will help you become a great content marketer. Our content Marketing Class on Udemy has over 600 students and the price is $147. You're getting all that for free, by email.
 
 Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
