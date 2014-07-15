@@ -84,6 +84,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 4. There, you have the buttons: "Search | Upload | Featured | Popular | Newest". Click "Upload".
 5. Upload the starbox.zip file.
 6. After the upload is finished, click Activate Plugin.
+7. Done :-) You'll see that this is as advertized.
 
 == Screenshots ==
 1. Author Box with Business Theme
