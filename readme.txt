@@ -220,3 +220,6 @@ You can buy Starbox without links and subscription from:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 or
 Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all of your authors. No need to change them one-by-one
+
+= Is your team dedicated to this plugin? =
+You can count on it :-) Our team of 7 people over at Squirrly (registered in the UK) are focused on making both our wordpress seo plugin and our author box plugin the best there are. So far we succeeded in making them one of the most popular, because we listen to your feedback and you're the reason for their success.
