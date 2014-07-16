@@ -80,7 +80,13 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 <strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
 
+Over 500,000 Downloads. Our startup consists of 7 content marketing professionals dedicated to making Squirrly an amazing piece of software and writing great training materials to help you be successful and stay successful.
+
 Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
+
+Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin.
+
++285% increase in traffic to over 16,500 survey participants.
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
