@@ -90,7 +90,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                 }
                 //if keyword filter
                 if (isset($q['keyword'])) {
-                    if (!isset($post->meta_value->keyword) || $q['keyword'] <> $post->meta_value->keyword) {
+                    if (!isset($post->meta_value->keyword) || strtolower($q['keyword']) <> strtolower($post->meta_value->keyword)) {
                         continue;
                     }
                 }
@@ -378,7 +378,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                     case 'keywords':
                         $value = '';
                         if (isset($json->keyword)) {
-                            $value = sprintf('<a href="%s">%s</a>', esc_attr(add_query_arg(array('page' => 'sq_posts', 'keyword' => $json->keyword), 'admin.php')), $json->keyword);
+                            $value = sprintf('<a href="%s">%s</a>', esc_attr(add_query_arg(array('page' => 'sq_posts', 'keyword' => strtolower($json->keyword)), 'admin.php')), $json->keyword);
                         } else {
                             $value = __('No Tags');
                         }

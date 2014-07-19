@@ -68,7 +68,7 @@ class SQ_Ranking extends SQ_FrontController {
             return;
 
         $arg = array('timeout' => 10);
-        $arg['q'] = $this->keyword;
+        $arg['q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
         $arg['hl'] = $this->getLanguage();
         $arg['num'] = '100';
         $arg['as_qdr'] = 'all';
@@ -87,12 +87,13 @@ class SQ_Ranking extends SQ_FrontController {
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
         preg_match_all('/<h3.*?><a href="(.*?)".*?<\/h3>/is', $response, $matches);
-
+        //echo '<pre>' . print_r($matches[1], true) . '</pre>';
+        SQ_Tools::dump($matches[1]); //output debug
         $pos = -1;
         if (!empty($matches[1])) {
             foreach ($matches[1] as $index => $url) {
 
-                if (strpos($url, $permalink) !== false) {
+                if (strpos($url, rtrim($permalink, '/')) !== false) {
                     $pos = $index + 1;
                     break;
                 }
