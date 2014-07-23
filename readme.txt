@@ -136,6 +136,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.2.4 =
+* Fixed the Copyright Free search images
+
 = 3.2.3 =
 * Fixed onboarding process
 * Fixed Audit broken link

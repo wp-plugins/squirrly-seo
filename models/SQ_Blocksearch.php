@@ -47,13 +47,13 @@ class Model_SQ_Blocksearch {
         }
 
         //Call Flickr
-        $url = "http://api.flickr.com/services/rest/?" . implode('&', $pack);
+        $url = "https://api.flickr.com/services/rest/?" . implode('&', $pack);
 
         $rsp = wp_remote_fopen($url);
         $rsp_obj = unserialize($rsp);
 
         // if we have photos
-        if ($rsp_obj && $rsp_obj['photos']['total'] > 0) {
+        if ($rsp_obj && isset($rsp_obj['photos']) && $rsp_obj['photos']['total'] > 0) {
             foreach ($rsp_obj['photos']['photo'] as $photo) {
 
                 $src = 'http://farm' . $photo['farm'] . '.static.flickr.com/' . $photo['server'] . '/' . $photo['id'] . '_' . $photo['secret'];
@@ -67,6 +67,8 @@ class Model_SQ_Blocksearch {
                     'contentNoFormatting' => $photo['title']);
             }
         }
+
+        return false;
     }
 
 }
