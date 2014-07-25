@@ -10,7 +10,10 @@ class SQ_Ranking extends SQ_FrontController {
 
     //--
     public function getCountry() {
-        return SQ_Tools::$options['sq_google_country'];
+        if (isset(SQ_Tools::$options['sq_google_country']) && SQ_Tools::$options['sq_google_country'] <> '') {
+            return SQ_Tools::$options['sq_google_country'];
+        }
+        return 'com';
     }
 
     /**
@@ -18,7 +21,10 @@ class SQ_Ranking extends SQ_FrontController {
      * @return type
      */
     public function getLanguage() {
-        return SQ_Tools::$options['sq_google_language'];
+        if (isset(SQ_Tools::$options['sq_google_language']) && SQ_Tools::$options['sq_google_language'] <> '') {
+            return SQ_Tools::$options['sq_google_language'];
+        }
+        return 'en';
     }
 
     /**
@@ -62,6 +68,9 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function getGoogleRank() {
         global $wpdb;
+        if (trim($this->keyword) == '')
+            return -1;
+
         $country = $this->getCountry();
 
         if (!function_exists('preg_match_all'))
