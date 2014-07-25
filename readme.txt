@@ -136,7 +136,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 3.2.4 =
+= 3.2.5 =
+* Fixed default country and langage in rank check
 * Fixed the Copyright Free search images
 
 = 3.2.3 =
