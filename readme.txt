@@ -136,6 +136,10 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.2.6 =
+* Fixed google country select in SEO Settings
+* Fixed css and js load for some Wordpress themes
+
 = 3.2.5 =
 * Fixed default country and langage in rank check
 * Fixed the Copyright Free search images
