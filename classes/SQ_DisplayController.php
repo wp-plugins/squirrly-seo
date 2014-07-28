@@ -17,17 +17,20 @@ class SQ_DisplayController {
      * echo the css link from theme css directory
      *
      * @param string $uri The name of the css file or the entire uri path of the css file
-     * @param string $media
+     * @param string $params : trigger, media
      *
      * @return string
      */
-    public static function loadMedia($uri = '', $media = 'all') {
+    public static function loadMedia($uri = '', $params = array('trigger' => true, 'media' => 'all')) {
         if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false)
             return;
 
         $css_uri = '';
         $js_uri = '';
         $local = true;
+        if (!isset($params['media'])) {
+            $params['media'] = 'all';
+        }
 
         if (isset(self::$cache[$uri]))
             return;
@@ -56,13 +59,20 @@ class SQ_DisplayController {
 
         if ($css_uri <> '') {
             if (!wp_style_is($name)) {
-                wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID, $media);
+                wp_enqueue_style($name, $css_uri, null, SQ_VERSION_ID, $params['media']);
+            }
+
+            if (isset($params['trigger']) && $params['trigger'] === true) {
+                wp_print_styles(array($name));
             }
         }
 
         if ($js_uri <> '') {
             if (!wp_script_is($name)) {
                 wp_enqueue_script($name, $js_uri, null, SQ_VERSION_ID);
+            }
+            if (isset($params['trigger']) && $params['trigger'] === true) {
+                wp_print_scripts(array($name));
             }
         }
     }
