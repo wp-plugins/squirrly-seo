@@ -7,6 +7,7 @@ class SQ_Ranking extends SQ_FrontController {
 
     private $keyword;
     private $post_id;
+    private $error;
 
     //--
     public function getCountry() {
@@ -49,9 +50,9 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function processRanking($post_id, $keyword) {
         $this->setPost($post_id);
-        $this->setKeyword($keyword);
+        $this->setKeyword(trim($keyword));
 
-        if (isset($this->keyword)) {
+        if (isset($this->keyword) && $this->keyword <> '') {
             return $this->getGoogleRank();
         }
         return false;
@@ -68,13 +69,16 @@ class SQ_Ranking extends SQ_FrontController {
      */
     public function getGoogleRank() {
         global $wpdb;
-        if (trim($this->keyword) == '')
-            return -1;
+        $this->error = '';
 
-        $country = $this->getCountry();
+        if (trim($this->keyword) == '') {
+            $this->error = 'no keyword for post_id:' . $this->post_id;
+            return false;
+        }
 
-        if (!function_exists('preg_match_all'))
-            return;
+        if (!function_exists('preg_match_all')) {
+            return false;
+        }
 
         $arg = array('timeout' => 10);
         $arg['q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
@@ -83,6 +87,13 @@ class SQ_Ranking extends SQ_FrontController {
         $arg['as_qdr'] = 'all';
         $arg['safe'] = 'off';
         $arg['pws'] = '0';
+
+        $country = $this->getCountry();
+
+        if ($country == '' || $arg['hl'] = '') {
+            $this->error = 'no country (' . $country . ') or language (' . $arg['hl'] . ')';
+            return false;
+        }
 
         //Grab the remote informations from google
         $response = utf8_decode(SQ_Tools::sq_remote_get("https://www.google.$country/search", $arg));
@@ -95,20 +106,26 @@ class SQ_Ranking extends SQ_FrontController {
 
         //Get the permalink of the current post
         $permalink = get_permalink($this->post_id);
-        preg_match_all('/<h3.*?><a href="(.*?)".*?<\/h3>/is', $response, $matches);
-        //echo '<pre>' . print_r($matches[1], true) . '</pre>';
-        SQ_Tools::dump($matches[1]); //output debug
-        $pos = -1;
-        if (!empty($matches[1])) {
-            foreach ($matches[1] as $index => $url) {
+        if ($permalink == '') {
+            $this->error = 'no permalink for post_id:' . $this->post_id;
+            return false;
+        }
 
+        preg_match_all('/<h3.*?><a href="(.*?)".*?<\/h3>/is', $response, $matches);
+
+
+        if (!empty($matches[1])) {
+            $pos = -1;
+            foreach ($matches[1] as $index => $url) {
                 if (strpos($url, rtrim($permalink, '/')) !== false) {
                     $pos = $index + 1;
                     break;
                 }
             }
+            return $pos;
         }
-        return $pos;
+        $this->error = 'no results returned by google';
+        return false;
     }
 
     /**
@@ -159,18 +176,17 @@ class SQ_Ranking extends SQ_FrontController {
                         //if there is a success response than save it
                         if (isset($rank) && $rank >= -1) {
                             $json->rank = $rank;
+                            $json->country = $this->getCountry();
+                            $json->language = $this->getLanguage();
+                            SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
                         }
-
-                        $json->country = $this->getCountry();
-                        $json->language = $this->getLanguage();
-                        SQ_ObjController::getModel('SQ_Post')->saveKeyword($row->post_id, $json);
-                        set_transient('sq_rank' . $row->post_id, $json->rank, (60 * 60 * 24));
-
+                        set_transient('sq_rank' . $row->post_id, $rank, (60 * 60 * 24));
                         //if rank proccess has no error
 
                         $args = array();
                         $args['post_id'] = $row->post_id;
-                        $args['rank'] = (string) $json->rank;
+                        $args['rank'] = (string) $rank;
+                        $args['error'] = $this->error;
                         $args['country'] = $this->getCountry();
                         $args['language'] = $this->getLanguage();
 

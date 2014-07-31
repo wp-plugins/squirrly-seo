@@ -236,7 +236,7 @@ class Model_SQ_Frontend {
 
         $url = $this->getCanonicalUrl();
         if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            if (isset($post) && $ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
+            if (isset($post) && isset($post->ID) && $ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
                 $this->thumb_image = $ogimage;
             } else {
                 $this->thumb_image = $this->getImageFromContent();
@@ -390,7 +390,7 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_title'] <> '') {
 
-            if (isset($post) && $this->getAdvancedMeta($post->ID, 'title')) {
+            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'title')) {
                 $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
             } else {
                 $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
@@ -543,7 +543,7 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_description'] <> '') {
 
-            if (isset($post) && $this->getAdvancedMeta($post->ID, 'description')) {
+            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'description')) {
                 $description = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'description'));
             } else {
                 $description = strip_tags(SQ_Tools::$options['sq_fp_description']);
@@ -962,13 +962,18 @@ class Model_SQ_Frontend {
             }
 
             if (count($keywords) <= $this->max_keywrods) {
-                $density = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
-                if (is_array($density)) {
-                    if (is_array($keywords) && is_array($density)) {
-                        $keywords = array_merge($keywords, $density);
-                    } else {
-                        if (is_array($density)) {
-                            $keywords = $density;
+                if ($advkeywords = $this->getAdvancedMeta($post->ID, 'keywords')) {
+                    $keywords[] = SQ_Tools::i18n($advkeywords);
+                } else {
+
+                    $density = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
+                    if (is_array($density)) {
+                        if (is_array($keywords) && is_array($density)) {
+                            $keywords = array_merge($keywords, $density);
+                        } else {
+                            if (is_array($density)) {
+                                $keywords = $density;
+                            }
                         }
                     }
                 }
