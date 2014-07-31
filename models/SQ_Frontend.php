@@ -236,8 +236,10 @@ class Model_SQ_Frontend {
 
         $url = $this->getCanonicalUrl();
         if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            if (isset($post) && isset($post->ID) && $ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
-                $this->thumb_image = $ogimage;
+            if (isset($post) && isset($post->ID)) {
+                if ($ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
+                    $this->thumb_image = $ogimage;
+                }
             } else {
                 $this->thumb_image = $this->getImageFromContent();
             }
@@ -390,8 +392,10 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_title'] <> '') {
 
-            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'title')) {
-                $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
+            if (isset($post) && isset($post->ID)) {
+                if ($this->getAdvancedMeta($post->ID, 'title')) {
+                    $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
+                }
             } else {
                 $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
             }
@@ -412,7 +416,7 @@ class Model_SQ_Frontend {
 
         if (!$post) {
             foreach ($wp_query->posts as $post) {
-                if ($post->ID && get_post_status($post->ID) == 'publish') {
+                if (isset($post->ID) && get_post_status($post->ID) == 'publish') {
                     $post = get_post($post->ID);
                     break;
                 }
@@ -543,7 +547,7 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_description'] <> '') {
 
-            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'description')) {
+            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'description') <> '') {
                 $description = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'description'));
             } else {
                 $description = strip_tags(SQ_Tools::$options['sq_fp_description']);

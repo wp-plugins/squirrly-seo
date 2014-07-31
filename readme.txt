@@ -136,7 +136,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 3.2.6 =
+= 3.2.7 =
+* Fixed small issue for background ranking grabber
 * Fixed google country select in SEO Settings
 * Fixed css and js load for some Wordpress themes
 
