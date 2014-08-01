@@ -17,6 +17,15 @@ class SQ_Ranking extends SQ_FrontController {
         return 'com';
     }
 
+    public function getRefererCountry() {
+        $convert_refc = array('com' => 'us', '.off.ai' => 'ai', 'com.ag' => 'ag', 'com.ar' => 'ar', 'com.au' => 'au', 'com.br' => 'br', 'com.co' => 'co', 'co.cr' => 'cr', 'com.cu' => 'cu', 'com.do' => 'do', 'com.ec' => 'ec', 'com.sv' => 'sv', 'com.fj' => 'fj', 'com.gi' => 'gi', 'com.gr' => 'gr', 'com.hk' => 'hk', 'co.hu' => 'hu', 'co.in' => 'in', 'co.im' => 'im', 'co.il' => 'il', 'com.jm' => 'jm', 'co.jp' => 'jp', 'co.je' => 'je', 'co.kr' => 'kr', 'co.ls' => 'ls', 'com.my' => 'my', 'com.mt' => 'mt', 'com.mx' => 'mx', 'com.na' => 'na', 'com.np' => 'np', 'com.ni' => 'ni', 'com.nf' => 'nf', 'com.pk' => 'pk', 'com.pa' => 'pa', 'com.py' => 'py', 'com.pe' => 'pe', 'com.ph' => 'ph', 'com.pr' => 'pr', 'com.sg' => 'sg', 'co.za' => 'za', 'com.tw' => 'tw', 'com.th' => 'th', 'com.tr' => 'tr', 'com.ua' => 'ua', 'com.uk' => 'uk', 'com.uy' => 'uy',);
+        $country = $this->getCountry();
+        if (array_key_exists($country, $convert_refc)) {
+            return $convert_refc[$country];
+        }
+        return $country;
+    }
+
     /**
      * Get the google language from settings
      * @return type
@@ -83,6 +92,8 @@ class SQ_Ranking extends SQ_FrontController {
         $arg = array('timeout' => 10);
         $arg['q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
         $arg['hl'] = $this->getLanguage();
+        $arg['gl'] = $this->getRefererCountry();
+        $arg['start'] = '0';
         $arg['num'] = '100';
         $arg['as_qdr'] = 'all';
         $arg['safe'] = 'off';
@@ -90,7 +101,7 @@ class SQ_Ranking extends SQ_FrontController {
 
         $country = $this->getCountry();
 
-        if ($country == '' || $arg['hl'] = '') {
+        if ($country == '' || $arg['hl'] == '' || $arg['gl'] == '') {
             $this->error = 'no country (' . $country . ') or language (' . $arg['hl'] . ')';
             return false;
         }
@@ -113,7 +124,7 @@ class SQ_Ranking extends SQ_FrontController {
 
         preg_match_all('/<h3.*?><a href="(.*?)".*?<\/h3>/is', $response, $matches);
 
-
+        SQ_Tools::dump($matches[1]);
         if (!empty($matches[1])) {
             $pos = -1;
             foreach ($matches[1] as $index => $url) {
