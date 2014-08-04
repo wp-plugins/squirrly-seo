@@ -59,6 +59,7 @@ class SQ_Menu extends SQ_FrontController {
                 array_push($this->post_type, $post->post_type);
             }
         }
+
         if (SQ_Tools::$options['sq_api'] == '') {
             $first_page = 'sq_howto';
         } else {
