@@ -392,10 +392,8 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_title'] <> '') {
 
-            if (isset($post) && isset($post->ID)) {
-                if ($this->getAdvancedMeta($post->ID, 'title')) {
-                    $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
-                }
+            if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'title') <> '') {
+                $title = SQ_Tools::i18n($this->getAdvancedMeta($post->ID, 'title'));
             } else {
                 $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
             }
