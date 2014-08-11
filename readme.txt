@@ -15,8 +15,6 @@ Squirrly helps you write content that is SEO friendly and ALSO Human friendly. Y
 
 See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
 
-How 16,500 People Increased Their Traffic by 285% and What You Can Do About It http://bit.ly/StudyMetrics
-
 Based on the topic you're writing about, the interface will light up green while you're editing your text, so that you know you've done something right. When all the lights are green, you can publish it, because your text has excellent SEO and it's 100% optimized.
 
 Different customers, from areas such as e-commerce, law firms, digital agencies, online magazines, movie review sites, etc. have reported +285% increase in the number of readers, by optimizing their content with this seo plugin, and by measuring and improving as advized by our tool.
