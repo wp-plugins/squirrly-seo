@@ -107,7 +107,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 == Changelog ==
 = 2.1.3 =
-* Fixed css and js loading issues for different themes
+* Fixed css and js loading issues for many different themes
 * Fixed repeated header section
 
 = 2.1.2 =
