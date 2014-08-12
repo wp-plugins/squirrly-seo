@@ -134,6 +134,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.3.1 =
+* Fixed post snippet issues when the home-page description is switch off
+
 = 3.3.0 =
 * Added the google localization country in search ranking
 * Fixed onboarding video link
