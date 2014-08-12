@@ -150,7 +150,8 @@ class Model_SQ_Frontend {
             /* Meta setting */
             $this->title = $this->clearTitle($this->getCustomTitle());
 
-            if (SQ_Tools::$options['sq_auto_description'] == 1) {
+            //Add description in homepage if is set or add description in other pages if is not home page
+            if ((SQ_Tools::$options['sq_auto_description'] == 1 && $this->isHomePage()) || !$this->isHomePage()) {
                 $ret .= $this->getCustomDescription() . "\n";
                 $ret .= $this->getCustomKeyword() . "\n";
             }
