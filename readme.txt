@@ -56,7 +56,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * You can choose not to display it for certain authors
 * Removes any other author box from the page, so that there aren't duplicates
 * Enables you to upload your own image (so that you won't need a Gravatar)
-* Paragraphs in the Author Bio
+* Paragraphs in the Author Bio to have a better looking text
 * Displays the Author Box in the special pages built for each author.
 * Special Pages for your authors
 * Works even with sites that have woocommerce or other ecommerce plugins
