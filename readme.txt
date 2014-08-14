@@ -109,7 +109,7 @@ CEO of Squirrly
 See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>.
 
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
- | <a href="http://www.squirrly.co" title="Squirrly SEO" target="_blank">Go to our official site</a> | Free Version (if you install from the WP directory) OR <a href="http://www.squirrly.co/pricing" title="See Pricing" target="_blank">Pricing Plans</a>
+ | <a href="http://www.squirrly.co/wordpress-seo-by-squirrly" title="Squirrly SEO" target="_blank">Go to our official site</a> | Free Version (if you install from the WP directory) OR <a href="http://www.squirrly.co/pricing" title="See Pricing" target="_blank">Pricing Plans</a>
 
 == Installation ==
 1. Log In as an Admin on your Wordpress blog.

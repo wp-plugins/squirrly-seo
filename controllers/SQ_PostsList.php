@@ -23,7 +23,7 @@ class SQ_PostsList extends SQ_FrontController {
             'page_posts',
             'edit-product',
             'product_posts');
-        // do_action('sq_processCron');
+// do_action('sq_processCron');
     }
 
     public function setPosts($posts) {
@@ -304,16 +304,20 @@ class SQ_PostsList extends SQ_FrontController {
 
                         $this->checkKeyword($json->keyword, true);
                         $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
-                        if ($json->rank == -2) {
-                            $value = __('Could not receive data from google (Err: blocked IP)');
-                        } elseif ($json->rank == -1) {
-                            $value = __('> 100');
-                        } elseif ($json->rank == 0) {
-                            $value = __('URL Indexed');
-                        } elseif ($json->rank > 0) {
-                            $value = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $json->rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
+                        if ($json->rank === false) {
+                            exit(json_encode(array('error' => true)));
+                        } else {
+                            if ($json->rank == -2) {
+                                $value = __('Could not receive data from google (Err: blocked IP)');
+                            } elseif ($json->rank == -1) {
+                                $value = __('> 100');
+                            } elseif ($json->rank == 0) {
+                                $value = __('URL Indexed');
+                            } elseif ($json->rank > 0) {
+                                $value = '<strong style="display:block; font-size: 120%; width: 100px; margin: 0 auto; text-align:right;">' . sprintf(__('%s'), $json->rank) . '</strong>' . ((isset($json->country)) ? ' (' . $json->country . ')' : '');
+                            }
+                            exit(json_encode(array('rank' => $value)));
                         }
-                        exit(json_encode(array('rank' => $value)));
                     }
 
                     exit(json_encode(array('error' => true)));
@@ -340,20 +344,20 @@ class SQ_PostsList extends SQ_FrontController {
         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
         if (is_object($ranking)) {
             $rank = get_transient('sq_rank' . $this->model->post_id);
-            //if the rank is not in transient
+//if the rank is not in transient
             if ($rank === false) {
-                //get the keyword from database
+//get the keyword from database
                 $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
                 if ($force === false && isset($json->rank)) {
                     $rank = $json->rank;
-                    //add it to transient
+//add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 } else {
                     $rank = $ranking->processRanking($this->model->post_id, $keyword);
 
                     if ($rank == -1) {
-                        sleep(mt_rand(3, 5));
-                        //if not indexed with the keyword then find the url
+                        sleep(mt_rand(5, 10));
+//if not indexed with the keyword then find the url
                         if ($ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id)) > 0) { //for permalink index set 0
                             $rank = 0;
                         }
@@ -366,12 +370,12 @@ class SQ_PostsList extends SQ_FrontController {
                         $args['language'] = $ranking->getLanguage();
                         SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
                     }
-                    //add it to transient
+//add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 }
             }
 
-            //save the rank if there is no error
+//save the rank if there is no error
             if ($rank !== false && $rank >= -1) {
                 $args = array();
                 $args['post_id'] = $this->model->post_id;
