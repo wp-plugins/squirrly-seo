@@ -22,7 +22,7 @@ class SQ_Tools extends SQ_FrontController {
 
         self::$options = $this->getOptions();
 
-        //$this->checkDebug(); //Check for debug
+        $this->checkDebug(); //Check for debug
     }
 
     public static function getUserID() {
@@ -159,7 +159,7 @@ class SQ_Tools extends SQ_FrontController {
      * @return mixed Value
      */
     public static function getValue($key, $defaultValue = false) {
-        if (!isset($key) OR empty($key) OR !is_string($key))
+        if (!isset($key) OR empty($key) OR ! is_string($key))
             return false;
         $ret = (isset($_POST[$key]) ? $_POST[$key] : (isset($_GET[$key]) ? $_GET[$key] : $defaultValue));
 
@@ -175,7 +175,7 @@ class SQ_Tools extends SQ_FrontController {
      * @return boolean
      */
     public static function getIsset($key) {
-        if (!isset($key) OR empty($key) OR !is_string($key))
+        if (!isset($key) OR empty($key) OR ! is_string($key))
             return false;
         return isset($_POST[$key]) ? true : (isset($_GET[$key]) ? true : false);
     }
@@ -219,7 +219,7 @@ class SQ_Tools extends SQ_FrontController {
         $url_domain = $url_domain['host'];
 
         foreach ($param as $key => $value) {
-            if ($value <> '' && $key <> 'timeout')
+            if (isset($key) && $key <> '' && $key <> 'timeout')
                 $parameters .= ($parameters == "" ? "" : "&") . $key . "=" . $value;
         }
         if ($parameters <> '')

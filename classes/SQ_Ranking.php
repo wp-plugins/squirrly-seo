@@ -90,19 +90,30 @@ class SQ_Ranking extends SQ_FrontController {
         }
 
         $arg = array('timeout' => 10);
-        $arg['q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
+        $arg['as_q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
         $arg['hl'] = $this->getLanguage();
-        $arg['gl'] = $this->getRefererCountry();
+        //$arg['gl'] = $this->getRefererCountry();
+        $arg['cr'] = 'country' . strtoupper($this->getRefererCountry());
         $arg['start'] = '0';
         $arg['num'] = '100';
-        $arg['as_qdr'] = 'all';
-        $arg['safe'] = 'off';
+
+        $arg['safe'] = 'active';
         $arg['pws'] = '0';
+        $arg['as_epq'] = '';
+        $arg['as_oq'] = '';
+        $arg['as_nlo'] = '';
+        $arg['as_nhi'] = '';
+        $arg['as_qdr'] = 'all';
+        $arg['as_sitesearch'] = '';
+        $arg['as_occt'] = 'any';
+        $arg['tbs'] = '';
+        $arg['as_filetype'] = '';
+        $arg['as_rights'] = '';
 
         $country = $this->getCountry();
 
-        if ($country == '' || $arg['hl'] == '' || $arg['gl'] == '') {
-            $this->error = 'no country (' . $country . ') or language (' . $arg['hl'] . ')';
+        if ($country == '' || $arg['hl'] == '' || $arg['cr'] == '') {
+            $this->error = 'no country (' . $country . ') or language (' . $arg['cr'] . ')';
             return false;
         }
 
