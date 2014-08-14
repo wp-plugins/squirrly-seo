@@ -88,6 +88,8 @@ Over 600 students to our $147 Content Marketing Training on Udemy. Part of that 
 
 +285% increase in traffic to over 16,500 survey participants.
 
+Recently our team grew to 7 people
+
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
 - we have a Free Training session with 14 lessons and 10 actionable work files, awaiting you after you install the plugin and connect to squirrly.co (you'll receive them by email)
