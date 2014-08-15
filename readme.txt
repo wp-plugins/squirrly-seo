@@ -2,7 +2,7 @@
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,german,russian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
-Tested up to: 3.9.1
+Tested up to: 3.9.2
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
@@ -138,6 +138,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 3.3.1 =
 * Fixed post snippet issues when the home-page description is switch off
+* Compatible with 3.9.2
 
 = 3.3.0 =
 * Added the google localization country in search ranking
