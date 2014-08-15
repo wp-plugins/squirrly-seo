@@ -84,7 +84,7 @@ Over 500,000 Downloads. Our startup consists of 7 content marketing professional
 
 Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
 
-Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin.
+Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin. This is great value for anyone starting out with SEO and content.
 
 +285% increase in traffic to over 16,500 survey participants.
 
