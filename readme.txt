@@ -50,7 +50,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Themes to choose from
 * Themes setup for each individual Author, to really make them shine
 * You Can set the Name of the Author
-* You Can set the Job Title
+* You Can set the Job Title of each Author
 * Can set Company (with a link to the company's site)
 * Each Author can make the Author Box look like it's her own
 * You can choose not to display it for certain authors
