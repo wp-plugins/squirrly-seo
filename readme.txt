@@ -114,7 +114,7 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Compatible with WP 3.9.1
 
 = 2.1.1 =
-* Removed Author Box from product in Woocommerce when only posts are set in settings
+* Removed Author Box from products that you may have in Woocommerce when only posts are set to have the author box displayed (you can do this in settings)
 
 = 2.1.0 =
 * Compatible with WP 3.9
