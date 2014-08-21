@@ -84,7 +84,7 @@ Over 500,000 Downloads. Our startup consists of 7 content marketing professional
 
 Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
 
-Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin. This is great value for anyone starting out with SEO and content.
+Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin.
 
 +285% increase in traffic to over 16,500 survey participants.
 
@@ -137,12 +137,11 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 3.3.1 =
-* Fixed article (post) snippet issues when the home-page description is switch off
+* Fixed post snippet issues when the home-page description is switch off
 * Compatible with 3.9.2
 
 = 3.3.0 =
 * Added the google localization country in search ranking
-* It's a far advanced type of search and parameters that will ensure you see results 99% accurate
 * Fixed onboarding video link
 * Fixed seo title issue for homepage
 

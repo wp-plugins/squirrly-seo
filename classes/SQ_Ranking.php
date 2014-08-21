@@ -173,7 +173,7 @@ class SQ_Ranking extends SQ_FrontController {
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
             foreach ($rows as $row) {
-                if ($count > 20) {
+                if ($count > 15) {
                     break; //check only 10 keywords at the time
                 }
                 if ($row->meta_value <> '') {
@@ -188,7 +188,7 @@ class SQ_Ranking extends SQ_FrontController {
                         $rank = $this->processRanking($row->post_id, $json->keyword);
                         if ($rank == -1) {
                             $count++;
-                            sleep(mt_rand(20, 30));
+                            sleep(mt_rand(20, 50));
                             //if not indexed with the keyword then find the url
                             if ($this->processRanking($row->post_id, get_permalink($row->post_id)) > 0) {
                                 $rank = 0; //for permalink index set 0
@@ -215,7 +215,7 @@ class SQ_Ranking extends SQ_FrontController {
                         SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
 
                         $count++;
-                        sleep(mt_rand(20, 30));
+                        sleep(mt_rand(20, 60));
                     }
                 }
             }
