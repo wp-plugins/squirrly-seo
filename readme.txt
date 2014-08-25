@@ -139,6 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.3.1 =
 * Fixed post snippet issues when the home-page description is switch off
 * Compatible with 3.9.2
+* Updated the plugin icon
 
 = 3.3.0 =
 * Added the google localization country in search ranking
