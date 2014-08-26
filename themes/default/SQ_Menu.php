@@ -320,6 +320,7 @@
                                 <option value="co.cr"><?php _e('Costa Rica', _SQ_PLUGIN_NAME_); ?> (http://www.google.co.cr/)</option>
                                 <option value="ci"><?php _e('Côte d\'Ivoire', _SQ_PLUGIN_NAME_); ?> (http://www.google.ci/)</option>
                                 <option value="com.cu"><?php _e('Cuba', _SQ_PLUGIN_NAME_); ?> (http://www.google.com.cu/)</option>
+                                <option value="cz"><?php _e('Czech Republic', _SQ_PLUGIN_NAME_); ?> (http://www.google.cz/)</option>
                                 <option value="cd"><?php _e('Dem. Rep. of the Congo', _SQ_PLUGIN_NAME_); ?> (http://www.google.cd/)</option>
                                 <option value="dk"><?php _e('Denmark', _SQ_PLUGIN_NAME_); ?> (http://www.google.dk/)</option>
                                 <option value="dj"><?php _e('Djibouti', _SQ_PLUGIN_NAME_); ?> (http://www.google.dj/)</option>
@@ -433,7 +434,7 @@
                 </div>
             </fieldset>
             <fieldset >
-                <legend class="sq_legend_medium"> 
+                <legend class="sq_legend_medium">
                     <span class="sq_legend_title"><?php _e('Tracking Tools', _SQ_PLUGIN_NAME_); ?></span>
                     <span><?php echo sprintf(__('%sLink your Google+ profile to the content you create%s', _SQ_PLUGIN_NAME_), '<a href="https://plus.google.com/authorship" target="_blank">', '</a>'); ?></span>
                     <span><?php echo sprintf(__('%sStarBox, the author box that’s pushing content marketing to the stars%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/starbox-the-author-box-thats-pushing-content-marketing-to-the-stars" target="_blank">', '</a>'); ?></span>

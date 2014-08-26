@@ -136,15 +136,19 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.3.2 =
+* Compatible with WP 3.9.2
+* Added google.cz for google ranking in Performance Analytics
+
 = 3.3.1 =
 * Fixed post snippet issues when the home-page description is switch off
-* Compatible with 3.9.2
-* Updated the plugin icon
+
+* Updated the Squirrly SEO plugin icon
 
 = 3.3.0 =
 * Added the google localization country in search ranking
-* Fixed onboarding video link
-* Fixed seo title issue for homepage
+* Fixed on-boarding video link
+* Fixed seo title issue for home-page
 
 = 3.2.7 =
 * Fixed small issue for background ranking grabber
