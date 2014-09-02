@@ -781,6 +781,7 @@ class Model_SQ_Frontend {
 
         if ($sq_google_analytics <> '') {
             return sprintf("<script type=\"text/javascript\">
+                            //<![CDATA[
                             var _gaq = _gaq || [];
                             _gaq.push(['_setAccount', '%s']);
                             _gaq.push(['_trackPageview']);
@@ -789,6 +790,7 @@ class Model_SQ_Frontend {
                               ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
                               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
                             })();
+                          //]]>
                           </script>", $sq_google_analytics) . "\n";
         }
 
