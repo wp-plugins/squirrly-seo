@@ -173,7 +173,7 @@ class SQ_Sitemap extends SQ_FrontController {
             $categories = get_terms("category", array("hide_empty" => true, "hierarchical" => false));
             if ($categories && is_array($categories) && count($categories) > 0) {
                 foreach ($categories AS $category) {
-                    $this->addLine(get_category_link($category->term_id), null, $this->opt['category'][1], $this->opt['category'][0]);
+                    $this->addLine(get_category_link($category->term_id), $this->getTimestamp(get_lastpostmodified('GMT')), $this->opt['category'][1], $this->opt['category'][0]);
                 }
             }
         }

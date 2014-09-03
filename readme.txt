@@ -139,6 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.3.3 =
 * Added the new Google Analytics tracking code
 * Fixed the sitemap update date issue
+* Update the SEO Live Assistant
 
 = 3.3.2 =
 * Compatible with WP 3.9.2
