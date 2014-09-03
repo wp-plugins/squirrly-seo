@@ -319,7 +319,7 @@ class SQ_Sitemap extends SQ_FrontController {
      * @return string
      */
     private function getTimestamp($time) {
-        if (!isset($time))
+        if (!isset($time) || $time == '')
             $time = date('Y-m-d H:i:s');
 
         list($date, $hours) = explode(' ', $time);

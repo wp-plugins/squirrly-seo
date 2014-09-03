@@ -138,7 +138,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 3.3.3 =
 * Added the new Google Analytics tracking code
-* Fixed the sitemap date bug
+* Fixed the sitemap update date issue
 
 = 3.3.2 =
 * Compatible with WP 3.9.2
