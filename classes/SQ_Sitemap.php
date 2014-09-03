@@ -319,8 +319,9 @@ class SQ_Sitemap extends SQ_FrontController {
      * @return string
      */
     private function getTimestamp($time) {
+        if (!isset($time))
+            $time = date('Y-m-d H:i:s');
 
-        $time = date('Y-m-d H:i:s');
         list($date, $hours) = explode(' ', $time);
         list($year, $month, $day) = explode('-', $date);
         list($hour, $min, $sec) = explode(':', $hours);
