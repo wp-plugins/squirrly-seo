@@ -778,13 +778,14 @@ class Model_SQ_Frontend {
         if ($sq_google_analytics <> '') {
             SQ_ObjController::getController('SQ_DisplayController', false)
                     ->loadMedia('https://www.google-analytics.com/analytics.js');
-            return sprintf("<script>
-                             //<![CDATA[
-                            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-                            ga('create', '%s', 'auto');
-                            ga('send', 'pageview');
-                             //]]>
-                            </script>", $sq_google_analytics) . "\n";
+            return sprintf("
+<script>
+    //<![CDATA[
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+   ga('create', '%s', 'auto');
+   ga('send', 'pageview');
+    //]]>
+</script>", $sq_google_analytics) . "\n";
         }
 
         return false;
