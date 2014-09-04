@@ -241,7 +241,8 @@ class SQ_Menu extends SQ_FrontController {
                     if (SQ_Tools::getIsset('sq_fp_ogimage'))
                         $meta[] = array('key' => 'sq_fp_ogimage', 'value' => SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'ogimage'));
 
-                    SQ_ObjController::getModel('SQ_Post')->saveAdvMeta($pageId, $meta);
+                    if (!empty($meta))
+                        SQ_ObjController::getModel('SQ_Post')->saveAdvMeta($pageId, $meta);
                 }else {
                     SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));
                     SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));
