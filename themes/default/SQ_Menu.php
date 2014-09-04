@@ -196,7 +196,7 @@
                     if ($view->options['sq_fp_title'] == '')
                         $auto_option = true;
 
-                    if ($pageId = get_option('page_on_front')) {
+                    if ($pageId = get_option('page_on_front') && SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title') <> '') {
                         $view->options['sq_fp_title'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title');
                         $view->options['sq_fp_description'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'description');
                         $view->options['sq_fp_keywords'] = SQ_ObjController::getModel('SQ_Post')->getKeyword($pageId)->keyword;
