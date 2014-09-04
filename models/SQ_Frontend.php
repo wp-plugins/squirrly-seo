@@ -337,15 +337,14 @@ class Model_SQ_Frontend {
         $sep = '|';
         $post = $this->post;
         //If its a home page and home page auto title is activated
-        if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_title'] == 1) { //for homepage
+        if ($this->isHomePage() && SQ_Tools::$options['sq_auto_title'] == 1) { //for homepage
             $title = $this->clearTitle($this->grabTitleFromPost());
-            if ($this->meta['blogname'] <> '') {
+            if ($title <> "" && $this->meta['blogname'] <> '') {
                 $title .= " " . $sep . " " . $this->meta['blogname'];
             }
         }
         //If its a post/page
         if (!$this->isHomePage() && (is_single() || is_page() || is_singular())) {
-
             $title = $this->clearTitle($this->grabTitleFromPost($post->ID));
         }
 
@@ -390,7 +389,6 @@ class Model_SQ_Frontend {
         /* Check if is a predefined Title */
         if ($this->isHomePage() &&
                 SQ_Tools::$options['sq_auto_title'] == 1 &&
-                SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_title'] <> '') {
 
             if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'title') <> '') {
@@ -485,7 +483,7 @@ class Model_SQ_Frontend {
         $description = '';
 
         //Is home page, has posts and autodescription is on
-        if ($this->isHomePage() && $this->checkHomePosts() && SQ_Tools::$options['sq_auto_description'] == 1) { //for homepage
+        if ($this->isHomePage() && SQ_Tools::$options['sq_auto_description'] == 1) { //for homepage
             $description = $this->grabDescriptionFromPost();
         }
 
@@ -543,7 +541,6 @@ class Model_SQ_Frontend {
         /* Check if is a predefined TitleIn Snippet */
         if ($this->isHomePage() &&
                 SQ_Tools::$options['sq_auto_description'] == 1 &&
-                SQ_Tools::$options['sq_auto_seo'] == 0 &&
                 SQ_Tools::$options['sq_fp_description'] <> '') {
 
             if (isset($post) && isset($post->ID) && $this->getAdvancedMeta($post->ID, 'description') <> '') {
@@ -607,7 +604,6 @@ class Model_SQ_Frontend {
         /* Check if is a predefined Keyword */
         if (SQ_Tools::$options['sq_auto_description'] == 1) { //
             if (($this->isHomePage() &&
-                    SQ_Tools::$options['sq_auto_seo'] <> 1 &&
                     SQ_Tools::$options['sq_fp_keywords'] <> '') || $keywords == '') {
                 $keywords = strip_tags(SQ_Tools::$options['sq_fp_keywords']);
             }
@@ -780,16 +776,15 @@ class Model_SQ_Frontend {
         $sq_google_analytics = SQ_Tools::$options['sq_google_analytics'];
 
         if ($sq_google_analytics <> '') {
+            SQ_ObjController::getController('SQ_DisplayController', false)
+                    ->loadMedia('https://www.google-analytics.com/analytics.js');
             return sprintf("<script>
-                            //<![CDATA[
-                            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                             //<![CDATA[
+                            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
                             ga('create', '%s', 'auto');
                             ga('send', 'pageview');
-                          //]]>
-                          </script>", $sq_google_analytics) . "\n";
+                             //]]>
+                            </script>", $sq_google_analytics) . "\n";
         }
 
         return false;
@@ -882,7 +877,8 @@ class Model_SQ_Frontend {
         }
 
         if ($post) {
-            $title = SQ_Tools::i18n($post->post_title);
+            if (!$this->isHomePage())
+                $title = SQ_Tools::i18n($post->post_title);
 
             //If there is title saved in database
             if ($advtitle = $this->getAdvancedMeta($post->ID, 'title')) {
@@ -920,9 +916,11 @@ class Model_SQ_Frontend {
 
 
         if ($post) {
-            $description = $this->_truncate(SQ_Tools::i18n($post->post_excerpt), $this->min_description_length, $this->max_description_length);
-            if (!$description) {
-                $description = $this->truncate(SQ_Tools::i18n($post->post_content), $this->min_description_length, $this->max_description_length);
+            if (!$this->isHomePage()) {
+                $description = $this->_truncate(SQ_Tools::i18n($post->post_excerpt), $this->min_description_length, $this->max_description_length);
+                if (!$description) {
+                    $description = $this->truncate(SQ_Tools::i18n($post->post_content), $this->min_description_length, $this->max_description_length);
+                }
             }
 
             //If there is description saved in database

@@ -226,10 +226,27 @@ class SQ_Menu extends SQ_FrontController {
                         $sq_twitter_account = '@' . $sq_twitter_account;
                 SQ_Tools::saveOptions('sq_twitter_account', $sq_twitter_account);
 
-                SQ_Tools::saveOptions('sq_auto_seo', (int) SQ_Tools::getValue('sq_auto_seo'));
-                SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));
-                SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));
-                SQ_Tools::saveOptions('sq_fp_keywords', SQ_Tools::getValue('sq_fp_keywords'));
+                SQ_Tools::saveOptions('sq_auto_seo', 0);
+                if ($pageId = get_option('page_on_front')) {
+                    $meta = array();
+                    if (SQ_Tools::getIsset('sq_fp_title'))
+                        $meta[] = array('key' => 'sq_fp_title', 'value' => urldecode(SQ_Tools::getValue('sq_fp_title')));
+
+                    if (SQ_Tools::getIsset('sq_fp_description'))
+                        $meta[] = array('key' => 'sq_fp_description', 'value' => urldecode(SQ_Tools::getValue('sq_fp_description')));
+
+                    if (SQ_Tools::getIsset('sq_fp_keywords'))
+                        $meta[] = array('key' => 'sq_fp_keywords', 'value' => SQ_Tools::getValue('sq_fp_keywords'));
+
+                    if (SQ_Tools::getIsset('sq_fp_ogimage'))
+                        $meta[] = array('key' => 'sq_fp_ogimage', 'value' => SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'ogimage'));
+
+                    SQ_ObjController::getModel('SQ_Post')->saveAdvMeta($pageId, $meta);
+                }else {
+                    SQ_Tools::saveOptions('sq_fp_title', SQ_Tools::getValue('sq_fp_title'));
+                    SQ_Tools::saveOptions('sq_fp_description', SQ_Tools::getValue('sq_fp_description'));
+                    SQ_Tools::saveOptions('sq_fp_keywords', SQ_Tools::getValue('sq_fp_keywords'));
+                }
 
                 SQ_Tools::saveOptions('sq_google_country', SQ_Tools::getValue('sq_google_country'));
 

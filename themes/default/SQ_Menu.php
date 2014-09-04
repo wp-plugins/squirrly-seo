@@ -151,7 +151,7 @@
                 </div>
             </fieldset>
             <fieldset id="sq_title_description_keywords" <?php echo (($view->options['sq_use'] == 0) ? 'style="display:none;"' : ''); ?> <?php echo (($view->options['sq_fp_title'] == '' || $view->options['sq_auto_seo'] == 1) ? '' : 'class="sq_custom_title"'); ?>>
-                <legend>
+                <legend class="sq_legend_medium">
                     <span class="sq_legend_title"><?php _e('First page optimization', _SQ_PLUGIN_NAME_); ?></span>
                     <span><?php echo sprintf(__('%sThe best SEO approach to Meta information%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/the-best-seo-approach-to-meta-information" target="_blank">', '</a>'); ?></span>
 
@@ -193,21 +193,18 @@
                 <div>
                     <?php
                     $auto_option = false;
-                    if ($view->options['sq_fp_title'] == '' || $view->options['sq_auto_seo'] == 1)
+                    if ($view->options['sq_fp_title'] == '')
                         $auto_option = true;
-                    ?>
-                    <div class="sq_option_content">
-                        <div class="sq_switch">
-                            <input id="sq_automatically" type="radio" class="sq_switch-input" name="sq_auto_seo" value="1" <?php echo ($auto_option ? "checked" : '') ?> />
-                            <label for="sq_automatically" class="sq_switch-label sq_switch-label-off"><?php _e('Auto', _SQ_PLUGIN_NAME_); ?></label>
-                            <input id="sq_customize" type="radio" class="sq_switch-input" name="sq_auto_seo"  value="0" <?php echo (!$auto_option ? "checked" : '') ?> />
-                            <label for="sq_customize" class="sq_switch-label sq_switch-label-on"><?php _e('Custom', _SQ_PLUGIN_NAME_); ?></label>
-                            <span class="sq_switch-selection"></span>
-                        </div>
-                        <span class="sq_option_info_small"><?php _e('Home page SEO optimization', _SQ_PLUGIN_NAME_); ?></span>
-                    </div>
 
-                    <div id="sq_customize_settings" <?php echo (!$auto_option ? '' : 'style="display: none;"') ?>>
+                    if ($pageId = get_option('page_on_front')) {
+                        $view->options['sq_fp_title'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title');
+                        $view->options['sq_fp_description'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'description');
+                        $view->options['sq_fp_keywords'] = SQ_ObjController::getModel('SQ_Post')->getKeyword($pageId)->keyword;
+                    }
+                    ?>
+                    <input id="sq_customize" type="hidden" name="sq_auto_seo"  value="0">
+
+                    <div id="sq_customize_settings">
                         <p class="withborder">
                             <?php _e('Title:', _SQ_PLUGIN_NAME_); ?><input type="text" name="sq_fp_title" value="<?php echo (($view->options['sq_fp_title'] <> '') ? $view->options['sq_fp_title'] : '') ?>" size="75" /><span id="sq_title_info" />
                             <span id="sq_fp_title_length"></span><span class="sq_settings_info"><?php _e('Tips: Length 10-75 chars', _SQ_PLUGIN_NAME_); ?></span>
@@ -233,7 +230,7 @@
                             <li id="sq_snippet_source"><a href="http://www.google.com/webmasters/tools/richsnippets?url=<?php echo urlencode(get_bloginfo('wpurl')) ?>" target="_blank"><?php _e('Check with google ...', _SQ_PLUGIN_NAME_) ?></a></li>
                         </ul>
 
-                        <div id="sq_snippet_disclaimer" <?php echo (!$auto_option ? '' : 'style="display: none;"') ?>><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO', _SQ_PLUGIN_NAME_) ?></div>
+                        <div id="sq_snippet_disclaimer" ><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO', _SQ_PLUGIN_NAME_) ?></div>
                     </div>
                 </div>
             </fieldset>
