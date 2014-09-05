@@ -136,11 +136,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 3.4.0 =
+= 3.3.4 =
 * Compatible with WP 4.0
 * Fixed various issues
-
-= 3.3.4 =
 * Update the Google Analytics tracking code to work with cache plugins
 * Fixed the sitemap update date issue
 * Fixed the Home Page SEO settings to work with the front-page snippet
