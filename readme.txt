@@ -2,7 +2,7 @@
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,german,russian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
@@ -136,11 +136,15 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.4.0 =
+* Compatible with WP 4.0
+* Fixed various issues
+
 = 3.3.4 =
 * Update the Google Analytics tracking code to work with cache plugins
 * Fixed the sitemap update date issue
 * Fixed the Home Page SEO settings to work with the front-page snippet
-* Fixed various bugs
+
 
 = 3.3.3 =
 * Added the new Google Analytics tracking code
