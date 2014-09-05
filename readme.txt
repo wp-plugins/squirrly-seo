@@ -2,7 +2,7 @@
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,twitter,sidebar,images,shortcode,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio,widget,comments,blog,content,email,image,linkedin,marketing,mobile,pinterest,profile,shortcodes,social,social media,wordpress
 Requires at least: 3.3
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: trunk
 Donate link: http://www.squirrly.co
 
@@ -106,6 +106,10 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 
 == Changelog ==
+= 2.2.0 =
+* Compatible with WP 4.0
+* Fixed various bugs
+
 = 2.1.4 =
 * Compatible with WP 3.9.2
 
