@@ -140,6 +140,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Update the Google Analytics tracking code to work with cache plugins
 * Fixed the sitemap update date issue
 * Fixed the Home Page SEO settings to work with the front-page snippet
+* Fixed various bugs
 
 = 3.3.3 =
 * Added the new Google Analytics tracking code
