@@ -10,7 +10,7 @@ Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5,
 
 == Description ==
 
-<h3>Starbox is the Author Box for Humans</h3>
+<h2>Starbox is the Author Box for Humans</h2>
 
 While search engines and other software that read your site care about files like robots.txt, you need Human readers to actually engage with your content and fall in love with it.
 
