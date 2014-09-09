@@ -769,6 +769,11 @@ class SQ_Tools extends SQ_FrontController {
         if (function_exists('wp_cache_post_edit') && isset($post_id)) {
             wp_cache_post_edit($post_id);
         }
+
+        if (class_exists("WpFastestCache")) {
+            $wpfc = new WpFastestCache();
+            $wpfc->deleteCache();
+        }
     }
 
 }
