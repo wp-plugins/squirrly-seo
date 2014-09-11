@@ -4,7 +4,7 @@ Tags: author box‎,author,twitter,sidebar,images,shortcode,publisher,meta,post,
 Requires at least: 3.3
 Tested up to: 4.0
 Stable tag: trunk
-Donate link: http://www.squirrly.co
+Donate link: http://starbox.squirrly.co/starbox-the-author-box-for-humans/
 
 Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5, Social Media Profiles, Google Authorship
 
