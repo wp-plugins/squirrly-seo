@@ -13,4 +13,5 @@ if ($type == 'errors_count') {
         </p>
 
     </div>
-<?php } ?> 
+<?php
+}
