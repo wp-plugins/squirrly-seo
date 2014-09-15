@@ -183,7 +183,7 @@ class SQ_Menu extends SQ_FrontController {
      * @return void
      */
     public function showMenu() {
-
+        /* Load the error class */
         SQ_Tools::checkErrorSettings();
         /* Force call of error display */
         SQ_ObjController::getController('SQ_Error', false)->hookNotices();
@@ -192,6 +192,8 @@ class SQ_Menu extends SQ_FrontController {
         /* Get the options from Database */
         $this->options = SQ_Tools::$options;
         SQ_ObjController::getBlock('SQ_BlockSupport')->init();
+
+        //call the init function from Front class
         parent::init();
     }
 
