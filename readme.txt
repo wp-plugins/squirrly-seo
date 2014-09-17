@@ -1,6 +1,6 @@
 ﻿=== SEO Plugin by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
-Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,german,russian,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
+Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
 Tested up to: 4.0
 Stable tag: trunk
@@ -80,13 +80,13 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 <strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
 
-Over 500,000 Downloads. Our startup consists of 7 content marketing professionals dedicated to making Squirrly an amazing piece of software and writing great training materials to help you be successful and stay successful.
+Over 600,000 Downloads. Our startup consists of 7 content marketing professionals dedicated to making Squirrly an amazing piece of software and writing great training materials to help you be successful and stay successful.
 
 Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
 
 Over 600 students to our $147 Content Marketing Training on Udemy. Part of that training you'll be receiving for free when signing up for this wordpress seo plugin.
 
-+285% increase in traffic to over 16,500 survey participants.
++285% increase in traffic to over 36,500 survey participants.
 
 Recently our team grew to 7 people
 
