@@ -3,8 +3,9 @@
 /**
  * Called on plugin uninstall
  */
-if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN'))
+if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN')) {
     exit();
+}
 
 /* Call config files */
 require(dirname(__FILE__) . '/config/config.php');

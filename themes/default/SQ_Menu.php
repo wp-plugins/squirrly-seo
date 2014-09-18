@@ -1,4 +1,4 @@
-<div id="sq_settings" >
+<div id="sq_settings">
     <form id="sq_settings_form" name="settings" action="" method="post" enctype="multipart/form-data">
         <span class="sq_icon"></span>
         <div id="sq_settings_title" ><?php _e('Squirrly settings', _SQ_PLUGIN_NAME_); ?> </div>
@@ -495,7 +495,6 @@
         var sq_blogurl = "<?php echo get_bloginfo('url') ?>";
         var __snippetshort = "<?php echo __('Too short', _SQ_PLUGIN_NAME_) ?>";
         var __snippetlong = "<?php echo __('Too long', _SQ_PLUGIN_NAME_) ?>";
-
         jQuery('#sq_settings').find('select[name=sq_google_country]').val('<?php echo $view->options['sq_google_country']; ?>');
     </script>
 </div>
