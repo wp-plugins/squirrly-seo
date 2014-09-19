@@ -106,23 +106,27 @@ class Model_SQ_Frontend {
         $this->post = $wp_query->get_queried_object();
 
         if (is_home() || (isset($wp_query->query) && empty($wp_query->query)) || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search()) {
-            $title = $this->getCustomTitle();
-            if (isset($title) && !empty($title) && $title <> '') {
-                $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si', sprintf("<title>%s</title>", $title), $buffer, 1, $count);
-                if ($count == 0) { //if no title found
-                    $buffer .= sprintf("<title>%s</title>", $title) . "\n";
-                } //add the title
-            }
+
+            preg_match("/<head[^>]*>/i", $buffer, $out);
+            if (!empty($out)) {
+                $title = $this->getCustomTitle();
+                if (isset($title) && !empty($title) && $title <> '') {
+                    $buffer = @preg_replace('/<title[^<>]*>([^<>]*)<\/title>/si', sprintf("<title>%s</title>", $title), $buffer, 1, $count);
+                    if ($count == 0) { //if no title found
+                        $buffer .= sprintf("<title>%s</title>", $title) . "\n";
+                    } //add the title
+                }
 
 
-            $description = $this->getCustomDescription();
-            if (isset($description) && !empty($description) && $description <> '') {
-                $buffer = @preg_replace('/<meta[^>]*name=\"description\"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si', $description, $buffer, 1, $count);
-            }
+                $description = $this->getCustomDescription();
+                if (isset($description) && !empty($description) && $description <> '') {
+                    $buffer = @preg_replace('/<meta[^>]*name=\"description\"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si', $description, $buffer, 1, $count);
+                }
 
-            $keyword = $this->getCustomKeyword();
-            if (isset($keyword) && !empty($keyword) && $keyword <> '') {
-                $buffer = @preg_replace('/<meta[^>]*name=\"keywords"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si', $keyword, $buffer, 1, $count);
+                $keyword = $this->getCustomKeyword();
+                if (isset($keyword) && !empty($keyword) && $keyword <> '') {
+                    $buffer = @preg_replace('/<meta[^>]*name=\"keywords"[^>]*content=[\"|\'][^>]*[\"|\'][^>]*>/si', $keyword, $buffer, 1, $count);
+                }
             }
         }
         return $buffer;

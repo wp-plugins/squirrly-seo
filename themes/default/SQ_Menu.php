@@ -57,7 +57,7 @@
                                     <label for="sq_auto_sitemap0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _SQ_PLUGIN_NAME_); ?></label>
                                     <span class="sq_switch-selection"></span>
                                 </div>
-                                <span><?php echo sprintf(__('Add the <strong>%sXML Sitemap%s</strong> for search engines', _SQ_PLUGIN_NAME_), '<a href="https://support.google.com/webmasters/answer/156184?rd=1" target="_blank">', '</a>'); ?>: <strong><?php echo '/sitemap.xml' ?></strong></span>
+                                <span><?php echo sprintf(__('Add the <strong>%sXML Sitemap%s</strong> for search engines', _SQ_PLUGIN_NAME_), '<a href="https://support.google.com/webmasters/answer/156184?rd=1" target="_blank">', '</a>'); ?>: <strong>Or use <a href="https://wordpress.org/plugins/google-sitemap-generator/" target="_blank">Google XML Sitemaps Plugin</a></strong></span>
                             </div>
                         </li>
                         <li>
