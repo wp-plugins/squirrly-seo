@@ -79,7 +79,7 @@ class SQ_Tools extends SQ_FrontController {
             'sq_hide_survey' => 0,
             // --
             'sq_auto_canonical' => 1,
-            'sq_auto_sitemap' => 1,
+            'sq_auto_sitemap' => 0,
             'sq_auto_meta' => 1,
             'sq_auto_favicon' => 1,
             'sq_auto_twitter' => 1,
