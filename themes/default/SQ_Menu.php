@@ -155,7 +155,7 @@
                     <span class="sq_legend_title"><?php _e('First page optimization', _SQ_PLUGIN_NAME_); ?></span>
                     <span><?php echo sprintf(__('%sThe best SEO approach to Meta information%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/the-best-seo-approach-to-meta-information" target="_blank">', '</a>'); ?></span>
 
-                    <span><?php _e('Add the correct <strong>title</strong> in the home page', _SQ_PLUGIN_NAME_); ?></span>
+                    <span><?php _e('Add meta <strong>title</strong> in Home Page', _SQ_PLUGIN_NAME_); ?></span>
                     <?php
                     $auto_option = false;
                     if ($view->options['sq_auto_title'] == 1)
@@ -171,7 +171,7 @@
                         </div>
                     </div>
 
-                    <span><?php _e('Add the correct <strong>description</strong> and <strong>keywords</strong> in home page', _SQ_PLUGIN_NAME_); ?></span>
+                    <span><?php _e('Add meta <strong>description</strong> and <strong>keywords</strong> in Home Page', _SQ_PLUGIN_NAME_); ?></span>
                     <?php
                     $auto_option = false;
                     if ($view->options['sq_auto_description'] == 1)
