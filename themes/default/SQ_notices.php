@@ -7,11 +7,7 @@ if ($type == 'errors_count') {
     </span>
 <?php } else { ?>
     <div id="<?php echo $id ?>" class="<?php echo $type; ?> sq_message">
-
-        <p>
-            <strong><?php echo $message; ?></strong>
-        </p>
-
+        <p><strong><?php echo $message; ?></strong></p>
     </div>
-<?php
+    <?php
 }

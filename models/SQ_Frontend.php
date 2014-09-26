@@ -959,12 +959,19 @@ class Model_SQ_Frontend {
         $advkeywords = '';
 
 
-        if (isset($id)) {
+        if (isset($id) && $post = get_post($id)) {
             $density = array();
-            $post = get_post($id);
 
-            foreach (wp_get_post_tags($id) as $keyword) {
-                $keywords[] = SQ_Tools::i18n($keyword->name);
+            if (SQ_Tools::$options['sq_keywordtag'] == 1) {
+                foreach (wp_get_post_tags($id) as $keyword) {
+                    $keywords[] = SQ_Tools::i18n($keyword->name);
+                }
+            } else {
+                if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($post->ID)) {
+                    if (isset($json->keyword)) {
+                        $keywords[] = SQ_Tools::i18n($json->keyword);
+                    }
+                }
             }
 
             if (count($keywords) <= $this->max_keywrods) {
@@ -997,11 +1004,14 @@ class Model_SQ_Frontend {
             }
 
             if (is_home()) {
-                foreach ($wp_query->posts as $post) {
-                    foreach (wp_get_post_tags($post->ID) as $keyword) {
-                        $keywords[] = SQ_Tools::i18n($keyword->name);
+                if (SQ_Tools::$options['sq_keywordtag'] == 1) {
+                    foreach ($wp_query->posts as $post) {
+                        foreach (wp_get_post_tags($post->ID) as $keyword) {
+                            $keywords[] = SQ_Tools::i18n($keyword->name);
+                        }
                     }
                 }
+
                 if (count($keywords) <= $this->max_keywrods) {
                     foreach ($wp_query->posts as $post) {
                         $more_keywords = $this->calcDensity(strip_tags($post->post_content), $post->post_title, $this->description);
@@ -1019,8 +1029,10 @@ class Model_SQ_Frontend {
                 foreach ($wp_query->posts as $post) {
                     $id = (is_attachment()) ? ($post->post_parent) : ($post->ID);
 
-                    foreach (wp_get_post_tags($id) as $keyword) {
-                        $keywords[] = SQ_Tools::i18n($keyword->name);
+                    if (SQ_Tools::$options['sq_keywordtag'] == 1) {
+                        foreach (wp_get_post_tags($id) as $keyword) {
+                            $keywords[] = SQ_Tools::i18n($keyword->name);
+                        }
                     }
                     // autometa
                     $autometa = stripcslashes(get_post_meta($id, 'autometa', true));

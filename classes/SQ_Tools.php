@@ -111,6 +111,7 @@ class SQ_Tools extends SQ_FrontController {
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',
             'sq_sla' => 1,
+            'sq_keywordtag' => 1,
             //--
             'sq_dbtables' => 0,
             'sq_dashboard' => 0,
