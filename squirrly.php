@@ -16,47 +16,47 @@
 define('SQ_VERSION', '3.3.4');
 
 /* Call config files */
-require(dirname(__FILE__) . '/config/config.php');
+if (file_exists(dirname(__FILE__) . '/config/config.php')) {
+    require(dirname(__FILE__) . '/config/config.php');
 
-/* important to check the PHP version */
-if (PHP_VERSION_ID >= 5100) {
-    /* inport main classes */
-    require_once(_SQ_CLASSES_DIR_ . 'SQ_ObjController.php');
-    require_once(_SQ_CLASSES_DIR_ . 'SQ_BlockController.php');
+    /* important to check the PHP version */
+    if (PHP_VERSION_ID >= 5100) {
+        /* inport main classes */
+        require_once(_SQ_CLASSES_DIR_ . 'SQ_ObjController.php');
+        require_once(_SQ_CLASSES_DIR_ . 'SQ_BlockController.php');
 
-    /* Main class call */
-    $fc = SQ_ObjController::getController('SQ_FrontController', false);
-    $fc->run();
+        /* Main class call */
+        $fc = SQ_ObjController::getController('SQ_FrontController', false);
+        $fc->run();
 
-    if (!is_admin()) {
-        SQ_ObjController::getController('SQ_Frontend');
+        if (!is_admin()) {
+            SQ_ObjController::getController('SQ_Frontend');
+        }
+
+        add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
+    } else {
+        /* Main class call */
+        add_action('admin_init', 'phpError');
     }
 
-    add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
-} else {
-    /* Main class call */
-    add_action('admin_init', 'phpError');
-}
+    /**
+     * Show PHP Error message if PHP is lower the required
+     */
+    function phpError() {
+        add_action('admin_notices', 'showError');
+    }
 
-/**
- * Show PHP Error message if PHP is lower the required
- */
-function phpError() {
-    add_action('admin_notices', 'showError');
-}
-
-/**
- * Called in Notice Hook
- */
-function showError() {
-    echo '<div class="update-nag"><span style="color:red; font-weight:bold;">' . __('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _SQ_PLUGIN_NAME_) . '</span></div>';
-}
+    /**
+     * Called in Notice Hook
+     */
+    function showError() {
+        echo '<div class="update-nag"><span style="color:red; font-weight:bold;">' . __('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _SQ_PLUGIN_NAME_) . '</span></div>';
+    }
 
 // --
-/**
- *  Upgrade Squirrly call.
- */
-register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
-register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
-
-
+    /**
+     *  Upgrade Squirrly call.
+     */
+    register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
+    register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
+}
