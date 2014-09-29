@@ -144,6 +144,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the Home Page Seo settings to work with the front-page snippet
 * Compatible with Wp Fastest Cache plugin, WP Super Cache
 * Added Tag to Meta Keyword option in Settings
+* Fixed some bugs related to SEO Audit
 
 = 3.3.3 =
 * Added the new Google Analytics tracking code
