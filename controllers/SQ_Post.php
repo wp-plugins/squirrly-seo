@@ -2,7 +2,7 @@
 
 class SQ_Post extends SQ_FrontController {
 
-    var $saved;
+    public $saved;
 
     /**
      * Initialize the TinyMCE editor for the current use
@@ -10,6 +10,8 @@ class SQ_Post extends SQ_FrontController {
      * @return void
      */
     public function hookInit() {
+        $this->saved = array();
+
         add_filter('tiny_mce_before_init', array($this->model, 'setCallback'));
         add_filter('mce_external_plugins', array($this->model, 'addHeadingButton'));
         add_filter('mce_buttons', array($this->model, 'registerButton'));
@@ -17,10 +19,10 @@ class SQ_Post extends SQ_FrontController {
         if (SQ_Tools::$options['sq_api'] == '')
             return;
 
-        add_action('save_post', array($this, 'hookSavePost'), 10);
+        add_action('save_post', array($this, 'hookSavePost'), 11);
 
         //For Shopp plugin - product
-        add_action('shopp_product_saved', array($this, 'hookShopp'), 10);
+        add_action('shopp_product_saved', array($this, 'hookShopp'), 11);
     }
 
     /**
@@ -62,39 +64,31 @@ class SQ_Post extends SQ_FrontController {
      */
     public function hookSavePost($post_id) {
         $file_name = false;
-
+        if (!isset($this->saved[$post_id]))
+            $this->saved[$post_id] = false;
 
         // unhook this function so it doesn't loop infinitely
-        remove_action('save_post', array($this, 'hookSavePost'), 10);
-
+        remove_action('save_post', array($this, 'hookSavePost'), 11);
         //If the post is a new or edited post
         if ((SQ_Tools::getValue('action')) == 'editpost' &&
-                wp_is_post_revision($post_id) == '' &&
-                wp_is_post_autosave($post_id) == '' &&
-                get_post_status($post_id) != 'auto-draft' &&
-                get_post_status($post_id) != 'inherit' &&
-                SQ_Tools::getValue('autosave') == '') {
-            //echo 'saving';
-            //check for custom SEO
-            $this->_checkAdvMeta($post_id);
-            //check the SEO from Squirrly Live Assistant
-            $this->checkSeo($post_id, get_post_status($post_id));
-        }
-
-        //If the post is not auto-save post
-        if ((SQ_Tools::getValue('action')) == 'editpost' &&
                 wp_is_post_autosave($post_id) == '' &&
                 get_post_status($post_id) != 'auto-draft' &&
                 get_post_status($post_id) != 'inherit' &&
                 SQ_Tools::getValue('autosave') == '') {
 
-            if (!$this->saved)
-            //check the remote images
+            if ($this->saved[$post_id] === false) {
+                //check for custom SEO
+                $this->_checkAdvMeta($post_id);
+                //check the SEO from Squirrly Live Assistant
+                $this->checkSeo($post_id, get_post_status($post_id));
+                //check the remote images
                 $this->checkImage($post_id);
-            $this->saved = true;
+            }
+            $this->saved[$post_id] = true;
         }
 
-        add_action('save_post', array($this, 'hookSavePost'), 10);
+
+        add_action('save_post', array($this, 'hookSavePost'), 11);
     }
 
     /**
@@ -137,20 +131,20 @@ class SQ_Post extends SQ_FrontController {
             return;
 
         $urls = @array_unique($urls);
+        $time = microtime(true);
         foreach ($urls as $url) {
             if ($file = $this->model->upload_image($url)) {
                 if (!file_is_valid_image($file['file']))
                     continue;
 
-                //encode special characters
-                $local_file = str_replace($file['filename'], urlencode($file['filename']), $file['url']);
+                $local_file = $file['url'];
                 if ($local_file !== false) {
                     $content = str_replace($url, $local_file, $content);
 
                     $attach_id = wp_insert_attachment(array(
                         'post_mime_type' => $file['type'],
-                        'post_title' => preg_replace('/\.[^.]+$/', '', $file['filename']),
-                        'post_content' => '',
+                        'post_title' => SQ_Tools::getValue('sq_keyword', preg_replace('/\.[^.]+$/', '', $file['filename'])),
+                        'post_content' => urldecode(SQ_Tools::getValue('sq_fp_title', '')),
                         'post_status' => 'inherit',
                         'guid' => $local_file
                             ), $file['file'], $post_id);
@@ -158,6 +152,9 @@ class SQ_Post extends SQ_FrontController {
                     $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
                     wp_update_attachment_metadata($attach_id, $attach_data);
                 }
+            }
+            if (microtime(true) - $time >= 20) {
+                break;
             }
         }
 
@@ -193,7 +190,7 @@ class SQ_Post extends SQ_FrontController {
         $args['author'] = (int) SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
 
-        SQ_Action::apiCall('sq/seo/post', $args, 10);
+        SQ_Action::apiCall('sq/seo/post', $args, 5);
 
         //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {

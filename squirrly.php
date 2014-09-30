@@ -14,7 +14,6 @@
 
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
 define('SQ_VERSION', '3.3.4');
-
 /* Call config files */
 if (file_exists(dirname(__FILE__) . '/config/config.php')) {
     require(dirname(__FILE__) . '/config/config.php');
@@ -60,3 +59,5 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
     register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
     register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
 }
+
+
