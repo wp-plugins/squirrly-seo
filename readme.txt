@@ -145,6 +145,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Compatible with Wp Fastest Cache plugin, WP Super Cache
 * Added Tag to Meta Keyword option in Settings
 * Fixed some bugs related to SEO Audit
+* Fixed the og:image issue for featured post images in WP4
 
 = 3.3.3 =
 * Added the new Google Analytics tracking code

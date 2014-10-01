@@ -245,7 +245,6 @@ class Model_SQ_Frontend {
                 $this->thumb_image = $ogimage;
             } else {
                 $this->thumb_image = $this->getImageFromContent();
-                echo $this->thumb_image;
             }
         }
 
