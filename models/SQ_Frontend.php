@@ -241,12 +241,11 @@ class Model_SQ_Frontend {
 
         $url = $this->getCanonicalUrl();
         if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            if (isset($post) && isset($post->ID)) {
-                if ($ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
-                    $this->thumb_image = $ogimage;
-                }
+            if (isset($post) && isset($post->ID) && $ogimage = $this->getAdvancedMeta($post->ID, 'ogimage')) {
+                $this->thumb_image = $ogimage;
             } else {
                 $this->thumb_image = $this->getImageFromContent();
+                echo $this->thumb_image;
             }
         }
 
@@ -424,19 +423,26 @@ class Model_SQ_Frontend {
             }
         }
 
-        if ($post && isset($post->post_content)) {
-            preg_match('/<img[^>]*src="([^"]*)"[^>]*>/i', $post->post_content, $match);
-        }
+        if ($post && isset($post->ID)) {
+            if (has_post_thumbnail($post->ID)) {
+                $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large');
+                if (is_array($image) && !empty($image)) {
+                    return $image[0];
+                }
+            } elseif (isset($post->post_content)) {
+                preg_match('/<img[^>]*src="([^"]*)"[^>]*>/i', $post->post_content, $match);
 
-        if (empty($match)) {
-            return;
-        }
+                if (empty($match)) {
+                    return;
+                }
 
-        if (strpos($match[1], '//') === false) {
-            $match[1] = get_bloginfo('url') . $match[1];
-        }
+                if (strpos($match[1], '//') === false) {
+                    $match[1] = get_bloginfo('url') . $match[1];
+                }
 
-        return $match[1];
+                return $match[1];
+            }
+        }
     }
 
     /**
