@@ -34,7 +34,6 @@ class SQ_Frontend extends SQ_FrontController {
             if ($this->_isAjax())
                 return;
             //Use buffer only for meta Title
-            //if(self::$options['sq_auto_title'] == 1)
             $this->model->startBuffer();
         }
     }
