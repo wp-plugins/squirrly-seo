@@ -60,8 +60,7 @@ If you're doing the tech stuff on your site or want to know what Starbox's inner
 * Displays the Author Box in the special pages built for each author.
 * Special Pages for your authors
 * Works even with sites that have woocommerce or other ecommerce plugins
-
-* NEW! Add Starbox in your post's content or wordpress widgets using the shortcode [starbox] or [starbox id=USER_ID]
+* Add Starbox in your post's content or wordpress widgets using the shortcode [starbox] or [starbox id=USER_ID]
 
 
 So get your very own Starbox now:
