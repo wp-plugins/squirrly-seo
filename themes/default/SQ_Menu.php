@@ -196,12 +196,16 @@
                     if ($view->options['sq_fp_title'] == '')
                         $auto_option = true;
 
-                    if ($pageId = get_option('page_on_front') && SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title') <> '') {
-                        $view->options['sq_fp_title'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title');
-                        $view->options['sq_fp_description'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'description');
-                        $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($pageId);
-                        if (isset($json) && isset($json->keyword)) {
-                            $view->options['sq_fp_keywords'] = $json->keyword;
+                    if ($pageId = get_option('page_on_front')) {
+                        if (SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title') <> '') {
+                            $view->options['sq_fp_title'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title');
+                            $view->options['sq_fp_description'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'description');
+                            if (!$view->options['sq_fp_keywords'] = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'keyword')) {
+                                $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($pageId);
+                                if (isset($json) && isset($json->keyword) && $json->keyword <> '') {
+                                    $view->options['sq_fp_keywords'] = $json->keyword;
+                                }
+                            }
                         }
                     }
                     ?>
