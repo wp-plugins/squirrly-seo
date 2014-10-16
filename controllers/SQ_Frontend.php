@@ -2,21 +2,11 @@
 
 class SQ_Frontend extends SQ_FrontController {
 
-    public static $options;
-
     public function __construct() {
         if ($this->_isAjax())
             return;
 
         parent::__construct();
-
-        SQ_ObjController::getController('SQ_Tools', false);
-        self::$options = SQ_Tools::getOptions();
-
-        if (SQ_Tools::getValue('sq_use') == 'on')
-            self::$options['sq_use'] = 1;
-        elseif (SQ_Tools::getValue('sq_use') == 'off')
-            self::$options['sq_use'] = 0;
     }
 
     private function _isAjax() {
@@ -29,11 +19,18 @@ class SQ_Frontend extends SQ_FrontController {
     /**
      * Called after plugins are loaded
      */
-    public function hookLoaded() {
-        if (self::$options['sq_use'] == 1) {
+    public function hookPreload() {
+        if (SQ_Tools::getValue('sq_use') == 'on') {
+            SQ_Tools::$options['sq_use'] = 1;
+        } elseif (SQ_Tools::getValue('sq_use') == 'off') {
+            SQ_Tools::$options['sq_use'] = 0;
+        }
+
+        if (SQ_Tools::$options['sq_use'] == 1) {
             if ($this->_isAjax())
                 return;
             //Use buffer only for meta Title
+            //if(SQ_Tools::$options['sq_auto_title'] == 1)
             $this->model->startBuffer();
         }
     }
@@ -47,11 +44,11 @@ class SQ_Frontend extends SQ_FrontController {
 
         echo $this->model->setStart();
 
-        if (isset(self::$options['sq_use']) && (int) self::$options['sq_use'] == 1) {
+        if (isset(SQ_Tools::$options['sq_use']) && (int) SQ_Tools::$options['sq_use'] == 1) {
             echo $this->model->setHeader();
 
             //Use buffer only for meta Title
-            //if(self::$options['sq_auto_title'] == 1)
+            //if(SQ_Tools::$options['sq_auto_title'] == 1)
             $this->model->flushHeader();
         }
 
@@ -100,7 +97,7 @@ class SQ_Frontend extends SQ_FrontController {
      * Hook Footer load to save the visit and to close the buffer
      */
     public function hookFrontfooter() {
-        if (isset(self::$options['sq_use']) && (int) self::$options['sq_use'] == 1) {
+        if (isset(SQ_Tools::$options['sq_use']) && (int) SQ_Tools::$options['sq_use'] == 1) {
             //Be sure the heder is flushed
             $this->model->flushHeader();
         }

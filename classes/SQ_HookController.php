@@ -17,6 +17,7 @@ class SQ_HookController {
             'wmenu' => '_admin_menu',
             'menu' => 'admin_menu',
             'submenu' => 'add_submenu_page',
+            'preload' => 'template_redirect',
             'loaded' => 'plugins_loaded',
             'xml' => 'admin_xml_ns',
             'scripts' => 'admin_enqueue_scripts',

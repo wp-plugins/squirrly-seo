@@ -136,12 +136,15 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.3.6 =
+* Fixed the keywords SEO settings for the first page optimization
+* Fixed the image resize on drag-drop from inspiration box
+* Fixed the highlight in Seo Live Assistant not to disappear when you click on keyword
+
 = 3.3.5 =
 * Added Tag to Meta Keyword option in Settings
 * Fixed some bugs related to SEO Audit
 * Fixed the og:image issue for featured post images in WP4
-* Fixed the highlight in Seo Live Assistant not to disappear when you click on keyword
-* Fixed the image resize on drag-drop from inspiration box
 
 = 3.3.4 =
 * Compatible with WP 4.0
