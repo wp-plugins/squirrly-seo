@@ -11,7 +11,7 @@ class SQ_Tools extends SQ_FrontController {
     public static $options = array();
 
     /** @var integer Count the errors in site */
-    static $errors_count = 0;
+    static $errors_count;
 
     /** @var array */
     private static $debug;
@@ -345,11 +345,14 @@ class SQ_Tools extends SQ_FrontController {
      * Check for SEO blog bad settings
      */
     public static function checkErrorSettings($count_only = false) {
+
         if (function_exists('is_network_admin') && is_network_admin())
             return;
 
         if (isset(self::$options['ignore_warn']) && self::$options['ignore_warn'] == 1)
             return;
+
+
 
         $fixit = "<a href=\"javascript:void(0);\"  onclick=\"%s jQuery(this).closest('div').fadeOut('slow'); if(parseInt(jQuery('.sq_count').html())>0) { var notif = (parseInt(jQuery('.sq_count').html()) - 1); if (notif > 0) {jQuery('.sq_count').html(notif); }else{ jQuery('.sq_count').html(notif); jQuery('.sq_count').hide(); } } jQuery.post(ajaxurl, { action: '%s', nonce: '" . wp_create_nonce(_SQ_NONCE_ID_) . "'});\" >" . __("Fix it for me!", _SQ_PLUGIN_NAME_) . "</a>";
 
@@ -362,28 +365,35 @@ class SQ_Tools extends SQ_FrontController {
                 SQ_Error::setError(__('Let Squirrly optimize your SEO automatically (recommended)', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_use_on').attr('checked', true);", "sq_fixautoseo") . " | ", 'settings', 'sq_fix_auto');
         }
 
-        /* IF DESCRIPTION DUPLICATES */
-        if (self::getDuplicateDescription()) {
-            if ($count_only)
-                self::$errors_count ++;
-            else
-                SQ_Error::setError(__('You have META Description Duplicates. Disable the Squirrly SEO Description or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_description0').attr('checked', true); jQuery('#sq_automatically').attr('checked', true);", "sq_fix_descduplicate") . " | ", 'settings', 'sq_fix_descduplicate');
-        }
+        //check only when in seo settings
+        if (strpos($_SERVER['REQUEST_URI'], 'page=squirrly')) {
+            self::$source_code = self::sq_remote_get(get_bloginfo('url'), array('timeout' => 5));
 
-        /* IF OG DUPLICATES */
-        if (self::getDuplicateOG()) {
-            if ($count_only)
-                self::$errors_count ++;
-            else
-                SQ_Error::setError(__('You have Open Graph META Duplicates. Disable the Squirrly SEO Open Graph or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_facebook0').attr('checked', true);", "sq_fix_ogduplicate") . " | ", 'settings', 'sq_fix_ogduplicate');
-        }
+            if (self::$source_code <> '') {
+                /* IF DESCRIPTION DUPLICATES */
+                if (self::getDuplicateDescription()) {
+                    if ($count_only)
+                        self::$errors_count ++;
+                    else
+                        SQ_Error::setError(__('You have META Description Duplicates. Disable the Squirrly SEO Description or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_description0').attr('checked', true); jQuery('#sq_automatically').attr('checked', true);", "sq_fix_descduplicate") . " | ", 'settings', 'sq_fix_descduplicate');
+                }
 
-        /* IF TWITTER CARD DUPLICATES */
-        if (self::getDuplicateTC()) {
-            if ($count_only)
-                self::$errors_count ++;
-            else
-                SQ_Error::setError(__('You have Twitter Card META Duplicates. Disable the Squirrly SEO Twitter Card or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_twitter0').attr('checked', true);", "sq_fix_tcduplicate") . " | ", 'settings', 'sq_fix_tcduplicate');
+                /* IF OG DUPLICATES */
+                if (self::getDuplicateOG()) {
+                    if ($count_only)
+                        self::$errors_count ++;
+                    else
+                        SQ_Error::setError(__('You have Open Graph META Duplicates. Disable the Squirrly SEO Open Graph or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_facebook0').attr('checked', true);", "sq_fix_ogduplicate") . " | ", 'settings', 'sq_fix_ogduplicate');
+                }
+
+                /* IF TWITTER CARD DUPLICATES */
+                if (self::getDuplicateTC()) {
+                    if ($count_only)
+                        self::$errors_count ++;
+                    else
+                        SQ_Error::setError(__('You have Twitter Card META Duplicates. Disable the Squirrly SEO Twitter Card or disable the other SEO Plugins', _SQ_PLUGIN_NAME_) . " <br />" . sprintf($fixit, "jQuery('#sq_auto_twitter0').attr('checked', true);", "sq_fix_tcduplicate") . " | ", 'settings', 'sq_fix_tcduplicate');
+                }
+            }
         }
 
         /* IF SEO INDEX IS OFF */
@@ -424,8 +434,6 @@ class SQ_Tools extends SQ_FrontController {
         }
 
         if (self::$options['sq_use'] == 1 && self::$options['sq_auto_facebook'] == 1) {
-            if (!isset(self::$source_code))
-                self::$source_code = self::sq_remote_get(get_bloginfo('url'), array('timeout' => 10));
 
             if (self::$source_code <> '') {
                 preg_match_all("/<meta[\s+]property=[\"|\']og:url[\"|\'][\s+](content|value)=[\"|\']([^>]*)[\"|\'][^>]*>/i", self::$source_code, $out);
@@ -448,8 +456,6 @@ class SQ_Tools extends SQ_FrontController {
         }
 
         if (self::$options['sq_use'] == 1 && self::$options['sq_auto_twitter'] == 1) {
-            if (!isset(self::$source_code))
-                self::$source_code = self::sq_remote_get(get_bloginfo('url'), array('timeout' => 10));
 
             if (self::$source_code <> '') {
                 preg_match_all("/<meta[\s+]name=[\"|\']twitter:card[\"|\'][\s+](content|value)=[\"|\']([^>]*)[\"|\'][^>]*>/i", self::$source_code, $out);
@@ -473,9 +479,6 @@ class SQ_Tools extends SQ_FrontController {
         $total = 0;
 
         if (self::$options['sq_use'] == 1 && self::$options['sq_auto_description'] == 1) {
-            if (!isset(self::$source_code))
-                self::$source_code = self::sq_remote_get(get_bloginfo('url'), array('timeout' => 10));
-
             if (self::$source_code <> '') {
                 preg_match_all("/<meta[^>]*name=[\"|\']description[\"|\'][^>]*content=[\"]([^\"]*)[\"][^>]*>/i", self::$source_code, $out);
                 if (!empty($out) && isset($out[0]) && is_array($out[0])) {
