@@ -136,10 +136,11 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 3.3.6 =
+= 3.3.7 =
 * Fixed the keywords SEO settings for the first page optimization
 * Fixed the image resize on drag-drop from inspiration box
 * Fixed the highlight in Seo Live Assistant not to disappear when you click on keyword
+* Fixed the SEO check lag for meta duplicates in backend
 
 = 3.3.5 =
 * Added Tag to Meta Keyword option in Settings
