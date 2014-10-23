@@ -700,13 +700,23 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function getLanguage() {
+        $meta = '';
+        if ($this->isHomePage()) {
+            $hreflang = SQ_ObjController::getController('SQ_Ranking', false)->getLanguage();
+
+            if ($hreflang <> '') {
+                $url = get_bloginfo('url');
+                $meta .= sprintf("<link rel=\"alternate\" hreflang=\"%s\" href=\"$url\" />", $hreflang) . "\n";
+            }
+        }
+
         $language = get_bloginfo('language');
 
         if ($language <> '') {
-            return sprintf("<meta name=\"language\" content=\"%s\" />", $language) . "\n";
+            $meta .= sprintf("<meta name=\"language\" content=\"%s\" />", $language) . "\n";
         }
 
-        return false;
+        return $meta;
     }
 
     /**
