@@ -252,6 +252,8 @@ class SQ_Menu extends SQ_FrontController {
                 }
 
                 SQ_Tools::saveOptions('sq_google_country', SQ_Tools::getValue('sq_google_country'));
+                SQ_Tools::saveOptions('sq_google_country_strict', SQ_Tools::getValue('sq_google_country_strict'));
+
 
                 SQ_Tools::saveOptions('sq_google_plus', SQ_Tools::getValue('sq_google_plus'));
                 SQ_Tools::saveOptions('sq_google_wt', $this->model->checkGoogleWTCode(SQ_Tools::getValue('sq_google_wt')));

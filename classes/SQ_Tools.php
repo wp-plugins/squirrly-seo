@@ -107,6 +107,7 @@ class SQ_Tools extends SQ_FrontController {
             //
             'sq_google_country' => 'com',
             'sq_google_language' => 'en',
+            'sq_google_country_strict' => 1,
             // --
             'sq_advance_user' => 0,
             'sq_affiliate_link' => '',

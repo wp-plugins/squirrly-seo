@@ -242,7 +242,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <legend>
+                <legend class="sq_legend_medium">
                     <span class="sq_legend_title"><?php _e('Squirrly Options', _SQ_PLUGIN_NAME_); ?></span>
                     <span><?php echo sprintf(__('%sThe right premises in working with Squirrly, WordPress SEO plugin%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/the-right-premises-in-working-with-squirrly-wordpress-seo-plugin" target="_blank">', '</a>'); ?></span>
                     <span><?php echo sprintf(__('%sGetting inspired with Squirrly WordPress SEO plugin%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/getting-inspired-with-squirrly-wordpress-seo-plugin" target="_blank">', '</a>'); ?></span>
@@ -312,7 +312,7 @@
 
                     <div class="sq_option_content">
                         <p class=" withbordertop">
-                            <span><?php _e('Select the country for which Squirrly will check the google rank', _SQ_PLUGIN_NAME_); ?></span>
+                            <span><?php _e('Select the google extension for which Squirrly will check the google rank', _SQ_PLUGIN_NAME_); ?></span>
                         </p>
                         <div class="abh_select">
                             <select id="sq_google_country" name="sq_google_country">
@@ -417,7 +417,17 @@
                                 <option value="co.ve"><?php _e('Venezuela', _SQ_PLUGIN_NAME_); ?> (http://www.google.co.ve/)</option>
                             </select>
                         </div>
-
+                        <br />
+                        <div class="sq_option_content">
+                            <div class="sq_switch">
+                                <input id="sq_google_country_strict1" type="radio" class="sq_switch-input" name="sq_google_country_strict" value="1" <?php echo (($view->options['sq_google_country_strict'] == 1) ? "checked" : '') ?> />
+                                <label for="sq_google_country_strict1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _SQ_PLUGIN_NAME_); ?></label>
+                                <input id="sq_google_country_strict0" type="radio" class="sq_switch-input" name="sq_google_country_strict"  value="0" <?php echo (($view->options['sq_google_country_strict'] == 0) ? "checked" : '') ?> />
+                                <label for="sq_google_country_strict0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _SQ_PLUGIN_NAME_); ?></label>
+                                <span class="sq_switch-selection"></span>
+                            </div>
+                            <span><?php _e('Restricts search results to results originating in the above particular country.', _SQ_PLUGIN_NAME_); ?></span>
+                        </div>
 
                     </div>
                 </div>

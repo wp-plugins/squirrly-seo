@@ -93,7 +93,10 @@ class SQ_Ranking extends SQ_FrontController {
         $arg['as_q'] = str_replace(" ", "+", strtolower(trim($this->keyword)));
         $arg['hl'] = $this->getLanguage();
         //$arg['gl'] = $this->getRefererCountry();
-        $arg['cr'] = 'country' . strtoupper($this->getRefererCountry());
+
+        if (SQ_Tools::$options['sq_google_country_strict'] == 1) {
+            $arg['cr'] = 'country' . strtoupper($this->getRefererCountry());
+        }
         $arg['start'] = '0';
         $arg['num'] = '100';
 
