@@ -115,8 +115,8 @@ class SQ_Ranking extends SQ_FrontController {
 
         $country = $this->getCountry();
 
-        if ($country == '' || $arg['hl'] == '' || $arg['cr'] == '') {
-            $this->error = 'no country (' . $country . ') or language (' . $arg['cr'] . ')';
+        if ($country == '' || $arg['hl'] == '') {
+            $this->error = 'no country (' . $country . ')';
             return false;
         }
 
