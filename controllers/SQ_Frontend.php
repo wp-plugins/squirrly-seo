@@ -2,11 +2,14 @@
 
 class SQ_Frontend extends SQ_FrontController {
 
+    public static $options;
+
     public function __construct() {
         if ($this->_isAjax())
             return;
 
         parent::__construct();
+        SQ_ObjController::getController('SQ_Tools', false);
     }
 
     private function _isAjax() {
