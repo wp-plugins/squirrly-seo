@@ -139,7 +139,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.3.8 =
 * Fixed SEO issues for some themes in frontend
 * Fixed the audit to load faster
-* Added the google hreflang meta
+* Added the google hreflang meta for language identification
+* Added strict search for google in SEO Settings
 
 = 3.3.7 =
 * Fixed the keywords SEO settings for the first page optimization
