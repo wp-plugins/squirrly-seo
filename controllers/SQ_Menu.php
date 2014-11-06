@@ -330,7 +330,7 @@ class SQ_Menu extends SQ_FrontController {
                     $url = get_bloginfo('url');
                 }
                 $snippet = SQ_Tools::getSnippet($url);
-                SQ_Tools::dump($snippet);
+                //SQ_Tools::dump($snippet);
 
                 /* if((int)SQ_Tools::getValue('post_id') > 0)
                   $snippet['url'] = get_permalink((int)SQ_Tools::getValue('post_id'));
