@@ -136,6 +136,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.3.9 =
+* Fixed snippet preview compatibility with the WP 4.0
+
 = 3.3.8 =
 * Fixed SEO issues for some themes in frontend
 * Fixed the audit to load faster
