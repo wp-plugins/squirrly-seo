@@ -1,4 +1,4 @@
-﻿=== SEO Plugin by SQUIRRLY ===
+﻿=== SEO by SQUIRRLY ===
 Contributors: florinmuresan, calinvingan, cifi
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
@@ -137,7 +137,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 3.3.9 =
-* Fixed snippet preview compatibility with the WP 4.0
+* Fixed SEO snippet preview compatibility with the WP 4.0
 
 = 3.3.8 =
 * Fixed SEO issues for some themes in frontend
@@ -250,141 +250,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added the traffic date information in Squirrly SEO Analytics
 * Fixed the Favicon issue for PNG images
 
-= 2.3.3 =
-* Fixed the curl call issue in some cases
-* Fixed the traffic loading speed in all posts
-* Changed the task color for Squirrly SEO Analytics
-* Changed the Keyword SERP check frequency
-* Fixed minor bugs in SEO Live Assistant
-* Enjoy Squirrly SEO!
+We do not offer support for lower versions od Squirrly SEO
 
-= 2.3.1 =
-* Fixed the javascript loading issue for some wordpress dashboards.
-* Fixed SERP report for indexed url in google
-
-= 2.3.0 =
-* Add the new Squirrly SEO Analytics in all posts list
-* Traffic graph for each post
-
-= 2.2.3 =
-* Fixed snippet encoding issue
-* Fixed SEO Audit Button notification
-
-= 2.2.2 =
-* Small changes in Squirrly SEO Keyword Research look
-* Fixed the snippet description issues
-* Fixed small bugs
-
-= 2.2.1 =
-* Fixed traffic record issue
-* Fixed SSL connection with the API issue
-
-= 2.2.0 =
-* Added a new theme for Squirrly SEO
-* Added the 2nd version for SEO Live assistant
-* Added Top Headline suggestion when adding a post title
-* Compatible with Wordpress 3.8.1 version
-* Fixed snippet issues
-
-= 2.1.7 =
-* Compatible with Wordpress 3.8 version
-* Fixed css issue
-* Updated the SEO live assistant
-
-= 2.1.6 =
-* Fixed css load issue
-* Fixed duplicate descriptions
-
-= 2.1.5 =
-* Compatible with 3.7.1
-* Update Open Graph Meta in Frontend
-* Updates for Seo Live Assistant
-
-= 2.1.4 =
-* Update the Traffic Bot List
-* Fixed database bugs for the traffic records
-* Fixed header loading bugs
-
-= 2.1.3 =
-* Optimized Squirrly SEO for a faster load
-* Fixed minor bugs in the theme's css files
-* Added Alexa Meta Tool in Squirrly SEO Settings
-* Updated the bot list in SEO Squirrly Article Rank
-
-= 2.1.2 =
-* Added unique SEO (title and description) for the author, tag and category pages
-* Fixed Open Graph image size and image url for a better view in facebook and google
-* Fixed some deprecated functions
-* Wordpress 3.6.1 compatibility
-
-= 2.1.1 =
-* Fixed absolute path for images in feed
-* Fixed unique title and description for categories and pages
-* Fixed local save images minor bug
-* Fixed keyword saving for main domain optimization
-* Changed the blog limit and optimization limit for the free account
-* Added the weekly SEO audit for all accounts
-
-= 2.1.0 =
-* Added Squirrly SEO Live Assistant for both Visual and HTML editors
-* Added Squirrly SEO for custom post types
-* Compatible with the Wordpress version 3.6
-* Fixed the type delay for Seo Live Assistant
-
-= 2.0.8 =
-* Fixed the custom SEO Title and Description notification in posts list
-* Changed the default SEO Settings
-* Fixed image insert in editor
-* Fixed minor bug that appeared on plugin activation
-* Fixed Squirrly SEO local save for remote images
-
-= 2.0.7 =
-* Added the Squirrly SEO Traffic Progress report
-* Fixed minor frontend bugs
-* Fixed the date in sitemap for tags
-
-= 2.0.6 =
-(stable)
-* Fixed header issue for remote requests
-* Added SSL connection to https://my.squirrly.co
-* Fixed post list loading issue in some cases
-* Fixed Squirrly SEO Status Info for expired trial version
-
-= 2.0.5 =
-* Fixed Squirrly SEO loading loop when all posts are not public in All posts
-* Add default message in SEO Article Rank when adding a new Post/Page
-* Added support options in Squirrly SEO Settings
-* Added the Russian (ru_RU) translation in Squirly SEO
-* Check calls for HTTPS when curl protocol could not support that
-
-= 2.0.4 =
-* Added Custom Title/Description option in all Post/Pages
-* Added SEO check if custom title is entered in Post/Page
-* Added SEO check for META customization with other plugins
-* Custom META notification in All Posts
-* Added Dashboard page in Squirrly SEO Tab
-* Added Account information, Blog status in dashboard
-* Added affiliate option and images in Squirrly SEO Tab
-* Validate remote images on save post to prevent bad images integration
-* Compatible with Twitter search 1.1
-* Changed the Sign-up messages
-* Changed the timeout for remote API requests
-
-= 2.0.3 =
-* Added attributes informations for copyright free images
-* Improved the Keyword Research results with competition results
-* Improved custom META description and keywords
-
-= 2.0.2 =
-* Fixed minor Squirrly SEO Rank Bugs
-* Fixed minor Snippet/Settings issues
-* Added the Squirrly Keyword Suggestion in Squirrly Rank
-
-= 2.0.1 =
-* Added Squirrly SEO Rank in Post/Page lists
-* Added Traffic progress monitor for each post/page
-* Added Social Impact progress monitor for each post/page
-* Added Inbound Links progress monitor for each post/page
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
