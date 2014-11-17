@@ -10,6 +10,10 @@ Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5,
 
 == Description ==
 
+<h2>How Do I Get Support For This Plugin? </h2>
+If you want Premium Support, that also comes with High Priority, go to:
+http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
+
 <h2>Starbox is the Author Box for Humans</h2>
 
 While search engines and other software that read your site care about files like robots.txt, you need Human readers to actually engage with your content and fall in love with it.
@@ -17,12 +21,6 @@ While search engines and other software that read your site care about files lik
 Humans look at beauty more than anything else (as you most probably already know, men and women alike). That's why you'll get an <strong>Author Box that's gorgeous to look at and it makes your readers click all the way through</strong> to see more about the Authors.
 
 Now, if you have just yourself as an Author on your site, or a super-star team of Authors, you'll love Starbox. You can <strong>choose from the professionaly built themes and landscaping</strong>. If you are the super-star type, or want to boost social proof, place your Author Box on top of the page, so that your Human readers will know that they're reading stuff that a real awesome person has written.
-
-<strong>How do I hide Powered by Starbox?</strong>
-You can buy Starbox without links and email subscription from:
-http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
-or
-Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all the authors.
 
 You want the classy, bottom-of-the-page Author Box? You can choose that one as well.
 
@@ -105,6 +103,9 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 
 == Changelog ==
+= 3.0.0 =
+* Made changed according to GPL 2.0
+
 = 2.2.0 =
 * Compatible with WP 4.0
 * Fixed various bugs
@@ -220,12 +221,6 @@ You can use startbox shortcode at the bottom of the content like this:
 [starbox id="john,david"] where john and david are the username of the authors
 or
 [starbox id="1,2..n"] where 1,2, .. n are the ID of the authors
-
-= How do I hide Powered by Starbox? =
-You can buy Starbox without links and subscription from:
-http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
-or
-Go to your user profile just switch off "Powered By Starbox" (under the social icons). It has a global effect for all of your authors. No need to change them one-by-one
 
 = Is your team dedicated to this plugin? =
 You can count on it :-) Our team of 8 people over at Squirrly (registered in the UK) are focused on making both our wordpress seo plugin and our author box plugin the best there are. So far we succeeded in making them one of the most popular, because we listen to your feedback and you're the reason for their success.

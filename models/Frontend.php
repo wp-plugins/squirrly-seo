@@ -37,7 +37,7 @@ class ABH_Models_Frontend {
                                 <div class="abh_tab_content">' .
                     $this->showAuthorDescription() .
                     $this->showAuthorPosts() . '
-                                ' . ((ABH_Classes_Tools::getOption('abh_powered_by') == 1) ? '<div class="abh_pwb"><a href="http://wordpress.org/plugins/starbox/" target="_blank" title="Starbox - Author Box" rel="nofollow">' . __('Powered by Starbox', _ABH_PLUGIN_NAME_) . '</a></div>' : '') . '
+                                <div class="abh_pwb"><a href="http://wordpress.org/plugins/starbox/" target="_blank" title="Starbox - Author Box" rel="nofollow">' . __('Powered by Starbox', _ABH_PLUGIN_NAME_) . '</a></div>
                                 </div>
                          </div>';
 

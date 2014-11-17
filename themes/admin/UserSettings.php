@@ -136,29 +136,7 @@
             <fieldset >
                 <legend><?php _e('Social settings:', _ABH_PLUGIN_NAME_); ?></legend>
 
-                <div id="abh_option_subscribe" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 1) echo 'style="display:none"'; ?>>
-                    <div id="abh_subscribe"><?php _e('To unlock social fields and hide the "Powered By" link please enter your email (only one email required per entire site):', _ABH_PLUGIN_NAME_); ?></div>
-                    <div id="abh_subscribe_social">
-                        <span class="abh_social_settings abh_twitter"></span>
-                        <span class="abh_social_settings abh_facebook"></span>
-                        <span class="abh_social_settings abh_google"></span>
-                        <span class="abh_social_settings abh_linkedin"></span>
-                        <span class="abh_social_settings abh_klout"></span>
-                        <span class="abh_social_settings abh_instagram"></span>
-                        <span class="abh_social_settings abh_flickr"></span>
-                        <span class="abh_social_settings abh_pinterest"></span>
-                        <span class="abh_social_settings abh_tumblr"></span>
-                        <span class="abh_social_settings abh_youtube"></span>
-                        <span class="abh_social_settings abh_vimeo"></span>
-                    </div>
-                    <input type="email" value="<?php echo esc_attr($GLOBALS['profileuser']->user_email) ?>" size="30" name="abh_email" id="abh_subscribe_email" >
-                    <input type="text" style="display: none;" value="<?php echo get_bloginfo('url') ?>" size="30" id="abh_subscribe_url" >
-
-                    <input type="button" value="Subscribe" id="abh_subscribe_subscribe">
-                    <div style="margin:3px; font-style: italic;" ><?php _e('You will only subscribe to StarBox News (No spam). <br />We do not connect your site to our server in any way. The plugin is stand-alone. <br />Only one email required per entire site.', _ABH_PLUGIN_NAME_); ?></div>
-
-                </div>
-                <div id="abh_option_social" <?php if (ABH_Classes_Tools::getOption('abh_subscribe') == 0) echo 'style="display:none"'; ?>>
+                <div id="abh_option_social" >
                     <p class="abh_social_text" style="height:30px; line-height: 30px;">
                         <span><?php _e('Social text (12 chars):', _ABH_PLUGIN_NAME_); ?></span>
                         <span ><input name="abh_socialtext" value="<?php echo $view->author['abh_socialtext']; ?>" size="30" maxlength="12" style="min-width: 100px; width: 100px;" /></span>
@@ -186,17 +164,6 @@
                             <span class="abh_switch-selection"></span>
                         </div>
                         <span><?php _e('Add rel="nofollow" to Social links', _ABH_PLUGIN_NAME_); ?></span>
-                    </div>
-
-                    <div class="abh_option_content">
-                        <div class="abh_switch">
-                            <input id="abh_powered_by_on" type="radio" class="abh_switch-input abh_powered_by" name="abh_powered_by"  value="1" <?php echo ((!ABH_Classes_Tools::getOption('abh_powered_by') == 0) ? "checked" : '') ?> />
-                            <label for="abh_powered_by_on" class="abh_switch-label abh_switch-label-off"><?php _e('Yes', _ABH_PLUGIN_NAME_); ?></label>
-                            <input id="abh_powered_by_off" type="radio" class="abh_switch-input abh_powered_by" name="abh_powered_by" value="0" <?php echo ((ABH_Classes_Tools::getOption('abh_powered_by') == 0) ? "checked" : '') ?> />
-                            <label for="abh_powered_by_off" class="abh_switch-label abh_switch-label-on"><?php _e('No', _ABH_PLUGIN_NAME_); ?></label>
-                            <span class="abh_switch-selection"></span>
-                        </div>
-                        <span><?php _e('Show "Powered by Starbox"', _ABH_PLUGIN_NAME_); ?></span>
                     </div>
 
                 </div>
