@@ -261,6 +261,7 @@ Cristina Leau  - Squirrly mascot designer
 Alexandra Nicola - Content Writer, future COO
 Ligia Mangra - Content Writer
 Ana Darstaru - Content Writer
+Teo - SEO Consultant
 
 Investors:
 Ibrahim Evsan, serial entrepreneur, one of the best known bloggers in Germany
