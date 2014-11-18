@@ -162,7 +162,7 @@ class SQ_Ranking extends SQ_FrontController {
         if (get_transient('google_blocked') !== false) {
             return;
         }
-        set_time_limit(3600);
+        set_time_limit(3000);
         /* Load the Submit Actions Handler */
         SQ_ObjController::getController('SQ_Tools', false);
         SQ_ObjController::getController('SQ_Action', false);
@@ -218,7 +218,7 @@ class SQ_Ranking extends SQ_FrontController {
                         SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
 
                         $count++;
-                        sleep(mt_rand(20, 60));
+                        sleep(mt_rand(20, 50));
                     }
                 }
             }
