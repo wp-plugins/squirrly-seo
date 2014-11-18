@@ -10,11 +10,11 @@ Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5,
 
 == Description ==
 
-<h2>How Do I Get Support For This Plugin? </h2>
+**How Do I Get Support For This Plugin?**
 If you want Premium Support, that also comes with High Priority, go to:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 
-<h2>Starbox is the Author Box for Humans</h2>
+**Starbox is the Author Box for Humans**
 
 While search engines and other software that read your site care about files like robots.txt, you need Human readers to actually engage with your content and fall in love with it.
 
