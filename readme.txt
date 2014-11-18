@@ -152,52 +152,6 @@ Download it from the Wordpress directory and try it out. Having an author box af
 * Compatible with Wordpress 3.8
 * Fixed css for different themes and for Wordpress 3.8
 
-= 1.0.8 =
-* Fixed shortcode for multiple authors
-* Fixed display css issues
-
-= 1.0.7 =
-* Fixed shortcode bugs
-* Fixed display bugs
-* Fixed css bugs in themes
-* Compatible with 3.7.1
-
-= 1.0.6 =
-* Added [starbox id="login_name" desc="custom description" ] params for shortcode
-* Added [starbox id=all] to list all the authors
-* Added cutome theme in shortcode [starbox theme="business"]
-
-= 1.0.5 =
-* Added custom author bio to avoid having multiple author boxes
-* Update the theme css for more themes
-* Added [starbox] shortcode to show starbox in content or widgets
-
-= 1.0.4 =
-* Added an option to restrict author box just for blog posts and pages
-* Loads even on sites with javascript errors
-* Improved the themes to work with more wordpress themes
-* Added Author Box Preview mode in default settings
-* Added default options for theme and position in user settings
-* Added Romanian Translation
-* Added German Translation by Joerg Gebauer
-
-= 1.0.3 =
-* Added the Open Graph for the author profile (profile:first_name, profile:last_name, og:type, og:url)
-* Added Author Box Preview mode in user settings
-* Updated the CSS in themes
-
-= 1.0.2 =
-* Fixed the custom image upload
-* Fixed theme css issues
-
-= 1.0.1 =
-* Added HTML5 author box tags to make it better
-* Added Klout score in social icon
-* Added Google vCard microformats for rich snippets
-* Added Google and Facebook Meta for rich snippets
-* Added author box custom image upload
-* WordPress 3.6.1 compatibility
-
 == Frequently Asked Questions ==
 = Why is there no meta for google and facebook authorship? =
 You have to fill the google and facebook social accounts in your profile and it will show up.
