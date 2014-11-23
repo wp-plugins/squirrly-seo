@@ -103,6 +103,9 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 
 == Changelog ==
+= 3.0.1 =
+* Compatible with WP 4.0.1
+
 = 3.0.0 =
 * Made changed according to GPL 2.0
 
