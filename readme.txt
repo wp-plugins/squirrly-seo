@@ -103,6 +103,10 @@ Download it from the Wordpress directory and try it out. Having an author box af
 
 
 == Changelog ==
+= 3.0.2 =
+* Fix link tag close duplicates
+* Added some theme compatibilities
+
 = 3.0.1 =
 * Compatible with WP 4.0.1
 

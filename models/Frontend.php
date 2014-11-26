@@ -66,7 +66,7 @@ class ABH_Models_Frontend {
         $content = '
                 <section class="' . (($this->single) ? 'vcard' : '') . ' abh_about_tab abh_tab" style="display:block">
                     <div class="abh_image">
-                      ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
+                      ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '
                     </div>
                     <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
@@ -86,7 +86,7 @@ class ABH_Models_Frontend {
         $content = '
                 <section class="abh_posts_tab abh_tab" >
                     <div class="abh_image">
-                      ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '</a>' . '
+                      ' . (($this->author->user_url) ? '<a href="' . $this->author->user_url . '" class="url" target="_blank" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>' : '<a href="' . get_author_posts_url($this->author->ID) . '" class="url" title="' . $this->author->display_name . '">' . $this->getProfileImage() . '</a>') . '
                     </div>
                     <div class="abh_social"> ' . $this->getSocial() . '</div>
                     <div class="abh_text">
