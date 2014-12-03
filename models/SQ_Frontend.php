@@ -613,7 +613,7 @@ class Model_SQ_Frontend {
         /* Check if is a predefined Keyword */
         if (SQ_Tools::$options['sq_auto_description'] == 1) { //
             if (($this->isHomePage() &&
-                    SQ_Tools::$options['sq_fp_keywords'] <> '') || $keywords == '') {
+                    SQ_Tools::$options['sq_fp_keywords'] <> '')) {
                 $keywords = strip_tags(SQ_Tools::$options['sq_fp_keywords']);
             }
         }
@@ -1449,17 +1449,15 @@ class Model_SQ_Frontend {
         //////////////////////////////////////////
         $fields = array('sq_fp_title' => '', 'sq_fp_description' => '', 'sq_fp_keywords' => '', 'sq_fp_ogimage' => '');
 
-        foreach ($fields as $meta_key => $meta_value) {
-            $cond .= ($cond <> '' ? ' OR ' : '') . "`meta_key` = '$meta_key'";
-        }
-
         $sql = "SELECT `meta_key`, `meta_value`
                        FROM `" . $wpdb->postmeta . "`
-                       WHERE ($cond) AND `post_id`=" . (int) $post_id;
+                       WHERE `post_id`=" . (int) $post_id;
 
         if ($rows = $wpdb->get_results($sql)) {
             foreach ($rows as $row) {
-                $this->meta[$post_id][$row->meta_key] = $row->meta_value;
+                if (array_key_exists($row->meta_key, $fields)) {
+                    $this->meta[$post_id][$row->meta_key] = $row->meta_value;
+                }
             }
         }
         if (isset($this->meta[$post_id]) && is_array($this->meta[$post_id])) {
@@ -1514,18 +1512,16 @@ class Model_SQ_Frontend {
         //////////////////////////////////////////
         $fields = array('_yoast_wpseo_title' => '', '_yoast_wpseo_metadesc' => '', '_yoast_wpseo_focuskw' => '');
 
-        foreach ($fields as $meta_key => $meta_value) {
-            $cond .= ($cond <> '' ? ' OR ' : '') . "`meta_key` = '$meta_key'";
-        }
-
         $sql = "SELECT `meta_key`, `meta_value`
                        FROM `" . $wpdb->postmeta . "`
-                       WHERE ($cond) AND `post_id`=" . (int) $post_id;
+                       WHERE `post_id`=" . (int) $post_id;
         //echo "History: ".$sql;
         $rows = $wpdb->get_results($sql);
         if ($rows) {
             foreach ($rows as $row) {
-                $this->meta[$post_id][$row->meta_key] = $row->meta_value;
+                if (array_key_exists($row->meta_key, $fields)) {
+                    $this->meta[$post_id][$row->meta_key] = $row->meta_value;
+                }
             }
         }
         if (isset($this->meta[$post_id]) && is_array($this->meta[$post_id])) {

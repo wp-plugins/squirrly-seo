@@ -126,13 +126,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Screenshots ==
-1. Wordpress Seo by Squirrly - Optimize your article with SEO Live Assistant
-2. Wordpress Seo by Squirrly - Find the top keywords with the Keyword Researh
-3. Wordpress Seo by Squirrly - Customize the META with the SEO Snippet
-4. Wordpress Seo by Squirrly - Find your top posts and authors with Squirrly Analytics
-5. Wordpress Seo by Squirrly - Monitor your success with the Performance Analytics
-6. Wordpress Seo by Squirrly - Let Squirrly do the SEO Settings that your blog needs
-7. Wordpress Seo by Squirrly - Check your Weekly Site Audit and improve to get higher scores
+1. Seo by Squirrly - Optimize your article with SEO Live Assistant
+2. Seo by Squirrly - Find the top keywords with the Keyword Researh
+3. Seo by Squirrly - Customize the META with the SEO Snippet
+4. Seo by Squirrly - Find your top posts and authors with Squirrly Analytics
+5. Seo by Squirrly - Monitor your success with the Performance Analytics
+6. Seo by Squirrly - Let Squirrly do the SEO Settings that your blog needs
+7. Seo by Squirrly - Check your Weekly Site Audit and improve to get higher scores
 
 
 == Changelog ==
@@ -235,7 +235,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed SEO Analytics in WP 3.9
 
 = 3.1.1 =
-* Added rel="prev" and rel="next" in head
+* Added rel="prev" and rel="next" in header
 * Added SEO META Duplicates notification
 * Fixed the snippet for home page when the home is a specific page
 * Added more details in SEO Analytics
@@ -244,7 +244,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.1.0 =
 * Added the Performance Analytics in Squirrly SEO Tab
 * Added Analytics filter for custom post types
-* Added Google Rank Column in Squirrly SEO > Performance Analytics
+* Added Google SEO Rank Column in Squirrly SEO > Performance Analytics
 * Added Google Country Select in Squirrly SEO > Settings
 
 = 3.0.0 =
@@ -254,7 +254,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the Favicon issue for PNG images
 
 We do not offer support for lower versions od Squirrly SEO
-
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
