@@ -144,16 +144,6 @@
                     </p>
                     <p><span class="abh_social_settings abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
                     <p><span class="abh_social_settings abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_google"></span><span><?php _e('Google +:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_google" value="<?php echo $view->author['abh_google']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_linkedin"></span><span><?php _e('LinkedIn:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_linkedin" value="<?php echo $view->author['abh_linkedin']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_klout"></span><span><?php _e('Klout:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_klout" value="<?php echo $view->author['abh_klout']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_instagram"></span><span><?php _e('Instagram:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_instagram" value="<?php echo $view->author['abh_instagram']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_flickr"></span><span><?php _e('Flickr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_flickr" value="<?php echo $view->author['abh_flickr']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_pinterest"></span><span><?php _e('Pinterest:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_pinterest" value="<?php echo $view->author['abh_pinterest']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_tumblr"></span><span><?php _e('Tumblr:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_tumblr" value="<?php echo $view->author['abh_tumblr']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_youtube"></span><span><?php _e('YouTube:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_youtube" value="<?php echo $view->author['abh_youtube']; ?>" size="30" /></p>
-                    <p><span class="abh_social_settings abh_vimeo"></span><span><?php _e('Vimeo:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_vimeo" value="<?php echo $view->author['abh_vimeo']; ?>" size="30" /></p>
-
 
                     <div class="abh_option_content">
                         <div class="abh_switch">
