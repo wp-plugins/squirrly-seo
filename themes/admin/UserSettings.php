@@ -144,7 +144,7 @@
                     </p>
                     <p><span class="abh_social_settings abh_twitter"></span><span><?php _e('Twitter:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_twitter" value="<?php echo $view->author['abh_twitter']; ?>" size="30" /></p>
                     <p><span class="abh_social_settings abh_facebook"></span><span><?php _e('Facebook:', _ABH_PLUGIN_NAME_); ?></span> <input type="text" name="abh_facebook" value="<?php echo $view->author['abh_facebook']; ?>" size="30" /></p>
-
+                    <p style="font-size: 18px; color: red;"><?php echo sprintf(__('Need more Socials Links and High Priority support? Visit %sStarbox PRO%s', _ABH_PLUGIN_NAME_), '<a href="http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/" target="_blank">', '</a>'); ?></p>
                     <div class="abh_option_content">
                         <div class="abh_switch">
                             <input id="abh_nofollow_social_on" type="radio" class="abh_switch-input" name="abh_nofollow_social"  value="1" <?php echo ((!$view->author['abh_nofollow_social'] == 0) ? "checked" : '') ?> />
