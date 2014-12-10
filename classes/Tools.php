@@ -155,7 +155,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
      * @return mixed Value
      */
     public static function getValue($key, $defaultValue = false) {
-        if (!isset($key) OR empty($key) OR !is_string($key))
+        if (!isset($key) OR empty($key) OR ! is_string($key))
             return false;
         $ret = (isset($_POST[$key]) ? $_POST[$key] : (isset($_GET[$key]) ? $_GET[$key] : $defaultValue));
 
@@ -171,7 +171,7 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
      * @return boolean
      */
     public static function getIsset($key) {
-        if (!isset($key) OR empty($key) OR !is_string($key))
+        if (!isset($key) OR empty($key) OR ! is_string($key))
             return false;
         return isset($_POST[$key]) ? true : (isset($_GET[$key]) ? true : false);
     }
@@ -315,9 +315,6 @@ class ABH_Classes_Tools extends ABH_Classes_FrontController {
 
 
         if (function_exists('is_network_admin') && is_network_admin())
-            return;
-
-        if (isset(self::$options['ignore_warn']) && self::$options['ignore_warn'] == 1)
             return;
 
         if (false) {

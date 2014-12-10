@@ -62,9 +62,6 @@ class ABH_Classes_Error extends ABH_Classes_FrontController {
                         die();
                         break;
                     case 'settings':
-                        if (ABH_Classes_Tools::getOption('ignore_warn') == 1)
-                            break;
-
                         /* switch off option for notifications */
                         self::$switch_off = "<a href=\"javascript:void(0);\" onclick=\"jQuery.post( ajaxurl, {action: 'abh_warnings_off', nonce: '" . wp_create_nonce('abh_none') . "'}, function(data) { if (data) { jQuery('#abh_ignore_warn').attr('checked', true); jQuery('.abh_message').hide(); jQuery('#toplevel_page_abh .awaiting-mod').fadeOut('slow'); } });\" >" . __("Turn off warnings!", _ABH_PLUGIN_NAME_) . "</a>";
                         self::showError(ucfirst(_ABH_PLUGIN_NAME_) . " " . __('Notice: ', _ABH_PLUGIN_NAME_) . $error['text'] . " " . self::$switch_off, $error['id']);

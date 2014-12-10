@@ -24,7 +24,6 @@ class ABH_Models_UserSettings {
 
         /* if the file has a name */
         if (!empty($file['name'])) {
-
             /* Check the extension */
             $file_type = strtolower($file_type);
             $files = array('jpeg', 'jpg', 'gif', 'png');
@@ -34,7 +33,6 @@ class ABH_Models_UserSettings {
                 ABH_Classes_Error::setError(__("File type error: Only JPEG, JPG, GIF or PNG files are allowed.", _ABH_PLUGIN_NAME_));
                 return;
             }
-
             /* Check for error messages */
             $error_count = count($file_error);
             if (!empty($file_error) && $error_count > 0) {
@@ -47,7 +45,6 @@ class ABH_Models_UserSettings {
                 ABH_Classes_Error::setError(__("GD error: The GD library must be installed on your server.", _ABH_PLUGIN_NAME_));
                 return;
             } else {
-
                 /* Delete the previous file if exists */
                 if (is_file($out['gravatar'])) {
                     if (!unlink($out['gravatar'])) {
@@ -55,19 +52,16 @@ class ABH_Models_UserSettings {
                         return;
                     }
                 }
-
                 /* Upload the file */
                 if (!move_uploaded_file($file['tmp_name'], $out['gravatar'])) {
-                    ABH_Classes_Error::setError(__("Upload error: Could not upload the gravatar.", _ABH_PLUGIN_NAME_));
+                    ABH_Classes_Error::setError(__("Upload error: Could not upload the gravatar.", _ABH_PLUGIN_NAME_), 'fatal');
                     return;
                 }
-
                 /* Change the permision */
                 if (!chmod($out['gravatar'], 0755)) {
                     ABH_Classes_Error::setError(__("Permission error: Could not change the gravatar permissions.", _ABH_PLUGIN_NAME_));
                     return;
                 }
-
                 /* Transform the image into icon */
                 $img->openImage($out['gravatar']);
                 $img->resizeImage(80, 80);

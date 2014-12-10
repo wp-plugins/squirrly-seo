@@ -105,6 +105,7 @@ class ABH_Core_UserSettings extends ABH_Classes_BlockController {
                 ABH_Classes_Tools::checkErrorSettings();
                 /* Force call of error display */
                 ABH_Classes_ObjController::getController('ABH_Classes_Error')->hookNotices();
+
                 break;
 
             case 'abh_get_box':
