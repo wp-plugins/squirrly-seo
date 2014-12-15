@@ -290,7 +290,7 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'profile') . "\n";
             $meta .= sprintf('<meta property="profile:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
-        } elseif (is_single() || is_page()) {
+        } elseif (!$this->isHomePage() && (is_single() || is_page())) {
             $meta .= sprintf('<meta property="og:type" content="%s" />', ((isset($this->thumb_video) && $this->thumb_video <> '') ? 'video' : 'article')) . "\n";
             if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
 
