@@ -2,7 +2,7 @@
 Contributors: florinmuresan,cifi
 Tags: author box‎,author,twitter,sidebar,images,shortcode,publisher,meta,post,posts,page,pages,google,facebook,snippet,plugin,html5,vcard,klout,users,user,author box,rich snippet,author bio, author bio box,bio,widget,comments,blog,content,email,image,linkedin,marketing,mobile,pinterest,profile,shortcodes,social,social media,wordpress
 Requires at least: 3.3
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 Donate link: http://starbox.squirrly.co/starbox-the-author-box-for-humans/
 
