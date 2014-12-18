@@ -138,7 +138,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 3.4.2 =
 * Fixed some queries for a better speed in backend
-* Fixed Open Graph for Homepage
+* Fixed Open Graph for Home Page
 * Fixed empty description for Woocommerce shop page
 
 = 3.4.1 =
