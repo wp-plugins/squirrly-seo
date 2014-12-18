@@ -106,6 +106,8 @@ Download it from the Wordpress directory and try it out. Having an author box af
 = 3.0.2 =
 * Fix link tag close duplicates
 * Added some theme compatibilities
+* Social Networks removed in the free version. Only Facebook add Twitter remained.
+
 
 = 3.0.1 =
 * Compatible with WP 4.0.1
