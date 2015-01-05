@@ -139,7 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.4.2 =
 * Fixed some queries for a better speed in backend
 * Fixed Open Graph for Home Page
-* Fixed empty description for Woocommerce shop page
+* Fixed empty description for the Woocommerce shop page
 
 = 3.4.1 =
 * Compatible with WP 4.0.1
