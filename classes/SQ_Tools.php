@@ -22,7 +22,7 @@ class SQ_Tools extends SQ_FrontController {
 
         self::$options = $this->getOptions();
 
-        //$this->checkDebug(); //Check for debug
+        $this->checkDebug(); //Check for debug
     }
 
     public static function getUserID() {
@@ -261,7 +261,6 @@ class SQ_Tools extends SQ_FrontController {
         //--
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_FAILONERROR, false);
         //--
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, $param['timeout']);

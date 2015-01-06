@@ -100,7 +100,6 @@ We're passionate about seeing you get a great and happy experience, so we'll do 
 
 The <a title="Squirrly SEO in Delivering Happiness" href="http://www.deliveringhappiness.com/everyday-happiness-florin-squirrly-and-how-theyre-making-happy-work/" target="_blank">Delivering Happiness</a> blog featured us for this.
 
-
 We're glad to have you,
 Florin Muresan
 CEO of Squirrly
@@ -126,13 +125,13 @@ See all the Features of our product on the <a href="/extend/plugins/squirrly-seo
 Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Screenshots ==
-1. Seo by Squirrly - Optimize your article with SEO Live Assistant
-2. Seo by Squirrly - Find the top keywords with the Keyword Researh
-3. Seo by Squirrly - Customize the META with the SEO Snippet
-4. Seo by Squirrly - Find your top posts and authors with Squirrly Analytics
-5. Seo by Squirrly - Monitor your success with the Performance Analytics
-6. Seo by Squirrly - Let Squirrly do the SEO Settings that your blog needs
-7. Seo by Squirrly - Check your Weekly Site Audit and improve to get higher scores
+1. Seo - Optimize your article with SEO Live Assistant
+2. Seo - Find the top keywords with the Keyword Researh
+3. Seo - Customize the META with the SEO Snippet
+4. Seo - Find your top posts and authors with Squirrly Analytics
+5. Seo - Monitor your success with the Performance Analytics
+6. Seo - Let Squirrly do the SEO Settings that your blog needs
+7. Seo - Check your Weekly Site Audit and improve to get higher scores
 
 
 == Changelog ==
@@ -266,7 +265,7 @@ Calin Vingan - CTO at Squirrly
 Andreea Leau - VP Marketing
 Cristina Leau  - Squirrly mascot designer
 Alexandra Nicola - Content Writer, future COO
-Ligia Mangra - Content Writer
+Teodora Vingan - SEO Analyser
 Ana Darstaru - Content Writer
 Teo - SEO Consultant
 
