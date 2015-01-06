@@ -11,7 +11,7 @@ Starbox is the Author Box for Humans. Professional Themes to choose from, HTML5,
 == Description ==
 
 **How Do I Get Support For This Plugin?**
-If you want Premium Support, that also comes with High Priority, go to:
+If you want more Social Icons and Premium Support, that also comes with High Priority, go to:
 http://starbox.squirrly.co/product/starbox-the-author-box-for-humans/
 
 **Starbox is the Author Box for Humans**
