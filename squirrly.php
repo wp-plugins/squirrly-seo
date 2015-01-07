@@ -6,7 +6,7 @@
 
   Plugin Name: SEO by SQUIRRLY
   Plugin URI: http://www.squirrly.co
-  Description: Squirrly SEO Plugin is for the NON-SEO expert. Get Excellent SEO with Better Content and SEO Stats. For Both Humans and Search Bots.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
+  Description: SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan
   Version: 3.4.2
   Author URI: http://www.squirrly.co
