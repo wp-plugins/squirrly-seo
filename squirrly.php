@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Copyright (c) 2012, Squirrly Limited.
+  Copyright (c) 2012, SEO Squirrly.
   The copyrights to the software code in this file are licensed under the (revised) BSD open source license.
 
   Plugin Name: SEO by SQUIRRLY

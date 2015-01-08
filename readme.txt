@@ -284,6 +284,10 @@ For higher content marketing and SEO needs, you can check our Official Site and 
 
 
 == Frequently Asked Questions ==
+= I can't log into the wordpress with my user. Get the message 'An error occured.' What can I do? =
+I see that your host server is not letting you to acces our remote API.
+Please tell your webmaster to add the IP 144.76.66.106  in the whitelist for remote access and it should work.
+
 = How does Squirrly Wordpress SEO Plugin work? =
 Neil Patel, the Co-Founder of Kissmetrics and Crazy Egg made a great video on how to use Squirrly's Live Assistant:
 http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
@@ -382,6 +386,3 @@ If you are an advanced user then in each post/page edit you can customize the ti
 = Is this wordpress seo plugin the only seo plugin I will need to install? =
 It all depends on how you have setup your wordpress until now. Some people use Squirrly seo plugin only for the Content Optimization with the Live Assistant part, some use use it to check their SEO stats and see where they need to improve their wordpress seo, but most of our users and customer use Squirrly for everything related to SEO: from keyword analysis, to seo settings on wordpress, to analytics and to weekly monitoring and audit reports.
 
-= I can't log into the wordpress with my user. Get the message 'An error occured.' What can I do? =
-I see that your host server is not letting you to acces our remote API.
-Please tell your webmaster to add the IP 144.76.66.106  in the whitelist for remote access and it should work.
