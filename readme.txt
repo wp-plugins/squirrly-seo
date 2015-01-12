@@ -285,8 +285,8 @@ For higher content marketing and SEO needs, you can check our Official Site and 
 
 == Frequently Asked Questions ==
 = I can't log into the wordpress with my user. Get the message 'An error occured.' What can I do? =
-I see that your host server is not letting you to acces our remote API.
-Please tell your webmaster to add the IP 144.76.66.106  in the whitelist for remote access and it should work.
+I see that your host server is not letting you to access our remote API.
+Please tell your web master to add the IP 144.76.66.106  in the white-list for remote access and it should work.
 
 = How does Squirrly Wordpress SEO Plugin work? =
 Neil Patel, the Co-Founder of Kissmetrics and Crazy Egg made a great video on how to use Squirrly's Live Assistant:
