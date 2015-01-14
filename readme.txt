@@ -257,6 +257,12 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added the traffic date information in Squirrly SEO Analytics
 * Fixed the Favicon issue for PNG images
 
+== Upgrade Notice ==
+= 3.4.2 =
+* To get a better SEO if you are using woocommerce plugin
+* You will have the google language identification
+* Open graph latest updates
+
 We do not offer support for lower versions od Squirrly SEO
 
 == Credits ==
