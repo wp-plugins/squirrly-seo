@@ -269,6 +269,7 @@ class SQ_Menu extends SQ_FrontController {
                 SQ_Tools::saveOptions('sq_keyword_information', (int) SQ_Tools::getValue('sq_keyword_information'));
                 SQ_Tools::saveOptions('sq_sla', (int) SQ_Tools::getValue('sq_sla'));
                 SQ_Tools::saveOptions('sq_keywordtag', (int) SQ_Tools::getValue('sq_keywordtag'));
+                SQ_Tools::saveOptions('sq_local_images', (int) SQ_Tools::getValue('sq_local_images'));
 
                 //update_option('blog_public', (int)SQ_Tools::getValue('sq_google_index'));
 

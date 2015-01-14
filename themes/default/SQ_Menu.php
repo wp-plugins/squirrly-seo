@@ -309,6 +309,17 @@
                         <span><?php _e('Add the Post tags in meta keyword.', _SQ_PLUGIN_NAME_); ?></span>
                     </div>
 
+                    <div class="sq_option_content">
+                        <div class="sq_switch">
+                            <input id="sq_local_images1" type="radio" class="sq_switch-input" name="sq_local_images" value="1" <?php echo (($view->options['sq_local_images'] == 1) ? "checked" : '') ?> />
+                            <label for="sq_local_images1" class="sq_switch-label sq_switch-label-off"><?php _e('Yes', _SQ_PLUGIN_NAME_); ?></label>
+                            <input id="sq_local_images0" type="radio" class="sq_switch-input" name="sq_local_images"  value="0" <?php echo (($view->options['sq_local_images'] == 0) ? "checked" : '') ?> />
+                            <label for="sq_local_images0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _SQ_PLUGIN_NAME_); ?></label>
+                            <span class="sq_switch-selection"></span>
+                        </div>
+                        <span><?php _e('Download <strong>remote images</strong> in your <strong>Media Library</strong> for the new posts.', _SQ_PLUGIN_NAME_); ?></span>
+                    </div>
+
 
                     <div class="sq_option_content">
                         <p class=" withbordertop">

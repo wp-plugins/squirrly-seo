@@ -11,6 +11,8 @@ SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better
 == Description ==
 Squirrly SEO helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO. You can opt-in to keep those settings, so no need to start over again :-)
 
+Recommended by <a href="http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/" >Neil Patel</a> and the co-founder of Kissmetrics and Crazy Egg
+
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
 See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
@@ -135,6 +137,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.4.3 =
+* Add the option to prevent downloading the remote images in the blog media library for the new posts
+
 = 3.4.2 =
 * Fixed some queries for a better speed in backend
 * Fixed Open Graph for Home Page

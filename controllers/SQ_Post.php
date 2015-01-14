@@ -98,72 +98,75 @@ class SQ_Post extends SQ_FrontController {
      * @return false|void
      */
     public function checkImage($post_id) {
-        @set_time_limit(90);
-        $local_file = false;
+        //if the option to save the images locally is set on
+        if (SQ_Tools::$options['sq_local_images'] == 1) {
+            @set_time_limit(90);
+            $local_file = false;
 
-        $content = stripslashes(SQ_Tools::getValue('post_content'));
-        $tmpcontent = trim($content, "\n");
-        $urls = array();
+            $content = stripslashes(SQ_Tools::getValue('post_content'));
+            $tmpcontent = trim($content, "\n");
+            $urls = array();
 
-        if (function_exists('preg_match_all')) {
-            @preg_match_all('/<img[^>]*src="([^"]+)"[^>]*>/i', $tmpcontent, $out);
+            if (function_exists('preg_match_all')) {
+                @preg_match_all('/<img[^>]*src="([^"]+)"[^>]*>/i', $tmpcontent, $out);
 
-            if (is_array($out)) {
-                if (!is_array($out[1]) || count($out[1]) == 0)
-                    return;
+                if (is_array($out)) {
+                    if (!is_array($out[1]) || count($out[1]) == 0)
+                        return;
 
-                if (get_bloginfo('wpurl') <> '') {
-                    $domain = parse_url(get_bloginfo('wpurl'));
+                    if (get_bloginfo('wpurl') <> '') {
+                        $domain = parse_url(get_bloginfo('wpurl'));
 
-                    foreach ($out[1] as $row) {
-                        if (strpos($row, 'http') !== false &&
-                                strpos($row, $domain['host']) === false) {
-                            if (!in_array($row, $urls)) {
-                                $urls[] = $row;
+                        foreach ($out[1] as $row) {
+                            if (strpos($row, 'http') !== false &&
+                                    strpos($row, $domain['host']) === false) {
+                                if (!in_array($row, $urls)) {
+                                    $urls[] = $row;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
 
-        if (!is_array($urls) || (is_array($urls) && count($urls) == 0))
-            return;
+            if (!is_array($urls) || (is_array($urls) && count($urls) == 0))
+                return;
 
-        $urls = @array_unique($urls);
-        $time = microtime(true);
-        foreach ($urls as $url) {
-            if ($file = $this->model->upload_image($url)) {
-                if (!file_is_valid_image($file['file']))
-                    continue;
+            $urls = @array_unique($urls);
+            $time = microtime(true);
+            foreach ($urls as $url) {
+                if ($file = $this->model->upload_image($url)) {
+                    if (!file_is_valid_image($file['file']))
+                        continue;
 
-                $local_file = $file['url'];
-                if ($local_file !== false) {
-                    $content = str_replace($url, $local_file, $content);
+                    $local_file = $file['url'];
+                    if ($local_file !== false) {
+                        $content = str_replace($url, $local_file, $content);
 
-                    $attach_id = wp_insert_attachment(array(
-                        'post_mime_type' => $file['type'],
-                        'post_title' => SQ_Tools::getValue('sq_keyword', preg_replace('/\.[^.]+$/', '', $file['filename'])),
-                        'post_content' => urldecode(SQ_Tools::getValue('sq_fp_title', '')),
-                        'post_status' => 'inherit',
-                        'guid' => $local_file
-                            ), $file['file'], $post_id);
+                        $attach_id = wp_insert_attachment(array(
+                            'post_mime_type' => $file['type'],
+                            'post_title' => SQ_Tools::getValue('sq_keyword', preg_replace('/\.[^.]+$/', '', $file['filename'])),
+                            'post_content' => urldecode(SQ_Tools::getValue('sq_fp_title', '')),
+                            'post_status' => 'inherit',
+                            'guid' => $local_file
+                                ), $file['file'], $post_id);
 
-                    $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
-                    wp_update_attachment_metadata($attach_id, $attach_data);
+                        $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
+                        wp_update_attachment_metadata($attach_id, $attach_data);
+                    }
+                }
+                if (microtime(true) - $time >= 20) {
+                    break;
                 }
             }
-            if (microtime(true) - $time >= 20) {
-                break;
+
+
+            if ($local_file !== false) {
+                wp_update_post(array(
+                    'ID' => $post_id,
+                    'post_content' => $content)
+                );
             }
-        }
-
-
-        if ($local_file !== false) {
-            wp_update_post(array(
-                'ID' => $post_id,
-                'post_content' => $content)
-            );
         }
     }
 
