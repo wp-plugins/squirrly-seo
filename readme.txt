@@ -11,7 +11,7 @@ SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better
 == Description ==
 Squirrly SEO helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find some great keywords. It works well with wordpress sites that already have Yoast or All In One SEO. You can opt-in to keep those settings, so no need to start over again :-)
 
-Recommended by <a href="http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/" >Neil Patel</a> and the co-founder of Kissmetrics and Crazy Egg
+Recommended by <a href="http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/" >Neil Patel</a>, the co-founder of Kissmetrics and Crazy Egg. Also by Brian Dean and over 100 content marketing experts
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
