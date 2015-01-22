@@ -2,10 +2,10 @@
     <ul>
 
         <li id="sq_options_dasboard">
-            <?php if (current_user_can('administrator')) { ?>
+            <?php if (current_user_can('manage_options')) { ?>
                 <span class="sq_push" style="display:none;">1</span>
                 <span class="sq_text" ><a href="<?php echo _SQ_DASH_URL_ ?>login/?token=<?php echo SQ_Tools::$options['sq_api'] ?>&redirect_to=<?php echo _SQ_DASH_URL_ ?>user/dashboard" title="<?php _e('Go to Profile', _SQ_PLUGIN_NAME_) ?>" target="_blank" ><span><?php _e('Profile', _SQ_PLUGIN_NAME_) ?></span></a></span><a href="<?php echo _SQ_DASH_URL_ ?>user/" title="<?php _e('Profile', _SQ_PLUGIN_NAME_) ?>" target="_blank" ><span class="sq_icon"></span></a>
-            <?php
+                <?php
             } else {
                 echo '&nbsp;';
             }
@@ -39,10 +39,10 @@
                 echo 'title="' . __('How was your Squirrly experience today?', _SQ_PLUGIN_NAME_) . '"';
             }
             ?>></span>
-            <?php if (!isset($_COOKIE['sq_feedback_face']) || (isset($_COOKIE['sq_feedback_face']) && (int) $_COOKIE['sq_feedback_face'] < 3)) { ?>
-                <?php if (!isset(SQ_Tools::$options['sq_feedback'])) { ?>
+                  <?php if (!isset($_COOKIE['sq_feedback_face']) || (isset($_COOKIE['sq_feedback_face']) && (int) $_COOKIE['sq_feedback_face'] < 3)) { ?>
+                      <?php if (!isset(SQ_Tools::$options['sq_feedback'])) { ?>
                     <span class="sq_push">1</span>
-    <?php } ?>
+                <?php } ?>
                 <ul class="sq_options_feedback_popup" style="display: none;">
                     <div id="sq_options_feedback_close" >x</div>
                     <li><?php echo __('How was Squirrly today?', _SQ_PLUGIN_NAME_) ?></li>
@@ -58,7 +58,7 @@
                         </table>
                         <div id="sq_options_feedback_error"></div>
                         <p id="sq_feedback_msg" style="display: none;" >
-    <?php echo __('Please tell us why?', _SQ_PLUGIN_NAME_) ?>
+                            <?php echo __('Please tell us why?', _SQ_PLUGIN_NAME_) ?>
                             <textarea class="sq_small_input" name="sq_feedback_message" cols="30" rows="2"></textarea>
                             <br />
                             <input id="sq_feedback_submit" type="button" value="<?php _e('Send feedback', _SQ_PLUGIN_NAME_) ?>">
@@ -67,12 +67,12 @@
                     </li>
                     <li><?php _e('Go to:', _SQ_PLUGIN_NAME_) ?> <a href="<?php echo _SQ_SUPPORT_URL_ ?>" title="<?php _e('support page', _SQ_PLUGIN_NAME_) ?>" target="_blank"><?php _e('support page', _SQ_PLUGIN_NAME_) ?></a></li>
                 </ul>
-<?php } else { ?>
+            <?php } else { ?>
                 <ul class="sq_options_feedback_popup" style="display: none;">
                     <div id="sq_options_feedback_close" >x</div>
                     <li><?php echo __('Thank you! You can send us a happy face tomorow too.', _SQ_PLUGIN_NAME_) ?></li>
                 </ul>
-<?php } ?>
+            <?php } ?>
         </li>
 
     </ul>

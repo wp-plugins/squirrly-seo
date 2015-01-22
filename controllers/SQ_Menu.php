@@ -67,7 +67,7 @@ class SQ_Menu extends SQ_FrontController {
         }
 
         /* add the plugin menu in admin */
-        if (current_user_can('administrator')) {
+        if (current_user_can('manage_options')) {
             SQ_Tools::checkErrorSettings(true);
             //check if activated
             $this->checkActivation();
@@ -140,7 +140,7 @@ class SQ_Menu extends SQ_FrontController {
             $this->model->addSubmenu(array($first_page,
                 ucfirst(_SQ_NAME_) . __(' account info', _SQ_PLUGIN_NAME_),
                 __('Account Info', _SQ_PLUGIN_NAME_),
-                'administrator',
+                'manage_options',
                 'sq_account',
                 array(SQ_ObjController::getBlock('SQ_BlockAccount'), 'init')
             ));
@@ -148,7 +148,7 @@ class SQ_Menu extends SQ_FrontController {
             $this->model->addSubmenu(array($first_page,
                 ucfirst(_SQ_NAME_) . __(' settings', _SQ_PLUGIN_NAME_),
                 __('SEO Settings', _SQ_PLUGIN_NAME_) . SQ_Tools::showNotices(SQ_Tools::$errors_count, 'errors_count'),
-                'administrator',
+                'manage_options',
                 preg_replace('/\s/', '_', _SQ_NAME_),
                 array($this, 'showMenu')
             ));
@@ -157,7 +157,7 @@ class SQ_Menu extends SQ_FrontController {
         $this->model->addSubmenu(array($first_page,
             __('Make money with ', _SQ_PLUGIN_NAME_) . ucfirst(_SQ_NAME_),
             __('Make money', _SQ_PLUGIN_NAME_),
-            'administrator',
+            'manage_options',
             'sq_affiliate',
             array(SQ_ObjController::getBlock('SQ_BlockAffiliate'), 'init')
         ));
