@@ -82,7 +82,7 @@ Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of
 
 <strong>You can read reviews from Internet Marketing experts on http://www.squirrly.co/reviews</strong>
 
-Over 600,000 Downloads. Our startup consists of 7 content marketing professionals dedicated to making Squirrly an amazing piece of software and writing great training materials to help you be successful and stay successful.
+Over 750,000 Downloads. Our startup consists of 7 content marketing professionals dedicated to making Squirrly an amazing piece of software and writing great training materials to help you be successful and stay successful.
 
 Over 100 Content Marketing Experts have reviewed our wordpress SEO plugin and loved it.
 
@@ -139,7 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 3.4.3 =
 * Add the option to prevent downloading the remote images in the blog media library for the new posts
-* Add support for custom user roles
+* Add support for custom admin user roles
 
 = 3.4.2 =
 * Fixed some queries for a better speed in backend
