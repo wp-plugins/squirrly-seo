@@ -83,7 +83,7 @@ class SQ_Blocklogin extends SQ_BlockController {
                 }
             } else {
                 //if unknown error
-                $return->error = sprintf(__('Error: Couldn\'t connect to host :(. Please contact your webmaster to add %s in the whiteist IP', _SQ_PLUGIN_NAME_), _SQ_API_URL_);
+                $return->error = sprintf(__('Error: Couldn\'t connect to host :( . Please contact your site\'s webhost (or webmaster) and request them to add http://api.squirrly.co/ to their  IP whitelist.', _SQ_PLUGIN_NAME_), _SQ_API_URL_);
             }
         } else
             $return->error = sprintf(__('Could not send your informations to squirrly. Please register %smanually%s.', _SQ_PLUGIN_NAME_), '<a href="' . _SQ_DASH_URL_ . 'login/?action=register" target="_blank">', '</a>');
