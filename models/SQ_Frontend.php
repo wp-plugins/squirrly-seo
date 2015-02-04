@@ -352,6 +352,7 @@ class Model_SQ_Frontend {
     public function getCustomTitle() {
         $title = '';
         $sep = '|';
+
         //If its a home page and home page auto title is activated
         if ($this->isHomePage() && SQ_Tools::$options['sq_auto_title'] == 1) { //for homepage
             $title = $this->clearTitle($this->grabTitleFromPost());
@@ -408,16 +409,15 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options ['sq_auto_title'] == 1 &&
                 SQ_Tools:: $options['sq_fp_title'] <> '') {
 
-            if (isset($this->post) && isset($this->post->ID) && $this->getAdvancedMeta($this->post->ID, 'title') <> '') {
+            //If the home page is a static page that has custom snippet
+            if (is_page() && isset($this->post) && isset($this->post->ID) && $this->getAdvancedMeta($this->post->ID, 'title') <> '') {
                 $title = SQ_Tools::i18n($this->getAdvancedMeta($this->post->ID, 'title'));
             } else {
                 $title = $this->clearTitle(SQ_Tools::$options['sq_fp_title']);
             }
         }
 
-        return
-
-                $title;
+        return $title;
     }
 
     /**
@@ -569,7 +569,8 @@ class Model_SQ_Frontend {
                 SQ_Tools::$options['sq_auto_description'] == 1 &&
                 SQ_Tools::$options ['sq_fp_description'] <> '') {
 
-            if (isset($this->post) && isset($this->post->ID) && $this->getAdvancedMeta($this->post->ID, 'description') <> '') {
+            //If the home page is a static page that has custom snippet
+            if (is_page() && isset($this->post) && isset($this->post->ID) && $this->getAdvancedMeta($this->post->ID, 'description') <> '') {
                 $description = SQ_Tools::i18n($this->getAdvancedMeta($this->post->ID, 'description'));
             } else {
                 $description = strip_tags(SQ_Tools::$options['sq_fp_description']);
@@ -1221,7 +1222,6 @@ class Model_SQ_Frontend {
      */
     public function getCanonicalUrl() {
         global $wp_query;
-
         if (!isset($wp_query) || $wp_query->is_404 || $wp_query->is_search) {
             return false;
         }
@@ -1338,6 +1338,7 @@ class Model_SQ_Frontend {
      */
     private function isHomePage() {
         global $wp_query;
+
         return (is_home() || (isset($wp_query->query) && empty($wp_query->query
                 ) && !is_preview()));
     }
