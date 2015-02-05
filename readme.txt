@@ -137,10 +137,14 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 3.4.4 =
+* Fixed the SEO Analytics and the Rank updates
+* Fixed the SEO for First Page  if the Home Page is not a static page
+* Fixed the SEO for the First Page when it starts with woocommerce shop
+
 = 3.4.3 =
 * Add the option to prevent downloading the remote images in the blog media library for the new posts
 * Add support for custom admin user roles
-* Fixed the SEO Analytics and the Rank updates
 
 = 3.4.2 =
 * Fixed some queries for a better speed in backend
