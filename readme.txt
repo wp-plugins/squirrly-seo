@@ -137,11 +137,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 3.5.0 =
-* Split the Settings in two: SEO and Settings for a better control
-* Compatible with WP 4.1.1
-
 = 3.4.4 =
+* Compatible with WP 4.1.1
 * Fixed the SEO Analytics and the Rank updates
 * Fixed the SEO for First Page  if the Home Page is not a static page
 * Fixed the SEO for the First Page when it starts with woocommerce shop
