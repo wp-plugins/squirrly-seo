@@ -3,7 +3,7 @@ Contributors: cifi, calinvingan, florinmuresan
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,wordpress,automatic,iphone
 Requires at least: 3.3
 Tested up to: 4.1.1
-Stable tag: trunk
+Stable tag: 3.4.4
 Donate link: http://www.squirrly.co
 
 SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.
@@ -270,12 +270,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the Favicon issue for PNG images
 
 == Upgrade Notice ==
-= 3.4.2 =
-* To get a better SEO if you are using woocommerce plugin
-* You will have the google language identification
-* Open graph latest updates
-
-We do not offer support for lower versions od Squirrly SEO
+= 3.4.4 =
+3.4.4 is an inportant update. We fixed the SEO for Home Page, added Google language identification, latest updates for Open graph, improved the Woocommerce shop SEO. We do not offer support for lower versions od Squirrly SEO
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
