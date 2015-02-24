@@ -269,10 +269,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added the traffic date information in Squirrly SEO Analytics
 * Fixed the Favicon issue for PNG images
 
-== Upgrade Notice ==
-= 3.4.4 =
-3.4.4 is an inportant update. We fixed the SEO for Home Page, added Google language identification, latest updates for Open graph, improved the Woocommerce shop SEO. We do not offer support for lower versions od Squirrly SEO
-
 == Credits ==
 Florin Muresan - CEO at Squirrly
 Calin Vingan - CTO at Squirrly
@@ -400,3 +396,7 @@ If you are an advanced user then in each post/page edit you can customize the ti
 = Is this wordpress seo plugin the only seo plugin I will need to install? =
 It all depends on how you have setup your wordpress until now. Some people use Squirrly seo plugin only for the Content Optimization with the Live Assistant part, some use use it to check their SEO stats and see where they need to improve their wordpress seo, but most of our users and customer use Squirrly for everything related to SEO: from keyword analysis, to seo settings on wordpress, to analytics and to weekly monitoring and audit reports.
 
+== Upgrade Notice ==
+
+= 3.4.4 =
+3.4.4 is an inportant update. We improved the on-page SEO , added Google language identification, latest updates for Open graph, improved the SEO for Woocommerce plugin. We do not offer support for lower versions od Squirrly SEO
