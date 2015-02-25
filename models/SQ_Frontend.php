@@ -2,6 +2,9 @@
 
 class Model_SQ_Frontend {
 
+    /** @var canonical link */
+    private $url;
+
     /** @var string */
     private $title;
 
@@ -222,6 +225,10 @@ class Model_SQ_Frontend {
             return;
         }
 
+        if (!isset($this->url)) {
+            $this->url = $this->getCanonicalUrl();
+        }
+
         //if ($options['sq_twitter_creator'] == '' && $options['sq_twitter_site'] == '') return;
         $sq_twitter_creator = $options['sq_twitter_account'];
         $sq_twitter_site = $options['sq_twitter_account'];
@@ -234,12 +241,11 @@ class Model_SQ_Frontend {
 
         $meta .= (($sq_twitter_creator <> '') ? sprintf('<meta name="twitter:creator" content="%s" />', $sq_twitter_creator) . "\n" : '');
         $meta .= (($sq_twitter_site <> '') ? sprintf('<meta name="twitter:site" content="%s" />', $sq_twitter_site) . "\n" : '');
-
+        $meta .= sprintf('<meta name="twitter:url" content="%s">', $this->url) . "\n";
         $meta .= sprintf('<meta name="twitter:title" content="%s">', $this->title) . "\n";
-        $meta .= (($this->title == $this->description) ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
-        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image:src" content="%s">', $this->thumb_image) . "\n" : '');
-        $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta name="twitter:domain" content="%s">', $this->meta['blogname']) . "\n" :
-                        '');
+        $meta .= (($this->description <> '') ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
+        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image" content="%s">', $this->thumb_image) . "\n" : '');
+        $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta name="twitter:domain" content="%s">', $this->meta['blogname']) . "\n" : '');
 
         return $meta;
     }
@@ -318,11 +324,14 @@ class Model_SQ_Frontend {
      * @return string
      */
     private function setCanonical() {
-        $url = $this->getCanonicalUrl();
-        if ($url) {
+        if (!isset($this->url)) {
+            $this->url = $this->getCanonicalUrl();
+        }
+
+        if ($this->url) {
             remove_action('wp_head', 'rel_canonical');
 
-            return sprintf("<link rel=\"canonical\" href=\"%s\" />", $url) . "\n";
+            return sprintf("<link rel=\"canonical\" href=\"%s\" />", $this->url) . "\n";
         }
 
         return '';
