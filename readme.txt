@@ -138,6 +138,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 3.4.4 =
+* Updated the Twitter Card information
 * Compatible with WP 4.1.1
 * Fixed the SEO Analytics and the Rank updates
 * Fixed the SEO for First Page  if the Home Page is not a static page
