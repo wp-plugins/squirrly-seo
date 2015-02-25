@@ -399,4 +399,4 @@ It all depends on how you have setup your wordpress until now. Some people use S
 == Upgrade Notice ==
 
 = 3.4.4 =
-3.4.4 is an inportant update. We improved the on-page SEO , added Google language identification, latest updates for Open graph, improved the SEO for Woocommerce plugin. We do not offer support for lower versions od Squirrly SEO
+3.4.4 is an important update. We improved the on-page SEO , added Google language identification, latest updates for Open graph, improved the SEO for Woocommerce plugin. We do not offer support for lower versions od Squirrly SEO
