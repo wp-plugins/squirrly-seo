@@ -7,7 +7,7 @@ define('_SQ_PLUGIN_NAME_', 'squirrly-seo'); //THIS LINE WILL BE CHANGED WITH THE
 define('_THEME_NAME_', 'default'); //THIS LINE WILL BE CHANGED WITH THE USER SETTINGS
 
 define('_SQ_DASH_URL_', 'https://my.squirrly.co/');
-$scheme = ((strpos(get_bloginfo('wpurl'), 'https') !== false || FORCE_SSL_ADMIN) ? 'https:' : 'http:'); //CHECK IF SCURE
+$scheme = ((strpos(get_bloginfo('wpurl'), 'https') !== false || (defined('FORCE_SSL_ADMIN') && FORCE_SSL_ADMIN)) ? 'https:' : 'http:'); //CHECK IF SCURE
 
 defined('SQ_URI') || define('SQ_URI', (WP_VERSION_ID >= 3000) ? 'wp350' : 'wp2');
 defined('_SQ_API_URL_') || define('_SQ_API_URL_', $scheme . '//api.squirrly.co/');
