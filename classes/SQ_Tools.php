@@ -167,7 +167,7 @@ class SQ_Tools extends SQ_FrontController {
         $ret = (isset($_POST[$key]) ? $_POST[$key] : (isset($_GET[$key]) ? $_GET[$key] : $defaultValue));
 
         if (is_string($ret) === true)
-            $ret = urldecode(preg_replace('/((\%5C0+)|(\%00+))/i', '', urlencode($ret)));
+            $ret = sanitize_text_field($ret);
         return !is_string($ret) ? $ret : stripslashes($ret);
     }
 
