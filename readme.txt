@@ -270,6 +270,16 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added the traffic date information in Squirrly SEO Analytics
 * Fixed the Favicon issue for PNG images
 
+= 3.5.0 =
+* Interactive learning for the entire plugin
+* Faster post save for long text remote images
+* Settings and SEO check improved
+* Corrected bugs for multisites and made it compatible with WP 4.2
+* Added robots.txt for multisites with security 
+* Added sitemap for multisites
+* Corrected the site icon and added the site icon for multisites
+* Added the SEO Star option in Dashboard
+
 == Credits ==
 Florin Muresan - CEO at Squirrly
 Calin Vingan - CTO at Squirrly
