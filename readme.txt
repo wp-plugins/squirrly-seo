@@ -277,6 +277,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Corrected bugs for multisites and made it compatible with WP 4.2
 * Added robots.txt for multisites with security 
 * Added sitemap for multisites
+* Added sitemap for images and videos for each article
 * Corrected the site icon and added the site icon for multisites
 * Added the SEO Star option in Dashboard
 
