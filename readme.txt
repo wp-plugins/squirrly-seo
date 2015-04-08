@@ -4,7 +4,7 @@ Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content s
 Requires at least: 3.3
 Tested up to: 4.2
 Stable tag: trunk
-Donate link: http://www.squirrly.co
+Donate link: https://www.squirrly.co
 
 SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.
 
@@ -35,7 +35,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Optimized articles get +285% traffic,</strong> on average (real statistics from over 16,500 people who participated in the survey).
 
-- <strong>SEO Settings remain</strong>. If you already made your SEO settings for Wordpress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
+- <strong>SEO Settings remain</strong>. If you already made your SEO settings for WordPress with other plugins, you can keep using those and Squirrly won't override them. No need to start all over. We'd hate to have you do that.
 
 - <strong>Finds you Keywords and Topics that your Customers actively search for</strong> and which will help you out-rank your competitors, not just follow them around the serps
 
@@ -107,13 +107,13 @@ Florin Muresan
 CEO of Squirrly
 
 
-See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly Wordpress SEO"> FAQ Section </a>.
+See all the Features of our product on the <a href="/extend/plugins/squirrly-seo/faq/" title="Squirrly WordPress SEO"> FAQ Section </a>.
 
 <a href="/extend/plugins/squirrly-seo/screenshots/" title="Squirrly SEO Plugin">Check our screenshots</a>
  | <a href="http://www.squirrly.co/wordpress-seo-by-squirrly" title="Squirrly SEO" target="_blank">Go to our official site</a> | Free Version (if you install from the WP directory) OR <a href="http://www.squirrly.co/pricing" title="See Pricing" target="_blank">Pricing Plans</a>
 
 == Installation ==
-1. Log In as an Admin on your Wordpress blog.
+1. Log In as an Admin on your WordPress blog.
 2. In the menu displayed on the left, there is a "Plugins" tab. Click it.
 3. Now click "Add New".
 4. There, you have the buttons: "Search | Upload | Featured | Popular | Newest". Click "Upload".
@@ -205,7 +205,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 3.2.7 =
 * Fixed small issue for background ranking grabber
 * Fixed google country select in Seo Settings
-* Fixed css and js load for some Wordpress themes
+* Fixed css and js load for some WordPress themes
 
 = 3.2.5 =
 * Fixed default country and langage in rank check
@@ -270,16 +270,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added the traffic date information in Squirrly SEO Analytics
 * Fixed the Favicon issue for PNG images
 
-= 3.5.0 =
-* Interactive learning for the entire plugin
-* Faster post save for long text remote images
-* Settings and SEO check improved
-* Corrected bugs for multisites and made it compatible with WP 4.2
-* Added robots.txt for multisites with security 
-* Added sitemap for multisites
-* Added sitemap for images and videos for each article
-* Corrected the site icon and added the site icon for multisites
-* Added the SEO Star option in Dashboard
+
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
@@ -310,7 +301,7 @@ For higher content marketing and SEO needs, you can check our Official Site and 
 I see that your host server is not letting you to access our remote API.
 Please tell your web master to add the IP 144.76.66.106  in the white-list for remote access and it should work.
 
-= How does Squirrly Wordpress SEO Plugin work? =
+= How does Squirrly WordPress SEO Plugin work? =
 Neil Patel, the Co-Founder of Kissmetrics and Crazy Egg made a great video on how to use Squirrly's Live Assistant:
 http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
 
@@ -336,7 +327,7 @@ Yes, you can use the tweets and the paragraphs in your articles. They contain a 
 articles add only some paragraphs, not the whole article. As for the images, you can use the Copyright-Free images that we offer, to make sure you will
 not have any legal problems. Follow the license-compliance guidance we offer for each of them.
 
-= Do I get support for your Wordpress SEO Plugin? =
+= Do I get support for your WordPress SEO Plugin? =
 Yes, we are focused on Delivering Happiness and this comes along with a good support package. We have a track record of replying in under 5 hours to
 any request, no matter the time of day. And we also fix any problems which you may encounter very fast, so Squirrly is trust-worthy.
 
@@ -397,7 +388,7 @@ used our SEO techniques, and they have gotten lots of hits from search engines d
 And the best ones that we have (and the others don't):
 
  - *Keyword research and Analysis*: find the keywords that are easier to rank for
- - *SEO Live Assistant*: Your Wordpress gives you SEO adivce as you type or Edit your article
+ - *SEO Live Assistant*: Your WordPress gives you SEO adivce as you type or Edit your article
  - *Inspiration box*: get images you can use for free, tweets you can quote and get up to date with latest news about your subject
  - *SEO Rank*: Measure and Monitor the impact of SEO and Social Signals for each of your articles
 
