@@ -129,9 +129,10 @@ class SQ_Action extends SQ_FrontController {
         if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register') {
             return false;
         }
+        $lang = (defined('WPLANG') ? WPLANG : 'en_US');
 
         $extra = array('user_url' => urlencode(get_bloginfo('wpurl')),
-            'lang' => WPLANG,
+            'lang' => $lang,
             'versq' => SQ_VERSION_ID,
             'verwp' => WP_VERSION_ID,
             'verphp' => PHP_VERSION_ID,
