@@ -1,7 +1,7 @@
 ﻿=== SEO by SQUIRRLY ===
 Contributors: cifi, calinvingan, florinmuresan
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,automatic,iphone
-Requires at least: 3.3
+Requires at least: 3.5
 Tested up to: 4.2
 Stable tag: 3.4.4
 Donate link: https://www.squirrly.co
@@ -137,6 +137,30 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+
+= 3.5.0 =
+* Changed Squirrly look
+* Compatible with WP eCommerce plugin
+* Made SEO improvements for Woocommerce plugin
+* Interactive learning for the entire Squirrly SEO plugin
+* Faster post save for long text and remote images
+* Settings and SEO check improved
+* Added robots.txt for multisites with security
+* Added sitemap for multisites
+* Added sitemap for images and videos for each article
+* Added the Json LD in Structured Data META
+* Added the social linked Data for Json LD and publisher
+* Added the favicon.ico for multisites
+* Added the icos for apple devices
+* Added the SEO progress in post editor
+* Added the SEO Star option in Dashboard
+* Fixed bugs for multisites and made it compatible with WP 4.2
+* Fixed the snippet title and description special chars
+* Fixed the custom fields variable in post editor
+* Fixed the site icon and added the site icon for multisites
+* Fixed Sitemap for default permalink option
+
+
 = 3.4.4 =
 * Updated the Twitter Card information
 * Compatible with WP 4.1.1
@@ -271,7 +295,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the Favicon issue for PNG images
 
 
-
 == Credits ==
 Florin Muresan - CEO at Squirrly
 Calin Vingan - CTO at Squirrly
@@ -401,5 +424,5 @@ It all depends on how you have setup your wordpress until now. Some people use S
 
 == Upgrade Notice ==
 
-= 3.4.4 =
-3.4.4 is an important update. We improved the on-page SEO , added Google language identification, latest updates for Open graph, improved the SEO for Woocommerce plugin. We do not offer support for lower versions od Squirrly SEO
+= 3.5 =
+3.5 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.

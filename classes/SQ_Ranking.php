@@ -170,13 +170,13 @@ class SQ_Ranking extends SQ_FrontController {
         //check 20 keyword at one time
         $sql = "SELECT `post_id`, `meta_value`
                        FROM `" . $wpdb->postmeta . "`
-                       WHERE (`meta_key` = 'sq_post_keyword')
+                       WHERE (`meta_key` = '_sq_post_keyword')
                        ORDER BY `post_id` DESC";
 
         if ($rows = $wpdb->get_results($sql)) {
             $count = 0;
             foreach ($rows as $row) {
-                if ($count > 15) {
+                if ($count > SQ_Tools::$options['sq_google_ranksperhour']) {
                     break; //check only 10 keywords at the time
                 }
                 if ($row->meta_value <> '') {

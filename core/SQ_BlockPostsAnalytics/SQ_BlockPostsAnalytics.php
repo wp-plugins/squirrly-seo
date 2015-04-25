@@ -3,6 +3,7 @@
 class SQ_BlockPostsAnalytics extends SQ_BlockController {
 
     public function hookGetContent() {
+
         SQ_ObjController::getController('SQ_DisplayController', false)
                 ->loadMedia(_SQ_THEME_URL_ . '/css/sq_postslist.css');
 

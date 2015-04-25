@@ -5,6 +5,9 @@
  */
 define('_SQ_SUPPORT_EMAIL_', 'support@squirrly.co');
 define('_SQ_NONCE_ID_', NONCE_KEY);
+define('_SQ_MOBILE_ICON_SIZES', '76,120,152');
+define('REQUEST_TIME', microtime(true));
+
 
 if (!defined('PHP_VERSION_ID')) {
     $version = explode('.', PHP_VERSION);
@@ -27,5 +30,4 @@ require_once(dirname(__FILE__) . '/paths.php');
 
 /* Define the record name in the Option and UserMeta tables */
 define('SQ_OPTION', 'sq_options');
-define('SQ_META', 'sq_plugin_flash');
 ?>

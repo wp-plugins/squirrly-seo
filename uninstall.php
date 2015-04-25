@@ -12,5 +12,4 @@ require(dirname(__FILE__) . '/config/config.php');
 
 /* Delete the record from database */
 delete_option(SQ_OPTION);
-delete_user_option(SQ_META);
 

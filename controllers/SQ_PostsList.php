@@ -23,7 +23,6 @@ class SQ_PostsList extends SQ_FrontController {
             'page_posts',
             'edit-product',
             'product_posts');
-// do_action('sq_processCron');
     }
 
     public function setPosts($posts) {
@@ -150,6 +149,9 @@ class SQ_PostsList extends SQ_FrontController {
 
         echo '<script type="text/javascript">
                     var sq_posts = new Array(' . $posts . ');
+                    //Show set complete
+                    if (jQuery(".sq_helpnotice").length > 0)
+                        jQuery(".sq_helpnotice").slideDown();
               </script>';
 
         $this->setVars();
@@ -279,7 +281,9 @@ class SQ_PostsList extends SQ_FrontController {
                 }
 
                 $response = json_decode(SQ_Action::apiCall('sq/user-analytics/detail', $args, 30));
-
+                if (SQ_Tools::getValue('sq_debug') === 'on') {
+                    exit();
+                }
                 if (!is_object($response)) {
                     exit(json_encode(array('error' => $response)));
                 } else {

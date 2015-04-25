@@ -1,12 +1,5 @@
 <?php
 
-/*
-  Copyright 2011-2013 Chris Jean & iThemes
-  Licensed under GPLv2 or above
-
-  Version 1.0.2
- */
-
 class Model_SQ_Ico {
 
     /**
@@ -98,6 +91,25 @@ class Model_SQ_Ico {
         fclose($fh);
 
         return true;
+    }
+
+//    public function save_ico(&$file) {
+//        $dir = null;
+//
+//        $file = wp_upload_bits($file['name'], null, file_get_contents($file['tmp']));
+//
+//        if (!isset($file['error']) || $file['error'] == '')
+//            if (isset($file['url']) && $file['url'] <> '') {
+//                $file['filename'] = basename($file['url']);
+//                return $file;
+//            }
+//        $file = false;
+//    }
+
+    function remove_ico($file) {
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
 
     /**
@@ -211,7 +223,7 @@ class Model_SQ_Ico {
      */
     function _load_image_file($file) {
         // Run a cheap check to verify that it is an image file.
-        if (false === ( $size = getimagesize($file) ))
+        if (false === ( $size = @getimagesize($file) ))
             return false;
 
         if (false === ( $file_data = file_get_contents($file) ))

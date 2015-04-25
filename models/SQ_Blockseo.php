@@ -20,9 +20,9 @@ class Model_SQ_Blockseo {
         if ((int) $sq_postID == 0)
             return;
 
-        $meta = array('sq_fp_title' => '',
-            'sq_fp_description' => '',
-            'sq_fp_ogimage' => '');
+        $meta = array('_sq_fp_title' => '',
+            '_sq_fp_description' => '',
+            '_sq_fp_ogimage' => '');
 
         $sql = "SELECT `meta_id`, `meta_value`, `meta_key`
                     FROM `" . $wpdb->postmeta . "`

@@ -5,11 +5,21 @@ class SQ_Frontend extends SQ_FrontController {
     public static $options;
 
     public function __construct() {
+
         if ($this->_isAjax())
             return;
 
         parent::__construct();
         SQ_ObjController::getController('SQ_Tools', false);
+
+        /* Check if sitemap is on  */
+        if (SQ_Tools::$options['sq_use'] == 1 && SQ_Tools::$options['sq_auto_sitemap'] == 1) {
+            /* Load the Sitemap  */
+            SQ_ObjController::getController('SQ_Sitemaps');
+        }
+
+        //validate custom arguments for favicon and sitemap
+        add_filter('query_vars', array($this, 'validateParams'), 1, 1);
     }
 
     private function _isAjax() {
@@ -29,13 +39,29 @@ class SQ_Frontend extends SQ_FrontController {
             SQ_Tools::$options['sq_use'] = 0;
         }
 
+
         if (SQ_Tools::$options['sq_use'] == 1) {
-            if ($this->_isAjax())
+            if ($this->_isAjax()) {
                 return;
+            }
+
+            add_filter('sq_title', array($this->model, 'clearTitle'));
+            add_filter('sq_description', array($this->model, 'clearDescription'));
+
             //Use buffer only for meta Title
-            //if(SQ_Tools::$options['sq_auto_title'] == 1)
             $this->model->startBuffer();
         }
+
+        //Check for sitemap and robots
+        if (SQ_Tools::$options['sq_use'] == 1) {
+            if (isset($_SERVER['REQUEST_URI']) && SQ_Tools::$options['sq_auto_robots'] == 1) {
+                if (substr(strrchr($_SERVER['REQUEST_URI'], "/"), 1) == "robots.txt" || $_SERVER['REQUEST_URI'] == "/robots.txt") {
+                    $this->model->robots();
+                }
+            }
+        }
+        //check the action call
+        $this->action();
     }
 
     /**
@@ -48,11 +74,11 @@ class SQ_Frontend extends SQ_FrontController {
         echo $this->model->setStart();
 
         if (isset(SQ_Tools::$options['sq_use']) && (int) SQ_Tools::$options['sq_use'] == 1) {
-            echo $this->model->setHeader();
-
-            //Use buffer only for meta Title
-            //if(SQ_Tools::$options['sq_auto_title'] == 1)
+            //flush the header with the title and removing duplicates
             $this->model->flushHeader();
+
+            //show the Squirrly header
+            echo $this->model->setHeader();
         }
 
         SQ_ObjController::getController('SQ_DisplayController', false)
@@ -82,6 +108,20 @@ class SQ_Frontend extends SQ_FrontController {
                 }
             }
         }
+
+        @preg_match_all('/<a[^>]*href="([^"]+)"[^>]*>/i', $content, $out);
+        if (is_array($out)) {
+            if (!is_array($out[1]) || empty($out[1]))
+                return $content;
+
+            foreach ($out[1] as $row) {
+                if (strpos($row, '//') === false) {
+                    if (!in_array($row, $urls)) {
+                        $urls[] = $row;
+                    }
+                }
+            }
+        }
         if (!is_array($urls) || (is_array($urls) && empty($urls)))
             return $content;
 
@@ -97,12 +137,41 @@ class SQ_Frontend extends SQ_FrontController {
     }
 
     /**
-     * Hook Footer load to save the visit and to close the buffer
+     * Validate the params for getting the basic info from the server
+     * eg favicon.ico
+     *
+     * @param array $vars
+     * @return $vars
      */
-    public function hookFrontfooter() {
-        if (isset(SQ_Tools::$options['sq_use']) && (int) SQ_Tools::$options['sq_use'] == 1) {
-            //Be sure the heder is flushed
-            $this->model->flushHeader();
+    public function validateParams($vars) {
+        $vars[] = 'sq_get';
+        $vars[] = 'sq_size';
+        return $vars;
+    }
+
+    public function action() {
+
+        switch (get_query_var('sq_get')) {
+            case 'favicon':
+                if (SQ_Tools::$options['favicon'] <> '') {
+                    //show the favico file
+                    SQ_Tools::setHeader('ico');
+                    echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
+                    exit();
+                }
+                break;
+            case 'touchicon':
+                $size = get_query_var('sq_size');
+                if (SQ_Tools::$options['favicon'] <> '') {
+                    //show the favico file
+                    SQ_Tools::setHeader('png');
+                    if ($size <> '') {
+                        echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'] . get_query_var('sq_size'));
+                    } else {
+                        echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
+                    }
+                    exit();
+                }
         }
     }
 

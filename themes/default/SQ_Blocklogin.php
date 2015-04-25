@@ -17,7 +17,7 @@
         <div id="sq_autologin" align="center">
             <div class="sq_error"></div>
             <span id="sq_register"><?php _e('Enter your email', _SQ_PLUGIN_NAME_); ?></span><span id="sq_register_wait"></span>
-            <div id="sq_register_email" ><label for="sq_email"><?php _e('Your E-mail:', _SQ_PLUGIN_NAME_); ?></label>
+            <div id="sq_register_email" ><label for="sq_email"><?php _e('Your Email:', _SQ_PLUGIN_NAME_); ?></label>
                 <input type="text" id="sq_email" name="sq_email"  value="<?php
                 $current_user = wp_get_current_user();
                 echo $current_user->user_email;
@@ -46,8 +46,6 @@
     </script>
 </div>
 <div id="sq_login_success" style="display: none;">
-    <div class="sq_header"><?php _e('Congratulations! Now write a new article with:', _SQ_PLUGIN_NAME_); ?></div>
-    <img src="<?php echo _SQ_STATIC_API_URL_ ?>default/img/squirrly_wordpress.png" />
-
+    <div class="sq_header"><?php _e('Congratulations! You are ready to use all the features from Squirrly', _SQ_PLUGIN_NAME_); ?><div><img src="<?php echo _SQ_THEME_URL_ . 'img/settings/squirrly.png' ?>"></div></div>
 
 </div>

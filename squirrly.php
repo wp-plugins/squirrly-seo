@@ -8,12 +8,12 @@
   Plugin URI: http://www.squirrly.co
   Description: SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.<BR> <a href="http://my.squirrly.co/user" target="_blank"><strong>Check your profile</strong></a>
   Author: cifi, calinvingan, florinmuresan
-  Version: 3.4.4
+  Version: 3.5.0
   Author URI: http://www.squirrly.co
  */
 
 /* SET THE CURRENT VERSION ABOVE AND BELOW */
-define('SQ_VERSION', '3.4.4');
+define('SQ_VERSION', '3.5.0');
 /* Call config files */
 if (file_exists(dirname(__FILE__) . '/config/config.php')) {
     require(dirname(__FILE__) . '/config/config.php');
@@ -59,5 +59,3 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
     register_activation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_activate'));
     register_deactivation_hook(__FILE__, array(SQ_ObjController::getController('SQ_Tools', false), 'sq_deactivate'));
 }
-
-

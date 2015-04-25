@@ -35,7 +35,6 @@ class SQ_Action extends SQ_FrontController {
         if (isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], '/admin-ajax.php') !== false) {
             return;
         }
-
         $this->actions = array();
         $this->getActions(((isset($_GET['action']) ? $_GET['action'] : (isset($_POST['action']) ? $_POST['action'] : ''))));
     }
@@ -129,10 +128,9 @@ class SQ_Action extends SQ_FrontController {
         if (SQ_Tools::$options['sq_api'] == '' && $module <> 'sq/login' && $module <> 'sq/register') {
             return false;
         }
-        $lang = (defined('WPLANG') ? WPLANG : 'en_US');
 
         $extra = array('user_url' => urlencode(get_bloginfo('wpurl')),
-            'lang' => $lang,
+            'lang' => (defined('WPLANG') ? WPLANG : 'en_US'),
             'versq' => SQ_VERSION_ID,
             'verwp' => WP_VERSION_ID,
             'verphp' => PHP_VERSION_ID,
@@ -165,7 +163,7 @@ class SQ_Action extends SQ_FrontController {
 
         $url = self::cleanUrl(_SQ_API_URL_ . $module . "?" . $parameters);
         //SQ_Tools::dump($url);
-        return SQ_Tools::sq_remote_get($url, array('timeout' => $timeout));
+        return SQ_Tools::sq_remote_get($url, array(), array('timeout' => $timeout));
     }
 
     /**

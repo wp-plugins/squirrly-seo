@@ -46,15 +46,23 @@
                                     }
                                 } elseif (is_object($task->value)) {
                                     if ($task->name === 'Links') {
-                                        $task->value->mozLinks = number_format_i18n($task->value->mozLinks);
-
-                                        $replace .= '<ul class="sq_analytics_values" >
+                                        if (isset($task->value->mozLinks)) {
+                                            $task->value->mozLinks = number_format_i18n($task->value->mozLinks);
+                                            $replace .= '<ul class="sq_analytics_values" >
                                                     <li>
                                                         <div class="sq_analytics_values_title">' . __('Moz Inbound Links') . '</div>
                                                         <div class="sq_analytics_values_value">' . $task->value->mozLinks . '</div>
                                                         <div class="sq_rank_sprite sq_rank_seomoz_inbound"></div>
                                                     </li>
+                                                    ' .
+                                                    ((isset($task->value->ahrefsLinks)) ?
+                                                            '<li>
+                                                        <div class="sq_analytics_values_title">' . __('Ahrefs Inbound Links') . '</div>
+                                                        <div class="sq_analytics_values_value">' . $task->value->ahrefsLinks . '</div>
+                                                        <div class="sq_rank_sprite sq_rank_ahrefs_rank"></div>
+                                                    </li>' : '') . '
                                                 </ul>';
+                                        }
                                     } elseif ($task->name === 'Authority') {
                                         $task->value->mozAuthority = number_format_i18n($task->value->mozAuthority);
                                         $task->value->mozRank = number_format_i18n($task->value->mozRank);
@@ -76,13 +84,12 @@
                                         <div class = "sq_analytics_values_title">' . __('Google Page Rank') . '</div>
                                         <div class = "sq_analytics_values_value">' . $task->value->googleRank . '</div>
                                         <div class = "sq_rank_sprite sq_rank_google_pagerank"></div>
-                                        </li>' : '') . '
-                                             ' .
-                                                ((isset($task->value->auditScore)) ?
+                                        </li>' : '') .
+                                                ((isset($task->value->ahrefsRank)) ?
                                                         '<li>
-                                        <div class = "sq_analytics_values_title">' . __('Squirrly Audit Score') . '</div>
-                                        <div class = "sq_analytics_values_value">' . $task->value->auditScore . '</div>
-                                        <div class = "sq_rank_sprite sq_rank_squirrly_rank"></div>
+                                        <div class = "sq_analytics_values_title">' . __('Ahrefs Rank') . '</div>
+                                        <div class = "sq_analytics_values_value">' . $task->value->ahrefsRank . '</div>
+                                        <div class = "sq_rank_sprite sq_rank_ahrefs_rank"></div>
                                         </li>' : '') . '
                                                 </ul>';
                                     } elseif ($task->name === 'Shares') {
@@ -277,7 +284,7 @@
 </div>
 
 <script>
-    jQuery('.sq_analytics_tasks_video_cover').unbind('click').bind('click', function() {
+    jQuery('.sq_analytics_tasks_video_cover').unbind('click').bind('click', function () {
         jQuery(this).html('<object width="280" height="158"><param name="movie" value="https://www.youtube.com/v/' + jQuery(this).attr('rel') + ((jQuery(this).attr('rel').indexOf('?') != -1) ? '&' : '?') + 'version=3&amp;hl=en_US&amp;autoplay=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="https://www.youtube.com/v/' + jQuery(this).attr('rel') + ((jQuery(this).attr('rel').indexOf('?') != -1) ? '&' : '?') + 'version=3&amp;hl=en_US&amp;autoplay=1" type="application/x-shockwave-flash" width="280" height="158" allowscriptaccess="always" allowfullscreen="true"></embed></object>');
     });
 </script>

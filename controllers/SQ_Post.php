@@ -20,9 +20,11 @@ class SQ_Post extends SQ_FrontController {
             return;
 
         add_action('save_post', array($this, 'hookSavePost'), 11);
-
-        //For Shopp plugin - product
         add_action('shopp_product_saved', array($this, 'hookShopp'), 11);
+
+        if (SQ_Tools::$options['sq_use'] == 1 && SQ_Tools::$options['sq_auto_sitemap'] == 1) {
+            add_action('transition_post_status', array(SQ_ObjController::getController('SQ_Sitemaps'), 'refreshSitemap'), 9999, 3);
+        }
     }
 
     /**
@@ -193,7 +195,8 @@ class SQ_Post extends SQ_FrontController {
         $args['author'] = (int) SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
 
-        SQ_Action::apiCall('sq/seo/post', $args, 5);
+        //save for later send to api
+        set_transient('sq_seopost', json_encode($args));
 
         //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {
@@ -233,22 +236,24 @@ class SQ_Post extends SQ_FrontController {
                 if (!empty($_FILES['ogimage'])) {
                     $return = $this->model->addImage($_FILES['ogimage']);
                 }
-                $return['filename'] = basename($return['file']);
-                $local_file = str_replace($return['filename'], urlencode($return['filename']), $return['url']);
-                $attach_id = wp_insert_attachment(array(
-                    'post_mime_type' => $return['type'],
-                    'post_title' => preg_replace('/\.[^.]+$/', '', $return['filename']),
-                    'post_content' => '',
-                    'post_status' => 'inherit',
-                    'guid' => $local_file
-                        ), $return['file'], SQ_Tools::getValue('post_id'));
+                if (isset($return['file'])) {
+                    $return['filename'] = basename($return['file']);
+                    $local_file = str_replace($return['filename'], urlencode($return['filename']), $return['url']);
+                    $attach_id = wp_insert_attachment(array(
+                        'post_mime_type' => $return['type'],
+                        'post_title' => preg_replace('/\.[^.]+$/', '', $return['filename']),
+                        'post_content' => '',
+                        'post_status' => 'inherit',
+                        'guid' => $local_file
+                            ), $return['file'], SQ_Tools::getValue('post_id'));
 
-                $attach_data = wp_generate_attachment_metadata($attach_id, $return['file']);
-                wp_update_attachment_metadata($attach_id, $attach_data);
-
+                    $attach_data = wp_generate_attachment_metadata($attach_id, $return['file']);
+                    wp_update_attachment_metadata($attach_id, $attach_data);
+                }
                 SQ_Tools::setHeader('json');
                 echo json_encode($return);
                 SQ_Tools::emptyCache();
+
                 break;
             case 'sq_get_keyword':
                 SQ_Tools::setHeader('json');
@@ -274,25 +279,34 @@ class SQ_Post extends SQ_FrontController {
         $meta = array();
         if (SQ_Tools::getIsset('sq_fp_title') || SQ_Tools::getIsset('sq_fp_description') || SQ_Tools::getIsset('sq_fp_keywords')) {
             if (SQ_Tools::getIsset('sq_fp_title'))
-                $meta[] = array('key' => 'sq_fp_title',
-                    'value' => urldecode(SQ_Tools::getValue('sq_fp_title')));
+                $meta[] = array('key' => '_sq_fp_title',
+                    'value' => SQ_Tools::getValue('sq_fp_title'));
 
             if (SQ_Tools::getIsset('sq_fp_description'))
-                $meta[] = array('key' => 'sq_fp_description',
-                    'value' => urldecode(SQ_Tools::getValue('sq_fp_description')));
+                $meta[] = array('key' => '_sq_fp_description',
+                    'value' => SQ_Tools::getValue('sq_fp_description'));
 
             if (SQ_Tools::getIsset('sq_fp_keywords'))
-                $meta[] = array('key' => 'sq_fp_keywords',
+                $meta[] = array('key' => '_sq_fp_keywords',
                     'value' => SQ_Tools::getValue('sq_fp_keywords'));
 
             if (SQ_Tools::getIsset('sq_fp_ogimage'))
-                $meta[] = array('key' => 'sq_fp_ogimage',
+                $meta[] = array('key' => '_sq_fp_ogimage',
                     'value' => SQ_Tools::getValue('sq_fp_ogimage'));
 
+
             $this->model->saveAdvMeta($post_id, $meta);
+
             return $meta;
         }
         return false;
+    }
+
+    public function hookFooter() {
+        if (get_transient('sq_seopost') !== false) {
+            SQ_Action::apiCall('sq/seo/post', (array) json_decode(get_transient('sq_seopost')), 30);
+            delete_transient('sq_seopost');
+        }
     }
 
 }

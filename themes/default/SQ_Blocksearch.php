@@ -1,4 +1,4 @@
-<div id="sq_preloading" ><?php _e('Waiting for your editor to load .. ', _SQ_PLUGIN_NAME_); ?></div>
+<div id="sq_preloading" ><script>document.write('<?php _e('Waiting for your editor to load .. ', _SQ_PLUGIN_NAME_); ?>');</script><noscript><?php _e('Javascript is disabled! You need to activate the javascript in order to use Squirrly SEO.', _SQ_PLUGIN_NAME_); ?></noscript></div>
 <div class="sq_box" style="display: none">
     <div class="sq_header" ><?php _e('Optimize for Keyword', _SQ_PLUGIN_NAME_); ?></div>
     <div id="sq_blocksearch">

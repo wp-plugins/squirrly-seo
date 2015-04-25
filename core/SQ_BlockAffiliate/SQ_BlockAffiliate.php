@@ -5,6 +5,10 @@
  */
 class SQ_BlockAffiliate extends SQ_BlockController {
 
+    public function hookGetContent() {
+        parent::preloadSettings();
+    }
+
     public function action() {
         parent::action();
         switch (SQ_Tools::getValue('action')) {
@@ -38,10 +42,6 @@ class SQ_BlockAffiliate extends SQ_BlockController {
                 }
                 break;
         }
-    }
-
-    public function hookGetContent() {
-        $this->options = SQ_Tools::$options;
     }
 
 }

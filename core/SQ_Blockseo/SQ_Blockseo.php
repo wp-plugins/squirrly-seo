@@ -28,10 +28,11 @@ class SQ_Blockseo extends SQ_BlockController {
              var __snippetclickrefresh = "' . __('Click the Update button (to the right) to see the snippet from your website.', _SQ_PLUGIN_NAME_) . '";
              var __snippetentertitle = "' . __('Enter a title above for the snippet to get data.', _SQ_PLUGIN_NAME_) . '";' . "\n";
 
-        if (is_array($metas))
+        if (is_array($metas)) {
             foreach ($metas as $key => $meta) {
-                echo 'var __' . $key . ' = "' . str_replace('"', '\"', $meta) . '";' . "\n";
+                echo 'var _' . $key . ' = "' . str_replace('"', '\"', $meta) . '";' . "\n";
             }
+        }
 
         echo '</script>';
     }

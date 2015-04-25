@@ -66,7 +66,7 @@ class Model_SQ_Post {
                     'date' => $post->post_date_gmt);
             }
         } else {
-            $responce['error'] .= __('Squirrly could not find any results for: ') . ' "' . stripslashes($q) . '"';
+            $responce['error'] = __('Squirrly could not find any results for: ') . ' "' . stripslashes($q) . '"';
         }
         return json_encode($responce);
     }
@@ -307,7 +307,7 @@ class Model_SQ_Post {
 
         if ($posts = $wpdb->get_row("SELECT count(`post_id`) as count
                        FROM `" . $wpdb->postmeta . "`
-                       WHERE (`meta_key` = 'sq_post_keyword')")) {
+                       WHERE (`meta_key` = '_sq_post_keyword')")) {
 
             return $posts->count;
         }
@@ -329,7 +329,7 @@ class Model_SQ_Post {
 
         if ($posts = $wpdb->get_results("SELECT `post_id`, `meta_value`
                 FROM `" . $wpdb->postmeta . "`
-                WHERE (`meta_key` = 'sq_post_keyword')"
+                WHERE (`meta_key` = '_sq_post_keyword')"
                 . $filter .
                 'ORDER BY `' . $ord . '`')) {
 
@@ -351,7 +351,7 @@ class Model_SQ_Post {
 
         if ($row = $wpdb->get_row("SELECT `post_id`, `meta_value`
                        FROM `" . $wpdb->postmeta . "`
-                       WHERE (`meta_key` = 'sq_post_keyword' AND `post_id`=" . (int) $post_id . ")
+                       WHERE (`meta_key` = '_sq_post_keyword' AND `post_id`=" . (int) $post_id . ")
                        ORDER BY `meta_id` DESC")) {
 
             return json_decode($row->meta_value);
@@ -368,7 +368,7 @@ class Model_SQ_Post {
     public function saveKeyword($post_id, $args) {
         $args->update = current_time('timestamp');
 
-        $meta[] = array('key' => 'sq_post_keyword',
+        $meta[] = array('key' => '_sq_post_keyword',
             'value' => json_encode($args));
 
         $this->saveAdvMeta($post_id, $meta);

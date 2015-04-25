@@ -56,6 +56,18 @@ class SQ_BlockController {
         return $this->view->echoBlock($this);
     }
 
+    public function preloadSettings() {
+
+        echo '<script type="text/javascript">
+                   var __blog_url = "' . get_bloginfo('url') . '";
+                   var __token = "' . SQ_Tools::$options['sq_api'] . '";
+                   var __api_url = "' . _SQ_API_URL_ . '";
+                    jQuery(document).ready(function () {
+                         sq_getHelp("' . str_replace("sq_block", "", strtolower($this->name)) . '", "content"); 
+                    });
+             </script>';
+    }
+
     /**
      * This function is called from Ajax class as a wp_ajax_action
      *

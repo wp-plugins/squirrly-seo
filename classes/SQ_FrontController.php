@@ -86,9 +86,6 @@ class SQ_FrontController {
 
         /* show the admin menu and post actions */
         $this->loadMenu();
-
-        /* Load the Sitemap Generator */
-        SQ_ObjController::getController('SQ_Sitemap', false);
     }
 
     /**
