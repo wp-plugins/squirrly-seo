@@ -138,7 +138,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 
-= 3.5.0 =
+= 5.0.0 =
 * Changed Squirrly look
 * Compatible with WP eCommerce plugin
 * Made SEO improvements for Woocommerce plugin
@@ -424,5 +424,5 @@ It all depends on how you have setup your wordpress until now. Some people use S
 
 == Upgrade Notice ==
 
-= 3.5 =
-3.5 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.
+= 5.0.0 =
+5.0.0 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.
