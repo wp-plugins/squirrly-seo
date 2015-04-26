@@ -7,6 +7,7 @@ class SQ_BlockSettings extends SQ_BlockController {
 
     function hookGetContent() {
         parent::preloadSettings();
+        SQ_ObjController::getController('SQ_Error', false)->hookNotices();
         echo '<script type="text/javascript">
                     jQuery(document).ready(function () {
                         jQuery("#sq_settings").find("select[name=sq_google_country]").val("' . SQ_Tools::$options['sq_google_country'] . '");
@@ -48,9 +49,9 @@ class SQ_BlockSettings extends SQ_BlockController {
                 SQ_Tools::saveOptions('sq_local_images', (int) SQ_Tools::getValue('sq_local_images'));
 
 
-                SQ_Tools::saveOptions('sq_google_wt', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkGoogleWTCode(SQ_Tools::getValue('sq_google_wt')));
-                SQ_Tools::saveOptions('sq_bing_wt', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkBingWTCode(SQ_Tools::getValue('sq_bing_wt')));
-                SQ_Tools::saveOptions('sq_alexa', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkBingWTCode(SQ_Tools::getValue('sq_alexa')));
+                SQ_Tools::saveOptions('sq_google_wt', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkGoogleWTCode(SQ_Tools::getValue('sq_google_wt','',true)));
+                SQ_Tools::saveOptions('sq_bing_wt', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkBingWTCode(SQ_Tools::getValue('sq_bing_wt','',true)));
+                SQ_Tools::saveOptions('sq_alexa', SQ_ObjController::getModel('SQ_BlockSettingsSeo')->checkBingWTCode(SQ_Tools::getValue('sq_alexa','',true)));
 
 
                 SQ_Action::apiCall('sq/user/settings', array('settings' => json_encode(SQ_Tools::getBriefOptions())), 10);

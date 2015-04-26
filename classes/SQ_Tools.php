@@ -250,12 +250,12 @@ class SQ_Tools extends SQ_FrontController {
      * @param mixed $defaultValue (optional)
      * @return mixed Value
      */
-    public static function getValue($key, $defaultValue = false) {
+    public static function getValue($key, $defaultValue = false, $withcode = false) {
         if (!isset($key) OR empty($key) OR ! is_string($key))
             return false;
         $ret = (isset($_POST[$key]) ? $_POST[$key] : (isset($_GET[$key]) ? (is_string($_GET[$key]) ? urldecode($_GET[$key]) : $_GET[$key]) : $defaultValue));
 
-        if (is_string($ret) === true) {
+        if (is_string($ret) === true && $withcode === false) {
             $ret = sanitize_text_field($ret);
         }
 

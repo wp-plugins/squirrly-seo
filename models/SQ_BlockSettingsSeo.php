@@ -39,13 +39,13 @@ class Model_SQ_BlockSettingsSeo {
      * @return string
      */
     public function checkGoogleWTCode($code) {
+        
         if ($code <> '') {
             if (strpos($code, 'content') !== false) {
                 preg_match('/content\\s*=\\s*[\'\"]([^\'\"]+)[\'\"]/i', $code, $result);
                 if (isset($result[1]) && !empty($result[1]))
                     $code = $result[1];
             }
-
             if (strpos($code, '"') !== false) {
                 preg_match('/[\'\"]([^\'\"]+)[\'\"]/i', $code, $result);
                 if (isset($result[1]) && !empty($result[1]))
