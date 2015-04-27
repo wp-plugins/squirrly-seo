@@ -823,6 +823,10 @@ class Model_SQ_Frontend {
                 $favicon = get_bloginfo('wpurl') . '/touch-icon' . $size . '.png' . $rnd;
                 $meta .= sprintf("<link rel=\"apple-touch-icon\" sizes=\"" . $size . "x" . $size . "\"  href=\"%s\" />" . "\n", $favicon);
             }
+        }else{
+            if (file_exists(ABSPATH . 'favicon.ico')) {
+                $meta .= sprintf("<link rel=\"shortcut icon\"  href=\"%s\" />" . "\n", get_bloginfo('wpurl') . '/favicon.ico');
+            }
         }
         return apply_filters('sq_publisher_meta', $meta);
     }
