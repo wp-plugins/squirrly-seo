@@ -3,7 +3,7 @@ Contributors: cifi, calinvingan, florinmuresan
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,automatic,iphone
 Requires at least: 3.5
 Tested up to: 4.2
-Stable tag: 5.0.0
+Stable tag: trunk
 Donate link: https://www.squirrly.co
 
 SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.
@@ -15,7 +15,7 @@ Recommended by <a href="http://www.quicksprout.com/university/how-to-maximize-yo
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
-See all the Squirrly SEO features at: http://bit.ly/1lV9dX6
+See all the Squirrly SEO features at: http://howto.squirrly.co/category/sides/
 
 Based on the topic you're writing about, the interface will light up green while you're editing your text, so that you know you've done something right. When all the lights are green, you can publish it, because your text has excellent SEO and it's 100% optimized.
 
