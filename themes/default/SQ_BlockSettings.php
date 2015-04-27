@@ -258,6 +258,7 @@
                 <fieldset id="sq_measure_success">
                     <legend style="height: 310px;">
                         <span class="sq_legend_title"><?php _e('Measure Your Success', _SQ_PLUGIN_NAME_); ?></span>
+                        <span><?php echo sprintf(__('%sHow to set the Google Webmaster Tool%s', _SQ_PLUGIN_NAME_), '<a href="http://howto.squirrly.co/wordpress-seo/how-to-set-the-google-webmaster-tool/" target="_blank">', '</a>'); ?></span>
                         <span><?php echo sprintf(__('%sBest practices to help Google find, crawl, and index your site%s', _SQ_PLUGIN_NAME_), '<a href="https://support.google.com/webmasters/answer/35769?hl=en" target="_blank">', '</a>'); ?></span>
                         <span><?php echo sprintf(__('%sBing Webmaster Tools Help & How-To Center%s', _SQ_PLUGIN_NAME_), '<a href="http://www.bing.com/webmaster/help/help-center-661b2d18" target="_blank">', '</a>'); ?></span>
 

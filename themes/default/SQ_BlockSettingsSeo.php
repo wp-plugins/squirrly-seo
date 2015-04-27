@@ -316,8 +316,8 @@
                     <legend class="sq_legend_medium">
                         <span class="sq_legend_title"><?php _e('XML Sitemap for Google', _SQ_PLUGIN_NAME_); ?></span>
                         <span><?php echo __('Squirrly Sitemap is the fastest way to tell Google about your site links. <strong>Supports Multisites, Google News, Images, Videos, Custom Post Types, Custom Taxonomies and Ecommerce products</strong>', _SQ_PLUGIN_NAME_) ?></span>
+                        <span><?php echo sprintf(__('%sHow to submit your sitemap.xml in Google Webmaster Tool%s', _SQ_PLUGIN_NAME_), '<a href="http://howto.squirrly.co/wordpress-seo/how-to-submit-your-sitemap-xml-in-google-sitemap/" target="_blank">', '</a>'); ?></span>
                         <span><?php echo sprintf(__('%s10 Vital To Dos to Feed Your SEO Content Machine After You Post Articles%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/10_vital_to_dos_to_feed_your_seo_content_machine_after_you_post_articles-pagblog-article_id62194-html" target="_blank">', '</a>'); ?></span>
-                        <span><?php echo sprintf(__('%s7 To Do’s after publishing on Your WordPress Blog%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/7-to-dos-after-publishing-on-your-wordpress-blog" target="_blank">', '</a>'); ?></span>
                     </legend>
 
                     <div>
