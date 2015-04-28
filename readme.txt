@@ -2,7 +2,7 @@
 Contributors: cifi, calinvingan, florinmuresan
 Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,multisite,buddypress,social,social media,url,automatic,iphone
 Requires at least: 3.5
-Tested up to: 4.2
+Tested up to: 4.2.1
 Stable tag: trunk
 Donate link: https://www.squirrly.co
 
@@ -137,6 +137,10 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+
+= 5.0.1 =
+* Fixed some issues for the PHP 5.2
+* Compatible with WP 4.2.1
 
 = 5.0.0 =
 * Changed Squirrly look

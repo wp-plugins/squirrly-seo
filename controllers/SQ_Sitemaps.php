@@ -58,82 +58,22 @@ class SQ_Sitemaps extends SQ_FrontController {
                     case 'sitemap-category':
                     case 'sitemap-post_tag':
                     case 'sitemap-custom-tax':
-                        add_filter("get_terms_fields", function($query) {
-                            global $wpdb;
-
-                            $query[] = "(SELECT
-                                            UNIX_TIMESTAMP(MAX(p.post_date_gmt)) as _mod_date
-                                     FROM {$wpdb->posts} p, {$wpdb->term_relationships} r
-                                     WHERE p.ID = r.object_id  AND p.post_status = 'publish'  AND p.post_password = ''  AND r.term_taxonomy_id = tt.term_taxonomy_id
-                                    ) as lastmod";
-
-                            return $query;
-                        }, 5, 2);
+                        add_filter("get_terms_fields", array($this, 'customTaxFilter'), 5, 2);
                         break;
                     case 'sitemap-page':
-                        add_filter('pre_get_posts', function($query) {
-                            $query->set('post_type', array('page'));
-                        }, 5);
+                        add_filter('pre_get_posts', array($this, 'pageFilter'), 5);
                         break;
                     case 'sitemap-author':
-                        add_filter('sq-sitemap-authors', function() {
-                            //get only the author with posts
-                            add_filter('pre_user_query', function($query) {
-                                $query->query_fields .= ',p.lastmod';
-                                $query->query_from .= ' LEFT OUTER JOIN (
-                                    SELECT MAX(post_modified) as lastmod, post_author, COUNT(*) as post_count
-                                    FROM wp_posts
-                                    WHERE post_type = "post" AND post_status = "publish"
-                                    GROUP BY post_author
-                                ) p ON (wp_users.ID = p.post_author)';
-                                $query->query_where .= ' AND post_count  > 0 ';
-                            });
-                            return get_users();
-                        }, 5);
+                        add_filter('sq-sitemap-authors', array($this, 'authorFilter'), 5);
                         break;
                     case 'sitemap-custom-post':
-                        add_filter('pre_get_posts', function($query) {
-                            $types = get_post_types();
-                            foreach (array('post', 'page', 'attachment', 'revision', 'nav_menu_item', 'product', 'wpsc-product') as $exclude) {
-                                if (in_array($exclude, $types)) {
-                                    unset($types[$exclude]);
-                                }
-                            }
-
-                            foreach ($types as $type) {
-                                $type_data = get_post_type_object($type);
-                                if (!isset($type_data->rewrite['feeds']) || $type_data->rewrite['feeds'] != 1) {
-                                    unset($types[$type]);
-                                }
-                            }
-
-                            if (empty($types)) {
-                                array_push($types, 'custom-post');
-                            }
-
-                            $query->set('post_type', $types); // id of page or post
-                        }, 5);
+                        add_filter('pre_get_posts', array($this, 'customPostFilter'), 5);
                         break;
                     case 'sitemap-product':
-                        add_filter('pre_get_posts', function($query) {
-                            if (!$types = SQ_ObjController::getModel('SQ_BlockSettingsSeo')->isEcommerce()) {
-                                $types = array('custom-post');
-                            }
-                            $query->set('post_type', $types); // id of page or post
-                        }, 5);
+                        add_filter('pre_get_posts', array($this, 'productFilter'), 5);
                         break;
                     case 'sitemap-archive':
-                        add_filter('sq-sitemap-archive', function() {
-                            global $wpdb;
-                            $archives = $wpdb->get_results("
-                                            SELECT DISTINCT YEAR(post_date_gmt) as `year`, MONTH(post_date_gmt) as `month`, max(post_date_gmt) as lastmod, count(ID) as posts
-                                            FROM $wpdb->posts
-                                            WHERE post_date_gmt < NOW()  AND post_status = 'publish'  AND post_type = 'post'
-                                            GROUP BY YEAR(post_date_gmt),  MONTH(post_date_gmt)
-                                            ORDER BY  post_date_gmt DESC
-                                        ");
-                            return $archives;
-                        }, 5);
+                        add_filter('sq-sitemap-archive', array($this, 'archiveFilter'), 5);
                         break;
                 }
 
@@ -412,6 +352,80 @@ class SQ_Sitemaps extends SQ_FrontController {
             return untrailingslashit($request);
         }
         return $request; // trailingslashit($request);
+    }
+
+    function customTaxFilter($query) {
+        global $wpdb;
+
+        $query[] = "(SELECT
+                        UNIX_TIMESTAMP(MAX(p.post_date_gmt)) as _mod_date
+                 FROM {$wpdb->posts} p, {$wpdb->term_relationships} r
+                 WHERE p.ID = r.object_id  AND p.post_status = 'publish'  AND p.post_password = ''  AND r.term_taxonomy_id = tt.term_taxonomy_id
+                ) as lastmod";
+
+        return $query;
+    }
+
+    function pageFilter($query) {
+        $query->set('post_type', array('page'));
+    }
+
+    function authorFilter() {
+        //get only the author with posts
+        add_filter('pre_user_query', array($this, 'userFilter'));
+        return get_users();
+    }
+
+    function userFilter($query) {
+        $query->query_fields .= ',p.lastmod';
+        $query->query_from .= ' LEFT OUTER JOIN (
+            SELECT MAX(post_modified) as lastmod, post_author, COUNT(*) as post_count
+            FROM wp_posts
+            WHERE post_type = "post" AND post_status = "publish"
+            GROUP BY post_author
+        ) p ON (wp_users.ID = p.post_author)';
+        $query->query_where .= ' AND post_count  > 0 ';
+    }
+    
+    function customPostFilter($query) {
+        $types = get_post_types();
+        foreach (array('post', 'page', 'attachment', 'revision', 'nav_menu_item', 'product', 'wpsc-product') as $exclude) {
+            if (in_array($exclude, $types)) {
+                unset($types[$exclude]);
+            }
+        }
+
+        foreach ($types as $type) {
+            $type_data = get_post_type_object($type);
+            if (!isset($type_data->rewrite['feeds']) || $type_data->rewrite['feeds'] != 1) {
+                unset($types[$type]);
+            }
+        }
+
+        if (empty($types)) {
+            array_push($types, 'custom-post');
+        }
+
+        $query->set('post_type', $types); // id of page or post
+    }
+
+    function productFilter($query) {
+        if (!$types = SQ_ObjController::getModel('SQ_BlockSettingsSeo')->isEcommerce()) {
+            $types = array('custom-post');
+        }
+        $query->set('post_type', $types); // id of page or post
+    }
+
+    function archiveFilter() {
+        global $wpdb;
+        $archives = $wpdb->get_results("
+                        SELECT DISTINCT YEAR(post_date_gmt) as `year`, MONTH(post_date_gmt) as `month`, max(post_date_gmt) as lastmod, count(ID) as posts
+                        FROM $wpdb->posts
+                        WHERE post_date_gmt < NOW()  AND post_status = 'publish'  AND post_type = 'post'
+                        GROUP BY YEAR(post_date_gmt),  MONTH(post_date_gmt)
+                        ORDER BY  post_date_gmt DESC
+                    ");
+        return $archives;
     }
 
 }

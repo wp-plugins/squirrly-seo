@@ -256,7 +256,7 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
             if (SQ_Tools::$options['sq_auto_sitemap'] == 1) {
                 foreach (SQ_Tools::$options['sq_sitemap'] as $name => $sitemap) {
                     if ($sitemap[1] == 1 || $sitemap[1] == 2) { // is show sitemap
-                        $rules[preg_quote($sitemap[0]) . '$'] = 'index.php?feed=' . $name;
+                        $rules[preg_quote($sitemap[0])] = 'index.php?feed=' . $name;
                     }
                 }
             }
