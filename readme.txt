@@ -4,7 +4,7 @@ Tags: seo,seo optimization,seo content,seo plugin,wordpress seo,plugin,content s
 Requires at least: 3.5
 Tested up to: 4.2.1
 Stable tag: trunk
-Donate link: https://www.squirrly.co
+Donate link: https://www.squirrly.co/wordpress-seo-by-squirrly
 
 SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.
 
@@ -163,7 +163,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the custom fields variable in post editor
 * Fixed the site icon and added the site icon for multisites
 * Fixed Sitemap for default permalink option
-
 
 = 3.4.4 =
 * Updated the Twitter Card information
