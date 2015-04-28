@@ -139,7 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 
 = 5.0.1 =
-* Fixed some issues for the PHP 5.2
+* Fixed some issues for the PHP 5.1-5.2
 * Compatible with WP 4.2.1
 
 = 5.0.0 =
