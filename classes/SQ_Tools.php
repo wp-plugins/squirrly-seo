@@ -364,7 +364,7 @@ class SQ_Tools extends SQ_FrontController {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, $options['timeout']);
 
-        if (isset($options['followlocation'])) {
+        if (isset($options['followlocation']) && !ini_get('safe_mode')) {
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
         }
