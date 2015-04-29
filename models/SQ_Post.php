@@ -249,6 +249,10 @@ class Model_SQ_Post {
         $dir = null;
         $file = array();
 
+        if (strpos($url, 'http:') === false) {
+            $url = 'http:' . $url;
+        }
+
         $response = wp_remote_get($url, array('timeout' => 15));
         $file = wp_upload_bits(urlencode(basename($url)), '', wp_remote_retrieve_body($response), $dir);
 
