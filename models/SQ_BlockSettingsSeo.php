@@ -308,9 +308,10 @@ class Model_SQ_BlockSettingsSeo {
                         SQ_Error::setError(__("ICO Error: Could not create the ICO from file. Try with another file type.", _SQ_PLUGIN_NAME_));
                     }
                 } else {
-                    copy($out['tmp'],$out['favicon']);
+                    copy($out['tmp'], $out['favicon']);
                     unset($out['tmp']);
                     if (file_exists($path . "/" . 'favicon.ico')) {
+                        $ico = SQ_ObjController::getModel('SQ_Ico');
                         $ico->remove_ico($path . "/" . 'favicon.ico');
                     }
                 }
