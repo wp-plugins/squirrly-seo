@@ -95,7 +95,7 @@ class SQ_Frontend extends SQ_FrontController {
 
         $find = $replace = $urls = array();
 
-        @preg_match_all('/<img[^>]*src="([^"]+)"[^>]*>/i', $content, $out);
+        @preg_match_all('/<img[^>]*src=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
         if (is_array($out)) {
             if (!is_array($out[1]) || empty($out[1]))
                 return $content;
@@ -109,7 +109,7 @@ class SQ_Frontend extends SQ_FrontController {
             }
         }
 
-        @preg_match_all('/<a[^>]*href="([^"]+)"[^>]*>/i', $content, $out);
+        @preg_match_all('/<a[^>]*href=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
         if (is_array($out)) {
             if (!is_array($out[1]) || empty($out[1]))
                 return $content;

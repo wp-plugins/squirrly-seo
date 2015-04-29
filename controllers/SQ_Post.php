@@ -65,6 +65,7 @@ class SQ_Post extends SQ_FrontController {
      * @param type $post_id
      */
     public function hookSavePost($post_id) {
+
         $file_name = false;
         if (!isset($this->saved[$post_id]))
             $this->saved[$post_id] = false;
@@ -100,19 +101,22 @@ class SQ_Post extends SQ_FrontController {
      * @return false|void
      */
     public function checkImage($post_id) {
+
         //if the option to save the images locally is set on
         if (SQ_Tools::$options['sq_local_images'] == 1) {
+
             @set_time_limit(90);
             $local_file = false;
 
-            $content = stripslashes(SQ_Tools::getValue('post_content'));
-            $tmpcontent = trim($content, "\n");
+            $content = SQ_Tools::getValue('post_content', '', true); //get the content in html format
+            $tmpcontent = trim(html_entity_decode($content), "\n");
             $urls = array();
 
             if (function_exists('preg_match_all')) {
-                @preg_match_all('/<img[^>]*src="([^"]+)"[^>]*>/i', $tmpcontent, $out);
 
+                @preg_match_all('/<img[^>]*src=[\'"]([^\'"]+)[\'"][^>]*>/i', $tmpcontent, $out);
                 if (is_array($out)) {
+
                     if (!is_array($out[1]) || count($out[1]) == 0)
                         return;
 
@@ -120,7 +124,7 @@ class SQ_Post extends SQ_FrontController {
                         $domain = parse_url(get_bloginfo('wpurl'));
 
                         foreach ($out[1] as $row) {
-                            if (strpos($row, 'http') !== false &&
+                            if (strpos($row, '//') !== false &&
                                     strpos($row, $domain['host']) === false) {
                                 if (!in_array($row, $urls)) {
                                     $urls[] = $row;
@@ -135,6 +139,7 @@ class SQ_Post extends SQ_FrontController {
                 return;
 
             $urls = @array_unique($urls);
+
             $time = microtime(true);
             foreach ($urls as $url) {
                 if ($file = $this->model->upload_image($url)) {
