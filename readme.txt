@@ -67,8 +67,6 @@ You can use Squirrly SEO for free and if you have small content marketing needs 
 
 Once you start having bigger content marketing and SEO needs (more than one article posted per week), you can go PRO. Read more about it in the FAQ section.
 
-Neil Patel, the co-founder of Kissmetrics and Crazy Egg, recommends us as one of the best wordpress seo plugins that really helps to improve traffic. http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-these-must-have-wordpress-plugins/
-
 <em>"Wow ,I've been using your tool for a week now and one of my blog ranked no1 out of a million for its key word... amazing"</em>
 
 <h3>Reviews</h3>
