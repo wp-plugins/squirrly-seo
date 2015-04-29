@@ -249,7 +249,7 @@ class Model_SQ_Post {
         $dir = null;
         $file = array();
 
-        if (strpos($url, 'http:') === false) {
+        if (strpos($url, 'http') === false) {
             $url = 'http:' . $url;
         }
 
