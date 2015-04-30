@@ -12,4 +12,20 @@ require(dirname(__FILE__) . '/config/config.php');
 
 /* Delete the record from database */
 delete_option(SQ_OPTION);
+rrmdir(_SQ_CACHE_DIR_);
 
+function rrmdir($dir) {
+    if (is_dir($dir)) {
+        $objects = scandir($dir);
+        foreach ($objects as $object) {
+            if ($object != "." && $object != "..") {
+                if (filetype($dir . "/" . $object) == "dir")
+                    rrmdir($dir . "/" . $object);
+                else
+                    unlink($dir . "/" . $object);
+            }
+        }
+        reset($objects);
+        @rmdir($dir);
+    }
+}

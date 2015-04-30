@@ -309,6 +309,10 @@ class Model_SQ_BlockSettingsSeo {
                     }
                 } else {
                     copy($out['tmp'], $out['favicon']);
+                    foreach ($this->appleSizes as $size) {
+                        copy($out['tmp'], $out['favicon' . $size]);
+                    }
+
                     unset($out['tmp']);
                     if (file_exists($path . "/" . 'favicon.ico')) {
                         $ico = SQ_ObjController::getModel('SQ_Ico');

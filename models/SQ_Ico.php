@@ -93,19 +93,6 @@ class Model_SQ_Ico {
         return true;
     }
 
-//    public function save_ico(&$file) {
-//        $dir = null;
-//
-//        $file = wp_upload_bits($file['name'], null, file_get_contents($file['tmp']));
-//
-//        if (!isset($file['error']) || $file['error'] == '')
-//            if (isset($file['url']) && $file['url'] <> '') {
-//                $file['filename'] = basename($file['url']);
-//                return $file;
-//            }
-//        $file = false;
-//    }
-
     function remove_ico($file) {
         if (file_exists($file)) {
             unlink($file);

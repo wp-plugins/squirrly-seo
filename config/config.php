@@ -30,4 +30,3 @@ require_once(dirname(__FILE__) . '/paths.php');
 
 /* Define the record name in the Option and UserMeta tables */
 define('SQ_OPTION', 'sq_options');
-?>
