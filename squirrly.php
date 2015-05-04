@@ -52,7 +52,6 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
         echo '<div class="update-nag"><span style="color:red; font-weight:bold;">' . __('For Squirrly to work, the PHP version has to be equal or greater then 5.1', _SQ_PLUGIN_NAME_) . '</span></div>';
     }
 
-// --
     /**
      *  Upgrade Squirrly call.
      */

@@ -14,6 +14,10 @@ require(dirname(__FILE__) . '/config/config.php');
 delete_option(SQ_OPTION);
 rrmdir(_SQ_CACHE_DIR_);
 
+/**
+ * Remove the icon directory if exists
+ * @param string $dir
+ */
 function rrmdir($dir) {
     if (is_dir($dir)) {
         $objects = scandir($dir);
