@@ -1,6 +1,6 @@
 ﻿=== SEO by SQUIRRLY ===
 Contributors: cifi, calinvingan, florinmuresan
-Tags: seo,seo plugin,wordpress seo,seo optimization,seo content,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,multisite,squirrly,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,buddypress,social,social media,url,automatic,iphone
+Tags: seo,seo plugin,wordpress seo,seo optimization,seo content,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,multisite,squirrly,wordpress,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,buddypress,social,social media,url,automatic,iphone
 Requires at least: 3.5
 Tested up to: 4.2.1
 Stable tag: trunk
@@ -307,7 +307,7 @@ Andreea Leau - VP Marketing
 Cristina Leau  - Squirrly mascot designer
 Alexandra Nicola - Content Writer, future COO
 Teodora Vingan - SEO Analyser
-Ana Darstaru - Content Writer
+Ana Darstaru - Chief of Customer Service 
 Teo - SEO Consultant
 
 Investors:
