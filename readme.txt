@@ -139,6 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Made it download the remote images while in text editor
 * Detects remote images when the URL doesn't contain http
 * Fixed favicon disapear on plugin updates
+* Compatible with WP 4.2.2
 
 = 5.0.1 =
 * Fixed some issues for the PHP 5.1-5.2
