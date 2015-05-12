@@ -1,4 +1,12 @@
-jQuery(document).ready(function () {
+if (jQuery('.sq_helpcontent').length > 0) {
+    sq_blockdashboard();
+} else {
+    jQuery(document).ready(function () {
+        sq_blockdashboard();
+    });
+}
+
+function sq_blockdashboard(){
     if (jQuery('#sq_settings_login').length > 0) {
         jQuery('#sq_settings_login').after(jQuery('.sq_helpcontent'));
     }
@@ -23,4 +31,4 @@ jQuery(document).ready(function () {
         });
     });
 
-});
+};

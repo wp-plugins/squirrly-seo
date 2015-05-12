@@ -364,7 +364,7 @@ class SQ_Tools extends SQ_FrontController {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, $options['timeout']);
 
-        if (isset($options['followlocation']) ) {
+        if (isset($options['followlocation'])) {
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
         }
@@ -773,10 +773,10 @@ class SQ_Tools extends SQ_FrontController {
             $snippet['title'] = self::i18n(trim(strip_tags($snippet['title'])));
         }
 
-        $description_regex = '/<meta[^<>]*description[^<>]*content="([^"<>]+)"[^<>]*>/si';
+        $description_regex = '/<meta[^>]*(name|property)=["\']description["\'][^>]*content="([^"<>]+)"[^<>]*>/si';
         preg_match($description_regex, self::$source_code, $description);
         if (is_array($description) && count($description) > 0) {
-            $snippet['description'] = self::i18n(trim(strip_tags($description[1])));
+            $snippet['description'] = self::i18n(trim(strip_tags($description[2])));
 
             if (strlen($snippet['description']) > $length['description'])
                 $snippet['description'] = substr($snippet['description'], 0, ($length['description'] - 1)) . '...';

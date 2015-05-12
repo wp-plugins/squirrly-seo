@@ -6,7 +6,7 @@ if (jQuery('#sq_settings').length > 0) {
     });
 }
 
-var sq_blocksettingsseo = function () {
+function sq_blocksettingsseo() {
 
 ///////////////////////////////
     var snippet_timeout;
@@ -234,7 +234,7 @@ var sq_blocksettingsseo = function () {
 }
 
 //Submit the settings
-var sq_submitSettings = function () {
+function sq_submitSettings() {
     var sq_sitemap = [];
     var serialize = jQuery('#sq_settings').find('input[class=sq_sitemap]').serializeArray()
     jQuery(serialize).each(function () {

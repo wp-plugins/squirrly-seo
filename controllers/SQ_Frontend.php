@@ -20,6 +20,7 @@ class SQ_Frontend extends SQ_FrontController {
 
         //validate custom arguments for favicon and sitemap
         add_filter('query_vars', array($this, 'validateParams'), 1, 1);
+        add_action('template_redirect', array($this, 'startBuffer'), 0);
     }
 
     private function _isAjax() {
@@ -27,6 +28,18 @@ class SQ_Frontend extends SQ_FrontController {
             return true;
 
         return false;
+    }
+
+    public function startBuffer() {
+        if (SQ_Tools::$options['sq_use'] == 1) {
+            if ($this->_isAjax()) {
+                return;
+            }
+            add_filter('sq_title', array($this->model, 'clearTitle'));
+            add_filter('sq_description', array($this->model, 'clearDescription'));
+            //Use buffer only for meta Title
+            $this->model->startBuffer();
+        }
     }
 
     /**
@@ -39,18 +52,6 @@ class SQ_Frontend extends SQ_FrontController {
             SQ_Tools::$options['sq_use'] = 0;
         }
 
-
-        if (SQ_Tools::$options['sq_use'] == 1) {
-            if ($this->_isAjax()) {
-                return;
-            }
-
-            add_filter('sq_title', array($this->model, 'clearTitle'));
-            add_filter('sq_description', array($this->model, 'clearDescription'));
-
-            //Use buffer only for meta Title
-            $this->model->startBuffer();
-        }
 
         //Check for sitemap and robots
         if (SQ_Tools::$options['sq_use'] == 1) {

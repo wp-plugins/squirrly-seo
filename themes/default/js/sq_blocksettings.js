@@ -6,7 +6,7 @@ if (jQuery('#sq_settings').length > 0) {
     });
 }
 
-var sq_blocksettings = function () {
+function sq_blocksettings() {
     jQuery('#sq_selectall').click(function (event) {  //on click
         if (this.checked) { // check select status
             jQuery('#sq_post_type_option input').each(function () { //loop through each checkbox
@@ -21,7 +21,7 @@ var sq_blocksettings = function () {
 
 }
 //Submit the settings
-var sq_submitSettings = function () {
+function sq_submitSettings() {
 
     var sq_post_types = [];
     var serialize = jQuery('#sq_settings').find('input[class=sq_post_types]').serializeArray()

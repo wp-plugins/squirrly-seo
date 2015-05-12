@@ -117,10 +117,10 @@ class Model_SQ_Frontend {
         } elseif (isset($post->ID)) {
             $this->post = get_post($post->ID);
         }
-
         if ($this->isHomePage() || is_single() || is_preview() || is_page() || is_archive() || is_author() || is_category() || is_tag() || is_search() || in_array(get_post_type(), $this->post_type)) {
             preg_match("/<head[^>]*>/i", $buffer, $out);
             if (!empty($out)) {
+
                 $this->title = $this->getCustomTitle();
                 if (isset($this->title) && $this->title <> '') {
                     //replace the existing title
@@ -132,13 +132,20 @@ class Model_SQ_Frontend {
 
                 if ((SQ_Tools::$options['sq_auto_description'] == 1 && $this->isHomePage()) || !$this->isHomePage()) {
                     //clear the existing description and keywords
-                    $buffer = @preg_replace('/<meta[^>]*(name|property)=\"(description|keywords)\"[^>]*content=["\'][^"\'>]*["\'][^>]*>[\n\r]*/si', '', $buffer, -1);
+                    $buffer = @preg_replace('/<meta[^>]*(name|property)=["\'](description|keywords)["\'][^>]*content=["\'][^"\'>]*["\'][^>]*>[\n\r]*/si', '', $buffer, -1);
                 }
                 if (SQ_Tools::$options['sq_auto_facebook'] == 1) {
-                    $buffer = @preg_replace('/<meta[^>]*(name|property)=["\'](og:|article:|twitter:)[^"\'>]+["\'][^>]*content=["\'][^"\'>]+["\'][^>]*>[\n\r]*/si', '', $buffer, -1);
+                    $buffer = @preg_replace('/<meta[^>]*(name|property)=["\'](og:|article:)[^"\'>]+["\'][^>]*content=["\'][^"\'>]+["\'][^>]*>[\n\r]*/si', '', $buffer, -1);
                 }
                 if (SQ_Tools::$options['sq_auto_twitter'] == 1) {
                     $buffer = @preg_replace('/<meta[^>]*(name|property)=["\'](twitter:)[^"\'>]+["\'][^>]*content=["\'][^"\'>]+["\'][^>]*>[\n\r]*/si', '', $buffer, -1);
+                }
+
+                if (SQ_Tools::$options['sq_auto_canonical'] == 1) {
+                    $buffer = @preg_replace('/<link[^>]*rel=[^>]*(canonical|prev|next)[^>]*>[\n\r]*/si', '', $buffer, -1);
+                }
+                if (SQ_Tools::$options['sq_auto_jsonld'] == 1) {
+                    $buffer = @preg_replace('/<script[^>]*type=["\']application\/ld\+json["\'][^>]*>[^>]*<\/script>[\n\r]*/si', '', $buffer, -1);
                 }
             }
         }
@@ -430,43 +437,41 @@ class Model_SQ_Frontend {
                     $tag = get_query_var('tag');
                     $title = ucfirst(str_replace('-', ' ', $tag)) . $sep . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
                 }
-            }elseif (is_archive()) { //for archive and products
+            } elseif (is_archive()) { //for archive and products
                 if (isset($this->post) && isset($this->post->ID)) {
                     $title = $this->grabTitleFromPost($this->post->ID);
 
                     //if woocommerce is installed and is a product category
-                    if (function_exists('is_product_category') && is_product_category()){
+                    if (function_exists('is_product_category') && is_product_category()) {
                         global $wp_query;
                         $cat = $wp_query->get_queried_object();
-                        if (!empty($cat)){
+                        if (!empty($cat)) {
                             $title .= $sep . $cat->name;
                         }
-                    }else{
-                        $cat = get_the_terms( $this->post->ID, 'category' );
-                        if (!empty($cat)){
+                    } else {
+                        $cat = get_the_terms($this->post->ID, 'category');
+                        if (!empty($cat)) {
                             $title .= $sep . $cat[0]->name;
                         }
                     }
                 }
 
                 if (is_paged()) {
-                   $title .= $sep . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
+                    $title .= $sep . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
                 }
             } elseif (is_single() || is_page() || is_singular() || in_array(get_post_type(), $this->post_type)) {
                 if (isset($this->post) && isset($this->post->ID)) {
-                     //is a post page
+                    //is a post page
                     $title = $this->grabTitleFromPost($this->post->ID);
 
-                     //if woocommerce is installed and is a product
-                    if (function_exists('is_product') && is_product()){
-                        $cat = get_the_terms( $this->post->ID, 'product_cat' );
-                        if (!empty($cat) && count($cat) > 1){
+                    //if woocommerce is installed and is a product
+                    if (function_exists('is_product') && is_product()) {
+                        $cat = get_the_terms($this->post->ID, 'product_cat');
+                        if (!empty($cat) && count($cat) > 1) {
                             $title .= $sep . $cat[0]->name;
                         }
                     }
                 }
-
-
             }
         }
 
@@ -615,15 +620,14 @@ class Model_SQ_Frontend {
                 }
 
                 if (is_paged()) {
-                    $description .=  $sep  . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
+                    $description .= $sep . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
                 }
 
                 if ($this->isHomePage() && $description <> '') {
                     if ($this->meta['blogname'] <> '') {
-                        $description .=  $sep . $this->meta['blogname'];
+                        $description .= $sep . $this->meta['blogname'];
                     }
                 }
-
             } elseif (is_author()) { //for author
                 $description = $this->getAuthor('user_description');
                 if ($description == '') {
@@ -642,25 +646,22 @@ class Model_SQ_Frontend {
                     $description .= $sep . __('Page', _SQ_PLUGIN_NAME_) . " " . get_query_var('paged');
                 }
             } elseif (is_archive()) { //for archive and products
-
                 if (isset($this->post) && isset($this->post->ID)) {
                     $description = $this->grabDescriptionFromPost($this->post->ID);
 
                     //if woocommerce is installed and is a product category
-                    if (function_exists('is_product_category') && is_product_category()){
+                    if (function_exists('is_product_category') && is_product_category()) {
                         global $wp_query;
                         $cat = $wp_query->get_queried_object();
-                        if (!empty($cat)){
-                            $description .= $sep . $cat->name ;
+                        if (!empty($cat)) {
+                            $description .= $sep . $cat->name;
                         }
-
-                    }else{
-                        $cat = get_the_terms( $this->post->ID, 'category' );
-                        if (!empty($cat)){
+                    } else {
+                        $cat = get_the_terms($this->post->ID, 'category');
+                        if (!empty($cat)) {
                             $description .= $sep . $cat[0]->name;
                         }
                     }
-
                 }
 
                 if (is_paged()) {
@@ -672,13 +673,12 @@ class Model_SQ_Frontend {
                     $description .= $this->grabDescriptionFromPost($this->post->ID);
 
                     //if woocommerce is installed and is a product
-                    if (function_exists('is_product') && is_product()){
-                        $cat = get_the_terms( $this->post->ID, 'product_cat' );
-                        if (!empty($cat) && count($cat) > 1){
+                    if (function_exists('is_product') && is_product()) {
+                        $cat = get_the_terms($this->post->ID, 'product_cat');
+                        if (!empty($cat) && count($cat) > 1) {
                             $description .= $sep . $cat[0]->name;
                         }
                     }
-
                 }
             }
         }
@@ -823,7 +823,7 @@ class Model_SQ_Frontend {
                 $favicon = get_bloginfo('wpurl') . '/touch-icon' . $size . '.png' . $rnd;
                 $meta .= sprintf("<link rel=\"apple-touch-icon\" sizes=\"" . $size . "x" . $size . "\"  href=\"%s\" />" . "\n", $favicon);
             }
-        }else{
+        } else {
             if (file_exists(ABSPATH . 'favicon.ico')) {
                 $meta .= sprintf("<link rel=\"shortcut icon\"  href=\"%s\" />" . "\n", get_bloginfo('wpurl') . '/favicon.ico');
             }

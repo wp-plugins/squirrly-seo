@@ -5,7 +5,7 @@ if (jQuery('#sq_blocklogin').length > 0) {
         sq_blocklogin();
     });
 }
-var sq_blocklogin = function () {
+function sq_blocklogin() {
     jQuery('#sq_email').bind('keypress', function (event) {
 
         if (event.keyCode === 13)
@@ -116,7 +116,7 @@ var sq_blocklogin = function () {
     });
 }
 
-var sq_autoLogin = function () {
+function sq_autoLogin() {
     if (!checkEmail(jQuery('#sq_email').val())) {
         jQuery('#sq_blocklogin').find('.sq_error').html(__invalid_email);
         jQuery('#sq_register_email').show();
@@ -196,7 +196,7 @@ var sq_autoLogin = function () {
     });
 }
 
-var sq_reload = function (response) {
+function sq_reload(response) {
     if (typeof response.success !== 'undefined') {
         jQuery('#sq_login_success').html(response.success);
     }
@@ -217,7 +217,7 @@ var sq_reload = function (response) {
     }
 }
 
-var checkEmail = function (email) {
+function checkEmail(email) {
     var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
     if (email !== '')

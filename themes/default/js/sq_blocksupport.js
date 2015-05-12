@@ -6,7 +6,7 @@ if (jQuery('#sq_options').length > 0) {
     });
 }
 
-var sq_blocksupport = function () {
+function sq_blocksupport() {
     if (typeof sq_facebook_b === 'undefined')
         var sq_facebook_b = '<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FSquirrly.co&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=384403641631593" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>';
 

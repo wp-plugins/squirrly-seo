@@ -1,4 +1,12 @@
-var ctl_setThemeColors = function (background, button, text) {
+if (jQuery('#sq_settings').length > 0) {
+    sq_blockmenu();
+} else {
+    jQuery(document).ready(function () {
+        sq_blockmenu();
+    });
+}
+
+function ctl_setThemeColors(background, button, text) {
     jQuery('#sq_settings legend').css('background-color', background);
     jQuery('#sq_settings input[type="submit"]').css('background-color', button);
     jQuery('#sq_settings input[type="submit"]').css('color', text);
@@ -8,15 +16,7 @@ var ctl_setThemeColors = function (background, button, text) {
 
 }
 
-if (jQuery('#sq_settings').length > 0) {
-    sq_blockmenu();
-} else {
-    jQuery(document).ready(function () {
-        sq_blockmenu();
-    });
-}
-
-var sq_blockmenu = function () {
+function sq_blockmenu() {
 ///////////////////////////////
 
     //Go to dashboard listener
@@ -71,7 +71,7 @@ var sq_blockmenu = function () {
 }
 
 //Show the title length in post editor
-var sq_trackLength = function (field, type) {
+function sq_trackLength(field, type) {
     var min = 0;
     var max = 0;
     if (typeof field === 'undefined')
@@ -97,7 +97,7 @@ var sq_trackLength = function (field, type) {
 }
 
 //get the snippet in settings and post editor
-var sq_getSnippet = function (url, show_url) {
+function sq_getSnippet(url, show_url) {
     if (jQuery('#sq_snippet').length == 0) {
         return;
     }
@@ -154,7 +154,7 @@ var sq_getSnippet = function (url, show_url) {
 }
 
 //Show user status in Squirrly > Account info
-var sq_getUserStatus = function () {
+function sq_getUserStatus() {
     jQuery('#sq_userinfo').addClass('sq_loading');
     jQuery('#sq_userstatus').addClass('sq_loading');
 
@@ -199,7 +199,7 @@ var sq_getUserStatus = function () {
 }
 
 //Recheck the user rank in Squirrly > Performance analytics
-var sq_recheckRank = function (post_id) {
+function sq_recheckRank(post_id) {
     jQuery('.sq_rank_column_button_recheck').hide();
     jQuery('#sq_rank_value' + post_id).html('').addClass('sq_loading');
     jQuery.getJSON(
@@ -227,7 +227,7 @@ var sq_recheckRank = function (post_id) {
 }
 
 //Show user status in Squirrly > Account info
-var sq_getSlides = function (category) {
+function sq_getSlides(category) {
     if (jQuery('#sq_help' + category + 'slides').length == 0) {
         return;
     }
@@ -246,7 +246,7 @@ var sq_getSlides = function (category) {
     });
 }
 
-var sq_getHelp = function (category, zone) {
+function sq_getHelp(category, zone) {
     var loadingAjax = true;
 
     if (zone == 'content' && jQuery('#sq_help' + category + zone).length == 0) {
@@ -311,7 +311,7 @@ var sq_getHelp = function (category, zone) {
     }, 10000);
 
 }
-var checkResponse = function (response) {
+function checkResponse(response) {
     if (typeof response.error !== 'undefined') {
         if (response.error === 'invalid_token') {
             jQuery.getJSON(
@@ -328,7 +328,7 @@ var checkResponse = function (response) {
     }
 }
 
-var showSaved = function (time) {
+function showSaved(time) {
     jQuery("#sq_settings").prepend('<div class="sq_savenotice sq_absolute" ><span class="sq_success">Saved!</span></div>');
 
     if (typeof sq_help_reload == 'function') {
