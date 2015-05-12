@@ -135,11 +135,16 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.0.3 =
+* Prevent canonical, prev, next meta duplicate inserted by other SEO plugins
+* Fixed snippet custom title and description change when other SEO plugins are installed
+* Fixed javascript issue in login page
+* Compatible with WP 4.2.2
+
 = 5.0.2 =
 * Made it download the remote images while in text editor
 * Detects remote images when the URL doesn't contain http
 * Fixed favicon disapear on plugin updates
-* Compatible with WP 4.2.2
 
 = 5.0.1 =
 * Fixed some issues for the PHP 5.1-5.2
@@ -308,7 +313,7 @@ Andreea Leau - VP Marketing
 Cristina Leau  - Squirrly mascot designer
 Alexandra Nicola - Content Writer, future COO
 Teodora Vingan - SEO Analyser
-Ana Darstaru - Chief of Customer Service 
+Ana Darstaru - Chief of Customer Service
 Teo - SEO Consultant
 
 Investors:
