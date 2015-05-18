@@ -137,7 +137,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 5.0.3 =
 * Prevent canonical, prev, next meta duplicate inserted by other SEO plugins
-* Fixed snippet custom title and description change when other SEO plugins are installed
+* Fixed snippet custom title and description to change when other SEO plugins are installed
 * Fixed javascript issue in login page
 * Compatible with WP 4.2.2
 

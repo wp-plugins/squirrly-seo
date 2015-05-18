@@ -17,6 +17,25 @@ class SQ_Sitemaps extends SQ_FrontController {
         add_filter('request', array($this, 'feedRequest'));
         add_filter('user_trailingslashit', array($this, 'untrailingslashit'));
         add_action('sq_processPing', array($this, 'processCron'));
+        add_action('rss_tag_pre', array($this, 'rssStyle'));
+        add_filter('feed_content_type', array($this, 'feedHeader'), 10, 2);
+    }
+
+    public function rssStyle() {
+        echo '<?xml-stylesheet type="text/xml" href="' . _SQ_THEME_URL_ . 'css/sq_feed.xsl' . '" media="screen" ?>';
+    }
+
+    public function feedHeader($content_type, $type) {
+        if (empty($type))
+            $type = get_default_feed();
+        $types = array(
+            'rss' => 'application/rss+xml',
+            'rss2' => 'application/rss+xml',
+            'rss-http' => 'text/xml',
+            'atom' => 'application/xml',
+            'rdf' => 'application/rdf+xml'
+        );
+        $content_type = (!empty($types[$type]) ) ? $types[$type] : 'application/octet-stream';
     }
 
     public function refreshSitemap($new_status, $old_status, $post) {
@@ -281,10 +300,10 @@ class SQ_Sitemaps extends SQ_FrontController {
      * @return string
      */
     public function getXmlUrl($sitemap) {
-        if (!get_option('permalink_structure')){
+        if (!get_option('permalink_structure')) {
             $sitemap = '?feed=' . str_replace('.xml', '', $sitemap);
-        }else{
-            if(isset(SQ_Tools::$options['sq_sitemap'][$sitemap])){
+        } else {
+            if (isset(SQ_Tools::$options['sq_sitemap'][$sitemap])) {
                 $sitemap = SQ_Tools::$options['sq_sitemap'][$sitemap][0];
             }
 
@@ -386,7 +405,7 @@ class SQ_Sitemaps extends SQ_FrontController {
         ) p ON (wp_users.ID = p.post_author)';
         $query->query_where .= ' AND post_count  > 0 ';
     }
-    
+
     function customPostFilter($query) {
         $types = get_post_types();
         foreach (array('post', 'page', 'attachment', 'revision', 'nav_menu_item', 'product', 'wpsc-product') as $exclude) {
