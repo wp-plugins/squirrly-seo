@@ -129,7 +129,7 @@ class SQ_Action extends SQ_FrontController {
             return false;
         }
 
-        $extra = array('user_url' => urlencode(get_bloginfo('wpurl')),
+        $extra = array('user_url' => get_bloginfo('wpurl'),
             'lang' => (defined('WPLANG') ? WPLANG : 'en_US'),
             'versq' => SQ_VERSION_ID,
             'verwp' => WP_VERSION_ID,
