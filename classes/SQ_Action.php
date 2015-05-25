@@ -136,9 +136,7 @@ class SQ_Action extends SQ_FrontController {
             'verphp' => PHP_VERSION_ID,
             'token' => SQ_Tools::$options['sq_api']);
 
-        if ($module <> "") {
-            $module .= "/";
-        }
+
 
         if (is_array($args)) {
             $args = array_merge($args, $extra);
@@ -148,10 +146,9 @@ class SQ_Action extends SQ_FrontController {
 
         foreach ($args as $key => $value) {
             if ($value <> '') {
-                $parameters .= ($parameters == "" ? "" : "&") . $key . "=" . $value;
+                $parameters .= ($parameters == "" ? "" : "&") . $key . "=" . urlencode($value);
             }
         }
-
 
         /* If the call is for login on register then use base64 is exists */
         if ($module == 'sq/login' || $module == 'sq/register') {
@@ -160,9 +157,11 @@ class SQ_Action extends SQ_FrontController {
             }
         }
 
+        if ($module <> "") {
+            $module .= "/";
+        }
 
         $url = self::cleanUrl(_SQ_API_URL_ . $module . "?" . $parameters);
-        //SQ_Tools::dump($url);
         return SQ_Tools::sq_remote_get($url, array(), array('timeout' => $timeout));
     }
 

@@ -135,11 +135,14 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.1.0 =
+* Fixed the encription for the password and fixed the bad login issue
+* Compatible with WP 4.2.2
+
 = 5.0.3 =
 * Prevent canonical, prev, next meta duplicate inserted by other SEO plugins
 * Fixed snippet custom title and description to change when other SEO plugins are installed
 * Fixed javascript issue in login page
-* Compatible with WP 4.2.2
 
 = 5.0.2 =
 * Made it download the remote images while in text editor

@@ -105,10 +105,10 @@ class SQ_Blocklogin extends SQ_BlockController {
         $responce = '';
 
         //get the user and password
-        $args['user'] = SQ_Tools::getValue('user');
-        $args['password'] = SQ_Tools::getValue('password');
+        $args['user'] = SQ_Tools::getValue('user', null, true);
+        $args['password'] = SQ_Tools::getValue('password', null, true);
+
         if ($args['user'] <> '' && $args['password'] <> '') {
-            $args['encrypted'] = '0';
             //get the responce from server on login call
             $responce = SQ_Action::apiCall('sq/login', $args);
 
