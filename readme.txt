@@ -2,7 +2,7 @@
 Contributors: cifi, calinvingan, florinmuresan
 Tags: seo,seo plugin,wordpress seo,seo optimization,seo content,plugin,content seo,search engine optimization,xml,sitemap,keyword,keyword research,post,posts,page,multisite,squirrly,wordpress,tag,image,images,photos,flickr,statistics,stats,google,content,title,description,favicon,mobile,canonical,author,google plus,analytics,admin,seo correction,seo title,seo meta,meta,google,twitter,news,blog,e-commerce,ecommerce,woocommerce,feed,feeds,marketing,buddypress,social,social media,url,automatic,iphone
 Requires at least: 3.5
-Tested up to: 4.2.2
+Tested up to: 4.2
 Stable tag: trunk
 Donate link: https://www.squirrly.co/wordpress-seo-by-squirrly
 

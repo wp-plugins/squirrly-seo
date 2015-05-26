@@ -33,6 +33,8 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
         }
 
         add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
+        add_action('sq_processPing', array(SQ_ObjController::getController('SQ_Sitemaps'), 'processCron'));
+        add_action('sq_processApi', array(SQ_ObjController::getController('SQ_Post'), 'processCron'));
     } else {
         /* Main class call */
         add_action('admin_init', 'phpError');

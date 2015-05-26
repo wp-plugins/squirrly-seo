@@ -200,9 +200,14 @@ class SQ_Post extends SQ_FrontController {
         $args['author'] = (int) SQ_Tools::getUserID();
         $args['post_id'] = $post_id;
 
+        $process = array();
+        if (get_transient('sq_seopost') !== false) {
+            $process = json_decode(get_transient('sq_seopost'), true);
+        }
+        $process[] = $args;
         //save for later send to api
-        set_transient('sq_seopost', json_encode($args));
-
+        set_transient('sq_seopost', json_encode($process));
+        wp_schedule_single_event(time() + 60, 'sq_processApi');
         //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {
             $json->keyword = SQ_Tools::getValue('sq_keyword');
@@ -308,9 +313,22 @@ class SQ_Post extends SQ_FrontController {
     }
 
     public function hookFooter() {
+        $this->processCron();
+    }
+
+    public function processCron() {
+        SQ_ObjController::getController('SQ_Tools', false);
+        SQ_ObjController::getController('SQ_Action', false);
+
         if (get_transient('sq_seopost') !== false) {
-            SQ_Action::apiCall('sq/seo/post', (array) json_decode(get_transient('sq_seopost')), 60);
-            delete_transient('sq_seopost');
+            $process = json_decode(get_transient('sq_seopost'), true);
+            foreach ($process as $key => $call) {
+                $response = json_decode(SQ_Action::apiCall('sq/seo/post', $call, 60));
+                if (isset($response->saved) && $response->saved == true) {
+                    unset($process[$key]);
+                }
+            }
+            set_transient('sq_seopost', json_encode($process));
         }
     }
 
