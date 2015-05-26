@@ -339,11 +339,15 @@ class SQ_Tools extends SQ_FrontController {
         }
         $options['sslverify'] = false;
 
-        if (function_exists('curl_init') && !ini_get('safe_mode') && !ini_get('open_basedir')) {
-            return self::sq_curl($url, $options);
-        } else {
-            return self::sq_wpcall($url, $options);
+        if (!$response = self::sq_wpcall($url, $options)) {
+            if (function_exists('curl_init') && !ini_get('safe_mode') && !ini_get('open_basedir')) {
+                $response = self::sq_curl($url, $options);
+            } else {
+                return false;
+            }
         }
+
+        return $response;
     }
 
     /**
@@ -398,6 +402,11 @@ class SQ_Tools extends SQ_FrontController {
      */
     private static function sq_wpcall($url, $options) {
         $response = wp_remote_get($url, $options);
+        if (is_wp_error($response)) {
+            self::dump($response);
+            return false;
+        }
+
         $response = self::cleanResponce(wp_remote_retrieve_body($response)); //clear and get the body
         self::dump('wp_remote_get', $url, $options, $response); //output debug
         return $response;

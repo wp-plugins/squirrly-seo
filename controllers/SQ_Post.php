@@ -309,7 +309,7 @@ class SQ_Post extends SQ_FrontController {
 
     public function hookFooter() {
         if (get_transient('sq_seopost') !== false) {
-            SQ_Action::apiCall('sq/seo/post', (array) json_decode(get_transient('sq_seopost')), 30);
+            SQ_Action::apiCall('sq/seo/post', (array) json_decode(get_transient('sq_seopost')), 60);
             delete_transient('sq_seopost');
         }
     }
