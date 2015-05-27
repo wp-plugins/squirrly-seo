@@ -61,8 +61,8 @@ class Model_SQ_Sitemaps {
 
                             $xml['image:image'][] = array(
                                 'image:loc' => $image['src'],
-                                'image:title' => $image['title'],
-                                'image:caption' => $image['description'],
+                                'image:title' => SQ_ObjController::getModel('SQ_Frontend')->clearTitle($image['title']),
+                                'image:caption' => SQ_ObjController::getModel('SQ_Frontend')->clearDescription($image['description']),
                             );
                         }
                     }
@@ -109,8 +109,8 @@ class Model_SQ_Sitemaps {
 
                             $xml['image:image'][] = array(
                                 'image:loc' => $image['src'],
-                                'image:title' => $image['title'],
-                                'image:caption' => $image['description'],
+                                'image:title' => SQ_ObjController::getModel('SQ_Frontend')->clearTitle($image['title']),
+                                'image:caption' => SQ_ObjController::getModel('SQ_Frontend')->clearDescription($image['description']),
                             );
                         }
                     }
@@ -129,8 +129,8 @@ class Model_SQ_Sitemaps {
                             $xml['video:video'][$post->ID] = array(
                                 'video:player_loc' => htmlentities($video),
                                 'video:thumbnail_loc' => htmlentities($images[0]['src']),
-                                'video:title' => SQ_ObjController::getModel('SQ_Frontend')->grabTitleFromPost($post->ID),
-                                'video:description' => SQ_ObjController::getModel('SQ_Frontend')->grabDescriptionFromPost($post->ID),
+                                'video:title' => SQ_ObjController::getModel('SQ_Frontend')->clearTitle(SQ_ObjController::getModel('SQ_Frontend')->grabTitleFromPost($post->ID)),
+                                'video:description' => SQ_ObjController::getModel('SQ_Frontend')->clearDescription(SQ_ObjController::getModel('SQ_Frontend')->grabDescriptionFromPost($post->ID)),
                             );
 
                             //set the first keyword for this video
@@ -193,8 +193,8 @@ class Model_SQ_Sitemaps {
 
                             $xml['image:image'][] = array(
                                 'image:loc' => $image['src'],
-                                'image:title' => $image['title'],
-                                'image:caption' => $image['description'],
+                                'image:title' => SQ_ObjController::getModel('SQ_Frontend')->clearTitle($image['title']),
+                                'image:caption' => SQ_ObjController::getModel('SQ_Frontend')->clearDescription($image['description']),
                             );
                         }
                     }
@@ -212,8 +212,8 @@ class Model_SQ_Sitemaps {
                             $xml['video:video'][$post->ID] = array(
                                 'video:player_loc' => $video,
                                 'video:thumbnail_loc' => $images[0]['src'],
-                                'video:title' => SQ_ObjController::getModel('SQ_Frontend')->grabTitleFromPost($post->ID),
-                                'video:description' => SQ_ObjController::getModel('SQ_Frontend')->grabDescriptionFromPost($post->ID),
+                                'video:title' => SQ_ObjController::getModel('SQ_Frontend')->clearTitle(SQ_ObjController::getModel('SQ_Frontend')->grabTitleFromPost($post->ID)),
+                                'video:description' => SQ_ObjController::getModel('SQ_Frontend')->clearDescription(SQ_ObjController::getModel('SQ_Frontend')->grabDescriptionFromPost($post->ID)),
                             );
 
                             //set the first keyword for this video
