@@ -139,6 +139,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the feed style issue
 * Increased the plugin loading speed in frontend
 * Improved the communication with the API Server
+* Fixed the post optimization history issue
 * Fixed the encription for the password and fixed the bad login issue
 * Compatible with WP 4.2.2
 
