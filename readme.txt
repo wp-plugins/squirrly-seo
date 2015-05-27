@@ -135,7 +135,10 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 5.1.0 =
+= 5.1.1 =
+* Fixed the feed style issue
+* Increased the plugin loading speed in frontend
+* Improved the communication with the API Server
 * Fixed the encription for the password and fixed the bad login issue
 * Compatible with WP 4.2.2
 
