@@ -7,7 +7,6 @@ class SQ_HookController {
 
     /** @var array the WP actions list from admin */
     private $admin_hooks = array();
-    private $custom_hooks = array();
     private $block_hooks = array();
 
     public function __construct() {
@@ -37,8 +36,6 @@ class SQ_HookController {
         foreach ($this->admin_hooks as $hook => $value) {
 
             if (is_callable(array($instance, 'hook' . ucfirst($hook)))) {
-                //echo $value . '<br>';
-                //print_r(array($instance, 'hook'.ucfirst($hook)));
                 //call the WP add_action function
                 add_action($value, array($instance, 'hook' . ucfirst($hook)), 5);
             }

@@ -30,8 +30,7 @@ class SQ_FrontController {
 
         //IMPORTANT TO LOAD HOOKS HERE
         /* check if there is a hook defined in the controller clients class */
-        SQ_ObjController::getController('SQ_HookController', false)
-                ->setAdminHooks($this);
+        SQ_ObjController::getController('SQ_HookController', false)->setAdminHooks($this);
     }
 
     /**
@@ -68,9 +67,6 @@ class SQ_FrontController {
      * @return void
      */
     public function run() {
-        /** check the admin condition */
-        if (!is_admin())
-            return;
 
         /* Load error class */
         SQ_ObjController::getController('SQ_Error', false);

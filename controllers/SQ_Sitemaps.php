@@ -17,8 +17,8 @@ class SQ_Sitemaps extends SQ_FrontController {
         add_filter('request', array($this, 'feedRequest'));
         add_filter('user_trailingslashit', array($this, 'untrailingslashit'));
         add_action('sq_processPing', array($this, 'processCron'));
-        add_action('rss_tag_pre', array($this, 'rssStyle'));
-        add_filter('feed_content_type', array($this, 'feedHeader'), 10, 2);
+        //add_action('rss_tag_pre', array($this, 'rssStyle'));
+        // add_filter('feed_content_type', array($this, 'feedHeader'), 10, 2);
     }
 
     public function rssStyle() {

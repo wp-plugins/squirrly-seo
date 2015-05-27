@@ -31,10 +31,11 @@ class SQ_Frontend extends SQ_FrontController {
     }
 
     public function startBuffer() {
+        if ($this->_isAjax()) {
+            return;
+        }
+
         if (SQ_Tools::$options['sq_use'] == 1) {
-            if ($this->_isAjax()) {
-                return;
-            }
             add_filter('sq_title', array($this->model, 'clearTitle'));
             add_filter('sq_description', array($this->model, 'clearDescription'));
             //Use buffer only for meta Title
@@ -51,7 +52,6 @@ class SQ_Frontend extends SQ_FrontController {
         } elseif (SQ_Tools::getValue('sq_use') == 'off') {
             SQ_Tools::$options['sq_use'] = 0;
         }
-
 
         //Check for sitemap and robots
         if (SQ_Tools::$options['sq_use'] == 1) {
@@ -90,50 +90,48 @@ class SQ_Frontend extends SQ_FrontController {
      * Change the image path to absolute when in feed
      */
     public function hookFrontcontent($content) {
-        if (!is_feed())
-            return $content;
 
+        if (is_feed() && SQ_Tools::$options['sq_local_images'] == 1) {
+            $find = $replace = $urls = array();
 
-        $find = $replace = $urls = array();
+            @preg_match_all('/<img[^>]*src=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
+            if (is_array($out)) {
+                if (!is_array($out[1]) || empty($out[1]))
+                    return $content;
 
-        @preg_match_all('/<img[^>]*src=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
-        if (is_array($out)) {
-            if (!is_array($out[1]) || empty($out[1]))
-                return $content;
-
-            foreach ($out[1] as $row) {
-                if (strpos($row, '//') === false) {
-                    if (!in_array($row, $urls)) {
-                        $urls[] = $row;
+                foreach ($out[1] as $row) {
+                    if (strpos($row, '//') === false) {
+                        if (!in_array($row, $urls)) {
+                            $urls[] = $row;
+                        }
                     }
                 }
             }
-        }
 
-        @preg_match_all('/<a[^>]*href=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
-        if (is_array($out)) {
-            if (!is_array($out[1]) || empty($out[1]))
-                return $content;
+            @preg_match_all('/<a[^>]*href=[\'"]([^\'"]+)[\'"][^>]*>/i', $content, $out);
+            if (is_array($out)) {
+                if (!is_array($out[1]) || empty($out[1]))
+                    return $content;
 
-            foreach ($out[1] as $row) {
-                if (strpos($row, '//') === false) {
-                    if (!in_array($row, $urls)) {
-                        $urls[] = $row;
+                foreach ($out[1] as $row) {
+                    if (strpos($row, '//') === false) {
+                        if (!in_array($row, $urls)) {
+                            $urls[] = $row;
+                        }
                     }
                 }
             }
-        }
-        if (!is_array($urls) || (is_array($urls) && empty($urls)))
-            return $content;
+            if (!is_array($urls) || (is_array($urls) && empty($urls)))
+                return $content;
 
-        foreach ($urls as $url) {
-            $find[] = $url;
-            $replace[] = get_bloginfo('url') . $url;
+            foreach ($urls as $url) {
+                $find[] = $url;
+                $replace[] = get_bloginfo('url') . $url;
+            }
+            if (!empty($find) && !empty($replace)) {
+                $content = str_replace($find, $replace, $content);
+            }
         }
-        if (!empty($find) && !empty($replace)) {
-            $content = str_replace($find, $replace, $content);
-        }
-
         return $content;
     }
 
