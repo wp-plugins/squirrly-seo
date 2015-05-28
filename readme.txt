@@ -138,10 +138,10 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 5.1.1 =
 * Fixed the feed style issue
 * Added the custom size image for Open Graph in Squirrly Snippet
-* Increased the plugin loading speed in frontend
+* Increased the plugin loading speed in front-end
 * Improved the communication with the API Server
 * Fixed the post optimization history issue
-* Fixed the encription for the password and fixed the bad login issue
+* Fixed the encryption for the password and fixed the bad login issue
 * Compatible with WP 4.2.2
 
 = 5.0.3 =
@@ -152,7 +152,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 5.0.2 =
 * Made it download the remote images while in text editor
 * Detects remote images when the URL doesn't contain http
-* Fixed favicon disapear on plugin updates
+* Fixed favicon disappear on plugin updates
 
 = 5.0.1 =
 * Fixed some issues for the PHP 5.1-5.2
@@ -444,4 +444,4 @@ It all depends on how you have setup your wordpress until now. Some people use S
 == Upgrade Notice ==
 
 = 5.0.0 =
-5.0.0 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.
+5.1.0 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.
