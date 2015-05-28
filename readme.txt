@@ -137,6 +137,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 5.1.1 =
 * Fixed the feed style issue
+* Added the custom size image for Open Graph in Squirrly Snippet
 * Increased the plugin loading speed in frontend
 * Improved the communication with the API Server
 * Fixed the post optimization history issue
