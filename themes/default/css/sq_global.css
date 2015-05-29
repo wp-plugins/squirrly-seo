@@ -1,9 +1,11 @@
 .sq_message{
     line-height: 19px;
-    padding: 0px 0;
+    width: calc(100% - 22px) !important;
+    margin: -1px 0;
+    padding: 0px;
     font-size: 13px;
     text-align: center;
-    margin: -1px 15px 0 5px;
+
     border-width: 1px;
     border-style: solid;
     -webkit-border-bottom-right-radius: 3px;
@@ -19,25 +21,43 @@
 }
 .sq_error{
     position: relative;
-    width: auto !important;
+    width: calc(100% - 22px) !important;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
     color: brown;
-    margin: 5px 0 0 0;
-    padding: 0 10px;
+    margin: 32px 0 5px 0 !important;;
+    padding: 0 !important;
+    z-index: -1;
 }
 
 .sq_success{
     position: relative;
-    width: auto !important;
+    width: calc(100% - 22px) !important;
     text-align: center;
     font-size: 16px;
     font-weight: bold;
     color: white;
-    margin: 5px 0 0 0;
-    padding: 10px;
+    margin: 32px 0 5px 0;
+    margin: 32px 0 5px 0 !important;;
+    padding: 0 !important;
     background-color: #20bc49;
+}
+
+.squirrly_page_sq_seo .sq_error,
+.squirrly_page_sq_seo .sq_success,
+.toplevel_page_sq_dashboard .sq_error,
+.toplevel_page_sq_dashboard .sq_success,
+.squirrly_page_sq_settings .sq_error,
+.squirrly_page_sq_settings .sq_success,
+.squirrly_page_sq_account .sq_error,
+.squirrly_page_sq_account .sq_success,
+.squirrly_page_sq_affiliate .sq_error,
+.squirrly_page_sq_affiliate .sq_success
+.squirrly_page_sq_posts .sq_error,
+.squirrly_page_sq_posts .sq_success
+{
+    margin-top: 5px !important;
 }
 
 .sq_absolute{

@@ -68,9 +68,9 @@ class SQ_Menu extends SQ_FrontController {
                 set_transient('sq_analytics', time(), (60 * 60 * 24 * 7));
             } else {
                 $time_loaded = get_transient('sq_analytics');
-                if (time() - $time_loaded > (60 * 60 * 24 * 3)) {
-                    SQ_Error::setError(__('Check out the Squirrly Analytics section. <a href="admin.php?page=sq_posts" title="Squirrly Analytics">Click here</a>', _SQ_PLUGIN_NAME_));
-                }
+                // if (time() - $time_loaded > (60 * 60 * 24 * 3)) {
+                SQ_Error::setError(__('Check out the Squirrly Analytics section. <a href="admin.php?page=sq_posts" title="Squirrly Analytics">Click here</a>', _SQ_PLUGIN_NAME_));
+                // }
             }
         }
 
