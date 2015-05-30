@@ -136,6 +136,8 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.1.1 =
+* Corrected the css for the top yellow bar
+* Get the keyword from database for the saved article
 * Fixed the feed style issue
 * Added the custom size image for Open Graph in Squirrly Snippet
 * Increased the plugin loading speed in front-end
