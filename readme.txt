@@ -15,7 +15,7 @@ Recommended by <a href="http://www.quicksprout.com/university/how-to-maximize-yo
 
 [youtube https://www.youtube.com/watch?v=mEjrE7TuDDc]
 
-See all the Squirrly SEO features at: http://howto.squirrly.co/category/sides/
+See all the Squirrly SEO features at: http://howto.squirrly.co
 
 Based on the topic you're writing about, the interface will light up green while you're editing your text, so that you know you've done something right. When all the lights are green, you can publish it, because your text has excellent SEO and it's 100% optimized.
 
