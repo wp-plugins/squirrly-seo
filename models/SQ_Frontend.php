@@ -767,12 +767,12 @@ class Model_SQ_Frontend {
         $meta = '';
 
         $name = $this->getAuthor();
-        if (!$name) {
+        if ($name == '') {
             $name = $this->meta['blogname'];
         }
 
         if ($name <> '') {
-            $meta = sprintf("<meta name=\"dcterms.rightsHolder\" content=\"%s\" />" . "\n", apply_filters('sq_copyright', $meta));
+            $meta = sprintf("<meta name=\"dcterms.rightsHolder\" content=\"%s\" />" . "\n", apply_filters('sq_copyright', $name));
         }
 
         return apply_filters('sq_copyright_meta', $meta);
