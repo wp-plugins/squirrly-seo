@@ -66,8 +66,8 @@ class Model_SQ_BlockSettingsSeo {
     public function checkGoogleAnalyticsCode($code) {
         //echo $code;
         if ($code <> '') {
-            if (strpos($code, '_gaq.push') !== false) {
-                preg_match('/_gaq.push\(\[[\'\"]_setAccount[\'\"],\\s?[\'\"]([^\'\"]+)[\'\"]\]\)/i', $code, $result);
+            if (strpos($code, 'GoogleAnalyticsObject') !== false) {
+                preg_match('/ga\(\'create\',[^\'"]*[\'"]([^\'"]+)[\'"],/i', $code, $result);
                 if (isset($result[1]) && !empty($result[1]))
                     $code = $result[1];
             }
@@ -83,7 +83,7 @@ class Model_SQ_BlockSettingsSeo {
                 SQ_Error::setError(__("The code for Google Analytics is incorrect.", _SQ_PLUGIN_NAME_));
             }
         }
-        return $code;
+        return trim($code);
     }
 
     /**
