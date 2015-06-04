@@ -347,7 +347,7 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (!$this->isHomePage() && (is_single() || is_page())) {
             if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
-                $meta .= sprintf('<meta property="og:type" content="%s" />', 'video') . "\n";
+                $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
             } else {
                 $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
                 $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $this->post->ID)) . "\n";
