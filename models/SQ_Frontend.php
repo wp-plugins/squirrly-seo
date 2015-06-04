@@ -332,7 +332,6 @@ class Model_SQ_Frontend {
 
         if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
             $this->thumb_video = preg_replace('/(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"\'>\s]+)/si', "https://www.youtube.com/embed/$1", $this->thumb_video);
-
             $meta .= sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n";
         }
 
