@@ -354,7 +354,7 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
             $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $this->post->ID)) . "\n";
 
-            $meta .= sprintf('<meta property="article:author" content="%s" />', $this->getAuthor('display_name')) . "\n";
+            $meta .= sprintf('<meta property="article:author" content="%s" />', $this->getAuthor('user_url')) . "\n";
             $category = get_the_category($this->post->ID);
             if (!empty($category) && $category[0]->cat_name <> 'Uncategorized') {
                 $meta .= sprintf('<meta property="article:section" content="%s" />', $category[0]->cat_name) . "\n";
