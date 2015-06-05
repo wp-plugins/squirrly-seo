@@ -327,12 +327,14 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta property="og:url" content="%s" />', apply_filters('sq_open_graph_url', $this->url)) . "\n";
         if (isset($this->thumb_image) && $this->thumb_image <> '') {
             $meta .= sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n";
-            $meta .= sprintf('<meta property="og:image:width" content="%s" />', 500) . "\n";
+            $meta .= sprintf('<meta property="og:image:width" content="%s" />', 486) . "\n";
         }
 
         if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
             $this->thumb_video = preg_replace('/(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"\'>\s]+)/si', "https://www.youtube.com/v/$1", $this->thumb_video);
             $meta .= sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n";
+            $meta .= sprintf('<meta property="og:video:width" content="%s" />', 486) . "\n";
+            $meta .= sprintf('<meta property="og:video:height" content="%s" />', 273) . "\n";
         }
 
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
