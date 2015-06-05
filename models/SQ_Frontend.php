@@ -339,6 +339,9 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', apply_filters('sq_open_graph_site', $this->meta['blogname'])) . "\n" : '');
 
+        $language = get_bloginfo('language');
+        $meta .= sprintf('<meta property="og:locale" content="%s" />', str_replace("-", "_", $language)) . "\n";
+
         if (is_author()) {
             $author = get_queried_object();
 
@@ -346,17 +349,21 @@ class Model_SQ_Frontend {
             $meta .= sprintf('<meta property="profile:first_name" content="%s" />', get_the_author_meta('first_name', $author->ID)) . "\n";
             $meta .= sprintf('<meta property="profile:last_name" content="%s" />', get_the_author_meta('last_name', $author->ID)) . "\n";
         } elseif (!$this->isHomePage() && (is_single() || is_page())) {
-            if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
-                $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
-            } else {
-                $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
-                $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $this->post->ID)) . "\n";
-                if ($this->keywords <> '') {
-                    $keywords = preg_split('/[,]+/', $this->keywords);
-                    if (is_array($keywords) && !empty($keywords)) {
-                        foreach ($keywords as $keyword) {
-                            $meta .= sprintf('<meta property="article:tag" content="%s" />', $keyword) . "\n";
-                        }
+
+
+            $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
+            $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $this->post->ID)) . "\n";
+
+            $meta .= sprintf('<meta property="article:author" content="%s" />', $this->getAuthor('display_name')) . "\n";
+            $category = get_the_category($this->post->ID);
+            if (!empty($category) && $category[0]->cat_name <> 'Uncategorized') {
+                $meta .= sprintf('<meta property="article:section" content="%s" />', $category[0]->cat_name) . "\n";
+            }
+            if ($this->keywords <> '') {
+                $keywords = preg_split('/[,]+/', $this->keywords);
+                if (is_array($keywords) && !empty($keywords)) {
+                    foreach ($keywords as $keyword) {
+                        $meta .= sprintf('<meta property="article:tag" content="%s" />', $keyword) . "\n";
                     }
                 }
             }
@@ -840,14 +847,13 @@ class Model_SQ_Frontend {
     private function getLanguage() {
         $meta = '';
         $language = get_bloginfo('language');
-        $hreflang = SQ_ObjController::getController('SQ_Ranking', false)->getLanguage();
-
-        if ($hreflang <> '') {
-            $url = get_bloginfo('url');
-            $meta .= sprintf("<link rel=\"alternate\" hreflang=\"%s\" href=\"$url\" />", $hreflang) . "\n";
-        }
 
         if ($language <> '') {
+            $url = get_bloginfo('url');
+            if (strpos($language, '-') !== false) {
+                $hreflang = substr($language, 0, strpos($language, '-'));
+            }
+            $meta .= sprintf("<link rel=\"alternate\" hreflang=\"%s\" href=\"%s\" />", $hreflang, $url) . "\n";
             $meta .= sprintf("<meta name=\"dc.language\" content=\"%s\" />", $language) . "\n";
         }
 
@@ -1364,6 +1370,7 @@ class Model_SQ_Frontend {
         }
 
         if (isset($this->author)) {
+
             if ($what == 'user_url' && $this->author->$what == '') {
                 return get_author_posts_url($this->author->ID, $this->author->user_nicename);
             }if (isset($this->author->$what)) {
