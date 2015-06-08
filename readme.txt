@@ -140,6 +140,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Get the keyword from database for the saved article
 * Fixed the feed style issue
 * Added the custom size image for Open Graph in Squirrly Snippet
+* Added new features in Open Graph for the Site Articles
 * Increased the plugin loading speed in front-end
 * Improved the communication with the API Server
 * Fixed the post optimization history issue
