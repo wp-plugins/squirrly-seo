@@ -210,11 +210,11 @@ class SQ_Post extends SQ_FrontController {
         wp_schedule_single_event(time() + 60, 'sq_processApi');
         //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {
-            $json->keyword = SQ_Tools::getValue('sq_keyword');
+            $json->keyword = addslashes(SQ_Tools::getValue('sq_keyword'));
             $this->model->saveKeyword($post_id, $json);
         } else {
             $args = array();
-            $args['keyword'] = SQ_Tools::getValue('sq_keyword');
+            $args['keyword'] = addslashes(SQ_Tools::getValue('sq_keyword'));
             $this->model->saveKeyword($post_id, json_decode(json_encode($args)));
         }
     }

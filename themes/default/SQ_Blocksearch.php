@@ -7,9 +7,7 @@
             global $sq_postID;
             $sq_keyword = '';
             if (isset($sq_postID) && $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($sq_postID)) {
-                $sq_keyword = utf8_decode($json->keyword);
-            } elseif (isset($sq_postID) && isset($_COOKIE['sq_keyword_' . $sq_postID]) && $_COOKIE['sq_keyword_' . $sq_postID] <> '') {
-                $sq_keyword = utf8_decode($_COOKIE['sq_keyword_' . $sq_postID]);
+                $sq_keyword = SQ_Tools::i18n($json->keyword);
             } elseif ((int) SQ_Tools::$options['sq_keyword_help'] == 1) {
                 ?><div id="sq_keyword_help" style="display:none" ><span></span><?php _e('Enter a keyword', _SQ_PLUGIN_NAME_); ?><p><?php _e('for Squirrly Live SEO optimization', _SQ_PLUGIN_NAME_); ?></p></div><?php
             }
