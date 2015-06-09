@@ -27,7 +27,7 @@ The best things is: YOU DON'T have to be an SEO expert to use it. Wait, you don'
 
 Squirrly is a Freemium software, like MailChimp.
 
-You’ll start with the free version of Squirrly SEO. It will help you if you have small content marketing needs, such as 3 articles published / month, 5 keyword analysis and a weekly audit report. When you'll require more, you can pay for the PRO Plan.
+You’ll start with the free version of Squirrly SEO. It will help you if you have small content marketing needs, such as 5 articles published / month, 5 keyword analysis and a weekly audit report. When you'll require more, you can pay for the PRO Plan.
 
 - <strong>Gives You SEO Advice as you're typing your articles.</strong> Squirrly helps you in real time to optimize your articles to 100%, while you are writing or editing them.
 
@@ -359,7 +359,7 @@ You can opt-in to use the Advanced SEO Settings, which will allow you to customi
 Yes, you just have to install the plugin from the WP directory into your site. Then connect with your email to Squirrly. The Free Version will automatically start. Read below for more. Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
 
 = Does the Free Plan offer all the features? =
-Yes. As of January 2014 all the features are also included in the free plan. There is NO trial period, NO other features that can be activated by paying money for the plugin. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing. These are the blogs on which owners want to publish about 3 articles / month, analyze 5 different seo keywords, need a general Audit of their whole site and want to see the SEO analytics for their last posts.
+As of January 2015 the free plan will include the Lite version of our features. The paid version will open the Full version of our features. The free version has all a small wordpress site or blog needs to get started with SEO and Content Marketing. These are the blogs on which owners want to publish about 5 articles / month. Also includes a general Audit of their whole site and want to see the SEO analytics for their last posts.
 
 = What about the PRO Plan? =
 The PRO Plan is for those with bigger content marketing and SEO needs. For anything regarding the paid plans, go to our website: squirrly.co | The wordpress directory listing is only to be used for concerns regarding the Free version. You can get the PRO Plan after you've installed the plugin from this directory.
