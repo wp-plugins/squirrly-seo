@@ -286,6 +286,26 @@
                 </div>
             </div>
         </form>
+
+        <div class="sq_settings_backup">
+            <form action="" method="POST">
+                <input type="hidden" name="action" value="sq_backup" />
+                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
+                <input type="submit" class="sq_button" name="sq_backup" value="<?php _e('Backup Settings', _SQ_PLUGIN_NAME_) ?>" />
+                <input type="button" class="sq_button sq_restore" name="sq_restore" value="<?php _e('Restore Settings', _SQ_PLUGIN_NAME_) ?>" />
+            </form>
+        </div>
+
+        <div class="sq_settings_restore sq_popup" style="display: none">
+            <span class="sq_close">x</span>
+            <span><?php _e('Upload the file with the saved Squirrly Settings', _SQ_PLUGIN_NAME_) ?></span>
+            <form action="" method="POST">
+                <input type="hidden" name="action" value="sq_restore" />
+                <input type="file" name="sq_options" id="favicon" style="float: left;" />
+                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
+                <input type="submit"  style="margin-top: 10px;" class="sq_button" name="sq_restore" value="<?php _e('Restore Settings', _SQ_PLUGIN_NAME_) ?>" />
+            </form>
+        </div>
     </div>
 
 </div>

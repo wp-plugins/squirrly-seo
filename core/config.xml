@@ -39,7 +39,8 @@
             <action>sq_fix_tcduplicate</action>
             <action>sq_fix_titleduplicate</action>
             <action>sq_fix_descduplicate</action>
-
+            <action>sq_backup</action>
+            <action>sq_restore</action>
             <action>sq_warnings_off</action>
         </actions>
         <active>1</active>

@@ -19,6 +19,9 @@ class Model_SQ_Frontend {
     /** @var array */
     private $keywords;
 
+    /** @var array */
+    private $thumb_images;
+
     /** @var integer */
     private $min_title_length = 10;
 
@@ -186,10 +189,7 @@ class Model_SQ_Frontend {
             $this->title = $this->getCustomTitle();
 
             /* Get the thumb image from post */
-            $images = $this->getImagesFromContent();
-            if (isset($images[0])) {
-                $this->thumb_image = $images[0]['src'];
-            }
+            $this->thumb_images = $this->getImagesFromContent();
 
             //Add description in homepage if is set or add description in other pages if is not home page
             if ((SQ_Tools::$options['sq_auto_description'] == 1 && $this->isHomePage()) || !$this->isHomePage()) {
@@ -253,12 +253,6 @@ class Model_SQ_Frontend {
         $sq_twitter_creator = SQ_Tools::$options['sq_twitter_account'];
         $sq_twitter_site = SQ_Tools::$options['sq_twitter_account'];
 
-        if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            $images = $this->getImagesFromContent();
-            if (isset($images[0])) {
-                $this->thumb_image = $images[0]['src'];
-            }
-        }
 
         $meta .= '<meta name="twitter:card" content="summary" />' . "\n";
 
@@ -267,7 +261,7 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta name="twitter:url" content="%s">', $this->url) . "\n";
         $meta .= sprintf('<meta name="twitter:title" content="%s">', $this->title) . "\n";
         $meta .= (($this->description <> '') ? sprintf('<meta name="twitter:description" content="%s">', $this->description . ' | ' . $this->meta['blogname']) . "\n" : '');
-        $meta .= ((isset($this->thumb_image) && $this->thumb_image <> '') ? sprintf('<meta name="twitter:image" content="%s">', $this->thumb_image) . "\n" : '');
+        $meta .= (!empty($this->thumb_images) ? sprintf('<meta name="twitter:image" content="%s">', $this->thumb_images[0]['src']) . "\n" : '');
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta name="twitter:domain" content="%s">', $this->meta['blogname']) . "\n" : '');
 
         return apply_filters('sq_twitter_card_meta', $meta);
@@ -306,13 +300,6 @@ class Model_SQ_Frontend {
         $meta = "\n";
         $image = '';
 
-        if (!isset($this->thumb_image) || $this->thumb_image == '') {
-            $images = $this->getImagesFromContent();
-            if (isset($images[0])) {
-                $this->thumb_image = $images[0]['src'];
-            }
-        }
-
         if (!isset($this->thumb_video) || $this->thumb_video == '') {
             $videos = $this->getVideosFromContent();
             if (isset($videos[0])) {
@@ -325,16 +312,20 @@ class Model_SQ_Frontend {
         }
         //GET THE URL
         $meta .= sprintf('<meta property="og:url" content="%s" />', apply_filters('sq_open_graph_url', $this->url)) . "\n";
-        if (isset($this->thumb_image) && $this->thumb_image <> '') {
-            $meta .= sprintf('<meta property="og:image" content="%s" />', $this->thumb_image) . "\n";
-            $meta .= sprintf('<meta property="og:image:width" content="%s" />', 486) . "\n";
+        if (!empty($this->thumb_images)) {
+            foreach ($this->thumb_images as $image) {
+                $meta .= sprintf('<meta property="og:image" content="%s" />', $image['src']) . "\n";
+                $meta .= sprintf('<meta property="og:image:width" content="%s" />', (isset($image['width']) ? $image['width'] : 500)) . "\n";
+                if (isset($image['height']))
+                    $meta .= sprintf('<meta property="og:image:height" content="%s" />', $image['height']) . "\n";
+            }
         }
 
         if ((isset($this->thumb_video) && $this->thumb_video <> '')) {
             $this->thumb_video = preg_replace('/(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"\'>\s]+)/si', "https://www.youtube.com/v/$1", $this->thumb_video);
             $meta .= sprintf('<meta property="og:video" content="%s" />', $this->thumb_video) . "\n";
-            $meta .= sprintf('<meta property="og:video:width" content="%s" />', 486) . "\n";
-            $meta .= sprintf('<meta property="og:video:height" content="%s" />', 273) . "\n";
+            $meta .= sprintf('<meta property="og:video:width" content="%s" />', 500) . "\n";
+            $meta .= sprintf('<meta property="og:video:height" content="%s" />', 280) . "\n";
         }
 
         $meta .= sprintf('<meta property="og:title" content="%s" />', $this->title) . "\n";
@@ -355,8 +346,6 @@ class Model_SQ_Frontend {
 
             $meta .= sprintf('<meta property="og:type" content="%s" />', 'article') . "\n";
             $meta .= sprintf('<meta property="article:published_time" content="%s" />', get_the_time('c', $this->post->ID)) . "\n";
-
-            $meta .= sprintf('<meta property="article:author" content="%s" />', $this->getAuthor('user_url')) . "\n";
             $category = get_the_category($this->post->ID);
             if (!empty($category) && $category[0]->cat_name <> 'Uncategorized') {
                 $meta .= sprintf('<meta property="article:section" content="%s" />', $category[0]->cat_name) . "\n";
@@ -537,6 +526,8 @@ class Model_SQ_Frontend {
                     'src' => esc_url($url),
                     'title' => $this->clearTitle($this->grabTitleFromPost($post->ID)),
                     'description' => $this->clearDescription($this->grabDescriptionFromPost($post->ID)),
+                    'width' => null,
+                    'height' => null,
                 );
             }
             if (has_post_thumbnail($post->ID)) {
@@ -546,6 +537,8 @@ class Model_SQ_Frontend {
                     'src' => esc_url($url[0]),
                     'title' => $this->clearTitle($attachment->post_title),
                     'description' => $this->clearDescription($attachment->post_excerpt),
+                    'width' => $url[1],
+                    'height' => $url[2],
                 );
             }
             if (isset($post->post_content)) {
@@ -562,6 +555,8 @@ class Model_SQ_Frontend {
                         'src' => esc_url($match[1]),
                         'title' => $this->clearTitle(!empty($alt[1]) ? $alt[1] : ''),
                         'description' => '',
+                        'width' => null,
+                        'height' => null,
                     );
                 }
             }
@@ -1068,8 +1063,8 @@ class Model_SQ_Frontend {
             if (isset($this->description))
                 $meta .= '"headline": "' . $this->description . '"' . $sep;
             $meta .= '"url": "' . $this->url . '"' . $sep;
-            if (isset($this->thumb_image) && $this->thumb_image <> '')
-                $meta .= '"thumbnailUrl": "' . $this->thumb_image . '"' . $sep;
+            if (!empty($this->thumb_images))
+                $meta .= '"thumbnailUrl": "' . $this->thumb_images[0]['src'] . '"' . $sep;
             if (isset($this->post->post_date))
                 $meta .= '"dateCreated": "' . date('c', strtotime($this->post->post_date)) . '"' . $sep;
             $meta .= '"author": {"@type": "Person", "url": "' . $this->getAuthor('user_url') . '", "name": "' . $this->getAuthor('display_name') . '"}' . $sep;

@@ -43,8 +43,8 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                 SQ_Tools::saveOptions('sq_auto_meta', (int) SQ_Tools::getValue('sq_auto_meta'));
                 SQ_Tools::saveOptions('sq_auto_favicon', (int) SQ_Tools::getValue('sq_auto_favicon'));
 
-///////////////////////////////////////////
-/////////////////////////////SOCIAL OPTION
+                ///////////////////////////////////////////
+                /////////////////////////////SOCIAL OPTION
                 SQ_Tools::saveOptions('sq_auto_facebook', (int) SQ_Tools::getValue('sq_auto_facebook'));
                 SQ_Tools::saveOptions('sq_auto_twitter', (int) SQ_Tools::getValue('sq_auto_twitter'));
 
@@ -53,8 +53,8 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                 SQ_Tools::saveOptions('sq_google_plus', $this->model->checkGoogleAccount(SQ_Tools::getValue('sq_google_plus')));
                 SQ_Tools::saveOptions('sq_linkedin_account', $this->model->checkLinkeinAccount(SQ_Tools::getValue('sq_linkedin_account')));
 
-///////////////////////////////////////////
-/////////////////////////////FIRST PAGE OPTIMIZATION
+                ///////////////////////////////////////////
+                /////////////////////////////FIRST PAGE OPTIMIZATION
                 SQ_Tools::saveOptions('sq_auto_seo', 0);
                 if ($pageId = get_option('page_on_front')) {
                     $meta = array();
@@ -78,8 +78,8 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                     SQ_Tools::saveOptions('sq_fp_keywords', SQ_Tools::getValue('sq_fp_keywords'));
                 }
 
-///////////////////////////////////////////
-/////////////////////////////SITEMAP OPTION
+                ///////////////////////////////////////////
+                /////////////////////////////SITEMAP OPTION
                 SQ_Tools::saveOptions('sq_auto_sitemap', (int) SQ_Tools::getValue('sq_auto_sitemap'));
                 SQ_Tools::saveOptions('sq_sitemap_frequency', SQ_Tools::getValue('sq_sitemap_frequency'));
                 SQ_Tools::saveOptions('sq_sitemap_ping', (int) SQ_Tools::getValue('sq_sitemap_ping'));
@@ -112,14 +112,13 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                     }
                 }
 
-///////////////////////////////////////////
-
+                ///////////////////////////////////////////
 
                 SQ_Tools::saveOptions('sq_google_analytics', $this->model->checkGoogleAnalyticsCode(SQ_Tools::getValue('sq_google_analytics', '', true)));
                 SQ_Tools::saveOptions('sq_facebook_insights', $this->model->checkFavebookInsightsCode(SQ_Tools::getValue('sq_facebook_insights', '', true)));
                 SQ_Tools::saveOptions('sq_pinterest', $this->model->checkPinterestCode(SQ_Tools::getValue('sq_pinterest', '', true)));
 
-///////////////////////////////////////////JSONLD
+                ///////////////////////////////////////////JSONLD
 
                 SQ_Tools::saveOptions('sq_auto_jsonld', (int) SQ_Tools::getValue('sq_auto_jsonld'));
                 if (SQ_Tools::getIsset('sq_jsonld_type') && isset(SQ_Tools::$options['sq_jsonld'][SQ_Tools::getValue('sq_jsonld_type')])) {
@@ -132,8 +131,8 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                 }
                 SQ_Tools::saveOptions('sq_jsonld_type', SQ_Tools::getValue('sq_jsonld_type'));
 
-///////////////////////////////////////////
-/////////////////////////////FAVICON OPTION
+                ///////////////////////////////////////////
+                /////////////////////////////FAVICON OPTION
 
                 /* if there is an icon to upload */
                 if (!empty($_FILES['favicon'])) {
@@ -144,6 +143,7 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                     }
                     if ($return['message'] <> '') {
                         define('SQ_MESSAGE_FAVICON', $return['message']);
+                        SQ_Error::setError(SQ_MESSAGE_FAVICON . " <br /> ");
                     }
                 }
 
@@ -224,13 +224,42 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                     $url = get_bloginfo('url');
                 }
                 $snippet = SQ_Tools::getSnippet($url);
-//SQ_Tools::dump($snippet);
 
-                /* if((int)SQ_Tools::getValue('post_id') > 0)
-                  $snippet['url'] = get_permalink((int)SQ_Tools::getValue('post_id'));
-                 */
                 echo json_encode($snippet);
                 exit();
+            case 'sq_backup':
+                SQ_Tools::setHeader('text');
+                header("Content-Disposition: attachment; filename=squirrly.txt");
+
+                if (function_exists('base64_encode')) {
+                    echo base64_encode(json_encode(SQ_Tools::$options));
+                } else {
+                    echo json_encode(SQ_Tools::$options);
+                }
+                exit();
+                break;
+            case 'sq_restore':
+                if (!empty($_FILES['sq_options']) && $_FILES['sq_options']['tmp_name'] <> '') {
+                    $options = file_get_contents($_FILES['sq_options']['tmp_name']);
+                    try {
+                        if (function_exists('base64_encode') && base64_decode($options) <> '') {
+                            $options = base64_decode($options);
+                        }
+                        $options = json_decode($options, true);
+                        if (is_array($options)) {
+                            SQ_Tools::$options = $options;
+                            SQ_Tools::saveOptions();
+                            SQ_Error::setError(__('Great! The backup is restored.', _SQ_PLUGIN_NAME_) . " <br /> ", 'success');
+                        } else {
+                            SQ_Error::setError(__('Error! The backup is not valid.', _SQ_PLUGIN_NAME_) . " <br /> ");
+                        }
+                    } catch (Exception $e) {
+                        SQ_Error::setError(__('Error! The backup is not valid.', _SQ_PLUGIN_NAME_) . " <br /> ");
+                    }
+                } else {
+                    SQ_Error::setError(__('Error! You have to enter a previous saved backup file.', _SQ_PLUGIN_NAME_) . " <br /> ");
+                }
+                break;
         }
     }
 

@@ -44,6 +44,44 @@
     background-color: #20bc49;
 }
 
+.sq_popup{
+    position: fixed;
+    padding: 20px;
+    margin: 0;
+    top: calc(50% - 50px);
+    left: calc(50% - 200px);
+    width: 400px;
+    height: 100px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 38px 0 #333;
+    text-align: center;
+}
+
+.sq_popup span{
+    line-height: 30px;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.sq_popup .sq_close{
+    position: absolute;
+    background-color: #e5d8cd;
+    right: -6px;
+    top: -9px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    width: 8px;
+    line-height: 16px;
+    padding: 2px 6px 3px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid darkOliveGreen;
+    cursor: pointer;
+    z-index: 2;
+}
+
 .squirrly_page_sq_seo .sq_error,
 .squirrly_page_sq_seo .sq_success,
 .toplevel_page_sq_dashboard .sq_error,

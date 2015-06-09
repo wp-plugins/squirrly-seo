@@ -216,8 +216,11 @@ class SQ_Tools extends SQ_FrontController {
      *
      * @return void
      */
-    public static function saveOptions($key, $value) {
-        self::$options[$key] = $value;
+    public static function saveOptions($key = null, $value = '') {
+        if (isset($key)) {
+            self::$options[$key] = $value;
+        }
+
         update_option(SQ_OPTION, json_encode(self::$options));
     }
 
@@ -238,6 +241,9 @@ class SQ_Tools extends SQ_FrontController {
                 break;
             case 'png':
                 header('Content-Type: image/png');
+                break;
+            case'text':
+                header("Content-type: text/plain");
                 break;
         }
     }

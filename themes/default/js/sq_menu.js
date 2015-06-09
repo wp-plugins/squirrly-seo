@@ -28,6 +28,15 @@ function sq_blockmenu() {
         jQuery('#sq_settings_form').submit();
     });
 
+    jQuery('input[name=sq_restore]').bind('click', function () {
+        jQuery('.sq_settings_restore').show();
+    });
+
+    jQuery('.sq_settings_restore').find('.sq_close').bind('click', function () {
+        jQuery('.sq_settings_restore').find('textarea').val('');
+        jQuery('.sq_settings_restore').hide();
+    });
+
     //Go to settings listener
     jQuery("#sq_goto_seo").bind('click', function () {
         location.href = "?page=sq_seo";
