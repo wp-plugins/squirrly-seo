@@ -552,6 +552,24 @@
     float: right;
     margin-top: -30px;
 }
+
+#sq_settings_login .sq_settings_backup,
+#postsquirrly .sq_settings_backup{
+    float: none;
+    margin: 0 auto;
+    width: 220px;
+    height: 33px;
+}
+
+.sq_settings_restore  input[type=file]{
+    float:none !important;
+}
+
+.sq_settings_restore  .sq_button{
+    background-color: lightslategray !important;
+    color: white !important;
+}
+
 .sq_settings_backup input.sq_button,
 .sq_settings_restore input.sq_button{
     font-size: 15px;

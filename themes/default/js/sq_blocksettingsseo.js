@@ -247,7 +247,7 @@ function sq_submitSettings() {
         sq_sitemap_show.push(jQuery(this).attr('value'));
     });
 
-    jQuery.getJSON(
+    jQuery.post(
             sqQuery.ajaxurl,
             {
                 action: 'sq_settingsseo_update',
@@ -294,9 +294,8 @@ function sq_submitSettings() {
 
                 nonce: sqQuery.nonce
             }
-    ).success(function () {
+    ).done(function () {
         showSaved(2000);
-    });
-    ;
+    }, 'json');
 
 }

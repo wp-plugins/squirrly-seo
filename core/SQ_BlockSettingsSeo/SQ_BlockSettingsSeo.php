@@ -225,6 +225,7 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                 }
                 $snippet = SQ_Tools::getSnippet($url);
 
+                SQ_Tools::setHeader('json');
                 echo json_encode($snippet);
                 exit();
             case 'sq_backup':

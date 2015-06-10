@@ -29,7 +29,7 @@ function sq_submitSettings() {
         sq_post_types.push(jQuery(this).attr('value'));
     });
 
-    jQuery.getJSON(
+    jQuery.post(
             sqQuery.ajaxurl,
             {
                 action: 'sq_settings_update',
@@ -51,8 +51,8 @@ function sq_submitSettings() {
 // --
                 nonce: sqQuery.nonce
             }
-    ).success(function () {
+    ).done(function () {
         showSaved(2000);
-    });
+    }, 'json');
 
 }

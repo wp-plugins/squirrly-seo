@@ -53,7 +53,7 @@ function sq_blocklogin() {
         jQuery('#sq_login').attr("disabled", "disabled");
         jQuery('#sq_login').val('');
 
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_login',
@@ -61,21 +61,21 @@ function sq_blocklogin() {
                     password: jQuery('#sq_password').val(),
                     nonce: sqQuery.nonce
                 }
-        ).success(function (response) {
+        ).done(function (response) {
             if (typeof response.error !== 'undefined')
                 if (response.error === 'invalid_token') {
 
-                    jQuery.getJSON(
+                    jQuery.post(
                             sqQuery.ajaxurl,
                             {
                                 action: 'sq_reset',
                                 nonce: sqQuery.nonce
                             }
-                    ).success(function (response) {
+                    ).done(function (response) {
                         if (typeof response.reset !== 'undefined')
                             if (response.reset === 'success')
                                 location.reload();
-                    });
+                    }, 'json');
                 }
             jQuery('#sq_login').removeAttr("disabled");
             jQuery('#sq_login').val('Login');
@@ -87,7 +87,7 @@ function sq_blocklogin() {
             if (typeof response.error !== 'undefined')
                 jQuery('#sq_blocklogin').find('.sq_error').html(response.error);
 
-        }).error(function (response) {
+        }).fail(function (response) {
             if (response.status === 200 && response.responseText.indexOf('{') > 0) {
                 response.responseText = response.responseText.substr(response.responseText.indexOf('{'), response.responseText.lastIndexOf('}'));
                 try {
@@ -112,7 +112,7 @@ function sq_blocklogin() {
                 jQuery('#sq_login').removeClass('sq_minloading');
                 jQuery('#sq_blocklogin').find('.sq_error').html(__error_login);
             }
-        });
+        }, 'json');
     });
 }
 
@@ -129,14 +129,14 @@ function sq_autoLogin() {
     jQuery('#sq_blocklogin').find('.sq_message').hide();
 
 
-    jQuery.getJSON(
+    jQuery.post(
             sqQuery.ajaxurl,
             {
                 action: 'sq_register',
                 email: jQuery('#sq_email').val(),
                 nonce: sqQuery.nonce
             }
-    ).success(function (response) {
+    ).done(function (response) {
 
         jQuery('#sq_register_wait').removeClass('sq_minloading');
         if (typeof response.token !== 'undefined') {
@@ -164,7 +164,7 @@ function sq_autoLogin() {
 
         }
 
-    }).error(function (response) {
+    }).fail(function (response) {
         if (response.status === 200 && response.responseText.indexOf('{') > 0) {
             response.responseText = response.responseText.substr(response.responseText.indexOf('{'), response.responseText.lastIndexOf('}'));
             try {
@@ -193,7 +193,7 @@ function sq_autoLogin() {
             jQuery('#sq_register_email').show();
             jQuery('#sq_register').html(__try_again);
         }
-    });
+    }, 'json');
 }
 
 function sq_reload(response) {

@@ -129,20 +129,19 @@ function sq_getSnippet(url, show_url) {
     jQuery('#ogimage_preview').hide();
 
     setTimeout(function () {
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_get_snippet',
                     url: url,
                     nonce: sqQuery.nonce
                 }
-        ).success(function (response) {
+        ).done(function (response) {
             jQuery('#sq_snippet_ul').removeClass('sq_minloading');
             jQuery('#sq_snippet_update').show();
             jQuery('#sq_snippet_customize').show();
             jQuery('#sq_snippet_keywords').show();
             jQuery('#ogimage_preview').show();
-
             if (response) {
                 jQuery('#sq_snippet_title').html(response.title);
                 if (show_url !== '')
@@ -152,13 +151,10 @@ function sq_getSnippet(url, show_url) {
 
                 jQuery('#sq_snippet_description').html(response.description);
             }
-        }).error(function () {
+        }).fail(function () {
             jQuery('#sq_snippet_ul').removeClass('sq_minloading');
             jQuery('#sq_snippet_update').show();
-        }).complete(function () {
-            jQuery('#sq_snippet_ul').removeClass('sq_minloading');
-            jQuery('#sq_snippet_update').show();
-        });
+        }, 'json');
     }, 500);
 }
 
@@ -211,14 +207,14 @@ function sq_getUserStatus() {
 function sq_recheckRank(post_id) {
     jQuery('.sq_rank_column_button_recheck').hide();
     jQuery('#sq_rank_value' + post_id).html('').addClass('sq_loading');
-    jQuery.getJSON(
+    jQuery.post(
             sqQuery.ajaxurl,
             {
                 action: 'sq_recheck',
                 post_id: post_id,
                 nonce: sqQuery.nonce
             }
-    ).success(function (response) {
+    ).done(function (response) {
         if (typeof response.rank !== 'undefined') {
             jQuery('#sq_rank_value' + post_id).html(response.rank).removeClass('sq_loading');
         } else {
@@ -229,10 +225,10 @@ function sq_recheckRank(post_id) {
         }, 10000)
 
 
-    }).error(function () {
+    }).fail(function () {
         jQuery('#sq_rank_value' + post_id).html('Error').removeClass('sq_loading');
         jQuery('.sq_rank_column_button_recheck').show();
-    });
+    }, 'json');
 }
 
 //Show user status in Squirrly > Account info
@@ -294,7 +290,7 @@ function sq_getHelp(category, zone) {
                     active_help = '';
                 }
 
-                jQuery.getJSON(
+                jQuery.post(
                         sqQuery.ajaxurl,
                         {
                             action: 'sq_active_help',
@@ -323,16 +319,16 @@ function sq_getHelp(category, zone) {
 function checkResponse(response) {
     if (typeof response.error !== 'undefined') {
         if (response.error === 'invalid_token') {
-            jQuery.getJSON(
+            jQuery.post(
                     sqQuery.ajaxurl,
                     {
                         action: 'sq_reset', nonce: sqQuery.nonce
                     }
-            ).success(function (response) {
+            ).done(function (response) {
                 if (typeof response.reset !== 'undefined')
                     if (response.reset === 'success')
                         location.href = "?page=sq_dashboard";
-            });
+            }, 'json');
         }
     }
 }

@@ -30,6 +30,7 @@
         </div>
 
     </div>
+
     <script type="text/javascript">
         // autoLogin();
         //
@@ -44,6 +45,20 @@
 
         //listenLogin(); //listen the login
     </script>
+</div>
+<div class="sq_settings_backup">
+    <input type="button" class="sq_button sq_restore" name="sq_restore" value="<?php _e('Restore Squirrly Settings', _SQ_PLUGIN_NAME_) ?>" />
+</div>
+
+<div class="sq_settings_restore sq_popup" style="display: none">
+    <span class="sq_close">x</span>
+    <span><?php _e('Upload the file with the saved Squirrly Settings', _SQ_PLUGIN_NAME_) ?></span>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="sq_restore" />
+        <input type="file" name="sq_options" id="favicon" style="float: left;" />
+        <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
+        <input type="submit"  style="margin-top: 10px;" class="sq_button" name="sq_restore" value="<?php _e('Restore Backup', _SQ_PLUGIN_NAME_) ?>" />
+    </form>
 </div>
 <div id="sq_login_success" style="display: none;">
     <div class="sq_header"><?php _e('Congratulations! You are ready to use all the features from Squirrly', _SQ_PLUGIN_NAME_); ?><div><img src="<?php echo _SQ_THEME_URL_ . 'img/settings/squirrly.png' ?>"></div></div>

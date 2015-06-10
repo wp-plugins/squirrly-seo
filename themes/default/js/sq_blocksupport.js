@@ -77,7 +77,7 @@ function sq_blocksupport() {
 
         document.cookie = "sq_feedback_face=" + jQuery("input[name=sq_feedback_face]:radio:checked").val() + "; expires=" + (60 * 12) + "; path=/";
 
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_feedback',
@@ -85,7 +85,7 @@ function sq_blocksupport() {
                     message: jQuery("textarea[name=sq_feedback_message]").val(),
                     nonce: sqQuery.nonce
                 }
-        ).success(function (response) {
+        ).done(function (response) {
             jQuery('#sq_feedback_submit').removeAttr("disabled");
             jQuery('#sq_feedback_submit').val('Send feedback');
             jQuery("textarea[name=sq_feedback_message]").val('');
@@ -97,7 +97,7 @@ function sq_blocksupport() {
 
 
 
-        }).error(function (response) {
+        }).fail(function (response) {
             if (response.status === 200 && response.responseText.indexOf('{') > 0) {
                 response.responseText = response.responseText.substr(response.responseText.indexOf('{'), response.responseText.lastIndexOf('}'));
                 try {
@@ -119,21 +119,21 @@ function sq_blocksupport() {
                 jQuery('#sq_feedback_submit').removeClass('sq_minloading');
                 jQuery('#sq_options_feedback_error').addClass('sq_error').removeClass('sq_message').html('Could not send the feedback');
             }
-        });
+        }, 'json');
     });
 
     jQuery("#sq_support_submit").bind('click', function () {
         jQuery('#sq_options_support_error').html('<p class="sq_minloading" style="margin:0 auto; padding:2px;"></p>');
         jQuery('#sq_support_submit').attr("disabled", "disabled");
 
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_support',
                     message: jQuery("textarea[name=sq_support_message]").val(),
                     nonce: sqQuery.nonce
                 }
-        ).success(function (response) {
+        ).done(function (response) {
             jQuery('#sq_support_submit').removeAttr("disabled");
             jQuery("textarea[name=sq_support_message]").val('');
 
@@ -144,7 +144,7 @@ function sq_blocksupport() {
 
 
 
-        }).error(function (response) {
+        }).fail(function (response) {
             if (response.status === 200 && response.responseText.indexOf('{') > 0) {
                 response.responseText = response.responseText.substr(response.responseText.indexOf('{'), response.responseText.lastIndexOf('}'));
                 try {
@@ -165,7 +165,7 @@ function sq_blocksupport() {
                 jQuery('#sq_support_submit').removeClass('sq_minloading');
                 jQuery('#sq_options_support_error').addClass('sq_error').removeClass('sq_message').html('Could not send the feedback');
             }
-        });
+        }, 'json');
     });
 
 
@@ -174,7 +174,7 @@ function sq_blocksupport() {
         jQuery('#sq_survey_error').html('<p class="sq_minloading" style="margin:0 auto; padding:2px;"></p>');
         jQuery('#sq_survey_submit').attr("disabled", "disabled");
 
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_support',
@@ -182,7 +182,7 @@ function sq_blocksupport() {
                     message: jQuery("textarea[name=sq_survey_message]").val(),
                     nonce: sqQuery.nonce
                 }
-        ).success(function (response) {
+        ).done(function (response) {
             jQuery('#sq_survey_submit').removeAttr("disabled");
             jQuery("textarea[name=sq_survey_message]").val('');
 
@@ -192,7 +192,7 @@ function sq_blocksupport() {
                 jQuery('#sq_survey_error').removeClass('sq_error').html('');
 
             if (typeof response.success !== 'undefined') {
-                jQuery.getJSON(
+                jQuery.post(
                         sqQuery.ajaxurl,
                         {
                             action: 'sq_hide_survey',
@@ -202,7 +202,7 @@ function sq_blocksupport() {
                 );
             }
 
-        }).error(function (response) {
+        }).fail(function (response) {
             if (response.status === 200 && response.responseText.indexOf('{') > 0) {
                 response.responseText = response.responseText.substr(response.responseText.indexOf('{'), response.responseText.lastIndexOf('}'));
                 try {
@@ -223,19 +223,19 @@ function sq_blocksupport() {
                 jQuery('#sq_survey_submit').removeClass('sq_minloading');
                 jQuery('#sq_survey_error').addClass('sq_error').removeClass('sq_message').html('Could not send your message');
             }
-        });
+        }, 'json');
     });
 
     jQuery("#sq_survey_close").bind('click', function () {
-        jQuery.getJSON(
+        jQuery.post(
                 sqQuery.ajaxurl,
                 {
                     action: 'sq_hide_survey',
                     sq_hide_survey: '1',
                     nonce: sqQuery.nonce
                 }
-        ).success(function () {
+        ).done(function () {
             jQuery('#sq_survey').hide();
-        });
+        }, 'json');
     });
 }

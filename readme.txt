@@ -135,15 +135,22 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.1.2 =
+* Added new features in Open Graph for the Site Articles
+* Added the SEO Settings Backup and Restore
+* Improved the SEO Live Assistant to recognize more languages and chars
+* Improved the communication with the API Server
+* Fixed the Analytics notification bar
+* Fixed the wp_is_writable for older wp versions
+* Fixed the Open Graph not to include non embed videos in meta
+* Fixed the Sitemap Ping option to remain switched on when selected
+
 = 5.1.1 =
 * Corrected the css for the top yellow bar
 * Get the keyword from database for the saved article
 * Fixed the feed style issue
 * Added the custom size image for Open Graph in Squirrly SEO Snippet
-* Added new features in Open Graph for the Site Articles
-* Added the SEO Settings Backup and Restore
 * Increased the plugin loading speed in front-end
-* Improved the communication with the API Server
 * Fixed the post optimization history issue
 * Fixed the encryption for the password and fixed the bad login issue
 * Compatible with WP 4.2.2

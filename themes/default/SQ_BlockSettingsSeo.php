@@ -132,7 +132,6 @@
                     <legend class="sq_legend_medium">
                         <span class="sq_legend_title"><?php _e('First page optimization', _SQ_PLUGIN_NAME_); ?></span>
                         <span><?php echo sprintf(__('%sThe best SEO approach to Meta information%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/the-best-seo-approach-to-meta-information" target="_blank">', '</a>'); ?></span>
-
                         <span><?php _e('Add meta <strong>title</strong> in Home Page', _SQ_PLUGIN_NAME_); ?></span>
                         <?php
                         $auto_option = false;
@@ -163,8 +162,10 @@
                                 <label for="sq_auto_description0" class="sq_switch-label sq_switch-label-on"><?php _e('No', _SQ_PLUGIN_NAME_); ?></label>
                                 <span class="sq_switch-selection"></span>
                             </div>
-
                         </div>
+                        <span class="withborder"></span>
+                        <span class="sq_legend_title"><?php _e('SEO for all post/pages', _SQ_PLUGIN_NAME_); ?></span>
+                        <span><?php echo sprintf(__('To customize the Title and Description for all the Posts and Pages in your site use the %s<strong>Squirrly Snippet Tool</strong>%s', _SQ_PLUGIN_NAME_), '<a href="http://howto.squirrly.co/sides/squirrly-snippet-tool/" target="_blank" >', '</a>'); ?></span>
 
                     </legend>
 
@@ -216,6 +217,9 @@
 
                             <div id="sq_snippet_disclaimer" ><?php _e('If you don\'t see any changes in custom optimization, check if another SEO plugin affects Squirrly SEO', _SQ_PLUGIN_NAME_) ?></div>
                         </div>
+                        <br />
+                        <span class="sq_option_info"><?php echo sprintf(__('To customize the Title and Description for all the Posts and Pages in your site use the %s<strong>Squirrly Snippet Tool</strong>%s while edit a Post/Page', _SQ_PLUGIN_NAME_), '<a href="http://howto.squirrly.co/sides/squirrly-snippet-tool/" target="_blank" >', '</a>'); ?></span>
+
                     </div>
                 </fieldset>
                 <fieldset id="sq_social_media" style="<?php echo ((SQ_Tools::$options['sq_use'] == 0) ? 'display:none;' : ''); ?>">
@@ -321,6 +325,11 @@
                     </legend>
 
                     <div>
+                        <?php
+                        $auto_option = false;
+                        if (SQ_Tools::$options['sq_sitemap_ping'] == 1)
+                            $auto_option = true;
+                        ?>
                         <ul id="sq_sitemap_option" class="sq_settings_info">
                             <span><?php _e('XML Sitemap Options', _SQ_PLUGIN_NAME_); ?></span>
                             <div class="sq_option_content sq_option_content_small">
@@ -510,11 +519,11 @@
         <div class="sq_settings_restore sq_popup" style="display: none">
             <span class="sq_close">x</span>
             <span><?php _e('Upload the file with the saved Squirrly Settings', _SQ_PLUGIN_NAME_) ?></span>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
              <input type="hidden" name="action" value="sq_restore" />
              <input type="file" name="sq_options" id="favicon" style="float: left;" />
              <input type="hidden" name="nonce" value="<?php echo wp_create_nonce(_SQ_NONCE_ID_); ?>" />
-             <input type="submit"  style="margin-top: 10px;" class="sq_button" name="sq_restore" value="<?php _e('Restore Settings', _SQ_PLUGIN_NAME_) ?>" />
+             <input type="submit"  style="margin-top: 10px;" class="sq_button" name="sq_restore" value="<?php _e('Restore Backup', _SQ_PLUGIN_NAME_) ?>" />
             </form>
         </div>
 

@@ -2,8 +2,12 @@
     <?php SQ_ObjController::getBlock('SQ_BlockSupport')->init(); ?>
     <?php if (SQ_Tools::$options['sq_api'] == '') { ?>
         <span class="sq_icon"></span>
+
         <div id="sq_settings_title" ><?php _e('Connect to Squirrly.co', _SQ_PLUGIN_NAME_); ?> </div>
-        <div id="sq_settings_login"><?php SQ_ObjController::getBlock('SQ_Blocklogin')->init(); ?></div>
+        <div id="sq_settings_login">
+            <?php SQ_ObjController::getBlock('SQ_Blocklogin')->init(); ?>
+        </div>
+
 
         <div class="sq_login_link"><?php _e('Connect to Squirrly and start optimizing your site', _SQ_PLUGIN_NAME_); ?></div>
         <input id="sq_goto_dashboard" style="display:none;  margin: 0 auto; width: 500px; padding: 0px 10px;" type="button" value="&laquo;<?php _e('START HERE', _SQ_PLUGIN_NAME_) ?> &raquo;" />

@@ -40,7 +40,7 @@ if (is_dir($upload_dir['basedir'])) {
         wp_mkdir_p($upload_path);
     }
 
-    if (is_dir($upload_path) && wp_is_writable($upload_path)) {
+    if (is_dir($upload_path) && (function_exists('wp_is_writable') && wp_is_writable($upload_path))) {
         define('_SQ_CACHE_DIR_', realpath($upload_path) . '/');
         define('_SQ_CACHE_URL_', $upload_dir['baseurl'] . '/' . _SQ_NAME_ . '/');
     }
