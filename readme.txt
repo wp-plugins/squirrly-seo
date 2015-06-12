@@ -207,9 +207,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed Open Graph for Home Page
 * Fixed empty description for the Woocommerce shop page
 
-= 3.4.1 =
-* Compatible with WP 4.0.1
-
 = 3.3.9 =
 * Fixed SEO snippet preview compatibility with the WP 4.0
 
