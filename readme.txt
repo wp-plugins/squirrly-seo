@@ -270,16 +270,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed Audit broken link
 * Fixed Rank check issues for some situations
 
-= 3.2.2 =
-* Added the Custom Open Graph Image upload in Squirrly Snippet
-* Speed improvements
-
 = 3.2.1 =
 * Improved SEO Stats for Google Rankings by Country
 * SEO Settings out-of-the-box, but also works awesome if you have the settings already done with All In One SEO or Yoast (Wordpress seo)
-
-= 3.2 =
-* Fixed serp check rate to prevent IP block
 
 = 3.1.9 =
 * Fixed css issues for some cases
@@ -289,13 +282,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed serp cron with the google last changes
 * Changed the cron rate for serp search
 * Added force recheck for google rank in SEO Analytics
-
-= 3.1.6 =
-* Compatible with WP 3.9.1
-
-= 3.1.5 =
-* Fixed cache issues
-* Fixed login/sign-up jQuery conflicts
 
 = 3.1.4 =
 * Removed the traffic monitor (to increase the site speed and analytics)
