@@ -136,7 +136,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.1.2 =
-* Added new features in Open Graph for the posts/pages
+* Added new features in Open Graph for the Posts/Pages
 * Added the SEO Settings Backup and Restore
 * Improved the SEO Live Assistant to recognize more languages and chars
 * Improved the communication with the API Server
