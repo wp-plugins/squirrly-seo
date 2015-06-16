@@ -299,6 +299,9 @@ class Model_SQ_BlockSettingsSeo {
                             if (file_exists($path . "/" . 'favicon.ico')) {
                                 $ico->remove_ico($path . "/" . 'favicon.ico');
                             }
+                            if (!is_multisite()) {
+                                $ico->save_ico($path . "/" . 'favicon.ico');
+                            }
                         }
                         foreach ($this->appleSizes as $size) {
                             $ico->set_image($out['tmp'], array($size, $size));
@@ -317,6 +320,9 @@ class Model_SQ_BlockSettingsSeo {
                     if (file_exists($path . "/" . 'favicon.ico')) {
                         $ico = SQ_ObjController::getModel('SQ_Ico');
                         $ico->remove_ico($path . "/" . 'favicon.ico');
+                    }
+                    if (!is_multisite()) {
+                        $ico->save_ico($path . "/" . 'favicon.ico');
                     }
                 }
                 unset($out['tmp']);

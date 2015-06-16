@@ -1012,14 +1012,13 @@ class Model_SQ_Frontend {
     private function getJsonLD() {
         $meta = '';
         $sep = ",\n";
-
         if ($this->isHomePage()) {
             if (isset(SQ_Tools::$options['sq_jsonld'][SQ_Tools::$options['sq_jsonld_type']])) {
-                $meta .= '"@type":"' . SQ_Tools::$options['sq_jsonld_type'] . '"' . $sep;
+                $meta .= '"@type":"' . ((SQ_Tools::$options['sq_jsonld_type'] == "Organization") ? 'WebSite' : SQ_Tools::$options['sq_jsonld_type']) . '"' . $sep;
                 $meta .= '"url": "' . $this->url . '"';
                 foreach (SQ_Tools::$options['sq_jsonld'][SQ_Tools::$options['sq_jsonld_type']] as $key => $value) {
                     if ($value <> '') {
-                        if (SQ_Tools::$options['sq_jsonld_type'] == 'Person' && $key == 'logo') {
+                        if ($key == 'logo') {
                             $key = 'image';
                         }
                         if (SQ_Tools::$options['sq_jsonld_type'] == 'Organization' && $key == 'contactType') {
@@ -1048,7 +1047,11 @@ class Model_SQ_Frontend {
                     $social .= ($social <> '' ? "," : '') . '"' . SQ_Tools::$options['sq_linkedin_account'] . '"';
                 }
 
-                $search = $sep . '"potentialAction": {"@type": "SearchAction","target": "' . get_bloginfo('url') . '?s={search_string}", "query-input": "required name=search_string"}';
+                $search = $sep . '"potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "' . get_bloginfo('url') . '?s={search_string}",
+                    "query-input": "required name=search_string"
+                    }';
 
                 if ($social <> '') {
                     $social = $sep . '"sameAs": [' . $social . ']';

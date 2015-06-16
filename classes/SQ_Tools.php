@@ -179,6 +179,13 @@ class SQ_Tools extends SQ_FrontController {
     }
 
     public static function getBriefOptions() {
+        if ($pageId = get_option('page_on_front')) {
+            $title = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'title');
+            $description = SQ_ObjController::getModel('SQ_Frontend')->getAdvancedMeta($pageId, 'description');
+        } else {
+            $title = SQ_Tools::$options['sq_fp_title'];
+            $description = SQ_Tools::$options['sq_fp_description'];
+        }
         return array(
             'sq_version' => SQ_VERSION_ID,
             'sq_use' => SQ_Tools::$options['sq_use'],
@@ -194,8 +201,8 @@ class SQ_Tools extends SQ_FrontController {
             'sq_auto_twitter' => SQ_Tools::$options['sq_auto_twitter'],
             'sq_auto_facebook' => SQ_Tools::$options['sq_auto_facebook'],
             'sq_auto_seo' => SQ_Tools::$options['sq_auto_seo'],
-            'sq_auto_title' => (int) (SQ_Tools::$options['sq_auto_title'] == 1 && SQ_Tools::$options['sq_fp_title'] <> ''),
-            'sq_auto_description' => (int) (SQ_Tools::$options['sq_auto_description'] == 1 && SQ_Tools::$options['sq_fp_description'] <> ''),
+            'sq_auto_title' => (int) (SQ_Tools::$options['sq_auto_title'] == 1 && $title <> ''),
+            'sq_auto_description' => (int) (SQ_Tools::$options['sq_auto_description'] == 1 && $description <> ''),
             'sq_google_plus' => (int) (SQ_Tools::$options['sq_google_plus'] <> ''),
             'sq_google_wt' => (int) (SQ_Tools::$options['sq_google_wt'] <> ''),
             'sq_google_analytics' => (int) (SQ_Tools::$options['sq_google_analytics'] <> ''),
