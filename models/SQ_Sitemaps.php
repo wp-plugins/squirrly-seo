@@ -344,10 +344,6 @@ class Model_SQ_Sitemaps {
             global $post;
 
             if (isset($post->ID)) {
-                // if blog page look for last post date
-//                if ($post->post_type == 'page' && $this->is_home($post->ID))
-//                    return get_lastmodified('GMT', 'post');
-
                 if (empty($this->postmodified[$post->ID])) {
                     $postmodified = get_post_modified_time('Y-m-d H:i:s', true, $post->ID);
                     $options = get_option('post_types');

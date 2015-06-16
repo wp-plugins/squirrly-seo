@@ -99,7 +99,7 @@ class SQ_Tools extends SQ_FrontController {
             'sq_sitemap_ping' => 1,
             'sq_sitemap_show' => array(
                 'images' => 1,
-                'videos' => 1,
+                'videos' => 0,
             ),
             'sq_sitemap_frequency' => 'weekly',
             'sq_sitemap' => array(

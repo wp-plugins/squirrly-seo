@@ -80,16 +80,16 @@ class SQ_Sitemaps extends SQ_FrontController {
                         add_filter("get_terms_fields", array($this, 'customTaxFilter'), 5, 2);
                         break;
                     case 'sitemap-page':
-                        add_filter('pre_get_posts', array($this, 'pageFilter'), 5);
+                        add_filter('pre_get_posts', array($this, 'pageFilter'), 5, 1);
                         break;
                     case 'sitemap-author':
                         add_filter('sq-sitemap-authors', array($this, 'authorFilter'), 5);
                         break;
                     case 'sitemap-custom-post':
-                        add_filter('pre_get_posts', array($this, 'customPostFilter'), 5);
+                        add_filter('pre_get_posts', array($this, 'customPostFilter'), 5, 1);
                         break;
                     case 'sitemap-product':
-                        add_filter('pre_get_posts', array($this, 'productFilter'), 5);
+                        add_filter('pre_get_posts', array($this, 'productFilter'), 5, 1);
                         break;
                     case 'sitemap-archive':
                         add_filter('sq-sitemap-archive', array($this, 'archiveFilter'), 5);

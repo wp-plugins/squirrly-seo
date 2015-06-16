@@ -135,6 +135,11 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.1.3 =
+* Fixed the Open Graph for Locale en_CA
+* Fixed the sitemap_pages.xml for loading slow when looking over videos
+* Fixed the favicon.ico for non multisites
+
 = 5.1.2 =
 * Added new features in Open Graph for the Posts/Pages
 * Added the SEO Settings Backup and Restore
