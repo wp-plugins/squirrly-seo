@@ -584,7 +584,7 @@ class Model_SQ_Frontend {
 
         if ($post && isset($post->ID)) {
             if (isset($post->post_content)) {
-                preg_match('/(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed)\/)([^\?&\"\'>\s]+)/si', apply_filters('the_content', $post->post_content), $match);
+                preg_match('/(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed)\/)([^\?&\"\'>\s]+)/si', $post->post_content, $match);
 
                 if (isset($match[0])) {
                     if (strpos($match[0], '//') !== false && strpos($match[0], 'http') === false) {

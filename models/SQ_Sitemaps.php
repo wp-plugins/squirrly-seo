@@ -80,6 +80,7 @@ class Model_SQ_Sitemaps {
      * @return type
      */
     public function getListPosts() {
+
         $posts = array();
         $posts['contains'] = array();
         if (have_posts()) {
@@ -344,8 +345,8 @@ class Model_SQ_Sitemaps {
 
             if (isset($post->ID)) {
                 // if blog page look for last post date
-                if ($post->post_type == 'page' && $this->is_home($post->ID))
-                    return get_lastmodified('GMT', 'post');
+//                if ($post->post_type == 'page' && $this->is_home($post->ID))
+//                    return get_lastmodified('GMT', 'post');
 
                 if (empty($this->postmodified[$post->ID])) {
                     $postmodified = get_post_modified_time('Y-m-d H:i:s', true, $post->ID);
