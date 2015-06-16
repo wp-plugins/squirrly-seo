@@ -333,7 +333,10 @@ class Model_SQ_Frontend {
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', apply_filters('sq_open_graph_site', $this->meta['blogname'])) . "\n" : '');
 
         $language = get_bloginfo('language');
-        $meta .= sprintf('<meta property="og:locale" content="%s" />', str_replace("-", "_", $language)) . "\n";
+        if (str_replace("-", "_", $language) == 'en_CA') {
+            $language = 'en_US';
+        }
+        $meta .= sprintf('<meta property="og:locale" content="%s" />', $language) . "\n";
 
         if (is_author()) {
             $author = get_queried_object();
@@ -1014,7 +1017,7 @@ class Model_SQ_Frontend {
         $sep = ",\n";
         if ($this->isHomePage()) {
             if (isset(SQ_Tools::$options['sq_jsonld'][SQ_Tools::$options['sq_jsonld_type']])) {
-                $meta .= '"@type":"' . ((SQ_Tools::$options['sq_jsonld_type'] == "Organization") ? 'WebSite' : SQ_Tools::$options['sq_jsonld_type']) . '"' . $sep;
+                $meta .= '"@type":"' . SQ_Tools::$options['sq_jsonld_type'] . '"' . $sep;
                 $meta .= '"url": "' . $this->url . '"';
                 foreach (SQ_Tools::$options['sq_jsonld'][SQ_Tools::$options['sq_jsonld_type']] as $key => $value) {
                     if ($value <> '') {
