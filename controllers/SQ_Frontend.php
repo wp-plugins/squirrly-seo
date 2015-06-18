@@ -155,7 +155,7 @@ class SQ_Frontend extends SQ_FrontController {
                 if (SQ_Tools::$options['favicon'] <> '') {
                     //show the favico file
                     SQ_Tools::setHeader('ico');
-                    echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
+                    readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
                     exit();
                 }
                 break;
@@ -165,9 +165,9 @@ class SQ_Frontend extends SQ_FrontController {
                     //show the favico file
                     SQ_Tools::setHeader('png');
                     if ($size <> '') {
-                        echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'] . get_query_var('sq_size'));
+                        readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'] . get_query_var('sq_size'));
                     } else {
-                        echo readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
+                        readfile(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon']);
                     }
                     exit();
                 }
