@@ -136,7 +136,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.1.3 =
-* Fixed the Open Graph for Locale en_CA
+* Fixed the Open Graph META for Locale en_CA
 * Fixed the sitemap_pages.xml for loading slow when looking over videos
 * Fixed the favicon.ico rewrite for non multisite wordpress
 
