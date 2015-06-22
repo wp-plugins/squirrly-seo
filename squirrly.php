@@ -26,9 +26,6 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
         if (is_admin()) {
             require_once(_SQ_CLASSES_DIR_ . 'SQ_BlockController.php');
             SQ_ObjController::getController('SQ_FrontController', false)->run();
-            add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
-            add_action('sq_processPing', array(SQ_ObjController::getController('SQ_Sitemaps'), 'processCron'));
-            add_action('sq_processApi', array(SQ_ObjController::getController('SQ_Post'), 'processCron'));
 
             /**
              *  Upgrade Squirrly call.
@@ -39,6 +36,9 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
             SQ_ObjController::getController('SQ_FrontController', false);
             SQ_ObjController::getController('SQ_Frontend');
         }
+        add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
+        add_action('sq_processPing', array(SQ_ObjController::getController('SQ_Sitemaps'), 'processCron'));
+        add_action('sq_processApi', array(SQ_ObjController::getController('SQ_Post'), 'processCron'));
     } else {
         /* Main class call */
         add_action('admin_init', 'sq_phpError');
