@@ -135,6 +135,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.1.4 =
+* Fixed the Google Rank check if not admin
+
 = 5.1.3 =
 * Fixed the Open Graph META for Locale en_CA
 * Fixed the sitemap_pages.xml for loading slow when looking over videos
