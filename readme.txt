@@ -59,7 +59,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Copyright-Free Images That You Can Use.</strong>
 
-- <strong>Headline Suggestions based on your SEO keyword.</strong>
+- <strong>Headline Suggestions based on your SEO keyword.</strong> 
 
 - <strong>Social Intelligence through the Inspiration Box, to help you write better content. Shows you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
