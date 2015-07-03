@@ -442,8 +442,3 @@ If you are an advanced user then in each post/page edit you can customize the ti
 
 = Is this Wordpress seo plugin the only seo plugin I will need to install? =
 It all depends on how you have setup your Wordpress until now. Some people use Squirrly seo plugin only for the Content Optimization with the Live Assistant part, some use use it to check their SEO stats and see where they need to improve their Wordpress seo, but most of our users and customer use Squirrly for everything related to SEO: from keyword analysis, to seo settings on Wordpress, to analytics and to weekly monitoring and audit reports.
-
-== Upgrade Notice ==
-
-= 5.0.0 =
-5.1.0 is an important update. Different Squirrly look. Compatible with eCommerce plugins. Added interactive learning features. Added robots.txt and sitemap.xml for multisites. Added the JSON-LD. Option to show Squirrly for selected Post Types and more.
