@@ -88,7 +88,7 @@ Over 650 students to our $147 Content Marketing Training on Udemy. Part of that 
 
 over +285% increase in traffic to over 36,500 survey participants.
 
-Recently our team grew to 7 people
+Recently our team grew to 10 people
 
 More than helping you with your internet marketing efforts, we strive to offer Excellence in Customer Service.
 
