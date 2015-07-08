@@ -380,7 +380,7 @@ All of the features that we offer have been built having the customer's best int
 and we've proven time and again that we are a great team that knows all there is to know about good *SEO automation*. We had a community of 20,000 blogs that all
 used our SEO techniques, and they have gotten lots of hits from search engines due to our optimization. Now we offer the same quality for you:
 
-[UPDATE] Squirrly now has over 500,000 downloads, so we've been offering great software for over a year now.
+[UPDATE] Squirrly now has over 1,000,000 downloads, so we've been offering great software for over two years now.
 
 - SEO Advice as you're typing your articles
 - Advice in real time from the SEO Live Assistant on how to write better content for your Human readers
