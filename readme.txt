@@ -135,6 +135,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.1.5 =
+* Working to make sitemap and favicon work for wp engine
+
 = 5.1.4 =
 * Fixed the Google Rank check if not admin
 
