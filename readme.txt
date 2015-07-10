@@ -440,8 +440,7 @@ And the best ones that we have (and the others don't):
  - *SEO Rank*: Measure and Monitor the impact of SEO and Social Signals for each of your articles
 
 = Where can I enter the title and page description? =
-If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and switch to Custom. You can enter custom Title, Description and Keywords.
-If you are an advanced user then in each post/page edit you can customize the title and description from snippet section
+If you click the Squirrly tab in your dashboard, go to the "First Page Optimization" section and switch the Title and Description option on. You can enter custom Title, Description and Keywords.
 
-= Is this Wordpress seo plugin the only seo plugin I will need to install? =
+= Is this Wordpress SEO plugin the only SEO plugin I will need to install? =
 It all depends on how you have setup your Wordpress until now. Some people use Squirrly seo plugin only for the Content Optimization with the Live Assistant part, some use use it to check their SEO stats and see where they need to improve their Wordpress seo, but most of our users and customer use Squirrly for everything related to SEO: from keyword analysis, to seo settings on Wordpress, to analytics and to weekly monitoring and audit reports.
