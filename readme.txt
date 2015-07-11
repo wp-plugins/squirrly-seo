@@ -355,7 +355,7 @@ http://www.quicksprout.com/university/how-to-maximize-your-seo-traffic-with-thes
 = How does the META Description work in Squirrly SEO Optimization? =
 Based on your article, Squirrly will find the most relevant text and add it in the META Description.
 
-You can opt-in to use the Advanced SEO Settings, which will allow you to customize how the META Title and Description will be. All while writing or editing your article.
+You can opt-in to use the Squirrly Snippet in the Post/Page editor, which will allow you to customize how the META Title and Description will be. All while writing or editing your article.
 
 = Is Squirrly SEO Plugin free? =
 Yes, you just have to install the plugin from the WP directory into your site. Then connect with your email to Squirrly. The Free Version will automatically start. Read below for more. Once you have bigger content marketing needs, you can opt-in to upgrade to the PRO Plan.
