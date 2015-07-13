@@ -59,7 +59,7 @@ You’ll start with the free version of Squirrly SEO. It will help you if you ha
 
 - <strong>Copyright-Free Images That You Can Use.</strong>
 
-- <strong>Headline Suggestions based on your SEO keyword.</strong> 
+- <strong>Headline Suggestions based on your SEO keyword.</strong>
 
 - <strong>Social Intelligence through the Inspiration Box, to help you write better content. Shows you recent tweets about your subject, how other journalists and bloggers have approached your topic. All of this in your "Add New Post" interface.</strong>
 
@@ -136,12 +136,11 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.1.5 =
-* Working to make sitemap and favicon work for wp engine
-* Improving the rank check to prevent IP block
+* Improved the rank check to prevent IP block
+* Fixed the Incorrect hreflang implementation
 
 = 5.1.4 =
 * Fixed the Google Rank check if not admin
-* Fixed the Incorrect hreflang implementation 
 
 = 5.1.3 =
 * Fixed the Open Graph META for Locale en_CA
