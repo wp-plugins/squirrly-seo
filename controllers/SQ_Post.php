@@ -313,7 +313,9 @@ class SQ_Post extends SQ_FrontController {
     }
 
     public function hookFooter() {
-        $this->processCron();
+        if (defined('DISABLE_WP_CRON') && DISABLE_WP_CRON == true) {
+            $this->processCron();
+        }
     }
 
     public function processCron() {

@@ -36,6 +36,7 @@ if (file_exists(dirname(__FILE__) . '/config/config.php')) {
             SQ_ObjController::getController('SQ_FrontController', false);
             SQ_ObjController::getController('SQ_Frontend');
         }
+
         add_action('sq_processCron', array(SQ_ObjController::getController('SQ_Ranking', false), 'processCron'));
         add_action('sq_processPing', array(SQ_ObjController::getController('SQ_Sitemaps'), 'processCron'));
         add_action('sq_processApi', array(SQ_ObjController::getController('SQ_Post'), 'processCron'));
