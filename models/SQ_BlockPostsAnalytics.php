@@ -398,7 +398,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                             }
                             $value = sprintf('<a id="sq_rank_value' . $post->ID . '" href="%s" style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => $json->rank), 'admin.php')), $value, __('Force recheck', _SQ_PLUGIN_NAME_));
                         } else {
-                            $value = sprintf('<span style="text-align: center;  display: block;">%s</span><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', __('Not yet verified'), __('Check now', _SQ_PLUGIN_NAME_));
+                            $value = sprintf('<a id="sq_rank_value' . $post->ID . '" href="%s" style="display:block; width: 120px; margin: 0 auto; text-align:right;">%s</a><span class="sq_rank_column_button_recheck sq_rank_column_button" onclick="sq_recheckRank(' . $post->ID . ')">%s</span>', esc_url(add_query_arg(array('page' => 'sq_posts', 'rank' => false), 'admin.php')), __('Not yet verified'), __('Check now', _SQ_PLUGIN_NAME_));
                         }
 
                         break;
