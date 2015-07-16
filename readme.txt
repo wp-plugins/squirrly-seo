@@ -135,7 +135,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
-= 5.1.5 =
+= 5.1.6 =
 * Improved the rank check to prevent IP block
 * Fixed the Incorrect hreflang implementation
 * Add the optimization progress in the post list
