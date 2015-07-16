@@ -300,6 +300,7 @@ class SQ_PostsList extends SQ_FrontController {
                 break;
             case 'sq_recheck':
                 if (get_transient('google_blocked') === false) {
+                    SQ_Tools::setHeader('json');
                     $this->model->post_id = (int) SQ_Tools::getValue('post_id');
                     if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
                         if (get_transient('sq_rank' . $this->model->post_id) !== false) {
@@ -348,20 +349,20 @@ class SQ_PostsList extends SQ_FrontController {
         $ranking = SQ_ObjController::getController('SQ_Ranking', false);
         if (is_object($ranking)) {
             $rank = get_transient('sq_rank' . $this->model->post_id);
-//if the rank is not in transient
+            //if the rank is not in transient
             if ($rank === false) {
-//get the keyword from database
+                //get the keyword from database
                 $json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id);
                 if ($force === false && isset($json->rank)) {
                     $rank = $json->rank;
-//add it to transient
+                    //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 } else {
                     $rank = $ranking->processRanking($this->model->post_id, $keyword);
 
                     if ($rank == -1) {
                         sleep(mt_rand(5, 10));
-//if not indexed with the keyword then find the url
+                        //if not indexed with the keyword then find the url
                         if ($ranking->processRanking($this->model->post_id, get_permalink($this->model->post_id)) > 0) { //for permalink index set 0
                             $rank = 0;
                         }
@@ -374,12 +375,12 @@ class SQ_PostsList extends SQ_FrontController {
                         $args['language'] = $ranking->getLanguage();
                         SQ_ObjController::getModel('SQ_Post')->saveKeyword($this->model->post_id, json_decode(json_encode($args)));
                     }
-//add it to transient
+                    //add it to transient
                     set_transient('sq_rank' . $this->model->post_id, $rank, (60 * 60 * 24 * 1));
                 }
             }
 
-//save the rank if there is no error
+            //save the rank if there is no error
             if ($rank !== false && $rank >= -1) {
                 $args = array();
                 $args['post_id'] = $this->model->post_id;

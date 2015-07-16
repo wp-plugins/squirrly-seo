@@ -49,7 +49,7 @@ progress.sq_blockseo_progress::-webkit-progress-value {
     background-size: 276px;
     -webkit-animation: move 5s linear 0 infinite;
     animation: move 5s linear 0 infinite;
-    background-image: linear-gradient(90deg, red 0%, orange 30%, orange 50%, #20bc49 100%);
+    background-image: linear-gradient(90deg, red 0%, orange 30%, orange 60%, #20bc49 100%);
 }
 progress.sq_blockseo_topprogress::-webkit-progress-value {
     background-color: #5ba4cf;

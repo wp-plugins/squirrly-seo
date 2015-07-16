@@ -6,5 +6,3 @@
 class SQ_Traffic extends SQ_FrontController {
 
 }
-
-?>

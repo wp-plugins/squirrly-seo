@@ -346,8 +346,6 @@ class SQ_Tools extends SQ_FrontController {
         $options['timeout'] = (isset($options['timeout'])) ? $options['timeout'] : 30;
         if (!isset($options['cookie_string'])) {
             $options['cookies'] = $cookies;
-        }
-        if (!isset($options['cookie_string'])) {
             $options['cookie_string'] = $cookie_string;
         }
         $options['sslverify'] = false;
@@ -386,13 +384,17 @@ class SQ_Tools extends SQ_FrontController {
             curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
         }
 
-        if ($options['cookie_string'] <> '')
+        if ($options['cookie_string'] <> '') {
             curl_setopt($ch, CURLOPT_COOKIE, $options['cookie_string']);
+        }
 
+        if ($options['User-Agent'] <> '') {
+            curl_setopt($ch, CURLOPT_USERAGENT, $options['User-Agent']);
+        }
         $response = curl_exec($ch);
         $response = self::cleanResponce($response);
 
-        self::dump('CURL', $url, $options, $response); //output debug
+        self::dump('CURL', $url, $options, $ch, $response); //output debug
 
         if (curl_errno($ch) == 1 || $response === false) { //if protocol not supported
             if (curl_errno($ch)) {
@@ -881,7 +883,7 @@ class SQ_Tools extends SQ_FrontController {
      * Show the debug dump
      */
     public static function showDebug() {
-        echo "Debug result: <br />" . @implode('<br />', self::$debug);
+        echo "Debug result: <br />" . '<div id="wpcontent">' . @implode('<br />', self::$debug) . '</div>';
     }
 
     public function sq_activate() {

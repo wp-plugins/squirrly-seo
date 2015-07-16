@@ -207,7 +207,8 @@ class SQ_Post extends SQ_FrontController {
         $process[] = $args;
         //save for later send to api
         set_transient('sq_seopost', json_encode($process));
-        wp_schedule_single_event(time() + 60, 'sq_processApi');
+        wp_schedule_single_event(time(), 'sq_processApi');
+
         //Save the keyword for this post
         if ($json = $this->model->getKeyword($post_id)) {
             $json->keyword = addslashes(SQ_Tools::getValue('sq_keyword'));
@@ -313,7 +314,8 @@ class SQ_Post extends SQ_FrontController {
     }
 
     public function hookFooter() {
-        if (defined('DISABLE_WP_CRON') && DISABLE_WP_CRON == true) {
+        global $pagenow;
+        if (in_array($pagenow, array('post.php', 'post-new.php'))) {
             $this->processCron();
         }
     }

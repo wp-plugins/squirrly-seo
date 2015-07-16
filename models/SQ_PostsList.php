@@ -23,18 +23,9 @@ class Model_SQ_PostsList {
                 }
 
                 $graph = ''; //reset the graph
-                if (isset($values->visits)) {
-
-                    if (!empty($values->visits)) {
-                        $data = array();
-                        $data[] = array('', __('Visits', _SQ_PLUGIN_NAME_));
-                        foreach ($values->visits as $key => $visit) {
-                            $data[] = array($key, (int) number_format_i18n($visit));
-                        }
-                        $graph = '<div class="sq_chart_title">' . __('monthly traffic', _SQ_PLUGIN_NAME_) . '</div><div id="sq_chart_' . $post_id . '" style="margin:0 auto; width:100px; height:40px;"></div><script>jQuery( document ).ready(function() {drawChart("sq_chart_' . $post_id . '", ' . json_encode($data) . ',false);});</script>';
-                    }
-
-                    $values = $graph . '<span class="sq_rank_column_button sq_show_more" ref="' . $post_id . '">' . __('See Analytics', _SQ_PLUGIN_NAME_) . '</span>';
+                if (isset($values->optimized)) {
+                    $progress = '<progress class="sq_post_progress" max="100" value="' . $values->optimized . '" title="' . __('Optimized:', _SQ_PLUGIN_NAME_) . ' ' . $values->optimized . '% ' . '" ></progress>';
+                    $values = $progress . '<span class="sq_rank_column_button sq_show_more" ref="' . $post_id . '">' . __('See Analytics', _SQ_PLUGIN_NAME_) . '</span>';
                 } else {
                     $values = '<span class="sq_optimize" ref="' . $post_id . '">' . __('Optimize it with Squirrly to see the Analytics', _SQ_PLUGIN_NAME_) . '</span>';
                 }
