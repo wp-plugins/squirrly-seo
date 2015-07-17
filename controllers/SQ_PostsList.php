@@ -244,6 +244,7 @@ class SQ_PostsList extends SQ_FrontController {
         parent::action();
         switch (SQ_Tools::getValue('action')) {
             case 'sq_posts_rank':
+                SQ_Tools::setHeader('json');
                 $args = array();
                 $posts = SQ_Tools::getValue('posts');
                 if (is_array($posts) && !empty($posts)) {
@@ -254,12 +255,12 @@ class SQ_PostsList extends SQ_FrontController {
                 }
                 if (isset($response) && is_object($response)) {
                     $response = $this->model->getTotal($response);
-                    SQ_Tools::setHeader('json');
                     exit(json_encode($response));
                 }
                 exit(json_encode(array('posts' => array())));
                 break;
             case 'sq_post_rank':
+                SQ_Tools::setHeader('json');
                 $args = array();
                 $rank = null;
                 $this->model->post_id = (int) SQ_Tools::getValue('post');
@@ -294,13 +295,13 @@ class SQ_PostsList extends SQ_FrontController {
                     $analytics->audit = $this->model->getAnalytics($response, $this->model->post_id);
                     $response = $analytics->init();
 
-                    SQ_Tools::setHeader('json');
+
                     exit(json_encode($response));
                 }
                 break;
             case 'sq_recheck':
+                SQ_Tools::setHeader('json');
                 if (get_transient('google_blocked') === false) {
-                    SQ_Tools::setHeader('json');
                     $this->model->post_id = (int) SQ_Tools::getValue('post_id');
                     if ($json = SQ_ObjController::getModel('SQ_Post')->getKeyword($this->model->post_id)) {
                         if (get_transient('sq_rank' . $this->model->post_id) !== false) {
