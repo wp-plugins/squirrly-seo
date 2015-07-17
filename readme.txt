@@ -336,6 +336,7 @@ Tim - Content Writer
 Lynn Silva - Content Writer
 Teodora Vingan - SEO Analyser
 Ana Darstaru - Chief of Customer Service
+Lucian Nertan - VP of Agency
 Sorel - Developer
 
 Investors:
