@@ -58,8 +58,8 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
             $perm = 'readable';
         }
         if (!isset($q['orderby'])) {
-            $q['orderby'] = 'rank';
-            $q['order'] = 'asc';
+            $_GET['orderby'] = $q['orderby'] = 'rank';
+            $_GET['order'] = $q['order'] = 'asc';
         }
 
         if (isset($q['orderby']))
@@ -103,8 +103,6 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
 
                 //if rank order
                 if (isset($q['orderby']) && $q['orderby'] == 'rank') {
-
-
                     if (isset($post->meta_value->rank)) {
                         if ($post->meta_value->rank > 0) {
                             $this->order_posts[$post->meta_value->rank . '_' . $post->post_id] = $post->post_id;
@@ -242,6 +240,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                 $class[] = 'check-column';
                 $style = ' style="margin:0;padding:0;width:0px;"';
             }
+
             if (isset($sortable[$column_key])) {
                 list( $orderby, $desc_first ) = $sortable[$column_key];
 

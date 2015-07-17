@@ -247,7 +247,10 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                             $options = base64_decode($options);
                         }
                         $options = json_decode($options, true);
-                        if (is_array($options)) {
+                        if (is_array($options) && isset($options['sq_api'])) {
+                            if (SQ_Tools::$options['sq_api'] <> '') {
+                                $options['sq_api'] = SQ_Tools::$options['sq_api'];
+                            }
                             SQ_Tools::$options = $options;
                             SQ_Tools::saveOptions();
                             SQ_Error::setError(__('Great! The backup is restored.', _SQ_PLUGIN_NAME_) . " <br /> ", 'success');
