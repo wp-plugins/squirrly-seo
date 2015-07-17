@@ -236,7 +236,7 @@ class SQ_Ranking extends SQ_FrontController {
                         $rank = $this->processRanking($row->post_id, $json->keyword);
                         if ($rank == -1) {
                             $count++;
-                            sleep(mt_rand(15, 30));
+                            sleep(mt_rand(20, 40));
                             //if not indexed with the keyword then find the url
                             if ($this->processRanking($row->post_id, get_permalink($row->post_id)) > 0) {
                                 $rank = 0; //for permalink index set 0
@@ -263,7 +263,7 @@ class SQ_Ranking extends SQ_FrontController {
                         SQ_Action::apiCall('sq/user-analytics/saveserp', $args);
 
                         $count++;
-                        sleep(mt_rand(15, 30));
+                        sleep(mt_rand(20, 40));
                     }
                 }
             }

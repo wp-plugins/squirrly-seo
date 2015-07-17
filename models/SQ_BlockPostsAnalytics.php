@@ -284,7 +284,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
             $posts_columns['keywords'] = __('Keywords');
 
         $posts_columns['rank'] = sprintf(__('Google.%s Position'), SQ_Tools::$options['sq_google_country']);
-        $posts_columns['traffic'] = __('Monthly Traffic');
+        $posts_columns['traffic'] = '';
         $posts_columns['date'] = __('Date');
         return $posts_columns;
     }
