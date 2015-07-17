@@ -57,6 +57,10 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
             $post_status = 'publish';
             $perm = 'readable';
         }
+        if (!isset($q['orderby'])) {
+            $q['orderby'] = 'rank';
+            $q['order'] = 'asc';
+        }
 
         if (isset($q['orderby']))
             $orderby = $q['orderby'];
@@ -74,6 +78,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
         }
 
         $meta_key = '';
+        $count_p = 99999;
         $posts = SQ_ObjController::getModel('SQ_Post')->getPostWithKeywords();
         if ($posts !== false && !empty($posts)) {
             //sort descending
@@ -84,6 +89,7 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
 
                 //if rank filter
                 if (isset($q['rank'])) {
+
                     if (!isset($post->meta_value->rank) || $q['rank'] <> $post->meta_value->rank) {
                         continue;
                     }
@@ -97,7 +103,8 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
 
                 //if rank order
                 if (isset($q['orderby']) && $q['orderby'] == 'rank') {
-                    $count_p = 999;
+
+
                     if (isset($post->meta_value->rank)) {
                         if ($post->meta_value->rank > 0) {
                             $this->order_posts[$post->meta_value->rank . '_' . $post->post_id] = $post->post_id;
@@ -105,12 +112,14 @@ class Model_SQ_BlockPostsAnalytics extends WP_List_Table {
                             $this->order_posts[$count_p . '_' . $post->post_id] = $post->post_id;
                             $count_p++;
                         }
+                    } else {
+                        $this->order_posts[$count_p . '_' . $post->post_id] = $post->post_id;
+                        $count_p++;
                     }
                 }
 
                 $post__in[] = $post->post_id;
             }
-
             if (isset($q['orderby']) && $q['orderby'] === 'rank') {
                 ksort($this->order_posts, SORT_NUMERIC);
 //                $meta_key = 'sq_post_keyword_rank';
