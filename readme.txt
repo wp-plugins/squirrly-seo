@@ -337,7 +337,7 @@ Lynn Silva - Content Writer
 Teodora Vingan - SEO Analyser
 Ana Darstaru - Chief of Customer Service
 Lucian Nertan - VP of Agency
-Sorel - Developer
+Sorel Nagy- Developer
 
 Investors:
 Ibrahim Evsan, serial entrepreneur, one of the best known bloggers in Germany
