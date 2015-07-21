@@ -416,9 +416,10 @@ class SQ_Sitemaps extends SQ_FrontController {
 
         foreach ($types as $type) {
             $type_data = get_post_type_object($type);
-            if (!isset($type_data->rewrite['feeds']) || $type_data->rewrite['feeds'] != 1) {
-                unset($types[$type]);
+            if ((isset($type_data->rewrite['feeds']) && $type_data->rewrite['feeds'] == 1) || (isset($type_data->feeds) && $type_data->feeds == 1)) {
+                continue;
             }
+            unset($types[$type]);
         }
 
         if (empty($types)) {
