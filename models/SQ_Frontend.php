@@ -854,10 +854,7 @@ class Model_SQ_Frontend {
                 $hreflang = substr($language, 0, strpos($language, '-'));
             }
 
-            if ($this->isHomePage()) {
-                $meta .= sprintf("<link rel=\"alternate\" hreflang=\"x-default\" href=\"%s\" />", $url) . "\n";
-                $meta .= sprintf("<link rel=\"alternate\" hreflang=\"%s\" href=\"%s\" />", $hreflang, $url) . "\n";
-            }
+
             $meta .= sprintf("<meta name=\"dc.language\" content=\"%s\" />", $language) . "\n";
         }
 
