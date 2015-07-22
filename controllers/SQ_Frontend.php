@@ -20,7 +20,7 @@ class SQ_Frontend extends SQ_FrontController {
 
         //validate custom arguments for favicon and sitemap
         add_filter('query_vars', array($this, 'validateParams'), 1, 1);
-        add_action('template_redirect', array($this, 'startBuffer'), 0);
+        add_action('template_redirect', array($this, 'startBuffer'), 10);
     }
 
     private function _isAjax() {
@@ -77,7 +77,6 @@ class SQ_Frontend extends SQ_FrontController {
         if (isset(SQ_Tools::$options['sq_use']) && (int) SQ_Tools::$options['sq_use'] == 1) {
             //flush the header with the title and removing duplicates
             $this->model->flushHeader();
-
             //show the Squirrly header
             echo $this->model->setHeader();
         }

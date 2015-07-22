@@ -2,6 +2,8 @@
 
 class Model_SQ_Frontend {
 
+    public $buffer;
+
     /** @var object Current post */
     private $post;
     private $post_type;
@@ -80,8 +82,12 @@ class Model_SQ_Frontend {
      * @return buffer
      */
     public function getBuffer($buffer) {
-        $buffer = $this->setMetaInBuffer($buffer);
-        return $buffer;
+        if (isset($this->buffer)) {
+            return $this->buffer;
+        }
+
+        $this->buffer = $this->setMetaInBuffer($buffer);
+        return $this->buffer;
     }
 
     /**
@@ -96,8 +102,16 @@ class Model_SQ_Frontend {
             $buffers = @ob_list_handlers();
         }
 
-        if (sizeof($buffers) > 0 && strtolower($buffers[sizeof($buffers) - 1]) == strtolower('Model_SQ_Frontend::getBuffer')) {
-            @ob_end_flush();
+        while (in_array(get_class($this) . '::getBuffer', $buffers)) {
+            ob_end_flush();
+            $buffers = ob_list_handlers();
+        }
+
+        if (sizeof($buffers) > 0 && strtolower($buffers[sizeof($buffers) - 1]) == strtolower('All_in_One_SEO_Pack::output_callback_for_title')) {
+            if (isset($this->buffer)) {
+                ob_end_clean();
+                echo $this->buffer;
+            }
         }
     }
 
@@ -108,7 +122,6 @@ class Model_SQ_Frontend {
      */
     private function setMetaInBuffer($buffer) {
         global $post;
-
         //if the title is already shown
         if (isset($this->title)) {
             return $buffer;
@@ -336,7 +349,7 @@ class Model_SQ_Frontend {
         if (str_replace("-", "_", $language) == 'en_CA') {
             $language = 'en_US';
         }
-        $meta .= sprintf('<meta property="og:locale" content="%s" />', $language) . "\n";
+        $meta .= sprintf('<meta property="og:locale" content="%s" />', str_replace("-", "_", $language)) . "\n";
 
         if (is_author()) {
             $author = get_queried_object();
