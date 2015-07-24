@@ -9,7 +9,7 @@ Donate link: https://www.squirrly.co/wordpress-seo-by-squirrly
 SEO Plugin By Squirrly is for the NON-SEO experts. Get Excellent Seo with Better Content, Ranking and Analytics. For Both Humans and Search Bots.
 
 == Description ==
-Squirrly SEO helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find the best keywords. 
+Squirrly SEO helps you write content that is SEO friendly and ALSO Human friendly. You'll get to improve your rankings, while providing your readers with great content. See Your SEO Stats, get a weekly SEO Audit and find the best keywords.
 
 It works well with Wordpress sites that already have <strong>Yoast</strong> or <strong>All In One SEO</strong>. You can opt-in to keep those settings, so no need to start over again :-)
 
@@ -140,9 +140,9 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.1.6 =
-* Improved the rank check to prevent Google temporary IP block 
+* Improved the rank check to prevent Google temporary IP block
 * Fixed the Incorrect Hreflang META implementation
-* Add the optimization progress bar in the post list
+* Add the optimization progress bar in the post/page list
 * Fixed the restore the settings from backup validator
 
 = 5.1.4 =
@@ -374,7 +374,7 @@ Yes, you just have to install the plugin from the WP directory into your site. T
 As of January 2015 the free plan will include the Lite version of our features. The paid version will open the PRO features. The free version has all a small Wordpress site or blog needs to get started with SEO and Content Marketing. These are the blogs on which owners want to publish about 5 articles / month. Also includes a general Audit of their whole site and want to see the SEO analytics for their last posts.
 
 = What about the PRO Plan? =
-The PRO Plan is for those with bigger content marketing and SEO needs. For anything regarding the paid plans, go to our website: http://howto.squirrly.co/squirrly-pricing-plans/ 
+The PRO Plan is for those with bigger content marketing and SEO needs. For anything regarding the paid plans, go to our website: http://howto.squirrly.co/squirrly-pricing-plans/
 
 The Wordpress directory listing is only to be used for concerns regarding the Free version. You can get the PRO Plan after you've installed the plugin from this directory.
 
