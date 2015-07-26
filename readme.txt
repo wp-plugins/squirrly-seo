@@ -319,12 +319,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Added Google SEO Rank Column in Squirrly SEO > Performance Analytics
 * Added Google Country Select in Squirrly SEO > Settings
 
-= 3.0.0 =
-* Added a new look in Squirrly SEO Settings
-* Added the new dashboard tab in Squirrly Menu
-* Added the traffic date information in Squirrly SEO Analytics
-* Fixed the Favicon issue for PNG images
-
 
 == Credits ==
 Florin Muresan - CEO at Squirrly
