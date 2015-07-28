@@ -141,6 +141,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 == Changelog ==
 = 5.1.6 =
 * Improved the rank check to prevent Google temporary IP block
+* Iproved the plugin speed in backend
 * Fixed the Incorrect Hreflang META implementation
 * Add the optimization progress bar in the post/page list
 * Fixed the restore the settings from backup validator
