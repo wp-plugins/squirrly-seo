@@ -19,10 +19,11 @@ class SQ_PostsList extends SQ_FrontController {
      * Called in SQ_Menu > hookMenu
      */
     public function init() {
-        $this->types = array('post_posts',
-            'page_posts',
-            'edit-product',
-            'product_posts');
+        $this->types = array_map(array($this, '_addPostsType'), SQ_Tools::$options['sq_post_types']);
+    }
+
+    protected function _addPostsType($type) {
+        return $type . '_posts';
     }
 
     public function setPosts($posts) {
