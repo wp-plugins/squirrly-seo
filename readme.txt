@@ -142,10 +142,11 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 = 5.1.6 =
 * Compatible with WP 4.2.3
 * Improved the rank check to prevent Google temporary IP block
-* Iproved the plugin speed in backend
+* Improved the plugin speed in backend
 * Fixed the Incorrect Hreflang META implementation
 * Add the optimization progress bar in the post/page list
 * Fixed the restore the settings from backup validator
+* Added Squirrly Performance Analytics in custom post types selected from Squirrly SEO > Settings
 
 = 5.1.4 =
 * Fixed the Google Rank check if not admin
