@@ -225,6 +225,153 @@
                 <fieldset id="sq_social_media" style="<?php echo ((SQ_Tools::$options['sq_use'] == 0) ? 'display:none;' : ''); ?>">
                     <legend class="sq_legend_medium">
                         <span class="sq_legend_title"><?php _e('Social Media Options', _SQ_PLUGIN_NAME_); ?></span>
+                       <p>
+                            <span><?php _e('Select the language you\'re using on social', _SQ_PLUGIN_NAME_); ?></span>
+                        </p>
+                        <div class="abh_select withborder">
+                            <select id="sq_og_locale" name="sq_og_locale">
+                                <option value="en_US">English (US)</option>
+                                <option value="af_ZA">Afrikaans</option>
+                                <option value="ak_GH">Akan</option>
+                                <option value="am_ET">Amharic</option>
+                                <option value="ar_AR">Arabic</option>
+                                <option value="as_IN">Assamese</option>
+                                <option value="ay_BO">Aymara</option>
+                                <option value="az_AZ">Azerbaijani</option>
+                                <option value="be_BY">Belarusian</option>
+                                <option value="bg_BG">Bulgarian</option>
+                                <option value="bn_IN">Bengali</option>
+                                <option value="br_FR">Breton</option>
+                                <option value="bs_BA">Bosnian</option>
+                                <option value="ca_ES">Catalan</option>
+                                <option value="cb_IQ">Sorani Kurdish</option>
+                                <option value="ck_US">Cherokee</option>
+                                <option value="co_FR">Corsican</option>
+                                <option value="cs_CZ">Czech</option>
+                                <option value="cx_PH">Cebuano</option>
+                                <option value="cy_GB">Welsh</option>
+                                <option value="da_DK">Danish</option>
+                                <option value="de_DE">German</option>
+                                <option value="el_GR">Greek</option>
+                                <option value="en_GB">English (UK)</option>
+                                <option value="en_IN">English (India)</option>
+                                <option value="en_PI">English (Pirate)</option>
+                                <option value="en_UD">English (Upside Down)</option>
+                                <option value="eo_EO">Esperanto</option>
+                                <option value="es_CL">Spanish (Chile)</option>
+                                <option value="es_CO">Spanish (Colombia)</option>
+                                <option value="es_ES">Spanish (Spain)</option>
+                                <option value="es_LA">Spanish</option>
+                                <option value="es_MX">Spanish (Mexico)</option>
+                                <option value="es_VE">Spanish (Venezuela)</option>
+                                <option value="et_EE">Estonian</option>
+                                <option value="eu_ES">Basque</option>
+                                <option value="fa_IR">Persian</option>
+                                <option value="fb_LT">Leet Speak</option>
+                                <option value="ff_NG">Fulah</option>
+                                <option value="fi_FI">Finnish</option>
+                                <option value="fo_FO">Faroese</option>
+                                <option value="fr_CA">French (Canada)</option>
+                                <option value="fr_FR">French (France)</option>
+                                <option value="fy_NL">Frisian</option>
+                                <option value="ga_IE">Irish</option>
+                                <option value="gl_ES">Galician</option>
+                                <option value="gn_PY">Guarani</option>
+                                <option value="gu_IN">Gujarati</option>
+                                <option value="gx_GR">Classical Greek</option>
+                                <option value="ha_NG">Hausa</option>
+                                <option value="he_IL">Hebrew</option>
+                                <option value="hi_IN">Hindi</option>
+                                <option value="hr_HR">Croatian</option>
+                                <option value="hu_HU">Hungarian</option>
+                                <option value="hy_AM">Armenian</option>
+                                <option value="id_ID">Indonesian</option>
+                                <option value="ig_NG">Igbo</option>
+                                <option value="is_IS">Icelandic</option>
+                                <option value="it_IT">Italian</option>
+                                <option value="ja_JP">Japanese</option>
+                                <option value="ja_KS">Japanese (Kansai)</option>
+                                <option value="jv_ID">Javanese</option>
+                                <option value="ka_GE">Georgian</option>
+                                <option value="kk_KZ">Kazakh</option>
+                                <option value="km_KH">Khmer</option>
+                                <option value="kn_IN">Kannada</option>
+                                <option value="ko_KR">Korean</option>
+                                <option value="ku_TR">Kurdish (Kurmanji)</option>
+                                <option value="la_VA">Latin</option>
+                                <option value="lg_UG">Ganda</option>
+                                <option value="li_NL">Limburgish</option>
+                                <option value="ln_CD">Lingala</option>
+                                <option value="lo_LA">Lao</option>
+                                <option value="lt_LT">Lithuanian</option>
+                                <option value="lv_LV">Latvian</option>
+                                <option value="mg_MG">Malagasy</option>
+                                <option value="mk_MK">Macedonian</option>
+                                <option value="ml_IN">Malayalam</option>
+                                <option value="mn_MN">Mongolian</option>
+                                <option value="mr_IN">Marathi</option>
+                                <option value="ms_MY">Malay</option>
+                                <option value="mt_MT">Maltese</option>
+                                <option value="my_MM">Burmese</option>
+                                <option value="nb_NO">Norwegian (bokmal)</option>
+                                <option value="nd_ZW">Ndebele</option>
+                                <option value="ne_NP">Nepali</option>
+                                <option value="nl_BE">Dutch (België)</option>
+                                <option value="nl_NL">Dutch</option>
+                                <option value="nn_NO">Norwegian (nynorsk)</option>
+                                <option value="ny_MW">Chewa</option>
+                                <option value="or_IN">Oriya</option>
+                                <option value="pa_IN">Punjabi</option>
+                                <option value="pl_PL">Polish</option>
+                                <option value="ps_AF">Pashto</option>
+                                <option value="pt_BR">Portuguese (Brazil)</option>
+                                <option value="pt_PT">Portuguese (Portugal)</option>
+                                <option value="qu_PE">Quechua</option>
+                                <option value="rm_CH">Romansh</option>
+                                <option value="ro_RO">Romanian</option>
+                                <option value="ru_RU">Russian</option>
+                                <option value="rw_RW">Kinyarwanda</option>
+                                <option value="sa_IN">Sanskrit</option>
+                                <option value="sc_IT">Sardinian</option>
+                                <option value="se_NO">Northern Sámi</option>
+                                <option value="si_LK">Sinhala</option>
+                                <option value="sk_SK">Slovak</option>
+                                <option value="sl_SI">Slovenian</option>
+                                <option value="sn_ZW">Shona</option>
+                                <option value="so_SO">Somali</option>
+                                <option value="sq_AL">Albanian</option>
+                                <option value="sr_RS">Serbian</option>
+                                <option value="sv_SE">Swedish</option>
+                                <option value="sw_KE">Swahili</option>
+                                <option value="sy_SY">Syriac</option>
+                                <option value="sz_PL">Silesian</option>
+                                <option value="ta_IN">Tamil</option>
+                                <option value="te_IN">Telugu</option>
+                                <option value="tg_TJ">Tajik</option>
+                                <option value="th_TH">Thai</option>
+                                <option value="tk_TM">Turkmen</option>
+                                <option value="tl_PH">Filipino</option>
+                                <option value="tl_ST">Klingon</option>
+                                <option value="tr_TR">Turkish</option>
+                                <option value="tt_RU">Tatar</option>
+                                <option value="tz_MA">Tamazight</option>
+                                <option value="uk_UA">Ukrainian</option>
+                                <option value="ur_PK">Urdu</option>
+                                <option value="uz_UZ">Uzbek</option>
+                                <option value="vi_VN">Vietnamese</option>
+                                <option value="wo_SN">Wolof</option>
+                                <option value="xh_ZA">Xhosa</option>
+                                <option value="yi_DE">Yiddish</option>
+                                <option value="yo_NG">Yoruba</option>
+                                <option value="zh_CN">Simplified Chinese (China)</option>
+                                <option value="zh_HK">Traditional Chinese (Hong Kong)</option>
+                                <option value="zh_TW">Traditional Chinese (Taiwan)</option>
+                                <option value="zu_ZA">Zulu</option>
+                                <option value="zz_TR">Zazaki</option>
+                            </select>
+
+                        </div>
+                        <br />
                         <span><?php echo sprintf(__('%sHow to pop out in Social Media with your links%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/how-to-pop-out-in-social-media-with-your-links." target="_blank">', '</a>'); ?></span>
                         <span><?php echo sprintf(__('%sGet busy with Facebook’s new Search Engine functions%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/get-busy-with-facebooks-new-search-engine-functions" target="_blank">', '</a>'); ?></span>
                         <span><?php echo sprintf(__('%sHow I Added Twitter Cards in My WordPress for Better Inbound Marketing%s', _SQ_PLUGIN_NAME_), '<a href="http://www.squirrly.co/inbound_marketing_twitter_cards-pagblog-article_id62232.html" target="_blank">', '</a>'); ?></span>
@@ -252,6 +399,7 @@
                                     <span><?php echo __('Add the <strong>Social Open Graph objects</strong> for a good looking share. ', _SQ_PLUGIN_NAME_) . ' <a href="https://developers.facebook.com/tools/debug/og/object?q=' . urlencode(get_bloginfo('wpurl')) . '" target="_blank" title="Facebook Object Validator">Check here</a>'; ?></span>
                                 </div>
                             </li>
+
                             <span class="withborder" style="min-height: 0;"></span>
                             <li id="sq_option_twitter">
                                 <?php

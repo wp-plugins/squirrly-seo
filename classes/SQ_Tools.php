@@ -131,6 +131,7 @@ class SQ_Tools extends SQ_FrontController {
             'favicon' => '',
             'sq_auto_twitter' => 0,
             'sq_auto_facebook' => 0,
+            'sq_og_locale' => 'en_US',
             'sq_twitter_account' => '',
             'sq_facebook_account' => '',
             'sq_google_plus' => '',

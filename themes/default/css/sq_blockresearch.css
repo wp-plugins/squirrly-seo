@@ -382,62 +382,137 @@
 }
 
 /******************Multilanguage *********************/
+
 ul.sq_research_lang{
     position: absolute;
+    background-color: #fcfcfc;
+    border: none;
+    font-size: 13px;
     display: block;
-    top: 4px;
+    top: 17px;
     right: 100px;
-    width: 117px;
-    height: 30px;
-    margin-top: 9px;
-    padding: 0;
+    width: 135px;
+    height: 27px;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+ul.sq_research_lang:hover{
+    box-shadow: 0 0 10px 0 #333;
+    height: auto;
+    overflow-y: visible;
+    z-index: 9999;
 }
 
+ul.sq_research_lang li.sq_research_lang:before{
+    display: inline-block;
+    content: " ";
+    background: transparent url('../img/flags.png') no-repeat;
+    background-position: 0 -2541px;
+    border: 1px solid white;
+    width: 16px;
+    height: 11px;
+    cursor: pointer;
+    margin: 0px 5px -2px 0;
+    padding: 0px 0 0 0;
+}
 ul.sq_research_lang li.sq_research_lang{
-    float: left;
-    background: transparent url('../img/sprite.png') no-repeat;
-    background-position: 0px -48px;
-
-    margin-right: 5px;
-    width: 18px;
-    height: 13px;
+    margin: 0px 0px 5px 0px;
+    padding: 0 2px;
+    line-height: 24px;
     cursor: pointer;
 }
 
-ul.sq_research_lang li.selected{
-    border: 1px solid darkgreen;
-    border-radius: 2px;
-    margin-top: -2px;
-    margin-left: -2px;
+ul.sq_research_lang li.sq_research_first{
+    border: 1px solid #20bc49;
+    color: #20bc49;
 }
 
-li#sq_research_lang_us{
-    background-position: -10px -234px;
+ul.sq_research_lang li.selected{
+    background-color: lightgray;
 }
-li#sq_research_lang_uk{
-    background-position: -32px -234px;
+
+li#sq_research_lang_us:before{
+    background-position: 0 -2541px;
 }
-li#sq_research_lang_ca{
-    background-position: -54px -234px;
+li#sq_research_lang_uk:before{
+    background-position: 0 -836px;
 }
-li#sq_research_lang_de{
-    background-position: -76px -234px;
+li#sq_research_lang_ca:before{
+    background-position: 0 -407px;
 }
-li#sq_research_lang_fr{
-    background-position: -99px -234px;
+li#sq_research_lang_de:before{
+    background-position: 0 -616px;
 }
-li#sq_research_lang_it{
-    background-position: -121px -234px;
+li#sq_research_lang_fr:before{
+    background-position: 0 -814px;
 }
-li#sq_research_lang_es{
-    background-position: -143px -234px;
+li#sq_research_lang_it:before{
+    background-position: 0 -1199px;
 }
-li#sq_research_lang_ru{
-    background-position: -209px -234px;
+li#sq_research_lang_es:before{
+    background-position: 0 -737px;
 }
-li#sq_research_lang_br{
-    background-position: -165px -234px;
+li#sq_research_lang_ru:before{
+    background-position: 0 -2090px;
 }
-li#sq_research_lang_au{
-    background-position: -187px -234px;
+li#sq_research_lang_br:before{
+    background-position: 0 -330px;
+}
+li#sq_research_lang_au:before{
+    background-position: 0 -132px;
+}
+/**
+'ar', 'be', 'ch', 'dk', 'fi', 'hk', 'ie', 'il', 'mx', 'nl', 'no', 'pl', 'se', 'sg', 'tr', 'jp', 'in
+**/
+li#sq_research_lang_ar:before{
+    background-position: 0 -99px;
+}
+li#sq_research_lang_be:before{
+    background-position: 0 -209px;
+}
+li#sq_research_lang_ch:before{
+    background-position: 0 -462px;
+}
+li#sq_research_lang_dk:before{
+    background-position: 0 -638px;
+}
+li#sq_research_lang_fi:before{
+    background-position: 0 -759px;
+}
+li#sq_research_lang_hk:before{
+    background-position: 0 -1034px;
+}
+li#sq_research_lang_ie:before{
+    background-position: 0 -1111px;
+}
+li#sq_research_lang_il:before{
+    background-position: 0 -1122px;
+}
+li#sq_research_lang_mx:before{
+    background-position: 0 -1716px;
+}
+li#sq_research_lang_nl:before{
+    background-position: 0 -1815px;
+}
+li#sq_research_lang_no:before{
+    background-position: 0 -1826px;
+}
+li#sq_research_lang_pl:before{
+    background-position: 0 -1958px;
+}
+li#sq_research_lang_se:before{
+    background-position: 0 -2156px;
+}
+li#sq_research_lang_sg:before{
+    background-position: 0 -2167px;
+}
+li#sq_research_lang_tr:before{
+    background-position: 0 -2453px;
+}
+li#sq_research_lang_jp:before{
+    background-position: 0 -1243px;
+}
+li#sq_research_lang_in:before{
+    background-position: 0 -1144px;
 }

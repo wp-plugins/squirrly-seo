@@ -139,6 +139,12 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 
 == Changelog ==
+= 5.2.0 =
+* Compatible with WP 4.2.4
+* Added 17 more languages in Squirrly SEO Keyword Research
+* Added the focused language for Social Media
+* Added Squirrly SEO Performance Analytics in custom post types selected from Squirrly SEO > Settings
+
 = 5.1.6 =
 * Compatible with WP 4.2.3
 * Improved the rank check to prevent Google temporary IP block
@@ -146,7 +152,6 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 * Fixed the Incorrect Hreflang META implementation
 * Add the optimization progress bar in the post/page list
 * Fixed the restore the settings from backup validator
-* Added Squirrly Performance Analytics in custom post types selected from Squirrly SEO > Settings
 
 = 5.1.4 =
 * Fixed the Google Rank check if not admin

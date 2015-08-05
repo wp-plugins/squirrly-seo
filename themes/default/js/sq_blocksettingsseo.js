@@ -260,6 +260,8 @@ function sq_submitSettings() {
                 sq_auto_favicon: jQuery('#sq_settings').find('input[name=sq_auto_favicon]:checked').val(),
                 sq_auto_facebook: jQuery('#sq_settings').find('input[name=sq_auto_facebook]:checked').val(),
                 sq_auto_twitter: jQuery('#sq_settings').find('input[name=sq_auto_twitter]:checked').val(),
+                sq_og_locale: jQuery('#sq_settings').find('select[name=sq_og_locale] option:selected').val(),
+//--
                 sq_twitter_account: jQuery('#sq_settings').find('input[name=sq_twitter_account]').val(),
                 sq_facebook_account: jQuery('#sq_settings').find('input[name=sq_facebook_account]').val(),
                 sq_google_plus: jQuery('#sq_settings').find('input[name=sq_google_plus]').val(),

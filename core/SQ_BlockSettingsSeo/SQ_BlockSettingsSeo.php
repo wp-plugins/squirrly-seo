@@ -12,6 +12,9 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
         echo '<script type="text/javascript">
                    var __snippetshort = "' . __('Too short', _SQ_PLUGIN_NAME_) . '";
                    var __snippetlong = "' . __('Too long', _SQ_PLUGIN_NAME_) . '";
+                   jQuery(document).ready(function () {
+                        jQuery("#sq_settings").find("select[name=sq_og_locale]").val("' . SQ_Tools::$options['sq_og_locale'] . '");
+                   });
              </script>';
     }
 
@@ -47,6 +50,7 @@ class SQ_BlockSettingsSeo extends SQ_BlockController {
                 /////////////////////////////SOCIAL OPTION
                 SQ_Tools::saveOptions('sq_auto_facebook', (int) SQ_Tools::getValue('sq_auto_facebook'));
                 SQ_Tools::saveOptions('sq_auto_twitter', (int) SQ_Tools::getValue('sq_auto_twitter'));
+                SQ_Tools::saveOptions('sq_og_locale', SQ_Tools::getValue('sq_og_locale'));
 
                 SQ_Tools::saveOptions('sq_twitter_account', $this->model->checkTwitterAccount(SQ_Tools::getValue('sq_twitter_account')));
                 SQ_Tools::saveOptions('sq_facebook_account', $this->model->checkFacebookAccount(SQ_Tools::getValue('sq_facebook_account')));

@@ -345,11 +345,8 @@ class Model_SQ_Frontend {
         $meta .= sprintf('<meta property="og:description" content="%s" />', $this->description) . "\n";
         $meta .= (($this->meta['blogname'] <> '') ? sprintf('<meta property="og:site_name" content="%s" />', apply_filters('sq_open_graph_site', $this->meta['blogname'])) . "\n" : '');
 
-        $language = get_bloginfo('language');
-        if (str_replace("-", "_", $language) == 'en_CA') {
-            $language = 'en_US';
-        }
-        $meta .= sprintf('<meta property="og:locale" content="%s" />', str_replace("-", "_", $language)) . "\n";
+
+        $meta .= sprintf('<meta property="og:locale" content="%s" />', SQ_Tools::$options['sq_og_locale']) . "\n";
 
         if (is_author()) {
             $author = get_queried_object();
