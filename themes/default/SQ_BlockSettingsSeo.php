@@ -388,7 +388,15 @@
                         <?php echo ((defined('SQ_MESSAGE_FAVICON')) ? '<span class="sq_message sq_error" style="display: block; padding: 11px 0;">' . SQ_MESSAGE_FAVICON . '</span>' : '') ?>
                         <p>
                             <?php _e('Upload file:', _SQ_PLUGIN_NAME_); ?><br /><br />
-                            <?php if (SQ_Tools::$options['favicon'] <> '' && file_exists(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'])) { ?> <img src="<?php echo get_bloginfo('url') . '/favicon.icon' . '?' . time() ?>"  style="float: left; margin-top: 1px;width: 32px;height: 32px;" /><?php } ?>
+                            <?php
+                            if (SQ_Tools::$options['favicon'] <> '' && file_exists(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'])) {
+                                if (!get_option('permalink_structure')) {
+                                    $favicon = get_bloginfo('wpurl') . '/index.php?sq_get=favicon';
+                                } else {
+                                    $favicon = get_bloginfo('wpurl') . '/favicon.icon' . '?' . time();
+                                }
+                                ?> <img src="<?php echo $favicon ?>"  style="float: left; margin-top: 1px;width: 32px;height: 32px;" />
+                            <?php } ?>
                             <input type="file" name="favicon" id="favicon" style="float: left;" />
                             <input type="submit" name="sq_update" value="<?php _e('Upload', _SQ_PLUGIN_NAME_) ?>" style="float: left; margin-top: 0;" />
                             <br />

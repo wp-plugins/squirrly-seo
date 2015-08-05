@@ -835,13 +835,23 @@ class Model_SQ_Frontend {
         if (SQ_Tools::$options['favicon'] <> '' && file_exists(_SQ_CACHE_DIR_ . SQ_Tools::$options['favicon'])) {
             $meta .= "\n";
 
-            $favicon = get_bloginfo('wpurl') . '/favicon.icon' . $rnd;
+            if (!get_option('permalink_structure')) {
+                $favicon = get_bloginfo('wpurl') . '/index.php?sq_get=favicon';
+                $touchicon = get_bloginfo('wpurl') . '/index.php?sq_get=touchicon';
+            } else {
+                $favicon = get_bloginfo('wpurl') . '/favicon.icon' . $rnd;
+                $touchicon = get_bloginfo('wpurl') . '/touch-icon.png' . $rnd;
+            }
             $meta .= sprintf("<link rel=\"shortcut icon\"  href=\"%s\" />" . "\n", $favicon);
-            $meta .= sprintf("<link rel=\"apple-touch-icon\"  href=\"%s\" />" . "\n", get_bloginfo('wpurl') . '/touch-icon.png' . $rnd);
+            $meta .= sprintf("<link rel=\"apple-touch-icon\"  href=\"%s\" />" . "\n", $touchicon);
 
             $appleSizes = preg_split('/[,]+/', _SQ_MOBILE_ICON_SIZES);
             foreach ($appleSizes as $size) {
-                $favicon = get_bloginfo('wpurl') . '/touch-icon' . $size . '.png' . $rnd;
+                if (!get_option('permalink_structure')) {
+                    $favicon = get_bloginfo('wpurl') . '/index.php?sq_get=touchicon&sq_size=' . $size;
+                } else {
+                    $favicon = get_bloginfo('wpurl') . '/touch-icon' . $size . '.png' . $rnd;
+                }
                 $meta .= sprintf("<link rel=\"apple-touch-icon\" sizes=\"" . $size . "x" . $size . "\"  href=\"%s\" />" . "\n", $favicon);
             }
         } else {
