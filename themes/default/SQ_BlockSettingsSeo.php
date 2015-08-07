@@ -226,7 +226,7 @@
                     <legend class="sq_legend_medium">
                         <span class="sq_legend_title"><?php _e('Social Media Options', _SQ_PLUGIN_NAME_); ?></span>
                        <p>
-                            <span><?php _e('Select the language you\'re using on social', _SQ_PLUGIN_NAME_); ?></span>
+                            <span><?php _e('Select the language you\'re using on Social Media', _SQ_PLUGIN_NAME_); ?></span>
                         </p>
                         <div class="abh_select withborder">
                             <select id="sq_og_locale" name="sq_og_locale">
