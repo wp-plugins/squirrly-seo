@@ -11,6 +11,7 @@ class SQ_Menu extends SQ_FrontController {
     public function __construct() {
         parent::__construct();
         add_filter('rewrite_rules_array', array(SQ_ObjController::getBlock('SQ_BlockSettingsSeo'), 'rewrite_rules'), 999, 1);
+        add_action('admin_bar_menu', array($this, 'hookTopmenu'), 999);
     }
 
     /**
@@ -44,6 +45,20 @@ class SQ_Menu extends SQ_FrontController {
         if (!wp_get_schedule('sq_processCron')) {
             wp_schedule_event(time(), 'hourly', 'sq_processCron');
         }
+    }
+
+    /**
+     * Add a menu in Admin Bar
+     * 
+     * @param WP_Admin_Bar $wp_admin_bar
+     */
+    public function hookTopmenu($wp_admin_bar) {
+        $wp_admin_bar->add_node(array(
+            'id' => 'sq_posts',
+            'title' => __('See Your Rank on Google', _SQ_PLUGIN_NAME_),
+            'href' => admin_url('admin.php?page=sq_posts'),
+            'parent' => false
+        ));
     }
 
     /**
@@ -103,6 +118,7 @@ class SQ_Menu extends SQ_FrontController {
                 'sq_posts',
                 array(SQ_ObjController::getBlock('SQ_BlockPostsAnalytics'), 'init')
             ));
+
 
 
             $this->model->addSubmenu(array('sq_dashboard',
