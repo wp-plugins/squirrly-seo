@@ -140,7 +140,7 @@ Type a keyword to the right of the screen and start using Squirrly Seo. Enjoy!
 
 == Changelog ==
 = 5.2.0 =
-* Compatible with WP 4.2.4
+* Compatible with Wordpress 4.2.4
 * Added 17 more languages in Squirrly SEO Keyword Research
 * Added the focused language for Social Media in Squirrly > SEO
 * Added Squirrly SEO Performance Analytics in custom post types selected from Squirrly SEO > Settings
