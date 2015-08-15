@@ -397,6 +397,16 @@
     text-decoration: none;
     text-shadow: 1px 1px #555;
 }
+
+#sq_settings_body fieldset legend select{
+    padding: 2px;
+    line-height: 28px;
+    height: 28px;
+    vertical-align: middle;
+    font-size: 100%;
+    width: 100%;
+}
+
 #sq_settings_body fieldset legend .sq_option_content{
     width: 123px;
     margin: 0 auto;
